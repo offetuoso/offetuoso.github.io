@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>hugo on codex</title>
-    <link>https://example.org/tags/hugo/</link>
-    <description>Recent content in hugo on codex</description>
+    <title>hugo on offetuoso&#39;s Blog</title>
+    <link>https://offetuoso.github.io/tags/hugo/</link>
+    <description>Recent content in hugo on offetuoso&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>© {year}</copyright>
-    <lastBuildDate>Tue, 16 Feb 2021 14:15:02 +0900</lastBuildDate><atom:link href="https://example.org/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko-KR</language>
+    <copyright>© 2021</copyright>
+    <lastBuildDate>Tue, 16 Feb 2021 14:15:02 +0900</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Test1</title>
-      <link>https://example.org/blog/test1-post/</link>
+      <link>https://offetuoso.github.io/blog/test1-post/</link>
       <pubDate>Tue, 16 Feb 2021 14:15:02 +0900</pubDate>
       
-      <guid>https://example.org/blog/test1-post/</guid>
+      <guid>https://offetuoso.github.io/blog/test1-post/</guid>
       <description>The standard Lorem Ipsum passage &amp;ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
     <item>
       <title>Welcome To Codex</title>
-      <link>https://example.org/blog/example-post/</link>
+      <link>https://offetuoso.github.io/blog/example-post/</link>
       <pubDate>Thu, 04 Jun 2020 09:19:29 -0400</pubDate>
       
-      <guid>https://example.org/blog/example-post/</guid>
+      <guid>https://offetuoso.github.io/blog/example-post/</guid>
       <description>The standard Lorem Ipsum passage &amp;ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
