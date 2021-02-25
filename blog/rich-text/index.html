@@ -33,7 +33,7 @@
     <link type="text/css" rel="stylesheet" href="/css/post.min.62f44bb82fdca2af2c782aa6ecdd764e1c7b0803ff9a9504de1ce28838b96c3d.css" integrity="sha256-YvRLuC/coq8seCqm7N12Thx7CAP/mpUE3hziiDi5bD0="/>
   
     
-    <link type="text/css" rel="stylesheet" href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU="/>
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.2a345dfc34595c735913ea09631cf25222001661200871f8ab62a33b06f7c55a.css" integrity="sha256-KjRd/DRZXHNZE&#43;oJYxzyUiIAFmEgCHH4q2KjOwb3xVo="/>
   
   
    
@@ -71,6 +71,22 @@
 </head>
 
 <body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="" spellcheck="false" type="text" id="local-search-input" autocapitalize="none" autocorrect="off">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
   <div class="burger__container">
   <div class="burger" aria-controls="navigation" aria-label="Menu">
     <div class="burger__meat burger__meat--1"></div>
@@ -96,6 +112,10 @@
   </ul>
 </nav>
 
+  
+  
+
+  
 
   <main>
     
@@ -220,7 +240,7 @@
       <a class="social-icons__link" rel="me" title="GitHub"
          href="https://github.com/offetuoso"
          target="_blank" rel="noopener">
-        <div class="social-icons__icon" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
       </a>
     
   
@@ -229,7 +249,7 @@
       <a class="social-icons__link" rel="me" title="Email"
          href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
          target="_blank" rel="noopener">
-        <div class="social-icons__icon" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
       </a>
     
   
@@ -238,7 +258,16 @@
       <a class="social-icons__link" rel="me" title="Instagram"
          href="https://instagram.com/offetuoso"
          target="_blank" rel="noopener">
-        <div class="social-icons__icon" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
       </a>
     
      
