@@ -38,6 +38,7 @@ function executeSearch(searchQuery){
   });
 }
 
+
 function populateResults(result){
   $.each(result,function(key,value){
   
@@ -69,7 +70,7 @@ function populateResults(result){
     //pull template from hugo templarte definition
     var templateDefinition = $('#search-result-template').html();
     //replace values
-    var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.permalink,tags:value.item.tags,categories:value.item.categories,snippet:snippet});
+    var output = render(templateDefinition,{key:key,title:value.item.title,link:value.item.uri,tags:value.item.tags,categories:value.item.categories,snippet:snippet});
     $('#search-results').append(output);
 
     $.each(snippetHighlights,function(snipkey,snipvalue){
