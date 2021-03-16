@@ -10,14 +10,28 @@
     <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>영어 회화</title>
-      <link>https://offetuoso.github.io/blog/english-speak/</link>
+      <link>https://offetuoso.github.io/blog/20210315-english-speak/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/english-speak/</guid>
+      <guid>https://offetuoso.github.io/blog/20210315-english-speak/</guid>
       <description>I’m used to ~ (&amp;lsquo;난 -에 익숙해&amp;rsquo;)  I&amp;rsquo;m used to you 난 너에게 익숙해
  I&amp;rsquo;m afraid ~ (&amp;lsquo;유감스럽지만,&#39;)  I&amp;rsquo;m afraid Rainy outside 유감이지만, 밖에 비가 오는 것 같아
  I’m working on ~ (&amp;lsquo;지금 -를 하고있어&amp;rsquo;)  I’m working on my English speaking 난 영어 말하기를 공부하고 있어
  My girlfriend is another event. → My girlfriend had a personal schedule (She went out to hang out with her friends.</description>
+    </item>
+    
+    <item>
+      <title>영어 회화</title>
+      <link>https://offetuoso.github.io/blog/20210317-english-speak/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/20210317-english-speak/</guid>
+      <description>I use ~ (&amp;lsquo;난 -를 사용한다.&#39;)  I use Java 난 자바를 사용한다.
+ I’m preparing ~ (&#39;-를 준비중입니다&amp;rsquo;)  ** I’m preparing to change job ** 나는 이직을 준비중입니다.
+ ~ is intense (&#39;-이 ~빡세다~힘들다.&#39;)
+ Work is not intense 일은 힘들지 않다.
+ I learned ~ (&amp;lsquo;나는 -배웠다&amp;rsquo;)  I learned computer science in my University
+ I want to ~ (&#39;-하고 싶습니다.&#39;)  I want to hold your hand</description>
     </item>
     
     <item>
@@ -27,15 +41,6 @@
       
       <guid>https://offetuoso.github.io/blog/basic-java/</guid>
       <description>자바 자바가상머신 (JVM) 자바의 장점 자바의 단점 자바의 기초 문법 객체지향과 자바 객체지향 프로그램 언어 객체 상속 오버라이딩 VS 오버로딩 추상화 인터페이스 </description>
-    </item>
-    
-    <item>
-      <title>Test1</title>
-      <link>https://offetuoso.github.io/blog/test1-post/</link>
-      <pubDate>Tue, 16 Feb 2021 14:15:02 +0900</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/test1-post/</guid>
-      <description>The standard Lorem Ipsum passage &amp;ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
     <item>
@@ -54,27 +59,6 @@
       
       <guid>https://offetuoso.github.io/blog/math-typesetting/</guid>
       <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Rich Content</title>
-      <link>https://offetuoso.github.io/blog/rich-text/</link>
-      <pubDate>Fri, 05 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/rich-text/</guid>
-      <description>Hugo ships with several Built-in Shortcodesfor rich content, along with a Privacy Configand a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.
-Instagram Simple Shortcode YouTube Privacy Enhanced Shortcode   Twitter Simple Shortcode “In addition to being more logical, asymmetry has the advantage that its complete appearance is far more optically effective than symmetry.”
-— Jan Tschichold pic.twitter.com/gcv7SrhvJb
-&amp;mdash; Graphic Design History (@DesignReviewed) January 17, 2019  Vimeo Simple Shortcode  .</description>
-    </item>
-    
-    <item>
-      <title>Welcome To Codex</title>
-      <link>https://offetuoso.github.io/blog/example-post/</link>
-      <pubDate>Thu, 04 Jun 2020 09:19:29 -0400</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/example-post/</guid>
-      <description>The standard Lorem Ipsum passage &amp;ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
   </channel>
