@@ -42,7 +42,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.62f44bb82fdca2af2c782aa6ecdd764e1c7b0803ff9a9504de1ce28838b96c3d.css" integrity="sha256-YvRLuC/coq8seCqm7N12Thx7CAP/mpUE3hziiDi5bD0="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.ee52927f42b1dfe3bbd9084067c540520a107664f4aeb01b784c39783ca02cea.css" integrity="sha256-7lKSf0Kx3&#43;O72QhAZ8VAUgoQdmT0rrAbeEw5eDygLOo="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -75,7 +75,7 @@
       "datePublished": "2021-03-15 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-03-15 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/basic-java\/",
-      "wordCount" : "22",
+      "wordCount" : "755",
       "keywords" : ["java", "basic", "tutorial", "Blog"]
     }
   
@@ -159,6 +159,295 @@
 <h3 id="객체">객체<a class="anchor" href="#객체">#</a></h3>
 <h3 id="상속">상속<a class="anchor" href="#상속">#</a></h3>
 <h3 id="오버라이딩-vs-오버로딩">오버라이딩 VS 오버로딩<a class="anchor" href="#오버라이딩-vs-오버로딩">#</a></h3>
+<p>##오버라이딩 (Overriding)</p>
+<blockquote>
+<p>오버라이딩이란?</p>
+</blockquote>
+<blockquote>
+<p>사전적 의미로는 
+<code>more important than any other considerations</code>
+번역해 보면 <code>다른 고려 사항보다 더 중요하다</code>
+이다.</p>
+</blockquote>
+<blockquote>
+<p>부모 클래스로 부터 상속받은 메소드를 자식 클래스에서 재정의 하여, <br>
+<code>덮어 쓰는 것</code>이다. 상속받은 메소드를 그대로 사용할 수도 있지만, 자식 클래스에서 상황에 맞게 변경해야 하는 경우 오버라이딩을 사용한다.</p>
+</blockquote>
+<blockquote>
+<p>오버라이딩을 사용하기 위한 조건에는 부모 클래스의 메소드를 재정의하는 것이므로 <br>
+<mark>이름, 매개변수 리턴 값이 모두 같아야 한다</mark>.</p>
+</blockquote>
+<blockquote>
+<p>아래 소스코드를 보면,</p>
+<ol>
+<li>main 클래스를 가지고 있는 Example 클래스</li>
+<li>Talk라는 기능을 가진 <code>부모 클래스</code>, Person 클래스.</li>
+<li>Person을 부모로 가지고 있는 <code>자식 클래스</code>, Korean, American, Japanese로 구성되어있다.</li>
+<li>모두 Talk 메소드를 가지고 있지만 각각 다른 기능을 수행한다.</li>
+</ol>
+</blockquote>
+<h4 id="examplejava">Example.java</h4>
+<pre><code>package ex.java.overriding;
+
+public class Example {
+
+	public static void main(String[] args) {
+		
+		Person person = new Person();
+		person.Talk();
+		
+		Korean korean = new Korean();
+		korean.Talk();
+		
+		American american = new American();
+		american.Talk();
+		
+		Japanese japanese = new Japanese();
+		japanese.Talk();
+		
+	}
+}
+
+class Person {
+	void Talk() {
+		String message = &quot;Aaaa&quot;;
+		System.out.println(message);
+	}
+}
+
+class Korean extends Person{
+	
+	@Override
+	void Talk() {
+		String message = &quot;안녕하세요!&quot;;
+		System.out.println(message);
+	}
+}
+
+class American extends Person{
+	
+	@Override
+	public void Talk() {
+		String message = &quot;Hello!&quot;;
+		System.out.println(message);
+	}
+}
+
+class Japanese extends Person{
+	
+	 @Override
+	 protected void Talk() {
+		String message = &quot;Konnichiwa!&quot;;
+		System.out.println(message);
+	}
+}
+
+</code></pre>
+<h4 id="result">result</h4>
+<pre><code>Aaaa
+안녕하세요!
+Hello!
+Konnichiwa!
+</code></pre>
+<blockquote>
+<p>소스를 보다보면 자식 클래스의 메소드 바로 위에 <em>@override</em>라는 것이 보일 것이다. 
+이것은 Annotation 이라는 주석 기능이다. 하지만 우리가 알고 있는 주석과는 다르며
+컴퓨터는 그것을 <code>이 메소드는 부모 클래스로 부터 오버라이드 받은 메소드이다.</code> 명시해 주는것이다.
+만일 메소드가 아래의 경우 오류로 알려준다.</p>
+</blockquote>
+<pre><code>1. 메소드 명칭이 잘못된경우
+The method talks() of type Korean must override or implement a supertype method
+
+2. 리턴타입이 잘못된경우 
+The return type is incompatible with Person.Talk()
+
+3. 파라미터가 잘못된경우
+The method Talk(String) of type Korean must override or implement a supertype  method
+
+</code></pre>
+<p>##오버로딩 (Overloading)</p>
+<blockquote>
+<p>오버로딩이란?</p>
+</blockquote>
+<blockquote>
+<p>사전적 의미로는 
+<code>loading of a vehicle with too heavy a weight.</code>
+번역해 보면 <code>너무 무거운 중량의 차량 적재.</code>이다. 쉽게 말하면 <code>과적해서 싣는 것</code>이다.</p>
+</blockquote>
+<blockquote>
+<p>보통 하나의 이름을 가진 메소드는 1개만 존재 하지만, <code>파라미터가 다르다면</code> 컴퓨터는 오버로드된 메소드로 
+인식하여 다른 메소르도 인식함.</p>
+</blockquote>
+<blockquote>
+<p>아래 소스코드를 보면,</p>
+<ol>
+<li>main 클래스를 가지고 있는 Example 클래스</li>
+<li>Mountain이라는 클래스가 있고 each라는 입력하면 답변을 해주는 메소드가 있다.</li>
+<li>같은 이름의 다른 파라미터를 갖는 3개의 each가 있다.</li>
+</ol>
+</blockquote>
+<h4 id="examplejava-1">Example.java</h4>
+<pre><code>package ex.java.overloading;
+
+public class Example {
+
+	public static void main(String[] args) {
+		
+		Mountain mountain = new Mountain();
+		
+		mountain.each(&quot;Hello&quot;); 	//문자열 입력
+		
+		mountain.each(100);		//숫자 입력
+		
+		mountain.each(true);		//참,거짓 입력
+		
+	}
+
+}
+
+class Mountain {
+	void each(String say) {
+		System.out.println(&quot;you say &quot;+say);
+	}
+	
+	void each(int money) {
+		System.out.println(&quot;you have &quot;+money+&quot; doller&quot;);
+	}
+	
+	void each(Boolean bool) {
+		if(bool) {
+			System.out.println(&quot;this is True&quot;);
+		}else {
+			System.out.println(&quot;this is False&quot;);
+		}
+	}
+	
+}
+
+</code></pre>
+<h4 id="result-1">result</h4>
+<pre><code>you say Hello
+you have 100 doller
+this is True
+
+</code></pre>
+<blockquote>
+<p>결과를 보면 어렵진 않다. 컴퓨터는 입력된 파라미터에 따라 어떤 함수를 호출할지 보여준다. 
+예를들면 우리가 많이 사용하는 System.out.println(); 출력 함수가 있다.</p>
+</blockquote>
+<p><img src="/images/overload_example.png" alt="contact"></p>
+<p>##다형성</p>
+<p>##오버라이딩을 이용한 다형성</p>
+<blockquote>
+<p>위에서 오버라이딩을 설명했던 소스와 다른점 한가지가 있다.
+그것은 main 클래스에서 자식 클래스를 선언하는 부분이다.</p>
+</blockquote>
+<h4 id="examplejava-2">Example.java</h4>
+<pre><code>package ex.java.overriding;
+
+public class Example {
+
+	public static void main(String[] args) {
+		
+		Person person = new Person();
+		person.Talk();
+		
+		person = new Korean(); 	// Korea클래스의 인스턴스를 Person타입인 person으로 참조하여 사용.
+		person.Talk();
+		
+		person = new American(); 	// American클래스의 인스턴스를 Person타입인 person으로 참조하여 사용.
+		person.Talk();
+		
+		person = new Japanese();	// Japanese클래스의 인스턴스를 Person타입인 person으로 참조하여 사용.
+		person.Talk();
+		
+	}
+}
+
+class Person {
+	void Talk() {
+		String message = &quot;Aaaa&quot;;
+		System.out.println(message);
+	}
+}
+
+class Korean extends Person{
+	
+	@Override
+	void Talk() {
+		String message = &quot;안녕하세요!&quot;;
+		System.out.println(message);
+	}
+}
+
+class American extends Person{
+	
+	@Override
+	public void Talk() {
+		String message = &quot;Hello!&quot;;
+		System.out.println(message);
+	}
+}
+
+class Japanese extends Person{
+	
+	 @Override
+	 protected void Talk() {
+		String message = &quot;Konnichiwa!&quot;;
+		System.out.println(message);
+	}
+}
+
+
+</code></pre>
+<h4 id="result-2">result</h4>
+<pre><code>Aaaa
+안녕하세요!
+Hello!
+Konnichiwa!
+</code></pre>
+<h2 id="참조변수의-다형성">참조변수의 다형성<a class="anchor" href="#참조변수의-다형성">#</a></h2>
+<blockquote>
+<p>참조변수가 사용할 수 있는 멤버의 개수가 실제 인스턴스의 멤버 개수보다 같거나 적어야 참조할 수 있다. 클래스는 상속을 통해 확장될 수는 있어도 축소될 수는 없기 때문에, 자식클래스에서 사용할 수 있는 멤버의 개수는 언제나 부모 클래스와 같거나 많게 된다.</p>
+</blockquote>
+<pre><code>
+Person person = new Person();  //정상
+
+Korean korean = new Korean(); 	//정상
+
+// 부모 클래스인 person은  Korean을 포함할 수 있다.
+Person person = new Korean(); 	//정상
+
+// 부모 클래스는 자식으로 참조 할수 없다. 
+Korean korean = new Person();	//오류
+
+</code></pre>
+<h2 id="참조변수의-형변환">참조변수의 형변환<a class="anchor" href="#참조변수의-형변환">#</a></h2>
+<blockquote>
+<p>자식클래스를 부모 클래스로 참조할때 자식 클래스로 형 변환 할 수 있다.</p>
+</blockquote>
+<pre><code>
+	Person person = new Person();
+	person.Talk();
+	
+	Korean korean = new Korean();
+	person = (Korean) korean; 			//(Korean) 타입으로 형변환
+	korean.Talk();
+	
+	American american = new American();
+	person = (American) american; 		//(American) 타입으로 형변환
+	american.Talk();
+	
+	Japanese japanese = new Japanese(); //(Japanese) 타입으로 형변환
+	person = (Japanese) japanese;
+	japanese.Talk();
+	
+	
+	person = (American) japanese; 		//오류 !
+	japanese.Talk();
+	
+
+</code></pre>
 <h3 id="추상화">추상화<a class="anchor" href="#추상화">#</a></h3>
 <h3 id="인터페이스">인터페이스<a class="anchor" href="#인터페이스">#</a></h3>
 
@@ -182,9 +471,9 @@
   
 
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/20210317-english-speak/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/20210315-english-speak/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >영어 회화</span>
+      <span class="pagination__title" >영어 회화 21.03.15</span>
     </a>
   
 </div>
@@ -266,6 +555,11 @@
         <li><a href="#객체">객체</a></li>
         <li><a href="#상속">상속</a></li>
         <li><a href="#오버라이딩-vs-오버로딩">오버라이딩 VS 오버로딩</a></li>
+      </ul>
+    </li>
+    <li><a href="#참조변수의-다형성">참조변수의 다형성</a></li>
+    <li><a href="#참조변수의-형변환">참조변수의 형변환</a>
+      <ul>
         <li><a href="#추상화">추상화</a></li>
         <li><a href="#인터페이스">인터페이스</a></li>
       </ul>
