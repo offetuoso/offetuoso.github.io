@@ -2,12 +2,12 @@
 <html lang="ko-KR">
 
 <head>
-  <title>EngAll 영어 회화 21.03.16 | offetuoso&#39;s Blog</title>
+  <title>그리디 알고리즘 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="영어 회화 문법정리">
-  <meta name="keywords" content="">
+  <meta name="description" content="그리디 알고리즘.">
+  <meta name="keywords" content="algorism , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,9 +62,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "EngAll 영어 회화 21.03.16",
-      "headline" : "EngAll 영어 회화 21.03.16",
-      "description" : "영어 회화 문법정리",
+      "name" : "그리디 알고리즘",
+      "headline" : "그리디 알고리즘",
+      "description" : "그리디 알고리즘.",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -72,11 +72,11 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-03-16 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-03-16 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/20210316-english-speak\/",
-      "wordCount" : "137",
-      "keywords" : ["Blog"]
+      "datePublished": "2021-03-20 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-03-20 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/greedy-algorithm\/",
+      "wordCount" : "113",
+      "keywords" : ["algorism", "CodingTest", "Blog"]
     }
   
   </script>
@@ -133,67 +133,51 @@
         <div class="post">
           <header class="post__header">
              
-            	<div class="header-inner" style="background-image: url('/images/bg-post.jpg');">
+            	<div class="header-inner" style="background-image: url('/images/bg-index.jpg');">
             
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
-		             <h1 class="post__title" style="color:white;font-size: 30px;">
-		            	EngAll 영어 회화 21.03.16
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	그리디 알고리즘
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	EngAll 영어 회화 21.03.16
+		       	그리디 알고리즘
             </h1>		
-            <time datetime="2021-03-16 00:00:00 &#43;0000 UTC" class="post__date">2021-03-16</time> 
+            <time datetime="2021-03-20 00:00:00 &#43;0000 UTC" class="post__date">2021-03-20</time> 
           </header>
           <article class="post__content">
               
-<h2 id="i-use--난--를-사용한다">I use ~ (&lsquo;난 -를 사용한다.')<a class="anchor" href="#i-use--난--를-사용한다">#</a></h2>
+<h2 id="그리디-알고리즘탐욕법">그리디 알고리즘(탐욕법)<a class="anchor" href="#그리디-알고리즘탐욕법">#</a></h2>
+<h3 id="그리디-알고리즘이란-">그리디 알고리즘이란 ?<a class="anchor" href="#그리디-알고리즘이란-">#</a></h3>
 <blockquote>
-<p><strong>I use Java</strong> 난 자바를 사용한다.</p>
+<p>그리디 알고리즘이란</p>
+<ul>
+<li>그리디 알고리즘(탐욕법)은 현재상황에서 가장 좋은 것만 고르는 방법을 의미.</li>
+<li>일반적인 그리디 알고리즘은 문제를 풀기 위한 최소한의 아이디어를 떠올릴  있는 능력을 요구.</li>
+<li>그리디 해법은 그 정당성 분석이 중요.</li>
+<li>단순히 가장 좋아 보이는 것을 반복적으로 선택해도 최적의 해를 구할 수 있는지 검토 필요.</li>
+</ul>
 </blockquote>
-<h2 id="im-preparing---를-준비중입니다">I’m preparing ~ ('-를 준비중입니다&rsquo;)<a class="anchor" href="#im-preparing---를-준비중입니다">#</a></h2>
+<h4 id="문제-상황-루트-노드로-부터-시작하여-가는-노드의-합을-최대로-만들고-싶습니다">[문제 상황] 루트 노드로 부터 시작하여 가는 노드의 합을 최대로 만들고 싶습니다.</h4>
 <blockquote>
-<p>** I’m preparing to change job 
-** 나는 이직을 준비중입니다.</p>
+<p>Q. 최적의 해는 무엇인가요 ?</p>
 </blockquote>
-<h2 id="-is-intense">~ is intense<a class="anchor" href="#-is-intense">#</a></h2>
-<p>('-이 ~빡세다~힘들다.')</p>
+<p><img src="/images/greedy_q_01.PNG" alt="contact"></p>
 <blockquote>
-<p><strong>Work is not intense</strong> 일은 힘들지 않다.</p>
+<p>Q. 단순히 매 상황에서 가장큰 값을 고른다면 어떻게 될까요?</p>
 </blockquote>
-<h2 id="i-learned--나는--배웠다">I learned ~ (&lsquo;나는 -배웠다&rsquo;)<a class="anchor" href="#i-learned--나는--배웠다">#</a></h2>
+<p><img src="/images/greedy_q_02.PNG" alt="contact"></p>
 <blockquote>
-<p><strong>I learned computer science in my University</strong></p>
+<ul>
+<li>일반적인 상황에서 그리디알고리즘은 최적의 해를 보장할 수 없을때가 많다.</li>
+<li>하지만 코딩 테스트에서의 대부분의 문제는 <mark>탐욕법으로 얻은 해가 최적의 해가 되는 상황에서, 이를 추론</mark>할 수 있어야 풀리도록 출제됨.</li>
+</ul>
 </blockquote>
-<h2 id="i-want-to---하고-싶습니다">I want to ~ ('-하고 싶습니다.')<a class="anchor" href="#i-want-to---하고-싶습니다">#</a></h2>
-<blockquote>
-<p><strong>I want to hold your hand</strong></p>
-</blockquote>
-<h2 id="im-good-at--나는--잘해">I&rsquo;m good at ~ (&lsquo;나는 -잘해&rsquo;)<a class="anchor" href="#im-good-at--나는--잘해">#</a></h2>
-<blockquote>
-<p><strong>I&rsquo;m good at make smile</strong></p>
-</blockquote>
-<h2 id="im-about-to--나는--할-예정이다">I&rsquo;m about to ~ (&lsquo;나는 -할 예정이다&rsquo;)<a class="anchor" href="#im-about-to--나는--할-예정이다">#</a></h2>
-<blockquote>
-<p><strong>I&rsquo;m about to go to bed</strong></p>
-</blockquote>
-<pre><code>Benefits &amp; Drawbacks (장점 &amp; 단점)
-Take your time (천천히) 
-Achievement (성취감)
-Working late (야근) 
-Intense (빡센) 
-Regular job = 
-Stable job = 안정감 있는 직업 
-Objective / Goal = 목표
-Regret = 후회
-Age Limit = 나이 제한
-Vaccine = 백신
-Pandemic = 전국적인 유행병
-Governance = 통치 
-</code></pre>
-<h2 id="end">end<a class="anchor" href="#end">#</a></h2>
+<p>이 자료는 나동빈님의 이코테 유튜브 영상을 보고 정리한 자료입니다.
+<br></p>
+<p><a href="https://www.youtube.com/watch?v=m-9pAwq1o3w&amp;list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC">참고 : <a href="http://www.youtube.com/watch?v=m-9pAwq1o3w&amp;amp;list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC">www.youtube.com/watch?v=m-9pAwq1o3w&amp;amp;list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC</a></a></p>
 
 
               
@@ -203,30 +187,21 @@ Governance = 통치
 <ul class="tags__list">
     
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/english/">english</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/speak/">speak</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/talk/">talk</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/engall/">EngAll</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">java</a>
     </li></ul>
 
  <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/20210315-english-speak/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/20210316-english-speak/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">EngAll 영어 회화 21.03.15</span>
+        <span class="pagination__title">EngAll 영어 회화 21.03.16</span>
     </a>
   
 
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/greedy-algorithm/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/reverse-charge/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >그리디 알고리즘</span>
+      <span class="pagination__title" >거스름돈 (그리디 알고리즘)</span>
     </a>
   
 </div>
@@ -291,17 +266,14 @@ Governance = 통치
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">EngAll 영어 회화 21.03.16</div> 
+          <div class="toc-post-title">그리디 알고리즘</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#i-use--난--를-사용한다">I use ~ (&lsquo;난 -를 사용한다.')</a></li>
-    <li><a href="#im-preparing---를-준비중입니다">I’m preparing ~ ('-를 준비중입니다&rsquo;)</a></li>
-    <li><a href="#-is-intense">~ is intense</a></li>
-    <li><a href="#i-learned--나는--배웠다">I learned ~ (&lsquo;나는 -배웠다&rsquo;)</a></li>
-    <li><a href="#i-want-to---하고-싶습니다">I want to ~ ('-하고 싶습니다.')</a></li>
-    <li><a href="#im-good-at--나는--잘해">I&rsquo;m good at ~ (&lsquo;나는 -잘해&rsquo;)</a></li>
-    <li><a href="#im-about-to--나는--할-예정이다">I&rsquo;m about to ~ (&lsquo;나는 -할 예정이다&rsquo;)</a></li>
-    <li><a href="#end">end</a></li>
+    <li><a href="#그리디-알고리즘탐욕법">그리디 알고리즘(탐욕법)</a>
+      <ul>
+        <li><a href="#그리디-알고리즘이란-">그리디 알고리즘이란 ?</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
