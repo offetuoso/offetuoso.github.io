@@ -75,7 +75,7 @@
       "datePublished": "2021-03-15 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-03-15 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/basic-java\/",
-      "wordCount" : "752",
+      "wordCount" : "925",
       "keywords" : ["java", "basic", "tutorial", "Blog"]
     }
   
@@ -165,8 +165,7 @@
 <blockquote>
 <p>사전적 의미로는 
 <code>more important than any other considerations</code>
-번역해 보면 <code>다른 고려 사항보다 더 중요하다</code>
-이다.</p>
+번역해 보면 <code>다른 고려 사항보다 더 중요하다</code>이다.</p>
 </blockquote>
 <blockquote>
 <p>부모 클래스로 부터 상속받은 메소드를 자식 클래스에서 재정의 하여, <br>
@@ -175,6 +174,19 @@
 <blockquote>
 <p>오버라이딩을 사용하기 위한 조건에는 부모 클래스의 메소드를 재정의하는 것이므로 <br>
 <mark>이름, 매개변수 리턴 값이 모두 같아야 한다</mark>.</p>
+</blockquote>
+<blockquote>
+<p>오버라이딩의 조건</p>
+<ol>
+<li>부모 클래스와 자식 클래스 사이에서만 성립한다.</li>
+<li>static 메소드는 오버라이딩 할 수 없다. <code>static 메소드 끼리의 오버라이딩은 hiding이라 한다.</code></li>
+<li>private는 정의된 메소드는 상속 자체가 안된다.</li>
+<li>interface 메소드를 오버라이딩 할 경우엔 public으로 해야한다.</li>
+<li>메소드의 파라미터가 완전히 일치해야 하며, 리턴타입도 같아야 한다. 파라미터의 이름은 상관없다.</li>
+<li>부모 클래스의 접근제어자보다 좁아질 수 없다. 확장 될 수는 있다.</li>
+<li>부모 클래스보다 더 많은 예외를 던질 수 있다.</li>
+<li>final 예약어로 정의된 메소드는 오버라이딩 할 수 없다.</li>
+</ol>
 </blockquote>
 <blockquote>
 <p>아래 소스코드를 보면,</p>
@@ -278,11 +290,19 @@ The method Talk(String) of type Korean must override or implement a supertype  m
 인식하여 다른 메소르도 인식함.</p>
 </blockquote>
 <blockquote>
+<p>오버로딩이 되는 조건은</p>
+<ol>
+<li>메소드 이름이 같아야 한다.</li>
+<li>메소드의 파라미터의 형이 다르거나 갯수가 다르거나 순서가 다름.</li>
+<li>반환타입은 영향을 미치지 않는다.</li>
+</ol>
+</blockquote>
+<blockquote>
 <p>아래 소스코드를 보면,</p>
 <ol>
 <li>main 클래스를 가지고 있는 Example 클래스</li>
-<li>Mountain이라는 클래스가 있고 each라는 입력하면 답변을 해주는 메소드가 있다.</li>
-<li>같은 이름의 다른 파라미터를 갖는 3개의 each가 있다.</li>
+<li>Mountain이라는 클래스가 있고 echo라는 입력하면 답변을 해주는 메소드가 있다.</li>
+<li>같은 이름의 다른 파라미터를 갖는 3개의 echo가 있다.</li>
 </ol>
 </blockquote>
 <h4 id="examplejava-1">Example.java</h4>
@@ -294,26 +314,26 @@ public class Example {
 		
 		Mountain mountain = new Mountain();
 		
-		mountain.each(&quot;Hello&quot;); 	//문자열 입력
+		mountain.echo(&quot;Hello&quot;); 	//문자열 입력
 		
-		mountain.each(100);		//숫자 입력
+		mountain.echo(100);		//숫자 입력
 		
-		mountain.each(true);		//참,거짓 입력
+		mountain.echo(true);		//참,거짓 입력
 		
 	}
 
 }
 
 class Mountain {
-	void each(String say) {
+	void echo(String say) {
 		System.out.println(&quot;you say &quot;+say);
 	}
 	
-	void each(int money) {
+	void echo(int money) {
 		System.out.println(&quot;you have &quot;+money+&quot; doller&quot;);
 	}
 	
-	void each(Boolean bool) {
+	void echo(Boolean bool) {
 		if(bool) {
 			System.out.println(&quot;this is True&quot;);
 		}else {
@@ -335,6 +355,38 @@ this is True
 예를들면 우리가 많이 사용하는 System.out.println(); 출력 함수가 있다.</p>
 </blockquote>
 <p><img src="/images/overload_example.png" alt="contact"></p>
+<blockquote>
+<p>주의할점 
+파라메터의 순서를 다르게 오버라이드 하였지만, int와 long 모두 소숫점이 없는 정수를 입력 가능하기 때문에
+컴퓨터의 입장에서는 어느 메소드를 사용할지 애매한경우가 생긴다.</p>
+</blockquote>
+<p><code>The method sum(int, long) is ambiguous for the type Calculator</code>
+Calculator의 메소드 sum (int, long)은 형식에 대해 모호합니다.</p>
+<pre><code>	
+	public class Example {
+
+	public static void main(String[] args) {
+		
+		Calculator cal = new Calculator();
+		
+		cal.sum(1, 5);
+	}
+
+}
+
+class Calculator {
+	void sum(int a, long b) {
+		System.out.println(&quot;sum is &quot;+ (a+b));
+	}
+	
+	void sum(long a, int b) {
+		System.out.println(&quot;sum is &quot;+ (a+b));
+	}
+	
+}
+
+
+</code></pre>
 <h3 id="다형성">다형성<a class="anchor" href="#다형성">#</a></h3>
 <h4 id="오버라이딩을-이용한-다형성">오버라이딩을 이용한 다형성</h4>
 <blockquote>
@@ -463,16 +515,11 @@ Korean korean = new Person();	//오류
 
  <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/markdown-syntax-guide/">
-        <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Markdown Syntax Guide</span>
-    </a>
-  
 
   
     <a class="pagination__item" href="https://offetuoso.github.io/blog/20210315-english-speak/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >EngAll 영어 회화 21.03.15</span>
+      <span class="pagination__title" >잉그올 영어 회화 21.03.15</span>
     </a>
   
 </div>
