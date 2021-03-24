@@ -72,10 +72,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-03-20 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-03-20 00:00:00 \u002b0000 UTC",
+      "datePublished": "2021-03-24 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-03-24 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/make-one\/",
-      "wordCount" : "265",
+      "wordCount" : "328",
       "keywords" : ["Algorism", "CodingTest", "Python", "Java", "Blog"]
     }
   
@@ -145,7 +145,7 @@
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
 		       	1이 될때까지 (그리디 알고리즘)
             </h1>		
-            <time datetime="2021-03-20 00:00:00 &#43;0000 UTC" class="post__date">2021-03-20</time> 
+            <time datetime="2021-03-24 00:00:00 &#43;0000 UTC" class="post__date">2021-03-24</time> 
           </header>
           <article class="post__content">
               
@@ -184,21 +184,24 @@ N과 K가 주어질 때 N이 1이 될 때까지 1번 혹은 2번의 과정을 �
 2</p>
 </blockquote>
 <p>###make_one.py</p>
-<pre><code>n, k = map(int, input().split())
+<pre><code>n, k = map(int, input().split()) 	#n=13, k=5
 
 result = 0
 
-while True :        
-    target = (n // k) * k
-    result += (n - target)
-    n = target
-    if n &lt; k :
-        break
-    result += 1
-    n //= k
+while True :
+    # n을 K로 나눈 몫에 k를 곱하여,
+    # 나눌수 있는 값을 계산             # roof 1 step                         # roof 2 step
+    target = (n // k) * k 		#target = 10 						#target = 0
+    result += (n - target)       #result += 3  &lt;&lt;한번에 카운트 3을 추가하고     #result(4) += 2
+    n = target                   #n = target   &lt;&lt;13을 10으로 만듬          #n=0
 
-result += (n - 1)
-print(result)
+    if n &lt; k :                   #false                                #true
+        break
+    result += 1				#나눗셈에 대한 result(3) +1	
+    n //= k					#n = 2
+
+result += (n - 1)                                                      #result(6) += -1   &lt;n을 0까지 만들면서, 횟수 -1
+print(result)                                                          #5        
 
 </code></pre>
 <p>###MakeOne.java</p>
