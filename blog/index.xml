@@ -9,9 +9,20 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>더하기 혹은 곱하기 (그리디 알고리즘)</title>
+      <link>https://offetuoso.github.io/blog/sum-and-multiply/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/sum-and-multiply/</guid>
+      <description>[문제1] 곱하기 혹은 더하기 ###[문제] 곱하기 혹은 더하기 : 문제 설명
+ 각 자리가 숫자(0부터 9)로만 이루어진 문자열 S가 주어졌을 때, 왼쪽부터 오른쪽으로 하나씩 모든 숫자를 확인하며 숫자 사이에 &amp;lsquo;x&amp;rsquo; 혹은 &amp;lsquo;+&amp;rsquo; 연산자를 넣어 결과적으로 만들어질 수 있는 가장 큰 수를 구하는 프로그램을 작성. 단, + 보다 x를 먼저 계산하는 일반적인 방식과는 달리, 모든 연산은 왼쪽에서부터 순서대로 이루어진다고 가정.
+   예를 들어, 02984라는 문자열로 만들 수 있는 가장 큰 수는 ((((0 + 2)x 9)x 8)x 4) = 576이다.</description>
+    </item>
+    
+    <item>
       <title>1이 될때까지 (그리디 알고리즘)</title>
       <link>https://offetuoso.github.io/blog/make-one/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/make-one/</guid>
       <description>[문제1] 1이 될때까지 ###[문제] 1이 될때까지 : 문제 설명
@@ -48,8 +59,8 @@
       
       <guid>https://offetuoso.github.io/blog/20210319-english-speak/</guid>
       <description>do you mind?  (1) Are you okay/fine with it? (&amp;lsquo;괜찮나요?&#39;) Do you mind if I change the schedule? 괜찮다면, 스케쥴을 변경해도 될까요? (2) Mind your own business. (&amp;lsquo;니 일이나 신경써.&#39;) Do you mind? 니 일이나 신경써.
- attempt to ~ (&#39;-를 시도하다.&#39;)  they are attempt to find something 그들은 무언갈 찾으려 한다.
- I had a meeting ~ (&#39;-를 만났다.&#39;)  I had a meeting with english teacher 나는 영어 선생님과 Meeting을 가졌다.</description>
+ attempt to ~ (&#39;-를 시도하다.&#39;)  they are attempt to find something 그들은 무언갈 찾으려 한다. i attempt to speaking english 나는 영어로 말하길 시도한다.
+ I had a meeting ~ (&#39;-를 만났다.</description>
     </item>
     
     <item>
@@ -58,9 +69,9 @@
       <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/20210317-english-speak/</guid>
-      <description>Did you take a look at ~? (&#39;-보셨나요?&#39;)  Did you take a look at the Book 책 보셨나요?
- I took a look at ~ (&amp;lsquo;나는 -를 보았다.&#39;)  I took a look at the book, 1 hour ago 1 시간 전에 책을 봤어요.
- adv. impressed (&amp;lsquo;깊은 인상&amp;rsquo;) n. impression (&amp;lsquo;인상&amp;rsquo;) I’m impressed by ~ (&amp;lsquo;나는 당신의 -에 감동받았습니다.&#39;)  I’m impressed by your letter 나는 당신의 편지에 감동받았습니다.</description>
+      <description>Did you take a look at ~? (&#39;-보셨나요?&#39;)  Did you take a look at the Book 책 보셨나요? Did you take a look at sky? 하늘을 보셨나요?
+ I took a look at ~ (&amp;lsquo;나는 -를 보았다.&#39;)  I took a look at the book, 1 hour ago 1 시간 전에 책을 봤어요. I was took a look at sky last day 나는 어제 하늘을 봤어요
+ adv. impressed (&amp;lsquo;깊은 인상&amp;rsquo;) n.</description>
     </item>
     
     <item>
@@ -69,12 +80,10 @@
       <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/20210316-english-speak/</guid>
-      <description>I use ~ (&amp;lsquo;난 -를 사용한다.&#39;)  I use Java 난 자바를 사용한다.
- I’m preparing ~ (&#39;-를 준비중입니다&amp;rsquo;)  ** I’m preparing to change job ** 나는 이직을 준비중입니다.
+      <description>I use ~ (&amp;lsquo;난 -를 사용한다.&#39;)  I use Java 난 자바를 사용한다. I use Korean 난 한국어를 사용한다.
+ I’m preparing ~ (&#39;-를 준비중입니다&amp;rsquo;)  ** I’m preparing to change job ** 나는 이직을 준비중입니다. ** I’m preparing to party in my house ** 우리 집에서 파티를 준비하고 있어요.
  ~ is intense (&#39;-이 ~빡세다~힘들다.&#39;)
- Work is not intense 일은 힘들지 않다.
- I learned ~ (&amp;lsquo;나는 -배웠다&amp;rsquo;)  I learned computer science in my University
- I want to ~ (&#39;-하고 싶습니다.&#39;)  I want to hold your hand</description>
+ Work is not intense 일은 힘들지 않다. Always Study is intense 공부는 힘들다.</description>
     </item>
     
     <item>
@@ -83,10 +92,9 @@
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/20210315-english-speak/</guid>
-      <description>I’m used to ~ (&amp;lsquo;난 -에 익숙해&amp;rsquo;)  I&amp;rsquo;m used to you 난 너에게 익숙해
- I&amp;rsquo;m afraid ~ (&amp;lsquo;유감스럽지만,&#39;)  I&amp;rsquo;m afraid Rainy outside 유감이지만, 밖에 비가 오는 것 같아
- I’m working on ~ (&amp;lsquo;지금 -를 하고있어&amp;rsquo;)  I’m working on my English speaking 난 영어 말하기를 공부하고 있어
- My girlfriend is another event. → My girlfriend had a personal schedule (She went out to hang out with her friends.</description>
+      <description>I’m used to ~ (&amp;lsquo;난 -에 익숙해&amp;rsquo;)  I&amp;rsquo;m used to you 난 너에게 익숙해 I&amp;rsquo;m used to working overtime 난 야근에 익숙해
+ I&amp;rsquo;m afraid ~ (&amp;lsquo;유감스럽지만,&#39;)  I&amp;rsquo;m afraid Rainy outside 유감이지만, 밖에 비가 오는 것 같아 **I&amp;rsquo;m afraid ** 유감이지만, 밖에 비가 오는 것 같아
+ I’m working on ~ (&amp;lsquo;지금 -를 하고있어&amp;rsquo;)  I’m working on my English speaking 난 영어 말하기를 공부하고 있어 i&amp;rsquo;m working on study Algorithm 난 알고리즘을 공부하고 있어</description>
     </item>
     
     <item>

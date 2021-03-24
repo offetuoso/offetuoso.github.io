@@ -9,9 +9,20 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Wed, 24 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>더하기 혹은 곱하기 (그리디 알고리즘)</title>
+      <link>https://offetuoso.github.io/blog/sum-and-multiply/</link>
+      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/sum-and-multiply/</guid>
+      <description>[문제1] 곱하기 혹은 더하기 ###[문제] 곱하기 혹은 더하기 : 문제 설명
+ 각 자리가 숫자(0부터 9)로만 이루어진 문자열 S가 주어졌을 때, 왼쪽부터 오른쪽으로 하나씩 모든 숫자를 확인하며 숫자 사이에 &amp;lsquo;x&amp;rsquo; 혹은 &amp;lsquo;+&amp;rsquo; 연산자를 넣어 결과적으로 만들어질 수 있는 가장 큰 수를 구하는 프로그램을 작성. 단, + 보다 x를 먼저 계산하는 일반적인 방식과는 달리, 모든 연산은 왼쪽에서부터 순서대로 이루어진다고 가정.
+   예를 들어, 02984라는 문자열로 만들 수 있는 가장 큰 수는 ((((0 + 2)x 9)x 8)x 4) = 576이다.</description>
+    </item>
+    
+    <item>
       <title>1이 될때까지 (그리디 알고리즘)</title>
       <link>https://offetuoso.github.io/blog/make-one/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/make-one/</guid>
       <description>[문제1] 1이 될때까지 ###[문제] 1이 될때까지 : 문제 설명
