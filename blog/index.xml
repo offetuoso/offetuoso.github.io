@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 26 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>더하기 혹은 곱하기 (그리디 알고리즘)</title>
+      <link>https://offetuoso.github.io/blog/sum-and-multiply/</link>
+      <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/sum-and-multiply/</guid>
+      <description>[문제1] 곱하기 혹은 더하기 ###[문제] 곱하기 혹은 더하기 : 문제 설명
+ 각 자리가 숫자(0부터 9)로만 이루어진 문자열 S가 주어졌을 때, 왼쪽부터 오른쪽으로 하나씩 모든 숫자를 확인하며 숫자 사이에 &amp;lsquo;x&amp;rsquo; 혹은 &amp;lsquo;+&amp;rsquo; 연산자를 넣어 결과적으로 만들어질 수 있는 가장 큰 수를 구하는 프로그램을 작성. 단, + 보다 x를 먼저 계산하는 일반적인 방식과는 달리, 모든 연산은 왼쪽에서부터 순서대로 이루어진다고 가정.
+   예를 들어, 02984라는 문자열로 만들 수 있는 가장 큰 수는 ((((0 + 2)x 9)x 8)x 4) = 576이다.</description>
+    </item>
+    
     <item>
       <title>잉그올 영어 회화 21.03.26</title>
       <link>https://offetuoso.github.io/blog/20210326-english-speak/</link>
@@ -30,17 +41,6 @@
  topic sentence (&amp;lsquo;주제 문장&amp;rsquo;)  this is topic sentence in paragraph (&amp;lsquo;이것은 단락의 주제 문장입니다&amp;rsquo;)
  Q. What is a must-included item when you summarize a text? (&amp;lsquo;글을 요약할때 꼭 포함되어야 하는것?&#39;)  main points, paraphrase the topic sentence
  plagiarism (&amp;lsquo;표절&amp;rsquo;)  this book has relate to rumor of plagiarism (&amp;lsquo;이 책은 표절 소문과 연루되어 있습니다&amp;rsquo;)</description>
-    </item>
-    
-    <item>
-      <title>더하기 혹은 곱하기 (그리디 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/sum-and-multiply/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/sum-and-multiply/</guid>
-      <description>[문제1] 곱하기 혹은 더하기 ###[문제] 곱하기 혹은 더하기 : 문제 설명
- 각 자리가 숫자(0부터 9)로만 이루어진 문자열 S가 주어졌을 때, 왼쪽부터 오른쪽으로 하나씩 모든 숫자를 확인하며 숫자 사이에 &amp;lsquo;x&amp;rsquo; 혹은 &amp;lsquo;+&amp;rsquo; 연산자를 넣어 결과적으로 만들어질 수 있는 가장 큰 수를 구하는 프로그램을 작성. 단, + 보다 x를 먼저 계산하는 일반적인 방식과는 달리, 모든 연산은 왼쪽에서부터 순서대로 이루어진다고 가정.
-   예를 들어, 02984라는 문자열로 만들 수 있는 가장 큰 수는 ((((0 + 2)x 9)x 8)x 4) = 576이다.</description>
     </item>
     
     <item>
