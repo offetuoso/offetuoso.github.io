@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Algorism</title>
+      <link>https://offetuoso.github.io/tags/algorism/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/algorism/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>수열</title>
+      <link>https://offetuoso.github.io/tags/%EC%88%98%EC%97%B4/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/%EC%88%98%EC%97%B4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>이코테</title>
+      <link>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>EngAll</title>
       <link>https://offetuoso.github.io/tags/engall/</link>
@@ -56,7 +83,7 @@
     <item>
       <title>java</title>
       <link>https://offetuoso.github.io/tags/java/</link>
-      <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/java/</guid>
       <description></description>
