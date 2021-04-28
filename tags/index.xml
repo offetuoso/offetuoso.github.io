@@ -7,13 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 20 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algorism</title>
       <link>https://offetuoso.github.io/tags/algorism/</link>
-      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/algorism/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>이코테</title>
+      <link>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</link>
+      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</guid>
       <description></description>
     </item>
     
@@ -27,18 +36,9 @@
     </item>
     
     <item>
-      <title>이코테</title>
-      <link>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</link>
-      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>EngAll</title>
       <link>https://offetuoso.github.io/tags/engall/</link>
-      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/engall/</guid>
       <description></description>
@@ -47,7 +47,7 @@
     <item>
       <title>english</title>
       <link>https://offetuoso.github.io/tags/english/</link>
-      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/english/</guid>
       <description></description>
@@ -56,7 +56,7 @@
     <item>
       <title>speak</title>
       <link>https://offetuoso.github.io/tags/speak/</link>
-      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/speak/</guid>
       <description></description>
@@ -65,7 +65,7 @@
     <item>
       <title>talk</title>
       <link>https://offetuoso.github.io/tags/talk/</link>
-      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/talk/</guid>
       <description></description>
@@ -74,7 +74,7 @@
     <item>
       <title>잉그올</title>
       <link>https://offetuoso.github.io/tags/%EC%9E%89%EA%B7%B8%EC%98%AC/</link>
-      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/%EC%9E%89%EA%B7%B8%EC%98%AC/</guid>
       <description></description>
