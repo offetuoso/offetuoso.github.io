@@ -2,12 +2,12 @@
 <html lang="ko-KR">
 
 <head>
-  <title>상하좌우 (구현 알고리즘) | offetuoso&#39;s Blog</title>
+  <title>잉그올 영어 회화 21.04.30 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="코딩테스트 구현 알고리즘 상하좌우">
-  <meta name="keywords" content="Algorism , CodingTest , Python , Java">
+  <meta name="description" content="영어 회화 문법정리">
+  <meta name="keywords" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,9 +62,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "상하좌우 (구현 알고리즘)",
-      "headline" : "상하좌우 (구현 알고리즘)",
-      "description" : "코딩테스트 구현 알고리즘 상하좌우",
+      "name" : "잉그올 영어 회화 21.04.30",
+      "headline" : "잉그올 영어 회화 21.04.30",
+      "description" : "영어 회화 문법정리",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -72,11 +72,11 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-04-28 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-04-28 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/202104\/up-down-left-right\/",
-      "wordCount" : "387",
-      "keywords" : ["Algorism", "CodingTest", "Python", "Java", "Blog"]
+      "datePublished": "2021-04-30 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-04-30 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/english\/202104\/20210430-english-speak\/",
+      "wordCount" : "205",
+      "keywords" : ["Blog"]
     }
   
   </script>
@@ -133,116 +133,48 @@
         <div class="post">
           <header class="post__header">
              
-            	<div class="header-inner" style="background-image: url('/images/bg-index.jpg');">
+            	<div class="header-inner" style="background-image: url('/images/bg-post.jpg');">
             
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
-		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	상하좌우 (구현 알고리즘)
+		             <h1 class="post__title" style="color:white;font-size: 30px;">
+		            	잉그올 영어 회화 21.04.30
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	상하좌우 (구현 알고리즘)
+		       	잉그올 영어 회화 21.04.30
             </h1>		
-            <time datetime="2021-04-28 00:00:00 &#43;0000 UTC" class="post__date">2021-04-28</time> 
+            <time datetime="2021-04-30 00:00:00 &#43;0000 UTC" class="post__date">2021-04-30</time> 
           </header>
           <article class="post__content">
               
-<h2 id="문제1-상하좌우">[문제1] 상하좌우<a class="anchor" href="#문제1-상하좌우">#</a></h2>
-<p>###[문제] 상하좌우 : 문제 설명</p>
-<blockquote>
-<p>여행가 A는 N × N 크기의 정사각형 공간 위에 서 있다. 이 공간은 1 × 1 크기의 정사각형으로 나누어져 있다.
-가장 왼쪽 위 좌표는 (1, 1)이며, 가장 오른쪽 아래 좌표는 (N, N)에 해당한다.
-여행가 A는 상, 하, 좌, 우 방향으로 이동할 수 있으며, 시작 좌표는 항상 (1, 1)이다. 우리 앞에는 여행가 A가
-이동할 계획이 적힌 계획서가 놓여 있다</p>
-</blockquote>
-<blockquote>
-<p>계획서에는 하나의 줄에 띄어쓰기를 기준으로 L, R, U, D 중 하나의 문자가 반복적으로 적혀있다.
-각 문자의 의미는 다음과 같다</p>
-</blockquote>
-<blockquote>
-<p>L: 왼쪽으로 한 칸 이동
-R: 오른쪽으로 한 칸 이동
-U: 위로 한 칸 이동
-D: 아래로 한 칸 이동</p>
-</blockquote>
-<blockquote>
-<p>이때 여행가 A가 N × N 크기의 정사각형 공간을 벗어나는 움직임은 무시된다
-예를 들어 (1, 1)의 위치에서 L 혹은 U를 만나면 무시된다
-다음은 N = 5인 지도와 계획이다</p>
-</blockquote>
-<p>###[문제] 조건</p>
-<blockquote>
-<p>조건 
-풀이시간 15분 시간제한 1초, 메모리 128mb</p>
-</blockquote>
-<blockquote>
-<p>입력
-첫째 줄에 공간의 크기를 나타내는 N이 주어집니다. (1&lt;=N&lt;=100)
-둘째 줄에 여행가 A가 이동할 계획서 내용이 주어집니다. (1&lt;=이동 횟수&lt;=100)</p>
-</blockquote>
-<blockquote>
-<p>출력
-첫째 줄에 여행가 A가 최종적으로 도착할 지점의 좌표(X,Y)를 공백으로 구분하여 출력한다.</p>
-</blockquote>
-<blockquote>
-<p>입력예시
-5
-R R R U D D
-출력예시
-3 4</p>
-</blockquote>
-<p>###up-down-left-right1.py</p>
-<pre><code>n = int(input()) 		# map의 최대 크기
-m = list(map(str, input().split())) 		#공백으로 구분된 이동플랜
-
-x, y = 1, 1		# 시작위치
-
-for move in m: 	# 입력받은 이동 커맨드
-    if (move == &quot;U&quot;) and (x - 1) &gt; 0:   	# U (x-1, y)를 x-1이 1보다 작아지지 않는 선에서 수행 
-        x -= 1
-    elif (move == &quot;D&quot;) and (x + 1) &lt;= n :  # D (x+1, y)를 x+1이 n보다 커지지 않는 선에서 수행 
-        x += 1
-    elif (move == &quot;L&quot;) and (y - 1) &gt; 0:    # L (x, y-1)를 y-1이 1보다 작아지지 않는 선에서 수행 
-        y -= 1
-    elif (move) == &quot;R&quot;) and (y + 1) &lt;= n : # R (x, y+1)를 y+1이 n보다 커지지 않는 선에서 수행 
-        y += 1
-
-print(x,' ',y) 
-            
-</code></pre>
-<p>###up-down-left-right1.py</p>
-<pre><code>n = int(input())
-m =  input().split()
-
-x, y = 1, 1
-
-move_type = ['U','D','L','R']
-
-dx = [-1, +1, 0, 0]
-dy = [0, 0, -1, +1]
-
-
-for move in m:
-
-    for i in range(0, len(move_type)) :
-        if move == move_type[i] :
-            if( 1 &lt;= x+dx[i] &lt;= n and 1 &lt;= y+dy[i] &lt;= n )  :
-                x += dx[i]
-                y += dy[i]
-
-print(x,' ',y)
-            
-</code></pre>
-<h3 id="파이썬-모범답안-1">파이썬 모범답안 1<a class="anchor" href="#파이썬-모범답안-1">#</a></h3>
-<pre><code>
-
-</code></pre>
-<h3 id="파이썬-모범답안-2">파이썬 모범답안 2<a class="anchor" href="#파이썬-모범답안-2">#</a></h3>
-<pre><code>    	
-</code></pre>
-<p>이 자료는 나동빈님의 이코테 저서를 보고 정리한 자료입니다.</p>
+<p>##Grammar Error:
+Bring the deep sea water - Use the sea water - Transform the sea water to freshwater
+You/we could transform ~.
+The scientists could/can make freshwater out of human urine
+We could make freshwater with an icecap; We could make freshwater out of the ice caps using a filter system.</p>
+<p>##New expressions learned today: 
+busy
+I had a hectic schedule. → It’s a little hectic. ; I had a hectic day.
+undergraduate 학부 - graduate 대학원
+I’m an undergraduate student studying ~.
+I studied ( ) in the undergraduate course.
+I got my bachelor degrees for ( ).
+I majored ( ) in my undergraduate course.
+sea 바다 - ocean 해양 - shore 해변가; beach 해변
+make cheese out of milk. -&gt; make cheese with milk.
+make greek yogurt with milk.
+out of nowhere 
+come up (with) sth(idea)
+It just popped up in my mind.
+The scientists came up with the technology to make freshwater out of urine.
+The idea of combining the mp3 and a phone came up to Steve Jobs.
+Steve Jobs came up with the idea of ~.</p>
+<p>본 게시물은 개인 복습용이라 수업내용과 별개 입니다.
+예시로 만든 문장은 문법적 오류가 있을 수 있습니다. 
+잘못된 점이 있다면 댓글로 남겨주시면 수정하겠습니다.</p>
+<h2 id="end">end<a class="anchor" href="#end">#</a></h2>
 
 
               
@@ -252,25 +184,29 @@ print(x,' ',y)
 <ul class="tags__list">
     
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/algorism/">Algorism</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/english/">english</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/">이코테</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/speak/">speak</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/talk/">talk</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/engall/">EngAll</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9E%89%EA%B7%B8%EC%98%AC/">잉그올</a>
     </li></ul>
 
  <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/english/202104/20210423-english-speak/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/english/202104/20210429-english-speak/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">잉그올 영어 회화 21.04.23</span>
+        <span class="pagination__title">잉그올 영어 회화 21.04.29</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/english/202104/20210429-english-speak/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >잉그올 영어 회화 21.04.29</span>
-    </a>
   
 </div>
 
@@ -334,15 +270,10 @@ print(x,' ',y)
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">상하좌우 (구현 알고리즘)</div> 
+          <div class="toc-post-title">잉그올 영어 회화 21.04.30</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#문제1-상하좌우">[문제1] 상하좌우</a>
-      <ul>
-        <li><a href="#파이썬-모범답안-1">파이썬 모범답안 1</a></li>
-        <li><a href="#파이썬-모범답안-2">파이썬 모범답안 2</a></li>
-      </ul>
-    </li>
+    <li><a href="#end">end</a></li>
   </ul>
 </nav>
       </div>
