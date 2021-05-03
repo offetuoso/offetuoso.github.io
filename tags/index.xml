@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 30 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Algorism</title>
+      <link>https://offetuoso.github.io/tags/algorism/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/algorism/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Implementation</title>
+      <link>https://offetuoso.github.io/tags/implementation/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/implementation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>이코테</title>
+      <link>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>EngAll</title>
       <link>https://offetuoso.github.io/tags/engall/</link>
@@ -54,20 +81,11 @@
     </item>
     
     <item>
-      <title>Algorism</title>
-      <link>https://offetuoso.github.io/tags/algorism/</link>
-      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
+      <title>Greedy</title>
+      <link>https://offetuoso.github.io/tags/greedy/</link>
+      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/tags/algorism/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>이코테</title>
-      <link>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</link>
-      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/</guid>
+      <guid>https://offetuoso.github.io/tags/greedy/</guid>
       <description></description>
     </item>
     
