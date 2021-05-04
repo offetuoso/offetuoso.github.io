@@ -14,7 +14,7 @@
       <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/git/202105/time/</guid>
-      <description>Git 캐시(cache) 삭제 // 원격 저장소와 로컬 저장소 파일을 삭제$ git rm 파일명// 원격 저장소에 있는 파일만 삭제하고, 로컬 저장소에 있는 파일은 삭제하지 않음$ git rm --cached 파일명 rm -r 옵션// 파일 삭제$ git rm --cached 파일명// 폴더 하위의 모든 파일을 삭제$ git rm -r --cached 폴더명 </description>
+      <description>Git 캐시(cache) 삭제 // 원격 저장소와 로컬 저장소 파일을 삭제$ git rm 파일명// 원격 저장소에 있는 파일만 삭제하고, //로컬 저장소에 있는 파일은 삭제하지 않음$ git rm --cached 파일명 rm -r 옵션// 파일 삭제$ git rm --cached 파일명// 폴더 하위의 모든 파일을 삭제$ git rm -r --cached 폴더명 </description>
     </item>
     
     <item>
