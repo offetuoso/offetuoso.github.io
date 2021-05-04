@@ -9,6 +9,17 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Mon, 03 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>About Me</title>
+      <link>https://offetuoso.github.io/about/</link>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/about/</guid>
+      <description>Education Interest Fields Project KTDS 2019.10 ~ Present  Actual Expense Calculation System [Development, Operation]
+ Introduction :  Develop and operate a system that calculates the actual construction expenses of subcontractors such as expenses for employee insurance, safety management, waste disposal, and private inventory storage based on submitted data and evidence for KT.
+ Technical  Web backend (Java, ExtJs Framework, OracleDB) Web frontend (html, css, JS, jQuery, Jsp) Versioning : Subversion (feature branch, code review) DevOps : Provide a reliable integrated automation system by building, testing, distributing, etc.</description>
+    </item>
+    
+    <item>
       <title>Git 캐시 삭제</title>
       <link>https://offetuoso.github.io/blog/git/202105/time/</link>
       <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>

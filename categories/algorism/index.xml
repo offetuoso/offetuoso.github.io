@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorism on offetuoso&#39;s Blog</title>
+    <link>https://offetuoso.github.io/categories/algorism/</link>
+    <description>Recent content in Algorism on offetuoso&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-KR</language>
+    <copyright>© 2021</copyright>
+    <lastBuildDate>Wed, 28 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/algorism/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>상하좌우 (구현 알고리즘)</title>
+      <link>https://offetuoso.github.io/about/</link>
+      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/about/</guid>
+      <description>[문제1] 상하좌우 [문제] 상하좌우 : 문제 설명  여행가 A는 N × N 크기의 정사각형 공간 위에 서 있다. 이 공간은 1 × 1 크기의 정사각형으로 나누어져 있다. 가장 왼쪽 위 좌표는 (1, 1)이며, 가장 오른쪽 아래 좌표는 (N, N)에 해당한다. 여행가 A는 상, 하, 좌, 우 방향으로 이동할 수 있으며, 시작 좌표는 항상 (1, 1)이다. 우리 앞에는 여행가 A가 이동할 계획이 적힌 계획서가 놓여 있다
+  계획서에는 하나의 줄에 띄어쓰기를 기준으로 L, R, U, D 중 하나의 문자가 반복적으로 적혀있다.</description>
+    </item>
+    
+    <item>
+      <title>상하좌우 (구현 알고리즘)</title>
+      <link>https://offetuoso.github.io/blog/algorithm/202104/up-down-left-right/</link>
+      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/algorithm/202104/up-down-left-right/</guid>
+      <description>[문제1] 상하좌우 [문제] 상하좌우 : 문제 설명  여행가 A는 N × N 크기의 정사각형 공간 위에 서 있다. 이 공간은 1 × 1 크기의 정사각형으로 나누어져 있다. 가장 왼쪽 위 좌표는 (1, 1)이며, 가장 오른쪽 아래 좌표는 (N, N)에 해당한다. 여행가 A는 상, 하, 좌, 우 방향으로 이동할 수 있으며, 시작 좌표는 항상 (1, 1)이다. 우리 앞에는 여행가 A가 이동할 계획이 적힌 계획서가 놓여 있다
+  계획서에는 하나의 줄에 띄어쓰기를 기준으로 L, R, U, D 중 하나의 문자가 반복적으로 적혀있다.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,12 +2,12 @@
 <html lang="ko-KR">
 
 <head>
-  <title>잉그올 영어 회화 21.03.24 | offetuoso&#39;s Blog</title>
+  <title>상하좌우 (구현 알고리즘) | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="영어 회화 문법정리">
-  <meta name="keywords" content="">
+  <meta name="description" content="코딩테스트 구현 알고리즘 상하좌우">
+  <meta name="keywords" content="Algorism , CodingTest , Python , Java">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,7 +42,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.bdf709006fcb62c7d0d9aa045109b366c426efdf41a2e27645b4558ae9d4670c.css" integrity="sha256-vfcJAG/LYsfQ2aoEUQmzZsQm799BouJ2RbRViunUZww="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.e4df7d9a1474ebea83638a3b7829809fa873ead8a5fbf6f46f5fd28164d29c64.css" integrity="sha256-5N99mhR06&#43;qDY4o7eCmAn6hz6til&#43;/b0b1/SgWTSnGQ="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -54,29 +54,16 @@
 
 <script type="application/ld+json">
   
-    {
-      "@context" : "http://schema.org",
-      "@type" : "BlogPosting",
-      "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https:\/\/offetuoso.github.io\/"
+    { 
+      "@context": "http://schema.org", 
+      "@type": "WebSite", 
+      "url": "https:\/\/offetuoso.github.io\/about\/up-down-left-right\/",
+      "name": "상하좌우 (구현 알고리즘)",
+      "author": {
+        "@type": "Person",
+        "name": ""
       },
-      "articleSection" : "blog",
-      "name" : "잉그올 영어 회화 21.03.24",
-      "headline" : "잉그올 영어 회화 21.03.24",
-      "description" : "영어 회화 문법정리",
-      "inLanguage" : "en-US",
-      "author" : "",
-      "creator" : "",
-      "publisher": "",
-      "accountablePerson" : "",
-      "copyrightHolder" : "",
-      "copyrightYear" : "2021",
-      "datePublished": "2021-03-24 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-03-24 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/english\/202103\/20210324-english-speak\/",
-      "wordCount" : "118",
-      "keywords" : ["Blog"]
+      "description": "코딩테스트 구현 알고리즘 상하좌우"
     }
   
   </script>
@@ -112,56 +99,12 @@
     
     
       <li>
-    
-			        <a  
-			        
-			        
-			        href="/"
-      				
-			        >welcome !</a>
-      					
-			        
-            
+        <a  class="active"
+         href="/about">about</a>
       </li>
     
       <li>
-    
-			        <a  class="active"
-			         
-			        
-			        
-			        href="/blog"
-      				
-			        >blog</a>
-      					
-			        
-            
-      </li>
-    
-      <li>
-    
-			        <a  
-			        
-			        
-			        href="/about"
-      				
-			        >about me</a>
-      					
-			        
-            
-      </li>
-    
-      <li>
-    
-			        <a  
-			        
-			        
-			        href="javascript:proceedsearch();"
-			       	
-			        >search</a>
-      					
-			        
-            
+        <a  href="/blog">blog</a>
       </li>
     
   </ul>
@@ -177,98 +120,135 @@
         <div class="post">
           <header class="post__header">
              
-            	<div class="header-inner" style="background-image: url('/images/bg-post.jpg');">
+            	<div class="header-inner" style="background-image: url('/images/bg-index.jpg');">
             
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
-		             <h1 class="post__title" style="color:white;font-size: 30px;">
-		            	잉그올 영어 회화 21.03.24
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	상하좌우 (구현 알고리즘)
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	잉그올 영어 회화 21.03.24
+		       	상하좌우 (구현 알고리즘)
             </h1>		
-            <time datetime="2021-03-24 00:00:00 &#43;0000 UTC" class="post__date">2021-03-24</time> 
+            <time datetime="2021-04-28 00:00:00 &#43;0000 UTC" class="post__date">2021-04-28</time> 
           </header>
           <article class="post__content">
               
-<h2 id="read-the-sentences-문장-읽기">Read the sentences (&lsquo;문장 읽기&rsquo;)<a class="anchor" href="#read-the-sentences-문장-읽기">#</a></h2>
+<h2 id="문제1-상하좌우">[문제1] 상하좌우<a class="anchor" href="#문제1-상하좌우">#</a></h2>
+<h3 id="문제-상하좌우--문제-설명">[문제] 상하좌우 : 문제 설명<a class="anchor" href="#문제-상하좌우--문제-설명">#</a></h3>
 <blockquote>
-<p>you must to read the sentences in book  (&lsquo;책에있는 문장을 읽어야합니다&rsquo;)</p>
+<p>여행가 A는 N × N 크기의 정사각형 공간 위에 서 있다. 이 공간은 1 × 1 크기의 정사각형으로 나누어져 있다.
+가장 왼쪽 위 좌표는 (1, 1)이며, 가장 오른쪽 아래 좌표는 (N, N)에 해당한다.
+여행가 A는 상, 하, 좌, 우 방향으로 이동할 수 있으며, 시작 좌표는 항상 (1, 1)이다. 우리 앞에는 여행가 A가
+이동할 계획이 적힌 계획서가 놓여 있다</p>
 </blockquote>
-<h2 id="read-the-sentences-문장-읽기-1">Read the sentences (&lsquo;문장 읽기&rsquo;)<a class="anchor" href="#read-the-sentences-문장-읽기-1">#</a></h2>
 <blockquote>
-<p>you must to read the sentences in book  (&lsquo;책에있는 문장을 읽어야합니다&rsquo;)</p>
+<p>계획서에는 하나의 줄에 띄어쓰기를 기준으로 L, R, U, D 중 하나의 문자가 반복적으로 적혀있다.
+각 문자의 의미는 다음과 같다</p>
 </blockquote>
-<h2 id="some-약간-전체는-아니고-아예-아닌것도-아님">some (&lsquo;약간, 전체는 아니고, 아예 아닌것도 아님&rsquo;)<a class="anchor" href="#some-약간-전체는-아니고-아예-아닌것도-아님">#</a></h2>
 <blockquote>
-<p>some people who attempt to change  (&lsquo;변화를 시도하는 사람들&rsquo;)</p>
+<p>L: 왼쪽으로 한 칸 이동
+R: 오른쪽으로 한 칸 이동
+U: 위로 한 칸 이동
+D: 아래로 한 칸 이동</p>
 </blockquote>
-<h2 id="새로운-단어">새로운 단어<a class="anchor" href="#새로운-단어">#</a></h2>
-<pre><code>passage 문구 / 통로
-silently 잠자코, 조용히
-repeat 반복
-intonation 말의 높낮이
-some not all but not none
+<blockquote>
+<p>이때 여행가 A가 N × N 크기의 정사각형 공간을 벗어나는 움직임은 무시된다
+예를 들어 (1, 1)의 위치에서 L 혹은 U를 만나면 무시된다
+다음은 N = 5인 지도와 계획이다</p>
+</blockquote>
+<h3 id="문제-조건">[문제] 조건<a class="anchor" href="#문제-조건">#</a></h3>
+<blockquote>
+<p>조건 
+풀이시간 15분 시간제한 1초, 메모리 128mb</p>
+</blockquote>
+<blockquote>
+<p>입력
+첫째 줄에 공간의 크기를 나타내는 N이 주어집니다. (1&lt;=N&lt;=100)
+둘째 줄에 여행가 A가 이동할 계획서 내용이 주어집니다. (1&lt;=이동 횟수&lt;=100)</p>
+</blockquote>
+<blockquote>
+<p>출력
+첫째 줄에 여행가 A가 최종적으로 도착할 지점의 좌표(X,Y)를 공백으로 구분하여 출력한다.</p>
+</blockquote>
+<blockquote>
+<p>입력예시
+5
+R R R U D D
+출력예시
+3 4</p>
+</blockquote>
+<h3 id="up-down-left-right1py">up-down-left-right1.py<a class="anchor" href="#up-down-left-right1py">#</a></h3>
+<pre><code>n = int(input()) 		# map의 최대 크기
+m = list(map(str, input().split())) 		#공백으로 구분된 이동플랜
+
+x, y = 1, 1		# 시작위치
+
+for move in m: 	# 입력받은 이동 커맨드
+    if (move == &quot;U&quot;) and (x - 1) &gt; 0:   	# U (x-1, y)를 x-1이 1보다 작아지지 않는 선에서 수행 
+        x -= 1
+    elif (move == &quot;D&quot;) and (x + 1) &lt;= n :  # D (x+1, y)를 x+1이 n보다 커지지 않는 선에서 수행 
+        x += 1
+    elif (move == &quot;L&quot;) and (y - 1) &gt; 0:    # L (x, y-1)를 y-1이 1보다 작아지지 않는 선에서 수행 
+        y -= 1
+    elif (move) == &quot;R&quot;) and (y + 1) &lt;= n : # R (x, y+1)를 y+1이 n보다 커지지 않는 선에서 수행 
+        y += 1
+
+print(x,' ',y) 
+            
 </code></pre>
-<h2 id="문법오류">문법오류<a class="anchor" href="#문법오류">#</a></h2>
-<pre><code>I was weekends also studying English and.. 
---&gt; I spudied during the weekends.
---&gt; I had to study during the weekends.
-(Subject Noun+ Action Verb + etc)
+<h3 id="up-down-left-right1py-1">up-down-left-right1.py<a class="anchor" href="#up-down-left-right1py-1">#</a></h3>
+<pre><code>n = int(input())
+m =  input().split()
+
+x, y = 1, 1
+
+move_type = ['U','D','L','R']
+
+dx = [-1, +1, 0, 0]
+dy = [0, 0, -1, +1]
 
 
+for move in m:
+
+    for i in range(0, len(move_type)) :
+        if move == move_type[i] :
+            if( 1 &lt;= x+dx[i] &lt;= n and 1 &lt;= y+dy[i] &lt;= n )  :
+                x += dx[i]
+                y += dy[i]
+
+print(x,' ',y)
+            
 </code></pre>
-<p>본 게시물은 개인 복습용이라 수업내용과 별개 입니다.
-예시로 만든 문장은 문법적 오류가 있을 수 있습니다. 
-잘못된 점이 있다면 댓글로 남겨주시면 수정하겠습니다.</p>
-<h2 id="end">end<a class="anchor" href="#end">#</a></h2>
+<p>이 자료는 나동빈님의 이코테 저서를 보고 정리한 자료입니다.</p>
 
 
               
           </article>
           
-          
-            
-            	 
 
 <ul class="tags__list">
     
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/english/">english</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorism/">Algorism</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/speak/">speak</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/implementation/">Implementation</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/talk/">talk</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/engall/">EngAll</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9E%89%EA%B7%B8%EC%98%AC/">잉그올</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/">이코테</a>
     </li></ul>
 
- 
-		          <div class="pagination">
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/algorithm/202103/make-one/">
-        <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">1이 될때까지 (그리디 알고리즘)</span>
-    </a>
+ <div class="pagination">
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/english/202103/20210325-english-speak/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >잉그올 영어 회화 21.03.25</span>
-    </a>
   
 </div>
 
-		          <script src="https://utteranc.es/client.js"
+          
+             <script src="https://utteranc.es/client.js"
         repo="offetuoso/offetuoso.github.io"
         issue-term="pathname"
         label="✨💬✨"
@@ -276,9 +256,9 @@ some not all but not none
         crossorigin="anonymous"
         async>
 </script>
-		
-		          <footer class="post__footer">
-		            
+
+          <footer class="post__footer">
+            
 
 
 <div class="social-icons">
@@ -321,28 +301,23 @@ some not all but not none
      
 </div>
 
-		            <p>© 2021</p>
-		          </footer>
-            
-            
-            
-          
-         
-          
-          
+            <p>© 2021</p>
+          </footer>
           </div>
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">잉그올 영어 회화 21.03.24</div> 
+          <div class="toc-post-title">상하좌우 (구현 알고리즘)</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#read-the-sentences-문장-읽기">Read the sentences (&lsquo;문장 읽기&rsquo;)</a></li>
-    <li><a href="#read-the-sentences-문장-읽기-1">Read the sentences (&lsquo;문장 읽기&rsquo;)</a></li>
-    <li><a href="#some-약간-전체는-아니고-아예-아닌것도-아님">some (&lsquo;약간, 전체는 아니고, 아예 아닌것도 아님&rsquo;)</a></li>
-    <li><a href="#새로운-단어">새로운 단어</a></li>
-    <li><a href="#문법오류">문법오류</a></li>
-    <li><a href="#end">end</a></li>
+    <li><a href="#문제1-상하좌우">[문제1] 상하좌우</a>
+      <ul>
+        <li><a href="#문제-상하좌우--문제-설명">[문제] 상하좌우 : 문제 설명</a></li>
+        <li><a href="#문제-조건">[문제] 조건</a></li>
+        <li><a href="#up-down-left-right1py">up-down-left-right1.py</a></li>
+        <li><a href="#up-down-left-right1py-1">up-down-left-right1.py</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
@@ -380,7 +355,7 @@ some not all but not none
           </a>         
         </h3>
         <div class="list__meta meta">
-          <div class="meta__item-categories meta__item">
+          <div class="meta__item-tags meta__item">
             <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
             <span class="meta__text">
               ${ isset tags } ${tags} ${ end }
