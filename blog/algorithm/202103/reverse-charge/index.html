@@ -150,12 +150,12 @@
           <article class="post__content">
               
 <h2 id="문제1-거스름돈">[문제1] 거스름돈<a class="anchor" href="#문제1-거스름돈">#</a></h2>
-<p>###[문제] 거스름돈 : 문제 설명</p>
+<h3 id="문제-거스름돈--문제-설명">[문제] 거스름돈 : 문제 설명<a class="anchor" href="#문제-거스름돈--문제-설명">#</a></h3>
 <blockquote>
 <p>당신은 음식점의 계산을 도와주는 점원입니다. 카운트에서는 거스름돈으로 사용할 500원, 100원, 50원, 10원짜리 동전이 무한히 존재한다고 가정합니다.
 손님에게 거슬러 주어야 할 돈이 N원일 때, 거슬러 주어야 할 동전의 최소 개수를 구하세요. 단, 거슬로 줘야 할 돈은 N은 항상 10의 배수입니다.</p>
 </blockquote>
-<p>###[문제] 거스름돈 : 문제 해결 아이디어</p>
+<h3 id="문제-거스름돈--문제-해결-아이디어">[문제] 거스름돈 : 문제 해결 아이디어<a class="anchor" href="#문제-거스름돈--문제-해결-아이디어">#</a></h3>
 <blockquote>
 <ul>
 <li>최적의 해를 빠르게 구하기 위해서는 가장 큰 화폐의 단위부터 돈을 거슬러 주면 됩니다.</li>
@@ -188,7 +188,7 @@
 </tr>
 </tbody>
 </table>
-<p>###[문제] 거스름돈 : 정당성 분석</p>
+<h3 id="문제-거스름돈--정당성-분석">[문제] 거스름돈 : 정당성 분석<a class="anchor" href="#문제-거스름돈--정당성-분석">#</a></h3>
 <blockquote>
 <ul>
 <li>가장큰 화폐단위부터 돈을 거슬러 주는 것이 최적의 해를 보장하는 이유는 무엇일까요?</li>
@@ -197,7 +197,7 @@
 <li>그리디 알고리즘 문제에서는 이처럼 문제 풀이를 위한 최소한의 아이디어를 떠올리고 이것이 정당한지 검토할 수 있어야 합니다.</li>
 </ul>
 </blockquote>
-<p>###reverse_change.py</p>
+<h3 id="reverse_changepy">reverse_change.py<a class="anchor" href="#reverse_changepy">#</a></h3>
 <pre><code>n =1260
 count  = 0 
 
@@ -209,7 +209,7 @@ for coin in array:
 
 print(count)
 </code></pre>
-<p>###ReverseCharge.java</p>
+<h3 id="reversechargejava">ReverseCharge.java<a class="anchor" href="#reversechargejava">#</a></h3>
 <pre><code>package ex.algorism.greedy;
 
 public class ReverseCharge {
@@ -229,7 +229,7 @@ public class ReverseCharge {
 	}
 }
 </code></pre>
-<p>####[문제] 거스름돈 : 시간 복잡도 분석</p>
+<h4 id="문제-거스름돈--시간-복잡도-분석">[문제] 거스름돈 : 시간 복잡도 분석</h4>
 <blockquote>
 <ul>
 <li>화폐의 종류가 K라고 할때, 소스코드의 시간복잡도는 O(K)이다.</li>
@@ -336,7 +336,15 @@ public class ReverseCharge {
           <div class="toc-post-title">거스름돈 (그리디 알고리즘)</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#문제1-거스름돈">[문제1] 거스름돈</a></li>
+    <li><a href="#문제1-거스름돈">[문제1] 거스름돈</a>
+      <ul>
+        <li><a href="#문제-거스름돈--문제-설명">[문제] 거스름돈 : 문제 설명</a></li>
+        <li><a href="#문제-거스름돈--문제-해결-아이디어">[문제] 거스름돈 : 문제 해결 아이디어</a></li>
+        <li><a href="#문제-거스름돈--정당성-분석">[문제] 거스름돈 : 정당성 분석</a></li>
+        <li><a href="#reverse_changepy">reverse_change.py</a></li>
+        <li><a href="#reversechargejava">ReverseCharge.java</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>
