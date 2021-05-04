@@ -1,3 +1,56 @@
+/* .post blockquote {
+    border-left:  #a0c8ff solid 4px !important;
+    padding-left: 10px !important;
+}  */
+
+
+/* code{
+	padding: 16px !important;
+	display: block !important;
+    overflow-x: auto !important;
+    line-height: 1.3em !important;
+
+    border-radius: 5px !important;
+} */
+
+/* .post code{
+    display: inline-block;
+    max-width: 100%;
+    padding: 0 .4rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    -webkit-line-break: anywhere;
+    -ms-line-break: anywhere;
+    line-break: anywhere;
+    font-size: .875rem;
+    font-family: Source Code Pro,Menlo,Consolas,Monaco,monospace,system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Microsoft YaHei UI,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color: #E74C3C;
+} */
+
+
+.post a, .post a::before, .post a::after {
+    text-decoration: none;
+    color: #a0c8ff;
+}
+
+
+ .post .tags__list .tag__link::before {
+    content: "#" !important;
+}
+
+
+/*
+.single .content > h2 > .header-mark::before, .single .content > h3 > .header-mark::before, .single .content > h4 > .header-mark::before, .single .content > h5 > .header-mark::before, .single .content > h6 > .header-mark::before {
+    content: "|";
+    margin-right: 0.3125rem !important;
+    color: rgb(45, 150, 189) !important;
+}
+
+.single .content a, .single .content a::before, .single .content a::after {
+    color: rgb(45, 150, 189) !important;
+    text-decoration: none  !important;
+} */
+
 mark {
     background-color: white !important;
     z-index: 90;
