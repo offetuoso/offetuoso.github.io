@@ -9245,7 +9245,7 @@ $.widget( "ui.button", {
 		var disabled,
 
 			// This is to support cases like in jQuery Mobile where the base widget does have
-			// an implementation of _getCreateOptions
+			// an Implements of _getCreateOptions
 			options = this._super() || {};
 
 		this.isInput = this.element.is( "input" );

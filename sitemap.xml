@@ -13,7 +13,12 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/tags/algorism/</loc>
+    <loc>https://offetuoso.github.io/tags/algorithm/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/algorithm/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -23,7 +28,17 @@
   </url>
   
   <url>
+    <loc>https://offetuoso.github.io/categories/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://offetuoso.github.io/tags/git/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/git/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -33,7 +48,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/tags/implementation/</loc>
+    <loc>https://offetuoso.github.io/tags/implements/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -43,7 +58,12 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202105/time/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/implements/202105/time/</loc>
+    <lastmod>2021-05-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/algorithm/implements/202105/royal_knight/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -54,6 +74,11 @@
   
   <url>
     <loc>https://offetuoso.github.io/tags/engall/</loc>
+    <lastmod>2021-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/english/</loc>
     <lastmod>2021-04-30T00:00:00+00:00</lastmod>
   </url>
   
@@ -88,7 +113,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202104/up-down-left-right/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/implements/202104/up-down-left-right/</loc>
     <lastmod>2021-04-28T00:00:00+00:00</lastmod>
   </url>
   
@@ -113,12 +138,12 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202104/games-of-number-card/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/greedy/202104/games-of-number-card/</loc>
     <lastmod>2021-04-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202104/law-of-large-number/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/greedy/202104/law-of-large-number/</loc>
     <lastmod>2021-04-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -138,7 +163,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202104/adventurer-guild/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/greedy/202104/adventurer-guild/</loc>
     <lastmod>2021-04-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -153,7 +178,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202103/sum-and-multiply/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/greedy/202103/sum-and-multiply/</loc>
     <lastmod>2021-03-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -173,17 +198,17 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202103/make-one/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/greedy/202103/make-one/</loc>
     <lastmod>2021-03-23T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202103/reverse-charge/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/greedy/202103/reverse-charge/</loc>
     <lastmod>2021-03-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/algorithm/202103/greedy-algorithm/</loc>
+    <loc>https://offetuoso.github.io/blog/algorithm/greedy/202103/greedy-algorithm/</loc>
     <lastmod>2021-03-20T00:00:00+00:00</lastmod>
   </url>
   
@@ -203,6 +228,11 @@
   </url>
   
   <url>
+    <loc>https://offetuoso.github.io/categories/java/</loc>
+    <lastmod>2021-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://offetuoso.github.io/tags/java/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
   </url>
@@ -215,10 +245,6 @@
   <url>
     <loc>https://offetuoso.github.io/blog/java/basic-java/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/categories/</loc>
   </url>
   
   <url>
