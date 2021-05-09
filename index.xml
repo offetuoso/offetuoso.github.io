@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 07 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>탐색 알고리즘</title>
+      <link>https://offetuoso.github.io/blog/algorithm/seaech/search-algorithm/</link>
+      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/algorithm/seaech/search-algorithm/</guid>
+      <description>탐색 알고리즘 탐색(search)  탐색이란 많은 양의 데이터 중에서 원하는 데이터를 찾는과정. 그래프 또는 트리의 자료구조에서 데이터를 찾는 문제가 주로 나온다. 대표적으로 DPS, BPS가 있으며, 원리를 제대로 이해해야 코딩테스트 문제를 풀 수 있다. 그런데 DPS와 BPS를 이해하기 위해서 기본 자료구조인 스택, 큐, 재귀 함수 등을 이해가 전제로 되어야한다.
+ 자료구조  자료구조란 데이터를 표현하고 관리하고 처리하기 위한 구조 스택과 큐는 삽입(Push)과 출력(Pop)이라는 두 핵심적인 함수로 구성 실제 구현할땐 오버플로우와 언더플로우를 고민해야한다.</description>
+    </item>
+    
     <item>
       <title>잉그올 영어 회화 21.05.07</title>
       <link>https://offetuoso.github.io/blog/english/202105/20210507-english-speak/</link>
@@ -268,10 +278,10 @@ Excuse me, how can I get to the (location)?</description>
     
     <item>
       <title>그리디 알고리즘</title>
-      <link>https://offetuoso.github.io/blog/algorithm/greedy/202103/greedy-algorithm/</link>
+      <link>https://offetuoso.github.io/blog/algorithm/greedy/greedy-algorithm/</link>
       <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/algorithm/greedy/202103/greedy-algorithm/</guid>
+      <guid>https://offetuoso.github.io/blog/algorithm/greedy/greedy-algorithm/</guid>
       <description>그리디 알고리즘(탐욕법) 그리디 알고리즘이란 ?  그리디 알고리즘이란
  그리디 알고리즘(탐욕법)은 현재상황에서 가장 좋은 것만 고르는 방법을 의미. 일반적인 그리디 알고리즘은 문제를 풀기 위한 최소한의 아이디어를 떠올릴 있는 능력을 요구. 그리디 해법은 그 정당성 분석이 중요. 단순히 가장 좋아 보이는 것을 반복적으로 선택해도 최적의 해를 구할 수 있는지 검토 필요.   [문제 상황] 루트 노드로 부터 시작하여 가는 노드의 합을 최대로 만들고 싶습니다.  Q. 최적의 해는 무엇인가요 ?</description>
     </item>

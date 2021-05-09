@@ -2,12 +2,12 @@
 <html lang="ko-KR">
 
 <head>
-  <title>모험가 길드 (그리디 알고리즘) | offetuoso&#39;s Blog</title>
+  <title>탐색 알고리즘 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="모험가 파티를 만드는 알고리즘">
-  <meta name="keywords" content="Algorithm , Greedy , CodingTest , Python , Java">
+  <meta name="description" content="탐색 알고리즘.">
+  <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,9 +62,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "모험가 길드 (그리디 알고리즘)",
-      "headline" : "모험가 길드 (그리디 알고리즘)",
-      "description" : "모험가 파티를 만드는 알고리즘",
+      "name" : "탐색 알고리즘",
+      "headline" : "탐색 알고리즘",
+      "description" : "탐색 알고리즘.",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -72,11 +72,11 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-04-03 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-04-03 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/greedy\/202104\/adventurer-guild\/",
-      "wordCount" : "363",
-      "keywords" : ["Algorithm", "Greedy", "CodingTest", "Python", "Java", "Blog"]
+      "datePublished": "2021-05-09 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-05-09 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/seaech\/search-algorithm\/",
+      "wordCount" : "107",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
   </script>
@@ -169,114 +169,45 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	모험가 길드 (그리디 알고리즘)
+		            	탐색 알고리즘
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	모험가 길드 (그리디 알고리즘)
+		       	탐색 알고리즘
             </h1>		
-            <time datetime="2021-04-03 00:00:00 &#43;0000 UTC" class="post__date">2021-04-03</time> 
+            <time datetime="2021-05-09 00:00:00 &#43;0000 UTC" class="post__date">2021-05-09</time> 
           </header>
           <article class="post__content">
               
-<h2 id="문제1-1이-될때까지">[문제1] 1이 될때까지<a class="anchor" href="#문제1-1이-될때까지">#</a></h2>
-<h3 id="문제-1이-될때까지--문제-설명">[문제] 1이 될때까지 : 문제 설명<a class="anchor" href="#문제-1이-될때까지--문제-설명">#</a></h3>
+<h2 id="탐색-알고리즘">탐색 알고리즘<a class="anchor" href="#탐색-알고리즘">#</a></h2>
+<h3 id="탐색search">탐색(search)<a class="anchor" href="#탐색search">#</a></h3>
 <blockquote>
-<p>어떠한 수 N이 1이 될때까지 다음의 두 과정 중 하나를 반복적으로 선택하여 수행하려고 합니다. 단, 두번째 연산은 N이 K로 나누어 떨어질 때만 선택할 수 있습니다.</p>
+<p>탐색이란 많은 양의 데이터 중에서 원하는 데이터를 찾는과정. 
+그래프 또는 트리의 자료구조에서 데이터를 찾는 문제가 주로 나온다. 
+대표적으로 DPS, BPS가 있으며, 원리를 제대로 이해해야 코딩테스트 문제를 풀 수 있다.
+그런데 DPS와 BPS를 이해하기 위해서 기본 자료구조인 스택, 큐, 재귀 함수 등을 이해가 전제로 되어야한다.</p>
 </blockquote>
+<h3 id="자료구조">자료구조<a class="anchor" href="#자료구조">#</a></h3>
 <blockquote>
-<ol>
-<li>N에서 1을 뺍니다.</li>
-<li>N에서 K로 나눕니다.</li>
-</ol>
+<p>자료구조란 데이터를 표현하고 관리하고 처리하기 위한 구조
+스택과 큐는 삽입(Push)과 출력(Pop)이라는 두 핵심적인 함수로 구성
+실제 구현할땐 오버플로우와 언더플로우를 고민해야한다.</p>
 </blockquote>
+<h3 id="스택">스택<a class="anchor" href="#스택">#</a></h3>
 <blockquote>
-<p>예를 들어 N이 17, K가 4라고 가정하자. 이때 1번의 과정을 한 번 수행하면 N은 16이 된다.
-이후에 2번의 과정을 두 번 수행하면 N은 1이 된다. 결과적으로 이경우 전체과정을 실행한 횟수는 3이된다. 이는 N을 1로 만드는 최소 횟수이다.
-N과 K가 주어질 때 N이 1이 될 때까지 1번 혹은 2번의 과정을 수행해야하는 최소 횟수를 구하는 프로그램을 작성하시오</p>
+<p>스택은 박스 쌓기로 비유할 수 있다. 
+흔히 박스는 아래에서 위로 쌓으며, 박스를 치우기 위해서는 위에 있는 박스부터 치운다.
+이러한 스택의 구조를 <mark>선입후출</mark> 또는 <mark>후입선출</mark>구조라 한다.</p>
 </blockquote>
-<h3 id="문제-조건">[문제] 조건<a class="anchor" href="#문제-조건">#</a></h3>
-<blockquote>
-<p>입력조건
-첫째줄에 N(2 &lt;= N &lt; = 100000)과 K(2 &lt;= K &lt; = 100000)가 공백으로 구분되며 각각 자연수로 주어진다.
-이때 입력으로 주어지는 N은 항상 K보다 크거나 같다.</p>
-</blockquote>
-<blockquote>
-<p>출력조건
-첫째줄에 N이 1이 될 때까지 1번 혹은 2번의 과정을 수행해야 하는 횟수의 최솟값을 출력한다.</p>
-</blockquote>
-<blockquote>
-<p>입력예시<br>
-25 5</p>
-</blockquote>
-<blockquote>
-<p>출력예시<br> 
-2</p>
-</blockquote>
-<h3 id="make_onepy">make_one.py<a class="anchor" href="#make_onepy">#</a></h3>
-<pre><code>n, k = map(int, input().split()) 	#n=13, k=5
+<p>이 자료는 나동빈님의 이코테 서적과 유튜브 영상을 보고 정리한 자료입니다.</p>
+<p><img src="http://image.yes24.com/goods/91433923/800x0" alt="contact">
+<a href="http://www.yes24.com/Product/Goods/91433923">참고 : <a href="http://www.yes24.com/Product/Goods/91433923">http://www.yes24.com/Product/Goods/91433923</a></a></p>
 
-result = 0
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/7C9RgOcvkvo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
 
-while True :
-    # n을 K로 나눈 몫에 k를 곱하여,
-    # 나눌수 있는 값을 계산             # roof 1 step                         # roof 2 step
-    target = (n // k) * k 		#target = 10 						#target = 0
-    result += (n - target)       #result += 3  &lt;&lt;한번에 카운트 3을 추가하고     #result(4) += 2
-    n = target                   #n = target   &lt;&lt;13을 10으로 만듬          #n=0
-
-    if n &lt; k :                   #false                                #true
-        break
-    result += 1				#나눗셈에 대한 result(3) +1	
-    n //= k					#n = 2
-
-result += (n - 1)                                                      #result(6) += -1   &lt;n을 0까지 만들면서, 횟수 -1
-print(result)                                                          #5        
-
-</code></pre>
-<h3 id="makeonejava">MakeOne.java<a class="anchor" href="#makeonejava">#</a></h3>
-<pre><code>package ex.Algorithm.greedy;
-import java.util.Scanner;
-
-public class MakeOne {
-	
-	public static void main(String[] args) {
-		
-		Scanner sc = new Scanner(System.in);
-		
-		int n = sc.nextInt();
-		int k = sc.nextInt();
-		int result = 0;
-		
-		while (true) {
-			int target = (n/k)*k;
-			result += n-target;
-			n = target;
-			
-			if(n &lt; k) {
-				break;
-			}
-			
-			n = n / k;
-			result++;
-			
-		}
-		result += (n-1);
-		System.out.println(result);
-	}
-}
-
-</code></pre>
-<h3 id="문제-정당성-분석">[문제] 정당성 분석<a class="anchor" href="#문제-정당성-분석">#</a></h3>
-<blockquote>
-<p>1을 빼는 것보다 나누는 것이 더 기하급수적으로 빠르게 줄일 수 있다.
-K가 2보다 크다면, K로 나누는 것이 1을 빼는것 보다 항상 빠르게 N을 줄일 수 있다.
-또한 N은 항상 1에 도달하게 됨.</p>
-</blockquote>
-<p>이 자료는 나동빈님의 이코테 유튜브 영상을 보고 정리한 자료입니다.
-<br></p>
-<p><a href="https://www.youtube.com/watch?v=m-9pAwq1o3w&amp;list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC">참고 : <a href="http://www.youtube.com/watch?v=m-9pAwq1o3w&amp;amp;list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC">www.youtube.com/watch?v=m-9pAwq1o3w&amp;amp;list=PLRx0vPvlEmdAghTr5mXQxGpHjWqSz0dgC</a></a></p>
 
 
               
@@ -295,17 +226,12 @@ K가 2보다 크다면, K로 나누는 것이 1을 빼는것 보다 항상 빠�
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/english/202104/20210402-english-speak/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/english/202105/20210507-english-speak/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">잉그올 영어 회화 21.04.02</span>
+        <span class="pagination__title">잉그올 영어 회화 21.05.07</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/english/202104/20210407-english-speak/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >잉그올 영어 회화 21.04.07</span>
-    </a>
   
 </div>
 
@@ -375,16 +301,14 @@ K가 2보다 크다면, K로 나누는 것이 1을 빼는것 보다 항상 빠�
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">모험가 길드 (그리디 알고리즘)</div> 
+          <div class="toc-post-title">탐색 알고리즘</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#문제1-1이-될때까지">[문제1] 1이 될때까지</a>
+    <li><a href="#탐색-알고리즘">탐색 알고리즘</a>
       <ul>
-        <li><a href="#문제-1이-될때까지--문제-설명">[문제] 1이 될때까지 : 문제 설명</a></li>
-        <li><a href="#문제-조건">[문제] 조건</a></li>
-        <li><a href="#make_onepy">make_one.py</a></li>
-        <li><a href="#makeonejava">MakeOne.java</a></li>
-        <li><a href="#문제-정당성-분석">[문제] 정당성 분석</a></li>
+        <li><a href="#탐색search">탐색(search)</a></li>
+        <li><a href="#자료구조">자료구조</a></li>
+        <li><a href="#스택">스택</a></li>
       </ul>
     </li>
   </ul>
