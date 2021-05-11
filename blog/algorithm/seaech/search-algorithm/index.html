@@ -21,6 +21,7 @@
   <script src="/js/lib/jquery.mark.min.js"></script>
   <script src="/js/lib/jquery.tmpl.min.js"></script>
   <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
   <script src="https://offetuoso.github.io/js/lib/search.js"></script>
   <script src="https://offetuoso.github.io/js/common.js"></script>
 
@@ -75,7 +76,7 @@
       "datePublished": "2021-05-09 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-05-09 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/seaech\/search-algorithm\/",
-      "wordCount" : "137",
+      "wordCount" : "262",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -201,6 +202,92 @@
 스택은 박스 쌓기로 비유할 수 있다.</p>
 </blockquote>
 <p><img src="/images/search_1.png" alt="contact"></p>
+<h4 id="stackpy">stack.py</h4>
+<pre><code>class stack :
+    def __init__(self) :
+        self.items = []
+
+    def push(self, x) :
+        self.items.append(x)
+
+    def pop(self) :
+        if self.isEmpty() :
+            print(&quot;stack underflow!&quot;)
+        else :        
+            print(&quot;pop()&quot;, self.items[self.top()])
+            del self.items[self.top()]
+        
+    def top(self) :
+        return len(self.items)-1
+
+    def isEmpty(self) :
+        if (self.top() == -1) :
+            return True
+        else :
+            return False
+
+    def clear(self) : 
+         self.items = []
+
+    def size(self) :
+        return(len(self.items))
+
+    def peek(self) :   
+        return(self.items[self.top()])
+
+    def contains(self, x) :
+        if(x in self.items) :
+            return True 
+        else :
+            return False
+
+    
+    def search(self, x) :
+        for i in range(1,self.size()+1) :
+            if x == self.items[self.size()-i] :
+                return i 
+
+       
+
+
+
+stack1 = stack() 
+
+print(stack1.items)
+
+stack1.push(1)
+print(stack1.items)
+
+
+stack1.push(2)
+print(stack1.items)
+
+
+stack1.push(3)
+print(stack1.items)
+
+stack1.push(4)
+print(stack1.items)
+
+stack1.push(5)
+
+print(stack1.items)
+
+
+print(&quot;size() &quot;, stack1.size())
+
+print(&quot;contains(1) &quot;, stack1.contains(1))
+print(&quot;test1.search(1) &quot;, stack1.search(1))
+print(&quot;test1.search(2) &quot;, stack1.search(2))
+
+print(&quot;peek() &quot;, stack1.peek())
+stack1.pop()
+stack1.pop()
+stack1.pop()
+
+stack1.clear();
+
+</code></pre>
 <h3 id="큐">큐<a class="anchor" href="#큐">#</a></h3>
 <blockquote>
 <p>큐는 대기줄에 비유할 수 있는 공정한 자료구조, 단 새치기는 없다고 가정.
