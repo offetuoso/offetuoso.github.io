@@ -76,7 +76,7 @@
       "datePublished": "2021-05-09 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-05-09 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/search\/search-algorithm\/",
-      "wordCount" : "1189",
+      "wordCount" : "1257",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -369,7 +369,6 @@ print(&quot;pop() &quot;,stack.pop())
 <p>큐는 대기줄에 비유할 수 있는 공정한 자료구조, 단 새치기는 없다고 가정.
 이러한 스택의 구조를 <mark>선입선출</mark>구조.</p>
 </blockquote>
-<h3 id="선형-큐">선형 큐<a class="anchor" href="#선형-큐">#</a></h3>
 <div style="overflow-x: auto; width:900px;">
 <table>
 <thead>
@@ -408,6 +407,11 @@ print(&quot;pop() &quot;,stack.pop())
 </tbody>
 </table>
 </div>
+<h3 id="선형-큐">선형 큐<a class="anchor" href="#선형-큐">#</a></h3>
+<blockquote>
+<p>선형 큐는 데이터를 입력하면 rear가 증가하고 삭제를 통해 front도 증가, 하지만 여러번의 삽입과 삭제를 하면, 삭제된 이후 배열의 앞 공간은 사용할 수 없게 된다.</p>
+</blockquote>
+<p><img src="/images/search-queue-1.png" alt="contact"></p>
 <h4 id="linearqueuepy">linearQueue.py</h4>
 <h5 id="리스트로-만든-선형큐">리스트로 만든 선형큐</h5>
 <pre><code>MAX = 5
@@ -593,10 +597,18 @@ print(&quot;deQueue() &quot;,queue.deQueue())
 
 
 </code></pre>
-<h4 id="circularqueuepy">circularQueue.py</h4>
+<h3 id="환형큐">환형큐<a class="anchor" href="#환형큐">#</a></h3>
 <blockquote>
-<p>isEmpty와 isFull의 구분을 위하여 공간 1개 희생.. 어떻게 더 좋은 방법이 있을지 생각을 좀더 해봐야겠다.</p>
+<p>선형큐의 공간 낭비의 문제점을 해결하기 위해 고안된 환형큐지만 역시나 문제점이 있다. 
+front 와 rear가 같으면 비어(isEmpty) 있는 상태이지만, 환형 큐가 꽉찬(isFull) 상태 또한 front와 rear가 같아 문제점이 발생한다.</p>
 </blockquote>
+<p><img src="/images/search-queue-2.png" alt="contact"></p>
+<blockquote>
+<p>front와 rear의 위치만으로 큐의 비어있는 상태와 꽉찬 상태를 구분할 수 없기 때문에 이를 위해 큐의 한칸을 비어둔다. 
+한칸을 비움으로써 큐의 비어있는 상태와 꽉찬 상태의 front와 rear 위치를 다르게 하여 해결한다.</p>
+</blockquote>
+<p><img src="/images/search-queue-3.png" alt="contact"></p>
+<h4 id="circularqueuepy">circularQueue.py</h4>
 <pre><code>MAX = 5
 class CircularQueue :
     #초기화 
@@ -853,6 +865,7 @@ print(&quot;deQueue() &quot;,queue.deQueue())
         <li><a href="#스택의-요소">스택의 요소</a></li>
         <li><a href="#큐">큐</a></li>
         <li><a href="#선형-큐">선형 큐</a></li>
+        <li><a href="#환형큐">환형큐</a></li>
         <li><a href="#재귀-함수">재귀 함수</a></li>
         <li><a href="#유클리드-호제법">유클리드 호제법</a></li>
       </ul>
