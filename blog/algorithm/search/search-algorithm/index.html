@@ -76,7 +76,7 @@
       "datePublished": "2021-05-09 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-05-09 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/search\/search-algorithm\/",
-      "wordCount" : "1257",
+      "wordCount" : "1308",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -522,7 +522,8 @@ print(&quot;deQueue() &quot;,queue.deQueue())
 <blockquote>
 <p>파이썬의 deque를 이용한 선형큐</p>
 </blockquote>
-<pre><code>from collections import deque
+<pre><code>MAX = 5
+from collections import deque
 
 class LinearDequeue :
     #초기화 
@@ -747,6 +748,29 @@ print(&quot;deQueue() &quot;,queue.deQueue())
 마지막 함수까지 끝나고 나서야 다시 역순으로 돌아가 종료된다.</p>
 </blockquote>
 <p><img src="/images/search_3.png" alt="contact"></p>
+<blockquote>
+<p>아래 예제는 입력받은 숫자만큼 부터 카운트다운을 하는 소스이다.</p>
+</blockquote>
+<h4 id="countdownpy-재귀함수-사용">countdown.py (재귀함수 사용)</h4>
+<pre><code>m = int(input())
+
+def coountdwon(n) :
+    if(n ==0 ) :
+        return 'Happy new year!'
+    else : 
+          print(n)
+
+    return coountdwon(n-1)
+
+coountdwon(m)
+</code></pre>
+<h4 id="countdown2py-반복문사용">countdown2.py (반복문사용)</h4>
+<pre><code>for i in range(0, m) :
+    print(m-i)
+
+    if (m-i) == 1 :
+        print('Happy new year!')
+</code></pre>
 <h3 id="유클리드-호제법">유클리드 호제법<a class="anchor" href="#유클리드-호제법">#</a></h3>
 <p>이 자료는 나동빈님의 이코테 서적과 유튜브 영상을 보고 정리한 자료입니다.</p>
 <p><img src="http://image.yes24.com/goods/91433923/800x0" alt="contact">
