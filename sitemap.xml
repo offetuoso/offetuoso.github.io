@@ -8,6 +8,16 @@
   </url>
   
   <url>
+    <loc>https://offetuoso.github.io/tags/backend/</loc>
+    <lastmod>2021-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/backend/</loc>
+    <lastmod>2021-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://offetuoso.github.io/blog/</loc>
     <lastmod>2021-05-22T00:00:00+00:00</lastmod>
   </url>
@@ -33,12 +43,22 @@
   </url>
   
   <url>
+    <loc>https://offetuoso.github.io/tags/roadmap/</loc>
+    <lastmod>2021-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://offetuoso.github.io/tags/</loc>
     <lastmod>2021-05-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/blog/docker/docker-install/</loc>
+    <lastmod>2021-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/develop/roadmap/back-end/</loc>
     <lastmod>2021-05-22T00:00:00+00:00</lastmod>
   </url>
   
