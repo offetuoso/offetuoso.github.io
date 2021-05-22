@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 14 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>도커 설치</title>
+      <link>https://offetuoso.github.io/blog/docker/docker-install/</link>
+      <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/docker/docker-install/</guid>
+      <description>도커 (Docker) 도커란 ? 도커 설치 (Window 10) 1. 도커 설치를 위한 준비  Windows 10에서 도커를 설치 하기 위해서는 Hyper-V를 설치해야 합니다. Hyper-V를 사용하면 Windows에서 가상 머신으로 여러 운영 체제를 실행할 수 있습니다.
+ 2. 도커 다운로드 및 설치   도커 페이지에서 Get Docker 클릭 하여 다운로드      Ok를 눌러 넘어갑니다. WSL2(Windows Subsystem for Linux 2)란?     설치가 완료 되면 &amp;ldquo;Close and log out&amp;rdquo; 를 클릭하여 재접속 합니다.</description>
+    </item>
+    
     <item>
       <title>잉그올 영어 회화 21.05.14</title>
       <link>https://offetuoso.github.io/blog/english/202105/20210514-english-speak/</link>
