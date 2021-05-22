@@ -2,7 +2,7 @@
 <html lang="ko-KR">
 
 <head>
-  <title>도커 설치 | offetuoso&#39;s Blog</title>
+  <title>도커 설치 (Docker Install)  | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
@@ -43,7 +43,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.f36ab51fa27a79bcbdad0675e096aed1599e2e5c1f9a9edcd9b165914b15f209.css" integrity="sha256-82q1H6J6eby9rQZ14Jau0VmeLlwfmp7c2bFlkUsV8gk="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.7c74d8e7109141fcdb09572fcd14245334f37d5d1d5f8a1ce45f99bf4ca4e410.css" integrity="sha256-fHTY5xCRQfzbCVcvzRQkUzTzfV0dX4oc5F&#43;Zv0yk5BA="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -63,8 +63,8 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "도커 설치",
-      "headline" : "도커 설치",
+      "name" : "도커 설치 (Docker Install) ",
+      "headline" : "도커 설치 (Docker Install) ",
       "description" : "도커 설치",
       "inLanguage" : "en-US",
       "author" : "",
@@ -76,7 +76,7 @@
       "datePublished": "2021-05-22 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-05-22 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/docker\/docker-install\/",
-      "wordCount" : "122",
+      "wordCount" : "232",
       "keywords" : ["Docker", "Blog"]
     }
   
@@ -170,12 +170,12 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	도커 설치
+		            	도커 설치 (Docker Install) 
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	도커 설치
+		       	도커 설치 (Docker Install) 
             </h1>		
             <time datetime="2021-05-22 00:00:00 &#43;0000 UTC" class="post__date">2021-05-22</time> 
           </header>
@@ -185,8 +185,24 @@
 <p><img src="/images/docker/docker_install_0.png" alt="contact"></p>
 <h2 id="도커란-">도커란 ?<a class="anchor" href="#도커란-">#</a></h2>
 <blockquote>
-<p>도커(Docker)란 가상의 리눅스 컨테이너를 기반으로 하여 특정한 서비스를 패키징하고 배포하는데 유용한 오픈소스 프로그램. 
-도커 컨테이너는 하드웨어 에뮬레이션 없이 리눅스 커널을 공유해서 바로 프로세스를 실행합니다.</p>
+<p>도커란 리눅스의 응용 프로그램들을 프로세스 격리 기술을 사용해 컨테이너로 실행하고 관리하는 오픈 소스 프로젝트.
+도커 웹 페이지의 기능을 인용하면 다음과 같다:</p>
+</blockquote>
+<pre><code>도커 컨테이너는 일종의 소프트웨어를 소프트웨어의 실행에 필요한 모든 것을 
+포함하는 완전한 파일 시스템 안에 감싼다. 
+여기에는 코드, 런타임, 시스템 도구, 시스템 라이브러리 등 서버에 설치되는
+ 무엇이든 아우른다. 
+이는 실행 중인 환경에 관계 없이 언제나 동일하게 실행될 것을 보증한다.
+</code></pre>
+<h3 id="도커의-특징">도커의 특징<a class="anchor" href="#도커의-특징">#</a></h3>
+<blockquote>
+<ol>
+<li>도커의 컨테이너는 각각 독립적이다. 독립적으로 존재하기 때문에 원하는 어떤 환경이든 모듈적으로 관리 가능하다.</li>
+<li>하나의 서버에 각각의 여러개의 컨테이너를 갖을 수 있다.</li>
+<li>컨테이너는 줄이거나 늘릴 수 있다. 예를 들면 자바 서버의 트래픽이 늘어 난다면, 장고 서버를 줄이고 자바를 더 싣을 수 있다.</li>
+<li>도커를 사용하면 서버를 늘릴 때마다 서버를 구매하고 다시 설치할 필요가 없어진다</li>
+<li>원하는 개발 환경 파일에 저장을 하면, docker는 이를 원하는 어떤 머신이든 해당 환경을 시뮬레이션 해준다.</li>
+</ol>
 </blockquote>
 <h2 id="도커-설치-window-10">도커 설치 (Window 10)<a class="anchor" href="#도커-설치-window-10">#</a></h2>
 <h3 id="1-도커-설치를-위한-준비">1. 도커 설치를 위한 준비<a class="anchor" href="#1-도커-설치를-위한-준비">#</a></h3>
@@ -197,7 +213,7 @@
 <h3 id="2-도커-다운로드-및-설치">2. 도커 다운로드 및 설치<a class="anchor" href="#2-도커-다운로드-및-설치">#</a></h3>
 <blockquote>
 <ul>
-<li><a href= "https://hub.docker.com/editions/community/docker-ce-desktop-windows/">도커 페이지</a>에서 Get Docker 클릭 하여 다운로드
+<li><a href= "https://hub.docker.com/editions/community/docker-ce-desktop-windows/">도커 웹 페이지</a>에서 Get Docker 클릭 하여 다운로드
 <img src="/images/docker/docker_install_2.png" alt="contact"></li>
 </ul>
 </blockquote>
@@ -226,6 +242,12 @@
 <img src="/images/docker/docker_install_6.png" alt="contact"></li>
 <li>윈도우 트레이 아이콘에서도 확인 할 수 있습니다.
 <img src="/images/docker/docker_install_7.png" alt="contact"></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>참고 :</p>
+<ul>
+<li><a href="https://www.docker.com/why-docker">도커 웹 페이지</a></li>
 </ul>
 </blockquote>
 
@@ -324,10 +346,14 @@
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">도커 설치</div> 
+          <div class="toc-post-title">도커 설치 (Docker Install) </div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#도커란-">도커란 ?</a></li>
+    <li><a href="#도커란-">도커란 ?</a>
+      <ul>
+        <li><a href="#도커의-특징">도커의 특징</a></li>
+      </ul>
+    </li>
     <li><a href="#도커-설치-window-10">도커 설치 (Window 10)</a>
       <ul>
         <li><a href="#1-도커-설치를-위한-준비">1. 도커 설치를 위한 준비</a></li>
