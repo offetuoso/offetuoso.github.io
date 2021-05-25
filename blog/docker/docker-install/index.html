@@ -76,7 +76,7 @@
       "datePublished": "2021-05-22 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-05-22 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/docker\/docker-install\/",
-      "wordCount" : "266",
+      "wordCount" : "311",
       "keywords" : ["Docker", "Blog"]
     }
   
@@ -262,6 +262,21 @@
 <img src="/images/docker/docker_install_7.png" alt="contact"></li>
 </ul>
 </blockquote>
+<h2 id="윈도우에서-sudo-사용하기">윈도우에서 sudo 사용하기<a class="anchor" href="#윈도우에서-sudo-사용하기">#</a></h2>
+<blockquote>
+<p>Docker를 공부하는 도중 명령어 중에 sudo가 포함된 명령어를 실행시 cmd 기준 아래와 같은 화면이 나타났다.
+<img src="/images/docker/docker_running_2.png" alt="contact"></p>
+</blockquote>
+<blockquote>
+<p>윈도우에서는 기본적으러 sudo를 지원하지 않기 때문인거같아 choco라는 패키지 관리자를 이용하여 설치를 하여 해결하였다.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://chocolatey.org/">choco</a>라는 패키지 관리자를 통하여 sudo 패키지를 설치하면 된다.</p>
+</blockquote>
+<pre><code>choco install sudo
+choco upgrade sudo
+</code></pre>
+<p><img src="/images/docker/docker_running_1.png" alt="contact"></p>
 <blockquote>
 <p>참고 :</p>
 <ul>
@@ -295,6 +310,11 @@
     </a>
   
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/docker/docker-mysql/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >도커에 Mysql 올리기-1 (Docker Mysql)</span>
+    </a>
   
 </div>
 
@@ -379,6 +399,7 @@
         <li><a href="#2-도커-다운로드-및-설치">2. 도커 다운로드 및 설치</a></li>
       </ul>
     </li>
+    <li><a href="#윈도우에서-sudo-사용하기">윈도우에서 sudo 사용하기</a></li>
   </ul>
 </nav>
       </div>

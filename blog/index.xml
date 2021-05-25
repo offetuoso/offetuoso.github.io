@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 22 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>도커에 Mysql 올리기-1 (Docker Mysql)</title>
+      <link>https://offetuoso.github.io/blog/docker/docker-mysql/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/docker/docker-mysql/</guid>
+      <description>도커에 Mysql 올리기 도커 버전 체크  cmd창 또는 Windows PowerShell을 싱행한다.  도커 초기화  일단 도커의 이미지/컨테이너들을 모두 지워주는 것 부터 시작하겠습니다.
+ PS C:\&amp;gt; sudo docker rm -f `sudo docker ps -a -q`PS C:\&amp;gt; sudo docker rmi -f `sudo docker images` 도커 이미지 가져오기 (get Mysql Image for Docker)  Mysql의 경우 DockerHub에 있기 때문에, 쉽게 이미지를 받아 올 수 있습니다.
+ DockerHub에서 mysql 이미지 받아오기   PS C:\&amp;gt; docker pull mysqlUsing default tag: latestlatest: Pulling from library/mysqlDigest: sha256:d50098d7fcb25b1fcb24e2d3247cae3fc55815d64fec640dc395840f8fa80969Status: Image is up to date for mysql:latestdocker.</description>
+    </item>
+    
     <item>
       <title>도커 설치 (Docker Install) </title>
       <link>https://offetuoso.github.io/blog/docker/docker-install/</link>

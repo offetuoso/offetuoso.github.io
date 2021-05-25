@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>도커에 Mysql 올리기-1 (Docker Mysql) | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="도커에 Mysql 올리기">
+  <meta name="keywords" content="Docker">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.7c74d8e7109141fcdb09572fcd14245334f37d5d1d5f8a1ce45f99bf4ca4e410.css" integrity="sha256-fHTY5xCRQfzbCVcvzRQkUzTzfV0dX4oc5F&#43;Zv0yk5BA="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "도커에 Mysql 올리기-1 (Docker Mysql)",
+      "headline" : "도커에 Mysql 올리기-1 (Docker Mysql)",
+      "description" : "도커에 Mysql 올리기",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-05-23 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-05-23 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/docker\/docker-mysql\/",
+      "wordCount" : "573",
+      "keywords" : ["Docker", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+			        
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	도커에 Mysql 올리기-1 (Docker Mysql)
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	도커에 Mysql 올리기-1 (Docker Mysql)
+            </h1>		
+            <time datetime="2021-05-23 00:00:00 &#43;0000 UTC" class="post__date">2021-05-23</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="도커에-mysql-올리기">도커에 Mysql 올리기</h1>
+<p><img src="/images/docker/docker_running_0.png" alt="contact"></p>
+<h2 id="도커-버전-체크">도커 버전 체크<a class="anchor" href="#도커-버전-체크">#</a></h2>
+<blockquote>
+<p>cmd창 또는 Windows PowerShell을 싱행한다. 
+<img src="/images/docker/docker_mysql_0.png" alt="contact"></p>
+</blockquote>
+<h2 id="도커-초기화">도커 초기화<a class="anchor" href="#도커-초기화">#</a></h2>
+<blockquote>
+<p>일단 도커의 이미지/컨테이너들을 모두 지워주는 것 부터 시작하겠습니다.</p>
+</blockquote>
+<pre><code>PS C:\&gt; sudo docker rm -f `sudo docker ps -a -q`
+PS C:\&gt; sudo docker rmi -f `sudo docker images`
+</code></pre>
+<p><img src="/images/docker/docker_mysql_1.png" alt="contact"></p>
+<h2 id="도커-이미지-가져오기-get-mysql-image-for-docker">도커 이미지 가져오기 (get Mysql Image for Docker)<a class="anchor" href="#도커-이미지-가져오기-get-mysql-image-for-docker">#</a></h2>
+<blockquote>
+<p>Mysql의 경우 DockerHub에 있기 때문에, 쉽게 이미지를 받아 올 수 있습니다.</p>
+<ul>
+<li>DockerHub에서 mysql 이미지 받아오기</li>
+</ul>
+</blockquote>
+<pre><code>PS C:\&gt; docker pull mysql
+Using default tag: latest
+latest: Pulling from library/mysql
+Digest: sha256:d50098d7fcb25b1fcb24e2d3247cae3fc55815d64fec640dc395840f8fa80969
+Status: Image is up to date for mysql:latest
+docker.io/library/mysql:latest
+</code></pre>
+<p><img src="/images/docker/docker_mysql_2.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>다운받은 도커 이미지 확인</li>
+</ul>
+</blockquote>
+<pre><code>PS C:\&gt; docker images
+REPOSITORY               TAG       IMAGE ID       CREATED        SIZE
+mysql                    latest    c0cdc95609f1   13 days ago    556MB
+docker/getting-started   latest    3ba8f2ff0727   2 months ago   27.9MB
+</code></pre>
+<p><img src="/images/docker/docker_mysql_3.png" alt="contact"></p>
+<h3 id="mysql-컨테이너-설정">Mysql 컨테이너 설정<a class="anchor" href="#mysql-컨테이너-설정">#</a></h3>
+<blockquote>
+<p>sudo docker run -d -p 9876:3306 -e MYSQL_ROOT_PASSWORD=passw0rd &ndash;name test_mysql mysql:5.6</p>
+</blockquote>
+<pre><code>PS C:\&gt; sudo docker run -d -p 9876:3306 -e MYSQL_ROOT_PASSWORD=passw0rd --name test_mysql mysql:5.6
+</code></pre>
+<h4 id="docker-옵션">docker 옵션</h4>
+<blockquote>
+<ol>
+<li><mark>-d</mark> 는 컨테이너를 백그라운드에서 동작하는 어플리케이션으로 실행</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li><mark>-p 9876:3306</mark> 는
+-p 옵션은 호스트와 컨테이너 간의 포트(port) 배포(publish)/바인드(bind)를 위해서 사용되는데요. 호스트(host) 컴퓨터에서 컨테이너에서 리스닝하고 있는 포트로 접속할 수 있도록 설정해줍니다.
+위 커맨드는 컨테이너 내부에서 3306 포트로 리스닝하고 있는 HTTP 서버를 호스트 컴퓨터에서 9876 포트로 접속할 수 있도록 해줍니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li><mark>-e</mark> 는 Docker 컨테이너의 환경변수를 설정하기 위해서는 -e 옵션을 사용합니다. 또한, -e 옵션을 사용하면 Dockerfile의 ENV 설정도 덮어써지게 됩니다. 아래 커맨드는 FOO 환경 변수를 bar로 세팅을 하고, 환경 변수를 출력하고 있습니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li><mark>MYSQL_ROOT_PASSWORD=passw0rd</mark>는 mysql의 기본 비밀번호를 설정합니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li><mark>&ndash;name test_mysql</mark>은 
+Docker 컨테이너를 제어할 때 컨테이너 ID를 사용하면 읽거나 기억하기가 어려워서 불편하게 느껴집니다. 이럴 경우, &ndash;name 옵션을 사용해서 컨테이너에 이름을 부여해주면 해당 <mark>test_mysql</mark> 이름으로 컨테이너를 식별할 수 있습니다.</li>
+</ol>
+</blockquote>
+<h3 id="생성된-mysql-컨테이너-확인">생성된 Mysql 컨테이너 확인<a class="anchor" href="#생성된-mysql-컨테이너-확인">#</a></h3>
+<blockquote>
+<p>docker ps -a 명령어 실행</p>
+</blockquote>
+<pre><code>PS C:\&gt; docker ps -a
+CONTAINER ID   IMAGE     COMMAND                  CREATED        STATUS          PORTS                                                  NAMES
+af3dd622e753   mysql     &quot;docker-entrypoint.s…&quot;   28 hours ago   Up 32 minutes   0.0.0.0:3306-&gt;3306/tcp, :::3306-&gt;3306/tcp, 33060/tcp   test_mysql
+</code></pre>
+<p><img src="/images/docker/docker_mysql_4.png" alt="contact"></p>
+<h3 id="mysql-컨테이너-test_mysql의-cli-접속">Mysql 컨테이너 test_mysql의 CLI 접속<a class="anchor" href="#mysql-컨테이너-test_mysql의-cli-접속">#</a></h3>
+<blockquote>
+<p>sudo docker exec -it <mark>test_mysql</mark> /bin/bash 명령어 실행</p>
+</blockquote>
+<pre><code>PS C:\&gt; sudo docker exec -it test_mysql /bin/bash
+</code></pre>
+<p><img src="/images/docker/docker_mysql_5.png" alt="contact"></p>
+<h3 id="mysql-테스트">Mysql 테스트<a class="anchor" href="#mysql-테스트">#</a></h3>
+<h4 id="설치시-등록한-암호-입력">설치시 등록한 암호 입력</h4>
+<blockquote>
+<p>mysql -u root -p</p>
+</blockquote>
+<pre><code>root@4b6fb99160bf:/# mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.6.51 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt;
+</code></pre>
+<p><img src="/images/docker/docker_mysql_6.png" alt="contact"></p>
+<h4 id="mysql-user-생성-및-권한-부여">Mysql user 생성 및 권한 부여</h4>
+<blockquote>
+<p>개발에 사용할 developer라는 유저 생성</p>
+</blockquote>
+<pre><code>mysql&gt; CREATE USER 'developer'@'%' IDENTIFIED BY 'passw0rd';
+Query OK, 0 rows affected (0.00 sec)
+</code></pre>
+<blockquote>
+<p>developer에게 모든 권한 부여</p>
+</blockquote>
+<pre><code>mysql&gt; GRANT ALL PRIVILEGES ON *.* TO 'developer'@'%';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt;
+</code></pre>
+<p><img src="/images/docker/docker_mysql_7.png" alt="contact"></p>
+<h4 id="유저-변경">유저 변경</h4>
+<pre><code>mysql&gt; quit
+Bye
+root@4b6fb99160bf:/# mysql -u developer -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.6.51 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt;
+</code></pre>
+<h4 id="데이터베이스-생성">데이터베이스 생성</h4>
+<pre><code>mysql&gt; create database test;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql&gt;
+</code></pre>
+<p><img src="/images/docker/docker_mysql_8.png" alt="contact"></p>
+<blockquote>
+<p>참고 :</p>
+<ul>
+<li><a href="https://www.docker.com/why-docker">도커 웹 페이지</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/docker/">Docker</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/mysql/">Mysql</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/docker/docker-install/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">도커 설치 (Docker Install) </span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">도커에 Mysql 올리기-1 (Docker Mysql)</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#도커-버전-체크">도커 버전 체크</a></li>
+    <li><a href="#도커-초기화">도커 초기화</a></li>
+    <li><a href="#도커-이미지-가져오기-get-mysql-image-for-docker">도커 이미지 가져오기 (get Mysql Image for Docker)</a>
+      <ul>
+        <li><a href="#mysql-컨테이너-설정">Mysql 컨테이너 설정</a></li>
+        <li><a href="#생성된-mysql-컨테이너-확인">생성된 Mysql 컨테이너 확인</a></li>
+        <li><a href="#mysql-컨테이너-test_mysql의-cli-접속">Mysql 컨테이너 test_mysql의 CLI 접속</a></li>
+        <li><a href="#mysql-테스트">Mysql 테스트</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>
