@@ -7,13 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 23 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>REST API (Restful Api)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</link>
+      <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</guid>
+      <description>레스트풀 API(Restful Api) REST (Representational state transfer)  REST(Representational State Transfer)는 월드 와이드 웹과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다. REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개 엄격한 의미로 REST는 네트워크 아키텍처 원리의 모음이다. 여기서 &amp;lsquo;네트워크 아키텍처 원리&amp;rsquo;란 자원을 정의하고 자원에 대한 주소를 지정하는 방법 전반을 일컫는다. 간단한 의미로는, 웹 상의 자료를 HTTP위에서 SOAP이나 쿠키를 통한 세션 트랙킹 같은 별도의 전송 계층 없이 전송하기 위한 아주 간단한 인터페이스를 말한다.</description>
+    </item>
+    
     <item>
       <title>도커에 Mysql 올리기-1 (Docker Mysql)</title>
-      <link>https://offetuoso.github.io/blog/docker/docker-mysql/</link>
+      <link>https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/</link>
       <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/docker/docker-mysql/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/</guid>
       <description>도커에 Mysql 올리기 도커 버전 체크  cmd창 또는 Windows PowerShell을 싱행한다.  도커 초기화  일단 도커의 이미지/컨테이너들을 모두 지워주는 것 부터 시작하겠습니다.
  PS C:\&amp;gt; sudo docker rm -f `sudo docker ps -a -q`PS C:\&amp;gt; sudo docker rmi -f `sudo docker images` 도커 이미지 가져오기 (get Mysql Image for Docker)  Mysql의 경우 DockerHub에 있기 때문에, 쉽게 이미지를 받아 올 수 있습니다.
  DockerHub에서 mysql 이미지 받아오기   PS C:\&amp;gt; docker pull mysqlUsing default tag: latestlatest: Pulling from library/mysqlDigest: sha256:d50098d7fcb25b1fcb24e2d3247cae3fc55815d64fec640dc395840f8fa80969Status: Image is up to date for mysql:latestdocker.</description>
@@ -21,10 +30,10 @@
     
     <item>
       <title>도커 설치 (Docker Install) </title>
-      <link>https://offetuoso.github.io/blog/docker/docker-install/</link>
+      <link>https://offetuoso.github.io/blog/develop/backend/docker/docker-install/</link>
       <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/docker/docker-install/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/docker/docker-install/</guid>
       <description>도커 (Docker) 도커란 ?  도커란 리눅스의 응용 프로그램들을 프로세스 격리 기술을 사용해 컨테이너로 실행하고 관리하는 오픈 소스 프로젝트. 도커 웹 페이지의 기능을 인용하면 다음과 같다:
  도커 컨테이너는 일종의 소프트웨어를 소프트웨어의 실행에 필요한 모든 것을 포함하는 완전한 파일 시스템 안에 감싼다. 여기에는 코드, 런타임, 시스템 도구, 시스템 라이브러리 등 서버에 설치되는무엇이든 아우른다. 이는 실행 중인 환경에 관계 없이 언제나 동일하게 실행될 것을 보증한다. 도커의 특징   도커의 컨테이너는 각각 독립적이다.</description>
     </item>
@@ -73,10 +82,10 @@
     
     <item>
       <title>Git 캐시 삭제</title>
-      <link>https://offetuoso.github.io/blog/git/202105/time/</link>
+      <link>https://offetuoso.github.io/blog/develop/git/202105/time/</link>
       <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/git/202105/time/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/git/202105/time/</guid>
       <description>Git 캐시(cache) 삭제 // 원격 저장소와 로컬 저장소 파일을 삭제$ git rm 파일명// 원격 저장소에 있는 파일만 삭제하고, //로컬 저장소에 있는 파일은 삭제하지 않음$ git rm --cached 파일명 rm -r 옵션// 파일 삭제$ git rm --cached 파일명// 폴더 하위의 모든 파일을 삭제$ git rm -r --cached 폴더명 </description>
     </item>
     
@@ -299,10 +308,10 @@
     
     <item>
       <title>자바의 기본개념</title>
-      <link>https://offetuoso.github.io/blog/java/basic-java/</link>
+      <link>https://offetuoso.github.io/blog/develop/java/basic-java/</link>
       <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/java/basic-java/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/java/basic-java/</guid>
       <description>자바 자바가상머신 (JVM) 자바의 장점 자바의 단점 자바의 기초 문법 객체지향과 자바 객체지향 프로그램 언어 객체 상속 오버라이딩 (Overriding)  오버라이딩이란?
   사전적 의미로는 more important than any other considerations 번역해 보면 다른 고려 사항보다 더 중요하다이다.
   부모 클래스로 부터 상속받은 메소드를 자식 클래스에서 재정의 하여, 덮어 쓰는 것이다. 상속받은 메소드를 그대로 사용할 수도 있지만, 자식 클래스에서 상황에 맞게 변경해야 하는 경우 오버라이딩을 사용한다.

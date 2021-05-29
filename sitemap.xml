@@ -4,17 +4,42 @@
   
   <url>
     <loc>https://offetuoso.github.io/</loc>
-    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/api/</loc>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/blog/</loc>
-    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/categories/</loc>
-    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</loc>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/restful/</loc>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/restful/</loc>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/</loc>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -33,12 +58,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/tags/</loc>
-    <lastmod>2021-05-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/blog/docker/docker-mysql/</loc>
+    <loc>https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/</loc>
     <lastmod>2021-05-23T00:00:00+00:00</lastmod>
   </url>
   
@@ -48,7 +68,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/docker/docker-install/</loc>
+    <loc>https://offetuoso.github.io/blog/develop/backend/docker/docker-install/</loc>
     <lastmod>2021-05-22T00:00:00+00:00</lastmod>
   </url>
   
@@ -133,7 +153,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/git/202105/time/</loc>
+    <loc>https://offetuoso.github.io/blog/develop/git/202105/time/</loc>
     <lastmod>2021-05-03T00:00:00+00:00</lastmod>
   </url>
   
@@ -258,7 +278,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/java/basic-java/</loc>
+    <loc>https://offetuoso.github.io/blog/develop/java/basic-java/</loc>
     <lastmod>2021-03-15T00:00:00+00:00</lastmod>
   </url>
   
