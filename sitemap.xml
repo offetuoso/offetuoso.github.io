@@ -23,7 +23,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</loc>
+    <loc>https://offetuoso.github.io/tags/rest/</loc>
     <lastmod>2021-05-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -34,6 +34,11 @@
   
   <url>
     <loc>https://offetuoso.github.io/categories/restful/</loc>
+    <lastmod>2021-05-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</loc>
     <lastmod>2021-05-29T00:00:00+00:00</lastmod>
   </url>
   

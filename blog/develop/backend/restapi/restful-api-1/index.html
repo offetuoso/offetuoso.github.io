@@ -2,7 +2,7 @@
 <html lang="ko-KR">
 
 <head>
-  <title>REST API (Restful Api) | offetuoso&#39;s Blog</title>
+  <title>RESTFULL API (RESTful API) | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
@@ -63,8 +63,8 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "REST API (Restful Api)",
-      "headline" : "REST API (Restful Api)",
+      "name" : "RESTFULL API (RESTful API)",
+      "headline" : "RESTFULL API (RESTful API)",
       "description" : "레스트풀 API",
       "inLanguage" : "en-US",
       "author" : "",
@@ -76,7 +76,7 @@
       "datePublished": "2021-05-29 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-05-29 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/restapi\/restful-api-1\/",
-      "wordCount" : "620",
+      "wordCount" : "586",
       "keywords" : ["Restful", "Blog"]
     }
   
@@ -170,12 +170,12 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	REST API (Restful Api)
+		            	RESTFULL API (RESTful API)
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	REST API (Restful Api)
+		       	RESTFULL API (RESTful API)
             </h1>		
             <time datetime="2021-05-29 00:00:00 &#43;0000 UTC" class="post__date">2021-05-29</time> 
           </header>
@@ -203,7 +203,7 @@ REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개
 </blockquote>
 <h3 id="rest-아키텍처-원칙아키텍처-스타일-아키텍처의-제약-조건">REST 아키텍처 원칙(아키텍처 스타일, 아키텍처의 제약 조건)<a class="anchor" href="#rest-아키텍처-원칙아키텍처-스타일-아키텍처의-제약-조건">#</a></h3>
 <blockquote>
-<p>해당 6가지 원칙을 모두 만족한다면, REST 하다 이야기 할 수 있습니다.</p>
+<p>해당 <mark>6가지 원칙을 모두 만족</mark>한다면, REST하다 이야기 할 수 있습니다.</p>
 </blockquote>
 <blockquote>
 <ol>
@@ -245,12 +245,12 @@ REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개
 <li>이러한 멀티 플랫폼에 대한 지원을 위해 서비스 자원에 대한 아키텍처를 세우고 이용하는 방법을 모색한 결과, REST에 관심을 가지게 되었다.</li>
 </ul>
 </blockquote>
-<h2 id="restful-api-">RESTful api ?<a class="anchor" href="#restful-api-">#</a></h2>
+<h2 id="restful-api-">RESTful API ?<a class="anchor" href="#restful-api-">#</a></h2>
 <blockquote>
 <p>RESTful은 위의 REST 아키텍처의 원칙을 모두 만족하는 것을 의미한다.
-RESTful Api란 REST라는 아키텍처 스타일과 원칙을 모두 만족하는 모두 만족하는 API라는 뜻이다.</p>
+RESTful API란 REST라는 아키텍처 스타일과 원칙을 모두 만족하는 모두 만족하는 API라는 뜻이다.</p>
 </blockquote>
-<p>![contact](/images/develop/backend/restapi/rest-api 002.png)</p>
+<p><img src="/images/develop/backend/restapi/rest-api-002.png" alt="contact"></p>
 <h3 id="rest-api-디자인">REST API 디자인<a class="anchor" href="#rest-api-디자인">#</a></h3>
 <blockquote>
 <ol>
@@ -293,7 +293,8 @@ http://restapi.example.com/users/seller
 <li>BAD</li>
 </ul>
 </blockquote>
-<pre><code>http://restapi.example.com/users/customer/getAdress
+<pre><code>http://restapi.example.com/users/customer/
+
 </code></pre>
 <blockquote>
 <ul>
@@ -336,75 +337,121 @@ http://restapi.example.com/users/seller
 </ul>
 </blockquote>
 <pre><code>http://restapi.example.com/users/customer/
-```
 
-&gt; - Good
-
-```
-http://restapi.example.com/users/customer
-```
-
-&gt; 5. 행위는 포함하지 않는다. 
-&gt; - 행위(동사)는 URL대신 Method를 사용하여 전달한다.(GET, POST, PUT, DELETE 등)
-&gt; - POST(create), GET(read), PUT(update), DELETE(delete)
-
-&gt; - Bad
-
-```
-POST :  http://restapi.example.com/users/customer/delete-post/1
-```
-
-&gt; - Good
-
-```
-DELETE :  http://restapi.example.com/users/customer/post/1
-```
-
-
-
-
-&gt; 6. 가급적 명사를 사용하되, 제어 자원을 의미하는 경우 예외적으로 동사를 허용한다.
-
-
-&gt; - Bad
-
-```
-POST :  http://restapi.example.com/users/customer/duplication
-```
-
-&gt; - Good
-
-```
-POST :  http://restapi.example.com/users/customer/duplicate
-```
- 
-
-&gt; 7.파일 확장자는 URI에 포함시키지 않는다.
-&gt; - REST API에서는 메시지 바디 내용의 포맷을 나타내기 위한 파일 확장자를 URI 안에 포함시키지 않습니다. Accept header를 사용하도록 한다.
-
-&gt; - Bad
-
-```
-GET :  http://restapi.example.com/users/customer/profile.png
-```
-
-&gt; - Good
-
-```
-GET http://restapi.example.com/users/customer/profile
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/users/customer
+</code></pre>
+<blockquote>
+<ol start="5">
+<li>행위는 포함하지 않는다.</li>
+</ol>
+<ul>
+<li>행위(동사)는 URL대신 Method를 사용하여 전달한다.(GET, POST, PUT, DELETE 등)</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>GET(read)</th>
+<th>POST(create)</th>
+<th>PUT(update)</th>
+<th>DELETE(delete)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/goods</td>
+<td>상품목록</td>
+<td>상품추가</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>/goods/{id}</td>
+<td>{id}값 상품상세</td>
+<td>-</td>
+<td>{id}값 상품 수정</td>
+<td>{id}값 상품 삭제</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>Bad</li>
+</ul>
+</blockquote>
+<pre><code>POST :  http://restapi.example.com/users/customer/delete-post/1
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>DELETE :  http://restapi.example.com/users/customer/post/1
+</code></pre>
+<blockquote>
+<ol start="6">
+<li>가급적 명사를 사용하되, 제어 자원을 의미하는 경우 예외적으로 동사를 허용한다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ul>
+<li>Bad</li>
+</ul>
+</blockquote>
+<pre><code>POST :  http://restapi.example.com/users/customer/duplication
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>POST :  http://restapi.example.com/users/customer/duplicate
+</code></pre>
+<blockquote>
+<p>7.파일 확장자는 URI에 포함시키지 않는다.</p>
+<ul>
+<li>REST API에서는 메시지 바디 내용의 포맷을 나타내기 위한 파일 확장자를 URI 안에 포함시키지 않습니다. Accept header를 사용하도록 한다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Bad</li>
+</ul>
+</blockquote>
+<pre><code>GET :  http://restapi.example.com/users/customer/profile.png
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>GET http://restapi.example.com/users/customer/profile
 HTTP/1.1 Host: restapi.example.com Accept: image/jpg
 
-```
- 
-
-&gt; 8.     오류 처리를 명확하게 해라.
-&gt; -  HTTP 상태코드를 정하고(많아도 안좋음), 다른 개발자들을 위한 오류 메시지 정의, 상세 정보 링크 등을 넣어주면 도움이 된다.
-
-
-
-
-&gt; - &lt;a href=&quot;https://ko.wikipedia.org/wiki/REST&quot;&gt;REST wiki&lt;/a&gt;
 </code></pre>
+<blockquote>
+<ol start="8">
+<li>
+<pre><code>오류 처리를 명확하게 해라.
+</code></pre>
+</li>
+</ol>
+<ul>
+<li>HTTP 상태코드를 정하고(많아도 안좋음), 다른 개발자들을 위한 오류 메시지 정의, 상세 정보 링크 등을 넣어주면 도움이 된다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><a href="https://ko.wikipedia.org/wiki/REST">REST wiki</a></li>
+</ul>
+</blockquote>
 
 
               
@@ -417,7 +464,10 @@ HTTP/1.1 Host: restapi.example.com Accept: image/jpg
 <ul class="tags__list">
     
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/restful/">Restful</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/rest/">REST</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/restful/">RESTful</a>
     </li>
     <li class="tag__item">
         <a class="tag__link" href="https://offetuoso.github.io/tags/api/">Api</a>
@@ -501,7 +551,7 @@ HTTP/1.1 Host: restapi.example.com Accept: image/jpg
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">REST API (Restful Api)</div> 
+          <div class="toc-post-title">RESTFULL API (RESTful API)</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#rest-representational-state-transfer">REST (Representational state transfer)</a>
@@ -512,7 +562,7 @@ HTTP/1.1 Host: restapi.example.com Accept: image/jpg
         <li><a href="#rest가-필요한-이유">REST가 필요한 이유</a></li>
       </ul>
     </li>
-    <li><a href="#restful-api-">RESTful api ?</a>
+    <li><a href="#restful-api-">RESTful API ?</a>
       <ul>
         <li><a href="#rest-api-디자인">REST API 디자인</a></li>
       </ul>
