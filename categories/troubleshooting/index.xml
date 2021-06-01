@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Troubleshooting on offetuoso&#39;s Blog</title>
+    <link>https://offetuoso.github.io/categories/troubleshooting/</link>
+    <description>Recent content in Troubleshooting on offetuoso&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-KR</language>
+    <copyright>© 2021</copyright>
+    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Maven Error - Failure to transfer..</title>
+      <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</link>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</guid>
+      <description>Maven error “Failure to transfer…” 문제 Failure to transfer com.google.guava:guava:jar:10.0.1 from https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempte from/to central (https://repo.maven.apache.org/maven2): The operation was cancelled.  https://repo.maven.apache.org/maven2에서 디펜던시를 전송하지 못하는 오류가 발생하였고, 로컬 저장소에 캐시되었습니다.
+ 해결책 1   프로젝트 우클릭 -&amp;gt; Run as -&amp;gt; Maven Install 프로젝트 우클릭 -&amp;gt; Refresh 프로젝트 우클릭 -&amp;gt; Update Project (옵션 클릭 force update of snapshots/releases)   해결책 2   실행중인 IDE(이클립스, Sts) 종료 로컬 레퍼지토리 삭제</description>
+    </item>
+    
+  </channel>
+</rss>

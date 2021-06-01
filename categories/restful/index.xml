@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 29 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/restful/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/restful/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SpringBoot를 이용한 RESTful API</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</link>
+      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</guid>
+      <description>SpringBoot를 이용한 RESTful API SpringBoot  스프링 프레임워크 기반 프로젝트를 복잡한 설정없이 쉽고 빠르게 만들어주는 라이브러리입니다. 사용자가 일일이 모든 설정을 하지 않아도 자주 사용되는 기본설정을 알아서 해줍니다.
+  Spring Boot 장점
+   라이브러리 관리의 자동화 라이브러리 버전 자동 관리 설정의 자동화 내장 Tomcat 독립적으로 실행 가능한 JAR   간단한 RESTful API 생성 Spring Starter Project로 프로젝트 생성  스프링STS4를 실행 하고, file &amp;gt; new &amp;gt; Spring Starter Project를 선택</description>
+    </item>
+    
     <item>
       <title>RESTFULL API (RESTful API)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</link>
