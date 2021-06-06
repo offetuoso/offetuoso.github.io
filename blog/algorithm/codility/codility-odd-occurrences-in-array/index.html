@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>Codility - Odd Occurrences In Array | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="Odd Occurrences In Array">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.b84b74a47189bf87edaaf9b236a68d3032f3112efebc12e139794a3554894b5a.css" integrity="sha256-uEt0pHGJv4ftqvmyNqaNMDLzES7&#43;vBLhOXlKNVSJS1o="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "Codility - Odd Occurrences In Array",
+      "headline" : "Codility - Odd Occurrences In Array",
+      "description" : "Odd Occurrences In Array",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-06-06 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-06-06 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/codility\/codility-odd-occurrences-in-array\/",
+      "wordCount" : "688",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+			        
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	Codility - Odd Occurrences In Array
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	Codility - Odd Occurrences In Array
+            </h1>		
+            <time datetime="2021-06-06 00:00:00 &#43;0000 UTC" class="post__date">2021-06-06</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="odd-occurrences-in-array">Odd Occurrences In Array</h1>
+<blockquote>
+<p>Codility - Lesson2 - Array - <a href="https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/">Odd Occurrences In Array</a></p>
+</blockquote>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<blockquote>
+<p>N개의 정수가 담긴 배열 A를 입력받습니다
+배열에는 홀수 개의 요소가 포함됩니다.
+배열의 각 요소는 짝을 이루지 않는 한 요소를 제외하고 동일한 값을 가진 다른 요소와 짝을 가지고 있습니다.
+짝이 없는 요소를 찾으면 해결됩니다</p>
+</blockquote>
+<blockquote>
+<p>예를 들어, 주어진 A 배열은 이렇습니다.</p>
+</blockquote>
+<pre><code> A [0] = 9 A [1] = 3 A [2] = 9
+ A [3] = 3 A [4] = 9 A [5] = 7
+ A [6] = 9
+</code></pre>
+<blockquote>
+</blockquote>
+<p>인덱스 0과 2에있는 요소의 값은 9입니다.
+인덱스 1과 3에있는 요소의 값은 3이고,
+인덱스 4와 6에있는 요소의 값은 9이고
+인덱스 5의 요소는 값 7을 가지며 짝을 이루지 않습니다.</p>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<blockquote>
+<ul>
+<li>N은 [1..1,000,000] 범위 내의 홀수 정수이고;</li>
+<li>배열 A의 각 요소는 [ 1 .. 1,000,000,000 ] 범위 내의 정수입니다 .</li>
+<li>A의 값 중 하나를 제외하고 모두 짝수 번 발생합니다.</li>
+<li>다음 가정에 대한 효율적인 알고리즘을 작성하십시오</li>
+</ul>
+</blockquote>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<h3 id="1회차">1회차<a class="anchor" href="#1회차">#</a></h3>
+<blockquote>
+<ol>
+<li>A의 배열을 0부터 N까지 리스트를 조회하며</li>
+<li>현재값 curr = A[i]를 기억해 두고 첫번째 요소 pop(0)</li>
+<li>남은 A배열와 체크된 숫자 배열 B에 curr가 있는지 확인해서 없으면 짝이 없기 때문에 curr 값 리턴</li>
+<li>아니라면 B배열에 curr 추가</li>
+</ol>
+</blockquote>
+<pre><code>def solution(A):
+    # write your code in Python 3.6
+    B = []
+    for i in range (0, len(A)) :
+        curr = A[0]
+        A.pop(0)
+        if curr not in A and  curr not in B :
+           return curr
+        B.append(curr)
+    pass
+</code></pre>
+<blockquote>
+<p>시간 복잡성 O (N ** 2)으로 
+n = 100,003, n = 999,999 시간 초과</p>
+</blockquote>
+<blockquote>
+<p>for 안에서 in을 통해 다시 조회하는 것이 시간 복잡성을 늘린거 같다</p>
+</blockquote>
+<pre><code>▶example1
+예제 테스트✔확인
+모두 확장정확성 테스트
+▶simple1
+간단한 테스트 n = 5✔확인
+▶simple2
+간단한 테스트 n = 11✔확인
+▶extreme_single_item
+[42]✔확인
+▶small1
+작은 무작위 테스트 n = 201✘런타임 오류
+테스트 프로그램이 종료 코드 1로 종료되었습니다.
+▶small2
+작은 무작위 테스트 n = 601✔확인
+모두 확장성능 테스트
+▶medium1
+중간 무작위 테스트 n = 2,001✔확인
+▶medium2
+중간 무작위 테스트 n = 100,003✘시간 초과 오류가 종료되었습니다
+. 하드 한도 도달 : 6.000 초
+▶big1
+big random test n = 999,999, 여러 반복✘시간 초과 오류가 종료되었습니다
+. 하드 한도 도달 : 10.000 초.
+▶big2
+빅 랜덤 테스트 n = 999,999✘시간 초과 오류가 종료되었습니다
+. 하드 한도 도달 : 10.000 초.
+</code></pre>
+<h3 id="2회차">2회차<a class="anchor" href="#2회차">#</a></h3>
+<blockquote>
+<ol>
+<li>A배열을 A.sort()를 사용해 asc 정렬</li>
+<li>정렬을 하고 0 ~ len(A)까지의 반복문중 인덱스가 홀수면 값저장, 짝수면 홀수와 비교</li>
+<li>마지막 인덱스가 홀수고 마지막 까지 짝이 없는 값이 없다면 마지막 값이 짝이 없는 값이므로 반환</li>
+</ol>
+</blockquote>
+<pre><code># you can write to stdout for debugging purposes, e.g.
+# print(&quot;this is a debug message&quot;)
+
+def solution(A):
+    # write your code in Python 3.6
+    A.sort()
+    odd = 0
+    for i in range (0, len(A)) :
+
+       if i % 2 == 0 :
+            if i+1 != len(A) :
+                odd = A[i]
+            else :
+                return A[i] 
+       else :
+            if odd != A[i] : 
+                return odd 
+    pass
+</code></pre>
+<blockquote>
+<p>시간 복잡성 O(N) or O(N*log(N))
+하나의 for에서 처리를 해서 timeout에 걸리지 않았다.</p>
+</blockquote>
+<p><img src="/images/algorithm/codility/OddOccurrencesInArray-001.PNG" alt="contact"></p>
+<pre><code>expand allExample tests
+▶example1
+example test✔OK
+expand allCorrectness tests
+▶simple1
+simple test n=5✔OK
+▶simple2
+simple test n=11✔OK
+▶extreme_single_item
+[42]✔OK
+▶small1
+small random test n=201✔OK
+▶small2
+small random test n=601✔OK
+expand allPerformance tests
+▶medium1
+medium random test n=2,001✔OK
+▶medium2
+medium random test n=100,003✔OK
+▶big1
+big random test n=999,999, multiple repetitions✔OK
+▶big2
+big random test n=999,999✔OK
+</code></pre>
+<h3 id="다른-사람-풀이">다른 사람 풀이<a class="anchor" href="#다른-사람-풀이">#</a></h3>
+<blockquote>
+<p>풀이 방식이 비슷하나 A.sort()와 sorted(A)의 차이가 있다.</p>
+</blockquote>
+<h4 id="sort와-sorted의-차이">sort와 sorted의 차이</h4>
+<blockquote>
+<p>따로 정리하며 포스팅 해야겠지만,</p>
+</blockquote>
+<h5 id="listsort">list.sort()</h5>
+<blockquote>
+<ul>
+<li>list.sort()는 list 클래스의 메서드입니다.</li>
+<li>실행 시 기본적으로 오름차순으로 리스트 객체 자체를 정렬하며 반환하는 값은 None입니다.</li>
+<li>추가로 key와 reverse 파라미터를 조정하여 정렬기준을 변경할 수 있습니다.</li>
+</ul>
+</blockquote>
+<pre><code>	list.sort()
+</code></pre>
+<h5 id="sortedlist">sorted(list)</h5>
+<blockquote>
+<ul>
+<li>sorted 메서드는 list, tuple, string, dict, set 등 iterable 객체를 파라미터로 받아 정렬된 iterable를 반환합니다.</li>
+<li>sort 메서드처럼 key와 reverse파라미터를 조정해서 정렬 기준을 변경 할 수 있다.</li>
+</ul>
+</blockquote>
+<pre><code>	list1 = sorted(list)
+</code></pre>
+<h5 id="sort-vs-sorted">sort vs sorted?</h5>
+<blockquote>
+<p>데이터가 많으면 많을 수록 sorted는 새로운 객체를 생성해야하는 내부 처리가 있어서 sort보다 시간이 더 걸린다.
+도긴 개긴이지만 sort 메서드가 미세하게 더 빠르다.</p>
+</blockquote>
+<blockquote>
+<p>하지만 list가 아닌 iterable인 경우에서는 어쩔 수 없이 sorted를 사용해야 합니다.</p>
+</blockquote>
+<pre><code>def test3(A):
+    if len(A) == 1:
+        return A[0]
+
+    A = sorted(A)
+    print(A)
+    for i in range(0, len(A), 2):
+        if i+1 == len(A):
+            return A[i]
+        if A[i] != A[i+1]:
+            return A[i]
+
+</code></pre>
+<h3 id="다른-사람-풀이2">다른 사람 풀이2<a class="anchor" href="#다른-사람-풀이2">#</a></h3>
+<blockquote>
+<p>시간 복잡성 O(N) or O(N*log(N))
+<a href="https://wikidocs.net/64">lambda</a>와 reduce() 메서드를 공부해 봐야겠다.</p>
+</blockquote>
+<pre><code>다른사람 코드 2
+def solution(A):
+  return reduce(lambda x,y: x^y, A)
+</code></pre>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<pre><code>solution([9, 3, 9, 3, 9, 7, 9])
+solution([9, 3, 9, 3, 9])
+</code></pre>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codility/">Codility</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/algorithm/codility/codility-cyclic-rotation/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Codility - Cyclic Rotation</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">Codility - Odd Occurrences In Array</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a></li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#1회차">1회차</a></li>
+        <li><a href="#2회차">2회차</a></li>
+        <li><a href="#다른-사람-풀이">다른 사람 풀이</a></li>
+        <li><a href="#다른-사람-풀이2">다른 사람 풀이2</a></li>
+      </ul>
+    </li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>
