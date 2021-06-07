@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 06 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codility - Frog Jmp</title>
+      <link>https://offetuoso.github.io/blog/algorithm/codility/codility-frog-jmp/</link>
+      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/algorithm/codility/codility-frog-jmp/</guid>
+      <description>Frog Jmp  Codility - Lesson3 - Time Complexity - Frog Jmp
+ Task description  세 개의 정수 X, Y, D를 입력받는 함수를 작성합니다.
+ X는 개구리의 위치 Y는 개구리의 목표 위치 Y는 개구리의 이동거리 위치 X에서 D씩 최소의 이동을 하여 목표를 Y에 도달하거나 넘어가기 위하여 이동하는 최소 횟수 반환    예를 들면 다음과 같습니다.
+  X = 10Y = 85D = 30  개구리는 다음과 같이 위치하므로 함수는 3을 반환해야합니다.</description>
+    </item>
+    
     <item>
       <title>Codility - Odd Occurrences In Array</title>
       <link>https://offetuoso.github.io/blog/algorithm/codility/codility-odd-occurrences-in-array/</link>
