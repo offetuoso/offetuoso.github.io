@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 06 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RESTful</title>
+      <link>https://offetuoso.github.io/categories/restful/</link>
+      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/categories/restful/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Algorithm</title>
       <link>https://offetuoso.github.io/categories/algorithm/</link>
@@ -23,15 +32,6 @@
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/categories/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RESTful</title>
-      <link>https://offetuoso.github.io/categories/restful/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/categories/restful/</guid>
       <description></description>
     </item>
     
