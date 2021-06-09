@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Codility - Frog Jmp | offetuoso&#39;s Blog</title>
+  <title>Codility - PermMissingElem | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="Frog Jmp">
+  <meta name="description" content="PermMissingElem">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Codility - Frog Jmp",
-      "headline" : "Codility - Frog Jmp",
-      "description" : "Frog Jmp",
+      "name" : "Codility - PermMissingElem",
+      "headline" : "Codility - PermMissingElem",
+      "description" : "PermMissingElem",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-06-07 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-06-07 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/codility\/codility-frog-jmp\/",
-      "wordCount" : "316",
+      "datePublished": "2021-06-09 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-06-09 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/codility\/perm-missing-elem\/",
+      "wordCount" : "152",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,122 +170,66 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Codility - Frog Jmp
+		            	Codility - PermMissingElem
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Codility - Frog Jmp
+		       	Codility - PermMissingElem
             </h1>		
-            <time datetime="2021-06-07 00:00:00 &#43;0000 UTC" class="post__date">2021-06-07</time> 
+            <time datetime="2021-06-09 00:00:00 &#43;0000 UTC" class="post__date">2021-06-09</time> 
           </header>
           <article class="post__content">
               
-<h1 id="frog-jmp">Frog Jmp</h1>
+<h1 id="perm-missing-elem">Perm Missing Elem</h1>
 <blockquote>
-<p>Codility - Lesson3 - Time Complexity - <a href="https://app.codility.com/programmers/lessons/3-time_complexity/frog_jmp/">Frog Jmp</a></p>
+<p>Codility - Lesson3 - PermMissingElem - <a href="https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/">Frog Jmp</a></p>
 </blockquote>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
 <blockquote>
-<p>세 개의 정수 X, Y, D를 입력받는 함수를 작성합니다.</p>
-<ul>
-<li>X는 개구리의 위치</li>
-<li>Y는 개구리의 목표 위치</li>
-<li>Y는 개구리의 이동거리 
-위치 X에서 D씩 최소의 이동을 하여 목표를 Y에 도달하거나 넘어가기 위하여 이동하는 최소 횟수 반환</li>
-</ul>
+<p>배열 A는 1 ~ N+1의 범위의 정수를 담고 있는 배열이며
+1 ~ N+1의 정수중 1개의 숫자(요소)가 빠져있다.</p>
 </blockquote>
 <blockquote>
 <p>예를 들면 다음과 같습니다.</p>
 </blockquote>
-<pre><code>  X = 10
-  Y = 85
-  D = 30
+<pre><code>  A[0] = 2
+  A[1] = 3
+  A[2] = 1
+  A[3] = 5
 </code></pre>
 <blockquote>
-<p>개구리는 다음과 같이 위치하므로 함수는 3을 반환해야합니다.</p>
+<p>1~5까지의 숫자중 4가 빠져 있기 때문에 4를 반환</p>
 </blockquote>
-<pre><code> 첫 번째 점프 후 위치 10 + 30 = 40
- 두 번째 점프 후 위치 10 + 30 + 30 = 70
- 세 번째 점프 후 위치 10 + 30 + 30 + 30 = 100
-</code></pre>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>def solution(X, Y, D)</li>
-<li>X, Y 및 D는 [ 1 .. 1,000,000,000 ] 범위 내의 정수입니다 .</li>
-<li>X ≤ Y.</li>
-<li>다음 가정에 대한 효율적인 알고리즘을 작성하십시오 .</li>
+<li>다음 가정에 대한 효율적인 알고리즘을 작성하십시오.</li>
+<li>N은 [ 0 .. 100,000 ] 범위 내의 정수입니다.</li>
+<li>A의 요소는 모두 구별됩니다.</li>
+<li>배열 A의 각 요소는 [1 .. (N + 1)] 범위 내의 정수입니다.</li>
 </ul>
 </blockquote>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <blockquote>
 <ol>
-<li>Y == X 이 경우 개구리가 뛸 필요가 없기 때문에 0을 반환 (이 테스트 케이스를 생각하지 못해서 틀렸었다.)</li>
-<li></li>
+<li>N은 배열의 길이+1 (인덱스가 0부터 시작하기 때문에 +1)</li>
+<li>Sum(range(N+1)) - Sum(A) (1 ~ N+1 까지의 합) - (배열의 요소의 합) = 1 부터 N+1 까지의 숫자중 빠진 수</li>
 </ol>
-<ul>
-<li>Y-X  = (목표위치 - 시작위치 =남은 거리)</li>
-<li>(Y-X) % D == 0 (&ldquo;남은 거리 // D가 0으로 떨어지는지 나머지가 있는지 조건&rdquo;)</li>
-<li>True(나머지 0) :  (Y-X) // D</li>
-<li>False(나머지 0아님) : ((Y-X) // D) + 1</li>
-</ul>
 </blockquote>
 <pre><code># you can write to stdout for debugging purposes, e.g.
 # print(&quot;this is a debug message&quot;)
 
 def solution(X, Y, D):
-    if (Y == X)   :
-        return 0
-    
-    return  (Y-X) % D == 0 and (Y-X) // D or ((Y-X) // D) + 1  
+    N = len(A)+1
+    return  sum (range(N+1)) - sum(A)
     pass
 </code></pre>
 <blockquote>
-<p>시간 복잡성 O(1)</p>
+<p>시간 복잡성 O(N) or O(N * log(N))</p>
 </blockquote>
-<p><img src="/images/algorithm/codility/FrogJmp-001.PNG" alt="contact"></p>
-<pre><code>▶example
-example test✔OK
-1.0.040 sOK
-collapse allCorrectness tests
-▶simple1
-simple test✔OK
-1.0.040 sOK
-2.0.040 sOK
-▶simple2✔OK
-1.0.040 sOK
-2.0.040 sOK
-▶extreme_position
-no jump needed✔OK
-1.0.040 sOK
-2.0.040 sOK
-▶small_extreme_jump
-one big jump✔OK
-1.0.040 sOK
-collapse allPerformance tests
-▶many_jump1
-many jumps, D = 2✔OK
-1.0.040 sOK
-▶many_jump2
-many jumps, D = 99✔OK
-1.0.040 sOK
-▶many_jump3
-many jumps, D = 1283✔OK
-1.0.040 sOK
-▶big_extreme_jump
-maximal number of jumps✔OK
-1.0.040 sOK
-▶small_jumps
-many small jumps✔OK
-1.0.040 sOK
-
-</code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>solution(10, 75, 30)
-solution(2, 2, 1)
-solution(1, 101, 10)
-</code></pre>
+<pre><code></code></pre>
 
 
               
@@ -310,17 +254,12 @@ solution(1, 101, 10)
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-3/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/algorithm/codility/codility-frog-jmp/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">RESTful API에 Docker Mysql 컨테이너와 Mybatis 연동</span>
+        <span class="pagination__title">Codility - Frog Jmp</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/algorithm/codility/perm-missing-elem/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Codility - PermMissingElem</span>
-    </a>
   
 </div>
 
@@ -390,7 +329,7 @@ solution(1, 101, 10)
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Codility - Frog Jmp</div> 
+          <div class="toc-post-title">Codility - PermMissingElem</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
