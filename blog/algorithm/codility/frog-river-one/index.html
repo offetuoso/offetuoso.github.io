@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Codility - TapeEquilibrium | offetuoso&#39;s Blog</title>
+  <title>Codility - FrogRiverOne | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="Tape Equilibrium">
+  <meta name="description" content="FrogRiverOne">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Codility - TapeEquilibrium",
-      "headline" : "Codility - TapeEquilibrium",
-      "description" : "Tape Equilibrium",
+      "name" : "Codility - FrogRiverOne",
+      "headline" : "Codility - FrogRiverOne",
+      "description" : "FrogRiverOne",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-06-10 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-06-10 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/codility\/tape-equilibrium\/",
-      "wordCount" : "415",
+      "datePublished": "2021-06-12 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-06-12 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/algorithm\/codility\/frog-river-one\/",
+      "wordCount" : "438",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,105 +170,109 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Codility - TapeEquilibrium
+		            	Codility - FrogRiverOne
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Codility - TapeEquilibrium
+		       	Codility - FrogRiverOne
             </h1>		
-            <time datetime="2021-06-10 00:00:00 &#43;0000 UTC" class="post__date">2021-06-10</time> 
+            <time datetime="2021-06-12 00:00:00 &#43;0000 UTC" class="post__date">2021-06-12</time> 
           </header>
           <article class="post__content">
               
-<h1 id="tape-equilibrium">Tape Equilibrium</h1>
+<h1 id="frogriverone">FrogRiverOne</h1>
 <blockquote>
-<p>Codility - Lesson3 - Time Complexity - <a href="https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/">TapeEquilibrium</a></p>
+<p>Codility - Lesson4 - Counting Elements - <a href="https://app.codility.com/programmers/lessons/4-counting_elements/frog_river_one/">FrogRiverOne</a></p>
 </blockquote>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
 <blockquote>
-<p>N 개의 정수로 구성된 비어 있지 않은 배열 A가 제공됩니다.
-0 &lt;P &lt;N 인 정수 P는이 배열 A를 두 부분으로 분할합니다 (A [0], A [1], &hellip;, A [P − 1] 및 A [P], A [ P + 1], &hellip;, A [N-1])
-분할 된 두 부분의 차이는 다음의 값입니다. | (A [0] + A [1] + &hellip; + A [P − 1]) − (A [P] + A [P + 1] + .. . + A [N − 1]) |
-즉, 첫 번째 부분의 합과 두 번째 부분의 합 사이의 절대 차이입니다.
-달성 할 수있는 최소 차이를 반환합니다.</p>
+<p>은 개구리가 강 건너편으로 가고 싶어합니다. 개구리는 처음에 강의 한 둑 (위치 0)에 있으며 반대쪽 둑 (위치 X + 1)에 도달하려고합니다. 잎은 나무에서 강 표면으로 떨어집니다.</p>
 </blockquote>
 <blockquote>
-<p>예를 들어, 다음과 같은 배열 A가 제공됩니다.</p>
+<p>엽을 나타내는 N 개의 정수로 구성된 배열 A가 제공됩니다. A[K]는 초 단위로 측정 된 시간 K에서 한 잎이 떨어지는 위치를 나타냅니다.</p>
 </blockquote>
-<pre><code>  A [0] = 3
-  A [1] = 1
-  A [2] = 2
+<blockquote>
+<p>는 개구리가 강 반대편으로 점프 할 수있는 가장 빠른 시간을 찾는 것입니다. 개구리는 잎이 1에서 X까지 강 건너 모든 위치에 나타날 때만 건널 수 있습니다 (즉, 1에서 X까지의 모든 위치가 잎으로 덮여있는 가장 빠른 순간을 찾고 싶습니다). 강의 흐름 속도가 무시할 정도로 작다고 가정 할 수 있습니다. 즉, 잎이 강에 떨어지면 위치가 바뀌지 않습니다.</p>
+</blockquote>
+<blockquote>
+<p>예를 들어, 다음과 같은 정수 X = 5 및 배열 A가 제공됩니다.</p>
+</blockquote>
+<pre><code>  A [0] = 1
+  A [1] = 3
+  A [2] = 1
   A [3] = 4
-  A [4] = 3
+  A [4] = 2
+  A [5] = 3
+  A [6] = 5
+  A [7] = 4
 </code></pre>
 <blockquote>
-<p>이 테이프들을 4곳으로 나눌 수 있습니다.</p>
+<p>번째 6에서는 잎이 위치 5로 떨어집니다. 이것은 잎이 강 건너 모든 위치에 나타나는 가장 빠른 시간입니다.</p>
 </blockquote>
 <blockquote>
-<ul>
-<li>P = 1, 차이 = | 3 − 10 | = 7    # A[0]  /////  A[1] A[2] A[3] A[4]</li>
-<li>P = 2, 차이 = | 4 − 9 | = 5     # A[0] A[1]  /////  A[2] A[3] A[4]</li>
-<li>P = 3, 차이 = | 6 − 7 | = 1     # A[0] A[1] A[2]  /////  A[3] A[4]</li>
-<li>P = 4, 차이 = | 10 − 3 | = 7    # A[0] A[1] A[2] A[3]  /////  A[4]</li>
-</ul>
+<p>N 개의 정수와 X로 구성된 비어 있지 않은 배열 A가 주어지면 개구리가 강 반대편으로 점프 할 수있는 가장 빠른 시간을 반환합니다.
+개구리가 강 반대편으로 점프 할 수없는 경우 함수는 −1을 반환해야합니다.</p>
 </blockquote>
 <blockquote>
-<p>N 정수의 비어 있지 않은 배열 A가 주어지면 달성 할 수있는 최소 차이를 반환합니다.</p>
+<p>예를 들어, 주어진 X = 5이고 배열 A는 다음과 같습니다.</p>
 </blockquote>
-<pre><code>  A [0] = 3
-  A [1] = 1
-  A [2] = 2
+<pre><code>  A [0] = 1
+  A [1] = 3
+  A [2] = 1
   A [3] = 4
-  A [4] = 3
+  A [4] = 2
+  A [5] = 3
+  A [6] = 5
+  A [7] = 4
 </code></pre>
 <blockquote>
-<p>함수는 위에서 설명한대로 1을 반환해야합니다.</p>
+<p>함수는 위에서 설명한대로 6을 반환해야합니다.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>다음 가정에 대한 효율적인 알고리즘을 작성하십시오.</li>
-<li>N은 [ 2 .. 100,000 ] 범위 내의 정수 이고;</li>
-<li>배열 A의 각 요소는 [ -1,000 .. 1,000 ] 범위 내의 정수 입니다.</li>
+<li>def solution(X, A)</li>
+<li>다음 가정에 대한 효율적인 알고리즘을 작성하십시오 .</li>
+<li>N 및 X는 [ 1 .. 100,000 ] 범위 내의 정수입니다 .</li>
+<li>배열 A의 각 요소는 [ 1 .. X ] 범위 내의 정수 입니다.</li>
 </ul>
 </blockquote>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<h3 id="시도-1">시도 1<a class="anchor" href="#시도-1">#</a></h3>
 <blockquote>
-<p>루프를 1번만 사용했지만, sum() 함수를 루프 안에서 처리 했더니 O(N * N)의 시간 복잡도가 나오게 되었다.</p>
+<ol>
+<li>total = sum(range(X+1))</li>
+<li>chked = [None for i in range(X)] 	# 체크 배열을 None으로 초기화 하여 생성</li>
+<li>루프로 A를 순회</li>
+<li>if( chked[A[i]-1]  == None) : #체크 배열에 값이 없는지 체크
+4-1. chked[A[i]-1]에 A[i] 세팅
+4-2. chk_sum에 A[i]을 합함</li>
+<li>if total == chk_sum :  #</li>
+</ol>
 </blockquote>
-<pre><code>def solution(A):
-    minimum = 99999
-    first = 0;
-    for i in range(0,len(A)-1) :
-        first += A[i]
-        minimum = min(minimum, abs(first-(sum(A)-first)))
-    return minimum
-</code></pre>
-<blockquote>
-<p>시간 복잡성 O(N * N)</p>
-</blockquote>
-<h3 id="시도-2">시도 2<a class="anchor" href="#시도-2">#</a></h3>
-<pre><code># you can write to stdout for debugging purposes, e.g.
+<pre><code>
+# you can write to stdout for debugging purposes, e.g.
 # print(&quot;this is a debug message&quot;)
 
-def solution(A):
-	minimum = 99999  # 가작작은 차이 값
-    first = 0;       # 첫번째 테이프 그룹
-    total = sum(A)   # A배열 전체의 합
-    for i in range(0,len(A)-1) :
-        first += A[i] # A[0]~A[i]까지의 합
-        second = total - first #first를 제외한 나머지 테이프의 합
-        minimum = min(minimum, abs(first - second)) #첫번째 그룹의 합과 두번째 그룹의 합의 차이중 가장작은것
-    return minimum
-
+def solution(X, A):
+    total = sum(range(X+1))			# 1~X 까지의 합을 생성
+    chked = [None for i in range(X)] 	# 체크 배열을 None으로 초기화 하여 생성
+    chk_sum = 0
+    for i in range(len(A)) :
+        if( chked[A[i]-1]  == None) : # 체크 배열에 값이 없는지 체크
+            chked[A[i]-1] = A[i]
+            chk_sum +=  A[i]
+            if total == chk_sum : 	# total과 chk_sum같다면 모든 1~X까지 찾은 상태이므로 현재의 i를 반환
+                return i
+        
+    if total != chk_sum :			# total과 chk_sum 다르다면 1~X까지의 찾은 숫자중에 나오지 않은 수가 있는것 
+        return -1
 </code></pre>
 <blockquote>
 <p>시간 복잡성 O(N)</p>
 </blockquote>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>solution([3,1,2,4,3])
+<pre><code>solution(5, [1,3,1,4,2,3,5,4])
 </code></pre>
 
 
@@ -294,17 +298,12 @@ def solution(A):
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/algorithm/codility/perm-missing-elem/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/algorithm/codility/tape-equilibrium/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Codility - PermMissingElem</span>
+        <span class="pagination__title">Codility - TapeEquilibrium</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/algorithm/codility/frog-river-one/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Codility - FrogRiverOne</span>
-    </a>
   
 </div>
 
@@ -374,17 +373,12 @@ def solution(A):
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Codility - TapeEquilibrium</div> 
+          <div class="toc-post-title">Codility - FrogRiverOne</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
     <li><a href="#condition">Condition</a></li>
-    <li><a href="#solution">Solution</a>
-      <ul>
-        <li><a href="#시도-1">시도 1</a></li>
-        <li><a href="#시도-2">시도 2</a></li>
-      </ul>
-    </li>
+    <li><a href="#solution">Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
   </ul>
 </nav>

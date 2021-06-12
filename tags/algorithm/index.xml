@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Thu, 10 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codility - FrogRiverOne</title>
+      <link>https://offetuoso.github.io/blog/algorithm/codility/frog-river-one/</link>
+      <pubDate>Sat, 12 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/algorithm/codility/frog-river-one/</guid>
+      <description>FrogRiverOne  Codility - Lesson4 - Counting Elements - FrogRiverOne
+ Task description  은 개구리가 강 건너편으로 가고 싶어합니다. 개구리는 처음에 강의 한 둑 (위치 0)에 있으며 반대쪽 둑 (위치 X + 1)에 도달하려고합니다. 잎은 나무에서 강 표면으로 떨어집니다.
+  엽을 나타내는 N 개의 정수로 구성된 배열 A가 제공됩니다. A[K]는 초 단위로 측정 된 시간 K에서 한 잎이 떨어지는 위치를 나타냅니다.
+  는 개구리가 강 반대편으로 점프 할 수있는 가장 빠른 시간을 찾는 것입니다.</description>
+    </item>
+    
     <item>
       <title>Codility - TapeEquilibrium</title>
       <link>https://offetuoso.github.io/blog/algorithm/codility/tape-equilibrium/</link>
