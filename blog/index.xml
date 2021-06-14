@@ -140,14 +140,12 @@
     </item>
     
     <item>
-      <title>Codility - Binary Gap</title>
-      <link>https://offetuoso.github.io/blog/algorithm/codility/codility-binary-gap/</link>
-      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      <title>RESTFULL API (RESTful API)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/test/restful-api-1/</link>
+      <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/algorithm/codility/codility-binary-gap/</guid>
-      <description>BinaryGap  Codility - Lesson1 - Iterations - BinaryGap
- Task description   정수 N을 입력받아 2진으로 변환 후 예를 들어 N = 1041이면 함수는 5를 반환해야합니다. N은 이진 표현 10000010001 이고 따라서 가장 긴 이진 간격은 길이 5이기 때문입니다.    N = 32이면 함수는 0을 반환해야합니다. N은 이진 표현 &amp;lsquo;100000&amp;rsquo;이므로 바이너리 갭이 없습니다.
- Condition   함수 작성 : class Solution {public int solution (int N); } N은 [ 1 .</description>
+      <guid>https://offetuoso.github.io/blog/develop/backend/test/restful-api-1/</guid>
+      <description>레스트풀 API(Restful Api) REST (Representational state transfer)  REST(Representational State Transfer)는 월드 와이드 웹과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다. REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개 엄격한 의미로 REST는 네트워크 아키텍처 원리의 모음이다. 여기서 &amp;lsquo;네트워크 아키텍처 원리&amp;rsquo;란 자원을 정의하고 자원에 대한 주소를 지정하는 방법 전반을 일컫는다. 간단한 의미로는, 웹 상의 자료를 HTTP위에서 SOAP이나 쿠키를 통한 세션 트랙킹 같은 별도의 전송 계층 없이 전송하기 위한 아주 간단한 인터페이스를 말한다.</description>
     </item>
     
     <item>

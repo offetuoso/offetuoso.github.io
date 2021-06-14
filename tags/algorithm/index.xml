@@ -80,17 +80,6 @@
     </item>
     
     <item>
-      <title>Codility - Binary Gap</title>
-      <link>https://offetuoso.github.io/blog/algorithm/codility/codility-binary-gap/</link>
-      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/algorithm/codility/codility-binary-gap/</guid>
-      <description>BinaryGap  Codility - Lesson1 - Iterations - BinaryGap
- Task description   정수 N을 입력받아 2진으로 변환 후 예를 들어 N = 1041이면 함수는 5를 반환해야합니다. N은 이진 표현 10000010001 이고 따라서 가장 긴 이진 간격은 길이 5이기 때문입니다.    N = 32이면 함수는 0을 반환해야합니다. N은 이진 표현 &amp;lsquo;100000&amp;rsquo;이므로 바이너리 갭이 없습니다.
- Condition   함수 작성 : class Solution {public int solution (int N); } N은 [ 1 .</description>
-    </item>
-    
-    <item>
       <title>탐색 알고리즘</title>
       <link>https://offetuoso.github.io/blog/algorithm/search/search-algorithm/</link>
       <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
