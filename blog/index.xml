@@ -140,15 +140,6 @@
     </item>
     
     <item>
-      <title>RESTFULL API (RESTful API)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/test/restful-api-1/</link>
-      <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/test/restful-api-1/</guid>
-      <description>레스트풀 API(Restful Api) REST (Representational state transfer)  REST(Representational State Transfer)는 월드 와이드 웹과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다. REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개 엄격한 의미로 REST는 네트워크 아키텍처 원리의 모음이다. 여기서 &amp;lsquo;네트워크 아키텍처 원리&amp;rsquo;란 자원을 정의하고 자원에 대한 주소를 지정하는 방법 전반을 일컫는다. 간단한 의미로는, 웹 상의 자료를 HTTP위에서 SOAP이나 쿠키를 통한 세션 트랙킹 같은 별도의 전송 계층 없이 전송하기 위한 아주 간단한 인터페이스를 말한다.</description>
-    </item>
-    
-    <item>
       <title>도커에 Mysql 올리기-1 (Docker Mysql)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/</link>
       <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
