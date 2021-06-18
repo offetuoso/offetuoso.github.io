@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>왕실의 기사 (구현 알고리즘) | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="코딩테스트 구현 알고리즘 왕실의 기사">
+  <meta name="keywords" content="Algorithm , CodingTest , Python , Java">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.b84b74a47189bf87edaaf9b236a68d3032f3112efebc12e139794a3554894b5a.css" integrity="sha256-uEt0pHGJv4ftqvmyNqaNMDLzES7&#43;vBLhOXlKNVSJS1o="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "왕실의 기사 (구현 알고리즘)",
+      "headline" : "왕실의 기사 (구현 알고리즘)",
+      "description" : "코딩테스트 구현 알고리즘 왕실의 기사",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-05-05 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-05-05 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/implements\/202105\/royal_knight\/",
+      "wordCount" : "555",
+      "keywords" : ["Algorithm", "CodingTest", "Python", "Java", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+			        
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	왕실의 기사 (구현 알고리즘)
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	왕실의 기사 (구현 알고리즘)
+            </h1>		
+            <time datetime="2021-05-05 00:00:00 &#43;0000 UTC" class="post__date">2021-05-05</time> 
+          </header>
+          <article class="post__content">
+              
+<h2 id="문제1-왕실의-기사">[문제1] 왕실의 기사<a class="anchor" href="#문제1-왕실의-기사">#</a></h2>
+<h3 id="문제-왕실의-기사--문제-설명">[문제] 왕실의 기사 : 문제 설명<a class="anchor" href="#문제-왕실의-기사--문제-설명">#</a></h3>
+<blockquote>
+<p>행복 왕국의 왕실 정원은 체스판과 같은 8 × 8 좌표 평면이다. 왕실 정원의 특정한 한 칸에 나이트가 서있다.
+나이트는 매우 충성스러운 신하로서 매일 무술을 연마한다
+나이트는 말을 타고 있기 때문에 이동을 할 때는 L자 형태로만 이동할 수 있으며 정원 밖으로는 나갈 수 없다
+나이트는 특정 위치에서 다음과 같은 2가지 경우로 이동할 수 있다</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>수평으로 두 칸 이동한 뒤에 수직으로 한 칸 이동하기</li>
+</ol>
+</blockquote>
+<ol start="2">
+<li>수직으로 두 칸 이동한 뒤에 수평으로 한 칸 이동하기</li>
+</ol>
+<p><img src="/images/royal_knight_1.png" alt="contact"></p>
+<blockquote>
+<p>이처럼 8 × 8 좌표 평면상에서 나이트의 위치가 주어졌을 때 나이트가 이동할 수 있는 경우의 수를 출력하는
+프로그램을 작성하라. 왕실의 정원에서 행 위치를 표현할 때는 1부터 8로 표현하며, 열 위치를 표현할 때는
+a 부터 h로 표현한다</p>
+</blockquote>
+<blockquote>
+<p>c2에 있을 때 이동할 수 있는 경우의 수는 6가지이다
+a1에 있을 때 이동할 수 있는 경우의 수는 2가지이다
+d4에 있을 때 이동할 수 있는 경우의 수는 8가지이다.</p>
+</blockquote>
+<p><img src="/images/royal_knight_2.png" alt="contact"></p>
+<h3 id="문제-조건">[문제] 조건<a class="anchor" href="#문제-조건">#</a></h3>
+<blockquote>
+<p>조건 
+풀이시간 20분 시간제한 1초, 메모리 128mb</p>
+</blockquote>
+<blockquote>
+<p>입력
+첫째 줄에 8x8 좌표 평면상에서 현재 나이트가 위치한 곳의 좌표를 나타내는 두 문자로 구성된 문자열이 입력된다. 입력 문자는 a1 처럼 열과 행으로 이뤄진다.</p>
+</blockquote>
+<blockquote>
+<p>출력
+첫째 줄에 나이트가 이동할 수 있는 경우의 수를 출력하시오.</p>
+</blockquote>
+<blockquote>
+<p>입력 예시
+a1</p>
+</blockquote>
+<blockquote>
+<p>출력 예시
+2</p>
+</blockquote>
+<h3 id="아이디어">아이디어<a class="anchor" href="#아이디어">#</a></h3>
+<blockquote>
+<ol>
+<li>모든 경우를 탐색하는 완전탐색 유형의 문제이다</li>
+<li>문자 -&gt; 아스키 코드를 반환 하는 ord(&lsquo;a&rsquo;) 를 알아야 한다.<br>
+참고 &lt;-&gt; chr(97)</li>
+</ol>
+</blockquote>
+<h3 id="royal_knightpy">royal_knight.py<a class="anchor" href="#royal_knightpy">#</a></h3>
+<pre><code>n = str(input())
+x = ord(n[0:1])
+y = n[1:2]
+
+#print(n[0:1])
+#print(n[1:2])
+#print(chr(104))
+#print(ord('a'))
+
+
+mv = [0 ,  1,  2,  3,  4,  5,  6,  7]
+dx = [-1, +1, +2, +2, +1, -1, -2, +2]
+dy = [-2, -2, -1, +1, +2, +2, +1, -1]
+
+count = 0
+
+for move in mv :
+   
+    if( ord('a') &lt;= int(x)+dx[move] &lt;= ord('h')
+        and 1 &lt;= int(y)+dy[move] &lt;= 8) :
+        count += 1
+
+
+print(count) 
+
+            
+</code></pre>
+<h3 id="royal_knight2py">royal_knight2.py<a class="anchor" href="#royal_knight2py">#</a></h3>
+<pre><code>input_data = input()
+
+row = input_data[1]
+column = int(ord(input_data[0]))- int(ord('a'))  +1
+
+steps = [(-2, -1), (-2, +1), (-1, +2),  (+1,+2),  (+2, +1),  (+2, -1),  (+1, -2),  (-1, +2)]
+
+count = 0
+
+
+for step in steps :
+    if( 1 &lt;= step[0]+int(row) &lt;= 8 and 1 &lt;= step[1]+int(column) &lt;= 8 ) :
+        count += 1
+
+print(count) 
+            
+</code></pre>
+<h3 id="파이썬-모범답안">파이썬 모범답안<a class="anchor" href="#파이썬-모범답안">#</a></h3>
+<pre><code>input_data = input()
+
+row = int(input_data[1])
+column = int(ord(input_data[0]))- int(ord('a'))  +1
+
+steps = [(-2, -1), (-2, +1), (-1, +2),  (+1,+2),  (+2, +1),  (+2, -1),  (+1, -2),  (-1, +2)]
+
+result = 0
+
+
+for step in steps :
+	next_row = step[0]+row
+	next_column = step[0]+column
+	
+    if( 1 &lt;= next_row &lt;= 8 and 1 &lt;= next_column &lt;= 8 ) :
+        result += 1
+
+print(result) 
+</code></pre>
+<h3 id="놓친-아이디어">놓친 아이디어<a class="anchor" href="#놓친-아이디어">#</a></h3>
+<blockquote>
+<ol>
+<li>input_data = input(), input_data[0],input_data[1] 로 접근 할 수 있는것을 더 복잡하게 잘라냈다.</li>
+<li>int(ord(input_data[0])) - int(ord(input_data[a])) + 1 을 사용하여 1 ~ 8로 더 간편히 조회가능.</li>
+<li>이동 관련해서 dx,dy 각각 배열을 만들었지만, row, column을 하나의 데이터로 묶어서 사용할 수도 있다.</li>
+</ol>
+</blockquote>
+<h3 id="royalknightjava">RoyalKnight.java<a class="anchor" href="#royalknightjava">#</a></h3>
+<pre><code>package ex.algorithm.implement;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RoyalKnight{
+	public static void main(String[] args) {
+		int result = 0;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String input_data = sc.nextLine();
+		
+		int row =  Integer.parseInt(input_data.substring(1,2));
+		int column =  (int)input_data.substring(0,1).charAt(0) - (int) 'a' + 1;
+		
+		ArrayList steps = new ArrayList&lt;ArrayList&lt;Integer[]&gt;&gt;();
+		
+		steps.add(new Integer[]{-2,-1});
+		steps.add(new Integer[]{-2,+1});
+		steps.add(new Integer[]{-1,+2});
+		steps.add(new Integer[]{+1,+2});
+		steps.add(new Integer[]{+2,+1});
+		steps.add(new Integer[]{+2,-1});
+		steps.add(new Integer[]{+1,-2});
+		steps.add(new Integer[]{-1,-2});
+		
+		for (Object obj : steps) {
+			Integer[] step = (Integer[])obj;
+			int next_row = row + step[0];
+			int next_column = column + step[1];
+			
+			if((1 &lt;= next_row &amp;&amp; next_row &lt;= 8) &amp;&amp; (1 &lt;= next_column &amp;&amp; next_column &lt;= 8)) {
+				result++;
+			}
+		}
+		
+		System.out.println(result);
+		
+	}
+}
+</code></pre>
+<p>이 자료는 나동빈님의 이코테 저서를 보고 정리한 자료입니다.</p>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/implements/">Implements</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B4%EC%BD%94%ED%85%8C/">이코테</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/git/202105/time/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Git 캐시 삭제</span>
+    </a>
+  
+
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/search/search-algorithm/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >탐색 알고리즘</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">왕실의 기사 (구현 알고리즘)</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#문제1-왕실의-기사">[문제1] 왕실의 기사</a>
+      <ul>
+        <li><a href="#문제-왕실의-기사--문제-설명">[문제] 왕실의 기사 : 문제 설명</a></li>
+        <li><a href="#문제-조건">[문제] 조건</a></li>
+        <li><a href="#아이디어">아이디어</a></li>
+        <li><a href="#royal_knightpy">royal_knight.py</a></li>
+        <li><a href="#royal_knight2py">royal_knight2.py</a></li>
+        <li><a href="#파이썬-모범답안">파이썬 모범답안</a></li>
+        <li><a href="#놓친-아이디어">놓친 아이디어</a></li>
+        <li><a href="#royalknightjava">RoyalKnight.java</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>
