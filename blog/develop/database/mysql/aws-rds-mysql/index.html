@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>AWS RDS에 MySQL 인스턴스 생성 후 연결 | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="AWS RDS를 이용한 Mysql">
+  <meta name="keywords" content="RDS">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.16c2e552c66baacd4b04c4a887e2f888e4268d2cfb917c50a226e6b3d8eb66a3.css" integrity="sha256-FsLlUsZrqs1LBMSoh&#43;L4iOQmjSz7kXxQoibms9jrZqM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "AWS RDS에 MySQL 인스턴스 생성 후 연결",
+      "headline" : "AWS RDS에 MySQL 인스턴스 생성 후 연결",
+      "description" : "AWS RDS를 이용한 Mysql",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-06-17 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-06-17 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/database\/mysql\/aws-rds-mysql\/",
+      "wordCount" : "234",
+      "keywords" : ["RDS", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+			        
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-aws.png');">
+            
+			      <div class="overlay" style="opacity:   0.7 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 30px;">
+		            	AWS RDS에 MySQL 인스턴스 생성 후 연결
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	AWS RDS에 MySQL 인스턴스 생성 후 연결
+            </h1>		
+            <time datetime="2021-06-17 00:00:00 &#43;0000 UTC" class="post__date">2021-06-17</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="aws-rds">AWS RDS</h1>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/000.png" alt="contact"></p>
+<h2 id="rds-서비스-생성">RDS 서비스 생성<a class="anchor" href="#rds-서비스-생성">#</a></h2>
+<blockquote>
+<p><a href="https://aws.amazon.com/ko/console/">AWS Management Console</a>에서 RDS 접속</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/001.png" alt="contact"></p>
+<h3 id="rds-데이터베이스-인스턴스-생성">RDS 데이터베이스 인스턴스 생성<a class="anchor" href="#rds-데이터베이스-인스턴스-생성">#</a></h3>
+<blockquote>
+<p>RDS에 MySQL <a href="https://ko.wikipedia.org/wiki/%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4_(%EC%BB%B4%ED%93%A8%ED%84%B0_%EA%B3%BC%ED%95%99)">인스턴스를</a> 생성한다.</p>
+</blockquote>
+<blockquote>
+<p>데이터베이스 생성 클릭</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/002.png" alt="contact"></p>
+<blockquote>
+<p>데이터베이스 생성</p>
+<ol>
+<li>표준 생성</li>
+<li>원하는 데이터베이스 선택</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/003.png" alt="contact"></p>
+<blockquote>
+<p>Mysql 버전 선택과 템플릿 설정</p>
+<ol>
+<li>Mysql Community</li>
+<li>Mysql 버전 선택 - MySQL 5.7.22</li>
+<li>템플릿 선택 -</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/004.png" alt="contact"></p>
+<blockquote>
+<p>DB 인스턴스 설정</p>
+<ol>
+<li>인스턴스명 추가</li>
+<li>DB에 접근할 계정 정보 입력</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/006.png" alt="contact"></p>
+<blockquote>
+<p>DB 인스턴스 크기</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/007.png" alt="contact"></p>
+<blockquote>
+<p>DB 인스턴스 크기</p>
+<ol>
+<li>스토리지 자동조정 해제 - 체크 해두면 자동 스토리지 증설로 인한 요금부과가 될 수 있습니다.</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/008.png" alt="contact"></p>
+<blockquote>
+<p>연결 설정</p>
+<ol>
+<li>추가 연결 구성 클릭후 펼치기</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/008-1.png" alt="contact"></p>
+<blockquote>
+<ol start="2">
+<li>외부 연결을 위한 퍼블릭 액세스 수정 - 예</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/008-2.png" alt="contact"></p>
+<blockquote>
+<p>데이터베이스 생성</p>
+</blockquote>
+<blockquote>
+<p>생성된 데이터베이스 인스턴스 확인
+<img src="/images/develop/backend/database/aws-rds-mysql/008-3.png" alt="contact"></p>
+</blockquote>
+<h3 id="파라미터-그룹-추가">파라미터 그룹 추가<a class="anchor" href="#파라미터-그룹-추가">#</a></h3>
+<blockquote>
+<p>데이터베이스의 문자 인코딩 관련 파라미터를 UTF-8로 설정을 한다.</p>
+</blockquote>
+<blockquote>
+<p>왼쪽 메뉴 파라미터 그룹 - 파라미터 그룹 생성</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/009.png" alt="contact"></p>
+<blockquote>
+<p>파라미터 그룹 생성</p>
+<ol>
+<li>생성한 MySQL 버전을 선택 - 잘못 선택되면 파라미터 그룹 선택 창에서 보이지 않음</li>
+<li>파라미터 정보 추가</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/019.png" alt="contact"></p>
+<blockquote>
+<p>생성된 파라미터 그룹명 클릭</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/020.png" alt="contact"></p>
+<blockquote>
+<p>파라미터 인코딩 수정</p>
+<ol>
+<li>cha 검색</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/021.png" alt="contact"></p>
+<blockquote>
+<p>1.1. utf8 선택 가능한 것들 모두 수정</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/022.png" alt="contact"></p>
+<blockquote>
+<ol start="2">
+<li>col 검색</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/023.png" alt="contact"></p>
+<blockquote>
+<p>2.1. utf8 선택 가능한 것들 모두 수정</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/024.png" alt="contact"></p>
+<blockquote>
+<p>생성된 데이터베이스 인스턴스 수정</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/024-1.png" alt="contact"></p>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/024-2.png" alt="contact"></p>
+<blockquote>
+<p>생성한 파라미터 그룹 선택</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/025.png" alt="contact"></p>
+<blockquote>
+<p>데이터베이스 인스턴스 수정</p>
+<ol>
+<li>수정 예약 - 즉시 적용</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>수정중</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/027.png" alt="contact"></p>
+<h3 id="보안-설정-인바운스">보안 설정 (인바운스)<a class="anchor" href="#보안-설정-인바운스">#</a></h3>
+<blockquote>
+<p>외부에서 접속이 안되는 경우 확인 해봐야 할것</p>
+<ol>
+<li>연결 - 퍼블릭액세스 (예)</li>
+<li>보안 - 인바운스 규칙</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>데이터베이스 - 인스턴스 - 수정</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/024-2.png" alt="contact"></p>
+<blockquote>
+<p>인바운스 default 클릭</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/037.png" alt="contact"></p>
+<blockquote>
+<p>보안그룹 클릭</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/038.png" alt="contact"></p>
+<blockquote>
+<p>인바운스 규칙 편집</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/039.png" alt="contact"></p>
+<blockquote>
+<p>인바운스 규칙 저장</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/041.png" alt="contact"></p>
+<h3 id="dbeaver-연결">DBeaver 연결<a class="anchor" href="#dbeaver-연결">#</a></h3>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/029.png" alt="contact"></p>
+<blockquote>
+<p>연결 생성</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/030.png" alt="contact"></p>
+<blockquote>
+<p>Server 정보 추가</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/031.png" alt="contact"></p>
+<blockquote>
+<ol>
+<li>Server Host는 생성한 RDS의 엔드포인트 입력</li>
+</ol>
+<ul>
+<li>RDS 왼쪽 메뉴 데이터베이스 - 인스턴스 - 연결및 보안</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/032.png" alt="contact"></p>
+<blockquote>
+<p>연결 완료</p>
+</blockquote>
+<p><img src="/images/develop/backend/database/aws-rds-mysql/042.png" alt="contact"></p>
+<h2 id="end">End<a class="anchor" href="#end">#</a></h2>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/aws/">AWS</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/rds/">RDS</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/mysql/">MySQL</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/codility/frog-river-one/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Codility - FrogRiverOne</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">AWS RDS에 MySQL 인스턴스 생성 후 연결</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rds-서비스-생성">RDS 서비스 생성</a>
+      <ul>
+        <li><a href="#rds-데이터베이스-인스턴스-생성">RDS 데이터베이스 인스턴스 생성</a></li>
+        <li><a href="#파라미터-그룹-추가">파라미터 그룹 추가</a></li>
+        <li><a href="#보안-설정-인바운스">보안 설정 (인바운스)</a></li>
+        <li><a href="#dbeaver-연결">DBeaver 연결</a></li>
+      </ul>
+    </li>
+    <li><a href="#end">End</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>
