@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 12 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codility - MaxCounter</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/max-counter/</link>
+      <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/max-counter/</guid>
+      <description>MaxCounter  Codility - Lesson4 - Counting Elements - MaxCounter
+ Task description  처음에는 0으로 설정된 N 개의 카운터가 제공되며 두 가지 가능한 작업이 있습니다.
+  증가 (X) -카운터 X가 1 증가합니다. 최대 카운터 -모든 카운터는 모든 카운터의 최대 값으로 설정됩니다. M 개의 정수로 구성된 비어 있지 않은 배열 A가 제공됩니다. 이 배열은 연속 작업을 나타냅니다.
+  A [K] = X, 즉 1 ≤ X ≤ N이면 연산 K는 증가 (X), A [K] = N + 1이면 작업 K는 최대 카운터입니다.</description>
+    </item>
+    
     <item>
       <title>Codility - FrogRiverOne</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/frog-river-one/</link>
