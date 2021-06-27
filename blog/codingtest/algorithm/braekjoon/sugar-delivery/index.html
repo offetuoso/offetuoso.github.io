@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Codility - MaxCounter | offetuoso&#39;s Blog</title>
+  <title>BAEKJOON - 설탕배달 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="MaxCounter">
+  <meta name="description" content="백준 설탕배달">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Codility - MaxCounter",
-      "headline" : "Codility - MaxCounter",
-      "description" : "MaxCounter",
+      "name" : "BAEKJOON - 설탕배달",
+      "headline" : "BAEKJOON - 설탕배달",
+      "description" : "백준 설탕배달",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-06-26 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-06-26 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/codility\/max-counter\/",
-      "wordCount" : "613",
+      "datePublished": "2021-06-27 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-06-27 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/sugar-delivery\/",
+      "wordCount" : "208",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,153 +170,110 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Codility - MaxCounter
+		            	BAEKJOON - 설탕배달
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Codility - MaxCounter
+		       	BAEKJOON - 설탕배달
             </h1>		
-            <time datetime="2021-06-26 00:00:00 &#43;0000 UTC" class="post__date">2021-06-26</time> 
+            <time datetime="2021-06-27 00:00:00 &#43;0000 UTC" class="post__date">2021-06-27</time> 
           </header>
           <article class="post__content">
               
-<h1 id="maxcounter">MaxCounter</h1>
-<blockquote>
-<p>Codility - Lesson4 - Counting Elements - <a href="https://app.codility.com/programmers/lessons/4-counting_elements/">MaxCounter</a></p>
-</blockquote>
+<h1 id="백준-2839-설탕배달">백준 2839 설탕배달</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
 <blockquote>
-<p>처음에는 0으로 설정된 N 개의 카운터가 제공되며 두 가지 가능한 작업이 있습니다.</p>
+<p>상근이는 요즘 설탕공장에서 설탕을 배달하고 있다. 상근이는 지금 사탕가게에 설탕을 정확하게 N킬로그램을 배달해야 한다. 설탕공장에서 만드는 설탕은 봉지에 담겨져 있다. 봉지는 3킬로그램 봉지와 5킬로그램 봉지가 있다.</p>
 </blockquote>
 <blockquote>
-<p>증가 (X) -카운터 X가 1 증가합니다.
-최대 카운터 -모든 카운터는 모든 카운터의 최대 값으로 설정됩니다.
-M 개의 정수로 구성된 비어 있지 않은 배열 A가 제공됩니다. 이 배열은 연속 작업을 나타냅니다.</p>
+<p>상근이는 귀찮기 때문에, 최대한 적은 봉지를 들고 가려고 한다. 예를 들어, 18킬로그램 설탕을 배달해야 할 때, 3킬로그램 봉지 6개를 가져가도 되지만, 5킬로그램 3개와 3킬로그램 1개를 배달하면, 더 적은 개수의 봉지를 배달할 수 있다.</p>
 </blockquote>
 <blockquote>
-<p>A [K] = X, 즉 1 ≤ X ≤ N이면 연산 K는 증가 (X), 
-A [K] = N + 1이면 작업 K는 최대 카운터입니다.
-예를 들어, 정수 N = 5이고 배열 A가 다음과 같은 경우 :</p>
-</blockquote>
-<pre><code>    A [0] = 3 
-    A [1] = 4 
-    A [2] = 4 
-    A [3] = 6 
-    A [4] = 1 
-    A [5] = 4 
-    A [6] = 4
-</code></pre>
-<blockquote>
-<p>각 연속 작업 후 카운터 값은 다음과 같습니다.</p>
-</blockquote>
-<pre><code>    (0, 0, 1, 0, 0) 
-    (0, 0, 1, 1, 0) 
-    (0, 0, 1, 2, 0) 
-    (2, 2, 2, 2, 2) 
-    (3, 2, 2 , 2, 2) 
-    (3, 2, 2, 3, 2) 
-    (3, 2, 2, 4, 2)
-</code></pre>
-<blockquote>
-<p>목표는 모든 작업 후 모든 카운터의 값을 계산하는 것입니다.</p>
-</blockquote>
-<blockquote>
-<p>정수 N과 M 개의 정수로 구성된 비어 있지 않은 배열 A가 주어지면 카운터 값을 나타내는 정수 시퀀스를 반환합니다.
-결과 배열은 정수 배열로 반환되어야합니다.
-예를 들면 다음과 같습니다.</p>
-</blockquote>
-<pre><code>    A [0] = 3 
-    A [1] = 4 
-    A [2] = 4 
-    A [3] = 6 
-    A [4] = 1 
-    A [5] = 4 
-    A [6] = 4
-</code></pre>
-<blockquote>
-<p>함수는 위에서 설명한대로 [3, 2, 2, 4, 2]를 반환해야합니다.</p>
+<p>상근이가 설탕을 정확하게 N킬로그램 배달해야 할 때, 봉지 몇 개를 가져가면 되는지 그 수를 구하는 프로그램을 작성하시오.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>def solution(N, A)</li>
-<li>다음 가정에 대한 효율적인 알고리즘을 작성하십시오 .</li>
-<li>N은 [ 1 .. 100,000 ] 범위 내의 정수입니다 .</li>
-<li>배열 A의 각 요소는 [ 1 .. N + 1 ] 범위 내의 정수 입니다.</li>
+<li>첫째 줄에 N이 주어진다. (3 ≤ N ≤ 5000)</li>
 </ul>
 </blockquote>
+<blockquote>
+<p>입력예시
+18</p>
+</blockquote>
+<blockquote>
+<p>출력예시
+4</p>
+</blockquote>
+<blockquote>
+<p>입력예시
+4</p>
+</blockquote>
+<blockquote>
+<p>출력예시
+-1</p>
+</blockquote>
+<blockquote>
+<p>입력예시
+6</p>
+</blockquote>
+<blockquote>
+<p>출력예시
+2</p>
+</blockquote>
+<blockquote>
+<p>입력예시
+9</p>
+</blockquote>
+<blockquote>
+<p>출력예시
+3</p>
+</blockquote>
+<blockquote>
+<p>입력예시
+11</p>
+</blockquote>
+<blockquote>
+<p>출력예시
+3</p>
+</blockquote>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<blockquote>
-<p>이번 문제 풀이의 핵심은 increase(X) 보다, max counter를 루프를 돌지 않고 해결하는가 였습니다. 
-카운트는 0부터 값을 세지만, max counter 이후에는 max counter 시점의 최대 카운트 값부터 다시 카운트를 세고,
-max counter 시점의 최대 카운트 값을 모든 배열에 적용 후 각각의 카운트 값(다시 카운트를 센 카운트 값)을 더해주면 
-루프 없이 해결할 수 있습니다.</p>
-</blockquote>
-<blockquote>
-<ol>
-<li>count라는 딕셔너리를 생성</li>
-<li>배열 A를 루프로 선회하며, 값은 X (A[K])</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="3">
-<li>increase(X) 기능 (1 &lt;= X &lt;= N 일때)
-&gt; - count에 키가 X인 딕셔너리가 없으면 0으로 생성
-&gt; - count<input checked="" disabled="" type="checkbox"> 1증가
-&gt; - max_count(현재 최대 카운트) 값 구함</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="4">
-<li>1 &lt;= X &lt;= N 아닌 ( N+1 == X) 경우
-&gt; - max counter 실행시 최대 카운트 세팅 
-&gt; - 모든 count 값 삭제
-&gt; - 현재 최대 카운트 값 0으로 초기화</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol start="5">
-<li>N개의 요소를 가지는 결과 배열을 max_value(max counter 실행시 최대 카운트) 값으로 생성</li>
-<li>count 딕셔너리로 루프 
-&gt; - max_value 부터 추가된 count<input checked="" disabled="" type="checkbox"> 의 값 결과 배열 result[X-1]에 세팅 # -1 은 인덱스 번호로 변경 0~ X-1</li>
-</ol>
-</blockquote>
-<pre><code>
-# you can write to stdout for debugging purposes, e.g.
-# print(&quot;this is a debug message&quot;)
+<pre><code>N = int(input())
+a = N//5
+aa = N%5
 
-def solution(N, A):
-    count = {}
+result = 0
 
-    max_count = 0 # 현재 최대 카운트 값
-    max_value = 0 # max counter 이후에는 max counter 시점의 최대 카운트 값
+if aa == 0 :
+    result += a
+else : 
+    if a == 0 and not N % 3 == 0 :
+        result = -1
 
-    for X in A :
+    elif aa%3 == 0 : 
+        result = a
+        result += aa // 3
+    else :
+        for i in range(1, a+1) :
+            if (aa+(5*i)) %3 == 0 :
+                result = (a-i)
+                result += (aa+(5*i)) // 3
+                break
+            else :
+                if i == a :
+                    result = -1
+                    break
 
-        if 1 &lt;= X &lt;= N : 	# increase(X) 기능 (1 &lt;= X &lt;= N 일때)
-            if  count.get(X) is None :				# count에 키가 X인 딕셔너리가 없으면 0으로 생성
-                count[X] = 0
-            count[X] += 1							# count[X] 1증가
-            max_count = max(count[X], max_count)        	# 현재 최대 카운트 값 구함    
-            
-        else : 			# max counter 기능 (N+1 == X인 경우)
-            max_value += max_count					# max counter 실행시 최대 카운트 세팅 
-            count.clear()							# 모든 count 값 삭제
-            max_count = 0							# 현재 최대 카운트 값 0으로 초기화
+print(result)
 
-    result = [max_value] * N 						# N개의 요소를 가지는 결과 배열을 max_value(max counter 실행시 최대 카운트) 값으로 생성
-
-    for X, value in count.items() :
-        result[X-1] += value						# max_value 부터 추가된 count[X]의 값 결과 배열 result[X-1]에 세팅 # -1 은 인덱스 번호로 변경 0~ X-1
-
-    return result
 </code></pre>
-<blockquote>
-<p>시간 복잡성 O(N + M)</p>
-</blockquote>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>solution(5,[3,4,4,6,1,4,4])
+<pre><code>18 #4
+4  #-1
+6  #2
+9  #3
+11 #3
 </code></pre>
 
 
@@ -336,23 +293,18 @@ def solution(N, A):
         <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/codility/">Codility</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/baekjoon/">BAEKJOON</a>
     </li></ul>
 
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/database/tech/sharding/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/codility/max-counter/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">샤딩(Sharding)</span>
+        <span class="pagination__title">Codility - MaxCounter</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/sugar-delivery/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >BAEKJOON - 설탕배달</span>
-    </a>
   
 </div>
 
@@ -422,7 +374,7 @@ def solution(N, A):
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Codility - MaxCounter</div> 
+          <div class="toc-post-title">BAEKJOON - 설탕배달</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
