@@ -76,7 +76,7 @@
       "datePublished": "2021-06-27 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-06-27 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/sugar-delivery\/",
-      "wordCount" : "208",
+      "wordCount" : "398",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -198,70 +198,85 @@
 <li>첫째 줄에 N이 주어진다. (3 ≤ N ≤ 5000)</li>
 </ul>
 </blockquote>
-<blockquote>
-<p>입력예시
-18</p>
-</blockquote>
-<blockquote>
-<p>출력예시
-4</p>
-</blockquote>
-<blockquote>
-<p>입력예시
-4</p>
-</blockquote>
-<blockquote>
-<p>출력예시
--1</p>
-</blockquote>
-<blockquote>
-<p>입력예시
-6</p>
-</blockquote>
-<blockquote>
-<p>출력예시
-2</p>
-</blockquote>
-<blockquote>
-<p>입력예시
-9</p>
-</blockquote>
-<blockquote>
-<p>출력예시
-3</p>
-</blockquote>
-<blockquote>
-<p>입력예시
-11</p>
-</blockquote>
-<blockquote>
-<p>출력예시
-3</p>
-</blockquote>
+<h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>input</th>
+<th>ouput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>18</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>9</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>11</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<blockquote>
+<ol>
+<li>5로 최대한 나눈다.</li>
+<li>5로 나누어 몫이 0인경우, 0이 아닌경우로 나누어진다. <br>
+1. 5로 나누어 <mark>몫이 0인경우 5의 배수이므로 5로 나눈 값(division) 이 결과</mark></li>
+<li>5로 나누어 몫이 아닌경우 <br>
+1. <mark>5로 나눌수 없고(값이 0) 3으로 나누어 떨어지지 않는경우 -1 이 결과</mark>  <br>
+2. 5로 나눈 몫을 3으로 나누어 몫이 0인 경우 <mark>5로 나눈 값(division)와 5로 나눈 몫을 3으로 나눈 값(quotient//3)을 더한 값이  	결과</mark> ; 
+3. 5로 나눈 몫을 3으로 나누어 몫이 0이 아닌경우 1~ 5로 나눈 값 까지 루프를 생성
+1. <mark>5로 나눈것을 1단계씩 되돌려, 3으로 나누어 몫이 0으로 나누어 떨어지는 값 찾으면, (division-i)+(quotient+(5*i)) 이 값</mark>
+2. 끝까지 못찾았을때 -1이 결과</li>
+</ol>
+</blockquote>
 <pre><code>N = int(input())
-a = N//5
-aa = N%5
+division = N//5 # 5로 나눈 값
+quotient = N%5  # 5로 나눈 몫
 
 result = 0
 
-if aa == 0 :
-    result += a
-else : 
-    if a == 0 and not N % 3 == 0 :
+if quotient == 0 : # 5로 나누어 떨어지면 
+    result = division # 5로 나눈 값이 결과
+    
+else : 			# 5로 나누어 몫이 남는 경우
+
+    if division == 0 and not N % 3 == 0 :	# 5로 나눌수 없고(값이 0) 3으로 나누어 떨어지지 않는경우 -1 이 결과
         result = -1
 
-    elif aa%3 == 0 : 
-        result = a
-        result += aa // 3
-    else :
-        for i in range(1, a+1) :
-            if (aa+(5*i)) %3 == 0 :
-                result = (a-i)
-                result += (aa+(5*i)) // 3
+    elif quotient%3 == 0 : 				# 5로 나눈 몫을 3으로 나누어 몫이 0인 경우 &lt;mark&gt;5로 나눈 값(division)와 5로 나눈 몫을 3으로 나눈 값(quotient//3)을 더한 값이 결과
+        result = division
+        result += quotient // 3
+        
+    else :							# 5로 나눈 몫을 3으로 나누어 몫이 0이 아닌경우
+        for i in range(1, division+1) : 	# 1~ 5로 나눈 값 까지 루프
+        
+            if (quotient+(5*i)) %3 == 0 :	# 5로 나눈것을 1단계씩 되돌려, 3으로 나누어 몫이 0으로 나누어 떨어지는 값 찾으면, (division-i)+(quotient+(5*i)) 이 값
+                result = (division-i) 	
+                result += (quotient+(5*i)) // 3
                 break
+                
             else :
-                if i == a :
+                if i == division :	# 끝까지 못찾았을때 -1이 결과
                     result = -1
                     break
 
@@ -379,6 +394,7 @@ print(result)
   <ul>
     <li><a href="#task-description">Task description</a></li>
     <li><a href="#condition">Condition</a></li>
+    <li><a href="#input-output">input output</a></li>
     <li><a href="#solution">Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
   </ul>
