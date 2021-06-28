@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 27 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Codility - PermCheck</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/perm-check/</link>
+      <pubDate>Mon, 28 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/perm-check/</guid>
+      <description>PermCheck  Codility - Lesson4 - Counting Elements - PermCheck
+ Task description  N 개의 정수로 구성된 비어 있지 않은 배열 A가 제공됩니다.
+순열은 1부터 N까지의 각 요소를 한 번만 포함하는 시퀀스입니다. 예를 들어 배열 A는 다음과 같습니다.
+  A [0] = 4A [1] = 1A [2] = 3A [3] = 2  순열이지만 배열 A는 다음과 같습니다.
+  A [0] = 4A [1] = 1A [2] = 3  값 2가 없기 때문에 순열이 아닙니다.</description>
+    </item>
+    
     <item>
       <title>BAEKJOON - 설탕배달</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/sugar-delivery/</link>

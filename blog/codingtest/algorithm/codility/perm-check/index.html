@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>BAEKJOON - 설탕배달 | offetuoso&#39;s Blog</title>
+  <title>Codility - PermCheck | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="백준 설탕배달">
+  <meta name="description" content="PermCheck">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "BAEKJOON - 설탕배달",
-      "headline" : "BAEKJOON - 설탕배달",
-      "description" : "백준 설탕배달",
+      "name" : "Codility - PermCheck",
+      "headline" : "Codility - PermCheck",
+      "description" : "PermCheck",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-06-27 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-06-27 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/sugar-delivery\/",
-      "wordCount" : "398",
+      "datePublished": "2021-06-28 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-06-28 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/codility\/perm-check\/",
+      "wordCount" : "263",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,125 +170,108 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	BAEKJOON - 설탕배달
+		            	Codility - PermCheck
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	BAEKJOON - 설탕배달
+		       	Codility - PermCheck
             </h1>		
-            <time datetime="2021-06-27 00:00:00 &#43;0000 UTC" class="post__date">2021-06-27</time> 
+            <time datetime="2021-06-28 00:00:00 &#43;0000 UTC" class="post__date">2021-06-28</time> 
           </header>
           <article class="post__content">
               
-<h1 id="백준-2839-설탕배달">백준 2839 설탕배달</h1>
+<h1 id="permcheck">PermCheck</h1>
+<blockquote>
+<p>Codility - Lesson4 - Counting Elements - <a href="https://app.codility.com/programmers/lessons/4-counting_elements/perm_check/">PermCheck</a></p>
+</blockquote>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
 <blockquote>
-<p>상근이는 요즘 설탕공장에서 설탕을 배달하고 있다. 상근이는 지금 사탕가게에 설탕을 정확하게 N킬로그램을 배달해야 한다. 설탕공장에서 만드는 설탕은 봉지에 담겨져 있다. 봉지는 3킬로그램 봉지와 5킬로그램 봉지가 있다.</p>
+<p>N 개의 정수로 구성된 비어 있지 않은 배열 A가 제공됩니다.<br>
+순열은 1부터 N까지의 각 요소를 한 번만 포함하는 시퀀스입니다. <br>
+예를 들어 배열 A는 다음과 같습니다.</p>
+</blockquote>
+<pre><code>    A [0] = 4
+    A [1] = 1
+    A [2] = 3
+    A [3] = 2
+</code></pre>
+<blockquote>
+<p>순열이지만 배열 A는 다음과 같습니다.</p>
+</blockquote>
+<pre><code>    A [0] = 4
+    A [1] = 1
+    A [2] = 3
+</code></pre>
+<blockquote>
+<p>값 2가 없기 때문에 순열이 아닙니다.</p>
 </blockquote>
 <blockquote>
-<p>상근이는 귀찮기 때문에, 최대한 적은 봉지를 들고 가려고 한다. 예를 들어, 18킬로그램 설탕을 배달해야 할 때, 3킬로그램 봉지 6개를 가져가도 되지만, 5킬로그램 3개와 3킬로그램 1개를 배달하면, 더 적은 개수의 봉지를 배달할 수 있다.</p>
+<p>목표는 배열 A가 순열인지 확인하는 것입니다.</p>
 </blockquote>
 <blockquote>
-<p>상근이가 설탕을 정확하게 N킬로그램 배달해야 할 때, 봉지 몇 개를 가져가면 되는지 그 수를 구하는 프로그램을 작성하시오.</p>
+<p>배열 A가 주어지면 배열 A가 순열이면 1을 반환하고 그렇지 않으면 0을 반환합니다.<br>
+예를 들어 다음과 같은 배열 A가 있습니다.</p>
+</blockquote>
+<pre><code>    A [0] = 4
+    A [1] = 1
+    A [2] = 3
+    A [3] = 2
+</code></pre>
+<blockquote>
+<p>함수는 1을 반환해야합니다. <br>
+주어진 배열 A는 다음과 같습니다.</p>
+</blockquote>
+<pre><code>    A [0] = 4
+    A [1] = 1
+    A [2] = 3
+</code></pre>
+<blockquote>
+<p>함수는 0을 반환해야합니다.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>첫째 줄에 N이 주어진다. (3 ≤ N ≤ 5000)</li>
+<li>다음 가정에 대한 효율적인 알고리즘을 작성하십시오 .</li>
+<li>def solution(A)</li>
+<li>N은 [ 1 .. 100,000 ] 범위 내의 정수입니다 .</li>
+<li>배열 A의 각 요소는 [ 1 .. 1,000,000,000 ] 범위 내의 정수 입니다.</li>
 </ul>
 </blockquote>
-<h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>case</th>
-<th>input</th>
-<th>ouput</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>18</td>
-<td>4</td>
-</tr>
-<tr>
-<td>2</td>
-<td>4</td>
-<td>-1</td>
-</tr>
-<tr>
-<td>3</td>
-<td>6</td>
-<td>2</td>
-</tr>
-<tr>
-<td>4</td>
-<td>9</td>
-<td>3</td>
-</tr>
-<tr>
-<td>5</td>
-<td>11</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<blockquote>
-<ol>
-<li>5로 최대한 나눈다.</li>
-<li>5로 나누어 몫이 0인경우, 0이 아닌경우로 나누어진다. <br>
-1. 5로 나누어 <mark>몫이 0인경우 5의 배수이므로 5로 나눈 값(division) 이 결과</mark></li>
-<li>5로 나누어 몫이 아닌경우 <br>
-1. <mark>5로 나눌수 없고(값이 0) 3으로 나누어 떨어지지 않는경우 -1 이 결과</mark>  <br>
-2. 5로 나눈 몫을 3으로 나누어 몫이 0인 경우 <mark>5로 나눈 값(division)와 5로 나눈 몫을 3으로 나눈 값(quotient//3)을 더한 값이  	결과</mark> ; 
-3. 5로 나눈 몫을 3으로 나누어 몫이 0이 아닌경우 1~ 5로 나눈 값 까지 루프를 생성
-1. <mark>5로 나눈것을 1단계씩 되돌려, 3으로 나누어 몫이 0으로 나누어 떨어지는 값 찾으면, (division-i)+(quotient+(5*i)) 이 값</mark>
-2. 끝까지 못찾았을때 -1이 결과</li>
-</ol>
-</blockquote>
-<pre><code>N = int(input())
-division = N//5 # 5로 나눈 값
-quotient = N%5  # 5로 나눈 몫
+<pre><code>
+# you can write to stdout for debugging purposes, e.g.
+# print(&quot;this is a debug message&quot;)
 
-result = 0
-
-if quotient == 0 : # 5로 나누어 떨어지면 
-    result = division # 5로 나눈 값이 결과
+def solution(A):
+    length = len(A)
+    A = list(set(A))
+    A.sort()
+    #print(A)
     
-else : 			# 5로 나누어 몫이 남는 경우
+    N = A[-1]
+    B =  N*(N+1)//2
+    
+    if B == sum(A) and length == A[-1]: 
+            return 1
+    else :
+        return 0
+    
+    pass
 
-    if division == 0 and not N % 3 == 0 :	# 5로 나눌수 없고(값이 0) 3으로 나누어 떨어지지 않는경우 -1 이 결과
-        result = -1
-
-    elif quotient%3 == 0 : 				# 5로 나눈 몫을 3으로 나누어 몫이 0인 경우 &lt;mark&gt;5로 나눈 값(division)와 5로 나눈 몫을 3으로 나눈 값(quotient//3)을 더한 값이 결과
-        result = division
-        result += quotient // 3
-        
-    else :							# 5로 나눈 몫을 3으로 나누어 몫이 0이 아닌경우
-        for i in range(1, division+1) : 	# 1~ 5로 나눈 값 까지 루프
-        
-            if (quotient+(5*i)) %3 == 0 :	# 5로 나눈것을 1단계씩 되돌려, 3으로 나누어 몫이 0으로 나누어 떨어지는 값 찾으면, (division-i)+(quotient+(5*i)) 이 값
-                result = (division-i) 	
-                result += (quotient+(5*i)) // 3
-                break
-                
-            else :
-                if i == division :	# 끝까지 못찾았을때 -1이 결과
-                    result = -1
-                    break
-
-print(result)
-
+#solution([4,1,3,2])
+#solution([2,2,8])
+#solution([9, 5, 7, 3, 2, 7, 3, 1, 10, 8])
+#solution([1,1])
 </code></pre>
+<blockquote>
+<p>시간 복잡성 O(N) or O(N * log(N))</p>
+</blockquote>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>18 #4
-4  #-1
-6  #2
-9  #3
-11 #3
+<pre><code>#solution([4,1,3,2])
+#solution([2,2,8])
+#solution([9, 5, 7, 3, 2, 7, 3, 1, 10, 8]) &lt;&lt; 순열이 아닌경우
+#solution([1,1]) &lt;&lt; 순열이 아닌경우2 (중복제거 해도 문제)
 </code></pre>
 
 
@@ -308,23 +291,18 @@ print(result)
         <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/baekjoon/">BAEKJOON</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codility/">Codility</a>
     </li></ul>
 
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/codility/max-counter/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/sugar-delivery/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Codility - MaxCounter</span>
+        <span class="pagination__title">BAEKJOON - 설탕배달</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/codility/perm-check/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Codility - PermCheck</span>
-    </a>
   
 </div>
 
@@ -394,12 +372,11 @@ print(result)
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">BAEKJOON - 설탕배달</div> 
+          <div class="toc-post-title">Codility - PermCheck</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
     <li><a href="#condition">Condition</a></li>
-    <li><a href="#input-output">input output</a></li>
     <li><a href="#solution">Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
   </ul>
