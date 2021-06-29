@@ -9,6 +9,18 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Sun, 27 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/baekjoon/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>BAEKJOON - OX 퀴즈</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/ox-quiz/</link>
+      <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/ox-quiz/</guid>
+      <description>백준 8958 ox quiz Task description  &amp;ldquo;OOXXOXXOOO&amp;quot;와 같은 OX퀴즈의 결과가 있다. O는 문제를 맞은 것이고, X는 문제를 틀린 것이다. 문제를 맞은 경우 그 문제의 점수는 그 문제까지 연속된 O의 개수가 된다. 예를 들어, 10번 문제의 점수는 3이 된다.
+  &amp;ldquo;OOXXOXXOOO&amp;quot;의 점수는 1+2+0+0+1+0+0+1+2+3 = 10점이다.
+  OX퀴즈의 결과가 주어졌을 때, 점수를 구하는 프로그램을 작성하시오.
+ Condition   첫째 줄에 테스트 케이스의 개수가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있다.</description>
+    </item>
+    
+    <item>
       <title>BAEKJOON - 설탕배달</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/sugar-delivery/</link>
       <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
