@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>BAEKJOON - OX 퀴즈 | offetuoso&#39;s Blog</title>
+  <title>BAEKJOON - 셀프 넘버 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="백준 OX 퀴즈">
+  <meta name="description" content="백준 셀프 넘버">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "BAEKJOON - OX 퀴즈",
-      "headline" : "BAEKJOON - OX 퀴즈",
-      "description" : "백준 OX 퀴즈",
+      "name" : "BAEKJOON - 셀프 넘버",
+      "headline" : "BAEKJOON - 셀프 넘버",
+      "description" : "백준 셀프 넘버",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-06-29 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-06-29 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/ox-quiz\/",
-      "wordCount" : "241",
+      "datePublished": "2021-06-30 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-06-30 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/self-number\/",
+      "wordCount" : "352",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,89 +170,115 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	BAEKJOON - OX 퀴즈
+		            	BAEKJOON - 셀프 넘버
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	BAEKJOON - OX 퀴즈
+		       	BAEKJOON - 셀프 넘버
             </h1>		
-            <time datetime="2021-06-29 00:00:00 &#43;0000 UTC" class="post__date">2021-06-29</time> 
+            <time datetime="2021-06-30 00:00:00 &#43;0000 UTC" class="post__date">2021-06-30</time> 
           </header>
           <article class="post__content">
               
-<h1 id="백준-8958-ox-quiz">백준 8958 ox quiz</h1>
+<h1 id="백준-4673-self-number">백준 4673 Self Number</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
 <blockquote>
-<p>&ldquo;OOXXOXXOOO&quot;와 같은 OX퀴즈의 결과가 있다. O는 문제를 맞은 것이고, X는 문제를 틀린 것이다. 문제를 맞은 경우 그 문제의 점수는 그 문제까지 연속된 O의 개수가 된다. 예를 들어, 10번 문제의 점수는 3이 된다.</p>
+<p>문제
+셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. <br>
+양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. <br>
+예를 들어, d(75) = 75+7+5 = 87이다.</p>
 </blockquote>
 <blockquote>
-<p>&ldquo;OOXXOXXOOO&quot;의 점수는 1+2+0+0+1+0+0+1+2+3 = 10점이다.</p>
+<p>양의 정수 n이 주어졌을 때, 이 수를 시작해서 <br>
+n, d(n), d(d(n)), d(d(d(n))), &hellip;과 같은 무한 수열을 만들 수 있다.</p>
 </blockquote>
 <blockquote>
-<p>OX퀴즈의 결과가 주어졌을 때, 점수를 구하는 프로그램을 작성하시오.</p>
+<p>예를 들어, 33으로 시작한다면 다음 수는 33 + 3 + 3 = 39이고, <br>
+그 다음 수는 39 + 3 + 9 = 51, 다음 수는 51 + 5 + 1 = 57이다. <br>
+이런식으로 다음과 같은 수열을 만들 수 있다.<br></p>
+</blockquote>
+<pre><code> 33, 39, 51, 57, 69, 84, 96, 111, 114, 120, 123, 129, 141, ...
+</code></pre>
+<blockquote>
+<p>n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자이고, 39는 51의 생성자, 51은 57의 생성자이다.
+생성자가 한 개보다 많은 경우도 있다. <br>
+예를 들어, 101은 생성자가 2개(91과 100) 있다.</p>
+</blockquote>
+<blockquote>
+<p>생성자가 없는 숫자를 셀프 넘버라고 한다. 
+100보다 작은 셀프 넘버는 총 13개가 있다.</p>
+</blockquote>
+<pre><code>1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97
+</code></pre>
+<blockquote>
+<p>10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>첫째 줄에 테스트 케이스의 개수가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있다.</li>
-<li>길이가 0보다 크고 80보다 작은 문자열이 주어진다.</li>
-<li>문자열은 O와 X만으로 이루어져 있다.</li>
+<li>10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.</li>
 </ul>
 </blockquote>
 <h2 id="input">input<a class="anchor" href="#input">#</a></h2>
-<pre><code>5
-OOXXOXXOOO
-OOXXOOXXOO
-OXOXOXOXOXOXOX
-OOOOOOOOOO
-OOOOXOOOOXOOOOX
-</code></pre>
+<blockquote>
+<p>없음</p>
+</blockquote>
 <h2 id="output">output<a class="anchor" href="#output">#</a></h2>
-<pre><code>10
-9
+<pre><code>1
+3
+5
 7
-55
-30
+9
+20
+31
+42
+53
+64
+ |
+ |       &lt;-- a lot more numbers
+ |
+9903
+9914
+9925
+9927
+9938
+9949
+9960
+9971
+9982
+9993
 </code></pre>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <blockquote>
 <ol>
-<li>입력 받은 N 만큼 케이스를 입력받아 반복한다.</li>
-<li>케이스를 입력받고 길이만큼 반복한다.</li>
-<li>점수(score)와 더해줄 값(addition)을 0으로 초기화 한다.</li>
-<li>케이스를 문자열로 변경하고 문자열 하나씩 슬라이스하여 str에 저장.</li>
-<li>str의 값을 비교하여
-1. O인경우, addition을 1 증가시키고 score에 addition을 더해준다.
-2. X인경우, addition을 0 으로 초기화 시킨다.</li>
-<li>케이스의 마지막 str일때 score를 출력한다.</li>
+<li>1부터 10001까지 모든 숫자 조회</li>
+<li>숫자를 문자로 바꿔 저장</li>
+<li>no는 자기자신의 값 i로 세팅</li>
+<li>숫자의 자리수 만큼 반복</li>
+<li>자리수의 숫자를 no에 더해줌</li>
+<li>생성된 d(n) 값을 self dict에 추가</li>
+<li>1 ~ 10001 까지의 숫자중 dict에 없는 숫자만 출력</li>
 </ol>
 </blockquote>
-<pre><code>n = int(input()) 		# 입력받을 케이스 갯수
+<pre><code>
+self = {} #dist 생성
 
-for i in range(n): 	# 입력받은 수 만큼 반복
-    case = input()	# 케이스 입력받음 ex) OOXXOXXOOO
-    score = 0			# 케이스의 점수
-    addition = 0		# 점수에 더해지는 값
+for i in range(1, 10001) : # 1 ~ 10000 까지
+    sNo = str(i)	# 숫자를 문자열로 변경
+    no = i 		# 자기 자신을 세팅하여, &lt;mark&gt;33&lt;/mark&gt; + 3 + 3 = 39 부분을 처리
 
-    for j in range(0,len(case)):	# 케이스의 길이 만큼 len(OOXXOXXOOO)
-        str = case[j] 				# 케이스를 인덱스로 1개씩 순회
-        if str == 'O' :			# O인경우 addtion 1증가 score에 addtion 더함
-                addition +=1
-                score += addition      
-        else : 					# X인경우 addtion 0으로 초기화
-            addition = 0
-        if j == len(case) -1 :		# 케이스의 마지막 str인 경우 score 출력
-            print(score)
+    for j in range(0,len(sNo)) :	# 반복문으로 자리수 마다 no에 더해주며, 33 &lt;mark&gt;+ 3 + 3&lt;/mark&gt; = 39 부분을 처리
+        no += int(sNo[j])
+    
+    self[no] = no # 생성된 값을 dist에 추가
+
+for i in range(1, 10001) :		# 1 ~ 10000까지 숫자중 
+    if self.get(i) is None :	# d(n)를 통하여 생성되지 않은 숫자를 찾음
+        print(i)	# self number 출력
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>5
-OOXXOXXOOO
-OOXXOOXXOO
-OXOXOXOXOXOXOX
-OOOOOOOOOO
-OOOOXOOOOXOOOOX
-</code></pre>
+<pre><code></code></pre>
 
 
               
@@ -277,17 +303,12 @@ OOOOXOOOOXOOOOX
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/codility/perm-check/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/ox-quiz/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Codility - PermCheck</span>
+        <span class="pagination__title">BAEKJOON - OX 퀴즈</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/self-number/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >BAEKJOON - 셀프 넘버</span>
-    </a>
   
 </div>
 
@@ -357,7 +378,7 @@ OOOOXOOOOXOOOOX
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">BAEKJOON - OX 퀴즈</div> 
+          <div class="toc-post-title">BAEKJOON - 셀프 넘버</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
