@@ -9,6 +9,16 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>BAEKJOON - 2606 바이러스</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2606-virus/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2606-virus/</guid>
+      <description>BAEKJOON - 2606 바이러스(virus) Task description  신종 바이러스인 웜 바이러스는 네트워크를 통해 전파된다. 한 컴퓨터가 웜 바이러스에 걸리면 그 컴퓨터와 네트워크 상에서 연결되어 있는 모든 컴퓨터는 웜 바이러스에 걸리게 된다.
+  예를 들어 7대의 컴퓨터가 &amp;lt;그림 1&amp;gt;과 같이 네트워크 상에서 연결되어 있다고 하자. 1번 컴퓨터가 웜 바이러스에 걸리면 웜 바이러스는 2번과 5번 컴퓨터를 거쳐 3번과 6번 컴퓨터까지 전파되어 2, 3, 5, 6 네 대의 컴퓨터는 웜 바이러스에 걸리게 된다.</description>
+    </item>
+    
+    <item>
       <title>너비 우선 탐색 알고리즘</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/search/bfs/bfs-algorithm/</link>
       <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
