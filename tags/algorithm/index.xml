@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 30 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>너비 우선 탐색 알고리즘</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/search/bfs/bfs-algorithm/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/search/bfs/bfs-algorithm/</guid>
+      <description>너비 우선 탐색 알고리즘 BFS (Breadth-First Search)  BFS는 너비 우선 탐색이라고 부르며, 시작 위치에서 가까운 노드부터 우선적으로 탐색하는 알고리즘이다.
+  BFS는 큐 자료구조를 이용하며, 구체적인 동작 과정은 아래와 같다.
+   탐색 시작 노드를 큐에 삽입하고 방문 처리를 합니다. 큐에서 노드를 꺼낸 뒤에 해당 노드의 인접 노드 중에서 방문하지 않은 노드를 모두 큐에 삽입하고 방문 처리. 더 이상 2번의 과정을 수행할 수 없을 때까지 반복함.     그래프를 준비하고, 시작 노드는 1로 BFS를 시작한다.</description>
+    </item>
+    
     <item>
       <title>BAEKJOON - 4673 셀프 넘버</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/self-number/</link>
