@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>BAEKJOON - 2606 바이러스 | offetuoso&#39;s Blog</title>
+  <title>BAEKJOON - 2178 미로 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="백준 셀프 넘버">
+  <meta name="description" content="백준 미로">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "BAEKJOON - 2606 바이러스",
-      "headline" : "BAEKJOON - 2606 바이러스",
-      "description" : "백준 셀프 넘버",
+      "name" : "BAEKJOON - 2178 미로",
+      "headline" : "BAEKJOON - 2178 미로",
+      "description" : "백준 미로",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -75,8 +75,8 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-07-01 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-07-01 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-2606-virus\/",
-      "wordCount" : "581",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-2178-maze\/",
+      "wordCount" : "221",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,170 +170,77 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	BAEKJOON - 2606 바이러스
+		            	BAEKJOON - 2178 미로
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	BAEKJOON - 2606 바이러스
+		       	BAEKJOON - 2178 미로
             </h1>		
             <time datetime="2021-07-01 00:00:00 &#43;0000 UTC" class="post__date">2021-07-01</time> 
           </header>
           <article class="post__content">
               
-<h1 id="baekjoon---2606-바이러스virus">BAEKJOON - 2606 바이러스(virus)</h1>
+<h1 id="baekjoon---2606-미로maze">BAEKJOON - 2606 미로(maze)</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
 <blockquote>
-<p>신종 바이러스인 웜 바이러스는 네트워크를 통해 전파된다. 한 컴퓨터가 웜 바이러스에 걸리면 그 컴퓨터와 네트워크 상에서 연결되어 있는 모든 컴퓨터는 웜 바이러스에 걸리게 된다.</p>
+<p>N×M크기의 배열로 표현되는 미로가 있다.<br>
+1	0	1	1	1	1<br>
+1	0	1	0	1	0<br>
+1	0	1	0	1	1<br>
+1	1	1	0	1	1</p>
 </blockquote>
 <blockquote>
-<p>예를 들어 7대의 컴퓨터가 &lt;그림 1&gt;과 같이 네트워크 상에서 연결되어 있다고 하자. <br>
-1번 컴퓨터가 웜 바이러스에 걸리면 웜 바이러스는 2번과 5번 컴퓨터를 거쳐 <br>
-3번과 6번 컴퓨터까지 전파되어 2, 3, 5, 6 네 대의 컴퓨터는 웜 바이러스에 걸리게 된다. <br>
-하지만 4번과 7번 컴퓨터는 1번 컴퓨터와 네트워크상에서 연결되어 있지 않기 때문에 영향을 받지 않는다.</p>
-</blockquote>
-<p><img src="/images/algorithm/baekjoon/2606-virus/001.png" alt="contact"></p>
-<blockquote>
-<p>어느 날 1번 컴퓨터가 웜 바이러스에 걸렸다. 컴퓨터의 수와 네트워크 상에서 서로 연결되어 있는 정보가 주어질 때, 1번 컴퓨터를 통해 웜 바이러스에 걸리게 되는 컴퓨터의 수를 출력하는 프로그램을 작성하시오.</p>
+<p>미로에서 1은 이동할 수 있는 칸을 나타내고, 0은 이동할 수 없는 칸을 나타낸다. 이러한 미로가 주어졌을 때, (1, 1)에서 출발하여 (N, M)의 위치로 이동할 때 지나야 하는 최소의 칸 수를 구하는 프로그램을 작성하시오. 한 칸에서 다른 칸으로 이동할 때, 서로 인접한 칸으로만 이동할 수 있다.</p>
 </blockquote>
 <blockquote>
-<p>입력<br>
-첫째 줄에는 컴퓨터의 수가 주어진다. 컴퓨터의 수는 100 이하이고 각 컴퓨터에는 1번 부터 차례대로 번호가 매겨진다. <br>
-둘째 줄에는 네트워크 상에서 직접 연결되어 있는 컴퓨터 쌍의 수가 주어진다.  <br>
-이어서 그 수만큼 한 줄에 한 쌍씩 네트워크 상에서 직접 연결되어 있는 컴퓨터의 번호 쌍이 주어진다.<br></p>
-</blockquote>
-<blockquote>
-<p>출력<br>
-1번 컴퓨터가 웜 바이러스에 걸렸을 때, 1번 컴퓨터를 통해 웜 바이러스에 걸리게 되는 컴퓨터의 수를 첫째 줄에 출력한다.</p>
+<p>위의 예에서는 15칸을 지나야 (N, M)의 위치로 이동할 수 있다. 칸을 셀 때에는 시작 위치와 도착 위치도 포함한다.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
-<blockquote>
-<ul>
-<li>1 번 컴퓨터가 탐색 시작 노드이다.</li>
-<li>1 &lt;= N &gt;= 100 (컴퓨터의 수)</li>
-<li>M (네트워크 상에서 직접 연결되어 있는 컴퓨터 쌍의 수)</li>
-</ul>
-</blockquote>
 <h2 id="input">input<a class="anchor" href="#input">#</a></h2>
-<pre><code>7
-6
-1 2
-2 3
-1 5
-5 2
-5 6
-4 7
+<p>첫째 줄에 두 정수 N, M(2 ≤ N, M ≤ 100)이 주어진다. 다음 N개의 줄에는 M개의 정수로 미로가 주어진다. 각각의 수들은 붙어서 입력으로 주어진다.</p>
+<pre><code>4 6
+101111
+101010
+101011
+111011
 </code></pre>
 <h2 id="output">output<a class="anchor" href="#output">#</a></h2>
-<pre><code>4
+<pre><code>15
 </code></pre>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<blockquote>
-<ol>
-<li>1부터 10001까지 모든 숫자 조회</li>
-<li>숫자를 문자로 바꿔 저장</li>
-<li>no는 자기자신의 값 i로 세팅</li>
-<li>숫자의 자리수 만큼 반복</li>
-<li>자리수의 숫자를 no에 더해줌</li>
-<li>생성된 d(n) 값을 self dict에 추가</li>
-<li>1 ~ 10001 까지의 숫자중 dict에 없는 숫자만 출력</li>
-</ol>
-</blockquote>
-<pre><code>from collections import deque
+<pre><code>n, m = map(int, input().split())
+queue = []
+matrix = []
 
-N = int(input()) # 컴퓨터의 갯수
-M = int(input()) # 네트워크 상에서 직접 연결되어 있는 컴퓨터 쌍의 수
+for i in range(n):
+    matrix.append(list(input()))
 
-# 그래프 생성
-graph = [[] for i in range(N+1)] # 0부터 N까지의 배열 (0은 사용안함)
-for i in range(0,M) : # 네트워크 상에서 직접 연결되어 있는 컴퓨터 쌍의 수만큼 반복
-    K =  list(map(int, input().split()))	# 네트워크 상에서 직접 연결되어 있는 컴퓨터 쌍
-    graph[K[0]].append(K[1])	# 그래프에 연결 추가
-    graph[K[1]].append(K[0])   # 반대의 경우도 연결 추가
-
-# 방문을 체크할 배열 생성
-visited = [False for i in range(N+1)] # 방문 안한것으로 0~N까지의 배열 생성 (0은 사용 안함)
-
-queue = deque() # 큐 생성
-
-count = 0 # 결과 (1번 컴퓨터로 인해 바이러스 감염된 컴퓨터의 수)
-start = 1 # 탐색 시작 컴퓨터 1
-queue.append(start)	# 큐에 추가
-visited[start] = True	# 1번 컴퓨터 방문처리
-
-while queue : # 큐의 데이터가 있는 동안
-    idx = queue.popleft() # 검사할 컴퓨터의 번호를 팝
-    #print(idx) # BFS 출력 하지만 문제
-
-    if idx != start : # 탐색 시작 노드 1이 아닌것
-        count += 1	# 1번 컴퓨터로 인해 감염된 컴퓨터 카운트
-        
-    for node in graph[idx]: # 검사할 컴퓨터의 인접노드(graph[idx])의 연결된 인접 컴퓨터(노드) 만큼
-        if not visited[node] : # 방문한 컴퓨터가 아닌 경우
-            queue.append(node)	# 큐에 추가
-            visited[node] = True # 방문처리
-
-print(count) # 결과 출력 (1번 컴퓨터로 인해 바이러스 감염된 컴퓨터의 수)
+queue = [[0, 0]]
+matrix[0][0] = 1
 
 
-</code></pre>
-<blockquote>
-<p>최초 함수로 코딩했으나, 백준에서는 함수를 사용하면 오답처리가 되었다.</p>
-</blockquote>
-<pre><code>
-from collections import deque
-
-def bfs(graph, start ,visited) :
-    count = 0
-    queue = deque()
-    queue.append(start)
-    visited[start] = True
-
-    while queue :
-        idx = queue.popleft()
-        #print('pop',idx)
-        if idx != start :
-            count += 1
-        for node in graph[idx]:
-            if not visited[node] :
-                queue.append(node)
-                visited[node] = True
-    return count
+dx = [+1, -1,  0,  0]
+dy = [ 0,  0, -1, +1] #상하좌우
 
 
-N = int(input())
-M = int(input())
-
-graph = [[] for i in range(N+1)]
-
-for i in range(0,M) :
-    K =  list(map(int, input().split()))
-    graph[K[0]].append(K[1])
-    graph[K[1]].append(K[0])
-
-visited = [False for i in range(N+1)]
-
-
-
-#print (graph,'\n', visited)
-
-bfs(graph,1,visited)
+while queue :
+    a,b = queue[0][0],queue[0][1]
+    del queue[0]
+    
+    for i in range(4):
+        x = a + dx[i]
+        y = b + dy[i]
+        if 0 &lt;= x &lt; n and 0 &lt;= y &lt; m and matrix[x][y] == &quot;1&quot; : 
+            queue.append([x,y])
+            matrix[x][y] = matrix[a][b] + 1
+    
+print(matrix[n - 1][m - 1])
+    
 
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>예제 입력  
-7
-6
-1 2
-2 3
-1 5
-5 2
-5 6
-4 7
-
-예제 출력 
-4
-
+<pre><code>
 </code></pre>
 
 
@@ -359,17 +266,12 @@ bfs(graph,1,visited)
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/search/bfs/bfs-algorithm/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2606-virus/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">너비 우선 탐색 알고리즘</span>
+        <span class="pagination__title">BAEKJOON - 2606 바이러스</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2178-maze/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >BAEKJOON - 2178 미로</span>
-    </a>
   
 </div>
 
@@ -439,7 +341,7 @@ bfs(graph,1,visited)
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">BAEKJOON - 2606 바이러스</div> 
+          <div class="toc-post-title">BAEKJOON - 2178 미로</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
