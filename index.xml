@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 02 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BAEKJOON - 7578 토마토</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-7578-tomato/</link>
+      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-7578-tomato/</guid>
+      <description>BAEKJOON - 7576 토마토(tomato) Task description  철수의 토마토 농장에서는 토마토를 보관하는 큰 창고를 가지고 있다. 토마토는 아래의 그림과 같이 격자 모양 상자의 칸에 하나씩 넣어서 창고에 보관한다.
+  창고에 보관되는 토마토들 중에는 잘 익은 것도 있지만, 아직 익지 않은 토마토들도 있을 수 있다. 보관 후 하루가 지나면, 익은 토마토들의 인접한 곳에 있는 익지 않은 토마토들은 익은 토마토의 영향을 받아 익게 된다. 하나의 토마토의 인접한 곳은 왼쪽, 오른쪽, 앞, 뒤 네 방향에 있는 토마토를 의미한다.</description>
+    </item>
+    
     <item>
       <title>BAEKJOON - 2178 미로</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2178-maze/</link>

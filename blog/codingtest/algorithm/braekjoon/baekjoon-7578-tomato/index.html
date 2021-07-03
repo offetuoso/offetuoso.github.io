@@ -2,7 +2,7 @@
 <html lang="ko-KR">
 
 <head>
-  <title>BAEKJOON - 2178 미로 | offetuoso&#39;s Blog</title>
+  <title>BAEKJOON - 7578 토마토 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
@@ -63,8 +63,8 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "BAEKJOON - 2178 미로",
-      "headline" : "BAEKJOON - 2178 미로",
+      "name" : "BAEKJOON - 7578 토마토",
+      "headline" : "BAEKJOON - 7578 토마토",
       "description" : "백준 미로",
       "inLanguage" : "en-US",
       "author" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-02 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-02 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-2178-maze\/",
-      "wordCount" : "221",
+      "datePublished": "2021-07-03 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-03 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-7578-tomato\/",
+      "wordCount" : "527",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,73 +170,132 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	BAEKJOON - 2178 미로
+		            	BAEKJOON - 7578 토마토
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	BAEKJOON - 2178 미로
+		       	BAEKJOON - 7578 토마토
             </h1>		
-            <time datetime="2021-07-02 00:00:00 &#43;0000 UTC" class="post__date">2021-07-02</time> 
+            <time datetime="2021-07-03 00:00:00 &#43;0000 UTC" class="post__date">2021-07-03</time> 
           </header>
           <article class="post__content">
               
-<h1 id="baekjoon---2606-미로maze">BAEKJOON - 2606 미로(maze)</h1>
+<h1 id="baekjoon---7576-토마토tomato">BAEKJOON - 7576 토마토(tomato)</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
 <blockquote>
-<p>N×M크기의 배열로 표현되는 미로가 있다.<br>
-1	0	1	1	1	1<br>
-1	0	1	0	1	0<br>
-1	0	1	0	1	1<br>
-1	1	1	0	1	1</p>
+<p>철수의 토마토 농장에서는 토마토를 보관하는 큰 창고를 가지고 있다. 토마토는 아래의 그림과 같이 격자 모양 상자의 칸에 하나씩 넣어서 창고에 보관한다.</p>
+</blockquote>
+<p><img src="/images/algorithm/baekjoon/7576-tomato/001.png" alt="contact"></p>
+<blockquote>
+<p>창고에 보관되는 토마토들 중에는 잘 익은 것도 있지만, 아직 익지 않은 토마토들도 있을 수 있다. 보관 후 하루가 지나면, 익은 토마토들의 인접한 곳에 있는 익지 않은 토마토들은 익은 토마토의 영향을 받아 익게 된다. 하나의 토마토의 인접한 곳은 왼쪽, 오른쪽, 앞, 뒤 네 방향에 있는 토마토를 의미한다. 대각선 방향에 있는 토마토들에게는 영향을 주지 못하며, 토마토가 혼자 저절로 익는 경우는 없다고 가정한다. 철수는 창고에 보관된 토마토들이 며칠이 지나면 다 익게 되는지, 그 최소 일수를 알고 싶어 한다.</p>
 </blockquote>
 <blockquote>
-<p>미로에서 1은 이동할 수 있는 칸을 나타내고, 0은 이동할 수 없는 칸을 나타낸다. 이러한 미로가 주어졌을 때, (1, 1)에서 출발하여 (N, M)의 위치로 이동할 때 지나야 하는 최소의 칸 수를 구하는 프로그램을 작성하시오. 한 칸에서 다른 칸으로 이동할 때, 서로 인접한 칸으로만 이동할 수 있다.</p>
+<p>토마토를 창고에 보관하는 격자모양의 상자들의 크기와 익은 토마토들과 익지 않은 토마토들의 정보가 주어졌을 때, 며칠이 지나면 토마토들이 모두 익는지, 그 최소 일수를 구하는 프로그램을 작성하라. 단, 상자의 일부 칸에는 토마토가 들어있지 않을 수도 있다.</p>
 </blockquote>
 <blockquote>
-<p>위의 예에서는 15칸을 지나야 (N, M)의 위치로 이동할 수 있다. 칸을 셀 때에는 시작 위치와 도착 위치도 포함한다.</p>
+<p>입력 <br>
+첫 줄에는 상자의 크기를 나타내는 두 정수 M,N이 주어진다. M은 상자의 가로 칸의 수, N은 상자의 세로 칸의 수를 나타낸다. 단, 2 ≤ M,N ≤ 1,000 이다. 둘째 줄부터는 하나의 상자에 저장된 토마토들의 정보가 주어진다. 즉, 둘째 줄부터 N개의 줄에는 상자에 담긴 토마토의 정보가 주어진다. 하나의 줄에는 상자 가로줄에 들어있는 토마토의 상태가 M개의 정수로 주어진다. 정수 1은 익은 토마토, 정수 0은 익지 않은 토마토, 정수 -1은 토마토가 들어있지 않은 칸을 나타낸다.
+토마토가 하나 이상 있는 경우만 입력으로 주어진다.</p>
+</blockquote>
+<blockquote>
+<p>출력 <br>
+여러분은 토마토가 모두 익을 때까지의 최소 날짜를 출력해야 한다. 만약, 저장될 때부터 모든 토마토가 익어있는 상태이면 0을 출력해야 하고, 토마토가 모두 익지는 못하는 상황이면 -1을 출력해야 한다.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
-<h2 id="input">input<a class="anchor" href="#input">#</a></h2>
-<p>첫째 줄에 두 정수 N, M(2 ≤ N, M ≤ 100)이 주어진다. 다음 N개의 줄에는 M개의 정수로 미로가 주어진다. 각각의 수들은 붙어서 입력으로 주어진다.</p>
-<pre><code>4 6
-101111
-101010
-101011
-111011
-</code></pre>
-<h2 id="output">output<a class="anchor" href="#output">#</a></h2>
-<pre><code>15
+<blockquote>
+<ul>
+<li>토마토가 하나 이상 있는 경우만 입력으로 주어진다.</li>
+<li>2 ≤ M,N ≤ 1,000</li>
+</ul>
+</blockquote>
+<h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
+<pre><code>예제 입력 1 
+6 4
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 1
+예제 출력 1 
+8
+
+예제 입력 2 
+6 4
+0 -1 0 0 0 0
+-1 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 1
+예제 출력 2 
+-1
+
+예제 입력 3 
+6 4
+1 -1 0 0 0 0
+0 -1 0 0 0 0
+0 0 0 0 -1 0
+0 0 0 0 -1 1
+예제 출력 3 
+6
+
+예제 입력 4 
+5 5
+-1 1 0 0 0
+0 -1 -1 -1 0
+0 -1 -1 -1 0
+0 -1 -1 -1 0
+0 0 0 0 0
+예제 출력 4 
+14
+
+예제 입력 5 
+2 2
+1 -1
+-1 1
+예제 출력 5 
+0
 </code></pre>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<pre><code>n, m = map(int, input().split())
-queue = []
-matrix = []
+<pre><code>
+from collections import deque
 
-for i in range(n):
-    matrix.append(list(input()))
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
 
-queue = [[0, 0]]
-matrix[0][0] = 1
+def bfs() :
+	result = 0
 
+	while queue :
+		a, b = queue.popleft()
+		
+		for i in range(4) :
+			x = a + dx[i]
+			y = b + dy[i]
+			if 0 &lt;= x &lt; N and  0 &lt;= y &lt; M and graph[x][y] == 0 :
+				queue.append([x,y])
+				graph[x][y] = graph[a][b] + 1
+				result = max(graph[a][b], result)
+	return result
+    	
+M, N = map(int, input().split())
 
-dx = [+1, -1,  0,  0]
-dy = [ 0,  0, -1, +1] #상하좌우
+queue = deque([])
+graph = []
 
+for i in range(N) :
+	graph.append(list(map(int, input().split())))
 
-while queue :
-    a,b = queue[0][0],queue[0][1]
-    del queue[0]
-    
-    for i in range(4):
-        x = a + dx[i]
-        y = b + dy[i]
-        if 0 &lt;= x &lt; n and 0 &lt;= y &lt; m and matrix[x][y] == &quot;1&quot; : 
-            queue.append([x,y])
-            matrix[x][y] = matrix[a][b] + 1
-    
-print(matrix[n - 1][m - 1])
-    
+	for j in range(M) :
+		if graph[i][j] == 1 :
+			queue.append([i,j])
+
+r = bfs() 
+
+for i, j in enumerate(graph) :
+	if 0 in j :
+		r = -1
+		break
+
+print(r)
 
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
@@ -266,17 +325,12 @@ print(matrix[n - 1][m - 1])
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2606-virus/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2178-maze/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">BAEKJOON - 2606 바이러스</span>
+        <span class="pagination__title">BAEKJOON - 2178 미로</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-7578-tomato/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >BAEKJOON - 7578 토마토</span>
-    </a>
   
 </div>
 
@@ -346,13 +400,12 @@ print(matrix[n - 1][m - 1])
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">BAEKJOON - 2178 미로</div> 
+          <div class="toc-post-title">BAEKJOON - 7578 토마토</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
     <li><a href="#condition">Condition</a></li>
-    <li><a href="#input">input</a></li>
-    <li><a href="#output">output</a></li>
+    <li><a href="#input-output">input output</a></li>
     <li><a href="#solution">Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
   </ul>
