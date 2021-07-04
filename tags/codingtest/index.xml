@@ -7,7 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 03 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/codingtest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/codingtest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BAEKJOON - 1712 손익분기점</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1712-break-even-point/</link>
+      <pubDate>Sun, 04 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1712-break-even-point/</guid>
+      <description>BAEKJOON - 1712 손익분기점(break even point) Task description 원문 : 백준 1712 링크
+ 노트북 제조하는데 노트북 판매 대수에 상관없이 A만원의 고정 비용이 든다.
+한 대의 노트북을 생산하는 데에는 B만원의 가변 비용이 든다
+A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데는 총 1,070만원이 들며,
+열 대 생산하는 데는 총 1,700만원이 든다.
+노트북 가격이 C만원으로 책정되었다고 한다.
+생산 대수를 늘려 가다 보면 어느 순간 총 수입(판매비용)이 총 비용(=고정비용+가변비용)보다 많아지게 된다.</description>
+    </item>
+    
     <item>
       <title>BAEKJOON - 7578 토마토</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-7578-tomato/</link>
