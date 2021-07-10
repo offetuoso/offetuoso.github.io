@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>BAEKJOON - 10872 팩토리얼 | offetuoso&#39;s Blog</title>
+  <title>BAEKJOON - 10828 스택 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="백준 팩토리얼">
+  <meta name="description" content="백준 스택">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "BAEKJOON - 10872 팩토리얼",
-      "headline" : "BAEKJOON - 10872 팩토리얼",
-      "description" : "백준 팩토리얼",
+      "name" : "BAEKJOON - 10828 스택",
+      "headline" : "BAEKJOON - 10828 스택",
+      "description" : "백준 스택",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-08 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-08 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-10872-factorial\/",
-      "wordCount" : "94",
+      "datePublished": "2021-07-09 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-09 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-10872-stack\/",
+      "wordCount" : "318",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,55 +170,142 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	BAEKJOON - 10872 팩토리얼
+		            	BAEKJOON - 10828 스택
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	BAEKJOON - 10872 팩토리얼
+		       	BAEKJOON - 10828 스택
             </h1>		
-            <time datetime="2021-07-08 00:00:00 &#43;0000 UTC" class="post__date">2021-07-08</time> 
+            <time datetime="2021-07-09 00:00:00 &#43;0000 UTC" class="post__date">2021-07-09</time> 
           </header>
           <article class="post__content">
               
-<h1 id="baekjoon---10872-팩토리얼factorial">BAEKJOON - 10872 팩토리얼(Factorial)</h1>
+<h1 id="baekjoon---10828-스택">BAEKJOON - 10828 스택</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://www.acmicpc.net/problem/10872">백준 10872 링크</a></p>
+<p>원문 : <a href="https://www.acmicpc.net/problem/10828">백준 10828 링크</a></p>
 <blockquote>
-<p>0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.</p>
+<p>정수를 저장하는 스택을 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.</p>
+</blockquote>
+<blockquote>
+<p>명령은 총 다섯 가지이다.</p>
+</blockquote>
+<blockquote>
+<p>push X: 정수 X를 스택에 넣는 연산이다.
+pop: 스택에서 가장 위에 있는 정수를 빼고, 그 수를 출력한다. 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+size: 스택에 들어있는 정수의 개수를 출력한다.
+empty: 스택이 비어있으면 1, 아니면 0을 출력한다.
+top: 스택의 가장 위에 있는 정수를 출력한다. 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>첫째 줄에 정수 N(0 ≤ N ≤ 12)가 주어진다.</li>
+<li>첫째 줄에 주어지는 명령의 수 N (1 ≤ N ≤ 10,000)이 주어진다. 둘째 줄부터 N개의 줄에는 명령이 하나씩 주어진다. 주어지는 정수는 1보다 크거나 같고, 100,000보다 작거나 같다. 문제에 나와있지 않은 명령이 주어지는 경우는 없다.</li>
+<li>출력해야하는 명령이 주어질 때마다, 한 줄에 하나씩 출력한다.</li>
 </ul>
 </blockquote>
 <h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
-<pre><code>예제 입력 1 복사
-10
+<pre><code>14
+push 1
+push 2
+top
+size
+empty
+pop
+pop
+pop
+size
+empty
+pop
+push 3
+empty
+top
 예제 출력 1 복사
-3628800
-예제 입력 2 복사
+2
+2
 0
-예제 출력 2 복사
+2
 1
+-1
+0
+1
+-1
+0
+3
+예제 입력 2 복사
+7
+pop
+top
+push 123
+top
+pop
+top
+pop
+예제 출력 2 복사
+-1
+-1
+123
+123
+-1
+-1
 </code></pre>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<blockquote>
-<p>0이면 1리턴
-0이 아니면 N * factorial(N-1) 리턴  # N * (N-1)!</p>
-</blockquote>
-<pre><code>def factorial(N): 
-	if ( N != 0) :
-		return  N * factorial(N-1) #N * (N-1)!
-	else :
-		return  1
-N = int(input())
-fn = factorial(N)
+<pre><code>import sys
 
-print(fn)
+class Stack :					# 클래스 생성
+	def __init__(self) :
+		self.elements = []		# 스택의 엘리먼츠 추가
 
-	
+	def push(self, x) :		
+		self.elements.append(x)	# x를 스택에 추가
+
+	def empty(self) :			# 엘리먼츠의 길이(사이즈)가 0 이면 1 
+		if len(self.elements) == 0 : 
+			print(1)
+			return 1
+		else :
+			print(0)
+			return 0
+
+	def pop(self) :			
+		if len(self.elements) == 0 : #비어있는 경우 -1
+			print(-1)
+		else :
+			self.top()
+			self.elements.pop()
+
+	def size(self) :
+		print(len(self.elements))
+		return len(self.elements)
+
+	def top(self) :
+		if len(self.elements) == 0 :
+			print(-1)
+		else :
+			print(self.elements[-1])
+
+
+#n = int(input())
+n = int(sys.stdin.readline().rstrip())
+s = Stack()
+
+for i in range(0,n) :
+	input_split = sys.stdin.readline().rstrip().split()
+	command = input_split[0]
+	#command = str(input())
+
+	if 'pop' == command.lower() :
+		s.pop()
+	elif 'size' == command.lower() :
+		s.size()
+	elif 'top' == command.lower() :
+		s.top()
+	elif 'empty' == command.lower() :
+		s.empty()
+	elif 'push' == command.lower() :
+		s.push(input_split[1])
+
+
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
 <pre><code></code></pre>
@@ -246,16 +333,16 @@ print(fn)
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-11729-hanoi-tower-travel-order/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-factorial/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">BAEKJOON - 11729 하노이 탑 이동 순서</span>
+        <span class="pagination__title">BAEKJOON - 10872 팩토리얼</span>
     </a>
   
 
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-stack/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1541-lost-parenthesis/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >BAEKJOON - 10828 스택</span>
+      <span class="pagination__title" >BAEKJOON - 1541 잃어버린 괄호 </span>
     </a>
   
 </div>
@@ -326,7 +413,7 @@ print(fn)
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">BAEKJOON - 10872 팩토리얼</div> 
+          <div class="toc-post-title">BAEKJOON - 10828 스택</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>

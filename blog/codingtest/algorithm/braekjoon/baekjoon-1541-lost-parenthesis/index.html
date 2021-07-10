@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>BAEKJOON - 10872 팩토리얼 | offetuoso&#39;s Blog</title>
+  <title>BAEKJOON - 1541 잃어버린 괄호  | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="백준 팩토리얼">
+  <meta name="description" content="백준 잃어버린 괄호 ">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "BAEKJOON - 10872 팩토리얼",
-      "headline" : "BAEKJOON - 10872 팩토리얼",
-      "description" : "백준 팩토리얼",
+      "name" : "BAEKJOON - 1541 잃어버린 괄호 ",
+      "headline" : "BAEKJOON - 1541 잃어버린 괄호 ",
+      "description" : "백준 잃어버린 괄호 ",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-08 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-08 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-10872-factorial\/",
-      "wordCount" : "94",
+      "datePublished": "2021-07-10 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-10 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-1541-lost-parenthesis\/",
+      "wordCount" : "264",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,55 +170,77 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	BAEKJOON - 10872 팩토리얼
+		            	BAEKJOON - 1541 잃어버린 괄호 
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	BAEKJOON - 10872 팩토리얼
+		       	BAEKJOON - 1541 잃어버린 괄호 
             </h1>		
-            <time datetime="2021-07-08 00:00:00 &#43;0000 UTC" class="post__date">2021-07-08</time> 
+            <time datetime="2021-07-10 00:00:00 &#43;0000 UTC" class="post__date">2021-07-10</time> 
           </header>
           <article class="post__content">
               
-<h1 id="baekjoon---10872-팩토리얼factorial">BAEKJOON - 10872 팩토리얼(Factorial)</h1>
+<h1 id="baekjoon---1541-잃어버린-괄호">BAEKJOON - 1541 잃어버린 괄호</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://www.acmicpc.net/problem/10872">백준 10872 링크</a></p>
+<p>원문 : <a href="https://www.acmicpc.net/problem/1541">백준 1541 링크</a></p>
 <blockquote>
-<p>0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.</p>
+<p>+와 -그리고 괄호를 가진 식에서 괄호를 모두 지웠다.
+그리고 나서 <mark>괄호를 적절히 쳐서 이 식의 값을 최소</mark>로 만들려고 한다.
+괄호를 적절히 쳐서 이 식의 값을 최소로 만드는 프로그램을 작성하시오.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>첫째 줄에 정수 N(0 ≤ N ≤ 12)가 주어진다.</li>
+<li>첫째 줄에 식이 주어진다. 식은 ‘0’~‘9’, ‘+’, 그리고 ‘-’만으로 이루어져 있고, 가장 처음과 마지막 문자는 숫자이다. 그리고 연속해서 두 개 이상의 연산자가 나타나지 않고, 5자리보다 많이 연속되는 숫자는 없다. 수는 0으로 시작할 수 있다. 입력으로 주어지는 식의 길이는 50보다 작거나 같다.</li>
+<li>첫째 줄에 정답을 출력한다.</li>
 </ul>
 </blockquote>
 <h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
-<pre><code>예제 입력 1 복사
-10
-예제 출력 1 복사
-3628800
-예제 입력 2 복사
-0
-예제 출력 2 복사
-1
+<pre><code>예제 입력 1 
+55-50+40
+예제 출력 1 
+-35
 </code></pre>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <blockquote>
-<p>0이면 1리턴
-0이 아니면 N * factorial(N-1) 리턴  # N * (N-1)!</p>
+<ol>
+<li>+와 -그리고 숫자들을 배열에 넣는다.</li>
+<li>첫번째 - 이후 +는 괄호로 묶는다  (- (A + B) 랑 -A-B 와 같으므로 +여도 -로 계산한다.)</li>
+</ol>
 </blockquote>
-<pre><code>def factorial(N): 
-	if ( N != 0) :
-		return  N * factorial(N-1) #N * (N-1)!
-	else :
-		return  1
-N = int(input())
-fn = factorial(N)
+<pre><code>message = input() 	# 입력받은 메시지
+formula = [] 		# 공식 배열 (숫자,+,-)
+value = &quot;&quot;		# 쪼개진 숫자 문자열로 조합
 
-print(fn)
+flag = False       # +를 -로 계산할지 여부 (첫 -가 나왔는지 여부)
+result = 0		# 결과값
 
+
+for i in range(0,len(message)) :					# +와 -그리고 숫자들을 배열에 넣는다.
+	if message[i] == &quot;+&quot; or message[i] == &quot;-&quot; :	
+		formula.append(int(value))				# +, -가 나오면 그전까지의 value를 숫자로 바꿔 formula 배열에 넣는다
+		value=&quot;&quot;
+		formula.append(message[i])				# + or - 를 formula 배열에 추가
+	elif i ==len(message)-1 :
+		value += message[i]					# 마지막 인덱스인경우 value를 숫자로 바꿔 formula 배열에 넣는다
+		formula.append(int(value))				
+	else :									# 숫자는 value에 추가
+		value += message[i]
 	
+
+for i in range(0,len(formula)) :
+
+	if formula[i] == &quot;+&quot; or formula[i] == &quot;-&quot; :
+		if(formula[i] == &quot;-&quot;) :
+			flag = True
+	else :
+		if flag == False :
+			result += formula[i] 
+		else :
+			result -= formula[i] 
+
+print(result)
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
 <pre><code></code></pre>
@@ -246,17 +268,12 @@ print(fn)
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-11729-hanoi-tower-travel-order/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-stack/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">BAEKJOON - 11729 하노이 탑 이동 순서</span>
+        <span class="pagination__title">BAEKJOON - 10828 스택</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-stack/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >BAEKJOON - 10828 스택</span>
-    </a>
   
 </div>
 
@@ -326,7 +343,7 @@ print(fn)
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">BAEKJOON - 10872 팩토리얼</div> 
+          <div class="toc-post-title">BAEKJOON - 1541 잃어버린 괄호 </div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
