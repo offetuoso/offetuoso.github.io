@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>BAEKJOON - 10872 팩토리얼 | offetuoso&#39;s Blog</title>
+  <title>BAEKJOON - 4949 균형잡힌 세상 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="백준 팩토리얼">
+  <meta name="description" content="백준 균형잡힌 세상">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "BAEKJOON - 10872 팩토리얼",
-      "headline" : "BAEKJOON - 10872 팩토리얼",
-      "description" : "백준 팩토리얼",
+      "name" : "BAEKJOON - 4949 균형잡힌 세상",
+      "headline" : "BAEKJOON - 4949 균형잡힌 세상",
+      "description" : "백준 균형잡힌 세상",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-08 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-08 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-10872-factorial\/",
-      "wordCount" : "94",
+      "datePublished": "2021-07-11 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-11 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-4949-a-balanced-world\/",
+      "wordCount" : "401",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,58 +170,107 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	BAEKJOON - 10872 팩토리얼
+		            	BAEKJOON - 4949 균형잡힌 세상
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	BAEKJOON - 10872 팩토리얼
+		       	BAEKJOON - 4949 균형잡힌 세상
             </h1>		
-            <time datetime="2021-07-08 00:00:00 &#43;0000 UTC" class="post__date">2021-07-08</time> 
+            <time datetime="2021-07-11 00:00:00 &#43;0000 UTC" class="post__date">2021-07-11</time> 
           </header>
           <article class="post__content">
               
-<h1 id="baekjoon---10872-팩토리얼factorial">BAEKJOON - 10872 팩토리얼(Factorial)</h1>
+<h1 id="baekjoon---4949-균형잡힌-세상">BAEKJOON - 4949 균형잡힌 세상</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://www.acmicpc.net/problem/10872">백준 10872 링크</a></p>
+<p>원문 : <a href="https://www.acmicpc.net/problem/4949">백준 4949 링크</a></p>
+<p>메시지를 입력받아 괄호를 열고 닫아야 한다.</p>
 <blockquote>
-<p>0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.</p>
+<p>열고 닫는 괄호가 균형 맞게 되어있으면 yes 아니면 no 출력</p>
+<ul>
+<li>ex) asd(b)dd(d[ddd]) yes</li>
+<li>ex) (asdasd] no
+메시지의 끝은 .으로 끝나고 
+메시지가 &ldquo;.&rdquo; 이면 종료</li>
+</ul>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>첫째 줄에 정수 N(0 ≤ N ≤ 12)가 주어진다.</li>
+<li>모든 왼쪽 소괄호(&quot;(&quot;)는 오른쪽 소괄호(&quot;)&quot;)와만 짝을 이뤄야 한다.</li>
+<li>모든 왼쪽 대괄호(&quot;[&quot;)는 오른쪽 대괄호(&quot;]&quot;)와만 짝을 이뤄야 한다.</li>
+<li>모든 오른쪽 괄호들은 자신과 짝을 이룰 수 있는 왼쪽 괄호가 존재한다.</li>
+<li>모든 괄호들의 짝은 1:1 매칭만 가능하다. 즉, 괄호 하나가 둘 이상의 괄호와 짝지어지지 않는다.</li>
+<li>짝을 이루는 두 괄호가 있을 때, 그 사이에 있는 문자열도 균형이 잡혀야 한다.</li>
+<li>하나 또는 여러줄에 걸쳐서 문자열이 주어진다. 각 문자열은 영문 알파벳, 공백, 소괄호(&quot;( )&quot;) 대괄호(&quot;<input disabled="" type="checkbox"> &quot;)등으로 이루어져 있으며, 길이는 100글자보다 작거나 같다.</li>
+<li>7번째의 &quot; .&ldquo;와 같이 괄호가 하나도 없는 경우도 균형잡힌 문자열로 간주할 수 있다.</li>
+<li>입력의 종료조건으로 맨 마지막에 점 하나(&rdquo;.&quot;)가 들어온다.</li>
 </ul>
 </blockquote>
 <h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
-<pre><code>예제 입력 1 복사
-10
-예제 출력 1 복사
-3628800
-예제 입력 2 복사
-0
-예제 출력 2 복사
-1
+<pre><code>예제 입력 1 
+So when I die (the [first] I will see in (heaven) is a score list).
+[ first in ] ( first out ).
+Half Moon tonight (At least it is better than no Moon at all].
+A rope may form )( a trail in a maze.
+Help( I[m being held prisoner in a fortune cookie factory)].
+([ (([( [ ] ) ( ) (( ))] )) ]).
+ .
+.
+예제 출력 1 
+yes
+yes
+no
+no
+no
+yes
+yes
 </code></pre>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <blockquote>
-<p>0이면 1리턴
-0이 아니면 N * factorial(N-1) 리턴  # N * (N-1)!</p>
+<ol>
+<li>메시지가 &ldquo;.&rdquo; 이면 종료</li>
+<li>메시지가 &lsquo;(&rsquo; 또는 &lsquo;[&rsquo; 이면 스택에 추가</li>
+</ol>
 </blockquote>
-<pre><code>def factorial(N): 
-	if ( N != 0) :
-		return  N * factorial(N-1) #N * (N-1)!
-	else :
-		return  1
-N = int(input())
-fn = factorial(N)
-
-print(fn)
-
+<pre><code>
+while True : 
+	msg = input()
+	if msg == '.' :	# &quot;.&quot; 이면 종료
+		break
 	
+	front = []	# 스택 생성
+	flag = True 	# .이나오기 전에 조건에 만족(균형) X 면 False
+	
+	for i in range(0, len(msg)) :	
+		if msg[i] == '.' : 
+			if len(front) == 0 and flag: 	# 스택이 모두 pop되고, 조건에 만족(균형) 하면 yes
+				print('yes')
+			else : 
+				print('no')
+				
+		elif msg[i] == '(' or msg[i] == '[' : # 메시지가 '(' 또는 '[' 이면 스택에 추가
+			front.append(msg[i])
+			
+		elif (msg[i] == ')' or  msg[i] == ']') and len(front) == 0 : # 괄호를 안열고, 닫으려 할때 
+			flag  = False
+			
+		elif msg[i] == ')' : 	# )가 나왔을때 
+			if front[-1] == '(' :	# 스택 마지막이 ( 였다면 팝
+				front.pop()
+			else :
+				flag  = False		# 스택 마지막이 [ 으로 조건에 만족(균형) no
+				
+		elif msg[i] == ']' :	# ]가 나왔을때 
+			if front[-1] == '[' : 	# 스택 마지막이 [ 였다면 팝
+				front.pop()
+			else : 
+				flag  = False		# 스택 마지막이 ( 으로 조건에 만족(균형) no
+			
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code></code></pre>
+<pre><code>
+</code></pre>
 
 
               
@@ -246,17 +295,12 @@ print(fn)
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-11729-hanoi-tower-travel-order/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-factorial/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">BAEKJOON - 11729 하노이 탑 이동 순서</span>
+        <span class="pagination__title">BAEKJOON - 10872 팩토리얼</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-4949-a-balanced-world/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >BAEKJOON - 4949 균형잡힌 세상</span>
-    </a>
   
 </div>
 
@@ -326,7 +370,7 @@ print(fn)
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">BAEKJOON - 10872 팩토리얼</div> 
+          <div class="toc-post-title">BAEKJOON - 4949 균형잡힌 세상</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
