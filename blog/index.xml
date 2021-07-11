@@ -21,6 +21,29 @@
     </item>
     
     <item>
+      <title>BAEKJOON - 1541 잃어버린 괄호 </title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1541-lost-parenthesis/</link>
+      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1541-lost-parenthesis/</guid>
+      <description>BAEKJOON - 1541 잃어버린 괄호 Task description 원문 : 백준 1541 링크
+ +와 -그리고 괄호를 가진 식에서 괄호를 모두 지웠다. 그리고 나서 괄호를 적절히 쳐서 이 식의 값을 최소로 만들려고 한다. 괄호를 적절히 쳐서 이 식의 값을 최소로 만드는 프로그램을 작성하시오.
+ Condition   첫째 줄에 식이 주어진다. 식은 ‘0’~‘9’, ‘+’, 그리고 ‘-’만으로 이루어져 있고, 가장 처음과 마지막 문자는 숫자이다. 그리고 연속해서 두 개 이상의 연산자가 나타나지 않고, 5자리보다 많이 연속되는 숫자는 없다.</description>
+    </item>
+    
+    <item>
+      <title>BAEKJOON - 10828 스택</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-stack/</link>
+      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-stack/</guid>
+      <description>BAEKJOON - 10828 스택 Task description 원문 : 백준 10828 링크
+ 정수를 저장하는 스택을 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
+  명령은 총 다섯 가지이다.
+  push X: 정수 X를 스택에 넣는 연산이다. pop: 스택에서 가장 위에 있는 정수를 빼고, 그 수를 출력한다. 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다. size: 스택에 들어있는 정수의 개수를 출력한다. empty: 스택이 비어있으면 1, 아니면 0을 출력한다. top: 스택의 가장 위에 있는 정수를 출력한다.</description>
+    </item>
+    
+    <item>
       <title>BAEKJOON - 10872 팩토리얼</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-factorial/</link>
       <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
@@ -29,6 +52,17 @@
       <description>BAEKJOON - 10872 팩토리얼(Factorial) Task description 원문 : 백준 10872 링크
  0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.
  Condition   첫째 줄에 정수 N(0 ≤ N ≤ 12)가 주어진다.   input output 예제 입력 1 복사10예제 출력 1 복사3628800예제 입력 2 복사0예제 출력 2 복사1 Solution  0이면 1리턴 0이 아니면 N * factorial(N-1) 리턴 # N * (N-1)!</description>
+    </item>
+    
+    <item>
+      <title>잉그올 영어 회화 21.07.08</title>
+      <link>https://offetuoso.github.io/blog/english/202107/20210708-english-speak/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/english/202107/20210708-english-speak/</guid>
+      <description>dimsom / dumplings (&amp;lsquo;딤섬 / 만두&amp;rsquo;) ingredient (&amp;lsquo;재료, 성분&amp;rsquo;)  a. What ingredients do you need to make a 김치찌개?
+ grocery (&amp;lsquo;식료품, 식자재 / 식료품점&amp;rsquo;)  I need to go to the grocery (store). / I need to buy some groceries.
+ ingredient 와 grocery   ingredient는 요리 뿐만 아니라 만드는 모든 것의 재료 grocery는 음식을 만들때의 재료   I had A on B . (&amp;lsquo;B에 A가 있었습니다.</description>
     </item>
     
     <item>
