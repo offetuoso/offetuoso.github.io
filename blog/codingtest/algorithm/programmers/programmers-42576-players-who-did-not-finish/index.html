@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>BAEKJOON - 4949 균형잡힌 세상 | offetuoso&#39;s Blog</title>
+  <title>Programmers 42576 완주하지 못한 선수 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="백준 균형잡힌 세상">
+  <meta name="description" content="Programmers 완주하지 못한 선수">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "BAEKJOON - 4949 균형잡힌 세상",
-      "headline" : "BAEKJOON - 4949 균형잡힌 세상",
-      "description" : "백준 균형잡힌 세상",
+      "name" : "Programmers 42576 완주하지 못한 선수",
+      "headline" : "Programmers 42576 완주하지 못한 선수",
+      "description" : "Programmers 완주하지 못한 선수",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-11 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-11 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-4949-a-balanced-world\/",
-      "wordCount" : "401",
+      "datePublished": "2021-07-12 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-12 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-42576-players-who-did-not-finish\/",
+      "wordCount" : "310",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,106 +170,112 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	BAEKJOON - 4949 균형잡힌 세상
+		            	Programmers 42576 완주하지 못한 선수
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	BAEKJOON - 4949 균형잡힌 세상
+		       	Programmers 42576 완주하지 못한 선수
             </h1>		
-            <time datetime="2021-07-11 00:00:00 &#43;0000 UTC" class="post__date">2021-07-11</time> 
+            <time datetime="2021-07-12 00:00:00 &#43;0000 UTC" class="post__date">2021-07-12</time> 
           </header>
           <article class="post__content">
               
-<h1 id="baekjoon---4949-균형잡힌-세상">BAEKJOON - 4949 균형잡힌 세상</h1>
+<h1 id="programmers---42576-완주하지-못한-선수">Programmers - 42576 완주하지 못한 선수</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://www.acmicpc.net/problem/4949">백준 4949 링크</a></p>
-<p>메시지를 입력받아 괄호를 열고 닫아야 한다.</p>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/42576">Programmers 42576 링크</a></p>
 <blockquote>
-<p>열고 닫는 괄호가 균형 맞게 되어있으면 yes 아니면 no 출력</p>
-<ul>
-<li>ex) asd(b)dd(d[ddd]) yes</li>
-<li>ex) (asdasd] no
-메시지의 끝은 .으로 끝나고 
-메시지가 &ldquo;.&rdquo; 이면 종료</li>
-</ul>
+<p>수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.
+마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>모든 왼쪽 소괄호(&quot;(&quot;)는 오른쪽 소괄호(&quot;)&quot;)와만 짝을 이뤄야 한다.</li>
-<li>모든 왼쪽 대괄호(&quot;[&quot;)는 오른쪽 대괄호(&quot;]&quot;)와만 짝을 이뤄야 한다.</li>
-<li>모든 오른쪽 괄호들은 자신과 짝을 이룰 수 있는 왼쪽 괄호가 존재한다.</li>
-<li>모든 괄호들의 짝은 1:1 매칭만 가능하다. 즉, 괄호 하나가 둘 이상의 괄호와 짝지어지지 않는다.</li>
-<li>짝을 이루는 두 괄호가 있을 때, 그 사이에 있는 문자열도 균형이 잡혀야 한다.</li>
-<li>하나 또는 여러줄에 걸쳐서 문자열이 주어진다. 각 문자열은 영문 알파벳, 공백, 소괄호(&quot;( )&quot;) 대괄호(&quot;<input disabled="" type="checkbox"> &quot;)등으로 이루어져 있으며, 길이는 100글자보다 작거나 같다.</li>
-<li>7번째의 &quot; .&ldquo;와 같이 괄호가 하나도 없는 경우도 균형잡힌 문자열로 간주할 수 있다.</li>
-<li>입력의 종료조건으로 맨 마지막에 점 하나(&rdquo;.&quot;)가 들어온다.</li>
+<li>마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.</li>
+<li>completion의 길이는 participant의 길이보다 1 작습니다.</li>
+<li>참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.</li>
+<li>참가자 중에는 동명이인이 있을 수 있습니다.</li>
 </ul>
 </blockquote>
 <h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
-<pre><code>예제 입력 1 
-So when I die (the [first] I will see in (heaven) is a score list).
-[ first in ] ( first out ).
-Half Moon tonight (At least it is better than no Moon at all].
-A rope may form )( a trail in a maze.
-Help( I[m being held prisoner in a fortune cookie factory)].
-([ (([( [ ] ) ( ) (( ))] )) ]).
- .
-.
-예제 출력 1 
-yes
-yes
-no
-no
-no
-yes
-yes
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>participant</th>
+<th>completion</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[&ldquo;leo&rdquo;, &ldquo;kiki&rdquo;, &ldquo;eden&rdquo;]</td>
+<td>[&ldquo;eden&rdquo;, &ldquo;kiki&rdquo;]</td>
+<td>&ldquo;leo&rdquo;</td>
+</tr>
+<tr>
+<td>[&ldquo;marina&rdquo;, &ldquo;josipa&rdquo;, &ldquo;nikola&rdquo;, &ldquo;vinko&rdquo;, &ldquo;filipa&rdquo;]</td>
+<td>[&ldquo;josipa&rdquo;, &ldquo;filipa&rdquo;, &ldquo;marina&rdquo;, &ldquo;nikola&rdquo;]</td>
+<td>&ldquo;vinko&rdquo;</td>
+</tr>
+<tr>
+<td>[&ldquo;mislav&rdquo;, &ldquo;stanko&rdquo;, &ldquo;mislav&rdquo;, &ldquo;ana&rdquo;]</td>
+<td>[&ldquo;stanko&rdquo;, &ldquo;ana&rdquo;, &ldquo;mislav&rdquo;]</td>
+<td>&ldquo;mislav&rdquo;</td>
+</tr>
+</tbody>
+</table>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <blockquote>
 <ol>
-<li>메시지가 &ldquo;.&rdquo; 이면 종료</li>
-<li>메시지가 &lsquo;(&rsquo; 또는 &lsquo;[&rsquo; 이면 스택에 추가</li>
+<li>participant 배열을 DICT로 변경
+- 키는 선수명, 값은 카운트
+- 키가 없으면 1, 키가 있다면 +1</li>
+<li>completion를 순회 하며 DICT을 조회
+- 선수를 조회하여 카운트 값이 1이면 삭제
+- 선수를 조회하여 카운트 값이 1보다 크면 -1</li>
+<li>남아있는 선수의 이름을 반환</li>
 </ol>
 </blockquote>
 <pre><code>
-while True : 
-	msg = input()
-	if msg == '.' :	# &quot;.&quot; 이면 종료
-		break
+def solution(participant,completion):
+	answer = ''
 	
-	front = []	# 스택 생성
-	flag = True 	# .이나오기 전에 조건에 만족(균형) X 면 False
-	
-	for i in range(0, len(msg)) :	
-		if msg[i] == '.' : 
-			if len(front) == 0 and flag: 	# 스택이 모두 pop되고, 조건에 만족(균형) 하면 yes
-				print('yes')
-			else : 
-				print('no')
-				
-		elif msg[i] == '(' or msg[i] == '[' : # 메시지가 '(' 또는 '[' 이면 스택에 추가
-			front.append(msg[i])
-			
-		elif (msg[i] == ')' or  msg[i] == ']') and len(front) == 0 : # 괄호를 안열고, 닫으려 할때 
-			flag  = False
-			
-		elif msg[i] == ')' : 	# )가 나왔을때 
-			if front[-1] == '(' :	# 스택 마지막이 ( 였다면 팝
-				front.pop()
-			else :
-				flag  = False		# 스택 마지막이 [ 으로 조건에 만족(균형) no
-				
-		elif msg[i] == ']' :	# ]가 나왔을때 
-			if front[-1] == '[' : 	# 스택 마지막이 [ 였다면 팝
-				front.pop()
-			else : 
-				flag  = False		# 스택 마지막이 ( 으로 조건에 만족(균형) no
-			
+	dic = {}
+	for player  in participant :		# participant 배열을 DICT로 변경
+		if dic.get(player) is None :		# 키는 선수명, 값은 카운트
+			dic[player] = 1	
+		else :
+			dic[player] += 1			# 키가 없으면 1, 키가 있다면 +1
+
+	for player  in completion :		# completion를 순회 하며 DICT을 조회
+		if dic[player] == 1 :			# 선수를 조회하여 카운트 값이 1이면 삭제
+			del(dic[player])
+		else :
+			dic[player] -= 1			# 선수를 조회하여 카운트 값이 1보다 크면 -1
+
+	for k in dic.keys() :			# 남아있는 선수의 이름을 반환
+		answer = k
+
+	return answer
+
+
+</code></pre>
+<h2 id="other-solution">Other Solution<a class="anchor" href="#other-solution">#</a></h2>
+<blockquote>
+<p>다른 사람의 풀이를 보고 Counter라는 콜렉션의 함수를 처음 보았다. ~메모~</p>
+</blockquote>
+<pre><code>from collections import Counter
+
+def solution(participant, completion):
+    answer = Counter(participant) - Counter(completion) # Counter로 생성하여 서로 -연산을 통해 남는 카운트를 반환
+    return list(answer.keys())[0]
+
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>
+<pre><code>solution([&quot;leo&quot;, &quot;kiki&quot;, &quot;eden&quot;],	[&quot;eden&quot;, &quot;kiki&quot;]) # &quot;leo&quot;
+solution([&quot;marina&quot;, &quot;josipa&quot;, &quot;nikola&quot;, &quot;vinko&quot;, &quot;filipa&quot;], 	[&quot;josipa&quot;, &quot;filipa&quot;, &quot;marina&quot;, &quot;nikola&quot;]) # &quot;vinko&quot;
+solution([&quot;mislav&quot;, &quot;stanko&quot;, &quot;mislav&quot;, &quot;ana&quot;], [&quot;stanko&quot;, &quot;ana&quot;, &quot;mislav&quot;]) #&quot;mislav&quot;
+
 </code></pre>
 
 
@@ -289,23 +295,18 @@ while True :
         <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/baekjoon/">BAEKJOON</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
     </li></ul>
 
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1541-lost-parenthesis/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-4949-a-balanced-world/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">BAEKJOON - 1541 잃어버린 괄호 </span>
+        <span class="pagination__title">BAEKJOON - 4949 균형잡힌 세상</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42576-players-who-did-not-finish/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Programmers 42576 완주하지 못한 선수</span>
-    </a>
   
 </div>
 
@@ -375,13 +376,14 @@ while True :
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">BAEKJOON - 4949 균형잡힌 세상</div> 
+          <div class="toc-post-title">Programmers 42576 완주하지 못한 선수</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
     <li><a href="#condition">Condition</a></li>
     <li><a href="#input-output">input output</a></li>
     <li><a href="#solution">Solution</a></li>
+    <li><a href="#other-solution">Other Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
   </ul>
 </nav>
