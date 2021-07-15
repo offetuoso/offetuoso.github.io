@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 14 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 70128 내적</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-70128-inner-product/</link>
+      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-70128-inner-product/</guid>
+      <description>Programmers - 70128 내적 Task description 원문 : Programmers 70128 링크
+ 길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다. a와 b의 내적을 return 하도록 solution 함수를 완성해주세요.
+  이때, a와 b의 내적은 a[0]*b[0] + a[1]*b[1] + &amp;hellip; + a[n-1]*b[n-1] 입니다. (n은 a, b의 길이)
+ Condition   a, b의 길이는 1 이상 1,000 이하입니다. a, b의 모든 수는 -1,000 이상 1,000 이하입니다.   input output    a b result     [1,2,3,4] [-3,-1,0,2] 3   [-1,0,1] [1,0,-1] -2     입출력 예 설명</description>
+    </item>
+    
     <item>
       <title>Programmers 42748 K번째 수</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42748-kth-number/</link>

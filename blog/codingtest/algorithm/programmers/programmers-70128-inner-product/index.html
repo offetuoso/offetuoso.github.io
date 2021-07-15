@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Programmers 42748 K번째 수 | offetuoso&#39;s Blog</title>
+  <title>Programmers 70128 내적 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="Programmers K번째 수">
+  <meta name="description" content="Programmers 내적">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Programmers 42748 K번째 수",
-      "headline" : "Programmers 42748 K번째 수",
-      "description" : "Programmers K번째 수",
+      "name" : "Programmers 70128 내적",
+      "headline" : "Programmers 70128 내적",
+      "description" : "Programmers 내적",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-14 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-14 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-42748-kth-number\/",
-      "wordCount" : "214",
+      "datePublished": "2021-07-15 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-15 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-70128-inner-product\/",
+      "wordCount" : "346",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,87 +170,150 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Programmers 42748 K번째 수
+		            	Programmers 70128 내적
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Programmers 42748 K번째 수
+		       	Programmers 70128 내적
             </h1>		
-            <time datetime="2021-07-14 00:00:00 &#43;0000 UTC" class="post__date">2021-07-14</time> 
+            <time datetime="2021-07-15 00:00:00 &#43;0000 UTC" class="post__date">2021-07-15</time> 
           </header>
           <article class="post__content">
               
-<h1 id="programmers---42748-k번째-수">Programmers - 42748 K번째 수</h1>
+<h1 id="programmers---70128-내적">Programmers - 70128 내적</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/42748">Programmers 42748 링크</a></p>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/70128">Programmers 70128 링크</a></p>
 <blockquote>
-<p>배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.</p>
+<p>길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다. a와 b의 내적을 return 하도록 solution 함수를 완성해주세요.</p>
 </blockquote>
 <blockquote>
-<p>예를 들어 array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3이라면</p>
-</blockquote>
-<blockquote>
-<p>array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다.
-1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다.
-2에서 나온 배열의 3번째 숫자는 5입니다.
-배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때, commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록 solution 함수를 작성해주세요.</p>
+<p>이때, a와 b의 내적은 a[0]*b[0] + a[1]*b[1] + &hellip; + a[n-1]*b[n-1] 입니다. (n은 a, b의 길이)</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>array의 길이는 1 이상 100 이하입니다.</li>
-<li>array의 각 원소는 1 이상 100 이하입니다.</li>
-<li>commands의 길이는 1 이상 50 이하입니다.</li>
-<li>commands의 각 원소는 길이가 3입니다.</li>
+<li>a, b의 길이는 1 이상 1,000 이하입니다.</li>
+<li>a, b의 모든 수는 -1,000 이상 1,000 이하입니다.</li>
 </ul>
 </blockquote>
 <h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
 <table>
 <thead>
 <tr>
-<th>array</th>
-<th>commands</th>
-<th>return</th>
+<th>a</th>
+<th>b</th>
+<th>result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>[1, 5, 2, 6, 3, 7, 4]</td>
-<td>[[2, 5, 3], [4, 4, 1], [1, 7, 3]]</td>
-<td>[5, 6, 3]</td>
+<td>[1,2,3,4]</td>
+<td>[-3,-1,0,2]</td>
+<td>3</td>
+</tr>
+<tr>
+<td>[-1,0,1]</td>
+<td>[1,0,-1]</td>
+<td>-2</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>입출력 예 설명</p>
+<ul>
+<li>입출력 예 #1
+a와 b의 내적은 1*(-3) + 2*(-1) + 3*0 + 4*2 = 3 입니다.</li>
+<li>입출력 예 #2
+a와 b의 내적은 (-1)<em>1 + 0</em>0 + 1*(-1) = -2 입니다.</li>
+</ul>
+</blockquote>
+<h2 id="point">Point<a class="anchor" href="#point">#</a></h2>
+<blockquote>
+<p>n-1이 나와서 재귀함수로 접근해야하나 싶었지만, 배열 문제에 자주 나오던 람다식으로 시도해보았다.</p>
+</blockquote>
+<h3 id="람다">람다<a class="anchor" href="#람다">#</a></h3>
+<blockquote>
+<p>람다는 익명 함수를 한줄의 코드로 선언하여 변수 또는 반환값, 파라미터로 사용하는 코드이다.</p>
+</blockquote>
+<blockquote>
+<p>람다식 - lambda parameter : formula 
+단독 수행 - lambda parameter : formula (input-value)</p>
+</blockquote>
+<pre><code>def hap(x,y): 
+	return x+y
+</code></pre>
+<blockquote>
+<p>일반 함수로 합을 구하는 공식을 람다식으로 변환하면 아래와같고,</p>
+</blockquote>
+<pre><code>lambda x,y : x+y (10,20)
+</code></pre>
+<h3 id="map-함수">map 함수<a class="anchor" href="#map-함수">#</a></h3>
+<blockquote>
+<p>map()은 리스트를 받아서 요소(배열의 값)들을 람다식을 적용하여, 새로운 배열로 만들어 반환.</p>
+</blockquote>
+<blockquote>
+<p>리스트 1개 일때 - map(function, list)
+리스트 1개 이상 - map(function, list1, list2..)</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>map 함수는 함수와 리스트를 인자로 받음.</li>
+<li>리스트의 요소(원소;배열의 값)를 하나씩 꺼내서 함수를 적용.</li>
+<li>그 결과를 새로운 리스트에 담아 반환.</li>
+</ol>
+</blockquote>
+<pre><code>a = [1,2,3]
+b = [4,5,6]
+result = []
+for i in range(0,len(a)) :
+    result.append(a[i]+b[i])
+</code></pre>
+<blockquote>
+<p>map을 이용하면 위의 복잡한 식을 한줄로 줄일 수 있다.</p>
+</blockquote>
+<pre><code>list(map(lambda x,y : x+y, [1,2,3],[4,5,6]))
+</code></pre>
+<blockquote>
+<p>여담으로 zip 함수를 이용할 수도 있다.</p>
+</blockquote>
+<pre><code>result = []
+for t in list(zip([1, 2, 3], [4, 5, 6])) : 
+    result.append(sum(t))
+</code></pre>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <blockquote>
 <ol>
-<li>commands를 순회</li>
-<li>command를 얻어 array를 자른다</li>
-<li>잘라낸 배열을 정렬한다.</li>
-<li>그중 N 번째 수를 결과 배열에 담는다.</li>
+<li>배열 a와 b를 map함수로, 배열의 요소 x,y를 서로 곱해서 배열로 반환</li>
+<li>배열의 합을 구함</li>
 </ol>
 </blockquote>
-<pre><code>def solution(array, commands):
-    answer = []
-    for command in commands : 
-        tmp = array[command[0]-1:command[1]]
-        tmp.sort()
-        answer.append(tmp[command[2]-1])
-    return answer
+<pre><code>def solution(a, b):
+    return sum(list(map(lambda x,y : x*y , a,b))) 
 
+#sum( 생성된 map 배열을 더함
+#	list(map(	# a,b 배열을 받아 각 요소 x,y를 람다식을 수행
+#		lambda x,y : x*y		# x,y 를 곱하는 람다식
+# 	, a,b))
+#) 
+	    
 </code></pre>
 <h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
 <blockquote>
-<p>람다식으로 한줄로 표현 할 수도 있다.</p>
+<p>zip을 이용하여 한줄로 표현할 수 도 있다.</p>
 </blockquote>
-<pre><code>def solution(array, commands):
-    return list(map(lambda x:sorted(array[x[0]-1:x[1]])[x[2]-1], commands))
-
-
+<pre><code>def solution(a, b):
+    return sum([x*y for x, y in zip(a,b)])
+</code></pre>
+<blockquote>
+<p>람다를 for 문처럼 사용</p>
+</blockquote>
+<pre><code>def solution(a, b):
+    return sum(map(lambda i: a[i]*b[i], range(len(a))))
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>solution([1, 5, 2, 6, 3, 7, 4],	[[2, 5, 3], [4, 4, 1], [1, 7, 3]])
+<pre><code>solution([1,2,3,4], [-3,-1,0,2])
+solution([-1,0,1],	[1,0,-1])
 </code></pre>
 
 
@@ -276,17 +339,12 @@
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-72410-new-id-recommendation/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42748-kth-number/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Programmers 72410 신규 아이디 추천</span>
+        <span class="pagination__title">Programmers 42748 K번째 수</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-70128-inner-product/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Programmers 70128 내적</span>
-    </a>
   
 </div>
 
@@ -356,12 +414,18 @@
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Programmers 42748 K번째 수</div> 
+          <div class="toc-post-title">Programmers 70128 내적</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
     <li><a href="#condition">Condition</a></li>
     <li><a href="#input-output">input output</a></li>
+    <li><a href="#point">Point</a>
+      <ul>
+        <li><a href="#람다">람다</a></li>
+        <li><a href="#map-함수">map 함수</a></li>
+      </ul>
+    </li>
     <li><a href="#solution">Solution</a></li>
     <li><a href="#others-solution">Others Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
