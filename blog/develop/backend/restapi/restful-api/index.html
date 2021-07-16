@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>RESTFULL API (RESTful API) | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="레스트풀 API">
+  <meta name="keywords" content="Restful">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.16c2e552c66baacd4b04c4a887e2f888e4268d2cfb917c50a226e6b3d8eb66a3.css" integrity="sha256-FsLlUsZrqs1LBMSoh&#43;L4iOQmjSz7kXxQoibms9jrZqM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "RESTFULL API (RESTful API)",
+      "headline" : "RESTFULL API (RESTful API)",
+      "description" : "레스트풀 API",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-05-29 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-05-29 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/restapi\/restful-api\/",
+      "wordCount" : "587",
+      "keywords" : ["Restful", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+			        
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-rest.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	RESTFULL API (RESTful API)
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	RESTFULL API (RESTful API)
+            </h1>		
+            <time datetime="2021-05-29 00:00:00 &#43;0000 UTC" class="post__date">2021-05-29</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="레스트풀-apirestful-api">레스트풀 API(Restful Api)</h1>
+<h2 id="rest-representational-state-transfer">REST (Representational state transfer)<a class="anchor" href="#rest-representational-state-transfer">#</a></h2>
+<blockquote>
+<p>REST(Representational State Transfer)는 월드 와이드 웹과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다.
+REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개
+엄격한 의미로 REST는 네트워크 아키텍처 원리의 모음이다.
+여기서 &lsquo;네트워크 아키텍처 원리&rsquo;란 자원을 정의하고 자원에 대한 주소를 지정하는 방법 전반을 일컫는다.
+간단한 의미로는, 웹 상의 자료를 HTTP위에서 SOAP이나 쿠키를 통한 세션 트랙킹 같은 별도의 전송 계층 없이 전송하기 위한 아주 간단한 인터페이스를 말한다.</p>
+</blockquote>
+<h3 id="rest-구성">REST 구성<a class="anchor" href="#rest-구성">#</a></h3>
+<blockquote>
+<p>1.자원(RESOURCE) - URI
+2.행위(Verb) - HTTP METHOD
+3.표현(Representations)</p>
+</blockquote>
+<h3 id="rest의-목표">REST의 목표<a class="anchor" href="#rest의-목표">#</a></h3>
+<blockquote>
+<p>REST의 목표는 성능, 확장 성, 단순성, 수정 가능성, 가시성, 이식성 및 안정성을 높이는 것. 
+이는 REST 아키텍처에 적용되는 제약 조건을 통해 달성됩니다.</p>
+</blockquote>
+<h3 id="rest-아키텍처-원칙아키텍처-스타일-아키텍처의-제약-조건">REST 아키텍처 원칙(아키텍처 스타일, 아키텍처의 제약 조건)<a class="anchor" href="#rest-아키텍처-원칙아키텍처-스타일-아키텍처의-제약-조건">#</a></h3>
+<blockquote>
+<p>해당 <mark>6가지 원칙을 모두 만족</mark>한다면, REST하다 이야기 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>인터페이스 일관성 (using a uniform interface): URI로 지정한 리소스에 대한 조작을 통일되고 한정적인 인터페이스로 수행하는 아키텍처 스타일을 말합니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>무상태성(Stateless): 상태정보를 따로 저장하고 관리하지 않습니다. 세션 정보나 쿠키정보를 별도로 저장하고 관리하지 않기 때문에 API 서버는 들어오는 요청만을 단순히 처리하면 됩니다. 때문에 서비스의 자유도가 높아지고 서버에서 불필요한 정보를 관리하지 않음으로써 구현이 단순해집니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>캐시 가능(Cacheability): REST의 가장 큰 특징 중 하나는 HTTP라는 기존 웹표준을 그대로 사용하기 때문에, 웹에서 사용하는 기존 인프라를 그대로 활용이 가능합니다. 따라서 HTTP가 가진 캐싱 기능이 적용 가능합니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>클라이언트/서버 구조 (client–server architecture): REST 서버는 API 제공, 클라이언트는 사용자 인증이나 컨텍스트(세션, 로그인 정보)등을 직접 관리하는 구조로 각각의 역할이 확실히 구분되기 때문에 클라이언트와 서버에서 개발해야 할 내용이 명확해지고 서로간 의존성이 줄어들게 됩니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>계층화(Layered System): REST 서버는 다중 계층으로 구성될 수 있으며 보안, 로드 밸런싱, 암호화 계층을 추가해 구조상의 유연성을 둘 수 있고 PROXY, 게이트웨이 같은 네트워크 기반의 중간매체를 사용할 수 있게 합니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="6">
+<li>Code on demand (optional) - 클라이언트는 리소스에 대한 표현을 응답으로 받고 처리해야 하는데, 어떻게 처리해야 하는지에 대한 Code를 서버가 제공하는 것을 의미한다. Html에서의 javascript가 가장 대표적인 예이다. 하지만 서버에서 제공되는 코드를 실행해야 하기 때문에 보안 문제를 야기할 수 있습니다.
+(이 제약조건은 필수는 아님.)</li>
+</ol>
+</blockquote>
+<h3 id="rest가-필요한-이유">REST가 필요한 이유<a class="anchor" href="#rest가-필요한-이유">#</a></h3>
+<blockquote>
+<ul>
+<li>애플리케이션 분리 및 통합</li>
+<li>다양한 클라이언트의 등장</li>
+<li>최근의 서버 프로그램은 다양한 브라우저와 안드로이드폰, 아이폰과 같은 모바일 디바이스에서도 통신을 할 수 있어야 한다.</li>
+<li>이러한 멀티 플랫폼에 대한 지원을 위해 서비스 자원에 대한 아키텍처를 세우고 이용하는 방법을 모색한 결과, REST에 관심을 가지게 되었다.</li>
+</ul>
+</blockquote>
+<h2 id="restful-api-">RESTful API ?<a class="anchor" href="#restful-api-">#</a></h2>
+<blockquote>
+<p>RESTful은 위의 REST 아키텍처의 원칙을 모두 만족하는 것을 의미한다.
+RESTful API란 REST라는 아키텍처 스타일과 원칙을 모두 만족하는 모두 만족하는 API라는 뜻이다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/restapi/rest-api-002.png" alt="contact"></p>
+<h3 id="rest-api-디자인">REST API 디자인<a class="anchor" href="#rest-api-디자인">#</a></h3>
+<blockquote>
+<ol>
+<li>URL을 심플하고 직관적으로 만들자</li>
+</ol>
+<ul>
+<li>REST API를 URL만 보고도, 직관적으로 이해할 수 있어야 한다</li>
+<li>URL을 길게 만드는것 보다, 최대 2 depth 정도로 간단하게 만드는 것이 이해하기 편하다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>BAD</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/customerUsers
+http://restapi.example.com/sellerUsers
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/users/customer
+http://restapi.example.com/users/seller
+
+</code></pre>
+<blockquote>
+<ol start="2">
+<li>소문자를 사용한다.</li>
+</ol>
+<ul>
+<li>도메인 주소명은 대소문자를 구분하지 않는다.</li>
+<li>디렉터리 명 이하의 주소는 서버의 운영체제에 따라 다르다.</li>
+<li>대소문자를 혼용하여 사용하는 주소는 권장되지 않는다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>BAD</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/users/customer/
+
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/users/customer/get-adress
+</code></pre>
+<blockquote>
+<ol start="3">
+<li>언더바를 대신 하이픈을 사용한다.
+가급적 하이픈의 사용도 최소화하며, 정확한 의미나 표현을 위해 단어의 결합이 불가피한 경우에 사용한다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ul>
+<li>Bad</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/users/customer/get_adress
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/users/customer/get-adress
+</code></pre>
+<blockquote>
+<ol start="4">
+<li>마지막에 슬래시를 포함하지 않는다.</li>
+</ol>
+<ul>
+<li>슬래시는 계층을 구분하는 것으로, 마지막에는 사용하지 않는다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Bad</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/users/customer/
+
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>http://restapi.example.com/users/customer
+</code></pre>
+<blockquote>
+<ol start="5">
+<li>행위는 포함하지 않는다.</li>
+</ol>
+<ul>
+<li>행위(동사)는 URL대신 Method를 사용하여 전달한다.(GET, POST, PUT, DELETE 등)</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>GET(read)</th>
+<th>PUT(create)</th>
+<th>POST(update)</th>
+<th>DELETE(delete)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/goods</td>
+<td>상품목록</td>
+<td>상품추가</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>/goods/{id}</td>
+<td>{id}값 상품상세</td>
+<td>-</td>
+<td>{id}값 상품 수정</td>
+<td>{id}값 상품 삭제</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>Bad</li>
+</ul>
+</blockquote>
+<pre><code>POST :  http://restapi.example.com/users/customer/delete-post/1
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>DELETE :  http://restapi.example.com/users/customer/post/1
+</code></pre>
+<blockquote>
+<ol start="6">
+<li>가급적 명사를 사용하되, 제어 자원을 의미하는 경우 예외적으로 동사를 허용한다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ul>
+<li>Bad</li>
+</ul>
+</blockquote>
+<pre><code>POST :  http://restapi.example.com/users/customer/duplication
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>POST :  http://restapi.example.com/users/customer/duplicate
+</code></pre>
+<blockquote>
+<p>7.파일 확장자는 URI에 포함시키지 않는다.</p>
+<ul>
+<li>REST API에서는 메시지 바디 내용의 포맷을 나타내기 위한 파일 확장자를 URI 안에 포함시키지 않습니다. Accept header를 사용하도록 한다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Bad</li>
+</ul>
+</blockquote>
+<pre><code>GET :  http://restapi.example.com/users/customer/profile.png
+</code></pre>
+<blockquote>
+<ul>
+<li>Good</li>
+</ul>
+</blockquote>
+<pre><code>GET http://restapi.example.com/users/customer/profile
+HTTP/1.1 Host: restapi.example.com Accept: image/jpg
+
+</code></pre>
+<blockquote>
+<ol start="8">
+<li>
+<pre><code>오류 처리를 명확하게 해라.
+</code></pre>
+</li>
+</ol>
+<ul>
+<li>HTTP 상태코드를 정하고(많아도 안좋음), 다른 개발자들을 위한 오류 메시지 정의, 상세 정보 링크 등을 넣어주면 도움이 된다.</li>
+</ul>
+</blockquote>
+<h3 id="참고">참고<a class="anchor" href="#참고">#</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://ko.wikipedia.org/wiki/REST">REST wiki</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/rest/">REST</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/restful/">RESTful</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/api/">Api</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">도커에 Mysql 올리기-1 (Docker Mysql)</span>
+    </a>
+  
+
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >SpringBoot를 이용한 RESTful API</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">RESTFULL API (RESTful API)</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rest-representational-state-transfer">REST (Representational state transfer)</a>
+      <ul>
+        <li><a href="#rest-구성">REST 구성</a></li>
+        <li><a href="#rest의-목표">REST의 목표</a></li>
+        <li><a href="#rest-아키텍처-원칙아키텍처-스타일-아키텍처의-제약-조건">REST 아키텍처 원칙(아키텍처 스타일, 아키텍처의 제약 조건)</a></li>
+        <li><a href="#rest가-필요한-이유">REST가 필요한 이유</a></li>
+      </ul>
+    </li>
+    <li><a href="#restful-api-">RESTful API ?</a>
+      <ul>
+        <li><a href="#rest-api-디자인">REST API 디자인</a></li>
+        <li><a href="#참고">참고</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>

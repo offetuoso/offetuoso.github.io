@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 07 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/mybatis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RESTful API에 Docker Mysql 컨테이너와 Mybatis 연동</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-3/</link>
+      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</link>
       <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-3/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</guid>
       <description>RESTful API - Docker의 Mysql과 Mybatis 연동 Docker  Docker에 Mysql을 올리는 것은 저번 포스팅에서 진행하였기 때문에 도커에 Mysql 올리기 링크를 남기고 다음부터 진행합니다.
   지난 포스트에서 생성한 Docker의 Mysql 컨테이너를 실행
    docker ps -a (&amp;ldquo;컨테이너 조회&amp;rdquo;)    docker start (&amp;ldquo;컨테이너 시작&amp;rdquo;)  docker restart (&amp;ldquo;컨테이너에 재시작하기&amp;rdquo;) docker stop (&amp;ldquo;컨테이너에 종료하기&amp;rdquo;) docker attach (&amp;ldquo;현재 실행중인 컨테이너에 접속하기&amp;rdquo;)      sudo docker exec -it /bin/bash (&amp;ldquo;컨테이너의 CLI 접속&amp;rdquo;)   PS C:\WINDOWS\system32&amp;gt; docker ps -aCONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES4b6fb99160bf mysql:5.</description>

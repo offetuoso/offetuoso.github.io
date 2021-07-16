@@ -359,10 +359,10 @@ A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데�
     
     <item>
       <title>RESTful API에 Docker Mysql 컨테이너와 Mybatis 연동</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-3/</link>
+      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</link>
       <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-3/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</guid>
       <description>RESTful API - Docker의 Mysql과 Mybatis 연동 Docker  Docker에 Mysql을 올리는 것은 저번 포스팅에서 진행하였기 때문에 도커에 Mysql 올리기 링크를 남기고 다음부터 진행합니다.
   지난 포스트에서 생성한 Docker의 Mysql 컨테이너를 실행
    docker ps -a (&amp;ldquo;컨테이너 조회&amp;rdquo;)    docker start (&amp;ldquo;컨테이너 시작&amp;rdquo;)  docker restart (&amp;ldquo;컨테이너에 재시작하기&amp;rdquo;) docker stop (&amp;ldquo;컨테이너에 종료하기&amp;rdquo;) docker attach (&amp;ldquo;현재 실행중인 컨테이너에 접속하기&amp;rdquo;)      sudo docker exec -it /bin/bash (&amp;ldquo;컨테이너의 CLI 접속&amp;rdquo;)   PS C:\WINDOWS\system32&amp;gt; docker ps -aCONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES4b6fb99160bf mysql:5.</description>
@@ -423,10 +423,10 @@ A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데�
     
     <item>
       <title>SpringBoot를 이용한 RESTful API</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</link>
+      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</link>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</guid>
       <description>SpringBoot를 이용한 RESTful API SpringBoot  스프링 프레임워크 기반 프로젝트를 복잡한 설정없이 쉽고 빠르게 만들어주는 라이브러리입니다. 사용자가 일일이 모든 설정을 하지 않아도 자주 사용되는 기본설정을 알아서 해줍니다.
   Spring Boot 장점
    라이브러리 관리의 자동화 라이브러리 버전 자동 관리 설정의 자동화 내장 Tomcat 독립적으로 실행 가능한 JAR   간단한 RESTful API 생성 Spring Starter Project로 프로젝트 생성  스프링STS4를 실행 하고, file &amp;gt; new &amp;gt; Spring Starter Project를 선택</description>
@@ -434,10 +434,10 @@ A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데�
     
     <item>
       <title>RESTFULL API (RESTful API)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</link>
+      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api/</link>
       <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api/</guid>
       <description>레스트풀 API(Restful Api) REST (Representational state transfer)  REST(Representational State Transfer)는 월드 와이드 웹과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다. REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개 엄격한 의미로 REST는 네트워크 아키텍처 원리의 모음이다. 여기서 &amp;lsquo;네트워크 아키텍처 원리&amp;rsquo;란 자원을 정의하고 자원에 대한 주소를 지정하는 방법 전반을 일컫는다. 간단한 의미로는, 웹 상의 자료를 HTTP위에서 SOAP이나 쿠키를 통한 세션 트랙킹 같은 별도의 전송 계층 없이 전송하기 위한 아주 간단한 인터페이스를 말한다.</description>
     </item>
     
