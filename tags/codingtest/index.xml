@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Thu, 15 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/codingtest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/codingtest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 64061 크레인 인형 뽑기</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-64061-crane-puppet-game/</link>
+      <pubDate>Fri, 16 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-64061-crane-puppet-game/</guid>
+      <description>Programmers - 64061 크레인 인형 뽑기 Task description 원문 : Programmers 64061 링크
+ 게임개발자인 &amp;ldquo;죠르디&amp;quot;는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다. &amp;ldquo;죠르디&amp;quot;는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.
+  게임 화면은 &amp;ldquo;1 x 1&amp;rdquo; 크기의 칸들로 이루어진 &amp;ldquo;N x N&amp;rdquo; 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 &amp;ldquo;5 x 5&amp;rdquo; 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다.</description>
+    </item>
+    
     <item>
       <title>Programmers 70128 내적</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-70128-inner-product/</link>
