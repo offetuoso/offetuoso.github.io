@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lombok @Data 어노테이션 getter setter 인식 안될때</title>
+      <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/lombok-error/</link>
+      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/spring/lombok-error/</guid>
+      <description>Lombok @Data 어노테이션 &amp;ldquo;getter&amp;rdquo; &amp;ldquo;setter&amp;rdquo; 인식 안될때 문제  Spring Boot에서 프로젝트 생성시 아래와 같이 lombok을 추가하고 데이터 오브젝트 클래스에서 lombok 선언을 하였음에도, 컨트롤러에서 @RequestBody를 통해 Company company 객체를 전달받았을때, 데이터가 세팅이 안되고 Null로 데이터가 있는 경우가 있었다.
+  찾아보니, 사용하는 lombok-xxx.jar를 실행하여 IDE(eclipse, sts)에 설치 해줘야 한다는 것이다.
+ 해결책   Jar가 설치된 위치로 가서 Terminal을 연다.    Jar를 실행시킨다.   	java -jar [jar 파일.</description>
+    </item>
+    
     <item>
       <title>Maven Error - Failure to transfer..</title>
       <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</link>
