@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 19 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/codingtest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/codingtest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 17682 다트 게임</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17682-dart-game/</link>
+      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17682-dart-game/</guid>
+      <description>Programmers - 17682 다트 게임 Task description 원문 : Programmers 17682 링크
+ 카카오톡 게임별의 하반기 신규 서비스로 다트 게임을 출시하기로 했다. 다트 게임은 다트판에 다트를 세 차례 던져 그 점수의 합계로 실력을 겨루는 게임으로, 모두가 간단히 즐길 수 있다. 갓 입사한 무지는 코딩 실력을 인정받아 게임의 핵심 부분인 점수 계산 로직을 맡게 되었다. 다트 게임의 점수 계산 로직은 아래와 같다.
+  다트 게임은 총 3번의 기회로 구성된다. 각 기회마다 얻을 수 있는 점수는 0점에서 10점까지이다.</description>
+    </item>
+    
     <item>
       <title>Programmers 67256 키패드 누르기</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-67256-keypad-press/</link>
