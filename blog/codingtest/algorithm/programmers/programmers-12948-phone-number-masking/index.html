@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Programmers 68644 두 개 뽑아서 더하기 | offetuoso&#39;s Blog</title>
+  <title>Programmers 12948 핸드폰 번호 가리기 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="Programmers 두 개 뽑아서 더하기">
+  <meta name="description" content="12948 핸드폰 번호 가리기">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Programmers 68644 두 개 뽑아서 더하기",
-      "headline" : "Programmers 68644 두 개 뽑아서 더하기",
-      "description" : "Programmers 두 개 뽑아서 더하기",
+      "name" : "Programmers 12948 핸드폰 번호 가리기",
+      "headline" : "Programmers 12948 핸드폰 번호 가리기",
+      "description" : "12948 핸드폰 번호 가리기",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-24 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-24 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-68644-take-two-and-add\/",
-      "wordCount" : "209",
+      "datePublished": "2021-07-25 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-25 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-12948-phone-number-masking\/",
+      "wordCount" : "97",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,28 +170,28 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Programmers 68644 두 개 뽑아서 더하기
+		            	Programmers 12948 핸드폰 번호 가리기
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Programmers 68644 두 개 뽑아서 더하기
+		       	Programmers 12948 핸드폰 번호 가리기
             </h1>		
-            <time datetime="2021-07-24 00:00:00 &#43;0000 UTC" class="post__date">2021-07-24</time> 
+            <time datetime="2021-07-25 00:00:00 &#43;0000 UTC" class="post__date">2021-07-25</time> 
           </header>
           <article class="post__content">
               
-<h1 id="programmers---68644-두-개-뽑아서-더하기">Programmers - 68644 두 개 뽑아서 더하기</h1>
+<h1 id="programmers---12948-핸드폰-번호-가리기">Programmers - 12948 핸드폰 번호 가리기</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/68644">Programmers 68644 링크</a></p>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/12948">Programmers 12948 링크</a></p>
 <blockquote>
-<p>정수 배열 numbers가 주어집니다. numbers에서 서로 다른 인덱스에 있는 두 개의 수를 뽑아 더해서 만들 수 있는 모든 수를 배열에 오름차순으로 담아 return 하도록 solution 함수를 완성해주세요.</p>
+<p>프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다.
+전화번호가 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, solution을 완성해주세요.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>numbers의 길이는 2 이상 100 이하입니다.</li>
-<li>numbers의 모든 수는 0 이상 100 이하입니다.</li>
+<li>s는 길이 4 이상, 20이하인 문자열입니다.</li>
 </ul>
 </blockquote>
 <h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
@@ -201,62 +201,43 @@
 <table>
 <thead>
 <tr>
-<th>numbers</th>
-<th>result</th>
+<th>입출력</th>
+<th>예</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>[2,1,3,4,1]</td>
-<td>[2,3,4,5,6,7]</td>
+<td>phone_number</td>
+<td>return</td>
 </tr>
 <tr>
-<td>[5,0,2,7]</td>
-<td>[2,5,7,9,12]</td>
+<td>&ldquo;01033334444&rdquo;</td>
+<td>&ldquo;*******4444&rdquo;</td>
+</tr>
+<tr>
+<td>&ldquo;027778888&rdquo;</td>
+<td>&ldquo;*****8888&rdquo;</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>입출력 예 설명<br>
-입출력 예 #1</p>
-</blockquote>
-<blockquote>
-<p>2 = 1 + 1 입니다. (1이 numbers에 두 개 있습니다.) <br>
-3 = 2 + 1 입니다.<br>
-4 = 1 + 3 입니다.<br>
-5 = 1 + 4 = 2 + 3 입니다.<br>
-6 = 2 + 4 입니다.<br>
-7 = 3 + 4 입니다.<br>
-따라서 [2,3,4,5,6,7] 을 return 해야 합니다.<br>
-입출력 예 #2</p>
-</blockquote>
-<blockquote>
-<p>2 = 0 + 2 입니다.<br>
-5 = 5 + 0 입니다.<br>
-7 = 0 + 7 = 5 + 2 입니다.<br>
-9 = 2 + 7 입니다.<br>
-12 = 5 + 7 입니다.<br>
-따라서 [2,5,7,9,12] 를 return 해야 합니다.<br></p>
-</blockquote>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <blockquote>
 <ol>
-<li>numbers를 2중 루프로 순회</li>
-<li>numbers를 인덱스 i와 j가 같지 않을때 두값을 더한다</li>
-<li>set으로 중복제거후 sorted로 정렬 하여 반환</li>
+<li>받아온 숫자를 뒤 4번째 부터 자른다.</li>
+<li>1에서 만든 4자리에 원래 받아온 숫자 자리수 까지 왼쪽을 *로 채운다</li>
 </ol>
 </blockquote>
-<pre><code>def solution(numbers):
-        for i in range(0,len(numbers)) :
-            for j in range(0,len(numbers)) :
-                if i != j :
-                    answer.append(numbers[i]+numbers[j])
-        return sorted(set(answer))
-        
+<pre><code>def solution(phone_number): 
+    return phone_number[-4:].rjust(len(phone_number),'*')
+</code></pre>
+<h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
+<pre><code>def hide_numbers(s):
+    return &quot;*&quot;*(len(s)-4) + s[-4:]
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code># solution([2,1,3,4,1])
-# solution([5,0,2,7])
+<pre><code>solution(&quot;01033334444&quot;)
+solution(&quot;027778888&quot;)
+solution(&quot;4444&quot;)
 
 </code></pre>
 
@@ -283,17 +264,12 @@
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12973-remove-by-pair/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-68644-take-two-and-add/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Programmers 12973 짝지어 제거하기</span>
+        <span class="pagination__title">Programmers 68644 두 개 뽑아서 더하기</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12948-phone-number-masking/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Programmers 12948 핸드폰 번호 가리기</span>
-    </a>
   
 </div>
 
@@ -363,13 +339,14 @@
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Programmers 68644 두 개 뽑아서 더하기</div> 
+          <div class="toc-post-title">Programmers 12948 핸드폰 번호 가리기</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
     <li><a href="#condition">Condition</a></li>
     <li><a href="#input-output">input output</a></li>
     <li><a href="#solution">Solution</a></li>
+    <li><a href="#others-solution">Others Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
   </ul>
 </nav>

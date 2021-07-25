@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 24 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/programmers/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/programmers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 12948 핸드폰 번호 가리기</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12948-phone-number-masking/</link>
+      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12948-phone-number-masking/</guid>
+      <description>Programmers - 12948 핸드폰 번호 가리기 Task description 원문 : Programmers 12948 링크
+ 프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다. 전화번호가 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, solution을 완성해주세요.
+ Condition   s는 길이 4 이상, 20이하인 문자열입니다.   input output  입출력 예
+    입출력 예     phone_number return   &amp;ldquo;01033334444&amp;rdquo; &amp;ldquo;*******4444&amp;rdquo;   &amp;ldquo;027778888&amp;rdquo; &amp;ldquo;*****8888&amp;rdquo;    Solution   받아온 숫자를 뒤 4번째 부터 자른다.</description>
+    </item>
+    
     <item>
       <title>Programmers 68644 두 개 뽑아서 더하기</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-68644-take-two-and-add/</link>
