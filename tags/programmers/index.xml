@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 25 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/programmers/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/programmers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 17677 뉴스 클러스터링</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17677-news-clustering/</link>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17677-news-clustering/</guid>
+      <description>Programmers - 17677 뉴스 클러스터링 Task description 원문 : Programmers 17677 링크
+ 뉴스 클러스터링
+여러 언론사에서 쏟아지는 뉴스, 특히 속보성 뉴스를 보면 비슷비슷한 제목의 기사가 많아 정작 필요한 기사를 찾기가 어렵다.
+Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들이 편리하게 다양한 뉴스를 찾아볼 수 있도록 문제점을 개선하는 업무를 맡게 되었다.
+  개발의 방향을 잡기 위해 튜브는 우선 최근 화제가 되고 있는 &amp;ldquo;카카오 신입 개발자 공채&amp;rdquo; 관련 기사를 검색해보았다.</description>
+    </item>
+    
     <item>
       <title>Programmers 12948 핸드폰 번호 가리기</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12948-phone-number-masking/</link>
