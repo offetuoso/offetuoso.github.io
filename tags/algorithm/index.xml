@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 26 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 42626 더 맵게</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42626-more-spicy/</link>
+      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42626-more-spicy/</guid>
+      <description>Programmers - 42626 더 맵게 Task description 원문 : Programmers 42626 링크
+ 매운 것을 좋아하는 Leo는 모든 음식의 스코빌 지수를 K 이상으로 만들고 싶습니다. 모든 음식의 스코빌 지수를 K 이상으로 만들기 위해 Leo는 스코빌 지수가 가장 낮은 두 개의 음식을 아래와 같이 특별한 방법으로 섞어 새로운 음식을 만듭니다.
+  섞은 음식의 스코빌 지수 = 가장 맵지 않은 음식의 스코빌 지수 + (두 번째로 맵지 않은 음식의 스코빌 지수 * 2) Leo는 모든 음식의 스코빌 지수가 K 이상이 될 때까지 반복하여 섞습니다.</description>
+    </item>
+    
     <item>
       <title>Programmers 17677 뉴스 클러스터링</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17677-news-clustering/</link>
