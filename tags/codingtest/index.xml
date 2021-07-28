@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/codingtest/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 28 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/codingtest/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 42888 오픈 채팅방</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42888-open-chat-room/</link>
+      <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42888-open-chat-room/</guid>
+      <description>Programmers - 42888 오픈 채팅방 Task description 원문 : Programmers 42888 링크
+ 카카오톡 오픈채팅방에서는 친구가 아닌 사람들과 대화를 할 수 있는데, 본래 닉네임이 아닌 가상의 닉네임을 사용하여 채팅방에 들어갈 수 있다.
+  신입사원인 김크루는 카카오톡 오픈 채팅방을 개설한 사람을 위해, 다양한 사람들이 들어오고, 나가는 것을 지켜볼 수 있는 관리자창을 만들기로 했다. 채팅방에 누군가 들어오면 다음 메시지가 출력된다.
+ &amp;quot;[닉네임]님이 들어왔습니다.&amp;quot;  채팅방에서 누군가 나가면 다음 메시지가 출력된다.</description>
+    </item>
+    
     <item>
       <title>Programmers 42626 더 맵게</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42626-more-spicy/</link>
