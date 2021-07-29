@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Programmers 42888 오픈 채팅방 | offetuoso&#39;s Blog</title>
+  <title>Programmers 60057 문자열 압축 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="42888 오픈 채팅방">
+  <meta name="description" content="60057 문자열 압축">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Programmers 42888 오픈 채팅방",
-      "headline" : "Programmers 42888 오픈 채팅방",
-      "description" : "42888 오픈 채팅방",
+      "name" : "Programmers 60057 문자열 압축",
+      "headline" : "Programmers 60057 문자열 압축",
+      "description" : "60057 문자열 압축",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-28 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-28 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-42888-open-chat-room\/",
-      "wordCount" : "509",
+      "datePublished": "2021-07-29 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-29 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-60057-string-compression\/",
+      "wordCount" : "559",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,106 +170,85 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Programmers 42888 오픈 채팅방
+		            	Programmers 60057 문자열 압축
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Programmers 42888 오픈 채팅방
+		       	Programmers 60057 문자열 압축
             </h1>		
-            <time datetime="2021-07-28 00:00:00 &#43;0000 UTC" class="post__date">2021-07-28</time> 
+            <time datetime="2021-07-29 00:00:00 &#43;0000 UTC" class="post__date">2021-07-29</time> 
           </header>
           <article class="post__content">
               
-<h1 id="programmers---42888-오픈-채팅방">Programmers - 42888 오픈 채팅방</h1>
+<h1 id="programmers---60057-문자열-압축">Programmers - 60057 문자열 압축</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/42888">Programmers 42888 링크</a></p>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/60057">Programmers 60057 링크</a></p>
 <blockquote>
-<p>카카오톡 오픈채팅방에서는 친구가 아닌 사람들과 대화를 할 수 있는데, <br>본래 닉네임이 아닌 가상의 닉네임을 사용하여 채팅방에 들어갈 수 있다.</p>
+<p>데이터 처리 전문가가 되고 싶은 &ldquo;어피치&quot;는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. <br>
+최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, <br>
+문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자열로 줄여서 표현하는 알고리즘을 공부하고 있습니다.<br>
+간단한 예로 &ldquo;aabbaccc&quot;의 경우 &ldquo;2a2ba3c&rdquo;(문자가 반복되지 않아 한번만 나타난 경우 1은 생략함)와 같이 표현할 수 있는데, 이러한 방식은 반복되는 문자가 적은 경우 압축률이 낮다는 단점이 있습니다.<br>
+예를 들면, &ldquo;abcabcdede&quot;와 같은 문자열은 전혀 압축되지 않습니다. &ldquo;어피치&quot;는 이러한 단점을 해결하기 위해 문자열을 1개 이상의 단위로 잘라서 압축하여 더 짧은 문자열로 표현할 수 있는지 방법을 찾아보려고 합니다.</p>
 </blockquote>
 <blockquote>
-<p>신입사원인 김크루는 카카오톡 오픈 채팅방을 개설한 사람을 위해, 다양한 사람들이 들어오고, 나가는 것을 지켜볼 수 있는 관리자창을 만들기로 했다. 채팅방에 누군가 들어오면 다음 메시지가 출력된다.</p>
-</blockquote>
-<pre><code>&quot;[닉네임]님이 들어왔습니다.&quot;
-</code></pre>
-<blockquote>
-<p>채팅방에서 누군가 나가면 다음 메시지가 출력된다.</p>
-</blockquote>
-<pre><code>&quot;[닉네임]님이 나갔습니다.&quot;
-</code></pre>
-<blockquote>
-<p>채팅방에서 닉네임을 변경하는 방법은 다음과 같이 두 가지이다.</p>
+<p>예를 들어, &ldquo;ababcdcdababcdcd&quot;의 경우 문자를 1개 단위로 자르면 전혀 압축되지 않지만, 2개 단위로 잘라서 압축한다면 &ldquo;2ab2cd2ab2cd&quot;로 표현할 수 있습니다. 다른 방법으로 8개 단위로 잘라서 압축한다면 &ldquo;2ababcdcd&quot;로 표현할 수 있으며, 이때가 가장 짧게 압축하여 표현할 수 있는 방법입니다.</p>
 </blockquote>
 <blockquote>
-<p>채팅방을 나간 후, 새로운 닉네임으로 다시 들어간다. <br>
-채팅방에서 닉네임을 변경한다. <br>
-닉네임을 변경할 때는 기존에 채팅방에 출력되어 있던 메시지의 닉네임도 전부 변경된다.</p>
+<p>다른 예로, &ldquo;abcabcdede&quot;와 같은 경우, 문자를 2개 단위로 잘라서 압축하면 &ldquo;abcabc2de&quot;가 되지만, 3개 단위로 자른다면 &ldquo;2abcdede&quot;가 되어 3개 단위가 가장 짧은 압축 방법이 됩니다. 이때 3개 단위로 자르고 마지막에 남는 문자열은 그대로 붙여주면 됩니다.</p>
 </blockquote>
 <blockquote>
-<p>예를 들어, 채팅방에 &ldquo;Muzi&quot;와 &ldquo;Prodo&quot;라는 닉네임을 사용하는 사람이 순서대로 들어오면 채팅방에는 다음과 같이 메시지가 출력된다.</p>
-</blockquote>
-<pre><code>&quot;Muzi님이 들어왔습니다.&quot;
-&quot;Prodo님이 들어왔습니다.&quot;
-</code></pre>
-<blockquote>
-<p>채팅방에 있던 사람이 나가면 채팅방에는 다음과 같이 메시지가 남는다.</p>
-</blockquote>
-<pre><code>&quot;Muzi님이 들어왔습니다.&quot;
-&quot;Prodo님이 들어왔습니다.&quot;
-&quot;Muzi님이 나갔습니다.&quot;
-</code></pre>
-<blockquote>
-<p>Muzi가 나간후 다시 들어올 때, Prodo 라는 닉네임으로 들어올 경우 기존에 채팅방에 남아있던 Muzi도 Prodo로 다음과 같이 변경된다.</p>
-</blockquote>
-<pre><code>&quot;Prodo님이 들어왔습니다.&quot;
-&quot;Prodo님이 들어왔습니다.&quot;
-&quot;Prodo님이 나갔습니다.&quot;
-&quot;Prodo님이 들어왔습니다.&quot;
-</code></pre>
-<blockquote>
-<p>채팅방은 중복 닉네임을 허용하기 때문에, 현재 채팅방에는 Prodo라는 닉네임을 사용하는 사람이 두 명이 있다.  <br>
-이제, 채팅방에 두 번째로 들어왔던 Prodo가 Ryan으로 닉네임을 변경하면 채팅방 메시지는 다음과 같이 변경된다.</p>
-</blockquote>
-<pre><code>&quot;Prodo님이 들어왔습니다.&quot;
-&quot;Ryan님이 들어왔습니다.&quot;
-&quot;Prodo님이 나갔습니다.&quot;
-&quot;Prodo님이 들어왔습니다.&quot;
-</code></pre>
-<blockquote>
-<p>채팅방에 들어오고 나가거나, 닉네임을 변경한 기록이 담긴 문자열 배열 record가 매개변수로 주어질 때, <br>
-모든 기록이 처리된 후, 최종적으로 방을 개설한 사람이 보게 되는 메시지를 문자열 배열 형태로 return 하도록 solution 함수를 완성하라.</p>
+<p>압축할 문자열 s가 매개변수로 주어질 때, 위에 설명한 방법으로 1개 이상 단위로 문자열을 잘라 압축하여 표현한 문자열 중 가장 짧은 것의 길이를 return 하도록 solution 함수를 완성해주세요.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>record는 다음과 같은 문자열이 담긴 배열이며, 길이는 1 이상 100,000 이하이다.</li>
-<li>다음은 record에 담긴 문자열에 대한 설명이다.</li>
-<li>모든 유저는 [유저 아이디]로 구분한다.</li>
-<li>[유저 아이디] 사용자가 [닉네임]으로 채팅방에 입장 - &ldquo;Enter [유저 아이디] [닉네임]&rdquo; (ex. &ldquo;Enter uid1234 Muzi&rdquo;)</li>
-<li>[유저 아이디] 사용자가 채팅방에서 퇴장 - &ldquo;Leave [유저 아이디]&rdquo; (ex. &ldquo;Leave uid1234&rdquo;)</li>
-<li>[유저 아이디] 사용자가 닉네임을 [닉네임]으로 변경 - &ldquo;Change [유저 아이디] [닉네임]&rdquo; (ex. &ldquo;Change uid1234 Muzi&rdquo;)</li>
-<li>첫 단어는 Enter, Leave, Change 중 하나이다.</li>
-<li>각 단어는 공백으로 구분되어 있으며, 알파벳 대문자, 소문자, 숫자로만 이루어져있다.</li>
-<li>유저 아이디와 닉네임은 알파벳 대문자, 소문자를 구별한다.</li>
-<li>유저 아이디와 닉네임의 길이는 1 이상 10 이하이다.</li>
-<li>채팅방에서 나간 유저가 닉네임을 변경하는 등 잘못 된 입력은 주어지지 않는다.</li>
+<li>s의 길이는 1 이상 1,000 이하입니다.</li>
+<li>s는 알파벳 소문자로만 이루어져 있습니다.</li>
+<li>입출력 예</li>
+<li>s	result</li>
+<li>&ldquo;aabbaccc&rdquo;	7</li>
+<li>&ldquo;ababcdcdababcdcd&rdquo;	9</li>
+<li>&ldquo;abcabcdede&rdquo;	8</li>
+<li>&ldquo;abcabcabcabcdededededede&rdquo;	14</li>
+<li>&ldquo;xababcdcdababcdcd&rdquo;	17</li>
 </ul>
 </blockquote>
 <p>###입력 형식</p>
-<table>
-<thead>
-<tr>
-<th>record</th>
-<th>result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[&ldquo;Enter uid1234 Muzi&rdquo;, &ldquo;Enter uid4567 Prodo&rdquo;,&ldquo;Leave uid1234&rdquo;,&ldquo;Enter uid1234 Prodo&rdquo;,&ldquo;Change uid4567 Ryan&rdquo;]</td>
-<td>[&ldquo;Prodo님이 들어왔습니다.&rdquo;, &ldquo;Ryan님이 들어왔습니다.&rdquo;, &ldquo;Prodo님이 나갔습니다.&rdquo;, &ldquo;Prodo님이 들어왔습니다.&quot;]</td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<p>입출력 예 #1</p>
+</blockquote>
+<blockquote>
+<p>문자열을 1개 단위로 잘라 압축했을 때 가장 짧습니다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예 #2</p>
+</blockquote>
+<blockquote>
+<p>문자열을 8개 단위로 잘라 압축했을 때 가장 짧습니다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예 #3</p>
+</blockquote>
+<blockquote>
+<p>문자열을 3개 단위로 잘라 압축했을 때 가장 짧습니다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예 #4</p>
+</blockquote>
+<pre><code>문자열을 2개 단위로 자르면 &quot;abcabcabcabc6de&quot; 가 됩니다.
+문자열을 3개 단위로 자르면 &quot;4abcdededededede&quot; 가 됩니다.
+문자열을 4개 단위로 자르면 &quot;abcabcabcabc3dede&quot; 가 됩니다.
+문자열을 6개 단위로 자를 경우 &quot;2abcabc2dedede&quot;가 되며, 이때의 길이가 14로 가장 짧습니다.
+</code></pre>
+<blockquote>
+<p>입출력 예 #5</p>
+</blockquote>
+<blockquote>
+<p>문자열은 제일 앞부터 정해진 길이만큼 잘라야 합니다.<br>
+따라서 주어진 문자열을 x / ababcdcd / ababcdcd 로 자르는 것은 불가능 합니다.<br>
+이 경우 어떻게 문자열을 잘라도 압축되지 않으므로 가장 짧은 길이는 17이 됩니다.<br></p>
+</blockquote>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
 <blockquote>
 <ol>
@@ -277,40 +256,80 @@
 <li>record Enter와 Leave의 메시지와 변경된 닉네임으로 결과에 추가</li>
 </ol>
 </blockquote>
-<pre><code>def solution(record):
-    answer = []  
-    user = {}
+<pre><code>def solution(s):
+    index = 0
+    compression = []
 
-    for row in record :
-        order = row.split()[0]
-        uid = row.split()[1]
-        if order == 'Enter' :
-            user[uid] = row.split()[2]
-        elif order == 'Change' :
-            user[uid] =  row.split()[2]
+    while True:
+        compression.append('')
 
-    for row in record :
-        order = row.split()[0]
-        uid = row.split()[1]
-        if order == 'Enter' :
-            answer.append(user[uid]+&quot;님이 들어왔습니다.&quot;)
-        elif order == 'Leave' :
-            answer.append(user[uid]+&quot;님이 나갔습니다.&quot;)
-    return answer
-</code></pre>
-<pre><code>def solution(record):
-    user = { row.split()[1]:row.split()[-1] for row in list(filter(lambda x : x.startswith('Enter') or x.startswith('Change')  ,record)) }
-    return [f'{user[row.split()[1]]}님이 들어왔습니다.' if row.startswith('Enter') else f'{user[row.split()[1]]}님이 나갔습니다.' for row in list(filter(lambda x : not x.startswith('Change')  ,record)) ]
+        if len(s) ==  index:
+            break
+    
+        arr = [s[i+(i*index):i+(i*index)+(index+1)] for i in range(0,len(s)) ]
+
+        prv = ''
+        cnt = 0
+
+        for i in range(0,len(arr)) :
+            
+            if prv == ''  : 
+                cnt = 1
+                prv = arr[i]                    
+            elif prv == arr[i] :
+                cnt += 1
+            else :
+                if cnt &gt; 1 :
+                    compression[index] += str(cnt)
+                compression[index] += prv
+                cnt = 1
+                prv = arr[i] 
+            
+            if i == len(arr)-1 :
+                if cnt &gt; 1 :
+                    compression[index] += str(cnt)
+                compression[index] += prv
+        index += 1
+
+    minimum = 99999
+    for s in compression :
+        if len(s) != 0 :
+            minimum = min(len(s),minimum)
+    
+    return minimum
 
 </code></pre>
 <h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
-<pre><code>def solution(record):
-    user_id = {EC.split()[1]:EC.split()[-1] for EC in record if EC.startswith('Enter') or EC.startswith('Change')}
-    return [f'{user_id[E_L.split()[1]]}님이 들어왔습니다.' if E_L.startswith('Enter') else f'{user_id[E_L.split()[1]]}님이 나갔습니다.' for E_L in record if not E_L.startswith('Change')]
+<pre><code>def compress(text, tok_len):
+    words = [text[i:i+tok_len] for i in range(0, len(text), tok_len)]
+    res = []
+    cur_word = words[0]
+    cur_cnt = 1
+    for a, b in zip(words, words[1:] + ['']):
+        if a == b:
+            cur_cnt += 1
+        else:
+            res.append([cur_word, cur_cnt])
+            cur_word = b
+            cur_cnt = 1
+    return sum(len(word) + (len(str(cnt)) if cnt &gt; 1 else 0) for word, cnt in res)
 
+def solution(text):
+    return min(compress(text, tok_len) for tok_len in list(range(1, int(len(text)/2) + 1)) + [len(text)])
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>solution([&quot;Enter uid1234 Muzi&quot;, &quot;Enter uid4567 Prodo&quot;,&quot;Leave uid1234&quot;,&quot;Enter uid1234 Prodo&quot;,&quot;Change uid4567 Ryan&quot;])
+<pre><code> = [
+    &quot;aabbaccc&quot;,
+    &quot;ababcdcdababcdcd&quot;,
+    &quot;abcabcdede&quot;,
+    &quot;abcabcabcabcdededededede&quot;,
+    &quot;xababcdcdababcdcd&quot;,
+    'aaaaaa',
+]
+
+for x in a:
+    print(solution(x))
+
 
 </code></pre>
 
@@ -337,17 +356,12 @@
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42626-more-spicy/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42888-open-chat-room/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Programmers 42626 더 맵게</span>
+        <span class="pagination__title">Programmers 42888 오픈 채팅방</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-60057-string-compression/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Programmers 60057 문자열 압축</span>
-    </a>
   
 </div>
 
@@ -417,7 +431,7 @@
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Programmers 42888 오픈 채팅방</div> 
+          <div class="toc-post-title">Programmers 60057 문자열 압축</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>

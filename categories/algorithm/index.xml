@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 28 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 60057 문자열 압축</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-60057-string-compression/</link>
+      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-60057-string-compression/</guid>
+      <description>Programmers - 60057 문자열 압축 Task description 원문 : Programmers 60057 링크
+ 데이터 처리 전문가가 되고 싶은 &amp;ldquo;어피치&amp;quot;는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. 최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, 문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자열로 줄여서 표현하는 알고리즘을 공부하고 있습니다.
+간단한 예로 &amp;ldquo;aabbaccc&amp;quot;의 경우 &amp;ldquo;2a2ba3c&amp;rdquo;(문자가 반복되지 않아 한번만 나타난 경우 1은 생략함)와 같이 표현할 수 있는데, 이러한 방식은 반복되는 문자가 적은 경우 압축률이 낮다는 단점이 있습니다.</description>
+    </item>
+    
     <item>
       <title>Programmers 42888 오픈 채팅방</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42888-open-chat-room/</link>
