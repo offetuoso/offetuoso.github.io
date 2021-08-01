@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Programmers 43165 타겟 넘버 | offetuoso&#39;s Blog</title>
+  <title>Programmers 43162 네트워크 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="43165 타겟 넘버">
+  <meta name="description" content="43162 네트워크">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Programmers 43165 타겟 넘버",
-      "headline" : "Programmers 43165 타겟 넘버",
-      "description" : "43165 타겟 넘버",
+      "name" : "Programmers 43162 네트워크",
+      "headline" : "Programmers 43162 네트워크",
+      "description" : "43162 네트워크",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-07-31 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-07-31 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-43165-target-number\/",
-      "wordCount" : "239",
+      "datePublished": "2021-08-01 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-08-01 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/programmers-43162-network\/",
+      "wordCount" : "287",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,38 +170,37 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Programmers 43165 타겟 넘버
+		            	Programmers 43162 네트워크
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Programmers 43165 타겟 넘버
+		       	Programmers 43162 네트워크
             </h1>		
-            <time datetime="2021-07-31 00:00:00 &#43;0000 UTC" class="post__date">2021-07-31</time> 
+            <time datetime="2021-08-01 00:00:00 &#43;0000 UTC" class="post__date">2021-08-01</time> 
           </header>
           <article class="post__content">
               
-<h1 id="programmers---43165-타겟-넘버">Programmers - 43165 타겟 넘버</h1>
+<h1 id="programmers---43162-네트워크">Programmers - 43162 네트워크</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/43165">Programmers 43165 링크</a></p>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/43162">Programmers 43162 링크</a></p>
 <blockquote>
-<p>n개의 음이 아닌 정수가 있습니다. 이 수를 적절히 더하거나 빼서 타겟 넘버를 만들려고 합니다. 예를 들어 [1, 1, 1, 1, 1]로 숫자 3을 만들려면 다음 다섯 방법을 쓸 수 있습니다.</p>
+<p>네트워크란 컴퓨터 상호 간에 정보를 교환할 수 있도록 연결된 형태를 의미합니다. 예를 들어, <br>
+컴퓨터 A와 컴퓨터 B가 직접적으로 연결되어있고, 컴퓨터 B와 컴퓨터 C가 직접적으로 연결되어 있을 때 <br>
+컴퓨터 A와 컴퓨터 C도 간접적으로 연결되어 정보를 교환할 수 있습니다. <br>
+따라서 컴퓨터 A, B, C는 모두 같은 네트워크 상에 있다고 할 수 있습니다.</p>
 </blockquote>
-<pre><code>-1+1+1+1+1 = 3
-+1-1+1+1+1 = 3
-+1+1-1+1+1 = 3
-+1+1+1-1+1 = 3
-+1+1+1+1-1 = 3
-</code></pre>
 <blockquote>
-<p>사용할 수 있는 숫자가 담긴 배열 numbers, 타겟 넘버 target이 매개변수로 주어질 때 숫자를 적절히 더하고 빼서 타겟 넘버를 만드는 방법의 수를 return 하도록 solution 함수를 작성해주세요.</p>
+<p>컴퓨터의 개수 n, 연결에 대한 정보가 담긴 2차원 배열 computers가 매개변수로 주어질 때, <br>
+네트워크의 개수를 return 하도록 solution 함수를 작성하시오.</p>
 </blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>주어지는 숫자의 개수는 2개 이상 20개 이하입니다.</li>
-<li>각 숫자는 1 이상 50 이하인 자연수입니다.</li>
-<li>타겟 넘버는 1 이상 1000 이하인 자연수입니다.</li>
+<li>컴퓨터의 개수 n은 1 이상 200 이하인 자연수입니다.</li>
+<li>각 컴퓨터는 0부터 n-1인 정수로 표현합니다.</li>
+<li>i번 컴퓨터와 j번 컴퓨터가 연결되어 있으면 computers[i][j]를 1로 표현합니다.</li>
+<li>computer[i][i]는 항상 1입니다.</li>
 </ul>
 </blockquote>
 <p>###입력 형식</p>
@@ -211,64 +210,78 @@
 <table>
 <thead>
 <tr>
-<th>numbers</th>
-<th>target</th>
+<th>n</th>
+<th>computers</th>
 <th>return</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>[1, 1, 1, 1, 1]</td>
 <td>3</td>
-<td>5</td>
+<td>[[1, 1, 0], [1, 1, 0], [0, 0, 1]]</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>[[1, 1, 0], [1, 1, 1], [0, 1, 1]]</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
-<p>입출력 예 설명
-문제에 나온 예와 같습니다.</p>
+<blockquote>
+<p>입출력 예 설명 <br>
+예제 #1<br>
+아래와 같이 2개의 네트워크가 있습니다.<br></p>
+</blockquote>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<h3 id="bfs">BFS<a class="anchor" href="#bfs">#</a></h3>
+<p>#DFS</p>
 <pre><code>from collections import deque
-def solution(numbers, target):
+
+def dfs(i, visited, computers):
+    visited[i] = True
+    for c in range(0,len(computers[i])) :
+        if c != i and visited[c] == False and computers[i][c] == 1:
+            dfs(c, visited, computers)
+
+
+    return  0
+
+def solution(n, computers):
     count = 0
-    queue = deque()
-    queue.append([0,0])
+    visited = [False for i in range(0,n)]
 
-    while queue :
-        sum, length = queue.popleft() 
-        #print(sum,length)
-        if length &gt; len(numbers) :
-            break
-        elif length == len(numbers) and sum == target:
+    for i in range(0,n) :
+        if not visited[i] : 
+            dfs(i, visited, computers)
             count += 1
-        queue.append([sum+numbers[length-1],length+1])
-        queue.append([sum-numbers[length-1],length+1])
+    
     return count
-
-</code></pre>
-<p>DFS</p>
-<pre><code>def solution(numbers, target):
-    
-    if len(numbers) == 0 :
-        if target == 0 :
-            return 1
-        else : 
-            return 0
-    return solution(numbers[1:], numbers[0]+target)+solution(numbers[1:], numbers[0]-target)
-    
 </code></pre>
 <h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
-<pre><code>from itertools import product
-def solution(numbers, target):
-    l = [(x, -x) for x in numbers]
-    s = list(map(sum, product(*l)))
-    return s.count(target)
-
+<pre><code>def solution(n, computers):    
+    def BFS(node, visit):
+        que = [node]
+        visit[node] = 1
+        while que:
+            v = que.pop(0)
+            for i in range(n):
+                if computers[v][i] == 1 and visit[i] == 0:
+                    visit[i] = 1
+                    que.append(i)
+        return visit
+    visit = [0 for i in range(n)]
+    answer = 0
+    for i in range(n):
+        try:
+            visit = BFS(visit.index(0), visit)
+            answer += 1
+        except:
+            break
+    return answer
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>#print(solution([1, 1, 1, 1, 1], 3), 5)
-#print(solution([1, 2, 1, 2], 2), 3)
-#print(solution([1, 2, 1, 2], 6), 1)
+<pre><code>solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]	)
+
 </code></pre>
 
 
@@ -294,17 +307,12 @@ def solution(numbers, target):
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12906-i-hate-the-same-number/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-43165-target-number/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Programmers 12906 같은 숫자는 싫어</span>
+        <span class="pagination__title">Programmers 43165 타겟 넘버</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-43162-network/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Programmers 43162 네트워크</span>
-    </a>
   
 </div>
 
@@ -374,16 +382,12 @@ def solution(numbers, target):
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Programmers 43165 타겟 넘버</div> 
+          <div class="toc-post-title">Programmers 43162 네트워크</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a></li>
     <li><a href="#condition">Condition</a></li>
-    <li><a href="#solution">Solution</a>
-      <ul>
-        <li><a href="#bfs">BFS</a></li>
-      </ul>
-    </li>
+    <li><a href="#solution">Solution</a></li>
     <li><a href="#others-solution">Others Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
   </ul>
