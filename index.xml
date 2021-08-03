@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 02 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 82612 부족한 금액 계산하기</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-82612-calculate-the-shortfall/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-82612-calculate-the-shortfall/</guid>
+      <description>Programmers - 82612 부족한 금액 계산하기 Task description 원문 : Programmers 82612 링크
+ 새로 생긴 놀이기구는 인기가 매우 많아 줄이 끊이질 않습니다. 이 놀이기구의 원래 이용료는 price원 인데, 놀이기구를 N 번 째 이용한다면 원래 이용료의 N배를 받기로 하였습니다. 즉, 처음 이용료가 100이었다면 2번째에는 200, 3번째에는 300으로 요금이 인상됩니다.
+  놀이기구를 count번 타게 되면 현재 자신이 가지고 있는 금액에서 얼마가 모자라는지를
+return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지 않으면 0을 return 하세요.</description>
+    </item>
+    
     <item>
       <title>Programmers 42883 큰 수 만들기</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42883-make-big-numbers/</link>
