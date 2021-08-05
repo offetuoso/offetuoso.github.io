@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 04 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 67257 수식 최대화</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-67257-maximize-formula/</link>
+      <pubDate>Thu, 05 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-67257-maximize-formula/</guid>
+      <description>Programmers - 67257 수식 최대화 Task description 원문 : Programmers 67257 링크
+ IT 벤처 회사를 운영하고 있는 라이언은 매년 사내 해커톤 대회를 개최하여 우승자에게 상금을 지급하고 있습니다.
+이번 대회에서는 우승자에게 지급되는 상금을 이전 대회와는 다르게 다음과 같은 방식으로 결정하려고 합니다.
+해커톤 대회에 참가하는 모든 참가자들에게는 숫자들과 3가지의 연산문자(+, -, ) 만으로 이루어진 연산 수식이 전달되며,
+참가자의 미션은 전달받은 수식에 포함된 연산자의 우선순위를 자유롭게 재정의하여 만들 수 있는 가장 큰 숫자를 제출하는 것입니다.</description>
+    </item>
+    
     <item>
       <title>Programmers 42840 모의고사</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42840-mock-exam/</link>
