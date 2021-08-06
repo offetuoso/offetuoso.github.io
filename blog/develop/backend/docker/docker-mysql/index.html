@@ -76,7 +76,7 @@
       "datePublished": "2021-05-23 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-05-23 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/docker\/docker-mysql\/",
-      "wordCount" : "573",
+      "wordCount" : "596",
       "keywords" : ["Docker", "Blog"]
     }
   
@@ -224,9 +224,15 @@ docker/getting-started   latest    3ba8f2ff0727   2 months ago   27.9MB
 <p><img src="/images/docker/docker_mysql_3.png" alt="contact"></p>
 <h3 id="mysql-컨테이너-설정">Mysql 컨테이너 설정<a class="anchor" href="#mysql-컨테이너-설정">#</a></h3>
 <blockquote>
-<p>sudo docker run -d -p 9876:3306 -e MYSQL_ROOT_PASSWORD=passw0rd &ndash;name test_mysql mysql:5.6</p>
+<p>sudo docker run -d -p 9876:3306 -e MYSQL_ROOT_PASSWORD=<password> &ndash;name test_mysql mysql:5.6</p>
 </blockquote>
 <pre><code>PS C:\&gt; sudo docker run -d -p 9876:3306 -e MYSQL_ROOT_PASSWORD=passw0rd --name test_mysql mysql:5.6
+</code></pre>
+<blockquote>
+<p>docker run &ndash;name mysql-test -e MYSQL_ROOT_PASSWORD=<password> -d -p 3306:3306 mysql:5.7</p>
+</blockquote>
+<pre><code>PS C:\&gt; docker run --name mysql-test -e MYSQL_ROOT_PASSWORD=passw0rd -d -p 3306:3306 mysql:5.7
+fb4e8d8a5dd23d2c2b8068b311105f28bd8bd97067e78a7f4779d7da5bb3a483
 </code></pre>
 <h4 id="docker-옵션">docker 옵션</h4>
 <blockquote>
