@@ -7,11 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 06 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 12910 나누어 떨어지는 숫자 배열</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12910-divisible-array-of-numbers/</link>
+      <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12910-divisible-array-of-numbers/</guid>
+      <description>Programmers - 12910 나누어 떨어지는 숫자 배열 Task description 원문 : Programmers 12910 링크
+ array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순으로 정렬한 배열을 반환하는 함수, solution을 작성해주세요.
+divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을 담아 반환하세요.
+ Condition   arr은 자연수를 담은 배열입니다. 정수 i, j에 대해 i ≠ j 이면 arr[i] ≠ arr[j] 입니다. divisor는 자연수입니다. array는 길이 1 이상인 배열입니다.   ###입력 형식</description>
+    </item>
+    
     <item>
       <title>Programmers 72412 순위 검색</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-72412-rank-search/</link>
-      <pubDate>Fri, 06 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-72412-rank-search/</guid>
       <description>Programmers - 72412 순위 검색 Task description 원문 : Programmers 72412 링크
