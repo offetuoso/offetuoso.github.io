@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 08 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/programmers/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/programmers/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 83201 상호평가</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-83201-mutual-evaluation/</link>
+      <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-83201-mutual-evaluation/</guid>
+      <description>Programmers - 83201 상호평가 Task description 원문 : Programmers 83201 링크
+ 대학 교수인 당신은, 상호평가를 통하여 학생들이 제출한 과제물에 학점을 부여하려고 합니다. 아래는 0번부터 4번까지 번호가 매겨진 5명의 학생들이 자신과 다른 학생의 과제를 평가한 점수표입니다.
+    No. 0 1 2 3 4     0 100 90 98 88 65   1 50 45 99 85 77   2 47 88 95 80 67   3 61 57 100 80 65   4 24 90 94 75 65   평균 45.</description>
+    </item>
+    
     <item>
       <title>Programmers 12910 나누어 떨어지는 숫자 배열</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12910-divisible-array-of-numbers/</link>
