@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>Programmers 17681 비밀지도 | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="Programmers 비밀지도">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.16c2e552c66baacd4b04c4a887e2f888e4268d2cfb917c50a226e6b3d8eb66a3.css" integrity="sha256-FsLlUsZrqs1LBMSoh&#43;L4iOQmjSz7kXxQoibms9jrZqM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "Programmers 17681 비밀지도",
+      "headline" : "Programmers 17681 비밀지도",
+      "description" : "Programmers 비밀지도",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-07-22 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-22 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202107\/programmers-17681-secret-map\/",
+      "wordCount" : "376",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+			        
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	Programmers 17681 비밀지도
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	Programmers 17681 비밀지도
+            </h1>		
+            <time datetime="2021-07-22 00:00:00 &#43;0000 UTC" class="post__date">2021-07-22</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="programmers---17681-비밀지도">Programmers - 17681 비밀지도</h1>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/17681">Programmers 17681 링크</a></p>
+<blockquote>
+<p>네오는 평소 프로도가 비상금을 숨겨놓는 장소를 알려줄 비밀지도를 손에 넣었다. 그런데 이 비밀지도는 숫자로 암호화되어 있어 위치를 확인하기 위해서는 암호를 해독해야 한다. 다행히 지도 암호를 해독할 방법을 적어놓은 메모도 함께 발견했다.</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>지도는 한 변의 길이가 n인 정사각형 배열 형태로, 각 칸은 &ldquo;공백&rdquo;(&quot; &ldquo;) 또는 &ldquo;벽&rdquo;(&quot;#&quot;) 두 종류로 이루어져 있다. <br></li>
+<li>전체 지도는 두 장의 지도를 겹쳐서 얻을 수 있다. 각각 &ldquo;지도 1&quot;과 &ldquo;지도 2&quot;라고 하자. <br>지도 1 또는 지도 2 중 어느 하나라도 벽인 부분은 전체 지도에서도 벽이다. 지도 1과 지도 2에서 모두 공백인 부분은 전체 지도에서도 공백이다.</li>
+<li>&ldquo;지도 1&quot;과 &ldquo;지도 2&quot;는 각각 정수 배열로 암호화되어 있다.<br></li>
+<li>암호화된 배열은 지도의 각 가로줄에서 벽 부분을 1, 공백 부분을 0으로 부호화했을 때 얻어지는 이진수에 해당하는 값의 배열이다.<br></li>
+</ol>
+</blockquote>
+<blockquote>
+<p>네오가 프로도의 비상금을 손에 넣을 수 있도록, 비밀지도의 암호를 해독하는 작업을 도와줄 프로그램을 작성하라.</p>
+</blockquote>
+<p><img src="http://t1.kakaocdn.net/welcome2018/secret8.png" alt="secret8"></p>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<blockquote>
+<ul>
+<li>1 ≦ n ≦ 16</li>
+<li>arr1, arr2는 길이 n인 정수 배열로 주어진다.</li>
+<li>정수 배열의 각 원소 x를 이진수로 변환했을 때의 길이는 n 이하이다. 즉, 0 ≦ x ≦ 2n - 1을 만족한다.</li>
+<li>출력 형식</li>
+<li>원래의 비밀지도를 해독하여 &lsquo;#&rsquo;, 공백으로 구성된 문자열 배열로 출력하라.</li>
+</ul>
+</blockquote>
+<h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
+<blockquote>
+<p>입력 형식<br>
+입력으로 지도의 한 변 크기 n 과 2개의 정수 배열 arr1, arr2가 들어온다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예제 <br></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>매개변수</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n</td>
+<td>5</td>
+</tr>
+<tr>
+<td>arr1</td>
+<td>[9, 20, 28, 18, 11]</td>
+</tr>
+<tr>
+<td>arr2</td>
+<td>[30, 1, 21, 17, 28]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>출력	[&quot;#####&rdquo;,&quot;# # #&rdquo;, &ldquo;### #&rdquo;, &ldquo;# ##&rdquo;, &ldquo;#####&quot;]</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>매개변수</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n</td>
+<td>6</td>
+</tr>
+<tr>
+<td>arr1</td>
+<td>[46, 33, 33 ,22, 31, 50]</td>
+</tr>
+<tr>
+<td>arr2</td>
+<td>[27 ,56, 19, 14, 14, 10]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>출력	[&quot;######&rdquo;, &ldquo;### #&rdquo;, &ldquo;## ##&rdquo;, &quot; #### &ldquo;, &quot; #####&rdquo;, &ldquo;### # &ldquo;]</p>
+</blockquote>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<blockquote>
+<ol>
+<li>map 함수로 arr1, arr2 를 순회하여 변경</li>
+<li>arr1의 arr2의 a,b를 bin(a|b) 로 or 연산</li>
+<li>0b 를 자르기 위해 [2:]  2부터 나머지 까지 자름</li>
+<li>zfill로 n까지 0으로 채움</li>
+<li>1을 #으로, 0을 ' &lsquo;으로 변경</li>
+</ol>
+</blockquote>
+<pre><code>def solution(n, arr1, arr2):
+    return list(map(lambda a,b : (str(bin(a|b))[2:].zfill(n)).replace('1','#').replace('0',' '), arr1, arr2))
+</code></pre>
+<h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
+<pre><code>solution = lambda n, arr1, arr2: ([''.join(map(lambda x: '#' if x=='1' else ' ', &quot;{0:b}&quot;.format(row).zfill(n))) for row in (a|b for a, b in zip(arr1, arr2))])
+
+</code></pre>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<pre><code>&quot;&quot;&quot;
+n = 	5
+arr1 = 	[9, 20, 28, 18, 11]
+arr2 =	[30, 1, 21, 17, 28]
+&quot;&quot;&quot;
+&quot;&quot;&quot;
+n = 	6
+arr1 = 	[46, 33, 33 ,22, 31, 50]
+arr2 = 	[27 ,56, 19, 14, 14, 10]
+solution(n, arr1, arr2)
+&quot;&quot;&quot;
+
+</code></pre>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42889-failure-rate/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Programmers 42889 실패율</span>
+    </a>
+  
+
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12973-remove-by-pair/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Programmers 12973 짝지어 제거하기</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">Programmers 17681 비밀지도</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a></li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#input-output">input output</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#others-solution">Others Solution</a></li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>

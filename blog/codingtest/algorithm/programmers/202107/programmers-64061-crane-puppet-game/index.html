@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>Programmers 64061 크레인 인형 뽑기 | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="Programmers 크레인 인형 뽑기">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.16c2e552c66baacd4b04c4a887e2f888e4268d2cfb917c50a226e6b3d8eb66a3.css" integrity="sha256-FsLlUsZrqs1LBMSoh&#43;L4iOQmjSz7kXxQoibms9jrZqM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "Programmers 64061 크레인 인형 뽑기",
+      "headline" : "Programmers 64061 크레인 인형 뽑기",
+      "description" : "Programmers 크레인 인형 뽑기",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-07-16 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-16 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202107\/programmers-64061-crane-puppet-game\/",
+      "wordCount" : "545",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+			        
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	Programmers 64061 크레인 인형 뽑기
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	Programmers 64061 크레인 인형 뽑기
+            </h1>		
+            <time datetime="2021-07-16 00:00:00 &#43;0000 UTC" class="post__date">2021-07-16</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="programmers---64061-크레인-인형-뽑기">Programmers - 64061 크레인 인형 뽑기</h1>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/64061">Programmers 64061 링크</a></p>
+<blockquote>
+<p>게임개발자인 &ldquo;죠르디&quot;는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다.
+&ldquo;죠르디&quot;는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.</p>
+</blockquote>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/69f1cd36-09f4-4435-8363-b71a650f7448/crane_game_101.png" alt="crane_game_101"></p>
+<blockquote>
+<p>게임 화면은 &ldquo;1 x 1&rdquo; 크기의 칸들로 이루어진 &ldquo;N x N&rdquo; 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 &ldquo;5 x 5&rdquo; 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은 &ldquo;1 x 1&rdquo; 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.</p>
+</blockquote>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/638e2162-b1e4-4bbb-b0d7-62d31e97d75c/crane_game_102.png" alt="crane_game_102"></p>
+<blockquote>
+<p>만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형 두 개가 없어집니다.</p>
+</blockquote>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/8569d736-091e-4771-b2d3-7a6e95a20c22/crane_game_103.gif" alt="crane_game_103"></p>
+<blockquote>
+<p>크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다. 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)</p>
+</blockquote>
+<blockquote>
+<p>게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.</p>
+</blockquote>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<blockquote>
+<ul>
+<li>board 배열은 2차원 배열로 크기는 &ldquo;5 x 5&rdquo; 이상 &ldquo;30 x 30&rdquo; 이하입니다.</li>
+<li>board의 각 칸에는 0 이상 100 이하인 정수가 담겨있습니다.</li>
+<li>0은 빈 칸을 나타냅니다.</li>
+<li>1 ~ 100의 각 숫자는 각기 다른 인형의 모양을 의미하며 같은 숫자는 같은 모양의 인형을 나타냅니다.</li>
+<li>moves 배열의 크기는 1 이상 1,000 이하입니다.</li>
+<li>moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.</li>
+</ul>
+</blockquote>
+<h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>board</th>
+<th>moves</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]</td>
+<td>[1,5,3,5,1,2,1,4]</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>입출력 예에 대한 설명
+입출력 예 #1</p>
+</blockquote>
+<blockquote>
+<p>인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.</p>
+</blockquote>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/bb0f59c7-6b72-485a-8302-217fe53ea88f/crane_game_104.jpg" alt="crane_game_104"></p>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<blockquote>
+<ol>
+<li>크레인의 이동만큼 반복</li>
+<li>board의 길이 만큼 반복</li>
+<li>move위치의 board를 순서대로 순회해서, 0이 아닌경우</li>
+<li>basket이 비어있지 않으면 마지막 값과  <code>board[i][move-1]</code> 값을 비교해서 같다면 
+- 마지막 값 팝 
+- 터진 인형의 개수 +2</li>
+<li>basket이 비어있지 않으면 마지막 값과  <code>board[i][move-1]</code> 값이 다르면
+- basket에 담는다.</li>
+<li><code>board[i][move-1]</code> 위치의 값을 0으로 세팅하고, 루프를 나간다.</li>
+</ol>
+</blockquote>
+<pre><code>def solution(board, moves):
+    answer = 0
+    basket = [] # 뽑은 인형을 담을 stack
+    for move in moves :	# 크레인의 이동만큼 반복
+        for i in range(0, len(board[0])): # board의 길이 만큼 반복
+            if board[i][move-1] != 0 : # move위치의 board를 순서대로 순회
+                if len(basket) != 0 and basket[-1] == board[i][move-1] : # basket이 비어있지 않으면 마지막 값과  ``board[i][move-1]`` 값이 같다면
+                    basket.pop()	# 마지막 값 팝 
+                    answer += 2		# 터진 인형의 개수 +2
+                else :
+                    basket.append(board[i][move-1])	#basket에 담는다.
+                board[i][move-1] = 0	#``board[i][move-1]`` 위치의 값을 0으로 세팅하고,
+                break					# 루프를 나간다.
+    return answer
+	    
+</code></pre>
+<h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
+<pre><code>def solution(board, moves):
+    cols = list(map(lambda x: list(filter(lambda y: y &gt; 0, x)), zip(*board)))
+    a, s = 0, [0]
+
+    for m in moves:
+        if len(cols[m - 1]) &gt; 0:
+            if (d := cols[m - 1].pop(0)) == (l := s.pop()):
+                a += 2
+            else:
+                s.extend([l, d])
+    return a
+</code></pre>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<pre><code>solution([[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]], [1,5,3,5,1,2,1,4])	#4
+</code></pre>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-70128-inner-product/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Programmers 70128 내적</span>
+    </a>
+  
+
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-81301-numeric-strings-and-english-words/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Programmers 81301 숫자 문자열과 영단어</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">Programmers 64061 크레인 인형 뽑기</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a></li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#input-output">input output</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#others-solution">Others Solution</a></li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>

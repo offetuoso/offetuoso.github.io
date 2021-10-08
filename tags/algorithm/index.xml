@@ -7,13 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 09 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 08 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 129343 콜라츠 추측</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-129343-collatz/</link>
+      <pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-129343-collatz/</guid>
+      <description>Programmers - 129343 콜라츠 추측 Task description 원문 : Programmers 129343 링크
+문제 설명 1937년 Collatz란 사람에 의해 제기된 이 추측은, 주어진 수가 1이 될때까지 다음 작업을 반복하면, 모든 수를 1로 만들 수 있다는 추측입니다. 작업은 다음과 같습니다.
+ 1-1. 입력된 수가 짝수라면 2로 나눕니다. 1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다. 2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다.
+  예를 들어, 입력된 수가 6이라면 6→3→10→5→16→8→4→2→1 이 되어 총 8번 만에 1이 됩니다.</description>
+    </item>
+    
     <item>
       <title>Programmers 83201 상호평가</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-83201-mutual-evaluation/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-83201-mutual-evaluation/</link>
       <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-83201-mutual-evaluation/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-83201-mutual-evaluation/</guid>
       <description>Programmers - 83201 상호평가 Task description 원문 : Programmers 83201 링크
  대학 교수인 당신은, 상호평가를 통하여 학생들이 제출한 과제물에 학점을 부여하려고 합니다. 아래는 0번부터 4번까지 번호가 매겨진 5명의 학생들이 자신과 다른 학생의 과제를 평가한 점수표입니다.
     No. 0 1 2 3 4     0 100 90 98 88 65   1 50 45 99 85 77   2 47 88 95 80 67   3 61 57 100 80 65   4 24 90 94 75 65   평균 45.</description>
@@ -21,10 +33,10 @@
     
     <item>
       <title>Programmers 12910 나누어 떨어지는 숫자 배열</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12910-divisible-array-of-numbers/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-12910-divisible-array-of-numbers/</link>
       <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12910-divisible-array-of-numbers/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-12910-divisible-array-of-numbers/</guid>
       <description>Programmers - 12910 나누어 떨어지는 숫자 배열 Task description 원문 : Programmers 12910 링크
  array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순으로 정렬한 배열을 반환하는 함수, solution을 작성해주세요.
 divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을 담아 반환하세요.
@@ -33,10 +45,10 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
     
     <item>
       <title>Programmers 72412 순위 검색</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-72412-rank-search/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-72412-rank-search/</link>
       <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-72412-rank-search/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-72412-rank-search/</guid>
       <description>Programmers - 72412 순위 검색 Task description 원문 : Programmers 72412 링크
  카카오는 하반기 경력 개발자 공개채용을 진행 중에 있으며 현재 지원서 접수와 코딩테스트가 종료되었습니다. 이번 채용에서 지원자는 지원서 작성 시 아래와 같이 4가지 항목을 반드시 선택하도록 하였습니다.
   코딩테스트 참여 개발언어 항목에 cpp, java, python 중 하나를 선택해야 합니다. 지원 직군 항목에 backend와 frontend 중 하나를 선택해야 합니다. 지원 경력구분 항목에 junior와 senior 중 하나를 선택해야 합니다. 선호하는 소울푸드로 chicken과 pizza 중 하나를 선택해야 합니다.</description>
@@ -44,10 +56,10 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
     
     <item>
       <title>Programmers 67257 수식 최대화</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-67257-maximize-formula/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-67257-maximize-formula/</link>
       <pubDate>Thu, 05 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-67257-maximize-formula/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-67257-maximize-formula/</guid>
       <description>Programmers - 67257 수식 최대화 Task description 원문 : Programmers 67257 링크
  IT 벤처 회사를 운영하고 있는 라이언은 매년 사내 해커톤 대회를 개최하여 우승자에게 상금을 지급하고 있습니다.
 이번 대회에서는 우승자에게 지급되는 상금을 이전 대회와는 다르게 다음과 같은 방식으로 결정하려고 합니다.
@@ -57,10 +69,10 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
     
     <item>
       <title>Programmers 42840 모의고사</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42840-mock-exam/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42840-mock-exam/</link>
       <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42840-mock-exam/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42840-mock-exam/</guid>
       <description>Programmers - 42840 모의고사 Task description 원문 : Programmers 42840 링크
  수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다.
  1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, ...3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, .</description>
@@ -68,10 +80,10 @@ divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을
     
     <item>
       <title>Programmers 82612 부족한 금액 계산하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-82612-calculate-the-shortfall/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-82612-calculate-the-shortfall/</link>
       <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-82612-calculate-the-shortfall/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-82612-calculate-the-shortfall/</guid>
       <description>Programmers - 82612 부족한 금액 계산하기 Task description 원문 : Programmers 82612 링크
  새로 생긴 놀이기구는 인기가 매우 많아 줄이 끊이질 않습니다. 이 놀이기구의 원래 이용료는 price원 인데, 놀이기구를 N 번 째 이용한다면 원래 이용료의 N배를 받기로 하였습니다. 즉, 처음 이용료가 100이었다면 2번째에는 200, 3번째에는 300으로 요금이 인상됩니다.
   놀이기구를 count번 타게 되면 현재 자신이 가지고 있는 금액에서 얼마가 모자라는지를
@@ -80,10 +92,10 @@ return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지
     
     <item>
       <title>Programmers 42883 큰 수 만들기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42883-make-big-numbers/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42883-make-big-numbers/</link>
       <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42883-make-big-numbers/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42883-make-big-numbers/</guid>
       <description>Programmers - 42883 큰 수 만들기 Task description 원문 : Programmers 42883 링크
  어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.
   예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다.
@@ -92,10 +104,10 @@ return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지
     
     <item>
       <title>Programmers 43162 네트워크</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-43162-network/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-43162-network/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-43162-network/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-43162-network/</guid>
       <description>Programmers - 43162 네트워크 Task description 원문 : Programmers 43162 링크
  네트워크란 컴퓨터 상호 간에 정보를 교환할 수 있도록 연결된 형태를 의미합니다. 예를 들어, 컴퓨터 A와 컴퓨터 B가 직접적으로 연결되어있고, 컴퓨터 B와 컴퓨터 C가 직접적으로 연결되어 있을 때 컴퓨터 A와 컴퓨터 C도 간접적으로 연결되어 정보를 교환할 수 있습니다. 따라서 컴퓨터 A, B, C는 모두 같은 네트워크 상에 있다고 할 수 있습니다.
   컴퓨터의 개수 n, 연결에 대한 정보가 담긴 2차원 배열 computers가 매개변수로 주어질 때, 네트워크의 개수를 return 하도록 solution 함수를 작성하시오.</description>
@@ -103,10 +115,10 @@ return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지
     
     <item>
       <title>Programmers 43165 타겟 넘버</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-43165-target-number/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-43165-target-number/</link>
       <pubDate>Sat, 31 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-43165-target-number/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-43165-target-number/</guid>
       <description>Programmers - 43165 타겟 넘버 Task description 원문 : Programmers 43165 링크
  n개의 음이 아닌 정수가 있습니다. 이 수를 적절히 더하거나 빼서 타겟 넘버를 만들려고 합니다. 예를 들어 [1, 1, 1, 1, 1]로 숫자 3을 만들려면 다음 다섯 방법을 쓸 수 있습니다.
  -1+1+1+1+1 = 3+1-1+1+1+1 = 3+1+1-1+1+1 = 3+1+1+1-1+1 = 3+1+1+1+1-1 = 3  사용할 수 있는 숫자가 담긴 배열 numbers, 타겟 넘버 target이 매개변수로 주어질 때 숫자를 적절히 더하고 빼서 타겟 넘버를 만드는 방법의 수를 return 하도록 solution 함수를 작성해주세요.</description>
@@ -114,10 +126,10 @@ return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지
     
     <item>
       <title>Programmers 12906 같은 숫자는 싫어</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12906-i-hate-the-same-number/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12906-i-hate-the-same-number/</link>
       <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12906-i-hate-the-same-number/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12906-i-hate-the-same-number/</guid>
       <description>Programmers - 12906 같은 숫자는 싫어 Task description 원문 : Programmers 12906 링크
  배열 arr가 주어집니다. 배열 arr의 각 원소는 숫자 0부터 9까지로 이루어져 있습니다. 이때, 배열 arr에서 연속적으로 나타나는 숫자는 하나만 남기고 전부 제거하려고 합니다. 단, 제거된 후 남은 수들을 반환할 때는 배열 arr의 원소들의 순서를 유지해야 합니다. 예를 들면,
  arr = [1, 1, 3, 3, 0, 1, 1] 이면 [1, 3, 0, 1] 을 return 합니다.arr = [4, 4, 4, 3, 3] 이면 [4, 3] 을 return 합니다.</description>
@@ -125,10 +137,10 @@ return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지
     
     <item>
       <title>Programmers 60057 문자열 압축</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-60057-string-compression/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-60057-string-compression/</link>
       <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-60057-string-compression/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-60057-string-compression/</guid>
       <description>Programmers - 60057 문자열 압축 Task description 원문 : Programmers 60057 링크
  데이터 처리 전문가가 되고 싶은 &amp;ldquo;어피치&amp;quot;는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. 최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, 문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자열로 줄여서 표현하는 알고리즘을 공부하고 있습니다.
 간단한 예로 &amp;ldquo;aabbaccc&amp;quot;의 경우 &amp;ldquo;2a2ba3c&amp;rdquo;(문자가 반복되지 않아 한번만 나타난 경우 1은 생략함)와 같이 표현할 수 있는데, 이러한 방식은 반복되는 문자가 적은 경우 압축률이 낮다는 단점이 있습니다.</description>
@@ -136,10 +148,10 @@ return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지
     
     <item>
       <title>Programmers 42888 오픈 채팅방</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42888-open-chat-room/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42888-open-chat-room/</link>
       <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42888-open-chat-room/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42888-open-chat-room/</guid>
       <description>Programmers - 42888 오픈 채팅방 Task description 원문 : Programmers 42888 링크
  카카오톡 오픈채팅방에서는 친구가 아닌 사람들과 대화를 할 수 있는데, 본래 닉네임이 아닌 가상의 닉네임을 사용하여 채팅방에 들어갈 수 있다.
   신입사원인 김크루는 카카오톡 오픈 채팅방을 개설한 사람을 위해, 다양한 사람들이 들어오고, 나가는 것을 지켜볼 수 있는 관리자창을 만들기로 했다. 채팅방에 누군가 들어오면 다음 메시지가 출력된다.
@@ -148,10 +160,10 @@ return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지
     
     <item>
       <title>Programmers 42626 더 맵게</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42626-more-spicy/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42626-more-spicy/</link>
       <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42626-more-spicy/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42626-more-spicy/</guid>
       <description>Programmers - 42626 더 맵게 Task description 원문 : Programmers 42626 링크
  매운 것을 좋아하는 Leo는 모든 음식의 스코빌 지수를 K 이상으로 만들고 싶습니다. 모든 음식의 스코빌 지수를 K 이상으로 만들기 위해 Leo는 스코빌 지수가 가장 낮은 두 개의 음식을 아래와 같이 특별한 방법으로 섞어 새로운 음식을 만듭니다.
   섞은 음식의 스코빌 지수 = 가장 맵지 않은 음식의 스코빌 지수 + (두 번째로 맵지 않은 음식의 스코빌 지수 * 2) Leo는 모든 음식의 스코빌 지수가 K 이상이 될 때까지 반복하여 섞습니다.</description>
@@ -159,10 +171,10 @@ return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지
     
     <item>
       <title>Programmers 17677 뉴스 클러스터링</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17677-news-clustering/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17677-news-clustering/</link>
       <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17677-news-clustering/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17677-news-clustering/</guid>
       <description>Programmers - 17677 뉴스 클러스터링 Task description 원문 : Programmers 17677 링크
  뉴스 클러스터링
 여러 언론사에서 쏟아지는 뉴스, 특히 속보성 뉴스를 보면 비슷비슷한 제목의 기사가 많아 정작 필요한 기사를 찾기가 어렵다.
@@ -172,10 +184,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 12948 핸드폰 번호 가리기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12948-phone-number-masking/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12948-phone-number-masking/</link>
       <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12948-phone-number-masking/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12948-phone-number-masking/</guid>
       <description>Programmers - 12948 핸드폰 번호 가리기 Task description 원문 : Programmers 12948 링크
  프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다. 전화번호가 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, solution을 완성해주세요.
  Condition   s는 길이 4 이상, 20이하인 문자열입니다.   input output  입출력 예
@@ -184,10 +196,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 68644 두 개 뽑아서 더하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-68644-take-two-and-add/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-68644-take-two-and-add/</link>
       <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-68644-take-two-and-add/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-68644-take-two-and-add/</guid>
       <description>Programmers - 68644 두 개 뽑아서 더하기 Task description 원문 : Programmers 68644 링크
  정수 배열 numbers가 주어집니다. numbers에서 서로 다른 인덱스에 있는 두 개의 수를 뽑아 더해서 만들 수 있는 모든 수를 배열에 오름차순으로 담아 return 하도록 solution 함수를 완성해주세요.
  Condition   numbers의 길이는 2 이상 100 이하입니다. numbers의 모든 수는 0 이상 100 이하입니다.   input output  입출력 예
@@ -196,20 +208,20 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 12973 짝지어 제거하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12973-remove-by-pair/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12973-remove-by-pair/</link>
       <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-12973-remove-by-pair/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12973-remove-by-pair/</guid>
       <description>Programmers - 12973 짝지어 제거하기 Task description 원문 : Programmers 12973 링크
  짝지어 제거하기는, 알파벳 소문자로 이루어진 문자열을 가지고 시작합니다. 먼저 문자열에서 같은 알파벳이 2개 붙어 있는 짝을 찾습니다. 그다음, 그 둘을 제거한 뒤, 앞뒤로 문자열을 이어 붙입니다. 이 과정을 반복해서 문자열을 모두 제거한다면 짝지어 제거하기가 종료됩니다. 문자열 S가 주어졌을 때, 짝지어 제거하기를 성공적으로 수행할 수 있는지 반환하는 함수를 완성해 주세요. 성공적으로 수행할 수 있으면 1을, 아닐 경우 0을 리턴해주면 됩니다.</description>
     </item>
     
     <item>
       <title>Programmers 17681 비밀지도</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17681-secret-map/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17681-secret-map/</link>
       <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17681-secret-map/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17681-secret-map/</guid>
       <description>Programmers - 17681 비밀지도 Task description 원문 : Programmers 17681 링크
  네오는 평소 프로도가 비상금을 숨겨놓는 장소를 알려줄 비밀지도를 손에 넣었다. 그런데 이 비밀지도는 숫자로 암호화되어 있어 위치를 확인하기 위해서는 암호를 해독해야 한다. 다행히 지도 암호를 해독할 방법을 적어놓은 메모도 함께 발견했다.
    지도는 한 변의 길이가 n인 정사각형 배열 형태로, 각 칸은 &amp;ldquo;공백&amp;rdquo;(&amp;quot; &amp;ldquo;) 또는 &amp;ldquo;벽&amp;rdquo;(&amp;quot;#&amp;quot;) 두 종류로 이루어져 있다.  전체 지도는 두 장의 지도를 겹쳐서 얻을 수 있다.</description>
@@ -217,10 +229,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 42889 실패율</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42889-failure-rate/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42889-failure-rate/</link>
       <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42889-failure-rate/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42889-failure-rate/</guid>
       <description>Programmers - 42889 실패율 Task description 원문 : Programmers 42889 링크
  슈퍼 게임 개발자 오렐리는 큰 고민에 빠졌다. 그녀가 만든 프랜즈 오천성이 대성공을 거뒀지만, 요즘 신규 사용자의 수가 급감한 것이다. 원인은 신규 사용자와 기존 사용자 사이에 스테이지 차이가 너무 큰 것이 문제였다.
   이 문제를 어떻게 할까 고민 한 그녀는 동적으로 게임 시간을 늘려서 난이도를 조절하기로 했다. 역시 슈퍼 개발자라 대부분의 로직은 쉽게 구현했지만, 실패율을 구하는 부분에서 위기에 빠지고 말았다.</description>
@@ -228,10 +240,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 17682 다트 게임</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17682-dart-game/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17682-dart-game/</link>
       <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-17682-dart-game/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17682-dart-game/</guid>
       <description>Programmers - 17682 다트 게임 Task description 원문 : Programmers 17682 링크
  카카오톡 게임별의 하반기 신규 서비스로 다트 게임을 출시하기로 했다. 다트 게임은 다트판에 다트를 세 차례 던져 그 점수의 합계로 실력을 겨루는 게임으로, 모두가 간단히 즐길 수 있다. 갓 입사한 무지는 코딩 실력을 인정받아 게임의 핵심 부분인 점수 계산 로직을 맡게 되었다. 다트 게임의 점수 계산 로직은 아래와 같다.
   다트 게임은 총 3번의 기회로 구성된다. 각 기회마다 얻을 수 있는 점수는 0점에서 10점까지이다.</description>
@@ -239,10 +251,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 67256 키패드 누르기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-67256-keypad-press/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-67256-keypad-press/</link>
       <pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-67256-keypad-press/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-67256-keypad-press/</guid>
       <description>Programmers - 67256 키패드 누르기 Task description 원문 : Programmers 67256 링크
  스마트폰 전화 키패드의 각 칸에 다음과 같이 숫자들이 적혀 있습니다.
   이 전화 키패드에서 왼손과 오른손의 엄지손가락만을 이용해서 숫자만을 입력하려고 합니다.
@@ -252,20 +264,20 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 42862 체육복</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42862-gym-suit/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42862-gym-suit/</link>
       <pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42862-gym-suit/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42862-gym-suit/</guid>
       <description>Programmers - 42862 체육복 Task description 원문 : Programmers 42862 링크
  점심시간에 도둑이 들어, 일부 학생이 체육복을 도난당했습니다. 다행히 여벌 체육복이 있는 학생이 이들에게 체육복을 빌려주려 합니다. 학생들의 번호는 체격 순으로 매겨져 있어, 바로 앞번호의 학생이나 바로 뒷번호의 학생에게만 체육복을 빌려줄 수 있습니다. 예를 들어, 4번 학생은 3번 학생이나 5번 학생에게만 체육복을 빌려줄 수 있습니다. 체육복이 없으면 수업을 들을 수 없기 때문에 체육복을 적절히 빌려 최대한 많은 학생이 체육수업을 들어야 합니다.</description>
     </item>
     
     <item>
       <title>Programmers 81301 숫자 문자열과 영단어</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-81301-numeric-strings-and-english-words/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-81301-numeric-strings-and-english-words/</link>
       <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-81301-numeric-strings-and-english-words/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-81301-numeric-strings-and-english-words/</guid>
       <description>Programmers - 81301 숫자 문자열과 영단어 Task description 원문 : Programmers 81301 링크
  네오와 프로도가 숫자놀이를 하고 있습니다. 네오가 프로도에게 숫자를 건넬 때 일부 자릿수를 영단어로 바꾼 카드를 건네주면 프로도는 원래 숫자를 찾는 게임입니다.
   다음은 숫자의 일부 자릿수를 영단어로 바꾸는 예시입니다.
@@ -274,10 +286,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 64061 크레인 인형 뽑기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-64061-crane-puppet-game/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-64061-crane-puppet-game/</link>
       <pubDate>Fri, 16 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-64061-crane-puppet-game/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-64061-crane-puppet-game/</guid>
       <description>Programmers - 64061 크레인 인형 뽑기 Task description 원문 : Programmers 64061 링크
  게임개발자인 &amp;ldquo;죠르디&amp;quot;는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다. &amp;ldquo;죠르디&amp;quot;는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.
   게임 화면은 &amp;ldquo;1 x 1&amp;rdquo; 크기의 칸들로 이루어진 &amp;ldquo;N x N&amp;rdquo; 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 &amp;ldquo;5 x 5&amp;rdquo; 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다.</description>
@@ -285,10 +297,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 70128 내적</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-70128-inner-product/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-70128-inner-product/</link>
       <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-70128-inner-product/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-70128-inner-product/</guid>
       <description>Programmers - 70128 내적 Task description 원문 : Programmers 70128 링크
  길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다. a와 b의 내적을 return 하도록 solution 함수를 완성해주세요.
   이때, a와 b의 내적은 a[0]*b[0] + a[1]*b[1] + &amp;hellip; + a[n-1]*b[n-1] 입니다. (n은 a, b의 길이)
@@ -297,10 +309,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 42748 K번째 수</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42748-kth-number/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42748-kth-number/</link>
       <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42748-kth-number/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42748-kth-number/</guid>
       <description>Programmers - 42748 K번째 수 Task description 원문 : Programmers 42748 링크
  배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.
   예를 들어 array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3이라면
@@ -309,10 +321,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 72410 신규 아이디 추천</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-72410-new-id-recommendation/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-72410-new-id-recommendation/</link>
       <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-72410-new-id-recommendation/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-72410-new-id-recommendation/</guid>
       <description>Programmers - 72410 신규 아이디 추천 Task description 원문 : Programmers 72410 링크
  카카오에 입사한 신입 개발자 네오는 &amp;ldquo;카카오계정개발팀&amp;quot;에 배치되어, 카카오 서비스에 가입하는 유저들의 아이디를 생성하는 업무를 담당하게 되었습니다. &amp;ldquo;네오&amp;quot;에게 주어진 첫 업무는 새로 가입하는 유저들이 카카오 아이디 규칙에 맞지 않는 아이디를 입력했을 때, 입력된 아이디와 유사하면서 규칙에 맞는 아이디를 추천해주는 프로그램을 개발하는 것입니다. 다음은 카카오 아이디의 규칙입니다.
   아이디의 길이는 3자 이상 15자 이하여야 합니다. 아이디는 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.</description>
@@ -320,10 +332,10 @@ Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들�
     
     <item>
       <title>Programmers 42576 완주하지 못한 선수</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42576-players-who-did-not-finish/</link>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42576-players-who-did-not-finish/</link>
       <pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/programmers-42576-players-who-did-not-finish/</guid>
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42576-players-who-did-not-finish/</guid>
       <description>Programmers - 42576 완주하지 못한 선수 Task description 원문 : Programmers 42576 링크
  수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다. 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
  Condition   마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다. completion의 길이는 participant의 길이보다 1 작습니다.</description>

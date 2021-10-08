@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>Programmers 67257 수식 최대화 | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="67257 수식 최대화">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.16c2e552c66baacd4b04c4a887e2f888e4268d2cfb917c50a226e6b3d8eb66a3.css" integrity="sha256-FsLlUsZrqs1LBMSoh&#43;L4iOQmjSz7kXxQoibms9jrZqM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "Programmers 67257 수식 최대화",
+      "headline" : "Programmers 67257 수식 최대화",
+      "description" : "67257 수식 최대화",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-08-05 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-08-05 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202108\/programmers-67257-maximize-formula\/",
+      "wordCount" : "901",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+			        
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+			        
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	Programmers 67257 수식 최대화
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	Programmers 67257 수식 최대화
+            </h1>		
+            <time datetime="2021-08-05 00:00:00 &#43;0000 UTC" class="post__date">2021-08-05</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="programmers---67257-수식-최대화">Programmers - 67257 수식 최대화</h1>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/67257">Programmers 67257 링크</a></p>
+<blockquote>
+<p>IT 벤처 회사를 운영하고 있는 라이언은 매년 사내 해커톤 대회를 개최하여 우승자에게 상금을 지급하고 있습니다.<br>
+이번 대회에서는 우승자에게 지급되는 상금을 이전 대회와는 다르게 다음과 같은 방식으로 결정하려고 합니다.<br>
+해커톤 대회에 참가하는 모든 참가자들에게는 숫자들과 3가지의 연산문자(+, -, <em>) 만으로 이루어진 연산 수식이 전달되며,<br>
+참가자의 미션은 전달받은 수식에 포함된 연산자의 우선순위를 자유롭게 재정의하여 만들 수 있는 가장 큰 숫자를 제출하는 것입니다.<br>
+단, 연산자의 우선순위를 새로 정의할 때, 같은 순위의 연산자는 없어야 합니다. 즉, + &gt; - &gt; * 또는 - &gt; * &gt; + 등과 같이<br>
+연산자 우선순위를 정의할 수 있으나 +,</em> &gt; - 또는 * &gt; +,-처럼 2개 이상의 연산자가
+동일한 순위를 가지도록 연산자 우선순위를 정의할 수는 없습니다. <br>
+수식에 포함된 연산자가 2개라면 정의할 수 있는 연산자 우선순위 조합은 2! = 2가지이며, 연산자가 3개라면 3! = 6가지 조합이 가능합니다.<br>
+만약 계산된 결과가 음수라면 해당 숫자의 절댓값으로 변환하여 제출하며 제출한 숫자가 가장 큰 참가자를 우승자로 선정하며, 우승자가 제출한 숫자를 우승상금으로 지급하게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>예를 들어, 참가자 중 네오가 아래와 같은 수식을 전달받았다고 가정합니다.</p>
+</blockquote>
+<blockquote>
+<p>&ldquo;100-200*300-500+20&rdquo;</p>
+</blockquote>
+<blockquote>
+<p>일반적으로 수학 및 전산학에서 약속된 연산자 우선순위에 따르면 더하기와 빼기는 서로 동등하며 곱하기는 더하기, 빼기에 비해 우선순위가 높아 * &gt; +,- 로 우선순위가 정의되어 있습니다.<br>
+대회 규칙에 따라 + &gt; - &gt; * 또는 - &gt; * &gt; + 등과 같이 연산자 우선순위를 정의할 수 있으나 +,* &gt; - 또는 * &gt; +,- 처럼 2개 이상의 연산자가 동일한 순위를 가지도록 연산자 우선순위를 정의할 수는 없습니다.<br>
+수식에 연산자가 3개 주어졌으므로 가능한 연산자 우선순위 조합은 3! = 6가지이며, 그 중 + &gt; - &gt; * 로 연산자 우선순위를 정한다면 결괏값은 22,000원이 됩니다.<br>
+반면에 * &gt; + &gt; - 로 연산자 우선순위를 정한다면 수식의 결괏값은 -60,420 이지만, 규칙에 따라 우승 시 상금은 절댓값인 60,420원이 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>참가자에게 주어진 연산 수식이 담긴 문자열 expression이 매개변수로 주어질 때, 우승 시 받을 수 있는 가장 큰 상금 금액을 return 하도록 solution 함수를 완성해주세요.</p>
+</blockquote>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<blockquote>
+<ul>
+<li>expression은 길이가 3 이상 100 이하인 문자열입니다.</li>
+<li>expression은 공백문자, 괄호문자 없이 오로지 숫자와 3가지의 연산자(+, -, <em>) 만으로 이루어진 올바른 중위표기법(연산의 두 대상 사이에 연산기호를 사용하는 방식)으로 표현된 연산식입니다. 잘못된 연산식은 입력으로 주어지지 않습니다.<br>
+즉, &ldquo;402+-561</em>&ldquo;처럼 잘못된 수식은 올바른 중위표기법이 아니므로 주어지지 않습니다.<br>
+expression의 피연산자(operand)는 0 이상 999 이하의 숫자입니다.<br>
+즉, &ldquo;100-2145*458+12&quot;처럼 999를 초과하는 피연산자가 포함된 수식은 입력으로 주어지지 않습니다.<br>
+&ldquo;-56+100&quot;처럼 피연산자가 음수인 수식도 입력으로 주어지지 않습니다.<br>
+expression은 적어도 1개 이상의 연산자를 포함하고 있습니다.<br>
+연산자 우선순위를 어떻게 적용하더라도, expression의 중간 계산값과 최종 결괏값은 절댓값이 263 - 1 이하가 되도록 입력이 주어집니다.<br>
+같은 연산자끼리는 앞에 있는 것의 우선순위가 더 높습니다.</li>
+</ul>
+</blockquote>
+<p>###입력 형식</p>
+<table>
+<thead>
+<tr>
+<th>expression</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ldquo;100-200*300-500+20&rdquo;</td>
+<td>60420</td>
+</tr>
+<tr>
+<td>&ldquo;50<em>6-3</em>2&rdquo;</td>
+<td>300</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>입출력 예에 대한 설명<br>
+입출력 예 #1</p>
+</blockquote>
+<blockquote>
+<p>* &gt; + &gt; - 로 연산자 우선순위를 정했을 때, 가장 큰 절댓값을 얻을 수 있습니다.<br>
+연산 순서는 아래와 같습니다.</p>
+</blockquote>
+<pre><code>100-200*300-500+20
+= 100-(200*300)-500+20
+= 100-60000-(500+20)
+= (100-60000)-520
+= (-59900-520)
+= -60420
+</code></pre>
+<blockquote>
+<p>따라서, 우승 시 받을 수 있는 상금은 |-60420| = 60420 입니다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예 #2 <br>
+- &gt; * 로 연산자 우선순위를 정했을 때, 가장 큰 절댓값을 얻을 수 있습니다.<br>
+연산 순서는 아래와 같습니다.(expression에서 + 연산자는 나타나지 않았으므로, 고려할 필요가 없습니다.)</p>
+</blockquote>
+<pre><code>50*6-3*2
+= 50*(6-3)*2
+= (50*3)*2
+= 150*2
+= 300
+</code></pre>
+<blockquote>
+<p>따라서, 우승 시 받을 수 있는 상금은 300 입니다.</p>
+</blockquote>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<blockquote>
+<ol>
+<li>숫자와 부호를 배열에 담는다.</li>
+<li>숫자와 부호를 부호 우선순위를 완전탐색하여 가장 높은 값을 찾는다.</li>
+</ol>
+</blockquote>
+<pre><code>   def solution(expression):
+    answer = 0
+    signs = [
+          ['*','+','-']
+        , ['*','-','+']
+        , ['+','*','-']
+        , ['+','-','*']
+        , ['-','*','+']
+        , ['-','+','*']
+    ]
+    exp = []
+    
+    tmp = ''
+    for e in expression :
+        if e == '' or e not in ['*','+','-'] :
+            tmp += e
+        else : 
+            exp.append(int(tmp))
+            exp.append(e)
+            tmp =''
+    exp.append(int(tmp))
+    
+    maximum = 0
+    for sign in signs :
+        _exp = exp
+        _stack = []
+        tmp = ''
+        for s in sign:
+            for i in range(0,len(_exp)) :
+               
+                if _exp[i-1] in ['*','+','-']  and s == _exp[i-1] :
+                    prv = _stack.pop()
+                    pprv = _stack.pop()
+
+                 
+                    if prv == '*' :
+                        _stack.append(pprv * _exp[i])
+                    elif prv == '+' :
+                        _stack.append(pprv + _exp[i])
+                    else :
+                        _stack.append(pprv - _exp[i])
+
+                else : 
+                    _stack.append(_exp[i])
+                
+            if len(_stack) == 1 :
+                maximum = max(abs(_stack[0]),maximum)
+            
+            _exp = _stack
+            _stack = []
+
+
+    return maximum
+</code></pre>
+<blockquote>
+<p>새로 배운 기능</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>기능</th>
+<th>설명</th>
+<th>예</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>permutations()</td>
+<td>순열을 조합해 주는 함수</td>
+<td>[&lsquo;A&rsquo;, &lsquo;B&rsquo;, &lsquo;C&rsquo;] -&gt; &lsquo;ABC&rsquo;, &lsquo;ACB&rsquo;, &lsquo;BAC&rsquo;, &lsquo;BCA&rsquo;, &lsquo;CAB&rsquo;, &lsquo;CBA&rsquo;</td>
+</tr>
+<tr>
+<td>eval()</td>
+<td>문자열을 수식으로 계산해주는 함수</td>
+<td>eval(&lsquo;100&rsquo;+'+'+&lsquo;200&rsquo;) -&gt;300</td>
+</tr>
+<tr>
+<td>re.split(r'(\D)',expression)</td>
+<td>숫자와 문자를 분리 시켜켜 배열로 만들어주는 정규식</td>
+<td>&lsquo;10+20&rsquo; -&gt; &lsquo;10&rsquo;,'+'+&lsquo;20&rsquo;</td>
+</tr>
+</tbody>
+</table>
+<pre><code>
+import re
+import itertools
+
+def solution(expression):
+    sign = ['*','+','-']
+    signs = list(map(''.join, itertools.permutations(sign))) #sighs : ['*+-', '*-+', '+*-', '+-*', '-*+', '-+*']
+    exp = re.split(r'(\D)',expression)
+    
+    maximum = 0
+    for sign in signs :
+        _exp = exp[:]
+        _stack = []
+        
+        for s in sign:
+            for i in range(0,len(_exp)) :
+                
+                if _exp[i-1] in ['*','+','-']  and s == _exp[i-1] :
+                    ex = str(_stack.pop())
+                    prev = str(_stack.pop())
+                    curr = str(_exp[i])
+
+                    _stack.append(eval(prev+ex+curr))
+                                        
+                else : 
+                    _stack.append(_exp[i])
+                
+            if len(_stack) == 1 :
+                maximum = max(abs(_stack[0]),maximum)
+            
+            _exp = _stack
+            _stack = []
+
+    return maximum
+</code></pre>
+<h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
+<pre><code>import re
+from itertools import permutations
+
+def solution(expression):
+    #1
+    op = [x for x in ['*','+','-'] if x in expression]
+    op = [list(y) for y in permutations(op)]
+    ex = re.split(r'(\D)',expression)
+
+    #2
+    a = []
+    for x in op:
+        _ex = ex[:]
+        for y in x:
+            while y in _ex:
+                tmp = _ex.index(y)
+                _ex[tmp-1] = str(eval(_ex[tmp-1]+_ex[tmp]+_ex[tmp+1]))
+                _ex = _ex[:tmp]+_ex[tmp+2:]
+        a.append(_ex[-1])
+
+    #3
+    return max(abs(int(x)) for x in a)
+</code></pre>
+<pre><code>def solution(expression):
+    operations = [('+', '-', '*'),('+', '*', '-'),('-', '+', '*'),('-', '*', '+'),('*', '+', '-'),('*', '-', '+')]
+    answer = []
+    for op in operations:
+        a = op[0]
+        b = op[1]
+        temp_list = []
+        for e in expression.split(a):
+            temp = [f&quot;({i})&quot; for i in e.split(b)]
+            temp_list.append(f'({b.join(temp)})')
+        answer.append(abs(eval(a.join(temp_list))))
+    return max(answer)
+</code></pre>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<pre><code>print(solution('100-200*300-500+20'), 60420)
+</code></pre>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42840-mock-exam/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Programmers 42840 모의고사</span>
+    </a>
+  
+
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-72412-rank-search/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Programmers 72412 순위 검색</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">Programmers 67257 수식 최대화</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a></li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#others-solution">Others Solution</a></li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.49e4d8a384357d9b445b87371863419937ede9fa77737522ffb633073aebfa44.js" integrity="sha256-SeTYo4Q1fZtEW4c3GGNBmTft6fp3c3Ui/7YzBzrr&#43;kQ=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>
