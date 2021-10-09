@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Programmers 129343 콜라츠 추측 | offetuoso&#39;s Blog</title>
+  <title>Programmers 20426 복서 정렬하기 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="129343 콜라츠 추측">
+  <meta name="description" content="20426 복서 정렬하기">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Programmers 129343 콜라츠 추측",
-      "headline" : "Programmers 129343 콜라츠 추측",
-      "description" : "129343 콜라츠 추측",
+      "name" : "Programmers 20426 복서 정렬하기",
+      "headline" : "Programmers 20426 복서 정렬하기",
+      "description" : "20426 복서 정렬하기",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -75,8 +75,8 @@
       "copyrightYear" : "2021",
       "datePublished": "2021-10-08 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-10-08 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202110\/programmers-129343-collatz\/",
-      "wordCount" : "238",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202110\/programmers-20426-boxer-sorting\/",
+      "wordCount" : "539",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,35 +170,48 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Programmers 129343 콜라츠 추측
+		            	Programmers 20426 복서 정렬하기
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Programmers 129343 콜라츠 추측
+		       	Programmers 20426 복서 정렬하기
             </h1>		
             <time datetime="2021-10-08 00:00:00 &#43;0000 UTC" class="post__date">2021-10-08</time> 
           </header>
           <article class="post__content">
               
-<h1 id="programmers---129343-콜라츠-추측">Programmers - 129343 콜라츠 추측</h1>
+<h1 id="programmers---20426-복서-정렬하기">Programmers - 20426 복서 정렬하기</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/129343">Programmers 129343 링크</a></p>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/20426">Programmers 20426 링크</a></p>
 <h3 id="문제-설명">문제 설명<a class="anchor" href="#문제-설명">#</a></h3>
-<p>1937년 Collatz란 사람에 의해 제기된 이 추측은, 주어진 수가 1이 될때까지 다음 작업을 반복하면, 모든 수를 1로 만들 수 있다는 추측입니다. 작업은 다음과 같습니다.</p>
 <blockquote>
-<p>1-1. 입력된 수가 짝수라면 2로 나눕니다. 
-1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다.
-2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다.</p>
+<p>복서 선수들의 몸무게 weights와, 복서 선수들의 전적을 나타내는 head2head가 매개변수로 주어집니다. 복서 선수들의 번호를 다음과 같은 순서로 정렬한 후 return 하도록 solution 함수를 완성해주세요.</p>
 </blockquote>
 <blockquote>
-<p>예를 들어, 입력된 수가 6이라면 6→3→10→5→16→8→4→2→1 이 되어 총 8번 만에 1이 됩니다. 위 작업을 몇 번이나 반복해야하는지 반환하는 함수, solution을 완성해 주세요. 단, 작업을 500번을 반복해도 1이 되지 않는다면 –1을 반환해 주세요.</p>
+<ol>
+<li>전체 승률이 높은 복서의 번호가 앞쪽으로 갑니다. 아직 다른 복서랑 붙어본 적이 없는 복서의 승률은 0%로 취급합니다.</li>
+<li>승률이 동일한 복서의 번호들 중에서는 자신보다 몸무게가 무거운 복서를 이긴 횟수가 많은 복서의 번호가 앞쪽으로 갑니다.</li>
+<li>자신보다 무거운 복서를 이긴 횟수까지 동일한 복서의 번호들 중에서는 자기 몸무게가 무거운 복서의 번호가 앞쪽으로 갑니다.</li>
+<li>자기 몸무게까지 동일한 복서의 번호들 중에서는 작은 번호가 앞쪽으로 갑니다.</li>
+</ol>
 </blockquote>
-<h3 id="제한-사항">제한 사항<a class="anchor" href="#제한-사항">#</a></h3>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>입력된 수, num은 1 이상 8000000 미만인 정수입니다.</li>
+<li>weights의 길이는 2 이상 1,000 이하입니다.</li>
+<li>weights의 모든 값은 45 이상 150 이하의 정수입니다.</li>
+<li>weights[i] 는 i+1번 복서의 몸무게(kg)를 의미합니다.</li>
+<li>head2head의 길이는 weights의 길이와 같습니다.</li>
+<li>head2head의 모든 문자열은 길이가 weights의 길이와 동일하며, &lsquo;N&rsquo;, &lsquo;W&rsquo;, &lsquo;L&rsquo;로 이루어진 문자열입니다.</li>
+<li>head2head[i] 는 i+1번 복서의 전적을 의미하며, head2head[i][j]는 i+1번 복서와 j+1번 복서의 매치 결과를 의미합니다.</li>
+<li>&lsquo;N&rsquo; (None)은 두 복서가 아직 붙어본 적이 없음을 의미합니다.</li>
+<li>&lsquo;W&rsquo; (Win)는 i+1번 복서가 j+1번 복서를 이겼음을 의미합니다.</li>
+<li>&lsquo;L&rsquo; (Lose)는 i+1번 복사가 j+1번 복서에게 졌음을 의미합니다.</li>
+<li>임의의 i에 대해서 head2head[i][i] 는 항상 &lsquo;N&rsquo;입니다. 자기 자신과 싸울 수는 없기 때문입니다.</li>
+<li>임의의 i, j에 대해서 head2head[i][j] = &lsquo;W&rsquo; 이면, head2head[j][i] = &lsquo;L&rsquo;입니다.</li>
+<li>임의의 i, j에 대해서 head2head[i][j] = &lsquo;L&rsquo; 이면, head2head[j][i] = &lsquo;W&rsquo;입니다.</li>
+<li>임의의 i, j에 대해서 head2head[i][j] = &lsquo;N&rsquo; 이면, head2head[j][i] = &lsquo;N&rsquo;입니다.</li>
 </ul>
 </blockquote>
 <p>###입력 형식</p>
@@ -227,47 +240,161 @@
 </tr>
 </tbody>
 </table>
-<pre><code>입출력 예 #2
-16 -&gt; 8 -&gt; 4 -&gt; 2 -&gt; 1 이되어 총 4번만에 1이 됩니다.
-
-입출력 예 #3
-626331은 500번을 시도해도 1이 되지 못하므로 -1을 리턴해야합니다.
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>weights</th>
+<th>head2head</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[50,82,75,120]</td>
+<td>[&ldquo;NLWL&rdquo;,&ldquo;WNLL&rdquo;,&ldquo;LWNW&rdquo;,&ldquo;WWLN&rdquo;]</td>
+<td>[3,4,1,2]</td>
+</tr>
+<tr>
+<td>[145,92,86]</td>
+<td>[&ldquo;NLW&rdquo;,&ldquo;WNL&rdquo;,&ldquo;LWN&rdquo;]</td>
+<td>[2,3,1]</td>
+</tr>
+<tr>
+<td>[60,70,60]</td>
+<td>[&ldquo;NNN&rdquo;,&ldquo;NNN&rdquo;,&ldquo;NNN&rdquo;]</td>
+<td>[2,1,3]</td>
+</tr>
+</tbody>
+</table>
+<p>입출력 예 #1</p>
+<p>다음은 선수들의 정보를 나타낸 표입니다.</p>
+<table>
+<thead>
+<tr>
+<th>선수</th>
+<th>번호</th>
+<th>vs 1번</th>
+<th>vs 2번</th>
+<th>vs 3번</th>
+<th>vs 4번</th>
+<th>승률</th>
+<th>자기보다 무거운 복서를 이긴 횟수</th>
+<th>몸무게</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1번</td>
+<td>-</td>
+<td>패배</td>
+<td>승리</td>
+<td>패배</td>
+<td>33.33%</td>
+<td>1회</td>
+<td>50kg</td>
+<td></td>
+</tr>
+<tr>
+<td>2번</td>
+<td>승</td>
+<td>-</td>
+<td>패배</td>
+<td>패배</td>
+<td>33.33%</td>
+<td>0회</td>
+<td>82kg</td>
+<td></td>
+</tr>
+<tr>
+<td>3번</td>
+<td>패</td>
+<td>승리</td>
+<td>-</td>
+<td>승리</td>
+<td>66.66%</td>
+<td>2회</td>
+<td>75kg</td>
+<td></td>
+</tr>
+<tr>
+<td>4번</td>
+<td>승</td>
+<td>승리</td>
+<td>패배</td>
+<td>-</td>
+<td>66.66%</td>
+<td>0회</td>
+<td>120kg</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<pre><code>def collatz(num):
-    cnt = 0
-    while(True) :
-        if cnt &gt;= 500 :
-            return -1
-        elif num == 1 :
-            return cnt
+<pre><code>def solution(weights, head2head):
+    answer = []
+    player = []
 
-        if num % 2 == 0 : #짝
-            num = num//2
-        else :   
-           num = num * 3 + 1
-        cnt += 1
+    for i in range(len(weights)):
+        win_cnt = 0
+        total_cnt = 0
+        win_heavier_cnt = 0
+        for j in range(len(head2head[i])):
+            if head2head[i][j] != &quot;N&quot;: total_cnt += 1
+            if head2head[i][j] == &quot;W&quot;:
+                win_cnt += 1
+                if weights[i] &lt; weights[j]:
+                    win_heavier_cnt += 1
 
+        data = []
+        try:
+            rate = (win_cnt / total_cnt) * 1000000
+        except:
+            rate = 0
+        data.append(rate)  # 승률
+        data.append(win_heavier_cnt)  # 무거운 사람에게 승수
+        data.append(weights[i])  # 무게
+        data.append(i + 1)  # 번호
+        player.append(data)
 
-print(collatz(6))
+    for i in sorted(player, key=lambda x: (-x[0], -x[1], -x[2], x[3])):
+        answer.append(i[3])
+
+    return answer
+
 </code></pre>
 <h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
-<pre><code>def collatz(num):
-    if num == 1 :
-        return 0
-    for i in range(500):
-        num = num / 2 if num % 2 == 0 else num*3 + 1
-        if num == 1:
-            return i + 1
-    return -1
-    
-print(collatz(6))
+<pre><code>def solution(weights, head2head):
+    result = []
+    l = len(weights)
+    # 한 번에 정렬해서 풀어봅시다!
+    ans = [[0 for _ in range(4)] for _ in range(l)] # 승률, 무거운복서 이긴횟수, 자기 몸무게, 번호(음수로)
+    for i in range(l):
+        ans[i][2] = weights[i]
+        ans[i][3] = -(i+1)
+        cnt = 0 # 판수
+        for j in range(l):
+            if head2head[i][j] == 'W':
+                ans[i][0] += 1 # 일단 이김
+                cnt += 1
+                if weights[i] &lt; weights[j]:
+                    ans[i][1] += 1 # 무거운 복서 이김
+            elif head2head[i][j] == 'L':
+                cnt += 1 # 판수만 늘려준다
+        if cnt == 0:
+            ans[i][0] = 0
+        else:
+            ans[i][0] /= cnt
+    ans.sort(reverse=True) # 역순으로 정렬하면 모든 조건이 한 번에 정렬된다
+
+    for i in range(l):
+        result.append(-ans[i][3])
+    return result
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>print(collatz(6))
-print(collatz(16))
-print(collatz(626331))
-print(collatz(1))
+<pre><code>print(solution([50, 82, 75, 120], [&quot;NLWL&quot;, &quot;WNLL&quot;, &quot;LWNW&quot;, &quot;WWLN&quot;]), [3, 4, 1, 2])
+print(solution([145, 92, 86], [&quot;NLW&quot;, &quot;WNL&quot;, &quot;LWN&quot;]), [2, 3, 1])
+print(solution([60, 70, 60], [&quot;NNN&quot;, &quot;NNN&quot;, &quot;NNN&quot;]), [2, 1, 3])
+
 
 </code></pre>
 
@@ -294,12 +421,17 @@ print(collatz(1))
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-20426-boxer-sorting/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-83201-mutual-evaluation/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Programmers 20426 복서 정렬하기</span>
+        <span class="pagination__title">Programmers 83201 상호평가</span>
     </a>
   
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-129343-collatz/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Programmers 129343 콜라츠 추측</span>
+    </a>
   
 </div>
 
@@ -369,13 +501,12 @@ print(collatz(1))
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Programmers 129343 콜라츠 추측</div> 
+          <div class="toc-post-title">Programmers 20426 복서 정렬하기</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a>
       <ul>
         <li><a href="#문제-설명">문제 설명</a></li>
-        <li><a href="#제한-사항">제한 사항</a></li>
       </ul>
     </li>
     <li><a href="#condition">Condition</a></li>

@@ -21,6 +21,17 @@
     </item>
     
     <item>
+      <title>Programmers 20426 복서 정렬하기</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-20426-boxer-sorting/</link>
+      <pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-20426-boxer-sorting/</guid>
+      <description>Programmers - 20426 복서 정렬하기 Task description 원문 : Programmers 20426 링크
+문제 설명  복서 선수들의 몸무게 weights와, 복서 선수들의 전적을 나타내는 head2head가 매개변수로 주어집니다. 복서 선수들의 번호를 다음과 같은 순서로 정렬한 후 return 하도록 solution 함수를 완성해주세요.
+   전체 승률이 높은 복서의 번호가 앞쪽으로 갑니다. 아직 다른 복서랑 붙어본 적이 없는 복서의 승률은 0%로 취급합니다. 승률이 동일한 복서의 번호들 중에서는 자신보다 몸무게가 무거운 복서를 이긴 횟수가 많은 복서의 번호가 앞쪽으로 갑니다.</description>
+    </item>
+    
+    <item>
       <title>Programmers 83201 상호평가</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-83201-mutual-evaluation/</link>
       <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
