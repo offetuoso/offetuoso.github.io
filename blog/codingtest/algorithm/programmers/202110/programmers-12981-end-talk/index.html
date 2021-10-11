@@ -2,11 +2,11 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Programmers 42586 기능개발 | offetuoso&#39;s Blog</title>
+  <title>Programmers 12981 영어 끝말잇기 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="42586 기능개발">
+  <meta name="description" content="12981 영어 끝말잇기">
   <meta name="keywords" content="Algorithm , CodingTest">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Programmers 42586 기능개발",
-      "headline" : "Programmers 42586 기능개발",
-      "description" : "42586 기능개발",
+      "name" : "Programmers 12981 영어 끝말잇기",
+      "headline" : "Programmers 12981 영어 끝말잇기",
+      "description" : "12981 영어 끝말잇기",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-10-10 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-10-10 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202110\/programmers-42586-function-development\/",
-      "wordCount" : "462",
+      "datePublished": "2021-10-11 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-10-11 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202110\/programmers-12981-end-talk\/",
+      "wordCount" : "576",
       "keywords" : ["Algorithm", "CodingTest", "Blog"]
     }
   
@@ -170,146 +170,172 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Programmers 42586 기능개발
+		            	Programmers 12981 영어 끝말잇기
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Programmers 42586 기능개발
+		       	Programmers 12981 영어 끝말잇기
             </h1>		
-            <time datetime="2021-10-10 00:00:00 &#43;0000 UTC" class="post__date">2021-10-10</time> 
+            <time datetime="2021-10-11 00:00:00 &#43;0000 UTC" class="post__date">2021-10-11</time> 
           </header>
           <article class="post__content">
               
-<h1 id="programmers---42586-기능개발">Programmers - 42586 기능개발</h1>
+<h1 id="programmers---12981-영어-끝말잇기">Programmers - 12981 영어 끝말잇기</h1>
 <h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/42586">Programmers 42586 링크</a></p>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/12981">Programmers 12981 링크</a></p>
 <h3 id="문제-설명">문제 설명<a class="anchor" href="#문제-설명">#</a></h3>
 <blockquote>
-<p>프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.
-또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다.</p>
+<p>1부터 n까지 번호가 붙어있는 n명의 사람이 영어 끝말잇기를 하고 있습니다. 영어 끝말잇기는 다음과 같은 규칙으로 진행됩니다.</p>
 </blockquote>
 <blockquote>
-<p>먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요.</p>
+<p>1번부터 번호 순서대로 한 사람씩 차례대로 단어를 말합니다.
+마지막 사람이 단어를 말한 다음에는 다시 1번부터 시작합니다.
+앞사람이 말한 단어의 마지막 문자로 시작하는 단어를 말해야 합니다.
+이전에 등장했던 단어는 사용할 수 없습니다.
+한 글자인 단어는 인정되지 않습니다.
+다음은 3명이 끝말잇기를 하는 상황을 나타냅니다.</p>
 </blockquote>
-<p>입출력 예 #2
-모든 기능이 하루에 1%씩 작업이 가능하므로, 작업이 끝나기까지 남은 일수는 각각 5일, 10일, 1일, 1일, 20일, 1일입니다. 어떤 기능이 먼저 완성되었더라도 앞에 있는 모든 기능이 완성되지 않으면 배포가 불가능합니다.</p>
-<p>따라서 5일째에 1개의 기능, 10일째에 3개의 기능, 20일째에 2개의 기능이 배포됩니다.</p>
-<p>※ 공지 - 2020년 7월 14일 테스트케이스가 추가되었습니다.</p>
+<blockquote>
+<p>tank → kick → know → wheel → land → dream → mother → robot → tank</p>
+</blockquote>
+<blockquote>
+<p>위 끝말잇기는 다음과 같이 진행됩니다.</p>
+</blockquote>
+<pre><code>1번 사람이 자신의 첫 번째 차례에 tank를 말합니다.
+2번 사람이 자신의 첫 번째 차례에 kick을 말합니다.
+3번 사람이 자신의 첫 번째 차례에 know를 말합니다.
+1번 사람이 자신의 두 번째 차례에 wheel을 말합니다.
+(계속 진행)
+끝말잇기를 계속 진행해 나가다 보면, 3번 사람이 자신의 세 번째 차례에 말한 tank 라는 단어는 이전에 등장했던 단어이므로 탈락하게 됩니다.
+</code></pre>
+<blockquote>
+<p>사람의 수 n과 사람들이 순서대로 말한 단어 words 가 매개변수로 주어질 때, 가장 먼저 탈락하는 사람의 번호와 그 사람이 자신의 몇 번째 차례에 탈락하는지를 구해서 return 하도록 solution 함수를 완성해주세요.</p>
+</blockquote>
 <h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
 <blockquote>
 <ul>
-<li>작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다.</li>
-<li>작업 진도는 100 미만의 자연수입니다.</li>
-<li>작업 속도는 100 이하의 자연수입니다.</li>
-<li>배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.</li>
+<li>끝말잇기에 참여하는 사람의 수 n은 2 이상 10 이하의 자연수입니다.</li>
+<li>words는 끝말잇기에 사용한 단어들이 순서대로 들어있는 배열이며, 길이는 n 이상 100 이하입니다.</li>
+<li>단어의 길이는 2 이상 50 이하입니다.</li>
+<li>모든 단어는 알파벳 소문자로만 이루어져 있습니다.</li>
+<li>끝말잇기에 사용되는 단어의 뜻(의미)은 신경 쓰지 않으셔도 됩니다.</li>
+<li>정답은 [ 번호, 차례 ] 형태로 return 해주세요.</li>
+<li>만약 주어진 단어들로 탈락자가 생기지 않는다면, [0, 0]을 return 해주세요.</li>
 </ul>
 </blockquote>
-<h3 id="입력-형식">입력 형식<a class="anchor" href="#입력-형식">#</a></h3>
+<p>###입력 형식</p>
 <blockquote>
 <p>입출력 예</p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th>progresses</th>
-<th>speeds</th>
-<th>return</th>
+<th>n</th>
+<th>words</th>
+<th>result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>[93, 30, 55]</td>
-<td>[1, 30, 5]</td>
-<td>[2, 1]</td>
+<td>3</td>
+<td>[&ldquo;tank&rdquo;, &ldquo;kick&rdquo;, &ldquo;know&rdquo;, &ldquo;wheel&rdquo;, &ldquo;land&rdquo;, &ldquo;dream&rdquo;, &ldquo;mother&rdquo;, &ldquo;robot&rdquo;, &ldquo;tank&rdquo;]</td>
+<td>[3,3]</td>
 </tr>
 <tr>
-<td>[95, 90, 99, 99, 80, 99]</td>
-<td>[1, 1, 1, 1, 1, 1]</td>
-<td>[1, 3, 2]</td>
+<td>5</td>
+<td>[&ldquo;hello&rdquo;, &ldquo;observe&rdquo;, &ldquo;effect&rdquo;, &ldquo;take&rdquo;, &ldquo;either&rdquo;, &ldquo;recognize&rdquo;, &ldquo;encourage&rdquo;, &ldquo;ensure&rdquo;, &ldquo;establish&rdquo;, &ldquo;hang&rdquo;, &ldquo;gather&rdquo;, &ldquo;refer&rdquo;, &ldquo;reference&rdquo;, &ldquo;estimate&rdquo;, &ldquo;executive&rdquo;]</td>
+<td>[0,0]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>[&ldquo;hello&rdquo;, &ldquo;one&rdquo;, &ldquo;even&rdquo;, &ldquo;never&rdquo;, &ldquo;now&rdquo;, &ldquo;world&rdquo;, &ldquo;draw&rdquo;]</td>
+<td>[1,3]</td>
 </tr>
 </tbody>
 </table>
-<h4 id="입출력-예-설명">입출력 예 설명</h4>
+<blockquote>
+<p>입출력 예 설명</p>
+</blockquote>
 <blockquote>
 <p>입출력 예 #1
-첫 번째 기능은 93% 완료되어 있고 하루에 1%씩 작업이 가능하므로 7일간 작업 후 배포가 가능합니다.<br>
-두 번째 기능은 30%가 완료되어 있고 하루에 30%씩 작업이 가능하므로 3일간 작업 후 배포가 가능합니다. 하지만 이전 첫 번째 기능이 아직 완성된 상태가 아니기 때문에 첫 번째 기능이 배포되는 7일째 배포됩니다. <br>
-세 번째 기능은 55%가 완료되어 있고 하루에 5%씩 작업이 가능하므로 9일간 작업 후 배포가 가능합니다.<br>
-따라서 7일째에 2개의 기능, 9일째에 1개의 기능이 배포됩니다.<br></p>
+3명의 사람이 끝말잇기에 참여하고 있습니다.</p>
 </blockquote>
+<blockquote>
+<p>1번 사람 : tank, wheel, mother <br>
+2번 사람 : kick, land, robot<br>
+3번 사람 : know, dream, tank<br>
+와 같은 순서로 말을 하게 되며, 3번 사람이 자신의 세 번째 차례에 말한 tank라는 단어가 1번 사람이 자신의 첫 번째 차례에 말한 tank와 같으므로 3번 사람이 자신의 세 번째 차례로 말을 할 때 처음 탈락자가 나오게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예 #2<br>
+5명의 사람이 끝말잇기에 참여하고 있습니다.</p>
+</blockquote>
+<pre><code>1번 사람 : hello, recognize, gather
+2번 사람 : observe, encourage, refer
+3번 사람 : effect, ensure, reference
+4번 사람 : take, establish, estimate
+5번 사람 : either, hang, executive
+와 같은 순서로 말을 하게 되며, 이 경우는 주어진 단어로만으로는 탈락자가 발생하지 않습니다. 따라서 [0, 0]을 return하면 됩니다.
+</code></pre>
+<blockquote>
+<p>입출력 예 #3 <br>
+2명의 사람이 끝말잇기에 참여하고 있습니다.</p>
+</blockquote>
+<pre><code>1번 사람 : hello, even, now, draw
+2번 사람 : one, never, world
+와 같은 순서로 말을 하게 되며, 1번 사람이 자신의 세 번째 차례에 'r'로 시작하는 단어 대신, n으로 시작하는 now를 말했기 때문에 이때 처음 탈락자가 나오게 됩니다.
+</code></pre>
 <h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<pre><code>from collections import deque
-import copy
+<pre><code>def solution(n, words):
+    answers = []
 
+    prev = &quot;&quot;
+    for i in range(len(words)):
+        turn = (i // n) + 1
+        player = (i % n) +1 
 
-def solution(progresses, speeds):
+        curr = words[i]
+        
+      
 
-    required_time = []
+        if prev != &quot;&quot; and prev[-1] != curr[0] or curr in answers:
+            return [player, turn]
+        else:
+            answers.append(curr)
+            prev = curr
 
-    for i in range(len(progresses)):
-        print(progresses[i], speeds[i])
-        required = (100 - progresses[i]) // speeds[i]
-        if (100 - progresses[i]) % speeds[i] != 0:
-            required += 1
-        required_time.append(required)
-
-    que = deque(required_time)
-    answer = []
-
-    while que:
-        stack = []
-        tmp = copy.deepcopy(que)
-        first_job = que[0]
-
-        for i in range(len(tmp)):
-            if i == 0 or first_job &gt;= tmp[i]:
-                stack.append(tmp[i])
-                que.popleft()
-            else:
-                break
-
-        answer.append(len(stack))
-
-    return answer
+    return [0, 0]
 
 
 </code></pre>
 <h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
-<h3 id="1">1<a class="anchor" href="#1">#</a></h3>
-<pre><code>from math import ceil
-
-def solution(progresses, speeds):
-    daysLeft = list(map(lambda x: (ceil((100 - progresses[x]) / speeds[x])), range(len(progresses))))
-    count = 1
-    retList = []
-
-    for i in range(len(daysLeft)):
-        try:
-            if daysLeft[i] &lt; daysLeft[i + 1]:
-                retList.append(count)
-                count = 1
-            else:
-                daysLeft[i + 1] = daysLeft[i]
-                count += 1
-        except IndexError:
-            retList.append(count)
-
-    return retList
-</code></pre>
-<h3 id="2">2<a class="anchor" href="#2">#</a></h3>
-<pre><code>def solution(progresses, speeds):
-    Q=[]
-    for p, s in zip(progresses, speeds):
-        if len(Q)==0 or Q[-1][0]&lt;-((p-100)//s):
-            Q.append([-((p-100)//s),1])
-        else:
-            Q[-1][1]+=1
-    return [q[1] for q in Q]
+<pre><code>def solution(n, words):
+    for p in range(1, len(words)):
+        if words[p][0] != words[p-1][-1] or words[p] in words[:p]: return [(p%n)+1, (p//n)+1]
+    else:
+        return [0,0]
 </code></pre>
 <h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<pre><code>print(solution([93, 30, 55], [1, 30, 5]), [2, 1])
-print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]), [1, 3, 2])
+<pre><code>
+print(
+    solution(
+        3, [&quot;tank&quot;, &quot;kick&quot;, &quot;know&quot;, &quot;wheel&quot;, &quot;land&quot;, &quot;dream&quot;, &quot;mother&quot;, &quot;robot&quot;, &quot;tank&quot;]
+    )
+)
+
+print(
+    solution(
+        5, [&quot;hello&quot;, &quot;observe&quot;, &quot;effect&quot;, &quot;take&quot;, &quot;either&quot;, &quot;recognize&quot;, &quot;encourage&quot;, &quot;ensure&quot;, &quot;establish&quot;, &quot;hang&quot;, &quot;gather&quot;, &quot;refer&quot;, &quot;reference&quot;, &quot;estimate&quot;, &quot;executive&quot;]
+    )
+)
+print(
+    solution(
+        2,	[&quot;hello&quot;, &quot;one&quot;, &quot;even&quot;, &quot;never&quot;, &quot;now&quot;, &quot;world&quot;, &quot;draw&quot;]
+
+    )
+)
+
 
 </code></pre>
 
@@ -336,17 +362,12 @@ print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]), [1, 3, 2])
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-20426-boxer-sorting/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-42586-function-development/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Programmers 20426 복서 정렬하기</span>
+        <span class="pagination__title">Programmers 42586 기능개발</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12981-end-talk/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Programmers 12981 영어 끝말잇기</span>
-    </a>
   
 </div>
 
@@ -416,7 +437,7 @@ print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]), [1, 3, 2])
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Programmers 42586 기능개발</div> 
+          <div class="toc-post-title">Programmers 12981 영어 끝말잇기</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#task-description">Task description</a>
@@ -424,18 +445,9 @@ print(solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]), [1, 3, 2])
         <li><a href="#문제-설명">문제 설명</a></li>
       </ul>
     </li>
-    <li><a href="#condition">Condition</a>
-      <ul>
-        <li><a href="#입력-형식">입력 형식</a></li>
-      </ul>
-    </li>
+    <li><a href="#condition">Condition</a></li>
     <li><a href="#solution">Solution</a></li>
-    <li><a href="#others-solution">Others Solution</a>
-      <ul>
-        <li><a href="#1">1</a></li>
-        <li><a href="#2">2</a></li>
-      </ul>
-    </li>
+    <li><a href="#others-solution">Others Solution</a></li>
     <li><a href="#testcase">TestCase</a></li>
   </ul>
 </nav>
