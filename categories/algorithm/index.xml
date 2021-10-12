@@ -7,7 +7,42 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 11 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers 12915 문자열 내 마음대로 정렬하기</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12915-sort-string-at-will/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12915-sort-string-at-will/</guid>
+      <description>Programmers - 12915 문자열 내 마음대로 정렬하기 Task description 원문 : Programmers 12915 링크
+문제 설명  문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를 들어 strings가 [&amp;ldquo;sun&amp;rdquo;, &amp;ldquo;bed&amp;rdquo;, &amp;ldquo;car&amp;rdquo;]이고 n이 1이면 각 단어의 인덱스 1의 문자 &amp;ldquo;u&amp;rdquo;, &amp;ldquo;e&amp;rdquo;, &amp;ldquo;a&amp;quot;로 strings를 정렬합니다.
+ Condition   strings는 길이 1 이상, 50이하인 배열입니다. strings의 원소는 소문자 알파벳으로 이루어져 있습니다. strings의 원소는 길이 1 이상, 100이하인 문자열입니다.</description>
+    </item>
+    
+    <item>
+      <title>Programmers 12917 문자열 내림차순으로 배치하기</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12917-descending-order/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12917-descending-order/</guid>
+      <description>Programmers - 12917 문자열 내림차순으로 배치하기 Task description 원문 : Programmers 12917 링크
+문제 설명  문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요. s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
+ Condition   str은 길이 1 이상인 문자열입니다.   ###입력 형식
+ 입출력 예
+    s return     &amp;ldquo;Zbcdefg&amp;rdquo; &amp;ldquo;gfedcbZ&amp;rdquo;    Solution import java.</description>
+    </item>
+    
+    <item>
+      <title>Programmers 12951 JadenCase 문자열 만들기</title>
+      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12951-jaden-case/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12951-jaden-case/</guid>
+      <description>Programmers - 12951 JadenCase 문자열 만들기 Task description 원문 : Programmers 12951 링크
+문제 설명  JadenCase란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은 소문자인 문자열입니다. 문자열 s가 주어졌을 때, s를 JadenCase로 바꾼 문자열을 리턴하는 함수, solution을 완성해주세요.
+ Condition   s는 길이 1 이상인 문자열입니다. s는 알파벳과 공백문자(&amp;quot; &amp;ldquo;)로 이루어져 있습니다. 첫 문자가 영문이 아닐때에는 이어지는 영문은 소문자로 씁니다. ( 첫번째 입출력 예 참고 )   ###입력 형식</description>
+    </item>
+    
     <item>
       <title>Programmers 12981 영어 끝말잇기</title>
       <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12981-end-talk/</link>
