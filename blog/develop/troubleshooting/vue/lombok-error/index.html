@@ -2,12 +2,12 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Programmers 12915 문자열 내 마음대로 정렬하기 | offetuoso&#39;s Blog</title>
+  <title>NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.` | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
-  <meta name="description" content="12915 문자열 내 마음대로 정렬하기">
-  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="description" content="NPM init 패키지명 입력시 오류">
+  <meta name="keywords" content="nodeJs , node , npm_package">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,9 +63,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Programmers 12915 문자열 내 마음대로 정렬하기",
-      "headline" : "Programmers 12915 문자열 내 마음대로 정렬하기",
-      "description" : "12915 문자열 내 마음대로 정렬하기",
+      "name" : "NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`",
+      "headline" : "NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`",
+      "description" : "NPM init 패키지명 입력시 오류",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -73,11 +73,11 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-10-12 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-10-12 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202110\/programmers-12915-sort-string-at-will\/",
-      "wordCount" : "192",
-      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+      "datePublished": "2021-11-13 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-11-13 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/troubleshooting\/vue\/lombok-error\/",
+      "wordCount" : "108",
+      "keywords" : ["nodeJs", "node", "npm_package", "Blog"]
     }
   
   </script>
@@ -165,121 +165,46 @@
         <div class="post">
           <header class="post__header">
              
-            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            	<div class="header-inner" style="background-image: url('/images/title/bg-troubleshooting.png');">
             
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Programmers 12915 문자열 내 마음대로 정렬하기
+		            	NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Programmers 12915 문자열 내 마음대로 정렬하기
+		       	NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`
             </h1>		
-            <time datetime="2021-10-12 00:00:00 &#43;0000 UTC" class="post__date">2021-10-12</time> 
+            <time datetime="2021-11-13 00:00:00 &#43;0000 UTC" class="post__date">2021-11-13</time> 
           </header>
           <article class="post__content">
               
-<h1 id="programmers---12915-문자열-내-마음대로-정렬하기">Programmers - 12915 문자열 내 마음대로 정렬하기</h1>
-<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
-<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/12915">Programmers 12915 링크</a></p>
-<h3 id="문제-설명">문제 설명<a class="anchor" href="#문제-설명">#</a></h3>
+<h1 id="npm-init-패키지명-입력시-오류-발생">NPM init 패키지명 입력시 오류 발생</h1>
+<h2 id="문제">문제<a class="anchor" href="#문제">#</a></h2>
 <blockquote>
-<p>문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를 들어 strings가 [&ldquo;sun&rdquo;, &ldquo;bed&rdquo;, &ldquo;car&rdquo;]이고 n이 1이면 각 단어의 인덱스 1의 문자 &ldquo;u&rdquo;, &ldquo;e&rdquo;, &ldquo;a&quot;로 strings를 정렬합니다.</p>
+<p>npm init 명령어를 사용할때, node를 처음 접하게 되어 발생하였던 문제에 대해 정리</p>
 </blockquote>
-<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
-<blockquote>
-<ul>
-<li>strings는 길이 1 이상, 50이하인 배열입니다.</li>
-<li>strings의 원소는 소문자 알파벳으로 이루어져 있습니다.</li>
-<li>strings의 원소는 길이 1 이상, 100이하인 문자열입니다.</li>
-<li>모든 strings의 원소의 길이는 n보다 큽니다.</li>
-<li>인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선 문자열이 앞쪽에 위치합니다.</li>
-</ul>
-</blockquote>
-<p>###입력 형식</p>
-<blockquote>
-<p>입출력 예</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>strings</th>
-<th>n</th>
-<th>return</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[&ldquo;sun&rdquo;, &ldquo;bed&rdquo;, &ldquo;car&rdquo;]</td>
-<td>1</td>
-<td>[&ldquo;car&rdquo;, &ldquo;bed&rdquo;, &ldquo;sun&rdquo;]</td>
-</tr>
-<tr>
-<td>[&ldquo;abce&rdquo;, &ldquo;abcd&rdquo;, &ldquo;cdx&rdquo;]</td>
-<td>2</td>
-<td>[&ldquo;abcd&rdquo;, &ldquo;abce&rdquo;, &ldquo;cdx&rdquo;]</td>
-</tr>
-</tbody>
-</table>
-<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
-<pre><code>import java.util.ArrayList;
-import java.util.Collections;
-
-class SortStringAtWill {
-	
-	public static void main(String[] args) {
-		String[] strings = {&quot;car&quot;, &quot;bed&quot;, &quot;sun&quot;};
-		String[] result = new SortStringAtWill().solution(strings, 1);
-		
-		for(int i=0; i&lt;result.length;i++) {
-			System.out.println(result[i]);
-		}
-	}
-	
-    public String[] solution(String[] strings, int n) {
-        
-    	ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();
-    	
-    	
-    	for(int i=0;i&lt;strings.length;i++) {
-    		list.add(strings[i].charAt(n)+strings[i]);
-    	}
-    	
-    	Collections.sort(list);
-    	
-    	for(int i=0; i&lt;list.size();i++) {
-    		strings[i] = list.get(i).substring(1);
-    	}
-    	
-		return strings;
-    }
-}
-
+<h3 id="sorry-name-can-no-longer-contain-capital-letters">Sorry, name can no longer contain capital letters.<a class="anchor" href="#sorry-name-can-no-longer-contain-capital-letters">#</a></h3>
+<pre><code>&gt; npm init
+&gt; package name: (3_끝말잇기) WordRelay
+&gt; Sorry, name can no longer contain capital letters.
 </code></pre>
-<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>strings</th>
-<th>n</th>
-<th>return</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[&ldquo;sun&rdquo;, &ldquo;bed&rdquo;, &ldquo;car&rdquo;]</td>
-<td>1</td>
-<td>[&ldquo;car&rdquo;, &ldquo;bed&rdquo;, &ldquo;sun&rdquo;]</td>
-</tr>
-<tr>
-<td>[&ldquo;abce&rdquo;, &ldquo;abcd&rdquo;, &ldquo;cdx&rdquo;]</td>
-<td>2</td>
-<td>[&ldquo;abcd&rdquo;, &ldquo;abce&rdquo;, &ldquo;cdx&rdquo;]</td>
-</tr>
-</tbody>
-</table>
+<h3 id="package-name--uppercamelcase로-입력-시-오류-발생">package name : UpperCamelCase로 입력 시 오류 발생<a class="anchor" href="#package-name--uppercamelcase로-입력-시-오류-발생">#</a></h3>
+<h3 id="sorry-name-can-no-longer-contain-capital-letters-1">Sorry, name can no longer contain capital letters.<a class="anchor" href="#sorry-name-can-no-longer-contain-capital-letters-1">#</a></h3>
+<pre><code>&gt; npm init
+&gt; package name: (3_끝말잇기) wordRelay
+&gt; Sorry, name can no longer contain capital letters.
+</code></pre>
+<h3 id="package-name--camelcase로-입력-시-오류-발생">package name : CamelCase로 입력 시 오류 발생<a class="anchor" href="#package-name--camelcase로-입력-시-오류-발생">#</a></h3>
+<h2 id="해결방법">해결방법<a class="anchor" href="#해결방법">#</a></h2>
+<blockquote>
+<p>npm init을 실행할때, kebab-csse를 사용해야한다. 
+node.js를 포함한 vue의 컴포넌트 Dom 템플릿, Componet evet 등 kebab-case를 사용해야만 하는 경우가 있다.</p>
+</blockquote>
+<p><a href="https://www.npmjs.com/package/kebab-case">kebab-case</a>
+<a href="https://kr.vuejs.org/v2/guide/components.html#%EB%B9%84-%EB%B6%80%EB%AA%A8-%EC%9E%90%EC%8B%9D%EA%B0%84-%ED%86%B5%EC%8B%A0">vuejs guide</a></p>
 
 
               
@@ -292,29 +217,18 @@ class SortStringAtWill {
 <ul class="tags__list">
     
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/troubleshooting/">Troubleshooting</a>
     </li></ul>
 
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12917-descending-order/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12915-sort-string-at-will/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Programmers 12917 문자열 내림차순으로 배치하기</span>
+        <span class="pagination__title">Programmers 12915 문자열 내 마음대로 정렬하기</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/troubleshooting/vue/lombok-error/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`</span>
-    </a>
   
 </div>
 
@@ -384,17 +298,18 @@ class SortStringAtWill {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Programmers 12915 문자열 내 마음대로 정렬하기</div> 
+          <div class="toc-post-title">NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#task-description">Task description</a>
+    <li><a href="#문제">문제</a>
       <ul>
-        <li><a href="#문제-설명">문제 설명</a></li>
+        <li><a href="#sorry-name-can-no-longer-contain-capital-letters">Sorry, name can no longer contain capital letters.</a></li>
+        <li><a href="#package-name--uppercamelcase로-입력-시-오류-발생">package name : UpperCamelCase로 입력 시 오류 발생</a></li>
+        <li><a href="#sorry-name-can-no-longer-contain-capital-letters-1">Sorry, name can no longer contain capital letters.</a></li>
+        <li><a href="#package-name--camelcase로-입력-시-오류-발생">package name : CamelCase로 입력 시 오류 발생</a></li>
       </ul>
     </li>
-    <li><a href="#condition">Condition</a></li>
-    <li><a href="#solution">Solution</a></li>
-    <li><a href="#testcase">TestCase</a></li>
+    <li><a href="#해결방법">해결방법</a></li>
   </ul>
 </nav>
       </div>
