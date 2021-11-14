@@ -2,7 +2,7 @@
 <html lang="ko-KR">
 
 <head>
-  <title>NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.` | offetuoso&#39;s Blog</title>
+  <title>Vue v-for Elements in iteration expect to have &#39;v-bind:key&#39; directives 문제 | offetuoso&#39;s Blog</title>
 
   <meta charset="UTF-8">
   <meta name="language" content="en">
@@ -63,8 +63,8 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`",
-      "headline" : "NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`",
+      "name" : "Vue v-for Elements in iteration expect to have \u0027v-bind:key\u0027 directives 문제",
+      "headline" : "Vue v-for Elements in iteration expect to have \u0027v-bind:key\u0027 directives 문제",
       "description" : "NPM init 패키지명 입력시 오류",
       "inLanguage" : "en-US",
       "author" : "",
@@ -73,10 +73,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2021",
-      "datePublished": "2021-11-13 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-11-13 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/troubleshooting\/vue\/lombok-error\/",
-      "wordCount" : "153",
+      "datePublished": "2021-11-14 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-11-14 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/troubleshooting\/vue\/elements-in-iteration-expect-to-have-v-bindkey-directives\/",
+      "wordCount" : "83",
       "keywords" : ["nodeJs", "node", "npm_package", "Blog"]
     }
   
@@ -170,50 +170,47 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`
+		            	Vue v-for Elements in iteration expect to have &#39;v-bind:key&#39; directives 문제
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`
+		       	Vue v-for Elements in iteration expect to have &#39;v-bind:key&#39; directives 문제
             </h1>		
-            <time datetime="2021-11-13 00:00:00 &#43;0000 UTC" class="post__date">2021-11-13</time> 
+            <time datetime="2021-11-14 00:00:00 &#43;0000 UTC" class="post__date">2021-11-14</time> 
           </header>
           <article class="post__content">
               
-<h1 id="npm-init-패키지명-입력시-오류-발생">NPM init 패키지명 입력시 오류 발생</h1>
+<h1 id="elements-in-iteration-expect-to-have-v-bindkey-directives">Elements in iteration expect to have &lsquo;v-bind:key&rsquo; directives</h1>
 <h2 id="문제">문제<a class="anchor" href="#문제">#</a></h2>
 <blockquote>
-<p>npm init 명령어를 사용할때, node를 처음 접하게 되어 발생하였던 문제에 대해 정리</p>
+<p>이전 버전의 강좌를 보고 따라 하던 도중 vue template에서 li 에 v-for 를 이용해서 v-for=&ldquo;t in tries&rdquo; 루프를 생성하고 싶었으니 오류를 만나게 되었습니다.</p>
 </blockquote>
-<h3 id="sorry-name-can-no-longer-contain-capital-letters">Sorry, name can no longer contain capital letters.<a class="anchor" href="#sorry-name-can-no-longer-contain-capital-letters">#</a></h3>
-<pre><code>&gt; npm init
-&gt; package name: (3_끝말잇기) WordRelay
-&gt; Sorry, name can no longer contain capital letters.
+<pre><code>
+&lt;!-- 문제가 발생한 코드 --&gt;
+&lt;li v-for=&quot;item in tries&quot;&gt; 
+	{{item}}
+&lt;/li&gt;
+
 </code></pre>
-<h3 id="package-name--uppercamelcase로-입력-시-오류-발생">package name : UpperCamelCase로 입력 시 오류 발생<a class="anchor" href="#package-name--uppercamelcase로-입력-시-오류-발생">#</a></h3>
-<h3 id="sorry-name-can-no-longer-contain-capital-letters-1">Sorry, name can no longer contain capital letters.<a class="anchor" href="#sorry-name-can-no-longer-contain-capital-letters-1">#</a></h3>
-<pre><code>&gt; npm init
-&gt; package name: (3_끝말잇기) wordRelay
-&gt; Sorry, name can no longer contain capital letters.
+<h3 id="220-이상에서-v-for는-key-가-필수-입니다">2.2.0 이상에서 v-for는 key 가 필수 입니다.<a class="anchor" href="#220-이상에서-v-for는-key-가-필수-입니다">#</a></h3>
+<blockquote>
+</blockquote>
+<pre><code>&lt;my-component
+  v-for=&quot;(item, index) in items&quot;
+  v-bind:item=&quot;item&quot;
+  v-bind:index=&quot;index&quot;
+  v-bind:key=&quot;item.id&quot;
+&gt;&lt;/my-component&gt;
 </code></pre>
-<h3 id="package-name--camelcase로-입력-시-오류-발생">package name : CamelCase로 입력 시 오류 발생<a class="anchor" href="#package-name--camelcase로-입력-시-오류-발생">#</a></h3>
-<h2 id="해결방법">해결방법<a class="anchor" href="#해결방법">#</a></h2>
-<blockquote>
-<p>npm init을 실행할때, kebab-csse를 사용해야한다. 
-node.js를 포함한 vue의 컴포넌트 Dom 템플릿, Componet evet 등 kebab-case를 사용해야만 하는 경우가 있다.</p>
-</blockquote>
-<h2 id="why">why<a class="anchor" href="#why">#</a></h2>
-<blockquote>
-<p>언젠가는 폴더나 파일이 자체 패키지로 추출될 수 있다고 상상해야 합니다. 패키지는 대문자를 포함할 수 없습니다.
-새 패키지는 이름에 대문자가 없어야 합니다. <a href="https://docs.npmjs.com/files/package.json#">https://docs.npmjs.com/files/package.json#</a>이름
-따라서 camelCase절대 사용해서는 안됩니다. snake_case과 kebab-case.
-kebab-case오늘날 가장 일반적인 협약입니다. 밑줄의 유일한 사용은 내부 노드 패키지용이며 이는 단순히 초기부터의 관례입니다.</p>
-</blockquote>
+<h2 id="수정사항적용">수정사항적용<a class="anchor" href="#수정사항적용">#</a></h2>
+<pre><code>&lt;li v-for=&quot;(item, index) in tries&quot; :key=&quot;index&quot;&gt;
+	{{ item }}
+&lt;/li&gt;
+</code></pre>
 <h3 id="참조">참조<a class="anchor" href="#참조">#</a></h3>
-<p><a href="https://stackoverflow.com/questions/18927298/node-js-project-naming-conventions-for-files-folders">StackOverFlow</a>
-<a href="https://www.npmjs.com/package/kebab-case">kebab-case</a>
-<a href="https://kr.vuejs.org/v2/guide/components.html#%EB%B9%84-%EB%B6%80%EB%AA%A8-%EC%9E%90%EC%8B%9D%EA%B0%84-%ED%86%B5%EC%8B%A0">vuejs guide</a></p>
+<p><a href="https://goodlucknua.tistory.com/9">[Vue.js 에러] Custom elements in iteration require &lsquo;v-bind:key&rsquo; directives</a>
+<a href="https://kr.vuejs.org/v2/guide/list.html#v-for-%EC%99%80-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8">뷰 공식 문서</a></p>
 
 
               
@@ -232,17 +229,12 @@ kebab-case오늘날 가장 일반적인 협약입니다. 밑줄의 유일한 사
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/frontend/vue/vue-webpack/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/troubleshooting/vue/lombok-error/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">Vue.js WebPack 설정하기</span>
+        <span class="pagination__title">NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/troubleshooting/vue/elements-in-iteration-expect-to-have-v-bindkey-directives/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >Vue v-for Elements in iteration expect to have &#39;v-bind:key&#39; directives 문제</span>
-    </a>
   
 </div>
 
@@ -312,19 +304,15 @@ kebab-case오늘날 가장 일반적인 협약입니다. 밑줄의 유일한 사
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`</div> 
+          <div class="toc-post-title">Vue v-for Elements in iteration expect to have &#39;v-bind:key&#39; directives 문제</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#문제">문제</a>
       <ul>
-        <li><a href="#sorry-name-can-no-longer-contain-capital-letters">Sorry, name can no longer contain capital letters.</a></li>
-        <li><a href="#package-name--uppercamelcase로-입력-시-오류-발생">package name : UpperCamelCase로 입력 시 오류 발생</a></li>
-        <li><a href="#sorry-name-can-no-longer-contain-capital-letters-1">Sorry, name can no longer contain capital letters.</a></li>
-        <li><a href="#package-name--camelcase로-입력-시-오류-발생">package name : CamelCase로 입력 시 오류 발생</a></li>
+        <li><a href="#220-이상에서-v-for는-key-가-필수-입니다">2.2.0 이상에서 v-for는 key 가 필수 입니다.</a></li>
       </ul>
     </li>
-    <li><a href="#해결방법">해결방법</a></li>
-    <li><a href="#why">why</a>
+    <li><a href="#수정사항적용">수정사항적용</a>
       <ul>
         <li><a href="#참조">참조</a></li>
       </ul>
