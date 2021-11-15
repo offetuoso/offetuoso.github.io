@@ -76,7 +76,7 @@
       "datePublished": "2021-11-12 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-11-12 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/frontend\/vue\/vue-webpack\/",
-      "wordCount" : "1293",
+      "wordCount" : "1365",
       "keywords" : ["Vue", "Blog"]
     }
   
@@ -241,7 +241,8 @@ npm i css-loader -D								//CSS 로더 설치
   &quot;description&quot;: &quot;&quot;,
   &quot;main&quot;: &quot;index.js&quot;,
   &quot;scripts&quot;: {
-    &quot;build&quot;: &quot;webpack&quot;  // &lt;&lt;-- 직접 수정해주어야함, npm run build 시 webpack을 사용함
+    // &lt;&lt;-- 직접 수정해주어야함, npm run build 시 webpack을 사용함
+    &quot;build&quot;: &quot;webpack --watch&quot; //&lt;-- 자동빌드 옵션  
   },
   &quot;author&quot;: &quot;&quot;,
   &quot;license&quot;: &quot;ISC&quot;,
@@ -406,6 +407,39 @@ cacheable modules 229 KiB
   ./main.js 189 bytes [built] [code generated]
 webpack 5.64.0 compiled successfully in 911 ms
 </code></pre>
+<h2 id="webpack-자동빌드">webpack 자동빌드<a class="anchor" href="#webpack-자동빌드">#</a></h2>
+<h3 id="1-packagejson-설정">1. package.json 설정<a class="anchor" href="#1-packagejson-설정">#</a></h3>
+<pre><code>{
+  &quot;name&quot;: &quot;number-baseball&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;webpack --watch&quot; // &lt;&lt;-- --watch 옵션 추가
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;css-loader&quot;: &quot;^6.5.1&quot;,
+    &quot;vue&quot;: &quot;^2.6.14&quot;,
+    &quot;vue-loader&quot;: &quot;^15.9.8&quot;,
+    &quot;vue-style-loader&quot;: &quot;^4.1.3&quot;,
+    &quot;vue-template-compiler&quot;: &quot;^2.6.14&quot;,
+    &quot;webpack&quot;: &quot;^5.64.0&quot;,
+    &quot;webpack-cli&quot;: &quot;^4.9.1&quot;
+  }
+}
+
+</code></pre>
+<h3 id="2-webpackconfigjs-설정">2. webpack.config.js 설정<a class="anchor" href="#2-webpackconfigjs-설정">#</a></h3>
+<pre><code>module.exports = { //웹패킹을 할때 모듈을 사용
+    watch: true,
+    watchOptions: {
+        ignored: '**/node_modules',
+    },
+};
+</code></pre>
+<p><a href="https://webpack.kr/configuration/watch/">webpack wacth 옵션</a></p>
 <h2 id="nom-run-build-시-나올-수-있는-오류-정리">nom run build 시 나올 수 있는 오류 정리<a class="anchor" href="#nom-run-build-시-나올-수-있는-오류-정리">#</a></h2>
 <h3 id="configurationoutputpath-the-provided-value-dist-is-not-an-absolute-path--the-output-directory-as-absolute-path-required">configuration.output.path: The provided value &ldquo;./dist&rdquo; is not an absolute path! , The output directory as <strong>absolute path</strong> (required).<a class="anchor" href="#configurationoutputpath-the-provided-value-dist-is-not-an-absolute-path--the-output-directory-as-absolute-path-required">#</a></h3>
 <pre><code>Debugger attached.
@@ -667,6 +701,12 @@ module.exports = { //웹패킹을 할때 모듈을 사용
         <li><a href="#5-mainjs-생성">5. main.js 생성</a></li>
         <li><a href="#6-webpackconfigjs-생성">6. webpack.config.js 생성</a></li>
         <li><a href="#7-빌드-및-webpack-실행">7. 빌드 및 webpack 실행</a></li>
+      </ul>
+    </li>
+    <li><a href="#webpack-자동빌드">webpack 자동빌드</a>
+      <ul>
+        <li><a href="#1-packagejson-설정">1. package.json 설정</a></li>
+        <li><a href="#2-webpackconfigjs-설정">2. webpack.config.js 설정</a></li>
       </ul>
     </li>
     <li><a href="#nom-run-build-시-나올-수-있는-오류-정리">nom run build 시 나올 수 있는 오류 정리</a>
