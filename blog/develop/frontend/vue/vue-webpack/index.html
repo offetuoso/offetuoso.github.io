@@ -76,7 +76,7 @@
       "datePublished": "2021-11-12 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-11-12 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/frontend\/vue\/vue-webpack\/",
-      "wordCount" : "1365",
+      "wordCount" : "1469",
       "keywords" : ["Vue", "Blog"]
     }
   
@@ -439,6 +439,54 @@ webpack 5.64.0 compiled successfully in 911 ms
     },
 };
 </code></pre>
+<h2 id="css를-사용해-보자">CSS를 사용해 보자<a class="anchor" href="#css를-사용해-보자">#</a></h2>
+<blockquote>
+<p>.vue 파일에서 스타일을 적용하기 위해서는 새로운 로더가 필요하다</p>
+</blockquote>
+<pre><code>&lt;style&gt;
+#screen {
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    user-select: none;
+}
+#screen .waiting {
+    background-color: pink;
+}
+#screen .ready {
+    background-color: yellow;
+}
+#screen .now {
+    background-color: rgb(79, 128, 0);
+}
+&lt;/style&gt;
+</code></pre>
+<h3 id="style-loader">style-loader<a class="anchor" href="#style-loader">#</a></h3>
+<pre><code>npm i style-loader -D
+</code></pre>
+<blockquote>
+<p>webpack.config.js 모듈에 추가, 임포트, 플러그인 추가 안해도됨</p>
+</blockquote>
+<pre><code>module : { //모듈의 핵심 어떻게 합칠것인지 
+        rules : [{	
+		            test : /\.css$/, 	
+		            use :  ['style-loader']
+     	   }
+	    ],
+</code></pre>
+<h3 id="css-loader">css-loader<a class="anchor" href="#css-loader">#</a></h3>
+<pre><code>npm i css-loader -D
+</code></pre>
+<blockquote>
+<p>webpack.config.js 모듈에 추가, 임포트, 플러그인 추가 안해도됨</p>
+</blockquote>
+<pre><code>module : { //모듈의 핵심 어떻게 합칠것인지 
+        rules : [{	
+		            test : /\.css$/, 	
+		            use :  ['style-loader','css-loader']
+     	   }
+	    ],
+</code></pre>
 <p><a href="https://webpack.kr/configuration/watch/">webpack wacth 옵션</a></p>
 <h2 id="nom-run-build-시-나올-수-있는-오류-정리">nom run build 시 나올 수 있는 오류 정리<a class="anchor" href="#nom-run-build-시-나올-수-있는-오류-정리">#</a></h2>
 <h3 id="configurationoutputpath-the-provided-value-dist-is-not-an-absolute-path--the-output-directory-as-absolute-path-required">configuration.output.path: The provided value &ldquo;./dist&rdquo; is not an absolute path! , The output directory as <strong>absolute path</strong> (required).<a class="anchor" href="#configurationoutputpath-the-provided-value-dist-is-not-an-absolute-path--the-output-directory-as-absolute-path-required">#</a></h3>
@@ -707,6 +755,12 @@ module.exports = { //웹패킹을 할때 모듈을 사용
       <ul>
         <li><a href="#1-packagejson-설정">1. package.json 설정</a></li>
         <li><a href="#2-webpackconfigjs-설정">2. webpack.config.js 설정</a></li>
+      </ul>
+    </li>
+    <li><a href="#css를-사용해-보자">CSS를 사용해 보자</a>
+      <ul>
+        <li><a href="#style-loader">style-loader</a></li>
+        <li><a href="#css-loader">css-loader</a></li>
       </ul>
     </li>
     <li><a href="#nom-run-build-시-나올-수-있는-오류-정리">nom run build 시 나올 수 있는 오류 정리</a>
