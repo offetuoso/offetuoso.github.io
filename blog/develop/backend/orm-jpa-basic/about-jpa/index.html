@@ -76,7 +76,7 @@
       "datePublished": "2021-12-14 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-14 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/about-jpa\/",
-      "wordCount" : "1349",
+      "wordCount" : "1847",
       "keywords" : ["Restful", "Blog"]
     }
   
@@ -210,7 +210,7 @@
 <p>간단히 Member라는 객체를 생성하고, sql로 CRUD를 개발하였다고 생각하자.</p>
 </blockquote>
 <pre><code>public class Member {
-	private String memberId;
+	private Long memberId;
 	private String name;
 	...
 }
@@ -226,7 +226,7 @@
 <p>개발이 끝났을때, 기획에서 연락처를 추가해 달라는 요청이 왔다</p>
 </blockquote>
 <pre><code>public class Member {
-	private String memberId;
+	private Long memberId;
 	private String name;
 	
 	/* 신규추가 tel */
@@ -469,7 +469,7 @@ memberDAO.getMemberWithTeamWithDelivery();
 </blockquote>
 <h3 id="비교하기">비교하기<a class="anchor" href="#비교하기">#</a></h3>
 <h4 id="비교하기---자바-객체로-조회">비교하기 - 자바 객체로 조회</h4>
-<pre><code>String memberId = &quot;100&quot;;
+<pre><code>Long memberId = 100;
 Member member1 = memberDAO.getMember(memberId); 
 Member member2 = memberDAO.getMember(memberId);
 
@@ -477,7 +477,7 @@ member1 == member2; //다르다. (getMember에서 sql로 조회된 데이터는 
 
 class MemberDAO {
  
-	 public Member getMember(String memberId) {
+	 public Member getMember(Long memberId) {
 		 String sql = &quot;SELECT * FROM MEMBER WHERE MEMBER_ID = ?&quot;;
 		 ...
 		 //JDBC API, SQL 실행
@@ -490,7 +490,7 @@ class MemberDAO {
 <blockquote>
 <p>이러한 특수한 컬렉션이 있다고 가정</p>
 </blockquote>
-<pre><code>String memberId = &quot;100&quot;;
+<pre><code>Long memberId = 100;
 Member member1 = list.get(memberId);
 Member member2 = list.get(memberId);
 
@@ -581,7 +581,7 @@ member1 == member2; //같다. (참조 값이 같다)
 <h4 id="생산성---jpa와-crud">생산성 - JPA와 CRUD</h4>
 <blockquote>
 <ul>
-<li>저장 : jpa.persist(member)</li>
+<li>저장 : jpa.persist(member) //영구 저장하다라는 뜻</li>
 <li>조회 : Member member = jpa.find(memberId)</li>
 <li>수정 : member.setName(&ldquo;변경할 이름&rdquo;) // 객체의 이름을 set으로 변경하면 update 문이 자동으로 날라감</li>
 <li>삭제 : jpa.remove(member)</li>
@@ -592,7 +592,7 @@ member1 == member2; //같다. (참조 값이 같다)
 <p>개발이 끝났을때, 기획에서 연락처를 추가해 달라는 요청이 왔다</p>
 </blockquote>
 <pre><code>public class Member {
-	private String memberId;
+	private Long memberId;
 	private String name;
 	
 	/* 신규추가 tel */
@@ -630,7 +630,8 @@ member1 == member2; //같다. (참조 값이 같다)
 </code></pre>
 <h5 id="jpa와-상속---조회">JPA와 상속 - 조회</h5>
 <blockquote>
-<p>ALBUM 객체를 DB에 저장하고 싶을때, jpa.persist()에 album 객체를 넘기면 JPA가 Insert 쿼리를 나누어서 작성</p>
+<p>Album 객체를 조회하고 싶을때 jpa.find()에 Album의 클래스, PK 값을 넘기면 JPA가 자동으로 
+ITEM과 ALBUM을 조인하여 데이터를 퍼올려줍니다.</p>
 </blockquote>
 <pre><code>// 개발자가 할일 
 	Album album = jpa.find(Album.class, albumId);
@@ -641,10 +642,130 @@ member1 == member2; //같다. (참조 값이 같다)
 	  FROM ITEM I
 	  JOIN ALBUM A ON I.ITEM_ID = A.ITEM_ID
 </code></pre>
+<h5 id="jpa와-연관관계-객체-그래프-탐색">JPA와 연관관계, 객체 그래프 탐색</h5>
+<blockquote>
+<p>member에 팀을 세팅하고 member를 저장하면 team을 포함한 member가 저장됨.</p>
+</blockquote>
+<pre><code>// 연관관계 저장
+	member.setTeam(team);
+	jpa.persist(member);
+</code></pre>
+<blockquote>
+<p>저장된 team을 가져올때도, 자바 컬렉션에서 데이터를 가져오듯이 member.getTeam()을 이용해 team을 가져올수 있음.</p>
+</blockquote>
+<pre><code>// 객체 그래프 탐색
+	Member member = jpa.find(Member.class, memberId);
+	Team team = member.getTeam();
+</code></pre>
+<h4 id="신뢰-할-수-있는-엔티티-계층">신뢰 할 수 있는 엔티티, 계층</h4>
+<blockquote>
+<p>JPA를 이용하면, find()를 이용해 객체 그래프 탐색을 통해서 getTeam()나 getOrder().getDelivery()를 사용하여, 각각의 객체를 자유롭게 조회할 수 있습니다.
+또한 Lazy Loading 이라는 기능을 이용하여, 실제 코드를 수행할 당시에 데이터를 불러와 member객체에 하위 계층 객체를 세팅해줍니다. JPA를 이용하면, DB에 데이터가 없지 않는 이상 신뢰 하고 하위 계층을 사용하면 됩니다.</p>
+</blockquote>
+<pre><code>class MemberService{
+	...
+	public void process(){
+		Member member = memberDAO.find(memberId);
+		member.getTeam();
+		member.getOrder().getDelivery();
+	}
+}
+</code></pre>
+<h4 id="jpa와-객체-비교하기">JPA와 객체 비교하기</h4>
+<blockquote>
+<p>동일한 트랜잭션에서는 조회한 엔티티는 같음 보장</p>
+</blockquote>
+<pre><code>Long memberId = 100;
+Member member1 = jpa.find(member.class, memberId);
+Member member2 = jpa.find(member.class, memberId);
+
+member1 == member2; // 같다
+</code></pre>
+<h4 id="jpa의-성능-최적화-기능">jpa의 성능 최적화 기능</h4>
+<blockquote>
+<p>JPA를 사용하면 성능이 저하되는 것이 아닌가 고민을 할 수 있을수도 있지만, JPA는 성능을 최적화 하기 위해 여러가지 기능을 제공합니다.</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>1차 캐시와 동일성(identity) 보장</li>
+<li>트랜잭샨을 지원하는 쓰기 지연(transational write-behind)</li>
+<li>지연 로딩(Laze Loading)g</li>
+</ol>
+</blockquote>
+<h5 id="1차-캐시와-동일성-보장">1차 캐시와 동일성 보장</h5>
+<blockquote>
+<ol>
+<li>같은 트랜잭션 안에서는 같은 엔티티를 반환 - 약간의 조회 성능 향상
+```
+Long memberId = 100;
+Memeber member1 = jpa.find(Member.class, memberId); // SQL 조회
+Memeber member2 = jpa.find(Member.class, memberId); // 캐시</li>
+</ol>
+</blockquote>
+<pre><code>    member1 == member2 // 같다
+```
+</code></pre>
+<blockquote>
+<p>SQL 1번만 실행</p>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>DB Isolation Level이 Read Commit이어도 애플리케이션에서 Repeatable Read 보장</li>
+</ol>
+</blockquote>
+<h5 id="트랜잭션을-지원하는-쓰기-지연---insert">트랜잭션을 지원하는 쓰기 지연 - Insert</h5>
+<blockquote>
+<ol>
+<li>트랜잭션을 커밋할 때까지 Insert SQL을 모음</li>
+<li>JDBC Batch SQL 기능을 사용해서 한번에 SQL을 전송</li>
+</ol>
+</blockquote>
+<pre><code>	transction.begin(); // 트랜잭션 시작
+	
+	jpa.persist(memberA)	// 메모리에 적재
+	jpa.persist(memberB)    // 메모리에 적재
+	jpa.persist(memberC)    // 메모리에 적재
+	// 여기까지  Insert SQL을 DB에 보내지 않는다.
+	
+	// 커밋하는 순간 DB에 SQL을 모아서 보낸다.
+	transction.commit(); //  트랜잭션 커밋
+</code></pre>
+<blockquote>
+<p>JPA 이전에도 JDBC Batch라는 기능이 있었고 그것을 쓰면 되지만, 코드가 정말 지저분해집니다. 
+JPA가 하나의 트랜잭션에서 memberA, B, C를 메모리에 쌓았다가 Commit 시점에 동일한것을 모아 한번에 JDBC Batch 기능을 이용하여 네트워크를 통해 DB로 데이터를 전송합니다. 
+JPA 옵션으로 설정해 두면 개발자가 신경 쓰지 않아도 이러한 기능을 지원해 줍니다.</p>
+</blockquote>
+<p>##### 지연 로딩과 즉시 로딩</p>
+<blockquote>
+<ul>
+<li>지연 로딩 : 객체가 실제 사용될 때 로딩</li>
+<li>즉시 로딩 : JOIN SQL로 한번에 연관된 객체까지 미리 조회</li>
+</ul>
+</blockquote>
+<pre><code>// 지연 로딩
+	Member member = memberDAO.find(memberId); // SELECT * FROM MEMBER
+	Team team = member.getTeam(); 			// SELECT * FROM TEAM 
+	String teamName = team.getName(); 
+</code></pre>
+<blockquote>
+<p>JPA를 통해 객체를 조회할때, team 객체를 사용하는 시점에 TEAM 조회 SQL을 통하여 member객체의 team 객체에 데이터를 세팅</p>
+</blockquote>
+<blockquote>
+<p>member를 조회할 때, 항상 team을 사용한다면 JPA 옵션을 통해서 member를 조회할 때 team을 같이 가져오게 설정을 할 수 있습니다. 옵션을 사용하면 쿼리가 MEMBER외 TEAM을 조인한 이래와 같은 쿼리로 변경해서 사용하게 됩니다.</p>
+</blockquote>
+<pre><code>// 즉시 로딩
+	Member member = memberDAO.find(memberId); // SELECT M.* ,T.* FROM MEMBER M JOIN Team T On ...
+	Team team = member.getTeam(); 			
+	String teamName = team.getName(); 		
+</code></pre>
+<blockquote>
+<p>JPA를 사용하지 않은 상태에서 MEMBER와 TEAM의 각각의 쿼리를 조인된 하나의 쿼리로 변경하거나, 조인된 각각의 쿼리를 개별의 쿼리로 나누려 작업한다면 진짜 많은 쿼리를 수정해야 될텐데 JPA를 이용하면 어마 어마한 것들을 간단히 사용할 수 있습니다.</p>
+</blockquote>
+<h4 id="orm은-객체와-rdb의-두-기둥위에-있는-기술">ORM은 객체와 RDB의 두 기둥위에 있는 기술</h4>
 <h3 id="참고">참고<a class="anchor" href="#참고">#</a></h3>
 <blockquote>
 <ul>
-<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA</a></li>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
 </ul>
 </blockquote>
 
