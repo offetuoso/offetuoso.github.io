@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 14 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[자바 ORM 표준 JPA] JPA 시작</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/start-jpa/</link>
+      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/start-jpa/</guid>
+      <description>JPA 시작하기 Hello JPA - 프로젝트 생성 H2 Database 설치  H2 홈페이지에서 OS에 맞는 설치 파일을 다운로드한다.
+  C:\Program Files (x86)\H2\bin\h2.bat 실행
+  http://localhost:8082/login.jsp 에서 연결버튼 클릭
+ SpringBoot 프로젝트 생성 pom.xml  hibernate와 h2database dependency 추가
+ &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;&amp;lt;groupId&amp;gt;jpa-basic&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;ex1-hello-jpa&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;1.0.0&amp;lt;/version&amp;gt;&amp;lt;properties&amp;gt;&amp;lt;maven.compiler.source&amp;gt;8&amp;lt;/maven.compiler.source&amp;gt;&amp;lt;maven.compiler.target&amp;gt;8&amp;lt;/maven.compiler.target&amp;gt;&amp;lt;/properties&amp;gt;&amp;lt;dependencies&amp;gt;&amp;lt;!-- JPA 하이버네이트 --&amp;gt;&amp;lt;dependency&amp;gt;&amp;lt;groupId&amp;gt;org.hibernate&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;hibernate-entitymanager&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;5.6.1.Final&amp;lt;/version&amp;gt;&amp;lt;/dependency&amp;gt;&amp;lt;!-- H2 데이터베이스 --&amp;gt;&amp;lt;dependency&amp;gt;&amp;lt;groupId&amp;gt;com.</description>
+    </item>
+    
     <item>
       <title>[자바 ORM 표준 JPA] JPA 소개</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/about-jpa/</link>
