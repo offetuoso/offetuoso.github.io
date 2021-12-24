@@ -76,7 +76,7 @@
       "datePublished": "2021-12-24 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-24 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/entity-mapping\/",
-      "wordCount" : "240",
+      "wordCount" : "1141",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -249,7 +249,7 @@ public class Member {
 }
 
 </code></pre>
-<h3 id="table">@Table<a class="anchor" href="#table">#</a></h3>
+<h4 id="table">@Table</h4>
 <blockquote>
 <ul>
 <li>@Table은 엔티티와 매핑할 테이블 지정</li>
@@ -286,7 +286,445 @@ public class Member {
 </tr>
 </tbody>
 </table>
-<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-021.png" alt="contact"></p>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity 
+@Table(name=&quot;MBR&quot;) //데이터베이스의 MBR 테이블로 매핑하여, SQL이 MBR로 생성
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<h4 id="데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성</h4>
+<blockquote>
+<ul>
+<li>DDL을 애플리케이션 실행 시점에 자동 생성</li>
+<li>테이블 중심 -&gt; 객체 중심</li>
+<li>데이터베이스 방언을 활용해서 데이터베이스에 맞는 적절한 DDL 생성</li>
+<li>이렇게 <mark>생성된 DDL은 개발장비에서만 사용</mark></li>
+<li>생성된 DDL은 운영서버에서는 사용하지 않거나, 적절히 다듬은 후 사용</li>
+</ul>
+</blockquote>
+<h4 id="데이터베이스-스키마-자동-생성---속성">데이터베이스 스키마 자동 생성 - 속성</h4>
+<blockquote>
+<ul>
+<li>persistence.xml 옵션</li>
+</ul>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create</td>
+<td>기존테이블 삭제 후 다시 생성 (Drop + Create)</td>
+</tr>
+<tr>
+<td>create-drop</td>
+<td>create와 같으나 종료시점에 테이블 Drop</td>
+</tr>
+<tr>
+<td>update</td>
+<td>변경분만 반영(운영 DB에는 사용하면 안됨)</td>
+</tr>
+<tr>
+<td>validation</td>
+<td>엔티티와 테이블이 정상 매핑되어있는지만 확인</td>
+</tr>
+<tr>
+<td>none</td>
+<td>사용하지 않음</td>
+</tr>
+</tbody>
+</table>
+<h5 id="create">Create</h5>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;persistence version=&quot;2.2&quot;
+             xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+             xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd&quot;&gt;
+    &lt;persistence-unit name=&quot;hello&quot;&gt;
+        &lt;properties&gt;
+            &lt;!-- 필수 속성 --&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.driver&quot; value=&quot;org.h2.Driver&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.user&quot; value=&quot;sa&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.password&quot; value=&quot;&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.url&quot; value=&quot;jdbc:h2:tcp://localhost/~/test&quot;/&gt;
+            &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
+
+            &lt;!-- 옵션 --&gt;
+            &lt;property name=&quot;hibernate.show_sql&quot; value=&quot;true&quot;/&gt;  &lt;!-- 실행 sql 로깅 --&gt;
+            &lt;property name=&quot;hibernate.format_sql&quot; value=&quot;true&quot;/&gt;  &lt;!-- 실행 sql 포메팅 --&gt;
+
+            &lt;!-- /* insert hellojpa.Member */ JPA가 Inser 를 해서 이 쿼리가 나왔다는 것을 주석으로 설명 --&gt;
+            &lt;property name=&quot;hibernate.use_sql_comments&quot; value=&quot;true&quot;/&gt;
+
+            &lt;!-- 한번에 같은 데이터 베이스에 데이터를 집어넣을때 모아서 한번에 인서트 하는 jdbc batch의 수를 지정--&gt;
+            &lt;property name=&quot;hibernate.jdbc.batch_size&quot; value=&quot;10&quot;/&gt;
+
+            &lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt;
+        &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-001.png" alt="contact"></p>
+<blockquote>
+<p>Member 테이블을 먼저 drop하고 create 문을 실행</p>
+</blockquote>
+<h5 id="create---컬럼-추가-후-애플리케이션-재실행">Create - 컬럼 추가 후 애플리케이션 재실행</h5>
+<blockquote>
+<p>Member.Java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+    private int age; // 추가된 컬럼
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name, int age){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>이후 다시 애플리케이션을 다시 실행시켜보면,</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-002.png" alt="contact"></p>
+<blockquote>
+<p>추가된 컬럼을 포함하여 Member 테이블이 다시 생성된다.</p>
+</blockquote>
+<h5 id="create-drop">create-drop</h5>
+<blockquote>
+<p>create와 같지만 종료시점에 생성한 테이블 모두 drop, 예를들어 테스트 케이스 수행후 삭제할때 사용가능</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>...
+            &lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create-drop&quot; /&gt;
+...
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-003.png" alt="contact"></p>
+<blockquote>
+<p>종료시에 drop을 하는것을 볼 수 있다.</p>
+</blockquote>
+<h5 id="update">update</h5>
+<blockquote>
+<p>추가 했던 age를 잠깐 다시 돌려두고, create 후 update를 실행해 보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt;
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>다시 update로 수정후 애플리케이션 재시작</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;update&quot; /&gt;
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+    private int age;
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name, int age){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-004.png" alt="contact"></p>
+<blockquote>
+<p>추가된 컬럼만 alter table을 통하여 스키마 수정됩니다.</p>
+</blockquote>
+<blockquote>
+<p>만약, 컬럼을 삭제한 뒤의 update 상태에서 애플리케이션 재시작할 경우에는</p>
+</blockquote>
+<blockquote>
+<p>Memeber.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-005.png" alt="contact"></p>
+<blockquote>
+<p>삭제된 컬럼은 update 옵션에 의해 alter table로 수정되지 않습니다. H2 데이터베이스에서 확인하면</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-006.png" alt="contact"></p>
+<blockquote>
+<p>변경이 안된 테이블을 확인 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>실수라도 테이블 컬럼을 삭제하여, 데이터가 날아갈 수 있기 때문에 <mark>컬럼 삭제는 update 옵션에서 변경을 지원하지 않습니다</mark>.</p>
+</blockquote>
+<h5 id="validate">validate</h5>
+<blockquote>
+<p>테이블과 entity가 정상 매핑되어있는지 확인해 줍니다.</p>
+</blockquote>
+<blockquote>
+<p>새로운 컬럼을 추가하고</p>
+</blockquote>
+<blockquote>
+<p>Memeber.java</p>
+</blockquote>
+<pre><code>    private String address;
+</code></pre>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;validate&quot; /&gt;
+</code></pre>
+<blockquote>
+<p>애플리케이션 재시작</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-007.png" alt="contact"></p>
+<blockquote>
+<p>Schema-validation: missing column [address] in table [Member] <br>
+MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
+</blockquote>
+<h5 id="none">none</h5>
+<blockquote>
+<p>스키마 자동 생성 사용안함으로 설정<br>
+주석으로 해두는 것과 비슷하며, create, create-drop, update, validate가 아닌 어떤 문자열이 들어가 있어도 none과 같음</p>
+</blockquote>
+<h5 id="데이터베이스-방언-별로-달라지는것-확인-varchar">데이터베이스 방언 별로 달라지는것 확인 (varchar)</h5>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt;
+</code></pre>
+<blockquote>
+<p>create로 스키마 자동생성 옵션을 설정해 두고 재실행</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml - H2 방언 설정</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-008.png" alt="contact"></p>
+<blockquote>
+<p>persistence.xml - Oracle 방언 설정</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.Oracle8iDialect&quot;/&gt;
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-009.png" alt="contact"></p>
+<blockquote>
+<p>방언에 따라서 적절하게 데이터베이스에 맞게 해석을 해서 실행을 해주는 것을 확인 할 수 있습니다.
+다시 H2로 되돌려둠</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml - H2 방언 설정</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
+</code></pre>
+<h5 id="데이터베이스-스키마-자동-생성---주의">데이터베이스 스키마 자동 생성 - 주의</h5>
+<blockquote>
+<ul>
+<li><mark>운영 장비에는 절대 create, create-drop, update 사용하면 안된다.</mark></li>
+<li>개발 초기 단계는 create 또는 update</li>
+<li>테스트 서버는 update 또는 validate</li>
+<li>스테이징과 운영 서버는 validate 또는 none</li>
+</ul>
+</blockquote>
+<p>17:17</p>
 <h3 id="참고">참고<a class="anchor" href="#참고">#</a></h3>
 <blockquote>
 <ul>
@@ -407,7 +845,6 @@ public class Member {
         <li><a href="#목차">목차</a></li>
         <li><a href="#엔티티-매핑-소개">엔티티 매핑 소개</a></li>
         <li><a href="#객체와-테이블-매핑-1">객체와 테이블 매핑</a></li>
-        <li><a href="#table">@Table</a></li>
         <li><a href="#참고">참고</a></li>
       </ul>
     </li>
