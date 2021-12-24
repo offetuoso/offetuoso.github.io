@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 21 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 24 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[자바 ORM 표준 JPA] 객체와 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/entity-mapping/</link>
+      <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/entity-mapping/</guid>
+      <description>객체와 매핑 객체와 테이블 매핑 목차   객체와 테이블 매핑 필드와 컬럼 매핑 기본 키 매핑 실전 예제 - 1. 요구사항 분석과 기본 매핑   엔티티 매핑 소개   객체와 테이블 매핑 : @Entity, @Table 필드와 컬럼 매핑 : @Column 기본키 매핑 : @Id 연관관계 매핑 : @ManyToOne, @JoinColumn   객체와 테이블 매핑 @Entity   @Entity가 붙은 클래스는 JPA가 관리, 엔티티라 부른다. JPA를 사용해서 테이블과 매핑할 클래스는 @Entity 필수 주의 &amp;gt; - 기본 생성자 필수 (파라미터가 없는 public 또는 proteted 생성자) &amp;gt; - final 클래스, enum, interface, inner 클래스 사용 X &amp;gt; - 저장할 필드에 final 사용 X   @Entity 속성 정리   속성 : name &amp;gt; - JPA에서 사용할 엔티티 이름을 지정한다.</description>
+    </item>
+    
     <item>
       <title>[자바 ORM 표준 JPA] 영속성 관리</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/persistence-manage/</link>

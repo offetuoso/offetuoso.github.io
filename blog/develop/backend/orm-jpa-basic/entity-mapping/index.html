@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>[자바 ORM 표준 JPA] 객체와 매핑 | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="객체와 매핑">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.99b1039f96dcd2d873053160580d5268324db9227d5197198126bcae30815f4c.css" integrity="sha256-mbEDn5bc0thzBTFgWA1SaDJNuSJ9UZcZgSa8rjCBX0w="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "[자바 ORM 표준 JPA] 객체와 매핑",
+      "headline" : "[자바 ORM 표준 JPA] 객체와 매핑",
+      "description" : "객체와 매핑",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-12-24 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-12-24 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/entity-mapping\/",
+      "wordCount" : "240",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	[자바 ORM 표준 JPA] 객체와 매핑
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	[자바 ORM 표준 JPA] 객체와 매핑
+            </h1>		
+            <time datetime="2021-12-24 00:00:00 &#43;0000 UTC" class="post__date">2021-12-24</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="객체와-매핑">객체와 매핑</h1>
+<h2 id="객체와-테이블-매핑">객체와 테이블 매핑<a class="anchor" href="#객체와-테이블-매핑">#</a></h2>
+<h3 id="목차">목차<a class="anchor" href="#목차">#</a></h3>
+<blockquote>
+<ul>
+<li>객체와 테이블 매핑</li>
+<li>필드와 컬럼 매핑</li>
+<li>기본 키 매핑</li>
+<li>실전 예제 - 1. 요구사항 분석과 기본 매핑</li>
+</ul>
+</blockquote>
+<h3 id="엔티티-매핑-소개">엔티티 매핑 소개<a class="anchor" href="#엔티티-매핑-소개">#</a></h3>
+<blockquote>
+<ul>
+<li>객체와 테이블 매핑 : @Entity, @Table</li>
+<li>필드와 컬럼 매핑 : @Column</li>
+<li>기본키 매핑 : @Id</li>
+<li>연관관계 매핑 : @ManyToOne, @JoinColumn</li>
+</ul>
+</blockquote>
+<h3 id="객체와-테이블-매핑-1">객체와 테이블 매핑<a class="anchor" href="#객체와-테이블-매핑-1">#</a></h3>
+<h4 id="entity">@Entity</h4>
+<blockquote>
+<ul>
+<li>@Entity가 붙은 클래스는 JPA가 관리, 엔티티라 부른다.</li>
+<li>JPA를 사용해서 테이블과 매핑할 클래스는 <mart>@Entity</mark> 필수</li>
+<li>주의
+&gt; - 기본 생성자 필수 (파라미터가 없는 public 또는 proteted 생성자)
+&gt; - final 클래스, enum, interface, inner 클래스 사용 X
+&gt; - 저장할 필드에 final 사용 X</li>
+</ul>
+</blockquote>
+<h4 id="entity-속성-정리">@Entity 속성 정리</h4>
+<blockquote>
+<ul>
+<li>속성 : name
+&gt; - JPA에서 사용할 엔티티 이름을 지정한다.
+&gt; - 기본값 : 클래스 이름을 그대로 사용 
+&gt; - 같은 클래스 이름이 없으면 가급적 기본값을 사용한다.</li>
+</ul>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity //JPA가 관리하는 객체 Entity
+//@Entity(name=&quot;Member&quot;) //기본 값이 아닌 다른 이름으로 Entity 명을 지정할때 사용
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<h3 id="table">@Table<a class="anchor" href="#table">#</a></h3>
+<blockquote>
+<ul>
+<li>@Table은 엔티티와 매핑할 테이블 지정</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>기능</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>매핑할 이름</td>
+<td>엔티티 이름을 사용</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>데이터베이스 catalog 매핑</td>
+<td></td>
+</tr>
+<tr>
+<td>schema</td>
+<td>데이터베이스 schema 매핑</td>
+<td></td>
+</tr>
+<tr>
+<td>uniqueConstraints(DDL)</td>
+<td>DDL 생성시에 유니크 제약조건 생성</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-021.png" alt="contact"></p>
+<h3 id="참고">참고<a class="anchor" href="#참고">#</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/persistence-manage/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">[자바 ORM 표준 JPA] 영속성 관리</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">[자바 ORM 표준 JPA] 객체와 매핑</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#객체와-테이블-매핑">객체와 테이블 매핑</a>
+      <ul>
+        <li><a href="#목차">목차</a></li>
+        <li><a href="#엔티티-매핑-소개">엔티티 매핑 소개</a></li>
+        <li><a href="#객체와-테이블-매핑-1">객체와 테이블 매핑</a></li>
+        <li><a href="#table">@Table</a></li>
+        <li><a href="#참고">참고</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>
