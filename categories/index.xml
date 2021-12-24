@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 18 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>ORM</title>
-      <link>https://offetuoso.github.io/categories/orm/</link>
-      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
+      <title>Java</title>
+      <link>https://offetuoso.github.io/categories/java/</link>
+      <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/categories/orm/</guid>
+      <guid>https://offetuoso.github.io/categories/java/</guid>
       <description></description>
     </item>
     
@@ -27,11 +27,11 @@
     </item>
     
     <item>
-      <title>VueJs</title>
-      <link>https://offetuoso.github.io/categories/vuejs/</link>
+      <title>frontend</title>
+      <link>https://offetuoso.github.io/categories/frontend/</link>
       <pubDate>Fri, 12 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/categories/vuejs/</guid>
+      <guid>https://offetuoso.github.io/categories/frontend/</guid>
       <description></description>
     </item>
     
@@ -54,56 +54,20 @@
     </item>
     
     <item>
-      <title>Database</title>
-      <link>https://offetuoso.github.io/categories/database/</link>
+      <title>Backend</title>
+      <link>https://offetuoso.github.io/categories/backend/</link>
       <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/categories/database/</guid>
+      <guid>https://offetuoso.github.io/categories/backend/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>AWS</title>
-      <link>https://offetuoso.github.io/categories/aws/</link>
-      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/categories/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RESTful</title>
-      <link>https://offetuoso.github.io/categories/restful/</link>
-      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/categories/restful/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mysql</title>
-      <link>https://offetuoso.github.io/categories/mysql/</link>
+      <title>database</title>
+      <link>https://offetuoso.github.io/categories/database/</link>
       <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/categories/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>https://offetuoso.github.io/categories/docker/</link>
-      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/categories/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Git</title>
-      <link>https://offetuoso.github.io/categories/git/</link>
-      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/categories/git/</guid>
+      <guid>https://offetuoso.github.io/categories/database/</guid>
       <description></description>
     </item>
     

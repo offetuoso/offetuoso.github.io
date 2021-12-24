@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>[자바 ORM 표준 JPA] 영속성 관리 | offetuoso&#39;s Blog</title>
+
+  <meta charset="UTF-8">
+  <meta name="language" content="en">
+  <meta name="description" content="JPA 내부 동작 방식">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.99b1039f96dcd2d873053160580d5268324db9227d5197198126bcae30815f4c.css" integrity="sha256-mbEDn5bc0thzBTFgWA1SaDJNuSJ9UZcZgSa8rjCBX0w="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "[자바 ORM 표준 JPA] 영속성 관리",
+      "headline" : "[자바 ORM 표준 JPA] 영속성 관리",
+      "description" : "JPA 내부 동작 방식",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-12-21 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-12-21 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/persistence-manage\/",
+      "wordCount" : "996",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="/"
+      				
+			        >welcome !</a>
+      					
+            
+      </li>
+    
+      <li>
+    
+			        <a  class="active"
+			         
+			        
+			        
+			        href="/blog"
+      				
+			        >blog</a>
+      					
+            
+      </li>
+    
+      <li>
+    
+			        <a  
+			        
+			        
+			        href="javascript:proceedsearch();"
+			       	
+			        >search</a>
+      					
+            
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	[자바 ORM 표준 JPA] 영속성 관리
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	[자바 ORM 표준 JPA] 영속성 관리
+            </h1>		
+            <time datetime="2021-12-21 00:00:00 &#43;0000 UTC" class="post__date">2021-12-21</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="jpa-영속성-관리---내부-동작-방식">JPA 영속성 관리 - 내부 동작 방식</h1>
+<h2 id="영속성-컨텍스트">영속성 컨텍스트<a class="anchor" href="#영속성-컨텍스트">#</a></h2>
+<h3 id="jpa에서-가장-중요한-2가지">JPA에서 가장 중요한 2가지<a class="anchor" href="#jpa에서-가장-중요한-2가지">#</a></h3>
+<blockquote>
+<ul>
+<li>객체와 관계형 데이터베이트 매핑하기 (Object Relational Mapping)</li>
+<li><mark>영속성 컨텍스트</mark></li>
+</ul>
+</blockquote>
+<h3 id="엔티티-매니저-팩토리와-앤티티-매니저">엔티티 매니저 팩토리와 앤티티 매니저<a class="anchor" href="#엔티티-매니저-팩토리와-앤티티-매니저">#</a></h3>
+<blockquote>
+<p>요청이 오면 앤티티 매니저 팩토리를 통해 엔티티 매니저를 생성하고, 앤티티 매니저는 커넥션풀을 이용해 DB에 접근 합니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-001.png" alt="contact"></p>
+<h3 id="영속성-컨텍스트-1">영속성 컨텍스트<a class="anchor" href="#영속성-컨텍스트-1">#</a></h3>
+<blockquote>
+<ul>
+<li>JPA를 이해하는데 가장 중요한 용어</li>
+<li>&ldquo;엔티티를 영구 저장하는 환경&quot;이라는 뜻</li>
+<li>EntitiyManager.persist(entity); 
+// persist 메소드는 DB에 저장하는게 아니라 entity를 영속성 컨텍스트에 저장한다는 것</li>
+</ul>
+</blockquote>
+<h3 id="엔티티-매니저-영속성-컨텍스트">엔티티 매니저? 영속성 컨텍스트?<a class="anchor" href="#엔티티-매니저-영속성-컨텍스트">#</a></h3>
+<blockquote>
+<ul>
+<li>영속성 컨텍스트는 논리적인 개념</li>
+<li>눈에 보이지 않는다.</li>
+<li>엔티티 매니저를 통해서 영속성 컨텍스트에 접근</li>
+</ul>
+</blockquote>
+<h4 id="j2se-환경">J2SE 환경</h4>
+<blockquote>
+<p>엔티티 매니저와 영속성 컨텍스트가 1:1
+<img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-002.png" alt="contact"></p>
+</blockquote>
+<h4 id="j2ee-스프링-프레임워크-같은-컨테이너-환경">J2EE, 스프링 프레임워크 같은 컨테이너 환경</h4>
+<blockquote>
+<p>엔티티 매니저와 영속성 컨텍스트가 N:1
+<img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-003.png" alt="contact"></p>
+</blockquote>
+<h3 id="엔티티의-생명주기">엔티티의 생명주기<a class="anchor" href="#엔티티의-생명주기">#</a></h3>
+<blockquote>
+<ul>
+<li>비영속 (new/transient)
+영속성 컨텍스트와 전혀 관계가 없는 <mark>새로운</mark> 상태</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>영속 (managed)
+영속성 컨텍스트에 <mark>관리</mark>되는 상태</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>준영속 (datached)
+영속성 컨텍스트에 저장되었다가 <mark>분리</mark>된상태</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>삭제 (removed)
+<mark>삭제</mark>된 상태</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-004.png" alt="contact"></p>
+<h4 id="비영속-newtransient">비영속 (new/transient)</h4>
+<blockquote>
+<p>객체만 생성하고 세팅한 상태</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-005.png" alt="contact"></p>
+<pre><code>// 객체를 생성한 상태(비영속)
+Member member = new Mamber();
+member.setId(2L);
+member.setName(&quot;회원2&quot;)
+</code></pre>
+<h4 id="영속-managed">영속 (managed)</h4>
+<blockquote>
+<p>객체만 생성하고 세팅한 상태</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-006.png" alt="contact"></p>
+<pre><code>// 객체를 생성한 상태(비영속)
+Member member = new Mamber();
+member.setId(2L);
+member.setName(&quot;회원2&quot;)
+
+EntitiyManager em = emf.createEntityManager();
+em.getTransaction().begin();
+
+// 객체를 저장한 상태(영속)
+em.persist(member);
+
+// 객체를 비영속 상태로 변경
+//em.detach(member) 
+
+// 객체를 DB에서 삭제
+//em.remove(member) 
+
+
+tx.commit(); // 실제 쿼리가 실행되는 지점
+
+</code></pre>
+<h3 id="영속성-컨텍스트의-이점">영속성 컨텍스트의 이점<a class="anchor" href="#영속성-컨텍스트의-이점">#</a></h3>
+<blockquote>
+<p>영속성 컨텍스트는 객체와 DB 사이에 하나의 계층이 있는것</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>1차 캐시</li>
+<li>동일성(identity) 보장</li>
+<li>트랜잭션을 지원하는 쓰기 지연(transactional write-behind)</li>
+<li>변경 감지(dirty checking)</li>
+<li>지연 로딩(lazy loading)</li>
+</ul>
+</blockquote>
+<h4 id="엔티티-조회-1차-캐시">엔티티 조회, 1차 캐시</h4>
+<blockquote>
+<p>영속성 컨텍스트는 내부에 1차 캐시를 가지고 있습니다. @Id가 키가 되고 값은 member객체 자체인 Map이라 생각하면 됩니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-007.png" alt="contact"></p>
+<pre><code>// 엔티티를 생성한 상태(비영속)
+Member member = new Member();
+member.setId(3L);
+member.setName(&quot;회원3&quot;);
+
+// 엔티티를 영속
+em.persist(member);
+
+</code></pre>
+<h4 id="1차-캐시에서-조회">1차 캐시에서 조회</h4>
+<pre><code>// 엔티티를 생성한 상태(비영속)
+Member member = new Member();
+member.setId(3L);
+member.setName(&quot;회원3&quot;);
+
+// 1차 캐시에 저장됨
+em.persist(member);
+
+Member findMemeber = em.find(Member.class, &quot;3L&quot;);
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-008.png" alt="contact"></p>
+<blockquote>
+<p>조회를 실행시 우선적으로 1차 캐시에 값으로 객체가 있는지 확인 후 있으면 캐시에서 바로 가져오고, 없는 경우 DB에서 조회를 하여 1차 캐시에 저장하고 객체를 가져오게 됩니다.</p>
+</blockquote>
+<h4 id="db에서-조회">DB에서 조회</h4>
+<pre><code>Member findMemeber = em.find(Member.class, &quot;10L&quot;);
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-009.png" alt="contact"></p>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-010.png" alt="contact"></p>
+<blockquote>
+<p>commit()이후에 Insert를 하지만, Select문이 나오지 않는다. 이미 1차 캐시에서 조회하여 커밋 이전에 출력한다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-011.png" alt="contact"></p>
+<blockquote>
+<p>같은 객체를 여러번 조회를 하면, 1번만 Select 문을 날리고 이후 1차 캐시에서 조회</p>
+</blockquote>
+<h3 id="영속-엔티티의-동일성-보장">영속 엔티티의 동일성 보장<a class="anchor" href="#영속-엔티티의-동일성-보장">#</a></h3>
+<pre><code>  	Member findMember1 = em.find(Member.class, 10L);
+	Member findMember2 = em.find(Member.class, 10L);
+	
+	System.out.println(findMember1 == findMember2);
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-012.png" alt="contact"></p>
+<blockquote>
+<p>같은 트랜잭션 안에서는 조회한 같은 객체는 동일한 객체로 인식 보장</p>
+</blockquote>
+<h3 id="엔티티-등록---트랜잭션을-지원하는-쓰기-지연">엔티티 등록 - 트랜잭션을 지원하는 쓰기 지연<a class="anchor" href="#엔티티-등록---트랜잭션을-지원하는-쓰기-지연">#</a></h3>
+<pre><code> EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;hello&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+
+            Member meber1 = new Member();
+            Member meber2 = new Member();
+            meber1.setId(11L);
+            meber1.setName(&quot;회원11&quot;);
+
+            meber2.setId(12L);
+            meber2.setName(&quot;회원12&quot;);
+
+            // 영속
+            System.out.println(&quot;=== BEFORE ===&quot;);
+            em.persist(meber1);
+            em.persist(meber2);
+            System.out.println(&quot;=== AFTER ===&quot;);
+            // 여기까지 DB에 Insert 하지 않는다.
+
+            tx.commit(); // [트랜잭션] 카밋
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-013.png" alt="contact"></p>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-013-1.png" alt="contact"></p>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-014.png" alt="contact"></p>
+<blockquote>
+<p>em.persist()로 memberA와 memberB를 저장할때, 영속 컨텍스트안의 쓰기지연 SQL 저장소에 memberA를 Insert SQL을 저장하고<br>
+그리고 이후에 memberB에 대한 Insert SQL을 쓰기지연 SQL 저장소에 저장합니다. 여기 까지 DB에 저장하지 않고 commit과 함께 DB에 저장합니다.</p>
+</blockquote>
+<h4 id="transactioncommit">transaction.commit();</h4>
+<blockquote>
+<p>트랜잭션이 커밋될때 좀더 자세히 그림으로 설명하면 아래와 같습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-015.png" alt="contact"></p>
+<blockquote>
+<p>커밋을 하게되면 쓰기지연 저장소에 있는 SQL들을 flush하며, DB에 SQL문들을 DB에 커밋하게 됩니다.</p>
+</blockquote>
+<h5 id="memberjava">Member.java</h5>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-016.png" alt="contact"></p>
+<blockquote>
+<p>굳이 하나씩 보내도 되는데 왜 커밋과 함께 DB에 Insert 하느냐 하면 성능을 위해 설정하여 튜닝할 수 있는 여지를 주기 위함이라 합니다. <br></p>
+</blockquote>
+<blockquote>
+<p>JPA의 옵션중</p>
+</blockquote>
+<h4 id="persistencexml---hibernatejdbcbatch_size">persistence.xml - hibernate.jdbc.batch_size</h4>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;persistence version=&quot;2.2&quot;
+             xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+             xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd&quot;&gt;
+    &lt;persistence-unit name=&quot;hello&quot;&gt;
+        &lt;properties&gt;
+	       ...
+
+            &lt;!-- 한번에 같은 데이터 베이스에 데이터를 집어넣을때 모아서 한번에 인서트 하는 jdbc batch의 수를 지정--&gt;
+            &lt;property name=&quot;hibernate.jdbc.batch_size&quot; value=&quot;10&quot;/&gt;
+
+		   ...
+        &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</code></pre>
+<blockquote>
+<p>옵션 하나로 JPA의 성능에 대한 이점을 챙길 수 있습니다.</p>
+</blockquote>
+<h3 id="엔티티-수정---변경-감지dirty-checking">엔티티 수정 - 변경 감지(dirty checking)<a class="anchor" href="#엔티티-수정---변경-감지dirty-checking">#</a></h3>
+<blockquote>
+<p>JPA에서는 컬렉션에서 값을 수정하는 것처럼 따로 저장하지 않아도 변경 감지를 통해 commit시 Update 문을 자동으로 수행</p>
+</blockquote>
+<pre><code>EntityMananger em = emf.createEntityManager();
+EntityTransaction tx = em.getTransaction();
+tx.begin(); // [트랜잭션] 시작
+
+// 영속 엔티티 조회
+Member MemberA = em.find(Member.class, 10L);
+
+// 영속 엔티티 데이터 수정
+MemberA.setName(&quot;사용자10&quot;);
+
+// 이런 코드가 필요하지 않을까?
+//em.update(member);
+
+tx.commit(); // [트랜잭션] 커밋
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-017.png" alt="contact"></p>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-018.png" alt="contact"></p>
+<blockquote>
+<p>DB에서 값을 Select 하고 값을 수정만 하고 저장을 따로 하지 않았지만, Update 쿼리까지 실행됩니다.</p>
+</blockquote>
+<h4 id="변경-감지dirty-checking">변경 감지(dirty checking)</h4>
+<blockquote>
+<p>커밋하는 시점에 변경 감지를 통해 벌어지는 일을 그림으로 그리면 아래와 같습니다.<br>
+커밋을 하게 되면 내부적으로 flush()를 실행하게 되고, 엔티티와 스냅샷을 비교하게됩니다. 스냅샷은 객체를 읽어올 당시의 값을 스냅샷으로 저장합니다. 트랜잭션에서 커밋하는 시점에 플러시가 호출되며 엔티티와 스냅샷을 비교하여, 변경사항을 쓰기 지연 SQL 저장소에 Update SQL을 저장합니다. 그리고 DB에 Update SQL을 반영하고 commit()을 수행합니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-019.png" alt="contact"></p>
+<h3 id="엔티티-삭제">엔티티 삭제<a class="anchor" href="#엔티티-삭제">#</a></h3>
+<pre><code>// 삭제할 대상 엔티티 조회
+Member memberA = em.find(Member.class, 11L);
+em.remove(memberA); // 엔티티 삭제
+</code></pre>
+<h2 id="플러시">플러시<a class="anchor" href="#플러시">#</a></h2>
+<blockquote>
+<p>영속성 컨텍스트의 변경내용을 데이터베이스에 반영</p>
+</blockquote>
+<h3 id="플러시-발생">플러시 발생<a class="anchor" href="#플러시-발생">#</a></h3>
+<blockquote>
+<p>트랜잭션이 커밋되면 자동적으로 플로시가 발생되며, 1차 캐시의 변동없음(다른 flush의 비우는 기능과 다름.)</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>변경감지(dirty checking)</li>
+<li>수정된 엔티티 쓰기 지연 SQL 저장소에 등록</li>
+<li>쓰기 지연 SQL 저장소의 쿼리를 데이터 베이스에 전송(등록, 수정, 삭제 쿼리)</li>
+</ul>
+</blockquote>
+<h3 id="영속성-컨텍스트를-플러시-하는-방법">영속성 컨텍스트를 플러시 하는 방법<a class="anchor" href="#영속성-컨텍스트를-플러시-하는-방법">#</a></h3>
+<blockquote>
+<ul>
+<li>em.flush() - 직접 호출 (잘 사용은 안되지만, 테스트 시 알아두면 유용)</li>
+<li>트랜잭션 커밋 - 플러시 자동 호출</li>
+<li>JPQL 쿼리 실행 - 플러시 자동 호출</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-020.png" alt="contact"></p>
+<blockquote>
+<p>다른 예제들과 다르게 라인 &ldquo;===========&rdquo; 보다 이전에 flush()를 실행항 당시 변경 사항의 SQL이 로그에 찍히게됨.</p>
+</blockquote>
+<h3 id="jpql-쿼리-실행시-플러시가-자동으로-호출되는-이유">JPQL 쿼리 실행시 플러시가 자동으로 호출되는 이유<a class="anchor" href="#jpql-쿼리-실행시-플러시가-자동으로-호출되는-이유">#</a></h3>
+<pre><code>em.persist(memberA);
+em.persist(memberB);
+em.persist(memberC);
+
+//중간에 JPQL 실행 
+query = em.createQuery(&quot;select m from Member m&quot;, Member.class);
+List&lt;Member&gt; members = query.getResultList();
+</code></pre>
+<blockquote>
+<p>만일 memberA, memberB, memberC를 영속화 하고, Member 테이블의 전체 리스트를 조회하면 아무 결과가 안나올 것입니다. 아직 commit()을 통한 flush()가 실행 되기 이전이기 떄문입니다. 이러한 문제점을 해결하기 위해 JPA에서는 JPQL을 실행할 때 우선 flush()를 실행합니다.</p>
+</blockquote>
+<h3 id="플러시-모드-옵션">플러시 모드 옵션<a class="anchor" href="#플러시-모드-옵션">#</a></h3>
+<pre><code>em.setFlushMode(FlushModeType.COMMIT);
+</code></pre>
+<blockquote>
+<ul>
+<li>FlushModeType.AUTO - 트랜잭션 커밋이나 쿼리(JPQL)를 실행할 때 플러시(기본값)</li>
+<li>FlushModeType.COMMIT - 커밋할 때만 플러시</li>
+</ul>
+</blockquote>
+<h3 id="플러시는-">플러시는 !<a class="anchor" href="#플러시는-">#</a></h3>
+<blockquote>
+<ul>
+<li>영속성 컨텍스트를 비우지 않음</li>
+<li>영속성 컨텍스트의 변경내용을 데이터베이스에 동기화</li>
+<li>트랜잭션이라는 작업 단위가 중요 -&gt; 커밋 직전에만 동기화하면 됨</li>
+</ul>
+</blockquote>
+<h2 id="준영속-상태">준영속 상태<a class="anchor" href="#준영속-상태">#</a></h2>
+<blockquote>
+<ul>
+<li>영속  -&gt; 준영속 
+1차 캐시에 있고 JPA가 관리하는 상태</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>영속 상태의 엔티티가 영속성 컨텍스트에서 분리(detached)</li>
+<li>영속성 컨텍스트가 제공하는 기능을 사용 못함</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/persistence_manage/img-021.png" alt="contact"></p>
+<h3 id="준영속-상태로-만드는-방법">준영속 상태로 만드는 방법<a class="anchor" href="#준영속-상태로-만드는-방법">#</a></h3>
+<blockquote>
+<ul>
+<li>em.detach(entity) - 특정 엔티티만 준영속 상태로 전환</li>
+<li>em.claer() - 영속성 컨텍스트를 완전히 초기화</li>
+<li>em.close() - 영속성 컨텍스트를 종료</li>
+</ul>
+</blockquote>
+<h3 id="참고">참고<a class="anchor" href="#참고">#</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/start-jpa/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">[자바 ORM 표준 JPA] JPA 시작</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">[자바 ORM 표준 JPA] 영속성 관리</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#영속성-컨텍스트">영속성 컨텍스트</a>
+      <ul>
+        <li><a href="#jpa에서-가장-중요한-2가지">JPA에서 가장 중요한 2가지</a></li>
+        <li><a href="#엔티티-매니저-팩토리와-앤티티-매니저">엔티티 매니저 팩토리와 앤티티 매니저</a></li>
+        <li><a href="#영속성-컨텍스트-1">영속성 컨텍스트</a></li>
+        <li><a href="#엔티티-매니저-영속성-컨텍스트">엔티티 매니저? 영속성 컨텍스트?</a></li>
+        <li><a href="#엔티티의-생명주기">엔티티의 생명주기</a></li>
+        <li><a href="#영속성-컨텍스트의-이점">영속성 컨텍스트의 이점</a></li>
+        <li><a href="#영속-엔티티의-동일성-보장">영속 엔티티의 동일성 보장</a></li>
+        <li><a href="#엔티티-등록---트랜잭션을-지원하는-쓰기-지연">엔티티 등록 - 트랜잭션을 지원하는 쓰기 지연</a></li>
+        <li><a href="#엔티티-수정---변경-감지dirty-checking">엔티티 수정 - 변경 감지(dirty checking)</a></li>
+        <li><a href="#엔티티-삭제">엔티티 삭제</a></li>
+      </ul>
+    </li>
+    <li><a href="#플러시">플러시</a>
+      <ul>
+        <li><a href="#플러시-발생">플러시 발생</a></li>
+        <li><a href="#영속성-컨텍스트를-플러시-하는-방법">영속성 컨텍스트를 플러시 하는 방법</a></li>
+        <li><a href="#jpql-쿼리-실행시-플러시가-자동으로-호출되는-이유">JPQL 쿼리 실행시 플러시가 자동으로 호출되는 이유</a></li>
+        <li><a href="#플러시-모드-옵션">플러시 모드 옵션</a></li>
+        <li><a href="#플러시는-">플러시는 !</a></li>
+      </ul>
+    </li>
+    <li><a href="#준영속-상태">준영속 상태</a>
+      <ul>
+        <li><a href="#준영속-상태로-만드는-방법">준영속 상태로 만드는 방법</a></li>
+        <li><a href="#참고">참고</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>

@@ -7,7 +7,124 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 20 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/subcategories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/subcategories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA</title>
+      <link>https://offetuoso.github.io/subcategories/jpa/</link>
+      <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/jpa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue</title>
+      <link>https://offetuoso.github.io/subcategories/vue/</link>
+      <pubDate>Fri, 12 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/vue/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programmers</title>
+      <link>https://offetuoso.github.io/subcategories/programmers/</link>
+      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/programmers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Speaking</title>
+      <link>https://offetuoso.github.io/subcategories/speaking/</link>
+      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/speaking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>https://offetuoso.github.io/subcategories/spring/</link>
+      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Search</title>
+      <link>https://offetuoso.github.io/subcategories/search/</link>
+      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/search/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Database</title>
+      <link>https://offetuoso.github.io/subcategories/database/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/database/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS</title>
+      <link>https://offetuoso.github.io/subcategories/aws/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RESTful</title>
+      <link>https://offetuoso.github.io/subcategories/restful/</link>
+      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/restful/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL</title>
+      <link>https://offetuoso.github.io/subcategories/mysql/</link>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://offetuoso.github.io/subcategories/docker/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>이코테</title>
+      <link>https://offetuoso.github.io/subcategories/%EC%9D%B4%EC%BD%94%ED%85%8C/</link>
+      <pubDate>Wed, 05 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/%EC%9D%B4%EC%BD%94%ED%85%8C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://offetuoso.github.io/subcategories/git/</link>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/git/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Greedy</title>
       <link>https://offetuoso.github.io/subcategories/greedy/</link>
