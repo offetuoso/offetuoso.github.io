@@ -76,7 +76,7 @@
       "datePublished": "2021-12-24 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-24 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/entity-mapping\/",
-      "wordCount" : "1141",
+      "wordCount" : "1408",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -325,7 +325,7 @@ public class Member {
 }
 
 </code></pre>
-<h4 id="데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성</h4>
+<h3 id="데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성<a class="anchor" href="#데이터베이스-스키마-자동-생성">#</a></h3>
 <blockquote>
 <ul>
 <li>DDL을 애플리케이션 실행 시점에 자동 생성</li>
@@ -724,7 +724,122 @@ MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 <li>스테이징과 운영 서버는 validate 또는 none</li>
 </ul>
 </blockquote>
-<p>17:17</p>
+<h4 id="ddl-생성-기능">DDL 생성 기능</h4>
+<blockquote>
+<p>DDL 생성 기능은 DDL을 자동 생성할 때만 사용되고 JPA의 실행 로직에는 영향을 주지 않는다.</p>
+</blockquote>
+<blockquote>
+<p>제약조건 추가 : 회원 이름은 필수, 10자 초과 X
+&gt; - @Column(nullable = false, length = 10)
+유니크 제약조건 추가
+&gt; - @Table(uniqueConstraints = {@UniqueConstraint( name = &ldquo;NAME_AGE_UNIQUE&rdquo;,
+columnNames = {&ldquo;NAME&rdquo;, &ldquo;AGE&rdquo;} )})</p>
+</blockquote>
+<h5 id="제약조건-추가">제약조건 추가</h5>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>    @Column(unique = true, length = 10)
+    private String name;
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-010.png" alt="contact"></p>
+<blockquote>
+<p>Member entity의 name 사이즈가 varchar(10)으로 생성되고, alter table을 통해 제약조건을 추가한 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<h3 id="필드와-컬럼-매핑">필드와 컬럼 매핑<a class="anchor" href="#필드와-컬럼-매핑">#</a></h3>
+<h4 id="요청사항-추가">요청사항 추가</h4>
+<blockquote>
+<ol>
+<li>회원은 일반 회원과 관리자로 구분해야 한다.</li>
+<li>회원 가입일과 수정일이 있어야 한다.</li>
+<li>회원을 설명할 수 있는 필드가 있어야 한다. 이 필드는 길이 제한이 없다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+
+    @Column(name=&quot;name&quot;, length = 10) // 엔티티 명은 userName으로, DB 컬럼명을 name으로 매핑하여 사용 지정
+    private String userName;
+
+    private Integer age;  // Integer 타입으로 생성하면 DB에서도 가장 Integer랑 가장 적절한 컬럼으로 숫자 타입 생성
+
+    @Enumerated(EnumType.STRING) // 객체에서 ENUM 타입을 쓰고싶을때, DB에는 이넘 타입이 없음(비슷한 것이 있는 DB도 있음)
+    private RoleType roleType;
+
+    @Temporal(TemporalType.TIMESTAMP) // 날짜타입생성 Date, Time, Timestamp 3가지 타입이 있음
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modifiedDate;
+
+    @Lob // DB에 varchar를 넘어서는 문자를 넣고 싶을때, 예를 들면 게시판 contents, 파일 바이너리 등
+    private String description;
+
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>RoleType.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+public enum RoleType {
+    USER, ADMIN
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java 의 tx.transaction 내부 소스를 지우고 실행한다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-011.png" alt="contact"></p>
+<h4 id="매핑-어노테이션-정리">매핑 어노테이션 정리</h4>
+<table>
+<thead>
+<tr>
+<th>어노테이션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Column</td>
+<td>컬럼 매핑</td>
+</tr>
+<tr>
+<td>@Temporal</td>
+<td>날짜 타입 매핑</td>
+</tr>
+<tr>
+<td>@Enumerated</td>
+<td>enum 타입 매핑</td>
+</tr>
+<tr>
+<td>@Lob</td>
+<td>BLOB, CLOB 매핑</td>
+</tr>
+<tr>
+<td>@Transient</td>
+<td>특정 필드를 컬럼에 매핑하지 않음(매핑 무시)</td>
+</tr>
+</tbody>
+</table>
+<p>6:05</p>
 <h3 id="참고">참고<a class="anchor" href="#참고">#</a></h3>
 <blockquote>
 <ul>
@@ -845,6 +960,8 @@ MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
         <li><a href="#목차">목차</a></li>
         <li><a href="#엔티티-매핑-소개">엔티티 매핑 소개</a></li>
         <li><a href="#객체와-테이블-매핑-1">객체와 테이블 매핑</a></li>
+        <li><a href="#데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성</a></li>
+        <li><a href="#필드와-컬럼-매핑">필드와 컬럼 매핑</a></li>
         <li><a href="#참고">참고</a></li>
       </ul>
     </li>
