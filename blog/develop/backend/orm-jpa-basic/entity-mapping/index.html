@@ -43,7 +43,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.b4838b2248f1e90528aeade8ce83e95bba7d11c2a60a2c8135dc7b624f1b8589.css" integrity="sha256-tIOLIkjx6QUorq3ozoPpW7p9EcKmCiyBNdx7Yk8bhYk="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.f39d6023ec1c6caee9cb8d6886cd276b1c55e49974336379824c9f2165541c93.css" integrity="sha256-851gI&#43;wcbK7py41ohs0naxxV5Jl0M2N5gkyfIWVUHJM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -76,7 +76,7 @@
       "datePublished": "2021-12-24 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-24 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/entity-mapping\/",
-      "wordCount" : "1408",
+      "wordCount" : "2151",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -726,14 +726,20 @@ MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 </blockquote>
 <h4 id="ddl-생성-기능">DDL 생성 기능</h4>
 <blockquote>
-<p>DDL 생성 기능은 DDL을 자동 생성할 때만 사용되고 JPA의 실행 로직에는 영향을 주지 않는다.</p>
+<p>DDL 생성 기능은 DDL을 자동 생성할 때만 사용되고 JPA의 실행 로직에는 영향을 주지 않는다.<br></p>
 </blockquote>
 <blockquote>
-<p>제약조건 추가 : 회원 이름은 필수, 10자 초과 X
-&gt; - @Column(nullable = false, length = 10)
-유니크 제약조건 추가
-&gt; - @Table(uniqueConstraints = {@UniqueConstraint( name = &ldquo;NAME_AGE_UNIQUE&rdquo;,
-columnNames = {&ldquo;NAME&rdquo;, &ldquo;AGE&rdquo;} )})</p>
+<p>제약조건 추가 : 회원 이름은 필수, 10자 초과 X<br></p>
+<ul>
+<li>@Column(nullable = false, length = 10) <br></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>유니크 제약조건 추가 <br></p>
+<ul>
+<li>@Table(uniqueConstraints = {@UniqueConstraint( name = &ldquo;NAME_AGE_UNIQUE&rdquo;,
+columnNames = {&ldquo;NAME&rdquo;, &ldquo;AGE&rdquo;} )})</li>
+</ul>
 </blockquote>
 <h5 id="제약조건-추가">제약조건 추가</h5>
 <blockquote>
@@ -839,7 +845,317 @@ public enum RoleType {
 </tr>
 </tbody>
 </table>
-<p>6:05</p>
+<h4 id="column-옵션-정리">@Column 옵션 정리</h4>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>필드와 매핑할 테이블의 컬럼 이름</td>
+<td>객체의 필드 이름</td>
+</tr>
+<tr>
+<td>inertable</td>
+<td>등록 가능여부</td>
+<td>Ture</td>
+</tr>
+<tr>
+<td>updatable</td>
+<td>변경 가능여부</td>
+<td>Ture</td>
+</tr>
+<tr>
+<td>nullable(DDL)</td>
+<td>null 값의 허용 여부 설정. false로 설정하면 DDL 생성 시에 not null 제약조건이 붙는다.</td>
+<td></td>
+</tr>
+<tr>
+<td>unique(DDL)</td>
+<td>@Table의 uniqueConstraints와 같지만 한 컬럼에 간단히 유니크 제약조건을 걸 때 사용 한다.</td>
+<td></td>
+</tr>
+<tr>
+<td>columnDefinition(DDL)</td>
+<td>데이터베이스 컬럼 정보를 직접 줄 수 있다. <br> ex) varchar(100) default &lsquo;EMPTY&rsquo;</td>
+<td>필드의 자바 타입과 방언 정보를 사용</td>
+</tr>
+<tr>
+<td>length(DDL)</td>
+<td>문자 길이 제약조건, String 타입에만 사용</td>
+<td>255</td>
+</tr>
+<tr>
+<td>percision,<br>scale(DDL)</td>
+<td>BigDecimal 타입에서 사용한다(BigInteger도 사용할 수 있다).<br>precision은 소수점을 포함한 전체 자릿수를, scale은 소수의 자리수다. 참고로 double, float 타입에는 적용되지 않는다. 정밀한 소수를 다루어야 할 때만 사용한다.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>insertable과 updateable은 기본적으로 True로 되어있으며, updateable = false 라면, JPA를 통하여 inesert를 하지만, 변경에 대해서 update를 하지 않는다. <br></p>
+</blockquote>
+<blockquote>
+<p>nullable은 기본적으로 true이며, false로 설정하면, <code>name varchar(255) not null</code> DDL에 not null 제약조건이 걸린다.</p>
+</blockquote>
+<blockquote>
+<p>unique는 잘 사용하지 않는다. 제약조건 생성시 <code>alter table Member add constraint UK_ektea8vp6e3low620iewuxhlq unique (name)</code> 이런식으로 임의의 유니크 키가 생성되어 오류가 났을때 바로 알아보기가 힘들기 때문. <br>
+그래서 @Table를 사용해 제약조건을 지정하여 사용합니다.</p>
+</blockquote>
+<pre><code>&gt; - @Table(uniqueConstraints = {@UniqueConstraint( name = &quot;NAME_AGE_UNIQUE&quot;,
+	 columnNames = {&quot;NAME&quot;, &quot;AGE&quot;} )})
+</code></pre>
+<h4 id="enumerated">@Enumerated</h4>
+<blockquote>
+<p>자바 enum 타입을 매피할 때 사용</p>
+</blockquote>
+<blockquote>
+<p><mark>주의 ! ORDINAL 사용 X</mark></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>EnumType.ORDINAL : enum 순서를 데이터 베이스에 저장</td>
+<td>EnumType.ORDINAL</td>
+</tr>
+<tr>
+<td>value</td>
+<td>EnumType.STRING : enum 이름를 데이터 베이스에 저장</td>
+<td>EnumType.ORDINAL</td>
+</tr>
+</tbody>
+</table>
+<h5 id="enumtypeordinal-와-enumtypestring-비교">EnumType.ORDINAL 와 EnumType.STRING 비교</h5>
+<h6 id="enumtypeordinal-일때">EnumType.ORDINAL 일때</h6>
+<blockquote>
+<p>Member.java - EnumType.ORDINAL으로 설정 (Setter Getter 추가)</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+
+    @Column(name=&quot;name&quot;, length = 10) // 엔티티 명은 userName으로, DB 컬럼명을 name으로 매핑하여 사용 지정
+    private String userName;
+
+    private Integer age;  // Integer 타입으로 생성하면 DB에서도 가장 Integer랑 가장 적절한 컬럼으로 숫자 타입 생성
+
+    @Enumerated(EnumType.ORDINAL) // Enum의 인덱스가 들어감
+    //@Enumerated(EnumType.STRING) // 객체에서 ENUM 타입을 쓰고싶을때, DB에는 이넘 타입이 없음(비슷한 것이 있는 DB도 있음)
+    private RoleType roleType;
+
+    @Temporal(TemporalType.TIMESTAMP) // 날짜타입생성 Date, Time, Timestamp 3가지 타입이 있음
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modifiedDate;
+
+    @Lob // DB에 varchar를 넘어서는 문자를 넣고 싶을때, 예를 들면 게시판 contents, 파일 바이너리 등
+    private String description;
+
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public RoleType getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>
+            Member member = new Member();
+            member.setId(21L);
+            member.setAge(27);
+            member.setUserName(&quot;테스트 A&quot;);
+            member.setRoleType(RoleType.ADMIN);
+            em.persist(member);
+            tx.commit();
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-012.png" alt="contact"></p>
+<blockquote>
+<p>roleType가 Integer로 생성된 것이 확인 됩니다. DB에 어떻게 저장되었는지 확인 해보겠습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-013.png" alt="contact"></p>
+<blockquote>
+<p>EnumType.ORDINAL 로 설정시 DB에는 roleType enum의 인덱스가 들어갑니다. <br> 
+EnumType.ORDINAL을 사용하면 안되는 점이 요구사항으로 Guest가 추가되었다고 생각하게 되면 일반적으로 권한의 중요도에 따라 <br>
+Guest, User, Admin 순으로 수정을 하였다고 생각하면, DB에 저장되어있는 roleType은 User가 0, Admin이 1인 상태라 데이터의 매핑이 잘못된 데이터가 생기게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>RoleType.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+public enum RoleType {
+    GUEST, USER, ADMIN
+}
+
+</code></pre>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;update&quot; /&gt; &lt;!-- create, create-drop, update, validate, none --&gt;
+</code></pre>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>            Member member3 = new Member();
+            member3.setId(23L);
+            member3.setAge(29);
+            member3.setUserName(&quot;테스트 C&quot;);
+            member3.setRoleType(RoleType.GUEST);
+            em.persist(member3);
+
+            tx.commit();
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-014.png" alt="contact"></p>
+<blockquote>
+<p>enum의 0번째 인덱스에 GUEST가 추가되면서 DB의 RoleType이 3번째 사용자 빼고 전부 잘못된 것을 확인할 수 있습니다.</p>
+</blockquote>
+<h6 id="enumtypestring-일때">EnumType.STRING 일때</h6>
+<blockquote>
+<p>persistence.xml - 다시 create로 바꿔 설정</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt; &lt;!-- create, create-drop, update, validate, none --&gt;
+</code></pre>
+<blockquote>
+<p>Memeber.java - EnumType.STRING 으로 설정</p>
+</blockquote>
+<pre><code>    // 객체에서 ENUM 타입을 쓰고싶을때, DB에는 이넘 타입이 없음(비슷한 것이 있는 DB도 있음)
+    //@Enumerated(EnumType.ORDINAL) // Enum의 인덱스가 들어감
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+</code></pre>
+<blockquote>
+<p>재실행</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-015.png" alt="contact"></p>
+<blockquote>
+<p>roleType 가 varchar(255)로 생성된 것을 확인</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-016.png" alt="contact"></p>
+<blockquote>
+<p>roleType의 데이터가 GUEST로 들어간 것을 확인할 수 있습니다. 몇자 아끼려다 큰 장애를 경험할 수 있기 때문에 ORDINAL이 아니라 STRING으로 사용하길 권장드립니다.</p>
+</blockquote>
+<h4 id="temporal">@Temporal</h4>
+<blockquote>
+<p>날짜 타입(java.util.Date, java.util.Canendar)를 매핑할 때 사용 <br></p>
+</blockquote>
+<blockquote>
+<p>참고 : LocalDate, LocalDateTime을 사용할 때는 생략 가능(최신 하이버네이트 지원)</p>
+</blockquote>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>    private LocalDate createdAt;
+    private LocalDate modifiedAt;
+    private LocalDateTime createdTime;
+    private LocalDateTime modifiedTime;
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-017.png" alt="contact"></p>
+<blockquote>
+<p>createdAt, modifiedAt 은 DATE 타입으로 생성되었고, createdTime, modifiedTime은 TIMESTAMP로 생성된 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<h4 id="lob">@Lob</h4>
+<blockquote>
+<p>데이터베이스 BLOB, CLOB 타입과 매핑</p>
+<ul>
+<li>@Lob에는 지정할 수 있는 속성이 없다.</li>
+<li>매핑하는 필드 타입이 문자면 CLOB 매핑, 나머지는 BLOB 매핑
+<ul>
+<li>CLOB : String, char[], java.sql.CLOB</li>
+<li>BLOB : byte[], java.sql.BLOB</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="transient">@Transient</h4>
+<blockquote>
+<ul>
+<li>필드 매핑 사용 X</li>
+<li>데이터베이스에 저장X, 조회X</li>
+<li>주로 메모리상에서만 임시로 어떤 값을 보관하고 싶을 때 사용</li>
+</ul>
+</blockquote>
+<pre><code>	@Transient
+	private Integer temp;
+</code></pre>
 <h3 id="참고">참고<a class="anchor" href="#참고">#</a></h3>
 <blockquote>
 <ul>
