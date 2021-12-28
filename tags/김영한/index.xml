@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 24 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[자바 ORM 표준 JPA] 기본키 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</guid>
+      <description>기본키 매핑 기본 키 매핑 어노테이션   @Id @GeneratedValue   @Id @GeneratedValue(strategy = GenerationTpye.AUTO)private Long id; 기본 키 매핑 방법   직접 할당 : @Id 만 사용 자동 생성(@GeneratedValue)  IDENTITY : 데이터베이스에 위임, MySLQ) SEQUENCE : 데이터베이스 시퀀스 오브젝트 사용, ORACLE  @SequenceGenerator 필요     TABLE: 키 생성용 테이블 사용, 모든 DB에서 사용  @TableGenerator 필요   AUTO: 방언에 따라 자동 지정, 기본값   기본 키 매핑 방법 테스트 Id 직접할당 - @Id 사용  Member.</description>
+    </item>
+    
     <item>
       <title>[자바 ORM 표준 JPA] 객체와 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/entity-mapping/</link>
