@@ -81,7 +81,7 @@
       "datePublished": "2021-12-24 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-24 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/entity-mapping\/",
-      "wordCount" : "2139",
+      "wordCount" : "2141",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -175,8 +175,11 @@
           <article class="post__content">
               
 <h1 id="객체와-매핑">객체와 매핑</h1>
+<hr>
 <h2 id="객체와-테이블-매핑">객체와 테이블 매핑<a class="anchor" href="#객체와-테이블-매핑">#</a></h2>
+<hr>
 <h3 id="목차">목차<a class="anchor" href="#목차">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>객체와 테이블 매핑</li>
@@ -186,6 +189,7 @@
 </ul>
 </blockquote>
 <h3 id="엔티티-매핑-소개">엔티티 매핑 소개<a class="anchor" href="#엔티티-매핑-소개">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>객체와 테이블 매핑 : @Entity, @Table</li>
@@ -195,7 +199,9 @@
 </ul>
 </blockquote>
 <h3 id="객체와-테이블-매핑-1">객체와 테이블 매핑<a class="anchor" href="#객체와-테이블-매핑-1">#</a></h3>
-<h4 id="entity">@Entity</h4>
+<hr>
+<h3 id="entity">@Entity<a class="anchor" href="#entity">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>@Entity가 붙은 클래스는 JPA가 관리, 엔티티라 부른다.</li>
@@ -260,7 +266,8 @@ public class Member {
 }
 
 </code></pre>
-<h4 id="table">@Table</h4>
+<h3 id="table">@Table<a class="anchor" href="#table">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>@Table은 엔티티와 매핑할 테이블 지정</li>
@@ -297,6 +304,9 @@ public class Member {
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>package hellojpa;
 
 import javax.persistence.Entity;
@@ -337,6 +347,7 @@ public class Member {
 
 </code></pre>
 <h3 id="데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성<a class="anchor" href="#데이터베이스-스키마-자동-생성">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>DDL을 애플리케이션 실행 시점에 자동 생성</li>
@@ -346,7 +357,7 @@ public class Member {
 <li>생성된 DDL은 운영서버에서는 사용하지 않거나, 적절히 다듬은 후 사용</li>
 </ul>
 </blockquote>
-<h4 id="데이터베이스-스키마-자동-생성---속성">데이터베이스 스키마 자동 생성 - 속성</h4>
+<h3 id="데이터베이스-스키마-자동-생성---속성">데이터베이스 스키마 자동 생성 - 속성<a class="anchor" href="#데이터베이스-스키마-자동-생성---속성">#</a></h3>
 <blockquote>
 <ul>
 <li>persistence.xml 옵션</li>
@@ -384,7 +395,7 @@ public class Member {
 </tr>
 </tbody>
 </table>
-<h5 id="create">Create</h5>
+<h4 id="create">Create</h4>
 <blockquote>
 <p>persistence.xml</p>
 </blockquote>
@@ -420,7 +431,7 @@ public class Member {
 <blockquote>
 <p>Member 테이블을 먼저 drop하고 create 문을 실행</p>
 </blockquote>
-<h5 id="create---컬럼-추가-후-애플리케이션-재실행">Create - 컬럼 추가 후 애플리케이션 재실행</h5>
+<h4 id="create---컬럼-추가-후-애플리케이션-재실행">Create - 컬럼 추가 후 애플리케이션 재실행</h4>
 <blockquote>
 <p>Member.Java</p>
 </blockquote>
@@ -480,7 +491,7 @@ public class Member {
 <blockquote>
 <p>추가된 컬럼을 포함하여 Member 테이블이 다시 생성된다.</p>
 </blockquote>
-<h5 id="create-drop">create-drop</h5>
+<h4 id="create-drop">create-drop</h4>
 <blockquote>
 <p>create와 같지만 종료시점에 생성한 테이블 모두 drop, 예를들어 테스트 케이스 수행후 삭제할때 사용가능</p>
 </blockquote>
@@ -495,7 +506,7 @@ public class Member {
 <blockquote>
 <p>종료시에 drop을 하는것을 볼 수 있다.</p>
 </blockquote>
-<h5 id="update">update</h5>
+<h4 id="update">update</h4>
 <blockquote>
 <p>추가 했던 age를 잠깐 다시 돌려두고, create 후 update를 실행해 보겠습니다.</p>
 </blockquote>
@@ -666,7 +677,7 @@ public class Member {
 <blockquote>
 <p>실수라도 테이블 컬럼을 삭제하여, 데이터가 날아갈 수 있기 때문에 <mark>컬럼 삭제는 update 옵션에서 변경을 지원하지 않습니다</mark>.</p>
 </blockquote>
-<h5 id="validate">validate</h5>
+<h4 id="validate">validate</h4>
 <blockquote>
 <p>테이블과 entity가 정상 매핑되어있는지 확인해 줍니다.</p>
 </blockquote>
@@ -691,12 +702,12 @@ public class Member {
 <p>Schema-validation: missing column [address] in table [Member] <br>
 MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 </blockquote>
-<h5 id="none">none</h5>
+<h4 id="none">none</h4>
 <blockquote>
 <p>스키마 자동 생성 사용안함으로 설정<br>
 주석으로 해두는 것과 비슷하며, create, create-drop, update, validate가 아닌 어떤 문자열이 들어가 있어도 none과 같음</p>
 </blockquote>
-<h5 id="데이터베이스-방언-별로-달라지는것-확인-varchar">데이터베이스 방언 별로 달라지는것 확인 (varchar)</h5>
+<h4 id="데이터베이스-방언-별로-달라지는것-확인-varchar">데이터베이스 방언 별로 달라지는것 확인 (varchar)</h4>
 <blockquote>
 <p>persistence.xml</p>
 </blockquote>
@@ -726,7 +737,7 @@ MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 </blockquote>
 <pre><code>&lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
 </code></pre>
-<h5 id="데이터베이스-스키마-자동-생성---주의">데이터베이스 스키마 자동 생성 - 주의</h5>
+<h4 id="데이터베이스-스키마-자동-생성---주의">데이터베이스 스키마 자동 생성 - 주의</h4>
 <blockquote>
 <ul>
 <li><mark>운영 장비에는 절대 create, create-drop, update 사용하면 안된다.</mark></li>
@@ -752,7 +763,7 @@ MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 columnNames = {&ldquo;NAME&rdquo;, &ldquo;AGE&rdquo;} )})</li>
 </ul>
 </blockquote>
-<h5 id="제약조건-추가">제약조건 추가</h5>
+<h4 id="제약조건-추가">제약조건 추가</h4>
 <blockquote>
 <p>Member.java</p>
 </blockquote>
@@ -765,6 +776,7 @@ columnNames = {&ldquo;NAME&rdquo;, &ldquo;AGE&rdquo;} )})</li>
 <p>Member entity의 name 사이즈가 varchar(10)으로 생성되고, alter table을 통해 제약조건을 추가한 것을 확인 할 수 있습니다.</p>
 </blockquote>
 <h3 id="필드와-컬럼-매핑">필드와 컬럼 매핑<a class="anchor" href="#필드와-컬럼-매핑">#</a></h3>
+<hr>
 <h4 id="요청사항-추가">요청사항 추가</h4>
 <blockquote>
 <ol>
@@ -825,7 +837,8 @@ public enum RoleType {
 <p>JpaMain.java 의 tx.transaction 내부 소스를 지우고 실행한다.</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-011.png" alt="contact"></p>
-<h4 id="매핑-어노테이션-정리">매핑 어노테이션 정리</h4>
+<h3 id="매핑-어노테이션-정리">매핑 어노테이션 정리<a class="anchor" href="#매핑-어노테이션-정리">#</a></h3>
+<p>&mdash;&mdash;&mdash;&mdash;-ㄴ</p>
 <table>
 <thead>
 <tr>
@@ -856,7 +869,8 @@ public enum RoleType {
 </tr>
 </tbody>
 </table>
-<h4 id="column-옵션-정리">@Column 옵션 정리</h4>
+<h3 id="column-옵션-정리">@Column 옵션 정리<a class="anchor" href="#column-옵션-정리">#</a></h3>
+<hr>
 <table>
 <thead>
 <tr>
@@ -921,7 +935,8 @@ public enum RoleType {
 <pre><code>&gt; - @Table(uniqueConstraints = {@UniqueConstraint( name = &quot;NAME_AGE_UNIQUE&quot;,
 	 columnNames = {&quot;NAME&quot;, &quot;AGE&quot;} )})
 </code></pre>
-<h4 id="enumerated">@Enumerated</h4>
+<h3 id="enumerated">@Enumerated<a class="anchor" href="#enumerated">#</a></h3>
+<hr>
 <blockquote>
 <p>자바 enum 타입을 매피할 때 사용</p>
 </blockquote>
@@ -949,8 +964,8 @@ public enum RoleType {
 </tr>
 </tbody>
 </table>
-<h5 id="enumtypeordinal-와-enumtypestring-비교">EnumType.ORDINAL 와 EnumType.STRING 비교</h5>
-<h6 id="enumtypeordinal-일때">EnumType.ORDINAL 일때</h6>
+<h4 id="enumtypeordinal-와-enumtypestring-비교">EnumType.ORDINAL 와 EnumType.STRING 비교</h4>
+<h5 id="enumtypeordinal-일때">EnumType.ORDINAL 일때</h5>
 <blockquote>
 <p>Member.java - EnumType.ORDINAL으로 설정 (Setter Getter 추가)</p>
 </blockquote>
@@ -1099,7 +1114,7 @@ public enum RoleType {
 <blockquote>
 <p>enum의 0번째 인덱스에 GUEST가 추가되면서 DB의 RoleType이 3번째 사용자 빼고 전부 잘못된 것을 확인할 수 있습니다.</p>
 </blockquote>
-<h6 id="enumtypestring-일때">EnumType.STRING 일때</h6>
+<h4 id="enumtypestring-일때">EnumType.STRING 일때</h4>
 <blockquote>
 <p>persistence.xml - 다시 create로 바꿔 설정</p>
 </blockquote>
@@ -1124,7 +1139,8 @@ public enum RoleType {
 <blockquote>
 <p>roleType의 데이터가 GUEST로 들어간 것을 확인할 수 있습니다. 몇자 아끼려다 큰 장애를 경험할 수 있기 때문에 ORDINAL이 아니라 STRING으로 사용하길 권장드립니다.</p>
 </blockquote>
-<h4 id="temporal">@Temporal</h4>
+<h3 id="temporal">@Temporal<a class="anchor" href="#temporal">#</a></h3>
+<hr>
 <blockquote>
 <p>날짜 타입(java.util.Date, java.util.Canendar)를 매핑할 때 사용 <br></p>
 </blockquote>
@@ -1143,7 +1159,8 @@ public enum RoleType {
 <blockquote>
 <p>createdAt, modifiedAt 은 DATE 타입으로 생성되었고, createdTime, modifiedTime은 TIMESTAMP로 생성된 것을 확인 할 수 있습니다.</p>
 </blockquote>
-<h4 id="lob">@Lob</h4>
+<h3 id="lob">@Lob<a class="anchor" href="#lob">#</a></h3>
+<hr>
 <blockquote>
 <p>데이터베이스 BLOB, CLOB 타입과 매핑</p>
 <ul>
@@ -1156,7 +1173,8 @@ public enum RoleType {
 </li>
 </ul>
 </blockquote>
-<h4 id="transient">@Transient</h4>
+<h3 id="transient">@Transient<a class="anchor" href="#transient">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>필드 매핑 사용 X</li>
@@ -1292,8 +1310,17 @@ public enum RoleType {
         <li><a href="#목차">목차</a></li>
         <li><a href="#엔티티-매핑-소개">엔티티 매핑 소개</a></li>
         <li><a href="#객체와-테이블-매핑-1">객체와 테이블 매핑</a></li>
+        <li><a href="#entity">@Entity</a></li>
+        <li><a href="#table">@Table</a></li>
         <li><a href="#데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성</a></li>
+        <li><a href="#데이터베이스-스키마-자동-생성---속성">데이터베이스 스키마 자동 생성 - 속성</a></li>
         <li><a href="#필드와-컬럼-매핑">필드와 컬럼 매핑</a></li>
+        <li><a href="#매핑-어노테이션-정리">매핑 어노테이션 정리</a></li>
+        <li><a href="#column-옵션-정리">@Column 옵션 정리</a></li>
+        <li><a href="#enumerated">@Enumerated</a></li>
+        <li><a href="#temporal">@Temporal</a></li>
+        <li><a href="#lob">@Lob</a></li>
+        <li><a href="#transient">@Transient</a></li>
       </ul>
     </li>
   </ul>

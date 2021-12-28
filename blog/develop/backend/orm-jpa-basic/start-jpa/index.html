@@ -81,7 +81,7 @@
       "datePublished": "2021-12-18 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-18 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/start-jpa\/",
-      "wordCount" : "1747",
+      "wordCount" : "1753",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -175,8 +175,11 @@
           <article class="post__content">
               
 <h1 id="jpa-시작하기">JPA 시작하기</h1>
+<hr>
 <h2 id="hello-jpa---프로젝트-생성">Hello JPA - 프로젝트 생성<a class="anchor" href="#hello-jpa---프로젝트-생성">#</a></h2>
+<hr>
 <h3 id="h2-database-설치">H2 Database 설치<a class="anchor" href="#h2-database-설치">#</a></h3>
+<hr>
 <blockquote>
 <p><a href="https://www.h2database.com/html/main.html">H2 홈페이지</a>에서 OS에 맞는 설치 파일을 다운로드한다.</p>
 </blockquote>
@@ -194,6 +197,7 @@
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-007.png" alt="contact"></p>
 <h3 id="springboot-프로젝트-생성">SpringBoot 프로젝트 생성<a class="anchor" href="#springboot-프로젝트-생성">#</a></h3>
+<hr>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-020.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-021.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-022.png" alt="contact"></p>
@@ -237,12 +241,14 @@
 &lt;/project&gt;
 </code></pre>
 <h4 id="스프링부트에-맞는-dependency-버전확인">스프링부트에 맞는 Dependency 버전확인</h4>
+<hr>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-012.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-013.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-015.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-016.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-017.png" alt="contact"></p>
 <h3 id="jpa-설정하기---persistencexml">JPA 설정하기 - persistence.xml<a class="anchor" href="#jpa-설정하기---persistencexml">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>JPA 설정 파일</li>
@@ -257,7 +263,9 @@
 <li>hibernate로 시작: 하이버네이트 전용 속성</li>
 </ul>
 </blockquote>
-<h4 id="persistencexml">persistence.xml</h4>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
 &lt;persistence version=&quot;2.2&quot; 
  xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
@@ -282,6 +290,7 @@
 
 </code></pre>
 <h3 id="데이터베이스-방언">데이터베이스 방언<a class="anchor" href="#데이터베이스-방언">#</a></h3>
+<hr>
 <blockquote>
 <p>SQL 표준을 지치지 않는 특정 데이터베이스의 고유한 기능</p>
 </blockquote>
@@ -306,8 +315,10 @@
 </ul>
 </blockquote>
 <h3 id="jpa-구동-방식">JPA 구동 방식<a class="anchor" href="#jpa-구동-방식">#</a></h3>
+<hr>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-019.png" alt="contact"></p>
 <h3 id="실습---jpa-동작-확인">실습 - JPA 동작 확인<a class="anchor" href="#실습---jpa-동작-확인">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>JpaMain 클래스 생성</li>
@@ -343,6 +354,9 @@
 <h5 id="entitiymanagerfactory-생성-후-실행">EntitiyManagerFactory 생성 후 실행</h5>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-028.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-029.png" alt="contact"></p>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>
 package hellojpa;
 
@@ -367,13 +381,16 @@ public class JpaMain {
 
 </code></pre>
 <h3 id="객체-테이블을-생성하고-매핑하기">객체 테이블을 생성하고 매핑하기<a class="anchor" href="#객체-테이블을-생성하고-매핑하기">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>@Entity : JPA가 관리할 객체</li>
 <li>@Id : 데이터베이스 PK와 패밍</li>
 </ul>
 </blockquote>
-<h4 id="memberjava">Member.java</h4>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
 <pre><code>package hellojpa; 
 import javax.persistence.Entity; // 비슷한게 나오면  javax 
 import javax.persistence.Id; 
@@ -387,7 +404,9 @@ public class Member {
 } 
 create table Me
 </code></pre>
-<h4 id="member-create-sql">MEMBER CREATE SQL</h4>
+<blockquote>
+<p>MEMBER CREATE SQL</p>
+</blockquote>
 <pre><code>create table Member ( 
  id bigint not null, 
  name varchar(255), 
@@ -402,6 +421,7 @@ create table Me
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/start-jpa/img-031.png" alt="contact"></p>
 <h3 id="member에-데이터-insert">Member에 데이터 Insert<a class="anchor" href="#member에-데이터-insert">#</a></h3>
+<hr>
 <blockquote>
 <p>Member.java 생성후 실행</p>
 </blockquote>
@@ -427,9 +447,8 @@ Caused by: org.hibernate.id.IdentifierGenerationException: ids for this class mu
 	... 2 more
 
 </code></pre>
-<h4 id="jpamain">JpaMain</h4>
 <blockquote>
-<p>member.id, memeber.name 세팅</p>
+<p>JpaMain.java - member.id, memeber.name 세팅</p>
 </blockquote>
 <pre><code>package hellojpa;
 
@@ -494,6 +513,9 @@ Process finished with exit code 0
 <p>JPA에서는 Transaction이 매우 중요한데, JPA의 모든 작업은 Transaction 안에서 이루어져야한다.</p>
 </blockquote>
 <h4 id="entitytransaction-추가">EntityTransaction 추가</h4>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>package hellojpa;
 
 import javax.persistence.EntityManager;
@@ -545,7 +567,9 @@ public class JpaMain {
 <p>그래고 H2 DataBase에 어떠한 테이블로 저장하겠다 설정을 하지 않았지만, 관례에 따라 @Entity의 Class명에 Insert 합니다. 또한 테이블 명을 지정하고 싶다면 @Table(name = &ldquo;테이블명&rdquo;)을 이용해 저장될 테이블을 세팅할 수 있습니다. <br>
 그리고 @Column(name=&ldquo;컬럼명&rdquo;)을 통해 저장할 컬럼을 매핑 할 수도 있습니다.</p>
 </blockquote>
-<h4 id="memberjava-1">Member.java</h4>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
 <pre><code>
 @Entity
 @Table(name = &quot;Member&quot;)
@@ -561,7 +585,9 @@ public class Member {
 <blockquote>
 <p>그리고 문제가 있을때를 대비해서 Try Catch문도 포함해 줍니다.</p>
 </blockquote>
-<h4 id="jpamainjava">JpaMain.java</h4>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>package hellojpa;
 
 import javax.persistence.EntityManager;
@@ -601,6 +627,10 @@ public class JpaMain {
 
 </code></pre>
 <h3 id="member-데이터-select">Member 데이터 Select<a class="anchor" href="#member-데이터-select">#</a></h3>
+<hr>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>package hellojpa;
 
 import javax.persistence.EntityManager;
@@ -646,6 +676,10 @@ public class JpaMain {
 
 </code></pre>
 <h3 id="member-데이터-update">Member 데이터 Update<a class="anchor" href="#member-데이터-update">#</a></h3>
+<hr>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>package hellojpa;
 
 import javax.persistence.EntityManager;
@@ -701,6 +735,7 @@ public class JpaMain {
 <p>변경된 것을 확인 할 수 있습니다. commit을 할때 set()을 통해 변경사항이 있는경우 JPA가 자동으로 Update를 해준다.</p>
 </blockquote>
 <h3 id="주의">주의<a class="anchor" href="#주의">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>엔티티 매니저 팩토리는 하나만 생성해서 애플리케이션 전체에서 공유</li>
@@ -709,6 +744,7 @@ public class JpaMain {
 </ul>
 </blockquote>
 <h3 id="jpql-소개">JPQL 소개<a class="anchor" href="#jpql-소개">#</a></h3>
+<hr>
 <blockquote>
 <p>간단 조회는 키값을 넣고 findMember하고 데이터 불러다 사용하면 되는데, 조건을 사용한 검색을 해야할때 어떻게 해야할까? <br>
 나이가 18살 이상인 회원을 모두 검색하고 싶다면?</p>
@@ -721,6 +757,7 @@ public class JpaMain {
 </ul>
 </blockquote>
 <h3 id="실습---jpql-소개">실습 - JPQL 소개<a class="anchor" href="#실습---jpql-소개">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>JPQL로 전체 회원 검색</li>
@@ -730,6 +767,9 @@ public class JpaMain {
 </ul>
 </blockquote>
 <h4 id="실습">실습</h4>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>package hellojpa;
 
 import javax.persistence.EntityManager;
@@ -887,7 +927,9 @@ public class JpaMain {
 <blockquote>
 <p>H2 SQL로 결과가 나오지만, persistence.xml의 hibernate.dialect를 오라클로 변경하면</p>
 </blockquote>
-<h5 id="persistencexml-1">persistence.xml</h5>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;persistence version=&quot;2.2&quot;
              xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -938,6 +980,7 @@ public class JpaMain {
                 and rownum_ &gt; ?
 </code></pre>
 <h3 id="jpql">JPQL<a class="anchor" href="#jpql">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>JPA를 사용하면, 엔티티 객체를 중심으로 개발</li>
@@ -948,6 +991,7 @@ public class JpaMain {
 </ul>
 </blockquote>
 <h3 id="jpql-1">JPQL<a class="anchor" href="#jpql-1">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>JPA는 SQL을 추상화한 JPQL이라는 객체 지향 쿼리 언어 제공</li>

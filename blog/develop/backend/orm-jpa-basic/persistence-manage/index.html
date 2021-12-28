@@ -81,7 +81,7 @@
       "datePublished": "2021-12-21 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-21 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/persistence-manage\/",
-      "wordCount" : "996",
+      "wordCount" : "1011",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -175,8 +175,11 @@
           <article class="post__content">
               
 <h1 id="jpa-영속성-관리---내부-동작-방식">JPA 영속성 관리 - 내부 동작 방식</h1>
+<hr>
 <h2 id="영속성-컨텍스트">영속성 컨텍스트<a class="anchor" href="#영속성-컨텍스트">#</a></h2>
+<hr>
 <h3 id="jpa에서-가장-중요한-2가지">JPA에서 가장 중요한 2가지<a class="anchor" href="#jpa에서-가장-중요한-2가지">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>객체와 관계형 데이터베이트 매핑하기 (Object Relational Mapping)</li>
@@ -184,11 +187,13 @@
 </ul>
 </blockquote>
 <h3 id="엔티티-매니저-팩토리와-앤티티-매니저">엔티티 매니저 팩토리와 앤티티 매니저<a class="anchor" href="#엔티티-매니저-팩토리와-앤티티-매니저">#</a></h3>
+<hr>
 <blockquote>
 <p>요청이 오면 앤티티 매니저 팩토리를 통해 엔티티 매니저를 생성하고, 앤티티 매니저는 커넥션풀을 이용해 DB에 접근 합니다.</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-001.png" alt="contact"></p>
 <h3 id="영속성-컨텍스트-1">영속성 컨텍스트<a class="anchor" href="#영속성-컨텍스트-1">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>JPA를 이해하는데 가장 중요한 용어</li>
@@ -198,6 +203,7 @@
 </ul>
 </blockquote>
 <h3 id="엔티티-매니저-영속성-컨텍스트">엔티티 매니저? 영속성 컨텍스트?<a class="anchor" href="#엔티티-매니저-영속성-컨텍스트">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>영속성 컨텍스트는 논리적인 개념</li>
@@ -216,6 +222,7 @@
 <img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-003.png" alt="contact"></p>
 </blockquote>
 <h3 id="엔티티의-생명주기">엔티티의 생명주기<a class="anchor" href="#엔티티의-생명주기">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>비영속 (new/transient)
@@ -246,16 +253,24 @@
 <p>객체만 생성하고 세팅한 상태</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-005.png" alt="contact"></p>
-<pre><code>// 객체를 생성한 상태(비영속)
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>...
+// 객체를 생성한 상태(비영속)
 Member member = new Mamber();
 member.setId(2L);
 member.setName(&quot;회원2&quot;)
+...
 </code></pre>
 <h4 id="영속-managed">영속 (managed)</h4>
 <blockquote>
 <p>객체만 생성하고 세팅한 상태</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-006.png" alt="contact"></p>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>// 객체를 생성한 상태(비영속)
 Member member = new Mamber();
 member.setId(2L);
@@ -278,6 +293,7 @@ tx.commit(); // 실제 쿼리가 실행되는 지점
 
 </code></pre>
 <h3 id="영속성-컨텍스트의-이점">영속성 컨텍스트의 이점<a class="anchor" href="#영속성-컨텍스트의-이점">#</a></h3>
+<hr>
 <blockquote>
 <p>영속성 컨텍스트는 객체와 DB 사이에 하나의 계층이 있는것</p>
 </blockquote>
@@ -295,6 +311,9 @@ tx.commit(); // 실제 쿼리가 실행되는 지점
 <p>영속성 컨텍스트는 내부에 1차 캐시를 가지고 있습니다. @Id가 키가 되고 값은 member객체 자체인 Map이라 생각하면 됩니다.</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-007.png" alt="contact"></p>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>// 엔티티를 생성한 상태(비영속)
 Member member = new Member();
 member.setId(3L);
@@ -305,6 +324,9 @@ em.persist(member);
 
 </code></pre>
 <h4 id="1차-캐시에서-조회">1차 캐시에서 조회</h4>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>// 엔티티를 생성한 상태(비영속)
 Member member = new Member();
 member.setId(3L);
@@ -321,7 +343,12 @@ Member findMemeber = em.find(Member.class, &quot;3L&quot;);
 <p>조회를 실행시 우선적으로 1차 캐시에 값으로 객체가 있는지 확인 후 있으면 캐시에서 바로 가져오고, 없는 경우 DB에서 조회를 하여 1차 캐시에 저장하고 객체를 가져오게 됩니다.</p>
 </blockquote>
 <h4 id="db에서-조회">DB에서 조회</h4>
-<pre><code>Member findMemeber = em.find(Member.class, &quot;10L&quot;);
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>...
+Member findMemeber = em.find(Member.class, &quot;10L&quot;);
+...
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-009.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-010.png" alt="contact"></p>
@@ -333,6 +360,10 @@ Member findMemeber = em.find(Member.class, &quot;3L&quot;);
 <p>같은 객체를 여러번 조회를 하면, 1번만 Select 문을 날리고 이후 1차 캐시에서 조회</p>
 </blockquote>
 <h3 id="영속-엔티티의-동일성-보장">영속 엔티티의 동일성 보장<a class="anchor" href="#영속-엔티티의-동일성-보장">#</a></h3>
+<hr>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>  	Member findMember1 = em.find(Member.class, 10L);
 	Member findMember2 = em.find(Member.class, 10L);
 	
@@ -344,6 +375,10 @@ Member findMemeber = em.find(Member.class, &quot;3L&quot;);
 <p>같은 트랜잭션 안에서는 조회한 같은 객체는 동일한 객체로 인식 보장</p>
 </blockquote>
 <h3 id="엔티티-등록---트랜잭션을-지원하는-쓰기-지연">엔티티 등록 - 트랜잭션을 지원하는 쓰기 지연<a class="anchor" href="#엔티티-등록---트랜잭션을-지원하는-쓰기-지연">#</a></h3>
+<hr>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code> EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;hello&quot;);
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -384,7 +419,9 @@ Member findMemeber = em.find(Member.class, &quot;3L&quot;);
 <blockquote>
 <p>커밋을 하게되면 쓰기지연 저장소에 있는 SQL들을 flush하며, DB에 SQL문들을 DB에 커밋하게 됩니다.</p>
 </blockquote>
-<h5 id="memberjava">Member.java</h5>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
 <pre><code>package hellojpa;
 
 import javax.persistence.Entity;
@@ -431,7 +468,9 @@ public class Member {
 <blockquote>
 <p>JPA의 옵션중</p>
 </blockquote>
-<h4 id="persistencexml---hibernatejdbcbatch_size">persistence.xml - hibernate.jdbc.batch_size</h4>
+<blockquote>
+<p>persistence.xml - hibernate.jdbc.batch_size</p>
+</blockquote>
 <pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;persistence version=&quot;2.2&quot;
              xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -452,8 +491,12 @@ public class Member {
 <p>옵션 하나로 JPA의 성능에 대한 이점을 챙길 수 있습니다.</p>
 </blockquote>
 <h3 id="엔티티-수정---변경-감지dirty-checking">엔티티 수정 - 변경 감지(dirty checking)<a class="anchor" href="#엔티티-수정---변경-감지dirty-checking">#</a></h3>
+<hr>
 <blockquote>
 <p>JPA에서는 컬렉션에서 값을 수정하는 것처럼 따로 저장하지 않아도 변경 감지를 통해 commit시 Update 문을 자동으로 수행</p>
+</blockquote>
+<blockquote>
+<p>JpaMain.java</p>
 </blockquote>
 <pre><code>EntityMananger em = emf.createEntityManager();
 EntityTransaction tx = em.getTransaction();
@@ -483,15 +526,21 @@ tx.commit(); // [트랜잭션] 커밋
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-019.png" alt="contact"></p>
 <h3 id="엔티티-삭제">엔티티 삭제<a class="anchor" href="#엔티티-삭제">#</a></h3>
+<hr>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>// 삭제할 대상 엔티티 조회
 Member memberA = em.find(Member.class, 11L);
 em.remove(memberA); // 엔티티 삭제
 </code></pre>
 <h2 id="플러시">플러시<a class="anchor" href="#플러시">#</a></h2>
+<hr>
 <blockquote>
 <p>영속성 컨텍스트의 변경내용을 데이터베이스에 반영</p>
 </blockquote>
 <h3 id="플러시-발생">플러시 발생<a class="anchor" href="#플러시-발생">#</a></h3>
+<hr>
 <blockquote>
 <p>트랜잭션이 커밋되면 자동적으로 플로시가 발생되며, 1차 캐시의 변동없음(다른 flush의 비우는 기능과 다름.)</p>
 </blockquote>
@@ -503,6 +552,7 @@ em.remove(memberA); // 엔티티 삭제
 </ul>
 </blockquote>
 <h3 id="영속성-컨텍스트를-플러시-하는-방법">영속성 컨텍스트를 플러시 하는 방법<a class="anchor" href="#영속성-컨텍스트를-플러시-하는-방법">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>em.flush() - 직접 호출 (잘 사용은 안되지만, 테스트 시 알아두면 유용)</li>
@@ -515,6 +565,10 @@ em.remove(memberA); // 엔티티 삭제
 <p>다른 예제들과 다르게 라인 &ldquo;===========&rdquo; 보다 이전에 flush()를 실행항 당시 변경 사항의 SQL이 로그에 찍히게됨.</p>
 </blockquote>
 <h3 id="jpql-쿼리-실행시-플러시가-자동으로-호출되는-이유">JPQL 쿼리 실행시 플러시가 자동으로 호출되는 이유<a class="anchor" href="#jpql-쿼리-실행시-플러시가-자동으로-호출되는-이유">#</a></h3>
+<hr>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>em.persist(memberA);
 em.persist(memberB);
 em.persist(memberC);
@@ -527,6 +581,10 @@ List&lt;Member&gt; members = query.getResultList();
 <p>만일 memberA, memberB, memberC를 영속화 하고, Member 테이블의 전체 리스트를 조회하면 아무 결과가 안나올 것입니다. 아직 commit()을 통한 flush()가 실행 되기 이전이기 떄문입니다. 이러한 문제점을 해결하기 위해 JPA에서는 JPQL을 실행할 때 우선 flush()를 실행합니다.</p>
 </blockquote>
 <h3 id="플러시-모드-옵션">플러시 모드 옵션<a class="anchor" href="#플러시-모드-옵션">#</a></h3>
+<hr>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
 <pre><code>em.setFlushMode(FlushModeType.COMMIT);
 </code></pre>
 <blockquote>
@@ -536,6 +594,7 @@ List&lt;Member&gt; members = query.getResultList();
 </ul>
 </blockquote>
 <h3 id="플러시는-">플러시는 !<a class="anchor" href="#플러시는-">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>영속성 컨텍스트를 비우지 않음</li>
@@ -544,6 +603,7 @@ List&lt;Member&gt; members = query.getResultList();
 </ul>
 </blockquote>
 <h2 id="준영속-상태">준영속 상태<a class="anchor" href="#준영속-상태">#</a></h2>
+<hr>
 <blockquote>
 <ul>
 <li>영속  -&gt; 준영속 
@@ -558,6 +618,7 @@ List&lt;Member&gt; members = query.getResultList();
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-021.png" alt="contact"></p>
 <h3 id="준영속-상태로-만드는-방법">준영속 상태로 만드는 방법<a class="anchor" href="#준영속-상태로-만드는-방법">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li>em.detach(entity) - 특정 엔티티만 준영속 상태로 전환</li>

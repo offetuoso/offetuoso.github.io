@@ -81,7 +81,7 @@
       "datePublished": "2021-12-26 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-26 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/primary-key-mapping\/",
-      "wordCount" : "1931",
+      "wordCount" : "1930",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -175,7 +175,9 @@
           <article class="post__content">
               
 <h1 id="기본키-매핑">기본키 매핑</h1>
+<hr>
 <h2 id="기본-키-매핑-어노테이션">기본 키 매핑 어노테이션<a class="anchor" href="#기본-키-매핑-어노테이션">#</a></h2>
+<hr>
 <blockquote>
 <ul>
 <li>@Id</li>
@@ -186,6 +188,7 @@
 private Long id;
 </code></pre>
 <h2 id="기본-키-매핑-방법">기본 키 매핑 방법<a class="anchor" href="#기본-키-매핑-방법">#</a></h2>
+<hr>
 <blockquote>
 <ul>
 <li>직접 할당 : @Id 만 사용</li>
@@ -207,8 +210,8 @@ private Long id;
 <li>AUTO: 방언에 따라 자동 지정, 기본값</li>
 </ul>
 </blockquote>
-<h3 id="기본-키-매핑-방법-테스트">기본 키 매핑 방법 테스트<a class="anchor" href="#기본-키-매핑-방법-테스트">#</a></h3>
-<h4 id="id-직접할당---id-사용">Id 직접할당 - @Id 사용</h4>
+<h3 id="id-직접할당---id-사용">Id 직접할당 - @Id 사용<a class="anchor" href="#id-직접할당---id-사용">#</a></h3>
+<hr>
 <blockquote>
 <p>Member.java
 기본 키 매핑에 좀더 집중하기 위해 Memeber의 Id를 String 으로 변경하고, Id, name을 제외한 나머지를 일단 제거합니다.</p>
@@ -268,7 +271,8 @@ public class Member {
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-001.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-002.png" alt="contact"></p>
-<h4 id="id-자동할당---generatedvalue">Id 자동할당 - @GeneratedValue</h4>
+<h3 id="id-자동할당---generatedvalue">Id 자동할당 - @GeneratedValue<a class="anchor" href="#id-자동할당---generatedvalue">#</a></h3>
+<hr>
 <blockquote>
 <p>GeneratedValue의 전략은 AUTO, IDENTITY, SEQUENCE, TABLE가 있으며, <br>
 AUTO는 방언에 따라 다르게 생성</p>
@@ -279,7 +283,9 @@ AUTO는 방언에 따라 다르게 생성</p>
     @GeneratedValue(strategy = GenerationType.TABLE) 
     
 </code></pre>
-<h5 id="generationtypeidentity---특징">GenerationType.IDENTITY - 특징</h5>
+<h3 id="generationtypeidentity">GenerationType.IDENTITY<a class="anchor" href="#generationtypeidentity">#</a></h3>
+<hr>
+<h4 id="generationtypeidentity---특징">GenerationType.IDENTITY - 특징</h4>
 <blockquote>
 <ul>
 <li>기본 키 생성을 데이터베이스에 위임</li>
@@ -416,7 +422,7 @@ INFO: HHH10001008: Cleaning up connection pool [jdbc:h2:tcp://localhost/~/test]
 Process finished with exit code 0
 
 </code></pre>
-<h5 id="identity-전략-애매한점">IDENTITY 전략 애매한점</h5>
+<h4 id="identity-전략-애매한점">IDENTITY 전략 애매한점</h4>
 <blockquote>
 <p>strategy = GenerationType.IDENTITY를 사용할 경우 Key를 Null로 하여 DB에 인서트할 당시에 키가 생성하게됩니다. <br> 영속성 컨텍스트에서 관리를 하기 위해서는  PK값이 있어야 합니다. 하지만 이 전략은 DB에 들어가봐야 PK를 알 수 있습니다. 그래서 제약이 생기게 됩니다.</p>
 </blockquote>
@@ -461,7 +467,9 @@ public class Member {
 <blockquote>
 <p>persist() 시점에 Insert SQL 이 날라가게 됩니다. 그리고 바로 영속성 컨텍스트의 1차 캐시에 Id 값을 가져올 수 있는 것 을 확인 할 수 있습니다.</p>
 </blockquote>
-<h5 id="generationtypesequence---특징">GenerationType.SEQUENCE - 특징</h5>
+<h3 id="generationtypesequence">GenerationType.SEQUENCE<a class="anchor" href="#generationtypesequence">#</a></h3>
+<hr>
+<h4 id="generationtypesequence---특징">GenerationType.SEQUENCE - 특징</h4>
 <blockquote>
 <ul>
 <li>데이터베이스 시퀀스는 유일한 값을 순서대로 생성하는 특별한 데이터베이스 오브젝트( 예) 오라클 시퀀스)</li>
@@ -561,7 +569,7 @@ public class Member {
 <blockquote>
 <p>call next value for hibernate_sequence 기본 시퀀스를 사용해서 새로운 키값을 생성하게 되는데, 테이블 마다 시퀀스를 따로 관리하고 싶다면 @SequnceGenerator를 사용하면 됩니다.</p>
 </blockquote>
-<h5 id="sequence-전략---매핑">Sequence 전략 - 매핑</h5>
+<h4 id="sequence-전략---매핑">Sequence 전략 - 매핑</h4>
 <blockquote>
 <p>Member.java</p>
 </blockquote>
@@ -582,7 +590,7 @@ public class Member {
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-008.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-009.png" alt="contact"></p>
-<h5 id="sequence---sequencegenerator">SEQUENCE - @SequenceGenerator</h5>
+<h4 id="sequence---sequencegenerator">SEQUENCE - @SequenceGenerator</h4>
 <blockquote>
 <ul>
 <li>주의 allocationSize 기본 값 = 50</li>
@@ -624,7 +632,7 @@ public class Member {
 </tr>
 </tbody>
 </table>
-<h5 id="sequence---추가-설명">SEQUENCE - 추가 설명</h5>
+<h4 id="sequence---추가-설명">SEQUENCE - 추가 설명</h4>
 <blockquote>
 <p>GeneratedValue의 전략을  GenerationType.SEQUENCE로 사용하게 되면 sequence를 생성하게 되는데</p>
 </blockquote>
@@ -683,7 +691,9 @@ member1.id : 1
 <p>이렇게 보다보니 성능에 한번에 인서트 하는게 아니라 seq 얻어올때, Insert 할때 자꾸 DB에 네트워킹을 통해 성능적으로 떨어지는 것 아닌가 싶기도합니다. <br>
 그래서 성능 최적화를 위하여 JPA에 allocationSize로 성능을 최적화 하는 방법이 있습니다. 자세한 설명은 뒤에서 하겠습니다.</p>
 </blockquote>
-<h5 id="table-전략">Table 전략</h5>
+<h3 id="generationtypetable">GenerationType.TABLE<a class="anchor" href="#generationtypetable">#</a></h3>
+<hr>
+<h4 id="generationtypetable---특징">GenerationType.TABLE - 특징</h4>
 <blockquote>
 <ul>
 <li>키 생성 전용 테이블을 하나 만들어서 데이터베이스 시퀀스를 흉내내는 전략 <br>
@@ -691,7 +701,7 @@ member1.id : 1
 단점 : 성능</li>
 </ul>
 </blockquote>
-<h5 id="table-전략---매핑">Table 전략 - 매핑</h5>
+<h4 id="table-전략---매핑">Table 전략 - 매핑</h4>
 <blockquote>
 <p>Member.java</p>
 </blockquote>
@@ -722,7 +732,7 @@ public class Member {
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-010.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-011.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-012.png" alt="contact"></p>
-<h5 id="tablegenerator---속성">@TableGenerator - 속성</h5>
+<h4 id="tablegenerator---속성">@TableGenerator - 속성</h4>
 <table>
 <thead>
 <tr>
@@ -782,7 +792,8 @@ public class Member {
 <blockquote>
 <p>운영에서는 table 전략을 사용하기는 부담스럽고 각 테이블의 sequence를 사용한 sequence 전략을 적극 채용하여 사용한다고 합니다.</p>
 </blockquote>
-<h4 id="권장하는-식별자-생성-전략">권장하는 식별자 생성 전략</h4>
+<h3 id="권장하는-식별자-생성-전략">권장하는 식별자 생성 전략<a class="anchor" href="#권장하는-식별자-생성-전략">#</a></h3>
+<hr>
 <blockquote>
 <ul>
 <li><mark>기본 키 제약 조건</mark> : null 아님, 유일, <mark>변하면 안된다.</mark></li>
@@ -796,7 +807,8 @@ public class Member {
 AUTO-INCREMENT나 SEQUENCE Object 둘중 하나를 사용하시고 아니면 때에 따라서 uuid, 랜덤 값을 조합한 회사내의 룰을 따르길 권장. <br> 
 절대 비즈니스 로직을 키로 끌고 오는것을 권장하지는 않는다고 합니다.</p>
 </blockquote>
-<h4 id="allocationsize를-이용한-성능향상">allocationSize를 이용한 성능향상</h4>
+<h3 id="allocationsize를-이용한-성능향상">allocationSize를 이용한 성능향상<a class="anchor" href="#allocationsize를-이용한-성능향상">#</a></h3>
+<hr>
 <blockquote>
 <p>allocationSize를 1로 설정하여 1씩 증가하게 세팅을 해두었는데, 기본 값은 50 입니다. 기본 값이 50인 이유는 JPA는 새로운 키 50개를 한번에 만들어 놓고, 
 <br> DB에 50으로 세팅하고 메모리 상에서 1부터 50 까지 순차적으로 사용합니다. 이후 50개를 모두 사용하면, call next를 하여 51 부터  100까지 미리 만들어 사용합니다.<br>
@@ -1022,7 +1034,13 @@ public class Member {
     <li><a href="#기본-키-매핑-어노테이션">기본 키 매핑 어노테이션</a></li>
     <li><a href="#기본-키-매핑-방법">기본 키 매핑 방법</a>
       <ul>
-        <li><a href="#기본-키-매핑-방법-테스트">기본 키 매핑 방법 테스트</a></li>
+        <li><a href="#id-직접할당---id-사용">Id 직접할당 - @Id 사용</a></li>
+        <li><a href="#id-자동할당---generatedvalue">Id 자동할당 - @GeneratedValue</a></li>
+        <li><a href="#generationtypeidentity">GenerationType.IDENTITY</a></li>
+        <li><a href="#generationtypesequence">GenerationType.SEQUENCE</a></li>
+        <li><a href="#generationtypetable">GenerationType.TABLE</a></li>
+        <li><a href="#권장하는-식별자-생성-전략">권장하는 식별자 생성 전략</a></li>
+        <li><a href="#allocationsize를-이용한-성능향상">allocationSize를 이용한 성능향상</a></li>
       </ul>
     </li>
   </ul>
