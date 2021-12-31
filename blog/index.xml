@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation</title>
+      <link>https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/</link>
+      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/</guid>
+      <description>Database C:/Users/user/dbname not found, either pre-create it or allow remote database creation 오류 발생 문제  H2 데이터베이스 신규 생성 및 연결시 아래 오류가 나오며 생성이 안되는 경우
+ Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation 해결방법   C:/Users/user/ 경로에 dbname.mv.db 파일을 생성 jdbc:h2:~/dbname을 입력후 연결을 해본다.(처음 생성시에만)
+- 이후 jdbc:h2:tcp://localhost/~/dbname 으로 접속   </description>
+    </item>
+    
     <item>
       <title>[자바 ORM 표준 JPA] 기본키 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</link>
@@ -15,6 +26,15 @@
       
       <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</guid>
       <description>기본키 매핑  기본 키 매핑 어노테이션    @Id @GeneratedValue   @Id @GeneratedValue(strategy = GenerationTpye.AUTO)private Long id; 기본 키 매핑 방법    직접 할당 : @Id 만 사용 자동 생성(@GeneratedValue)  IDENTITY : 데이터베이스에 위임, MySLQ) SEQUENCE : 데이터베이스 시퀀스 오브젝트 사용, ORACLE  @SequenceGenerator 필요     TABLE: 키 생성용 테이블 사용, 모든 DB에서 사용  @TableGenerator 필요   AUTO: 방언에 따라 자동 지정, 기본값   Id 직접할당 - @Id 사용   Member.</description>
+    </item>
+    
+    <item>
+      <title>[자바 ORM 표준 JPA] 실전 예제 1 - 요구사항 분석과 기본 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</guid>
+      <description>실전 예제 1 - 요구사항 분석과 기본 매핑 요구사항 분석    회원은 상품을 주문할 수 있다. 주문 시 여러 종류의 상품을 선택할 수 있다.   기능 목록    회원 기능  회원등록 회원조회       상품 기능  상품등록 상품수정 상품조회       주문 기능  상품주문 주문내역조회 주문취소     도메인 모델 분석    회원과 주문의 관계 : 회원은 여러 번 주문할 수 있다.</description>
     </item>
     
     <item>
@@ -61,20 +81,20 @@
     
     <item>
       <title>Vue v-for Elements in iteration expect to have &#39;v-bind:key&#39; directives 문제</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/vue/elements-in-iteration-expect-to-have-v-bindkey-directives/</link>
+      <link>https://offetuoso.github.io/blog/develop/troubleshooting/vue/vue-v-for/</link>
       <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/vue/elements-in-iteration-expect-to-have-v-bindkey-directives/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/vue/vue-v-for/</guid>
       <description>Elements in iteration expect to have &amp;lsquo;v-bind:key&amp;rsquo; directives 문제  이전 버전의 강좌를 보고 따라 하던 도중 vue template에서 li 에 v-for 를 이용해서 v-for=&amp;ldquo;t in tries&amp;rdquo; 루프를 생성하고 싶었으니 오류를 만나게 되었습니다.
  &amp;lt;!-- 문제가 발생한 코드 --&amp;gt;&amp;lt;li v-for=&amp;quot;item in tries&amp;quot;&amp;gt; {{item}}&amp;lt;/li&amp;gt; 2.2.0 이상에서 v-for는 key 가 필수 입니다.   &amp;lt;my-componentv-for=&amp;quot;(item, index) in items&amp;quot;v-bind:item=&amp;quot;item&amp;quot;v-bind:index=&amp;quot;index&amp;quot;v-bind:key=&amp;quot;item.id&amp;quot;&amp;gt;&amp;lt;/my-component&amp;gt; 수정사항적용 &amp;lt;li v-for=&amp;quot;(item, index) in tries&amp;quot; :key=&amp;quot;index&amp;quot;&amp;gt;{{ item }}&amp;lt;/li&amp;gt; 참조 [Vue.</description>
     </item>
     
     <item>
       <title>NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/vue/lombok-error/</link>
+      <link>https://offetuoso.github.io/blog/develop/troubleshooting/vue/npm-init/</link>
       <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/vue/lombok-error/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/vue/npm-init/</guid>
       <description>NPM init 패키지명 입력시 오류 발생 문제  npm init 명령어를 사용할때, node를 처음 접하게 되어 발생하였던 문제에 대해 정리
  Sorry, name can no longer contain capital letters. &amp;gt; npm init&amp;gt; package name: (3_끝말잇기) WordRelay&amp;gt; Sorry, name can no longer contain capital letters. package name : UpperCamelCase로 입력 시 오류 발생 Sorry, name can no longer contain capital letters. &amp;gt; npm init&amp;gt; package name: (3_끝말잇기) wordRelay&amp;gt; Sorry, name can no longer contain capital letters.</description>
     </item>

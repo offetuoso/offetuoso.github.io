@@ -4,7 +4,47 @@
   
   <url>
     <loc>https://offetuoso.github.io/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/</loc>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/</loc>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/</loc>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/subcategories/h2/</loc>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/subcategories/</loc>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/</loc>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/troubleshooting/</loc>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/troubleshooting/</loc>
+    <lastmod>2021-12-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,12 +53,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/categories/</loc>
+    <loc>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</loc>
     <lastmod>2021-12-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -44,16 +79,6 @@
   
   <url>
     <loc>https://offetuoso.github.io/tags/orm/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/subcategories/</loc>
-    <lastmod>2021-12-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/tags/</loc>
     <lastmod>2021-12-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -93,22 +118,17 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/tags/troubleshooting/</loc>
+    <loc>https://offetuoso.github.io/subcategories/vue/</loc>
     <lastmod>2021-11-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/categories/troubleshooting/</loc>
+    <loc>https://offetuoso.github.io/blog/develop/troubleshooting/vue/vue-v-for/</loc>
     <lastmod>2021-11-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/develop/troubleshooting/vue/elements-in-iteration-expect-to-have-v-bindkey-directives/</loc>
-    <lastmod>2021-11-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/blog/develop/troubleshooting/vue/lombok-error/</loc>
+    <loc>https://offetuoso.github.io/blog/develop/troubleshooting/vue/npm-init/</loc>
     <lastmod>2021-11-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -129,11 +149,6 @@
   
   <url>
     <loc>https://offetuoso.github.io/tags/vue/</loc>
-    <lastmod>2021-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/subcategories/vue/</loc>
     <lastmod>2021-11-12T00:00:00+00:00</lastmod>
   </url>
   

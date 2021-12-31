@@ -18,6 +18,15 @@
     </item>
     
     <item>
+      <title>[자바 ORM 표준 JPA] 실전 예제 1 - 요구사항 분석과 기본 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</link>
+      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</guid>
+      <description>실전 예제 1 - 요구사항 분석과 기본 매핑 요구사항 분석    회원은 상품을 주문할 수 있다. 주문 시 여러 종류의 상품을 선택할 수 있다.   기능 목록    회원 기능  회원등록 회원조회       상품 기능  상품등록 상품수정 상품조회       주문 기능  상품주문 주문내역조회 주문취소     도메인 모델 분석    회원과 주문의 관계 : 회원은 여러 번 주문할 수 있다.</description>
+    </item>
+    
+    <item>
       <title>[자바 ORM 표준 JPA] 객체와 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/entity-mapping/</link>
       <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>

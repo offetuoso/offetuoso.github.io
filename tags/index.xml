@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Troubleshooting</title>
+      <link>https://offetuoso.github.io/tags/troubleshooting/</link>
+      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/troubleshooting/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Java</title>
       <link>https://offetuoso.github.io/tags/java/</link>
@@ -59,15 +68,6 @@
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Troubleshooting</title>
-      <link>https://offetuoso.github.io/tags/troubleshooting/</link>
-      <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/tags/troubleshooting/</guid>
       <description></description>
     </item>
     

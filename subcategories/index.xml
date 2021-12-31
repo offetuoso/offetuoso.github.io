@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/subcategories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/subcategories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>H2</title>
+      <link>https://offetuoso.github.io/subcategories/h2/</link>
+      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/subcategories/h2/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>JPA</title>
       <link>https://offetuoso.github.io/subcategories/jpa/</link>
@@ -20,7 +29,7 @@
     <item>
       <title>Vue</title>
       <link>https://offetuoso.github.io/subcategories/vue/</link>
-      <pubDate>Fri, 12 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/subcategories/vue/</guid>
       <description></description>
