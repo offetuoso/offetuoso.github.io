@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 26 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[자바 ORM 표준 JPA] 연관관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</link>
+      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</guid>
+      <description>연관관계 매핑   테이블에 맞춰서 외래키를 가져오면서 설계하는 방식이 아닌 order.getMember()이런식으로 연관관계를 맺어서 좀더 객체지향 식으로 설계할 수 있는지 알아보겠습니다. 여태 까지는 어려움이 없었겠지만, 관계형 DB와 객체지향 사이에서 오는 간극이 크고 각각의 패러다임이 다르기 때문에 어려움이 있습니다.
+ 목표    객체와 테이블 연관관계 차이를 이해 객체의 참조와 테이블의 외래 키를 매핑 용어 이해  방향(Direction) : 단방향, 양방향 다중성(Multiplicity) : 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M)의 이해 연관관계의 주인(Owner) : 객체의 양방향 관계는 괸리 주인이 필요     목차    연관관계가 필요한 이유 단방향 연관관계 양방향 연관관계와 연관관계의 주인 실전예제 - 2.</description>
+    </item>
+    
     <item>
       <title>[자바 ORM 표준 JPA] 기본키 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</link>
