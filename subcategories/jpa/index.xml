@@ -9,15 +9,6 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/subcategories/jpa/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>JPA 다양한 연관관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/</link>
-      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/</guid>
-      <description>다양한 연관관계 매핑  목차    연관관계 매핑시 고려사항 3가지 다대일 [N:1] 일대다 [1:N] 일대일 [1:1] 다대다 [N:M]   참고- 자바 ORM 표준 JPA - 김영한 </description>
-    </item>
-    
-    <item>
       <title>JPA 실전 예제 2 - 연관관계 매핑 시작</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-2/</link>
       <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
