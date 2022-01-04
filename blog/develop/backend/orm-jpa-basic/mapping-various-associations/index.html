@@ -2,14 +2,14 @@
 <html lang="ko-KR">
 
 <head>
-  <title>Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation | offetuoso&#39;s Blog</title>
+  <title>JPA 다양한 연관관계 매핑 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="Database `C:/Users/offetuoso/jpashop` not found, either pre-create it or allow remote database creation">
-  <meta name="keywords" content="Database , H2">
+  <meta name="description" content="다양한 연관관계 매핑">
+  <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,21 +68,21 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "Database `C:\/Users\/user\/dbname` not found, either pre-create it or allow remote database creation",
-      "headline" : "Database `C:\/Users\/user\/dbname` not found, either pre-create it or allow remote database creation",
-      "description" : "Database `C:\/Users\/offetuoso\/jpashop` not found, either pre-create it or allow remote database creation",
+      "name" : "JPA 다양한 연관관계 매핑",
+      "headline" : "JPA 다양한 연관관계 매핑",
+      "description" : "다양한 연관관계 매핑",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
       "publisher": "",
       "accountablePerson" : "",
       "copyrightHolder" : "",
-      "copyrightYear" : "2021",
-      "datePublished": "2021-12-29 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2021-12-29 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/troubleshooting\/database\/h2\/h2-create-db\/",
-      "wordCount" : "55",
-      "keywords" : ["Database", "H2", "Blog"]
+      "copyrightYear" : "2022",
+      "datePublished": "2022-01-03 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-01-03 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/mapping-various-associations\/",
+      "wordCount" : "23",
+      "keywords" : ["ORM", "Blog"]
     }
   
   </script>
@@ -158,37 +158,36 @@
         <div class="post">
           <header class="post__header">
              
-            	<div class="header-inner" style="background-image: url('/images/title/bg-troubleshooting.png');">
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
             
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation
+		            	JPA 다양한 연관관계 매핑
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation
+		       	JPA 다양한 연관관계 매핑
             </h1>		
-            <time datetime="2021-12-29 00:00:00 &#43;0000 UTC" class="post__date">2021-12-29</time> 
+            <time datetime="2022-01-03 00:00:00 &#43;0000 UTC" class="post__date">2022-01-03</time> 
           </header>
           <article class="post__content">
               
-<h1 id="database-cusersuserdbname-not-found-either-pre-create-it-or-allow-remote-database-creation-오류-발생">Database <code>C:/Users/user/dbname</code> not found, either pre-create it or allow remote database creation 오류 발생</h1>
-<h2 id="문제">문제<a class="anchor" href="#문제">#</a></h2>
+<h1 id="다양한-연관관계-매핑">다양한 연관관계 매핑</h1>
+<hr>
+<h2 id="목차">목차<a class="anchor" href="#목차">#</a></h2>
+<hr>
 <blockquote>
-<p>H2 데이터베이스 신규 생성 및 연결시 아래 오류가 나오며 생성이 안되는 경우</p>
+<ul>
+<li>연관관계 매핑시 고려사항 3가지</li>
+<li>다대일 [N:1]</li>
+<li>일대다 [1:N]</li>
+<li>일대일 [1:1]</li>
+<li>다대다 [N:M]</li>
+</ul>
 </blockquote>
-<pre><code>Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation
-</code></pre>
-<h2 id="해결방법">해결방법<a class="anchor" href="#해결방법">#</a></h2>
-<blockquote>
-<ol>
-<li>C:/Users/user/ 경로에 dbname.mv.db 파일을 생성</li>
-<li>jdbc:h2:~/dbname을 입력후 연결을 해본다.(처음 생성시에만)<br>
-- 이후 jdbc:h2:tcp://localhost/~/dbname 으로 접속</li>
-</ol>
-</blockquote>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></h4>
 
 
               
@@ -201,23 +200,31 @@
 <ul class="tags__list">
     
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/troubleshooting/">Troubleshooting</a>
-    </li></ul>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
 
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-2/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">JPA 연관관계 매핑</span>
+        <span class="pagination__title">JPA 실전 예제 2 - 연관관계 매핑 시작</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-2/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >JPA 실전 예제 2 - 연관관계 매핑 시작</span>
-    </a>
   
 </div>
 
@@ -287,11 +294,14 @@
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation</div> 
+          <div class="toc-post-title">JPA 다양한 연관관계 매핑</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#문제">문제</a></li>
-    <li><a href="#해결방법">해결방법</a></li>
+    <li><a href="#목차">목차</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
   </ul>
 </nav>
       </div>

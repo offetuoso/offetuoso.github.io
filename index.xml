@@ -7,15 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[자바 ORM 표준 JPA] 연관관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</link>
-      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
+      <title>JPA 다양한 연관관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/</link>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</guid>
-      <description>연관관계 매핑   테이블에 맞춰서 외래키를 가져오면서 설계하는 방식이 아닌 order.getMember()이런식으로 연관관계를 맺어서 좀더 객체지향 식으로 설계할 수 있는지 알아보겠습니다. 여태 까지는 어려움이 없었겠지만, 관계형 DB와 객체지향 사이에서 오는 간극이 크고 각각의 패러다임이 다르기 때문에 어려움이 있습니다.
- 목표    객체와 테이블 연관관계 차이를 이해 객체의 참조와 테이블의 외래 키를 매핑 용어 이해  방향(Direction) : 단방향, 양방향 다중성(Multiplicity) : 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M)의 이해 연관관계의 주인(Owner) : 객체의 양방향 관계는 괸리 주인이 필요     목차    연관관계가 필요한 이유 단방향 연관관계 양방향 연관관계와 연관관계의 주인 실전예제 - 2.</description>
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/</guid>
+      <description>다양한 연관관계 매핑  목차    연관관계 매핑시 고려사항 3가지 다대일 [N:1] 일대다 [1:N] 일대일 [1:1] 다대다 [N:M]   참고- 자바 ORM 표준 JPA - 김영한 </description>
+    </item>
+    
+    <item>
+      <title>JPA 실전 예제 2 - 연관관계 매핑 시작</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-2/</link>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-2/</guid>
+      <description>실전 예제 2 - 연관관계 매핑 시작 요구사항 분석   실전 예제 1 요구사항 분석과 기본 매핑에서 테이블에 맞춘 설계를 했던 것에 연관 관계 매핑을 적용 시켜 보도록 하겠습니다.
+ 테이블 구조   테이블 구조는 이전과 같다.
+ 객체 구조   참조를 사용하도록 변경
+  OrderItem과 Item에서 N:1이면서 화살표가 OrderItem에서 Item으로 단방향인 것을 알 수 있는데, 이는 주문된 아이템(OrderItem) 입장에서는 어떠한 아이템(Item)인지 알아야하지만, 아이템 입장에서는 통계 같은 프로그램을 하지 않는 이상 이 아이템이 어떠한 아이템 주문이 되었는지 알 필요가 없습니다.</description>
     </item>
     
     <item>
@@ -30,7 +41,17 @@
     </item>
     
     <item>
-      <title>[자바 ORM 표준 JPA] 기본키 매핑</title>
+      <title>JPA 연관관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</link>
+      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</guid>
+      <description>연관관계 매핑   테이블에 맞춰서 외래키를 가져오면서 설계하는 방식이 아닌 order.getMember()이런식으로 연관관계를 맺어서 좀더 객체지향 식으로 설계할 수 있는지 알아보겠습니다. 여태 까지는 어려움이 없었겠지만, 관계형 DB와 객체지향 사이에서 오는 간극이 크고 각각의 패러다임이 다르기 때문에 어려움이 있습니다.
+ 목표    객체와 테이블 연관관계 차이를 이해 객체의 참조와 테이블의 외래 키를 매핑 용어 이해  방향(Direction) : 단방향, 양방향 다중성(Multiplicity) : 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M)의 이해 연관관계의 주인(Owner) : 객체의 양방향 관계는 괸리 주인이 필요     목차    연관관계가 필요한 이유 단방향 연관관계 양방향 연관관계와 연관관계의 주인 실전예제 - 2.</description>
+    </item>
+    
+    <item>
+      <title>JPA 기본키 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -39,7 +60,7 @@
     </item>
     
     <item>
-      <title>[자바 ORM 표준 JPA] 실전 예제 1 - 요구사항 분석과 기본 매핑</title>
+      <title>JPA 실전 예제 1 - 요구사항 분석과 기본 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -48,7 +69,7 @@
     </item>
     
     <item>
-      <title>[자바 ORM 표준 JPA] 객체와 매핑</title>
+      <title>JPA 객체와 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/entity-mapping/</link>
       <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -57,7 +78,7 @@
     </item>
     
     <item>
-      <title>[자바 ORM 표준 JPA] 영속성 관리</title>
+      <title>JPA 영속성 관리</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/persistence-manage/</link>
       <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -67,7 +88,7 @@
     </item>
     
     <item>
-      <title>[자바 ORM 표준 JPA] JPA 시작</title>
+      <title>JPA 시작</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/start-jpa/</link>
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -80,7 +101,7 @@
     </item>
     
     <item>
-      <title>[자바 ORM 표준 JPA] JPA 소개</title>
+      <title>JPA 소개</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/about-jpa/</link>
       <pubDate>Tue, 14 Dec 2021 00:00:00 +0000</pubDate>
       
