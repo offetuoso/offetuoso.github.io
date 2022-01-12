@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 실전 예제 3 - 다양한 연관관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-3/</link>
+      <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-3/</guid>
+      <description>실전 예제 3 - 다양한 연관관계 매핑  요구사항 분석  배송, 카테고리 추가 - 엔티티    주문과 뱌송은 1:1(@OneToOne) 상품과 카테고리는 N:M(@ManyToMany)   배송, 카테고리 추가 - ERD   Delivery.java 와 Category.java를 생성합니다.
+ 일대일 양방향 관계 Order.java - Delivery.java   주 객체은 외래키를 가지고 있는 Order.java  @OneToOne @JoinColumn(name = &amp;ldquo;DELIVERY_ID&amp;rdquo;) private Delivery delivery;       대상 객체는 상대 객체인 Delivery.</description>
+    </item>
+    
     <item>
       <title>JPA 다양한 연관관계 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/</link>
