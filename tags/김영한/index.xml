@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 10 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 상속관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/inheritance-mapping/</link>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/inheritance-mapping/</guid>
+      <description>상속관계 매핑  목차    상속관계 매핑 @MappedSuperclass   상속관계 매핑    객체는 상속관계가 있지만, 관계형 데이터베이스에는 상속 관계 없음 슈퍼타입 서브타입 관계라는 모델링 기법이 객체 상속과 유사 상속관계 매핑 : 객체의 상속과 구조와 DB의 슈퍼타입 관계를 매핑   참고- 자바 ORM 표준 JPA - 김영한 </description>
+    </item>
+    
     <item>
       <title>JPA 실전 예제 3 - 다양한 연관관계 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-3/</link>
