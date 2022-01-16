@@ -7,7 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 10 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 상속관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapped-superclass/</link>
+      <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapped-superclass/</guid>
+      <description>상속관계 매핑  목차    상속관계 매핑 @MappedSuperclass   MappedSuperclass  @MappedSuperclass  예를 들어 이전의 상속관계 매핑을 사용하지 않고 단순하게 객체의 입장에서 id와 name이 계속 나오게 되는데 매번 만들기 귀찮아서 부모 클래스에 두고 속성만 상속받아서 사용하고 싶을때 사용.   DB에서는 각각 테이블에 id, name을 포함하며 DB와 구조가 다르지만, 매번 추가 해야하는 속성을 엔티티마다 추가해야 하는 불편함을 줄여보자 해서 나오게 된 기능입니다.
+ @MappedSuperclass 예제  DBA의 요청으로 엔티티 마다 생성한 사람의 ID, 생성한 시간, 마지막 수정한 사람 ID, 마지막 수정한 시간을 각각 추가하려 합니다.</description>
+    </item>
+    
+    <item>
+      <title>JPA 상속관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/inheritance-mapping/</link>
+      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/inheritance-mapping/</guid>
+      <description>상속관계 매핑  목차    상속관계 매핑 @MappedSuperclass   상속관계 매핑    객체는 상속관계가 있지만, 관계형 데이터베이스에는 상속 관계 없음 슈퍼타입 서브타입 관계라는 모델링 기법이 객체 상속과 유사 상속관계 매핑 : 객체의 상속과 구조와 DB의 슈퍼타입 관계를 매핑    음반, 영화, 책의 공통 속성은 물품에 두고, 각각의 속성들을 밑의 서브 타입에 지정하여 논리 모델을 구성합니다.
+  객체는 Item이라는 추상 클래스를 만들고 Item을 상속받는 Album, Movie, Book 객체를 구성할 수 있습니다.</description>
+    </item>
+    
     <item>
       <title>JPA 실전 예제 3 - 다양한 연관관계 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-3/</link>
