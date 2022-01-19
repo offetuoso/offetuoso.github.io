@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 16 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 실전 예제 4 - 상속관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-4/</link>
+      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-4/</guid>
+      <description>실전 예제 4 - 상속관계 매핑  요구사항 추가    상품의 종류는 음반, 도서, 영화가 있고 이후 더 확장될 수 있다. 모든 데이터는 등록일과 수정일이 필수다.   도메인 모델  도메인 모델 상세  테이블 설계 상속관계 매핑 추가  Item.java
+   Item.java를 abstract로 바꾼다. 단일 테이블 전략이기 때문에 Item.java에 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) 를 추가한다. @DiscriminatorColumn를 추가하여 DTYPE를 추가한다.   package jpabasic.jpashop.domain;import javax.persistence.*;import java.</description>
+    </item>
+    
     <item>
       <title>JPA @MappedSuperclass</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapped-superclass/</link>
@@ -20,10 +30,10 @@
     
     <item>
       <title>JPA 상속관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/inheritance-mapping/</link>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/proxy-and-relation/</link>
       <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/inheritance-mapping/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/proxy-and-relation/</guid>
       <description>상속관계 매핑  목차    상속관계 매핑 @MappedSuperclass   상속관계 매핑    객체는 상속관계가 있지만, 관계형 데이터베이스에는 상속 관계 없음 슈퍼타입 서브타입 관계라는 모델링 기법이 객체 상속과 유사 상속관계 매핑 : 객체의 상속과 구조와 DB의 슈퍼타입 관계를 매핑    음반, 영화, 책의 공통 속성은 물품에 두고, 각각의 속성들을 밑의 서브 타입에 지정하여 논리 모델을 구성합니다.
   객체는 Item이라는 추상 클래스를 만들고 Item을 상속받는 Album, Movie, Book 객체를 구성할 수 있습니다.</description>
     </item>
