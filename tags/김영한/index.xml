@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 19 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 프록시와 연관관계</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/proxy-and-relation/</link>
+      <pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/proxy-and-relation/</guid>
+      <description>프록시와 상속관계  목차    프록시 즉시 로딩과 지연 로딩 지연 로딩 활용 영속성 전이 : CASCADE 고아 객체 영속성 전이 + 고아객체, 생명주기   프록시  Member를 조회할때 Team도 함께 조회해야 할까?  JpaMain.java
+  private static void printMember(Member member){System.out.println(&amp;quot;username = &amp;quot;+member.getUsername());}private static void printMemberAndTeam(Member member){String username = member.getUsername();System.out.println(&amp;quot;username = &amp;quot;+username);Team team = member.getTeam();System.out.println(&amp;quot;team = &amp;quot;+team.getName());}  Member객체를 출력하는 메서드와 Member객체와 Member가 가지는 Team 객체를 출력하는 메서드가 있을때, Member만 조회하는 쿼리를 수행할때 Team까지 Join을 통하여 조회 쿼리를 수행한다면 자원낭비이다.</description>
+    </item>
+    
     <item>
       <title>JPA 실전 예제 4 - 상속관계 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-4/</link>
