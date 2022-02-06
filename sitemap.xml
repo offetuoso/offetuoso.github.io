@@ -4,71 +4,76 @@
   
   <url>
     <loc>https://offetuoso.github.io/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/blog/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/categories/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/tags/java/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/categories/java/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/tags/jpa/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/subcategories/jpa/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <loc>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-cascade/</loc>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/tags/orm/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/subcategories/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/tags/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/</loc>
-    <lastmod>2022-01-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/tags/%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa/</loc>
+    <lastmod>2022-02-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/</loc>
     <lastmod>2022-01-27T00:00:00+00:00</lastmod>
   </url>
   

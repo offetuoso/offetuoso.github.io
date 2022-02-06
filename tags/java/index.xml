@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Thu, 27 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 영속성 전이(CASCADE)와 고아 객체</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-cascade/</link>
+      <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-cascade/</guid>
+      <description>영속성 전이(CASCADE)와 고아 객체  목록    영속성 전이 고아 객체   영속성 전이  앞에서 나온 즉시 로딩, 지연 로딩, 연관관계 세팅 이 세가지와 완전 별개의 개념
+   특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶을때 예 : 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장.   영속성 전이: 저장  @OneToMany(mappedBy=&amp;quot;parent&amp;quot;, cascade=CasecadeType.PERSIST)  Parent.java
+ package relativemapping;import javax.</description>
+    </item>
+    
     <item>
       <title>JPA 즉시 로딩과 지연로딩</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/</link>
