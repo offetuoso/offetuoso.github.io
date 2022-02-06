@@ -82,7 +82,7 @@
       "datePublished": "2022-02-04 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-02-04 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpa-cascade\/",
-      "wordCount" : "1380",
+      "wordCount" : "1461",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -571,6 +571,53 @@ Hibernate:
 <li><mark>특정 엔티티가 독점 소유할 때 사용</mark></li>
 </ul>
 </blockquote>
+<h3 id="영속성-전이-cascadetype">영속성 전이: CascadeType<a class="anchor" href="#영속성-전이-cascadetype">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>ALL</li>
+<li>PERSIST</li>
+<li>MERGE</li>
+<li>REMOVE</li>
+<li>REFRESH</li>
+<li>DETACH</li>
+</ul>
+</blockquote>
+<h4 id="cascadetype-종류">CascadeType 종류</h4>
+<table>
+<thead>
+<tr>
+<th>CascadeType</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CascadeType.ALL</td>
+<td>부모 엔터티에서 자식 엔터티로 모든 작업을 전파</td>
+</tr>
+<tr>
+<td>CascadeType.PERSIST</td>
+<td>자식 엔티티까지 영속성 전달, 부모 엔티티를 저장하면 자식 엔티티도 저장</td>
+</tr>
+<tr>
+<td>CascadeType.MERGE</td>
+<td>자식 엔티티까지 병합 작업을 지속, 부모 엔티티와 자식 엔티티를 조회 후 업데으트</td>
+</tr>
+<tr>
+<td>CascadeType.REMOVE</td>
+<td>자식 엔티티까지 제거 작업을 지속, 연결된 자식 엔티티까지 엔티티 제거</td>
+</tr>
+<tr>
+<td>CascadeType.REFRESH</td>
+<td>데이터베이스로부터 인스턴스 값을 다시 읽어 오기(새로고침), 연결된 하위 엔티티까지 인스턴스 값 다시 읽어옴</td>
+</tr>
+<tr>
+<td>CascadeType.DETACH</td>
+<td>영속성 컨텍스트에서 엔티티 제거, 연결된 하위 엔티티까지 영속성 제거</td>
+</tr>
+</tbody>
+</table>
 <h2 id="고아-객체">고아 객체<a class="anchor" href="#고아-객체">#</a></h2>
 <hr>
 <h3 id="고아-객체-제거">고아 객체 제거<a class="anchor" href="#고아-객체-제거">#</a></h3>
@@ -907,7 +954,17 @@ Hibernate:
 <li>도메인 주도 설계(DDD)의 Aggregate Root개념을 구현할 때 유용</li>
 </ul>
 </blockquote>
-<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></h4>
+<h4 id="참고">참고</h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><a href="https://www.baeldung.com/jpa-cascade-types"><a href="https://www.baeldung.com/jpa-cascade-types">https://www.baeldung.com/jpa-cascade-types</a></a></li>
+</ul>
+</blockquote>
 
 
               
@@ -1022,6 +1079,7 @@ Hibernate:
         <li><a href="#영속성-전이">영속성 전이</a></li>
         <li><a href="#영속성-전이-저장">영속성 전이: 저장</a></li>
         <li><a href="#영속성-전이-cascade---주의">영속성 전이: CASCADE - 주의!</a></li>
+        <li><a href="#영속성-전이-cascadetype">영속성 전이: CascadeType</a></li>
       </ul>
     </li>
     <li><a href="#고아-객체">고아 객체</a>
