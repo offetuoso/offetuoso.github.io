@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 04 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 실전 예제 5 - 연관관계 관리</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-5/</link>
+      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-5/</guid>
+      <description>실전 예제 5 - 연관관계 관리  글로벌 페치 전략 설정    모든 연관관계를 지연로딩으로 @ManyToOne, @OneToOne은 기본이 즉시 로딩이므로 지연로딩으로 변경하길 권장   글로벌 페치 전략 예제소스에 적용   기존 작성했던 엔티티중 @ManyToOne, @OneToOne에는 (fetch = FetchType.LAZY)를 추가한다.
+  Album.java
+ package jpabasic.jpashop.domain;import javax.persistence.DiscriminatorValue;import javax.persistence.Entity;@Entity@DiscriminatorValue(&amp;quot;A&amp;quot;)public class Album extends Item{private String artist;private String etc;public String getArtist() {return artist;}public void setArtist(String artist) {this.</description>
+    </item>
+    
     <item>
       <title>JPA 영속성 전이(CASCADE)와 고아 객체</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-cascade/</link>
