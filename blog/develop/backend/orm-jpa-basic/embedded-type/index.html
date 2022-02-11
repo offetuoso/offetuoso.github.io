@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>JPA 임베디드 타입 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="JPA 임베디드 타입">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+ 
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+     
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPA 임베디드 타입",
+      "headline" : "JPA 임베디드 타입",
+      "description" : "JPA 임베디드 타입",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-02-08 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-02-08 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/embedded-type\/",
+      "wordCount" : "1189",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPA 임베디드 타입
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPA 임베디드 타입
+            </h1>		
+            <time datetime="2022-02-08 00:00:00 &#43;0000 UTC" class="post__date">2022-02-08</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="임베디드-타입">임베디드 타입</h1>
+<hr>
+<h2 id="임베디드복합-값-타입">임베디드(복합 값) 타입<a class="anchor" href="#임베디드복합-값-타입">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>새로운 값 타입을 정의할 수 있음</li>
+<li>JPA는 임베디드 타입(embedded type)이라 함</li>
+<li>주로 기본 값 타임을 모아 만들어서 복합 값 타입이라고도 함</li>
+<li>int, String과 같은 값 타입 (엔티티 아님)</li>
+</ul>
+</blockquote>
+<h3 id="임베디드-타입-1">임베디드 타입<a class="anchor" href="#임베디드-타입-1">#</a></h3>
+<hr>
+<blockquote>
+<p>회원 엔티티는 이름, 근무 시작일, 근무 종료일, 주소 도시, 주소 번지, 주소 우편번호를 가진다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/embedded-type/img-001.png" alt="contact"></p>
+<blockquote>
+<p>회원 엔티티는 이름, 근무 기간, 집 주소를 가진다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/embedded-type/img-002.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>Period는 startDate와 endDate를 가지게 클래스로 만들어 값 타입을 만듭니다.</li>
+<li>Address는 city, street, zipCode를 묶어서 클래스로 만들어 값 타입을 만듭니다.</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/embedded-type/img-003.png" alt="contact"></p>
+<h3 id="임베디드-타입-사용법">임베디드 타입 사용법<a class="anchor" href="#임베디드-타입-사용법">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>@Embeddable : 값을 타입을 정의하는 곳에서 표시</li>
+<li>@Embedded : 값 타입을 사용하는 곳에 표시</li>
+<li>기본 생성자 필수</li>
+</ul>
+</blockquote>
+<h3 id="임베디드-타입-장점">임베디드 타입 장점<a class="anchor" href="#임베디드-타입-장점">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>재사용</li>
+<li>높은 응집도</li>
+<li>Period.isWork() 처럼 해당 값 타입만 사용하는 의미 있는 메소드를 만들 수 있음</li>
+<li>임베디드 타입을 포함한 모든 값 타입은, 값 타입을 소유한 엔티티에 생명주기를 의존함</li>
+</ul>
+</blockquote>
+<h3 id="임베디드-타입과-테이블-매핑">임베디드 타입과 테이블 매핑<a class="anchor" href="#임베디드-타입과-테이블-매핑">#</a></h3>
+<hr>
+<blockquote>
+<p>임베디드 타입을 사용하던 안하던 회원테이블은 변화가 없습니다. <br>
+테이블은 데이터를 잘 관리하기 위한 것이고, 객체는 행위까지 고려해야 하기때문에 임베디드 타입으로 묶었을때 얻을 수 있는 이득이 많습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/embedded-type/img-004.png" alt="contact"></p>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    // 기간
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+
+    // 주소
+    private String city;
+    private String street;
+    private String zipcode;
+
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java - 애플리케이션 재시작</p>
+</blockquote>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>    create table Member (
+       id bigint not null,
+        city varchar(255),
+        endDate timestamp,
+        name varchar(255),
+        startDate timestamp,
+        street varchar(255),
+        zipcode varchar(255),
+        primary key (id)
+    )
+</code></pre>
+<blockquote>
+<p>MEMBER 테이블이 생성된 것을 확인 할 수 있습니다. Member 엔티티에 속성들을 workPeriod와 homeAddress 임베디드 타입으로 변경해 보도록 하겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>Period.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.Embeddable;
+import java.time.LocalDateTime;
+
+@Embeddable
+public class Period {
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>Address.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Address {
+    private String city;
+    private String street;
+    private String zipcode;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    // 기간
+    //private LocalDateTime startDate;
+    //private LocalDateTime endDate;
+    @Embedded
+    private Period workPeriod;
+
+    // 주소
+    //private String city;
+    //private String street;
+    //private String zipcode;
+    @Embedded
+    private Address homeAddress;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Period getWorkPeriod() {
+        return workPeriod;
+    }
+
+    public void setWorkPeriod(Period workPeriod) {
+        this.workPeriod = workPeriod;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>@Embeddable과 @Embedded는 한쪽만 설정해 두어도 되지만, 양쪽다 추가하길 권장합니다.</p>
+</blockquote>
+<blockquote>
+<p>JpaMain.java - 애플리케이션 재시작</p>
+</blockquote>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>    create table Member (
+       id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        name varchar(255),
+        endDate timestamp,
+        startDate timestamp,
+        primary key (id)
+    )
+</code></pre>
+<blockquote>
+<p>Create SQL은 이전과 똑같습니다. 테이블 구조는 변함 없지만, Member 엔티티는 좀더 객체지향 적으로 사용할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>예를 들면 현재시간이 workPeriod에 시작과 끝에 포함된다면, isIncumbent()를 통해 재직중인지 확인하는 메소드를 만들어 사용할 수 도 있습니다.</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.Embeddable;
+import java.time.LocalDateTime;
+
+@Embeddable
+public class Period {
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+
+    public Period() {
+    }
+
+    public Period(LocalDateTime startDate, LocalDateTime endDate) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Boolean isIncumbent(){
+
+        LocalDateTime today = LocalDateTime.now();
+        /*
+            System.out.println(this.startDate);
+            System.out.println(today);
+            System.out.println(this.startDate.isEqual(today)); // 주어진 시간과 같은지
+            System.out.println(this.startDate.isBefore(today)); // 주어진 시간보다 이전인지
+            System.out.println(this.startDate.isAfter(today)); // 주어진 시간보다 이후인지
+
+            System.out.println(this.endDate);
+            System.out.println(today);
+            System.out.println(this.endDate.isEqual(today)); // 주어진 시간과 같은지
+            System.out.println(this.endDate.isBefore(today)); // 주어진 시간보다 이전인지
+            System.out.println(this.endDate.isAfter(today)); // 주어진 시간보다 이후인지
+        */
+
+        if( ! this.startDate.isAfter(today) &amp;&amp; this.endDate.isAfter(today)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain - Member 추가</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import org.hibernate.Hibernate;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class JpaMain {
+    //psvm 단축키로 생성 가능
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;relativemapping&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+
+            Member member1 = new Member();
+
+            member1.setName(&quot;member1&quot;);
+
+            member1.setHomeAddress(new Address(&quot;서울&quot;,&quot;영등포&quot;,&quot;00000&quot;));
+            member1.setWorkPeriod(new Period(LocalDateTime.of(2021,01,01,1,12,0),LocalDateTime.of(2023,01,01,1,12,0)));
+
+            em.persist(member1);
+
+            System.out.println(&quot;isIncumbent &quot;+member1.getWorkPeriod().isIncumbent());
+            tx.commit();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>isIncumbent true
+
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (city, street, zipcode, name, endDate, startDate, id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?)
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/embedded-type/img-005.png" alt="contact"></p>
+<h3 id="임베티드-타입의-장점">임베티드 타입의 장점<a class="anchor" href="#임베티드-타입의-장점">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>임베디드 타입은 엔티티의 값일 뿐이다.</li>
+<li><mark>임베디드 타입을 사용하기 전과 후에 매핑하는 테이블은 같다.</mark></li>
+<li>객체와 테이블은 아주 세밀하게(find-grained) 매핑하는 것이 가능</li>
+<li>잘 설계한 ORM 애플리케이션은 매핑한 테이블의 수보다 클래스의 수가 더 많음</li>
+<li>용어도 공통화 되고, 코드도 공통화 된다.</li>
+<li>도메인의 언어로 맞출수 있는 언어들도 많이 나올 수 있음.</li>
+</ul>
+</blockquote>
+<h3 id="임베디드-타입과-연관관계">임베디드 타입과 연관관계<a class="anchor" href="#임베디드-타입과-연관관계">#</a></h3>
+<hr>
+<p><img src="/images/develop/backend/orm-jpa-basic/embedded-type/img-006.png" alt="contact"></p>
+<blockquote>
+<p>JPA 표준 스펙에 있는 내용으로, Member엔티티가 Adress와 PhoneNumber라는 임베디드  값 타입을 가지고 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>Address는 Zipcode를 가질 수 있는데, 임베디드 타입은 임베디드 타입을 가질수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>그리고 재미있는 사실이 PhoneNumber라는 임베디드 타입이 PhoneEntity를 가질 수 있습니다. PhoneNumber 입장에서 PhoneEntity의 외래키를 가지고 있으면 되므로 어렵운 개념은 아닙니다.</p>
+</blockquote>
+<h3 id="attributeoverride-속성-재정의">@AttributeOverride: 속성 재정의<a class="anchor" href="#attributeoverride-속성-재정의">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>한 엔티티에서 같은 값 타입을 사용하면?</li>
+<li>컬럼명이 중복됨</li>
+<li>@AttributeOverrides, @AttributeOverride를 사용해서 컬럼명 속성을 재정의</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Member.java - Address workAddress 추가</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    // 기간
+    //private LocalDateTime startDate;
+    //private LocalDateTime endDate;
+    @Embedded
+    private Period workPeriod;
+
+    // 주소
+    //private String city;
+    //private String street;
+    //private String zipcode;
+    @Embedded
+    private Address homeAddress;
+
+    @Embedded
+    private Address workAddress; // ** 추가
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Period getWorkPeriod() {
+        return workPeriod;
+    }
+
+    public void setWorkPeriod(Period workPeriod) {
+        this.workPeriod = workPeriod;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java - 애플리케이션 재시작</p>
+</blockquote>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Exception in thread &quot;main&quot; javax.persistence.PersistenceException: [PersistenceUnit: relativemapping] Unable to build Hibernate SessionFactory
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.persistenceException(EntityManagerFactoryBuilderImpl.java:1336)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1262)
+	at org.hibernate.jpa.HibernatePersistenceProvider.createEntityManagerFactory(HibernatePersistenceProvider.java:56)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:79)
+	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:54)
+	at relativemapping.JpaMain.main(JpaMain.java:12)
+Caused by: org.hibernate.MappingException: Repeated column in mapping for entity: relativemapping.Member column: city (should be mapped with insert=&quot;false&quot; update=&quot;false&quot;)
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:862)
+	at org.hibernate.mapping.PersistentClass.checkPropertyColumnDuplication(PersistentClass.java:880)
+	at org.hibernate.mapping.PersistentClass.checkPropertyColumnDuplication(PersistentClass.java:876)
+	at org.hibernate.mapping.PersistentClass.checkColumnDuplication(PersistentClass.java:902)
+	at org.hibernate.mapping.PersistentClass.validate(PersistentClass.java:634)
+	at org.hibernate.mapping.RootClass.validate(RootClass.java:267)
+	at org.hibernate.boot.internal.MetadataImpl.validate(MetadataImpl.java:354)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:465)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	... 4 more
+
+</code></pre>
+<blockquote>
+<p>오류없이 속성을 재정의 하여 사용하고 싶을때, @AttributeOverrides 와 @AttributeOverride를 사용합니다.</p>
+</blockquote>
+<pre><code>    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = &quot;city&quot;, column = @Column(name = &quot;work_city&quot;)),
+            @AttributeOverride(name = &quot;street&quot;, column = @Column(name = &quot;work_street&quot;)),
+            @AttributeOverride(name = &quot;zipcode&quot;, column = @Column(name = &quot;work_zipcode&quot;))
+    })
+    private Address workAddress;
+</code></pre>
+<pre><code> @AttributeOverrides({
+ 	@AttributeOverride(
+ 		name = &quot;city&quot;
+ 		, column = @Column(
+ 					name = &quot;work_city&quot;
+ 			       )
+ 	
+ 	)
+ })
+</code></pre>
+<blockquote>
+<p>JpaMain.java - 애플리케이션 재시작</p>
+</blockquote>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    
+    create table Member (
+       id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        name varchar(255),
+        work_city varchar(255),
+        work_street varchar(255),
+        work_zipcode varchar(255),
+        endDate timestamp,
+        startDate timestamp,
+        TEAM_ID bigint,
+        primary key (id)
+    )
+
+</code></pre>
+<h3 id="임베디드-타입과-null">임베디드 타입과 null<a class="anchor" href="#임베디드-타입과-null">#</a></h3>
+<hr>
+<blockquote>
+<p>임베디드 타입의 값이 null 이면 매핑한 컬럼 값은 모두 null</p>
+</blockquote>
+<h4 id="참고">참고</h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">JPA 값 타입</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPA 임베디드 타입</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#임베디드복합-값-타입">임베디드(복합 값) 타입</a>
+      <ul>
+        <li><a href="#임베디드-타입-1">임베디드 타입</a></li>
+        <li><a href="#임베디드-타입-사용법">임베디드 타입 사용법</a></li>
+        <li><a href="#임베디드-타입-장점">임베디드 타입 장점</a></li>
+        <li><a href="#임베디드-타입과-테이블-매핑">임베디드 타입과 테이블 매핑</a></li>
+        <li><a href="#임베티드-타입의-장점">임베티드 타입의 장점</a></li>
+        <li><a href="#임베디드-타입과-연관관계">임베디드 타입과 연관관계</a></li>
+        <li><a href="#attributeoverride-속성-재정의">@AttributeOverride: 속성 재정의</a></li>
+        <li><a href="#임베디드-타입과-null">임베디드 타입과 null</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>
