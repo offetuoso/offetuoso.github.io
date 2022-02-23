@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 12 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 값 타입 컬렉션</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type-collection/</link>
+      <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type-collection/</guid>
+      <description>값 타입 컬렉션 (Value Type Collection)  값 타입 컬렉션   값 타입 컬렉션이란 값타입을 컬렉션에 담아서 사용하는 것을 의미 합니다.
+  Member가 faviriteFoods와 addressHistory 라는 두가지 컬렉션을 가지고 있습니다.
+  DB 테이블로 구현할때 문제가 됩니다. 값 타입이 하나 일때는 필드 속성으로 해서 Member 테이블에 넣으면 되었는데
+  관계형 DB에는 컬렉션을 담을 수 있는 구조가 없습니다. 요즘에서야 JSON 타입을 지원하는 데이터베이스도 있긴합니다.
+  관계형 DB에서 이런 구조를 사용하기 위해 1:N 관계의 각 테이블을 생성하여야 합니다.</description>
+    </item>
+    
     <item>
       <title>JPA 값 타입과 불변 객체</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/immutable-object/</link>
