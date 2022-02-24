@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 19 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 실전 예제 6 - 값 타입 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-6/</link>
+      <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-6/</guid>
+      <description>실전 예제 6 - 값 타입 매핑  값 타입 추가    city, street, zipcode 는 Address 값 타입으로 변경   값 타입 추가 순서    값 타입 클래스 추가 - Address.java    @Embeddable 어노테이션 추가    불변 객체로 생성 3.1. 필드(맴버 변수) 추가 3.2. getter 추가 3.3. setter private로 생성 또는 생성 X   값 타입은 공유해서 사용시 변경이 되면 같이 사용하는 값 모두 변경되므로 주의 값 타입은 변경하지 말고 객체를 새로 생성해서 갈아껴야함.</description>
+    </item>
+    
     <item>
       <title>JPA 값 타입 컬렉션</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type-collection/</link>
