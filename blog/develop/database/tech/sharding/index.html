@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -434,11 +434,11 @@ DBA가 데이터의 패턴과 저장공간을 잘 알고 샤드키를 선정하�
 </tr>
 </tbody>
 </table>
-<h4 id="장점-1">장점</h4>
+<h4 id="장점-1">장점<a class="anchor" href="#장점-1">#</a></h4>
 <blockquote>
 <p>가장 큰 장점은 실행이 비교적 간단하다는 것이다. 모든 shard들은 다른 데이터를 가지고 있고, original 데이터베이스 뿐 아니라 서로가 똑같은 스키마를 가지게 된다. application code는 그저 데이터가 어떤 범위인지 읽고 그에 상응하는 shard에 쓰면 된다.</p>
 </blockquote>
-<h4 id="단점-1">단점</h4>
+<h4 id="단점-1">단점<a class="anchor" href="#단점-1">#</a></h4>
 <blockquote>
 <p>반면, 데이터베이스를 골고루 분배하지는 못하기 때문에 앞서 말한 데이터베이스 hotspots가 생길 수 있다. 위 그림 상으로는 모든 shard들이 같은 양의 데이터를 가지고 있지만, 특정 데이터가 다른 데이터에 비해 더 많이 찾아질 수 있기 때문에 읽는 횟수가 불균형할 수 있다.</p>
 </blockquote>
@@ -451,7 +451,7 @@ DBA가 데이터의 패턴과 저장공간을 잘 알고 샤드키를 선정하�
 <p>hash 함수는 고객 이메일과 같은 데이터 조각을 Input으로 받아, hash value라는 완전히 다른 형태의 value를 Ouput으로 내보낸다. sharding의 관점에서 봤을 때 hash value는 들어오는 데이터가 저장될 shard를 결정하는 shard ID가 될 것이다.</p>
 </blockquote>
 <p><img src="/images/develop/backend/database/sharding/001.png" alt="contact"></p>
-<h4 id="shard-key">shard key</h4>
+<h4 id="shard-key">shard key<a class="anchor" href="#shard-key">#</a></h4>
 <blockquote>
 <p>올바른 shard에 일관성 있는 방식으로 들어갈 수 있도록 entry를 위치시키기 위해, hash 함수에 들어가는 value들은 같은 column에서 나와야 한다. 이 colum을 shard key라고 부른다.</p>
 </blockquote>
@@ -461,11 +461,11 @@ DBA가 데이터의 패턴과 저장공간을 잘 알고 샤드키를 선정하�
 <li>넓게 본다면, shard key는 정적이어야 하고 시간에 따라 바뀌어서는 안 된다. 그렇지 않으면 업데이트에 필요한 작업이 증가하고 퍼포먼스를 느리게할 수 있다.</li>
 </ul>
 </blockquote>
-<h4 id="단점-2">단점</h4>
+<h4 id="단점-2">단점<a class="anchor" href="#단점-2">#</a></h4>
 <blockquote>
 <p>key based sharding이 많이 쓰이긴 하지만, 데이터베이스에 서버를 동적으로 추가하거나 제거할 때 어려울 수 있다. 서버를 추가할 때 각각의 서버는 그에 상응하는 hash value가 있어야 하고, 존재하는 많은 entry들은 맞는 hash value에 다시 매핑되고, 적합한 서버에 migrate 되어야 한다. 데이터를 rebalancing하는 것을 시작한다면 새로운 hash 함수 뿐 아니라 예전 hsah 함수도 유효하지 않게 된다. 결과적으로 migration을 하는 동안 애플리케이션은 새로운 데이터를 쓰지 못하고, 쉴 수밖에 없다.</p>
 </blockquote>
-<h4 id="장점-2">장점</h4>
+<h4 id="장점-2">장점<a class="anchor" href="#장점-2">#</a></h4>
 <blockquote>
 <p>이 전략의 가장 큰 장점은 hotspots를 방지하기 위해 데이터를 골고루 분배할 수 있고, 알고리즘적으로 분배하기 때문에 range나 directory와 다르게 모든 데이터가 어디에 위치하는지 말해주는 map을 가질 필요가 없다.</p>
 </blockquote>
@@ -474,22 +474,22 @@ DBA가 데이터의 패턴과 저장공간을 잘 알고 샤드키를 선정하�
 <p>파티셔닝 매커니즘을 제공하는 추상화된 서비스 생성. <br>
 이 sharding을 실행하기 위해서는 반드시 어떤 shard가 어떤 데이터를 갖고 있는지를 추적할 수 있는 shard key를 사용하는 lookup table을 만들고 유지해야 한다.</p>
 </blockquote>
-<h4 id="lookup-table">lookup table</h4>
+<h4 id="lookup-table">lookup table<a class="anchor" href="#lookup-table">#</a></h4>
 <blockquote>
 <p>간단히 말하면 특정 데이터를 찾을 수 있는(where specific data can be found) 정적인 정보를 갖고 있는 테이블이다.</p>
 </blockquote>
 <blockquote>
 <p>Delivery Zone 열은 shard key로 정의된다. shard key로부터 온 데이터는 각각의 행이 어떤 shard에 쓰여져야 하는지를 lookup 테이블과 함께 쓰여진다. range based sharding과 비슷해 보이지만, 범위를 기준으로 shard key의 데이터를 내려주는 것과 다르게 각 키들은 각자 자신만의 특별한 shard에 들어가게 된다.</p>
 </blockquote>
-<h4 id="어떤-상황에서-쓸지">어떤 상황에서 쓸지</h4>
+<h4 id="어떤-상황에서-쓸지">어떤 상황에서 쓸지<a class="anchor" href="#어떤-상황에서-쓸지">#</a></h4>
 <blockquote>
 <p>해당 방법은 shard key가 낮은 cardinality를 가질 때 좋은 선택이다. hash 함수를 거치지 않기 때문에 key based sharding과도 다르다. 그저 lookup table에서 key를 보고 어디에 데이터를 쓸지 결정하는 것 뿐이다.</p>
 </blockquote>
-<h4 id="장점-3">장점</h4>
+<h4 id="장점-3">장점<a class="anchor" href="#장점-3">#</a></h4>
 <blockquote>
 <p>유연성(flexibility)이다. range based sharding은 범위에 국한되고, key based sharding은 만들고 난 뒤 바꾸기 매우 어려운 hash 함수에 국한된다. 반면 directory based sharding은 데이터를 쪼개기 위한 entry들은 어떤 시스템이나 알고리즘에 상관 없이 entry를 할당할 수 있도록 해준다. 동적으로 shard를 추가하는 것도 비교적 쉽다.</p>
 </blockquote>
-<h4 id="단점-3">단점</h4>
+<h4 id="단점-3">단점<a class="anchor" href="#단점-3">#</a></h4>
 <blockquote>
 <p>반면 쿼리하거나 write하기 전에 lookup table에 연결이 필요하기 때문에, application 퍼포먼스에 안 좋은 영향(detrimental impact)을 줄 수 있다. 게다가 lookup table은 실패 지점이 될 수 있다. lookup table이 손상되면 데이터를 새로 쓰거나 존재하는 데이터에 접근하는 것에 영향을 줄 수 있기 때문이다.</p>
 </blockquote>

@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -424,7 +424,7 @@ Hibernate:
 </blockquote>
 <h3 id="값-타입-컬렉션의-사용">값 타입 컬렉션의 사용<a class="anchor" href="#값-타입-컬렉션의-사용">#</a></h3>
 <hr>
-<h4 id="값-타입-저장">값 타입 저장</h4>
+<h4 id="값-타입-저장">값 타입 저장<a class="anchor" href="#값-타입-저장">#</a></h4>
 <blockquote>
 <p>JpaMain.java</p>
 </blockquote>
@@ -510,7 +510,7 @@ Hibernate:
 <blockquote>
 <p>크게 보면, Member의 name, homeAddress, favoriteFoods, addressHistory 모두 값 타입으로 볼 수 있기 때문에 Member의 라이프사이클에 따라 값 타입들도 관리되는 것도 당연한 것입니다.</p>
 </blockquote>
-<h4 id="값-타입-조회">값 타입 조회</h4>
+<h4 id="값-타입-조회">값 타입 조회<a class="anchor" href="#값-타입-조회">#</a></h4>
 <blockquote>
 <p>JpaMain.java</p>
 </blockquote>
@@ -556,7 +556,7 @@ Hibernate:
 <blockquote>
 <p>Member만 조회된 것을 확인 할 수 있습니다. <br> Member에 포함된 city, street, zipcode 는 함께 불러옵니다.</p>
 </blockquote>
-<h4 id="값-타입-컬렉션에서도-지연-로딩-전략-사용">값 타입 컬렉션에서도 지연 로딩 전략 사용</h4>
+<h4 id="값-타입-컬렉션에서도-지연-로딩-전략-사용">값 타입 컬렉션에서도 지연 로딩 전략 사용<a class="anchor" href="#값-타입-컬렉션에서도-지연-로딩-전략-사용">#</a></h4>
 <blockquote>
 <p>JpaMain.java</p>
 </blockquote>
@@ -636,7 +636,7 @@ favoritFood = 햄버거
 favoritFood = 피자
 
 </code></pre>
-<h4 id="값-타입-수정">값 타입 수정</h4>
+<h4 id="값-타입-수정">값 타입 수정<a class="anchor" href="#값-타입-수정">#</a></h4>
 <blockquote>
 <p>JpaMain.java - homeAddress 수정</p>
 </blockquote>
@@ -857,7 +857,7 @@ Hibernate:
 <blockquote>
 <p>수정 후 결과를 보면, 잘 수정되어있는 결과를 볼 수 있습니다.</p>
 </blockquote>
-<h4 id="참고">참고</h4>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <p>값 타입 컬렉션은 영속성 전이(Cascade)+ 고아 객체 제거 기능을 필수로 가진다고 볼 수 있다.</p>
 </blockquote>
@@ -886,7 +886,7 @@ Hibernate:
         zipcode varchar(255)
     )
 </code></pre>
-<h4 id="list--ordercolumn">List + @OrderColumn</h4>
+<h4 id="list--ordercolumn">List + @OrderColumn<a class="anchor" href="#list--ordercolumn">#</a></h4>
 <blockquote>
 <p>@OrderColumn을 추가하면 테이블에 Order 번호가  컬럼이 생성되며 JPA 값 타입 컬렉션에서도 순서가 있는 컬렉션으로 FK + OrderColumn 으로 키를 매핑하게 됩니다.</p>
 </blockquote>
@@ -1224,7 +1224,7 @@ Hibernate:
 <blockquote>
 <p>실무에서 이런 방식을 사용하여, 값 타입을 많이 사용한다고 합니다.</p>
 </blockquote>
-<h4 id="값-타입-컬렉션을-언제-쓰는가-">값 타입 컬렉션을 언제 쓰는가 ?</h4>
+<h4 id="값-타입-컬렉션을-언제-쓰는가-">값 타입 컬렉션을 언제 쓰는가 ?<a class="anchor" href="#값-타입-컬렉션을-언제-쓰는가-">#</a></h4>
 <blockquote>
 <p>진짜 간단한 콤보박스의 옵션 값 정도의 기능 개발할때 사용.</p>
 </blockquote>
@@ -1260,7 +1260,7 @@ Hibernate:
 엔티티와 값 타입을 혼동해서 엔티티를 값 타입으로 만들면 안됨
 식별자가 필요하고, 지속해서 값을 추적, 변경해야 한다면 그것은 값 타입이 아닌 엔티티</p>
 </blockquote>
-<h4 id="참고-1">참고</h4>
+<h4 id="참고-1">참고<a class="anchor" href="#참고-1">#</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>

@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -250,12 +250,12 @@ SpringBoot에 Mysql과 Mybatis를 추가하기 위하여 pom.xml에 해당 depen
 mysqlj와 mybatis를 추가하면 됩니다.</p>
 </blockquote>
 <p><img src="/images/develop/backend/demo-rest-api-2/004.png" alt="contact"></p>
-<h4 id="maven-repositiry">Maven Repositiry</h4>
+<h4 id="maven-repositiry">Maven Repositiry<a class="anchor" href="#maven-repositiry">#</a></h4>
 <blockquote>
 <p>dependency를 추가하기 위하여 <a href="https://mvnrepository.com/">Maven Repositiry</a>를 접속합니다.
 <img src="/images/develop/backend/demo-rest-api-2/005.png" alt="contact"></p>
 </blockquote>
-<h4 id="mysqlj-mysql-connector-for-java">MysqlJ (Mysql Connector for Java)</h4>
+<h4 id="mysqlj-mysql-connector-for-java">MysqlJ (Mysql Connector for Java)<a class="anchor" href="#mysqlj-mysql-connector-for-java">#</a></h4>
 <blockquote>
 <p>mysql connector를 받기 위하여 <mark>mysql j</mark> 를 검색합니다. mysqlj는 
 Mysql을 위한 <a href="https://ko.wikipedia.org/wiki/JDBC">JDBC</a> 입니다.</p>
@@ -277,7 +277,7 @@ Spring Boot에서는 자주 사용하는 라이브러리에 한해서 SpringBoot
 버전은 제거해둡니다. 버전을 남겨두면 버전에 따라 waring이 뜰 수 있습니다.</p>
 </blockquote>
 <h3 id="pomxml에-mybatis-dependency-추가">pom.xml에 Mybatis Dependency 추가<a class="anchor" href="#pomxml에-mybatis-dependency-추가">#</a></h3>
-<h4 id="mybatis">Mybatis</h4>
+<h4 id="mybatis">Mybatis<a class="anchor" href="#mybatis">#</a></h4>
 <blockquote>
 <p>mybatis를 검색하고 Mybatis Spring Boot Starter를 선택합니다.
 <a href="https://ko.wikipedia.org/wiki/%EB%A7%88%EC%9D%B4%EB%B0%94%ED%8B%B0%EC%8A%A4">마이바티스(MyBatis)</a>는 자바 <a href="https://ko.wikipedia.org/wiki/%ED%8D%BC%EC%8B%9C%EC%8A%A4%ED%84%B4%EC%8A%A4_%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC">퍼시스턴스 프레임워크</a>의 하나로 XML 서술자나 애너테이션(annotation)을 사용하여 저장 프로시저나 SQL 문으로 객체들을 연결시키는데 도움을 줍니다.</p>
@@ -311,7 +311,7 @@ spring.datasource.password = [password]
 <blockquote>
 <p>기존에 만들었던 com.example.demo.model.UserProfile의 필드들을 토대로 UserProfile 테이블을 생성합니다.</p>
 </blockquote>
-<h5 id="userprofilejava">UserProfile.java</h5>
+<h5 id="userprofilejava">UserProfile.java<a class="anchor" href="#userprofilejava">#</a></h5>
 <pre><code>package com.example.demo.model;
 
 public class UserProfile {
@@ -394,7 +394,7 @@ public class UserProfile {
 <p>interface로 UserProfileMapper를 생성하고 @Mapper를 붙여서 
 스프링에서 Mapper로 인식하게 합니다.</p>
 </blockquote>
-<h4 id="userprofilemapper-작성">UserProfileMapper 작성</h4>
+<h4 id="userprofilemapper-작성">UserProfileMapper 작성<a class="anchor" href="#userprofilemapper-작성">#</a></h4>
 <p><img src="/images/develop/backend/demo-rest-api-2/025.png" alt="contact"></p>
 <pre><code>package com.example.demo.mapper;
 
@@ -411,7 +411,7 @@ public interface UserProfileMapper {
 }
 
 </code></pre>
-<h4 id="getuserprofile-작성">getUserProfile 작성</h4>
+<h4 id="getuserprofile-작성">getUserProfile 작성<a class="anchor" href="#getuserprofile-작성">#</a></h4>
 <blockquote>
 <ul>
 <li>@select를 사용하여 select 쿼리를 정의합니다</li>
@@ -422,7 +422,7 @@ public interface UserProfileMapper {
 	UserProfile getUserProfile(@Param(&quot;id&quot;) String id);
 	
 </code></pre>
-<h4 id="getuserprofilelist-작성">getUserProfileList 작성</h4>
+<h4 id="getuserprofilelist-작성">getUserProfileList 작성<a class="anchor" href="#getuserprofilelist-작성">#</a></h4>
 <blockquote>
 <ul>
 <li>@select를 사용하여 select 쿼리를 정의합니다.</li>
@@ -432,7 +432,7 @@ public interface UserProfileMapper {
 	List&lt;UserProfile&gt; getUserProfileList();
 	
 </code></pre>
-<h4 id="putuserprofile-작성">putUserProfile 작성</h4>
+<h4 id="putuserprofile-작성">putUserProfile 작성<a class="anchor" href="#putuserprofile-작성">#</a></h4>
 <blockquote>
 <ul>
 <li>@Insert를 사용하여 insert 쿼리를 정의합니다.</li>
@@ -446,7 +446,7 @@ public interface UserProfileMapper {
 			          , @Param(&quot;address&quot;) String address);
 	
 </code></pre>
-<h4 id="postuserprofile-작성">postUserProfile 작성</h4>
+<h4 id="postuserprofile-작성">postUserProfile 작성<a class="anchor" href="#postuserprofile-작성">#</a></h4>
 <blockquote>
 <ul>
 <li>@Update를 사용하여 update 쿼리를 정의합니다.</li>
@@ -460,7 +460,7 @@ public interface UserProfileMapper {
 			, @Param(&quot;address&quot;) String address);
 	
 </code></pre>
-<h4 id="deleteuserprofile-작성">deleteUserProfile 작성</h4>
+<h4 id="deleteuserprofile-작성">deleteUserProfile 작성<a class="anchor" href="#deleteuserprofile-작성">#</a></h4>
 <blockquote>
 <ul>
 <li>@Delete를 사용하여 delete 쿼리를 정의합니다.</li>
@@ -472,7 +472,7 @@ public interface UserProfileMapper {
 	
 </code></pre>
 <p><img src="/images/develop/backend/demo-rest-api-2/026.png" alt="contact"></p>
-<h5 id="userprofilemapperjava">UserProfileMapper.java</h5>
+<h5 id="userprofilemapperjava">UserProfileMapper.java<a class="anchor" href="#userprofilemapperjava">#</a></h5>
 <pre><code>package com.example.demo.mapper;
 
 import java.util.List;
@@ -524,7 +524,7 @@ public interface UserProfileMapper {
 <blockquote>
 <p>이후 전달된 UserProfileMapper 클래스 객체를 통해 메서드를 사용할 수 있습니다.</p>
 </blockquote>
-<h5 id="userprofilecontrollerjava">UserProfileController.java</h5>
+<h5 id="userprofilecontrollerjava">UserProfileController.java<a class="anchor" href="#userprofilecontrollerjava">#</a></h5>
 <pre><code>package com.example.demo.controller;
 
 import org.apache.catalina.User;

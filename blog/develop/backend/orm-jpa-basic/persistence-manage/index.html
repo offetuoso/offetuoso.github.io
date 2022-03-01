@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -213,12 +213,12 @@
 <li>엔티티 매니저를 통해서 영속성 컨텍스트에 접근</li>
 </ul>
 </blockquote>
-<h4 id="j2se-환경">J2SE 환경</h4>
+<h4 id="j2se-환경">J2SE 환경<a class="anchor" href="#j2se-환경">#</a></h4>
 <blockquote>
 <p>엔티티 매니저와 영속성 컨텍스트가 1:1
 <img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-002.png" alt="contact"></p>
 </blockquote>
-<h4 id="j2ee-스프링-프레임워크-같은-컨테이너-환경">J2EE, 스프링 프레임워크 같은 컨테이너 환경</h4>
+<h4 id="j2ee-스프링-프레임워크-같은-컨테이너-환경">J2EE, 스프링 프레임워크 같은 컨테이너 환경<a class="anchor" href="#j2ee-스프링-프레임워크-같은-컨테이너-환경">#</a></h4>
 <blockquote>
 <p>엔티티 매니저와 영속성 컨텍스트가 N:1
 <img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-003.png" alt="contact"></p>
@@ -250,7 +250,7 @@
 </ul>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/persistence-manage/img-004.png" alt="contact"></p>
-<h4 id="비영속-newtransient">비영속 (new/transient)</h4>
+<h4 id="비영속-newtransient">비영속 (new/transient)<a class="anchor" href="#비영속-newtransient">#</a></h4>
 <blockquote>
 <p>객체만 생성하고 세팅한 상태</p>
 </blockquote>
@@ -265,7 +265,7 @@ member.setId(2L);
 member.setName(&quot;회원2&quot;)
 ...
 </code></pre>
-<h4 id="영속-managed">영속 (managed)</h4>
+<h4 id="영속-managed">영속 (managed)<a class="anchor" href="#영속-managed">#</a></h4>
 <blockquote>
 <p>객체만 생성하고 세팅한 상태</p>
 </blockquote>
@@ -308,7 +308,7 @@ tx.commit(); // 실제 쿼리가 실행되는 지점
 <li>지연 로딩(lazy loading)</li>
 </ul>
 </blockquote>
-<h4 id="엔티티-조회-1차-캐시">엔티티 조회, 1차 캐시</h4>
+<h4 id="엔티티-조회-1차-캐시">엔티티 조회, 1차 캐시<a class="anchor" href="#엔티티-조회-1차-캐시">#</a></h4>
 <blockquote>
 <p>영속성 컨텍스트는 내부에 1차 캐시를 가지고 있습니다. @Id가 키가 되고 값은 member객체 자체인 Map이라 생각하면 됩니다.</p>
 </blockquote>
@@ -325,7 +325,7 @@ member.setName(&quot;회원3&quot;);
 em.persist(member);
 
 </code></pre>
-<h4 id="1차-캐시에서-조회">1차 캐시에서 조회</h4>
+<h4 id="1차-캐시에서-조회">1차 캐시에서 조회<a class="anchor" href="#1차-캐시에서-조회">#</a></h4>
 <blockquote>
 <p>JpaMain.java</p>
 </blockquote>
@@ -344,7 +344,7 @@ Member findMemeber = em.find(Member.class, &quot;3L&quot;);
 <blockquote>
 <p>조회를 실행시 우선적으로 1차 캐시에 값으로 객체가 있는지 확인 후 있으면 캐시에서 바로 가져오고, 없는 경우 DB에서 조회를 하여 1차 캐시에 저장하고 객체를 가져오게 됩니다.</p>
 </blockquote>
-<h4 id="db에서-조회">DB에서 조회</h4>
+<h4 id="db에서-조회">DB에서 조회<a class="anchor" href="#db에서-조회">#</a></h4>
 <blockquote>
 <p>JpaMain.java</p>
 </blockquote>
@@ -413,7 +413,7 @@ Member findMemeber = em.find(Member.class, &quot;10L&quot;);
 <p>em.persist()로 memberA와 memberB를 저장할때, 영속 컨텍스트안의 쓰기지연 SQL 저장소에 memberA를 Insert SQL을 저장하고<br>
 그리고 이후에 memberB에 대한 Insert SQL을 쓰기지연 SQL 저장소에 저장합니다. 여기 까지 DB에 저장하지 않고 commit과 함께 DB에 저장합니다.</p>
 </blockquote>
-<h4 id="transactioncommit">transaction.commit();</h4>
+<h4 id="transactioncommit">transaction.commit();<a class="anchor" href="#transactioncommit">#</a></h4>
 <blockquote>
 <p>트랜잭션이 커밋될때 좀더 자세히 그림으로 설명하면 아래와 같습니다.</p>
 </blockquote>
@@ -521,7 +521,7 @@ tx.commit(); // [트랜잭션] 커밋
 <blockquote>
 <p>DB에서 값을 Select 하고 값을 수정만 하고 저장을 따로 하지 않았지만, Update 쿼리까지 실행됩니다.</p>
 </blockquote>
-<h4 id="변경-감지dirty-checking">변경 감지(dirty checking)</h4>
+<h4 id="변경-감지dirty-checking">변경 감지(dirty checking)<a class="anchor" href="#변경-감지dirty-checking">#</a></h4>
 <blockquote>
 <p>커밋하는 시점에 변경 감지를 통해 벌어지는 일을 그림으로 그리면 아래와 같습니다.<br>
 커밋을 하게 되면 내부적으로 flush()를 실행하게 되고, 엔티티와 스냅샷을 비교하게됩니다. 스냅샷은 객체를 읽어올 당시의 값을 스냅샷으로 저장합니다. 트랜잭션에서 커밋하는 시점에 플러시가 호출되며 엔티티와 스냅샷을 비교하여, 변경사항을 쓰기 지연 SQL 저장소에 Update SQL을 저장합니다. 그리고 DB에 Update SQL을 반영하고 commit()을 수행합니다.</p>
@@ -628,7 +628,7 @@ List&lt;Member&gt; members = query.getResultList();
 <li>em.close() - 영속성 컨텍스트를 종료</li>
 </ul>
 </blockquote>
-<h4 id="참고">참고</h4>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>

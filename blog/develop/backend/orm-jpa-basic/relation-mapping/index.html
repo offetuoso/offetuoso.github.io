@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -208,7 +208,7 @@
 </blockquote>
 <h3 id="연관관계가-필요한-이유">연관관계가 필요한 이유<a class="anchor" href="#연관관계가-필요한-이유">#</a></h3>
 <hr>
-<h4 id="예제-시나리오">예제 시나리오</h4>
+<h4 id="예제-시나리오">예제 시나리오<a class="anchor" href="#예제-시나리오">#</a></h4>
 <blockquote>
 <ul>
 <li>회원과 팀이 있다.</li>
@@ -217,7 +217,7 @@
 <li>회원(n:1)팀</li>
 </ul>
 </blockquote>
-<h4 id="객체를-테이블에-맞추어-모델링">객체를 테이블에 맞추어 모델링</h4>
+<h4 id="객체를-테이블에-맞추어-모델링">객체를 테이블에 맞추어 모델링<a class="anchor" href="#객체를-테이블에-맞추어-모델링">#</a></h4>
 <blockquote>
 <p>(연관관계가 없는 객체)</p>
 </blockquote>
@@ -464,7 +464,7 @@ Hibernate:
 <blockquote>
 <p>맴버를 조회하고 그 맴버가 속한 팀을 가져오고 싶을때 찾은 맴버에서 TeamId를 이용해 Team을 찾아야 하는 번잡스러움이 있습니다.</p>
 </blockquote>
-<h4 id="객체를-테이블에-맞추어-데이터-중심으로-모델링하면-협력관계를-만들-수-없다">객체를 테이블에 맞추어 데이터 중심으로 모델링하면, 협력관계를 만들 수 없다.</h4>
+<h4 id="객체를-테이블에-맞추어-데이터-중심으로-모델링하면-협력관계를-만들-수-없다">객체를 테이블에 맞추어 데이터 중심으로 모델링하면, 협력관계를 만들 수 없다.<a class="anchor" href="#객체를-테이블에-맞추어-데이터-중심으로-모델링하면-협력관계를-만들-수-없다">#</a></h4>
 <blockquote>
 <ul>
 <li><mark>테이블은 외래키 키로 조인 </mark>을 사용해서 연관된 테이블을 찾는다.</li>
@@ -474,7 +474,7 @@ Hibernate:
 </blockquote>
 <h3 id="단방향-연관관계">단방향 연관관계<a class="anchor" href="#단방향-연관관계">#</a></h3>
 <hr>
-<h4 id="객체-지향-모델링">객체 지향 모델링</h4>
+<h4 id="객체-지향-모델링">객체 지향 모델링<a class="anchor" href="#객체-지향-모델링">#</a></h4>
 <blockquote>
 <p>(객체 연관관계 사용)</p>
 </blockquote>
@@ -542,12 +542,12 @@ public class Member {
 <p>관계가 먼지 <code> @ManyToOne </code>//Member 입장에서 Member가 N 팀이 1, 1팀에 여러 맴버가 있을 수 있다.  <br>
 조인하려는 컬럼은 <code> @JoinColumn(name = &ldquo;TEAM_ID&rdquo;)</code> // 조인할 컬럼 명</p>
 </blockquote>
-<h4 id="객체-지향-모델링-1">객체 지향 모델링</h4>
+<h4 id="객체-지향-모델링-1">객체 지향 모델링<a class="anchor" href="#객체-지향-모델링-1">#</a></h4>
 <blockquote>
 <p>(ORM 매핑)</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/relation-mapping/img-006.png" alt="contact"></p>
-<h4 id="객체-지향-모델링-2">객체 지향 모델링</h4>
+<h4 id="객체-지향-모델링-2">객체 지향 모델링<a class="anchor" href="#객체-지향-모델링-2">#</a></h4>
 <blockquote>
 <p>(연관관계 저장)</p>
 </blockquote>
@@ -700,8 +700,8 @@ public class Member {
 </blockquote>
 <h3 id="양방향-연관관계">양방향 연관관계<a class="anchor" href="#양방향-연관관계">#</a></h3>
 <hr>
-<h4 id="양방향-연관관계와-연관관계의-주인-1---기본">양방향 연관관계와 연관관계의 주인 1 - 기본</h4>
-<h5 id="양방향-매핑">양방향 매핑</h5>
+<h4 id="양방향-연관관계와-연관관계의-주인-1---기본">양방향 연관관계와 연관관계의 주인 1 - 기본<a class="anchor" href="#양방향-연관관계와-연관관계의-주인-1---기본">#</a></h4>
+<h5 id="양방향-매핑">양방향 매핑<a class="anchor" href="#양방향-매핑">#</a></h5>
 <p><img src="/images/develop/backend/orm-jpa-basic/relation-mapping/img-012.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/relation-mapping/img-013.png" alt="contact"></p>
 <blockquote>
@@ -832,7 +832,7 @@ public class Team {
 
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/relation-mapping/img-015.png" alt="contact"></p>
-<h4 id="양방향-매핑-1">양방향 매핑</h4>
+<h4 id="양방향-매핑-1">양방향 매핑<a class="anchor" href="#양방향-매핑-1">#</a></h4>
 <blockquote>
 <p>(반대 방향으로 객체 그래프 탐색)</p>
 </blockquote>
@@ -861,7 +861,7 @@ public class Team {
 <blockquote>
 <p>둘의 차이는 멀까 어떠한 것은 JoinCoulmn이고 어떠한것은 mappedBy를 쓰는걸까</p>
 </blockquote>
-<h4 id="연관관계의-주인과-mappedby">연관관계의 주인과 mappedBy</h4>
+<h4 id="연관관계의-주인과-mappedby">연관관계의 주인과 mappedBy<a class="anchor" href="#연관관계의-주인과-mappedby">#</a></h4>
 <blockquote>
 <ul>
 <li>mappedBy = JPA의 첫번째 시련(C의 포인터 같은..)</li>
@@ -869,7 +869,7 @@ public class Team {
 <li>객체와 테이블간에 연관관계를 맺는 차이를 이해해야한다.</li>
 </ul>
 </blockquote>
-<h4 id="객체와-테이블의-관계를-맺는-차이">객체와 테이블의 관계를 맺는 차이</h4>
+<h4 id="객체와-테이블의-관계를-맺는-차이">객체와 테이블의 관계를 맺는 차이<a class="anchor" href="#객체와-테이블의-관계를-맺는-차이">#</a></h4>
 <blockquote>
 <ul>
 <li>객체 연관관계 = 2개
@@ -900,7 +900,7 @@ public class Team {
 <blockquote>
 <p>TEAM_ID를 이용해 조인을 하면 MEMBER에서 TEAM을 알 수 있고, TEAM에서도 팀에 포함된 MEMBER들을 알 수 있습니다.</p>
 </blockquote>
-<h4 id="객체의-양방향-관계">객체의 양방향 관계</h4>
+<h4 id="객체의-양방향-관계">객체의 양방향 관계<a class="anchor" href="#객체의-양방향-관계">#</a></h4>
 <blockquote>
 <ul>
 <li>객체의 <mark>양방향 관계는 사실 양방향 관계가 아니라 서로 다른 단방향 관계 2개이다.</mark></li>
@@ -908,7 +908,7 @@ public class Team {
 </ul>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/relation-mapping/img-018.png" alt="contact"></p>
-<h4 id="테이블의-양방향-연관관계">테이블의 양방향 연관관계</h4>
+<h4 id="테이블의-양방향-연관관계">테이블의 양방향 연관관계<a class="anchor" href="#테이블의-양방향-연관관계">#</a></h4>
 <blockquote>
 <ul>
 <li>테이블은 외래 키 하나로 두 테이블의 연관관계를 관리</li>
@@ -926,12 +926,12 @@ SELECT *
 FROM TEAM T
 JOIN MEMBER M ON T.MEMBER_ID = M.MEMBER_ID;
 </code></pre>
-<h4 id="둘-중-하나로-외래-키를-관리해야-한다">둘 중 하나로 외래 키를 관리해야 한다.</h4>
+<h4 id="둘-중-하나로-외래-키를-관리해야-한다">둘 중 하나로 외래 키를 관리해야 한다.<a class="anchor" href="#둘-중-하나로-외래-키를-관리해야-한다">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/relation-mapping/img-019.png" alt="contact"></p>
 <blockquote>
 <p>테이블의 MEMBER의 TEAM_ID를 변경하기 위해서 Member 객체의 team 을 수정해야 할지, Team객체의 members를 수정해야할지 애매한 점이 생깁니다. 테이블 입장에서는 어떠한 객체에서 TEAM_ID 외래키를 Update를 해도 다르지 않으니까요. 이러한 아이러니한 점을 해결하기 위해 연관관계의 주인이라는 개념이 사용됩니다.</p>
 </blockquote>
-<h4 id="연관관계의-주인">연관관계의 주인</h4>
+<h4 id="연관관계의-주인">연관관계의 주인<a class="anchor" href="#연관관계의-주인">#</a></h4>
 <blockquote>
 <p><mark>양방향 매핑 규칙</mark></p>
 <ul>
@@ -942,7 +942,7 @@ JOIN MEMBER M ON T.MEMBER_ID = M.MEMBER_ID;
 <li>주인이 아니면 <mark>mappedBy 속성으로 상대 객체를 주인으로 지정</mark></li>
 </ul>
 </blockquote>
-<h4 id="누구를-주인으로-해야할까-">누구를 주인으로 해야할까 ?</h4>
+<h4 id="누구를-주인으로-해야할까-">누구를 주인으로 해야할까 ?<a class="anchor" href="#누구를-주인으로-해야할까-">#</a></h4>
 <blockquote>
 <ul>
 <li>외래 키가 있는 곳을 주인으로 정해라</li>
@@ -966,7 +966,7 @@ JOIN MEMBER M ON T.MEMBER_ID = M.MEMBER_ID;
     private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
 
 </code></pre>
-<h5 id="만일-외래-키가-없는-테이블을-주인으로-지정할-때의-문제점">만일 외래 키가 없는 테이블을 주인으로 지정할 때의 문제점</h5>
+<h5 id="만일-외래-키가-없는-테이블을-주인으로-지정할-때의-문제점">만일 외래 키가 없는 테이블을 주인으로 지정할 때의 문제점<a class="anchor" href="#만일-외래-키가-없는-테이블을-주인으로-지정할-때의-문제점">#</a></h5>
 <blockquote>
 <p>만일 외래 키가 없는 객체를 주인으로 설정할 경우 값을 변경한다면<br>
 외래 키가 있는 테이블을 수정하기 때문에 내가 수정한 객체는 Team 이지만, Member의 객체 Update Sql이 나가는 황당한 경우가 있을 수 있습니다.</p>
@@ -974,7 +974,7 @@ JOIN MEMBER M ON T.MEMBER_ID = M.MEMBER_ID;
 <blockquote>
 <p>1:N에서 1이 연관관계의 주인일때 1을 수정하면 N의 수정이 일어나기 때문에 성능 이슈가 발생할 수 있습니다.</p>
 </blockquote>
-<h4 id="양방향-매핑시-가장-많이-하는-실수">양방향 매핑시 가장 많이 하는 실수</h4>
+<h4 id="양방향-매핑시-가장-많이-하는-실수">양방향 매핑시 가장 많이 하는 실수<a class="anchor" href="#양방향-매핑시-가장-많이-하는-실수">#</a></h4>
 <blockquote>
 <p>(연관관계의 주인에 값을 입력하지 않음)</p>
 </blockquote>
@@ -1050,7 +1050,7 @@ private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
 <blockquote>
 <p>연관관계의 주인인 Member에 Team 값을 넣고 저장을 하게 되면 TEAM_ID의 값에 1로 저장되는 것을 확인할 수 있습니다.</p>
 </blockquote>
-<h4 id="그러면-연관관계의-주인에만-데이터를-넣으면-될까-">그러면 연관관계의 주인에만 데이터를 넣으면 될까 ?</h4>
+<h4 id="그러면-연관관계의-주인에만-데이터를-넣으면-될까-">그러면 연관관계의 주인에만 데이터를 넣으면 될까 ?<a class="anchor" href="#그러면-연관관계의-주인에만-데이터를-넣으면-될까-">#</a></h4>
 <blockquote>
 <p>JPA 입장에서는 연관관계의 주인에만 데이터를 입력하면 되지만..</p>
 </blockquote>
@@ -1173,7 +1173,7 @@ em.flush();과 em.clear();를 제거 한다면</p>
 <blockquote>
 <p>결론은 양쪽 객체에 값을 세팅하는 것이 맞습니다.</p>
 </blockquote>
-<h4 id="양방향-매핑시-연관관계의-주인에-값을-입력해야-한다">양방향 매핑시 연관관계의 주인에 값을 입력해야 한다.</h4>
+<h4 id="양방향-매핑시-연관관계의-주인에-값을-입력해야-한다">양방향 매핑시 연관관계의 주인에 값을 입력해야 한다.<a class="anchor" href="#양방향-매핑시-연관관계의-주인에-값을-입력해야-한다">#</a></h4>
 <blockquote>
 <p>(순수한 객체 관계를 고려하면 항상 양쪽다 값을 입력해야한다.)</p>
 </blockquote>
@@ -1190,7 +1190,7 @@ em.flush();과 em.clear();를 제거 한다면</p>
             em.persist(member);
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/relation-mapping/img-028.png" alt="contact"></p>
-<h4 id="양방향-연관관계-주의---실습">양방향 연관관계 주의 - 실습</h4>
+<h4 id="양방향-연관관계-주의---실습">양방향 연관관계 주의 - 실습<a class="anchor" href="#양방향-연관관계-주의---실습">#</a></h4>
 <blockquote>
 <ol>
 <li><mark>순수 객체 상태를 고려해서 항상 양쪽에 값을 설정하자</mark> <br>
@@ -1360,7 +1360,7 @@ Member를 수정한다면, 기존의 member를 제거하고 수정한 member로 
 <p>또한 lombok에서 자동으로 toString()을 생성하거나, Json 생성라이브러리에서 객체를 쭉 읽어오면서 무한루프에 갇히게 되면 어마 어마한 장애로 이어질 수 있습니다.
 실제 Json 생성라이브러리는 컨트롤러에서 엔티티를 직접 리스폰스로 보내게 되면 양방향으로 연관관계가 설정되어있으면 그때 Json으로 생성시 Member를 보며 Team이 있네 하고 Team으로 가서 Member가 있네 하고 또 다시 Member로 계속 타고 들어가게 됩니다.</p>
 </blockquote>
-<h5 id="무한루프를-최대한-피할-수-있는-방법">무한루프를 최대한 피할 수 있는 방법</h5>
+<h5 id="무한루프를-최대한-피할-수-있는-방법">무한루프를 최대한 피할 수 있는 방법<a class="anchor" href="#무한루프를-최대한-피할-수-있는-방법">#</a></h5>
 <blockquote>
 <ul>
 <li>lombok에서 toString 만드는거 쓰지마라. 쓰려면 객체 레퍼런스 빼고 사용해야 한다.</li>
@@ -1380,7 +1380,7 @@ Member를 수정한다면, 기존의 member를 제거하고 수정한 member로 
 </li>
 </ul>
 </blockquote>
-<h4 id="양방향-매핑-정리">양방향 매핑 정리</h4>
+<h4 id="양방향-매핑-정리">양방향 매핑 정리<a class="anchor" href="#양방향-매핑-정리">#</a></h4>
 <blockquote>
 <ul>
 <li><mark>단방향 매핑만으로도 이미 연관관계 매핑은 완료</mark></li>
@@ -1396,14 +1396,14 @@ Member를 수정한다면, 기존의 member를 제거하고 수정한 member로 
 <blockquote>
 <p>추후 추가를 하여도 자바 코드 추가되는 것도 많지 않으며, 제일 중요한 테이블에 변화가 없기 때문에 개발하다 진짜 필요할때 아니면 단방향으로 개발을 진행하여도 문제가 없습니다.</p>
 </blockquote>
-<h4 id="연관관계의-주인을-정하는-기준">연관관계의 주인을 정하는 기준</h4>
+<h4 id="연관관계의-주인을-정하는-기준">연관관계의 주인을 정하는 기준<a class="anchor" href="#연관관계의-주인을-정하는-기준">#</a></h4>
 <blockquote>
 <ul>
 <li>비즈니스 로직을 기준으로 연관관계의 주인을 선택하면 안됨</li>
 <li><mark>연관관계의 주인은 외래 키의 위치를 기준으로 정해야함</mark></li>
 </ul>
 </blockquote>
-<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></h4>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a><a class="anchor" href="#참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">#</a></h4>
 
 
               

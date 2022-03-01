@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -217,7 +217,7 @@
 </li>
 </ul>
 </blockquote>
-<h4 id="entity-속성-정리">@Entity 속성 정리</h4>
+<h4 id="entity-속성-정리">@Entity 속성 정리<a class="anchor" href="#entity-속성-정리">#</a></h4>
 <blockquote>
 <ul>
 <li>속성 : name
@@ -397,7 +397,7 @@ public class Member {
 </tr>
 </tbody>
 </table>
-<h4 id="create">Create</h4>
+<h4 id="create">Create<a class="anchor" href="#create">#</a></h4>
 <blockquote>
 <p>persistence.xml</p>
 </blockquote>
@@ -433,7 +433,7 @@ public class Member {
 <blockquote>
 <p>Member 테이블을 먼저 drop하고 create 문을 실행</p>
 </blockquote>
-<h4 id="create---컬럼-추가-후-애플리케이션-재실행">Create - 컬럼 추가 후 애플리케이션 재실행</h4>
+<h4 id="create---컬럼-추가-후-애플리케이션-재실행">Create - 컬럼 추가 후 애플리케이션 재실행<a class="anchor" href="#create---컬럼-추가-후-애플리케이션-재실행">#</a></h4>
 <blockquote>
 <p>Member.Java</p>
 </blockquote>
@@ -493,7 +493,7 @@ public class Member {
 <blockquote>
 <p>추가된 컬럼을 포함하여 Member 테이블이 다시 생성된다.</p>
 </blockquote>
-<h4 id="create-drop">create-drop</h4>
+<h4 id="create-drop">create-drop<a class="anchor" href="#create-drop">#</a></h4>
 <blockquote>
 <p>create와 같지만 종료시점에 생성한 테이블 모두 drop, 예를들어 테스트 케이스 수행후 삭제할때 사용가능</p>
 </blockquote>
@@ -508,7 +508,7 @@ public class Member {
 <blockquote>
 <p>종료시에 drop을 하는것을 볼 수 있다.</p>
 </blockquote>
-<h4 id="update">update</h4>
+<h4 id="update">update<a class="anchor" href="#update">#</a></h4>
 <blockquote>
 <p>추가 했던 age를 잠깐 다시 돌려두고, create 후 update를 실행해 보겠습니다.</p>
 </blockquote>
@@ -679,7 +679,7 @@ public class Member {
 <blockquote>
 <p>실수라도 테이블 컬럼을 삭제하여, 데이터가 날아갈 수 있기 때문에 <mark>컬럼 삭제는 update 옵션에서 변경을 지원하지 않습니다</mark>.</p>
 </blockquote>
-<h4 id="validate">validate</h4>
+<h4 id="validate">validate<a class="anchor" href="#validate">#</a></h4>
 <blockquote>
 <p>테이블과 entity가 정상 매핑되어있는지 확인해 줍니다.</p>
 </blockquote>
@@ -704,12 +704,12 @@ public class Member {
 <p>Schema-validation: missing column [address] in table [Member] <br>
 MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 </blockquote>
-<h4 id="none">none</h4>
+<h4 id="none">none<a class="anchor" href="#none">#</a></h4>
 <blockquote>
 <p>스키마 자동 생성 사용안함으로 설정<br>
 주석으로 해두는 것과 비슷하며, create, create-drop, update, validate가 아닌 어떤 문자열이 들어가 있어도 none과 같음</p>
 </blockquote>
-<h4 id="데이터베이스-방언-별로-달라지는것-확인-varchar">데이터베이스 방언 별로 달라지는것 확인 (varchar)</h4>
+<h4 id="데이터베이스-방언-별로-달라지는것-확인-varchar">데이터베이스 방언 별로 달라지는것 확인 (varchar)<a class="anchor" href="#데이터베이스-방언-별로-달라지는것-확인-varchar">#</a></h4>
 <blockquote>
 <p>persistence.xml</p>
 </blockquote>
@@ -739,7 +739,7 @@ MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 </blockquote>
 <pre><code>&lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
 </code></pre>
-<h4 id="데이터베이스-스키마-자동-생성---주의">데이터베이스 스키마 자동 생성 - 주의</h4>
+<h4 id="데이터베이스-스키마-자동-생성---주의">데이터베이스 스키마 자동 생성 - 주의<a class="anchor" href="#데이터베이스-스키마-자동-생성---주의">#</a></h4>
 <blockquote>
 <ul>
 <li><mark>운영 장비에는 절대 create, create-drop, update 사용하면 안된다.</mark></li>
@@ -748,7 +748,7 @@ MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 <li>스테이징과 운영 서버는 validate 또는 none</li>
 </ul>
 </blockquote>
-<h4 id="ddl-생성-기능">DDL 생성 기능</h4>
+<h4 id="ddl-생성-기능">DDL 생성 기능<a class="anchor" href="#ddl-생성-기능">#</a></h4>
 <blockquote>
 <p>DDL 생성 기능은 DDL을 자동 생성할 때만 사용되고 JPA의 실행 로직에는 영향을 주지 않는다.<br></p>
 </blockquote>
@@ -765,7 +765,7 @@ MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
 columnNames = {&ldquo;NAME&rdquo;, &ldquo;AGE&rdquo;} )})</li>
 </ul>
 </blockquote>
-<h4 id="제약조건-추가">제약조건 추가</h4>
+<h4 id="제약조건-추가">제약조건 추가<a class="anchor" href="#제약조건-추가">#</a></h4>
 <blockquote>
 <p>Member.java</p>
 </blockquote>
@@ -779,7 +779,7 @@ columnNames = {&ldquo;NAME&rdquo;, &ldquo;AGE&rdquo;} )})</li>
 </blockquote>
 <h3 id="필드와-컬럼-매핑">필드와 컬럼 매핑<a class="anchor" href="#필드와-컬럼-매핑">#</a></h3>
 <hr>
-<h4 id="요청사항-추가">요청사항 추가</h4>
+<h4 id="요청사항-추가">요청사항 추가<a class="anchor" href="#요청사항-추가">#</a></h4>
 <blockquote>
 <ol>
 <li>회원은 일반 회원과 관리자로 구분해야 한다.</li>
@@ -966,8 +966,8 @@ public enum RoleType {
 </tr>
 </tbody>
 </table>
-<h4 id="enumtypeordinal-와-enumtypestring-비교">EnumType.ORDINAL 와 EnumType.STRING 비교</h4>
-<h5 id="enumtypeordinal-일때">EnumType.ORDINAL 일때</h5>
+<h4 id="enumtypeordinal-와-enumtypestring-비교">EnumType.ORDINAL 와 EnumType.STRING 비교<a class="anchor" href="#enumtypeordinal-와-enumtypestring-비교">#</a></h4>
+<h5 id="enumtypeordinal-일때">EnumType.ORDINAL 일때<a class="anchor" href="#enumtypeordinal-일때">#</a></h5>
 <blockquote>
 <p>Member.java - EnumType.ORDINAL으로 설정 (Setter Getter 추가)</p>
 </blockquote>
@@ -1116,7 +1116,7 @@ public enum RoleType {
 <blockquote>
 <p>enum의 0번째 인덱스에 GUEST가 추가되면서 DB의 RoleType이 3번째 사용자 빼고 전부 잘못된 것을 확인할 수 있습니다.</p>
 </blockquote>
-<h4 id="enumtypestring-일때">EnumType.STRING 일때</h4>
+<h4 id="enumtypestring-일때">EnumType.STRING 일때<a class="anchor" href="#enumtypestring-일때">#</a></h4>
 <blockquote>
 <p>persistence.xml - 다시 create로 바꿔 설정</p>
 </blockquote>
@@ -1187,7 +1187,7 @@ public enum RoleType {
 <pre><code>	@Transient
 	private Integer temp;
 </code></pre>
-<h4 id="참고">참고</h4>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>

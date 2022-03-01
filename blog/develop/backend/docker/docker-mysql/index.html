@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -229,7 +229,7 @@ docker/getting-started   latest    3ba8f2ff0727   2 months ago   27.9MB
 <pre><code>PS C:\&gt; docker run --name mysql-test -e MYSQL_ROOT_PASSWORD=passw0rd -d -p 3306:3306 mysql:5.7
 fb4e8d8a5dd23d2c2b8068b311105f28bd8bd97067e78a7f4779d7da5bb3a483
 </code></pre>
-<h4 id="docker-옵션">docker 옵션</h4>
+<h4 id="docker-옵션">docker 옵션<a class="anchor" href="#docker-옵션">#</a></h4>
 <blockquote>
 <ol>
 <li><mark>-d</mark> 는 컨테이너를 백그라운드에서 동작하는 어플리케이션으로 실행</li>
@@ -275,7 +275,7 @@ af3dd622e753   mysql     &quot;docker-entrypoint.s…&quot;   28 hours ago   Up 
 </code></pre>
 <p><img src="/images/docker/docker_mysql_5.png" alt="contact"></p>
 <h3 id="mysql-테스트">Mysql 테스트<a class="anchor" href="#mysql-테스트">#</a></h3>
-<h4 id="설치시-등록한-암호-입력">설치시 등록한 암호 입력</h4>
+<h4 id="설치시-등록한-암호-입력">설치시 등록한 암호 입력<a class="anchor" href="#설치시-등록한-암호-입력">#</a></h4>
 <blockquote>
 <p>mysql -u root -p</p>
 </blockquote>
@@ -296,7 +296,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 mysql&gt;
 </code></pre>
 <p><img src="/images/docker/docker_mysql_6.png" alt="contact"></p>
-<h4 id="mysql-user-생성-및-권한-부여">Mysql user 생성 및 권한 부여</h4>
+<h4 id="mysql-user-생성-및-권한-부여">Mysql user 생성 및 권한 부여<a class="anchor" href="#mysql-user-생성-및-권한-부여">#</a></h4>
 <blockquote>
 <p>개발에 사용할 developer라는 유저 생성</p>
 </blockquote>
@@ -312,7 +312,7 @@ Query OK, 0 rows affected (0.00 sec)
 mysql&gt;
 </code></pre>
 <p><img src="/images/docker/docker_mysql_7.png" alt="contact"></p>
-<h4 id="유저-변경">유저 변경</h4>
+<h4 id="유저-변경">유저 변경<a class="anchor" href="#유저-변경">#</a></h4>
 <pre><code>mysql&gt; quit
 Bye
 root@4b6fb99160bf:/# mysql -u developer -p
@@ -331,7 +331,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql&gt;
 </code></pre>
-<h4 id="데이터베이스-생성">데이터베이스 생성</h4>
+<h4 id="데이터베이스-생성">데이터베이스 생성<a class="anchor" href="#데이터베이스-생성">#</a></h4>
 <pre><code>mysql&gt; create database test;
 Query OK, 1 row affected (0.00 sec)
 

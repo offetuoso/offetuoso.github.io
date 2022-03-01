@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -287,7 +287,7 @@ AUTO는 방언에 따라 다르게 생성</p>
 </code></pre>
 <h3 id="generationtypeidentity">GenerationType.IDENTITY<a class="anchor" href="#generationtypeidentity">#</a></h3>
 <hr>
-<h4 id="generationtypeidentity---특징">GenerationType.IDENTITY - 특징</h4>
+<h4 id="generationtypeidentity---특징">GenerationType.IDENTITY - 특징<a class="anchor" href="#generationtypeidentity---특징">#</a></h4>
 <blockquote>
 <ul>
 <li>기본 키 생성을 데이터베이스에 위임</li>
@@ -424,7 +424,7 @@ INFO: HHH10001008: Cleaning up connection pool [jdbc:h2:tcp://localhost/~/test]
 Process finished with exit code 0
 
 </code></pre>
-<h4 id="identity-전략-애매한점">IDENTITY 전략 애매한점</h4>
+<h4 id="identity-전략-애매한점">IDENTITY 전략 애매한점<a class="anchor" href="#identity-전략-애매한점">#</a></h4>
 <blockquote>
 <p>strategy = GenerationType.IDENTITY를 사용할 경우 Key를 Null로 하여 DB에 인서트할 당시에 키가 생성하게됩니다. <br> 영속성 컨텍스트에서 관리를 하기 위해서는  PK값이 있어야 합니다. 하지만 이 전략은 DB에 들어가봐야 PK를 알 수 있습니다. 그래서 제약이 생기게 됩니다.</p>
 </blockquote>
@@ -471,7 +471,7 @@ public class Member {
 </blockquote>
 <h3 id="generationtypesequence">GenerationType.SEQUENCE<a class="anchor" href="#generationtypesequence">#</a></h3>
 <hr>
-<h4 id="generationtypesequence---특징">GenerationType.SEQUENCE - 특징</h4>
+<h4 id="generationtypesequence---특징">GenerationType.SEQUENCE - 특징<a class="anchor" href="#generationtypesequence---특징">#</a></h4>
 <blockquote>
 <ul>
 <li>데이터베이스 시퀀스는 유일한 값을 순서대로 생성하는 특별한 데이터베이스 오브젝트( 예) 오라클 시퀀스)</li>
@@ -571,7 +571,7 @@ public class Member {
 <blockquote>
 <p>call next value for hibernate_sequence 기본 시퀀스를 사용해서 새로운 키값을 생성하게 되는데, 테이블 마다 시퀀스를 따로 관리하고 싶다면 @SequnceGenerator를 사용하면 됩니다.</p>
 </blockquote>
-<h4 id="sequence-전략---매핑">Sequence 전략 - 매핑</h4>
+<h4 id="sequence-전략---매핑">Sequence 전략 - 매핑<a class="anchor" href="#sequence-전략---매핑">#</a></h4>
 <blockquote>
 <p>Member.java</p>
 </blockquote>
@@ -592,7 +592,7 @@ public class Member {
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-008.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-009.png" alt="contact"></p>
-<h4 id="sequence---sequencegenerator">SEQUENCE - @SequenceGenerator</h4>
+<h4 id="sequence---sequencegenerator">SEQUENCE - @SequenceGenerator<a class="anchor" href="#sequence---sequencegenerator">#</a></h4>
 <blockquote>
 <ul>
 <li>주의 allocationSize 기본 값 = 50</li>
@@ -634,7 +634,7 @@ public class Member {
 </tr>
 </tbody>
 </table>
-<h4 id="sequence---추가-설명">SEQUENCE - 추가 설명</h4>
+<h4 id="sequence---추가-설명">SEQUENCE - 추가 설명<a class="anchor" href="#sequence---추가-설명">#</a></h4>
 <blockquote>
 <p>GeneratedValue의 전략을  GenerationType.SEQUENCE로 사용하게 되면 sequence를 생성하게 되는데</p>
 </blockquote>
@@ -695,7 +695,7 @@ member1.id : 1
 </blockquote>
 <h3 id="generationtypetable">GenerationType.TABLE<a class="anchor" href="#generationtypetable">#</a></h3>
 <hr>
-<h4 id="generationtypetable---특징">GenerationType.TABLE - 특징</h4>
+<h4 id="generationtypetable---특징">GenerationType.TABLE - 특징<a class="anchor" href="#generationtypetable---특징">#</a></h4>
 <blockquote>
 <ul>
 <li>키 생성 전용 테이블을 하나 만들어서 데이터베이스 시퀀스를 흉내내는 전략 <br>
@@ -703,7 +703,7 @@ member1.id : 1
 단점 : 성능</li>
 </ul>
 </blockquote>
-<h4 id="table-전략---매핑">Table 전략 - 매핑</h4>
+<h4 id="table-전략---매핑">Table 전략 - 매핑<a class="anchor" href="#table-전략---매핑">#</a></h4>
 <blockquote>
 <p>Member.java</p>
 </blockquote>
@@ -734,7 +734,7 @@ public class Member {
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-010.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-011.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/primary-key-mapping/img-012.png" alt="contact"></p>
-<h4 id="tablegenerator---속성">@TableGenerator - 속성</h4>
+<h4 id="tablegenerator---속성">@TableGenerator - 속성<a class="anchor" href="#tablegenerator---속성">#</a></h4>
 <table>
 <thead>
 <tr>
@@ -923,7 +923,7 @@ public class Member {
 <p>Table 전략 또한 동일하며, 테이블의 데이터를 미리 설정한 값 만큼 미리 세팅하고 키를 메모리에서 생성하여 사용합니다. 물론 서버가 여러대인 경우에도 서버 각각 중복되지 않고 호출한 순서대로 1~50  <br>
 , 50 ~100 씩 할당받아 메모리에 키를 두고 사용합니다. 때문에 동시성 문제가 발생하지 않고 문제없이 동작합니다.</p>
 </blockquote>
-<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></h4>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a><a class="anchor" href="#참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">#</a></h4>
 
 
               

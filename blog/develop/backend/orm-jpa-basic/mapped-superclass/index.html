@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -196,7 +196,7 @@
 <p>DB에서는 각각 테이블에 id, name을 포함하며 DB와 구조가 다르지만, 매번 추가 해야하는 속성을 엔티티마다 추가해야 하는 불편함을 줄여보자 해서 나오게 된 기능입니다.</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/mapped-superclass/img-001.png" alt="contact"></p>
-<h4 id="mappedsuperclass-예제">@MappedSuperclass 예제</h4>
+<h4 id="mappedsuperclass-예제">@MappedSuperclass 예제<a class="anchor" href="#mappedsuperclass-예제">#</a></h4>
 <blockquote>
 <p>DBA의 요청으로 엔티티 마다 생성한 사람의 ID, 생성한 시간, 마지막 수정한 사람 ID, 마지막 수정한 시간을 각각 추가하려 합니다.</p>
 </blockquote>
@@ -317,7 +317,7 @@ public class Team extends BaseEntity{
     )
     
 </code></pre>
-<h5 id="columnname변경-컬럼명을-사용하여-일괄-컬럼명-수정">@Column(name=&ldquo;변경 컬럼명&rdquo;)을 사용하여 일괄 컬럼명 수정</h5>
+<h5 id="columnname변경-컬럼명을-사용하여-일괄-컬럼명-수정">@Column(name=&ldquo;변경 컬럼명&rdquo;)을 사용하여 일괄 컬럼명 수정<a class="anchor" href="#columnname변경-컬럼명을-사용하여-일괄-컬럼명-수정">#</a></h5>
 <blockquote>
 <p>BaseEntity.java - Column(name=&ldquo;변경 컬럼명&rdquo;) 추가</p>
 </blockquote>
@@ -367,7 +367,7 @@ public class BaseEntity {
 <blockquote>
 <p>이후에 Hibernate 뿐만 아니라 Jpa와 SpringData를 같이 사용하면 BaseEntity의 속성들을 어노테이션을 통해 간편하게 자동으로 현재 세션 ID와 현재 시간을 넣어줄 수 있습니다.</p>
 </blockquote>
-<h4 id="mappedsuperclass-2">@MappedSuperclass</h4>
+<h4 id="mappedsuperclass-2">@MappedSuperclass<a class="anchor" href="#mappedsuperclass-2">#</a></h4>
 <blockquote>
 <ul>
 <li>상속관계 매핑X</li>
@@ -401,7 +401,7 @@ public abstract class BaseEntity {
 <li>참고 : @Entity 클래스는 엔티티나 @MappedSuperclass로 지정한 클래스만 상속 가능</li>
 </ul>
 </blockquote>
-<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></h4>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a><a class="anchor" href="#참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">#</a></h4>
 
 
               

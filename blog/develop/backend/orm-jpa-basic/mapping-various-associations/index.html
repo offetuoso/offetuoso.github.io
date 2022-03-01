@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -230,7 +230,7 @@
 </li>
 </ul>
 </blockquote>
-<h4 id="연관관계의-주인">연관관계의 주인</h4>
+<h4 id="연관관계의-주인">연관관계의 주인<a class="anchor" href="#연관관계의-주인">#</a></h4>
 <blockquote>
 <ul>
 <li>테이블은 외래 키 하나로 두 테이블이 연관관계를 맺음</li>
@@ -248,7 +248,7 @@
 <blockquote>
 <p>Member랑 Team이 있다면 1:N중 N인 Member에 외래 키가 있어야합니다.</p>
 </blockquote>
-<h4 id="다대일-단방향-정리">다대일 단방향 정리</h4>
+<h4 id="다대일-단방향-정리">다대일 단방향 정리<a class="anchor" href="#다대일-단방향-정리">#</a></h4>
 <blockquote>
 <ul>
 <li>가장 많이 사용하는 연관관계</li>
@@ -486,7 +486,7 @@ public class Team {
 }
 
 </code></pre>
-<h4 id="다대일-양방향-정리">다대일 양방향 정리</h4>
+<h4 id="다대일-양방향-정리">다대일 양방향 정리<a class="anchor" href="#다대일-양방향-정리">#</a></h4>
 <blockquote>
 <ul>
 <li>외래 키가 있는 쪽이 연관관계의 주인</li>
@@ -650,7 +650,7 @@ public class Member {
 <blockquote>
 <p>만약 지금처럼 Team에서 Member로 접근이 필요한 경우 다대일의 양방향 연관관계 매핑 사용을 추천드립니다.</p>
 </blockquote>
-<h4 id="일대다-단방향-정리">일대다 단방향 정리</h4>
+<h4 id="일대다-단방향-정리">일대다 단방향 정리<a class="anchor" href="#일대다-단방향-정리">#</a></h4>
 <blockquote>
 <ul>
 <li>일대다 단방향은 일대다(1:N)에서 <mark>일(1)이 연관관계의 주인</mark></li>
@@ -799,7 +799,7 @@ public class Member {
 <blockquote>
 <p>회원은 사물함 하나를 가질 수 있고 그리고 사물함도 하나의 맴버를 가질 수 있습니다. 이런 룰을 가지고 있을 때,  Member 테이블을 주 테이블로 생각하고 연관관계의 주인을 Member로 지정.</p>
 </blockquote>
-<h4 id="일대일--주-테이블에-외래-키-단방향-정리">일대일 : 주 테이블에 외래 키 단방향 정리</h4>
+<h4 id="일대일--주-테이블에-외래-키-단방향-정리">일대일 : 주 테이블에 외래 키 단방향 정리<a class="anchor" href="#일대일--주-테이블에-외래-키-단방향-정리">#</a></h4>
 <blockquote>
 <ul>
 <li>다대일(@ManyToOne) 단방향 매핑과 유사</li>
@@ -989,7 +989,7 @@ public class Locker {
 }
 
 </code></pre>
-<h4 id="일대일--주-테이블에-외래-키-양방향-정리">일대일 : 주 테이블에 외래 키 양방향 정리</h4>
+<h4 id="일대일--주-테이블에-외래-키-양방향-정리">일대일 : 주 테이블에 외래 키 양방향 정리<a class="anchor" href="#일대일--주-테이블에-외래-키-양방향-정리">#</a></h4>
 <blockquote>
 <ul>
 <li>다대일 양방향 매핑 처럼 외래 키가 있는 곳이 연관관계의 주인</li>
@@ -1002,7 +1002,7 @@ public class Locker {
 <blockquote>
 <p>Member 객체를 연관관계의 주인으로 두고 Locker객체를 가지고 LOCKER 테이블에 MEMBER_ID를 관리 하는 방법은 없고 지원도 안해줍니다.</p>
 </blockquote>
-<h4 id="일대일--대상-테이블에-외래-키-단방향-정리">일대일 : 대상 테이블에 외래 키 단방향 정리</h4>
+<h4 id="일대일--대상-테이블에-외래-키-단방향-정리">일대일 : 대상 테이블에 외래 키 단방향 정리<a class="anchor" href="#일대일--대상-테이블에-외래-키-단방향-정리">#</a></h4>
 <blockquote>
 <ul>
 <li>단방향 관계는 JPA에서 지원안함</li>
@@ -1019,7 +1019,7 @@ public class Locker {
 <blockquote>
 <p>이것을 반대로 뒤집은 것과 같음. 1:1 관계를 정리하면 내것은 내가 관리<br></p>
 </blockquote>
-<h4 id="일대일--외래키는-어떤-객체가-가져야-할까">일대일 : 외래키는 어떤 객체가 가져야 할까</h4>
+<h4 id="일대일--외래키는-어떤-객체가-가져야-할까">일대일 : 외래키는 어떤 객체가 가져야 할까<a class="anchor" href="#일대일--외래키는-어떤-객체가-가져야-할까">#</a></h4>
 <blockquote>
 <p>매우 민감한 주제이며 DBA와 싸울수도있음. 일대일 관계는 MEMBER에 외래 키가 있든 LOCKER에 있든 
 어떠한 방법을 써도 연관관계가 유효 합니다. <br></p>
@@ -1047,7 +1047,7 @@ Member를 더 많이 조회하기 때문에 Locker가 Member를 가지는 것보
 <blockquote>
 <p>이런 모든 것을 고려하여 설계를 해야합니다.</p>
 </blockquote>
-<h4 id="일대일-정리">일대일 정리</h4>
+<h4 id="일대일-정리">일대일 정리<a class="anchor" href="#일대일-정리">#</a></h4>
 <blockquote>
 <ul>
 <li>주 테이블에 외래 키
@@ -1248,7 +1248,7 @@ public class Product {
 }
 
 </code></pre>
-<h4 id="다대다-매핑의-한계">다대다 매핑의 한계</h4>
+<h4 id="다대다-매핑의-한계">다대다 매핑의 한계<a class="anchor" href="#다대다-매핑의-한계">#</a></h4>
 <blockquote>
 <ul>
 <li>편리해 보이지만 실무에서 사용X</li>
@@ -1260,7 +1260,7 @@ public class Product {
 <blockquote>
 <p>중간 테이블 사용시 조인 쿼리도 예상치 못하게 잘못된 쿼리도 나갈 수 있음</p>
 </blockquote>
-<h4 id="다대다-한계-극복">다대다 한계 극복</h4>
+<h4 id="다대다-한계-극복">다대다 한계 극복<a class="anchor" href="#다대다-한계-극복">#</a></h4>
 <blockquote>
 <ul>
 <li>연결 테이블용 엔티티 추가(연결 테이블을 엔티티로 승격)
@@ -1442,7 +1442,7 @@ public class Product {
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/mapping-various-associations/img-017.png" alt="contact"></p>
 <p><img src="/images/develop/backend/orm-jpa-basic/mapping-various-associations/img-018.png" alt="contact"></p>
-<h4 id="nm-관계는-1n-n1로">N:M 관계는 1:N, N:1로</h4>
+<h4 id="nm-관계는-1n-n1로">N:M 관계는 1:N, N:1로<a class="anchor" href="#nm-관계는-1n-n1로">#</a></h4>
 <blockquote>
 <ul>
 <li>테이블의 N:M 관계는 중간 테이블을 이용해서 1:N, N:1</li>
@@ -1451,7 +1451,7 @@ public class Product {
 <li>실전에서는 @ManyToMany 사용X</li>
 </ul>
 </blockquote>
-<h4 id="joincolumn">@JoinColumn</h4>
+<h4 id="joincolumn">@JoinColumn<a class="anchor" href="#joincolumn">#</a></h4>
 <blockquote>
 <p>외래 키를 매핑할 때 사용</p>
 </blockquote>
@@ -1461,7 +1461,7 @@ name	|	매핑할 외래 키 이름	|	필드명 + _ + 참조하는 테이블의 �
 referencedColumnName	|	외래 키가 참조하는 대상 테이블의 컬럼명	|	참조하는 테이블의 기본 키 컬럼명
 foreignKey(DDL)	|	외래 키 제약조건을 직접 지정할 수 있다.<br> 이 속성은 테이블을 생성할 때만 사용한다.	|	
 unique<br>nullable<br>insertable<br>updatable<br>columnDefinition<br>table	|	@Column의 속성과 같다	|</p>
-<h4 id="manytoone---주요속성">@ManyToOne - 주요속성</h4>
+<h4 id="manytoone---주요속성">@ManyToOne - 주요속성<a class="anchor" href="#manytoone---주요속성">#</a></h4>
 <blockquote>
 <p>다대일 관계 매핑  <br>
 (다대일은 연관관계의 주인 mappedBy 가 없다.) <br>
@@ -1473,7 +1473,7 @@ optional	|	false로 설정하면 연관된 엔티티가 항상 있어야 한다.
 fetch	|	글로벌 페치 전략을 설정한다.	|	@ManyToOne=FetchType.EAGER <br> @ManyToOne=FetchType.EAGER <br> OneToMany=FetchType.LAZY
 cascade | 영속성 전이 기능을 사용한다. | 
 targetEntity | 연관된 엔티티의 타입 정보를 설정한다. <br> 이 기능은 거의 사용하지 않는다. <br> 컬렉션을 사용해도 제네릭으로 타입 정보를 알 수 있다. |</p>
-<h4 id="onetomany---주요속성">@OneToMany - 주요속성</h4>
+<h4 id="onetomany---주요속성">@OneToMany - 주요속성<a class="anchor" href="#onetomany---주요속성">#</a></h4>
 <blockquote>
 <p>일대다 관계 매핑</p>
 </blockquote>
@@ -1483,7 +1483,7 @@ mappedBy	|	연관관계의 주인 필드를 선택한다.	|
 fetch	|	글로벌 페치 전략을 설정한다.	|	@ManyToOne=FetchType.EAGER <br> @ManyToOne=FetchType.EAGER <br> OneToMany=FetchType.LAZY
 cascade | 영속성 전이 기능을 사용한다. | 
 targetEntity | 연관된 엔티티의 타입 정보를 설정한다. <br> 이 기능은 거의 사용하지 않는다. <br> 컬렉션을 사용해도 제네릭으로 타입 정보를 알 수 있다. |</p>
-<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></h4>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a><a class="anchor" href="#참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">#</a></h4>
 
 
               

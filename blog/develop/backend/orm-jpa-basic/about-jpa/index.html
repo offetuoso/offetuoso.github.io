@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -253,11 +253,11 @@
 </blockquote>
 <h3 id="객체-vs-관계형-데이터베이스">객체 VS 관계형 데이터베이스<a class="anchor" href="#객체-vs-관계형-데이터베이스">#</a></h3>
 <hr>
-<h4 id="관계형-데이터베이스">관계형 데이터베이스</h4>
+<h4 id="관계형-데이터베이스">관계형 데이터베이스<a class="anchor" href="#관계형-데이터베이스">#</a></h4>
 <blockquote>
 <p>데이터를 잘 정규화 해서 보관</p>
 </blockquote>
-<h4 id="객체">객체</h4>
+<h4 id="객체">객체<a class="anchor" href="#객체">#</a></h4>
 <blockquote>
 <p>속성과 기능을 묶어서 캡슐화 하여 객체간 유기적으로 사용</p>
 </blockquote>
@@ -274,7 +274,7 @@
 <blockquote>
 <p>현실적 대안은 RDB</p>
 </blockquote>
-<h4 id="객체를-관계형-데이터베이스에-저장">객체를 관계형 데이터베이스에 저장</h4>
+<h4 id="객체를-관계형-데이터베이스에-저장">객체를 관계형 데이터베이스에 저장<a class="anchor" href="#객체를-관계형-데이터베이스에-저장">#</a></h4>
 <blockquote>
 <p>객체 -&gt; SQL 변환 -&gt; RDB <br></p>
 </blockquote>
@@ -302,9 +302,9 @@
 <li>데이터 식별 방법</li>
 </ul>
 </blockquote>
-<h4 id="상속">상속</h4>
+<h4 id="상속">상속<a class="anchor" href="#상속">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/about-jpa/img-2.png" alt="contact"></p>
-<h5 id="album-저장">Album 저장</h5>
+<h5 id="album-저장">Album 저장<a class="anchor" href="#album-저장">#</a></h5>
 <blockquote>
 <ol>
 <li>객체 분해</li>
@@ -312,7 +312,7 @@
 <li>INSERT INTO ALBUM ..</li>
 </ol>
 </blockquote>
-<h5 id="album-조회">Album 조회</h5>
+<h5 id="album-조회">Album 조회<a class="anchor" href="#album-조회">#</a></h5>
 <blockquote>
 <ol>
 <li>각각의 테이블에 따른 조인 SQL 작성</li>
@@ -321,13 +321,13 @@
 <li>그래서 DB에 저장할 객체에는 상속 관계 안쓴다</li>
 </ol>
 </blockquote>
-<h5 id="자바-컬렉션에-저장하면">자바 컬렉션에 저장하면?</h5>
+<h5 id="자바-컬렉션에-저장하면">자바 컬렉션에 저장하면?<a class="anchor" href="#자바-컬렉션에-저장하면">#</a></h5>
 <blockquote>
 <p>객체를 담을 수 있는 특별한 컬렉션이 있다고 가정하면 !</p>
 </blockquote>
 <pre><code>list.add(album);
 </code></pre>
-<h5 id="자바-컬렉션에서-조회하려면">자바 컬렉션에서 조회하려면?</h5>
+<h5 id="자바-컬렉션에서-조회하려면">자바 컬렉션에서 조회하려면?<a class="anchor" href="#자바-컬렉션에서-조회하려면">#</a></h5>
 <pre><code>Album album = list.get(albumId);
 
 //보모 타입으로 조회 후 다형성 활용
@@ -337,7 +337,7 @@ Item item = list.get(albumId);
 <p>컬렉션에 넣고 빼는 것은 심플하지만, 관계형 DB에 넣고 빼는 순간 중간에서 SQL 매핑작업을 개발자가 
 손수 작업을 해줘야 한다.</p>
 </blockquote>
-<h4 id="연관관계">연관관계</h4>
+<h4 id="연관관계">연관관계<a class="anchor" href="#연관관계">#</a></h4>
 <blockquote>
 <ul>
 <li>객체는 참조를 사용 : member.getTeam()</li>
@@ -345,7 +345,7 @@ Item item = list.get(albumId);
 </ul>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/about-jpa/img-3.png" alt="contact"></p>
-<h4 id="객체를-테이블에-맞추어-모델링">객체를 테이블에 맞추어 모델링</h4>
+<h4 id="객체를-테이블에-맞추어-모델링">객체를 테이블에 맞추어 모델링<a class="anchor" href="#객체를-테이블에-맞추어-모델링">#</a></h4>
 <pre><code>class Member {
 	Long id; 			// MEMBER_ID 컬럼 사용
 	Long teamId;		// TEAM_ID FK 컬럼 사용
@@ -357,9 +357,9 @@ class Team {
 	String name;  // NAME 컬럼 사용
 }
 </code></pre>
-<h5 id="테이블에-맞춘-객체-저장">테이블에 맞춘 객체 저장</h5>
+<h5 id="테이블에-맞춘-객체-저장">테이블에 맞춘 객체 저장<a class="anchor" href="#테이블에-맞춘-객체-저장">#</a></h5>
 <p><img src="/images/develop/backend/orm-jpa-basic/about-jpa/img-4.png" alt="contact"></p>
-<h4 id="객체다운-모델링">객체다운 모델링</h4>
+<h4 id="객체다운-모델링">객체다운 모델링<a class="anchor" href="#객체다운-모델링">#</a></h4>
 <pre><code>class Member {
 	Long id; 			// MEMBER_ID 컬럼 사용
 	Team team;		// 참조로 연관관계를 맺는다.
@@ -375,9 +375,9 @@ class Team {
 	String name;  // NAME 컬럼 사용
 }
 </code></pre>
-<h5 id="객체-모델링-저장">객체 모델링 저장</h5>
+<h5 id="객체-모델링-저장">객체 모델링 저장<a class="anchor" href="#객체-모델링-저장">#</a></h5>
 <p><img src="/images/develop/backend/orm-jpa-basic/about-jpa/img-5.png" alt="contact"></p>
-<h5 id="객체-모델링-조회">객체 모델링 조회</h5>
+<h5 id="객체-모델링-조회">객체 모델링 조회<a class="anchor" href="#객체-모델링-조회">#</a></h5>
 <pre><code>--select.member.info
 SELECT M.*, T.*
   FROM MEMBER M
@@ -412,7 +412,7 @@ public Member find(Long memberId){
 <blockquote>
 <p>이러한 번잡함을 해결하기 위해 Meber와 Team을 모두 포괄하는 SuperDto(MemberTeamDto) 등 으로 한번에 받음</p>
 </blockquote>
-<h4 id="객체-모델링-자바-컬렉션에-관리">객체 모델링, 자바 컬렉션에 관리</h4>
+<h4 id="객체-모델링-자바-컬렉션에-관리">객체 모델링, 자바 컬렉션에 관리<a class="anchor" href="#객체-모델링-자바-컬렉션에-관리">#</a></h4>
 <pre><code> list.add(member);
  
  Member member = list.get(memberId);
@@ -421,12 +421,12 @@ public Member find(Long memberId){
 <blockquote>
 <p>자바 컬렉션에 넣는다고 생각하면 이러한 형태가 객체지향적으로 설계하기 괜찮음</p>
 </blockquote>
-<h5 id="객체-그래프-탐색">객체 그래프 탐색</h5>
+<h5 id="객체-그래프-탐색">객체 그래프 탐색<a class="anchor" href="#객체-그래프-탐색">#</a></h5>
 <blockquote>
 <p>객체는 자유롭게 객체 그래프를 탐색 할 수 있어야 한다.</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/about-jpa/img-6.png" alt="contact"></p>
-<h5 id="처음-실행하는-sql에-따라-탐색-범위-결정">처음 실행하는 SQL에 따라 탐색 범위 결정</h5>
+<h5 id="처음-실행하는-sql에-따라-탐색-범위-결정">처음 실행하는 SQL에 따라 탐색 범위 결정<a class="anchor" href="#처음-실행하는-sql에-따라-탐색-범위-결정">#</a></h5>
 <pre><code>--select.member.info
 SELECT M.*, T.*
   FROM MEMBER M
@@ -439,7 +439,7 @@ member.getOrder() // null
 <p>조회한 sql에 따라 order 테이블엔 값이 있어도 sql에서 order를 조회 하지 않았기 때문에 
 getOrder()에서는 null이 발생</p>
 </blockquote>
-<h5 id="엔티티-신뢰-문제">엔티티 신뢰 문제</h5>
+<h5 id="엔티티-신뢰-문제">엔티티 신뢰 문제<a class="anchor" href="#엔티티-신뢰-문제">#</a></h5>
 <pre><code>class meberService {
 	
 	...
@@ -456,7 +456,7 @@ getOrder()에서는 null이 발생</p>
 실제로 memberDAO.find()를 열어서 실제 조회하는 sql을 확인하고 내부동작이 어떻게 되어있는지 확인 하지 않는 이상 어떤 결과가 있을지 모른다. <br>
 이러한 계층구조 객체를 레이어드 아키텍처라 하는데, 레이어드 아키텍처는 다음 레이어에서 신뢰하고 사용을 할 수 있어야 한다. 하지만  이경우 엔티티 신뢰 문제가 발생.</p>
 </blockquote>
-<h5 id="모든-객체를-미리-로딩할-수는-없다">모든 객체를 미리 로딩할 수는 없다.</h5>
+<h5 id="모든-객체를-미리-로딩할-수는-없다">모든 객체를 미리 로딩할 수는 없다.<a class="anchor" href="#모든-객체를-미리-로딩할-수는-없다">#</a></h5>
 <blockquote>
 <p>상황에 따라 동일한 회원 조회 메서드를 여러벌 생성</p>
 </blockquote>
@@ -468,13 +468,13 @@ memberDAO.getMemberWithTeam(); // Member와 Team 조회
 memberDAO.getMemberWithTeamWithDelivery(); 
 
 </code></pre>
-<h4 id="계층형-아키텍처">계층형 아키텍처</h4>
+<h4 id="계층형-아키텍처">계층형 아키텍처<a class="anchor" href="#계층형-아키텍처">#</a></h4>
 <blockquote>
 <p>진정한 의미의 계층 분할이 어렵다.</p>
 </blockquote>
 <h3 id="비교하기">비교하기<a class="anchor" href="#비교하기">#</a></h3>
 <hr>
-<h4 id="비교하기---자바-객체로-조회">비교하기 - 자바 객체로 조회</h4>
+<h4 id="비교하기---자바-객체로-조회">비교하기 - 자바 객체로 조회<a class="anchor" href="#비교하기---자바-객체로-조회">#</a></h4>
 <pre><code>Long memberId = 100;
 Member member1 = memberDAO.getMember(memberId); 
 Member member2 = memberDAO.getMember(memberId);
@@ -492,7 +492,7 @@ class MemberDAO {
 }
 
 </code></pre>
-<h4 id="비교하기---자바-컬렉션에서-조회">비교하기 - 자바 컬렉션에서 조회</h4>
+<h4 id="비교하기---자바-컬렉션에서-조회">비교하기 - 자바 컬렉션에서 조회<a class="anchor" href="#비교하기---자바-컬렉션에서-조회">#</a></h4>
 <blockquote>
 <p>이러한 특수한 컬렉션이 있다고 가정</p>
 </blockquote>
@@ -536,12 +536,12 @@ member1 == member2; //같다. (참조 값이 같다)
 <h3 id="jpa는-애플리케이션과-jdbc-사이에서-동작">JPA는 애플리케이션과 JDBC 사이에서 동작<a class="anchor" href="#jpa는-애플리케이션과-jdbc-사이에서-동작">#</a></h3>
 <hr>
 <p><img src="/images/develop/backend/orm-jpa-basic/about-jpa/img-7.png" alt="contact"></p>
-<h4 id="jpa-동작---저장">JPA 동작 - 저장</h4>
+<h4 id="jpa-동작---저장">JPA 동작 - 저장<a class="anchor" href="#jpa-동작---저장">#</a></h4>
 <blockquote>
 <p>JPA에게 Meber객체를 넘기면, JPA가 Member 객체를 분석하고, Insert 쿼리를 생성해서 DB에 전달하고 결과를 받음</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/about-jpa/img-8.png" alt="contact"></p>
-<h4 id="jpa-동작---조회">JPA 동작 - 조회</h4>
+<h4 id="jpa-동작---조회">JPA 동작 - 조회<a class="anchor" href="#jpa-동작---조회">#</a></h4>
 <blockquote>
 <p>JPA에게 Meber객체를 넘기면, JPA가 Member 객체를 분석하고, Select 쿼리를 생성해서 DB에 전달하고 결과를 받음</p>
 </blockquote>
@@ -593,7 +593,7 @@ member1 == member2; //같다. (참조 값이 같다)
 <li>표준</li>
 </ul>
 </blockquote>
-<h4 id="생산성---jpa와-crud">생산성 - JPA와 CRUD</h4>
+<h4 id="생산성---jpa와-crud">생산성 - JPA와 CRUD<a class="anchor" href="#생산성---jpa와-crud">#</a></h4>
 <blockquote>
 <ul>
 <li>저장 : jpa.persist(member) //영구 저장하다라는 뜻</li>
@@ -602,7 +602,7 @@ member1 == member2; //같다. (참조 값이 같다)
 <li>삭제 : jpa.remove(member)</li>
 </ul>
 </blockquote>
-<h4 id="유지보수---jpa--필드만-추가하면-됨-sql은-jpa가-처리">유지보수 - JPA : 필드만 추가하면 됨 SQL은 JPA가 처리</h4>
+<h4 id="유지보수---jpa--필드만-추가하면-됨-sql은-jpa가-처리">유지보수 - JPA : 필드만 추가하면 됨 SQL은 JPA가 처리<a class="anchor" href="#유지보수---jpa--필드만-추가하면-됨-sql은-jpa가-처리">#</a></h4>
 <blockquote>
 <p>개발이 끝났을때, 기획에서 연락처를 추가해 달라는 요청이 왔다</p>
 </blockquote>
@@ -623,16 +623,16 @@ member1 == member2; //같다. (참조 값이 같다)
 	UPDATE MEMBER SET …  , TEL = ?  -- 신규추가 tel
  */
 </code></pre>
-<h4 id="jpa와-패러다임의-불일치-해결">JPA와 패러다임의 불일치 해결</h4>
+<h4 id="jpa와-패러다임의-불일치-해결">JPA와 패러다임의 불일치 해결<a class="anchor" href="#jpa와-패러다임의-불일치-해결">#</a></h4>
 <blockquote>
 <p>1.JPA와 상속
 2.JPA와 연관관계
 3.JPA와 객체 그래프 탐색
 4.JPA와 비교하기</p>
 </blockquote>
-<h5 id="jpa와-상속">JPA와 상속</h5>
+<h5 id="jpa와-상속">JPA와 상속<a class="anchor" href="#jpa와-상속">#</a></h5>
 <p><img src="/images/develop/backend/orm-jpa-basic/about-jpa/img-2.png" alt="contact"></p>
-<h5 id="jpa와-상속---저장">JPA와 상속 - 저장</h5>
+<h5 id="jpa와-상속---저장">JPA와 상속 - 저장<a class="anchor" href="#jpa와-상속---저장">#</a></h5>
 <blockquote>
 <p>ALBUM 객체를 DB에 저장하고 싶을때, jpa.persist()에 album 객체를 넘기면 JPA가 Insert 쿼리를 나누어서 작성</p>
 </blockquote>
@@ -643,7 +643,7 @@ member1 == member2; //같다. (참조 값이 같다)
 	Insert Into ITEM ...
 	Insert Into ALBUM ...
 </code></pre>
-<h5 id="jpa와-상속---조회">JPA와 상속 - 조회</h5>
+<h5 id="jpa와-상속---조회">JPA와 상속 - 조회<a class="anchor" href="#jpa와-상속---조회">#</a></h5>
 <blockquote>
 <p>Album 객체를 조회하고 싶을때 jpa.find()에 Album의 클래스, PK 값을 넘기면 JPA가 자동으로 
 ITEM과 ALBUM을 조인하여 데이터를 퍼올려줍니다.</p>
@@ -657,7 +657,7 @@ ITEM과 ALBUM을 조인하여 데이터를 퍼올려줍니다.</p>
 	  FROM ITEM I
 	  JOIN ALBUM A ON I.ITEM_ID = A.ITEM_ID
 </code></pre>
-<h5 id="jpa와-연관관계-객체-그래프-탐색">JPA와 연관관계, 객체 그래프 탐색</h5>
+<h5 id="jpa와-연관관계-객체-그래프-탐색">JPA와 연관관계, 객체 그래프 탐색<a class="anchor" href="#jpa와-연관관계-객체-그래프-탐색">#</a></h5>
 <blockquote>
 <p>member에 팀을 세팅하고 member를 저장하면 team을 포함한 member가 저장됨.</p>
 </blockquote>
@@ -672,7 +672,7 @@ ITEM과 ALBUM을 조인하여 데이터를 퍼올려줍니다.</p>
 	Member member = jpa.find(Member.class, memberId);
 	Team team = member.getTeam();
 </code></pre>
-<h4 id="신뢰-할-수-있는-엔티티-계층">신뢰 할 수 있는 엔티티, 계층</h4>
+<h4 id="신뢰-할-수-있는-엔티티-계층">신뢰 할 수 있는 엔티티, 계층<a class="anchor" href="#신뢰-할-수-있는-엔티티-계층">#</a></h4>
 <blockquote>
 <p>JPA를 이용하면, find()를 이용해 객체 그래프 탐색을 통해서 getTeam()나 getOrder().getDelivery()를 사용하여, 각각의 객체를 자유롭게 조회할 수 있습니다.
 또한 Lazy Loading 이라는 기능을 이용하여, 실제 코드를 수행할 당시에 데이터를 불러와 member객체에 하위 계층 객체를 세팅해줍니다. JPA를 이용하면, DB에 데이터가 없지 않는 이상 신뢰 하고 하위 계층을 사용하면 됩니다.</p>
@@ -686,7 +686,7 @@ ITEM과 ALBUM을 조인하여 데이터를 퍼올려줍니다.</p>
 	}
 }
 </code></pre>
-<h4 id="jpa와-객체-비교하기">JPA와 객체 비교하기</h4>
+<h4 id="jpa와-객체-비교하기">JPA와 객체 비교하기<a class="anchor" href="#jpa와-객체-비교하기">#</a></h4>
 <blockquote>
 <p>동일한 트랜잭션에서는 조회한 엔티티는 같음 보장</p>
 </blockquote>
@@ -696,7 +696,7 @@ Member member2 = jpa.find(member.class, memberId);
 
 member1 == member2; // 같다
 </code></pre>
-<h4 id="jpa의-성능-최적화-기능">jpa의 성능 최적화 기능</h4>
+<h4 id="jpa의-성능-최적화-기능">jpa의 성능 최적화 기능<a class="anchor" href="#jpa의-성능-최적화-기능">#</a></h4>
 <blockquote>
 <p>JPA를 사용하면 성능이 저하되는 것이 아닌가 고민을 할 수 있을수도 있지만, JPA는 성능을 최적화 하기 위해 여러가지 기능을 제공합니다.</p>
 </blockquote>
@@ -707,7 +707,7 @@ member1 == member2; // 같다
 <li>지연 로딩(Laze Loading)g</li>
 </ol>
 </blockquote>
-<h5 id="1차-캐시와-동일성-보장">1차 캐시와 동일성 보장</h5>
+<h5 id="1차-캐시와-동일성-보장">1차 캐시와 동일성 보장<a class="anchor" href="#1차-캐시와-동일성-보장">#</a></h5>
 <blockquote>
 <ol>
 <li>같은 트랜잭션 안에서는 같은 엔티티를 반환 - 약간의 조회 성능 향상
@@ -728,7 +728,7 @@ Memeber member2 = jpa.find(Member.class, memberId); // 캐시</li>
 <li>DB Isolation Level이 Read Commit이어도 애플리케이션에서 Repeatable Read 보장</li>
 </ol>
 </blockquote>
-<h5 id="트랜잭션을-지원하는-쓰기-지연---insert">트랜잭션을 지원하는 쓰기 지연 - Insert</h5>
+<h5 id="트랜잭션을-지원하는-쓰기-지연---insert">트랜잭션을 지원하는 쓰기 지연 - Insert<a class="anchor" href="#트랜잭션을-지원하는-쓰기-지연---insert">#</a></h5>
 <blockquote>
 <ol>
 <li>트랜잭션을 커밋할 때까지 Insert SQL을 모음</li>
@@ -750,7 +750,7 @@ Memeber member2 = jpa.find(Member.class, memberId); // 캐시</li>
 JPA가 하나의 트랜잭션에서 memberA, B, C를 메모리에 쌓았다가 Commit 시점에 동일한것을 모아 한번에 JDBC Batch 기능을 이용하여 네트워크를 통해 DB로 데이터를 전송합니다. 
 JPA 옵션으로 설정해 두면 개발자가 신경 쓰지 않아도 이러한 기능을 지원해 줍니다.</p>
 </blockquote>
-<h5 id="지연-로딩과-즉시-로딩">지연 로딩과 즉시 로딩</h5>
+<h5 id="지연-로딩과-즉시-로딩">지연 로딩과 즉시 로딩<a class="anchor" href="#지연-로딩과-즉시-로딩">#</a></h5>
 <blockquote>
 <ul>
 <li>지연 로딩 : 객체가 실제 사용될 때 로딩</li>
@@ -776,11 +776,11 @@ JPA 옵션으로 설정해 두면 개발자가 신경 쓰지 않아도 이러한
 <blockquote>
 <p>JPA를 사용하지 않은 상태에서 MEMBER와 TEAM의 각각의 쿼리를 조인된 하나의 쿼리로 변경하거나, 조인된 각각의 쿼리를 개별의 쿼리로 나누려 작업한다면 진짜 많은 쿼리를 수정해야 될텐데 JPA를 이용하면 어마 어마한 것들을 간단히 사용할 수 있습니다.</p>
 </blockquote>
-<h4 id="orm은-객체와-rdb의-두-기둥위에-있는-기술">ORM은 객체와 RDB의 두 기둥위에 있는 기술</h4>
+<h4 id="orm은-객체와-rdb의-두-기둥위에-있는-기술">ORM은 객체와 RDB의 두 기둥위에 있는 기술<a class="anchor" href="#orm은-객체와-rdb의-두-기둥위에-있는-기술">#</a></h4>
 <blockquote>
 <p>어느하나 소홀해서는 안되며 균형있게 두가지 지식이 쌓여 있어야 안전안 애플리케이션을 설계할 수 있습니다.</p>
 </blockquote>
-<h4 id="참고">참고</h4>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>

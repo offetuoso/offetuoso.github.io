@@ -50,7 +50,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -182,13 +182,13 @@
 <hr>
 <h3 id="지연-로딩">지연 로딩<a class="anchor" href="#지연-로딩">#</a></h3>
 <hr>
-<h4 id="member를-조회할때-team도-함께-조회해야-할까">Member를 조회할때 Team도 함께 조회해야 할까?</h4>
+<h4 id="member를-조회할때-team도-함께-조회해야-할까">Member를 조회할때 Team도 함께 조회해야 할까?<a class="anchor" href="#member를-조회할때-team도-함께-조회해야-할까">#</a></h4>
 <blockquote>
 <p>단순히 Member 정보만 사용하는 비지니스 로직 <br>
 println(member.getName()); 연관관계가 등록되어 있어도 지금처럼 member만 사용하면 손해일 수 있습니다.</p>
 </blockquote>
 <p>![contact](/images/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/im g-001.png)</p>
-<h4 id="지연-로딩-lazy을-사용해서-프록시로-조회">지연 로딩 LAZY을 사용해서 프록시로 조회</h4>
+<h4 id="지연-로딩-lazy을-사용해서-프록시로-조회">지연 로딩 LAZY을 사용해서 프록시로 조회<a class="anchor" href="#지연-로딩-lazy을-사용해서-프록시로-조회">#</a></h4>
 <pre><code>	@Entity
 	public class Member {
 
@@ -433,17 +433,17 @@ m1.getTeam().getClass() = class relativemapping.Team$HibernateProxy$2xzHCXZv
 Process finished with exit code 0
 
 </code></pre>
-<h4 id="지연-로딩-1">지연 로딩</h4>
+<h4 id="지연-로딩-1">지연 로딩<a class="anchor" href="#지연-로딩-1">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/img-002.png" alt="contact"></p>
-<h4 id="지연-로딩-lazy를-사용해서-프록시로-조회">지연 로딩 LAZY를 사용해서 프록시로 조회</h4>
+<h4 id="지연-로딩-lazy를-사용해서-프록시로-조회">지연 로딩 LAZY를 사용해서 프록시로 조회<a class="anchor" href="#지연-로딩-lazy를-사용해서-프록시로-조회">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/img-003.png" alt="contact"></p>
-<h4 id="member와-team을-자주-함께-사용한다면-">Member와 Team을 자주 함께 사용한다면 ?</h4>
+<h4 id="member와-team을-자주-함께-사용한다면-">Member와 Team을 자주 함께 사용한다면 ?<a class="anchor" href="#member와-team을-자주-함께-사용한다면-">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/img-004.png" alt="contact"></p>
 <blockquote>
 <p>Member와 Team을 자주 함께 사용하는 경우 Lazy 로딩을 하게되면 Member한번 Team 한번 쿼리를 각각 계속 호출하기 때문에 비효율적일 수 있습니다. <br>
 상황에 맞게 적절히 적용하는게 중요합니다.</p>
 </blockquote>
-<h4 id="즉시-로딩-eager를-사용해서-함께조회">즉시 로딩 EAGER를 사용해서 함께조회</h4>
+<h4 id="즉시-로딩-eager를-사용해서-함께조회">즉시 로딩 EAGER를 사용해서 함께조회<a class="anchor" href="#즉시-로딩-eager를-사용해서-함께조회">#</a></h4>
 <blockquote>
 <p>Member.java</p>
 </blockquote>
@@ -533,9 +533,9 @@ m1.getTeam().getClass() = class relativemapping.Team
 <blockquote>
 <p>Team과 Member가 조인해서 한방 쿼리로 가져오기 때문에 프록시로 가져올 필요가 없기 때문에 일반 엔티티 객체로 가져오게 됩니다.</p>
 </blockquote>
-<h4 id="즉시-로딩">즉시 로딩</h4>
+<h4 id="즉시-로딩">즉시 로딩<a class="anchor" href="#즉시-로딩">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/img-005.png" alt="contact"></p>
-<h4 id="즉시-로딩eager-member조회시-항상--team도-조회">즉시 로딩(EAGER), Member조회시 항상  Team도 조회</h4>
+<h4 id="즉시-로딩eager-member조회시-항상--team도-조회">즉시 로딩(EAGER), Member조회시 항상  Team도 조회<a class="anchor" href="#즉시-로딩eager-member조회시-항상--team도-조회">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/img-006.png" alt="contact"></p>
 <blockquote>
 <p>JPA 구현체는 가능하면 조인을 사용해서 SQL 한번에 함께 조회</p>
@@ -552,7 +552,7 @@ m1.getTeam().getClass() = class relativemapping.Team
 <li>@OneToMany, @ManyToMany는 기본이 지연 로딩</li>
 </ul>
 </blockquote>
-<h4 id="즉시-로딩을-적용하면-예상치-못한-sql이-발생">즉시 로딩을 적용하면 예상치 못한 SQL이 발생</h4>
+<h4 id="즉시-로딩을-적용하면-예상치-못한-sql이-발생">즉시 로딩을 적용하면 예상치 못한 SQL이 발생<a class="anchor" href="#즉시-로딩을-적용하면-예상치-못한-sql이-발생">#</a></h4>
 <blockquote>
 <p>Member.java</p>
 </blockquote>
@@ -635,7 +635,7 @@ m1.getTeam().getClass() = class relativemapping.Team
         
             
 </code></pre>
-<h4 id="즉시-로딩은-jpql에서-n1-문제를-일으킨다">즉시 로딩은 JPQL에서 N+1 문제를 일으킨다.</h4>
+<h4 id="즉시-로딩은-jpql에서-n1-문제를-일으킨다">즉시 로딩은 JPQL에서 N+1 문제를 일으킨다.<a class="anchor" href="#즉시-로딩은-jpql에서-n1-문제를-일으킨다">#</a></h4>
 <blockquote>
 <p>Member.java - FetchType EAGER</p>
 </blockquote>
@@ -809,7 +809,7 @@ Process finished with exit code 0
 <blockquote>
 <p>또다른 방법은 EntityGraph 라는 어노테이션을 사용하는 방법과  Batch size 방식이 있습니다.</p>
 </blockquote>
-<h4 id="manytoone-은-기본이-즉시-로딩-eager">@ManyToOne 은 기본이 즉시 로딩 EAGER</h4>
+<h4 id="manytoone-은-기본이-즉시-로딩-eager">@ManyToOne 은 기본이 즉시 로딩 EAGER<a class="anchor" href="#manytoone-은-기본이-즉시-로딩-eager">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/img-007.png" alt="contact"></p>
 <blockquote>
 <p>기본이 즉시 로딩이기 때문에 모두 @ManyToOne<mark>(fetch = FetchType.LAZY)</mark> 를 추가해줘야한다 !!!</p>
@@ -851,7 +851,7 @@ Process finished with exit code 0
 <li>즉시 로딩은 상상하지도 못한 쿼리가 나간다.</li>
 </ul>
 </blockquote>
-<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></h4>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a><a class="anchor" href="#참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">#</a></h4>
 
 
               
