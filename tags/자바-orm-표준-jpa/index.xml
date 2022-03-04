@@ -9,11 +9,11 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Tue, 01 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>JPA 객체지향 쿼리 언어(JPQL)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql/</link>
+      <title>JPA 객체지향 쿼리 언어 소개</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/object-oriented-query-language/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/object-oriented-query-language/</guid>
       <description>객체지향 쿼리 언어 (JPQL)  목차    객체지향 커리 언어 소개 JPQL 기본 문법과 기능 패치 조인 경로 표현식 다형성 쿼리 엔티티 직접 사용 Named 쿼리 벌크 연산   객체지향 쿼리 언어 소개  JPA에서 제공되는 다양한 쿼리 방법   JPA에서는 실무에서 사용하기 위한 다양한 검색 조건과 Join을 사용하여 조회 등 복잡한 쿼리를 구현할 수 있도록 기능 다양한 쿼리 방법을 제공합니다.
    JPQL 엔티티 객체를 조회하는 객체지향 쿼리다.</description>
     </item>
