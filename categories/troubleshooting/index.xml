@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 29 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>object references an unsaved transient instance - save the transient instance before flushing 에러</title>
+      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/</link>
+      <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/</guid>
+      <description>object references an unsaved transient instance - save the transient instance before flushing 에러 오류 org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing 원인  @ManyToOne 또는 @OneToMany 매핑을 사용 할때 부모 엔티티에 포함된 FK가 아직 영속되지 않아 생긴 영속성 전이(CASCADE)에 대한 오류 발생
+ 문제가된 소스 설명   Member 엔티티는 id, username, team 을 가지고 있다. Team은 id 와 name 을 가지고 있다.</description>
+    </item>
+    
     <item>
       <title>Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation</title>
       <link>https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/</link>

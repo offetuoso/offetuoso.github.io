@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>JPA 객체지향 쿼리 언어(JPQL) | offetuoso&#39;s Blog</title>
+  <title>JPQL(Java persistence Query Language) | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="객체지향 쿼리 언어(JPQL)">
+  <meta name="description" content="JPQL(Java persistence Query Language)">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -70,9 +70,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "JPA 객체지향 쿼리 언어(JPQL)",
-      "headline" : "JPA 객체지향 쿼리 언어(JPQL)",
-      "description" : "객체지향 쿼리 언어(JPQL)",
+      "name" : "JPQL(Java persistence Query Language)",
+      "headline" : "JPQL(Java persistence Query Language)",
+      "description" : "JPQL(Java persistence Query Language)",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -80,10 +80,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-03-01 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-03-01 00:00:00 \u002b0000 UTC",
+      "datePublished": "2022-03-04 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-03-04 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql\/",
-      "wordCount" : "2392",
+      "wordCount" : "1406",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -165,106 +165,315 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	JPA 객체지향 쿼리 언어(JPQL)
+		            	JPQL(Java persistence Query Language)
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	JPA 객체지향 쿼리 언어(JPQL)
+		       	JPQL(Java persistence Query Language)
             </h1>		
-            <time datetime="2022-03-01 00:00:00 &#43;0000 UTC" class="post__date">2022-03-01</time> 
+            <time datetime="2022-03-04 00:00:00 &#43;0000 UTC" class="post__date">2022-03-04</time> 
           </header>
           <article class="post__content">
               
-<h1 id="객체지향-쿼리-언어-jpql">객체지향 쿼리 언어 (JPQL)</h1>
+<h1 id="jpqljava-persistence-query-language">JPQL(Java persistence Query Language)</h1>
 <hr>
-<h2 id="목차">목차<a class="anchor" href="#목차">#</a></h2>
-<hr>
-<blockquote>
-<ul>
-<li>객체지향 커리 언어 소개</li>
-<li>JPQL</li>
-<li>기본 문법과 기능</li>
-<li>패치 조인</li>
-<li>경로 표현식</li>
-<li>다형성 쿼리</li>
-<li>엔티티 직접 사용</li>
-<li>Named 쿼리</li>
-<li>벌크 연산</li>
-</ul>
-</blockquote>
-<h2 id="객체지향-쿼리-언어-소개">객체지향 쿼리 언어 소개<a class="anchor" href="#객체지향-쿼리-언어-소개">#</a></h2>
+<h2 id="jpql---기본-문법과-기능">JPQL - 기본 문법과 기능<a class="anchor" href="#jpql---기본-문법과-기능">#</a></h2>
 <hr>
 <h3 id="jpa에서-제공되는-다양한-쿼리-방법">JPA에서 제공되는 다양한 쿼리 방법<a class="anchor" href="#jpa에서-제공되는-다양한-쿼리-방법">#</a></h3>
 <hr>
 <blockquote>
-<p>JPA에서는 실무에서 사용하기 위한 다양한 검색 조건과 Join을 사용하여 조회 등 복잡한 쿼리를 구현할 수 있도록 기능 다양한 쿼리 방법을 제공합니다.</p>
-</blockquote>
-<blockquote>
 <ul>
-<li><mark>JPQL</mark>
-엔티티 객체를 조회하는 객체지향 쿼리다.</li>
+<li>JPQL은 객체지향 쿼리 언어다. 따라서 테이블을 대상으로 쿼리 하는 것이 아니라 <mark>엔티티를 대상으로 쿼리</mark> 한다.</li>
+<li>JPQL은 SQL을 추상화해서 특정 데이터베이스 SQL에 의존하지 않는다.</li>
+<li>JPQL은 결국 SQL로 변환된다.</li>
 </ul>
 </blockquote>
 <blockquote>
-<ul>
-<li>JPA Criteria</li>
-<li><mark>QueryDSL</mark>
-Java로 코드를 작성하여 JPQL로 제너레이션 하여 빌드하게 도와주는 클래스의 모음입니다.</li>
-</ul>
+<p>객체모델</p>
 </blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/jpql/img-001.png" alt="contact"></p>
 <blockquote>
-<ul>
-<li>네이티브 SQL
-JPQL 외에 특정 데이터베이스에 종속적인 쿼리를 작성하고 사용해야할때 사용(MySql, Oracle.. 쿼리)</li>
-</ul>
+<p>DB모델</p>
 </blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/jpql/img-002.png" alt="contact"></p>
 <blockquote>
-<ul>
-<li>JDBC API 직접사용, Mybatis, SpringJdbcTemplate 함께 사용</li>
-</ul>
+<p>JPQL을 예제 작성을 위한 Maven 프로젝트를 생성 하겠습니다.</p>
 </blockquote>
-<h3 id="jpql">JPQL<a class="anchor" href="#jpql">#</a></h3>
-<hr>
-<h4 id="jpql-소개">JPQL 소개<a class="anchor" href="#jpql-소개">#</a></h4>
+<p><img src="/images/develop/backend/orm-jpa-basic/jpql/img-003.png" alt="contact"></p>
 <blockquote>
-<ul>
-<li>가장 단순한 조회 방법
-<ul>
-<li>EntityManager.find()</li>
-<li>객체 그래프 탐색 (a.getB().getC())</li>
-</ul>
-</li>
-<li><mark>나이가 18살 이상인 회원을 모두 검색 하고 싶다면 ?</mark></li>
-</ul>
+<p>jpa-basic\jpql</p>
 </blockquote>
-<h4 id="jpql--1">JPQL -1<a class="anchor" href="#jpql--1">#</a></h4>
+<p><img src="/images/develop/backend/orm-jpa-basic/jpql/img-004.png" alt="contact"></p>
 <blockquote>
-<ul>
-<li>JPA를 사용하면 엔티티 객체를 중심으로 개발</li>
-<li>문제는 검색 쿼리</li>
-<li>검색을 할 때도 <mark>테이블이 아닌 엔티티 객체를 대상으로 검색</mark></li>
-<li>모든 DB 데이터를 객체로 변환해서 검색하는 것은 불가능</li>
-<li>에플리케이션이 필요한 데이터만 DB에서 불러오면 결국 검색 조건이 포함된 SQL이 필요</li>
-</ul>
+<p>pom.xml</p>
 </blockquote>
-<h4 id="jpql--2">JPQL -2<a class="anchor" href="#jpql--2">#</a></h4>
-<blockquote>
-<ul>
-<li>JPA는 SQL을 추상화한 JPQL이라는 객체 지향 쿼리 언어 제공</li>
-<li>SQL과 문법 유사, SELECT, FROM, WHERE, GROUP BY, HAVING, JOIN 지원</li>
-<li>JPQL은 엔티티 객체를 대상으로 쿼리</li>
-<li>SQL은 데이터베이스 테이블을 대상으로 쿼리</li>
-</ul>
-</blockquote>
-<h4 id="jpql---예제">JPQL - 예제<a class="anchor" href="#jpql---예제">#</a></h4>
-<pre><code>	String jpql = &quot;select m from Member m where m.name like '김%'&quot;;
-	List&lt;Member&gt; result = em.createQuery(jpql, Member.class).getResultList();
+<details title="펼치기/숨기기">
+ 	<summary> pom.xml  </summary>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+    &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+             xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+             xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+        &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	
+        &lt;groupId&gt;org.example&lt;/groupId&gt;
+        &lt;artifactId&gt;jpql&lt;/artifactId&gt;
+        &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+	
+        &lt;properties&gt;
+            &lt;maven.compiler.source&gt;8&lt;/maven.compiler.source&gt;
+            &lt;maven.compiler.target&gt;8&lt;/maven.compiler.target&gt;
+        &lt;/properties&gt;
+	
+	
+        &lt;dependencies&gt;
+            &lt;!-- JPA 하이버네이트 --&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+                &lt;artifactId&gt;hibernate-entitymanager&lt;/artifactId&gt;
+                &lt;version&gt;5.4.22.Final&lt;/version&gt;
+            &lt;/dependency&gt;
+            &lt;!-- H2 데이터베이스 --&gt;
+            &lt;dependency&gt;
+                &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+                &lt;artifactId&gt;h2&lt;/artifactId&gt;
+                &lt;version&gt;1.4.200&lt;/version&gt;
+            &lt;/dependency&gt;
+        &lt;/dependencies&gt;
+	
+    &lt;/project&gt;
 </code></pre>
-<h4 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h4>
+</details>
+<blockquote>
+<p>/resources/META-INF/persistence.xml 추가</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> persistence.xml </summary>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;persistence version=&quot;2.2&quot;
+             xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+             xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd&quot;&gt;
+    &lt;persistence-unit name=&quot;jpql&quot;&gt;
+        &lt;properties&gt;
+            &lt;!-- 필수 속성 --&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.driver&quot; value=&quot;org.h2.Driver&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.user&quot; value=&quot;sa&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.password&quot; value=&quot;&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.url&quot; value=&quot;jdbc:h2:tcp://localhost/~/test&quot;/&gt;
+            &lt;!--
+                &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.MySQL5Dialect&quot;/&gt;
+                &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.Oracle8iDialect&quot;/&gt;
+                &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
+            --&gt;
+            &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
+
+
+            &lt;!-- 옵션 --&gt;
+            &lt;property name=&quot;hibernate.show_sql&quot; value=&quot;true&quot;/&gt;  &lt;!-- 실행 sql 로깅 --&gt;
+            &lt;property name=&quot;hibernate.format_sql&quot; value=&quot;true&quot;/&gt;  &lt;!-- 실행 sql 포메팅 --&gt;
+
+            &lt;!-- /* insert relativemapping.Member */ JPA가 Inser 를 해서 이 쿼리가 나왔다는 것을 주석으로 설명 --&gt;
+            &lt;property name=&quot;hibernate.use_sql_comments&quot; value=&quot;true&quot;/&gt;
+
+            &lt;!-- 한번에 같은 데이터 베이스에 데이터를 집어넣을때 모아서 한번에 인서트 하는 jdbc batch의 수를 지정--&gt;
+            &lt;property name=&quot;hibernate.jdbc.batch_size&quot; value=&quot;10&quot;/&gt;
+
+            &lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt; &lt;!-- create, create-drop, update, validate, none --&gt;
+        &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</code></pre>
+</details> 	
+<blockquote>
+<p>src/main/java/jpql/domain/Member.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Member.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String username;
+
+    private int age;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;TEAM_ID&quot;)
+    private Team team = new Team();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public jpql.domain.Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(jpql.domain.Team team) {
+        this.team = team;
+    }
+    
+    @Override
+    public String toString() {
+        return &quot;Member{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, age=&quot; + age +
+                &quot;, team=&quot; + team +
+                '}';
+    }
+}
+</code></pre>
+</details>
+<blockquote>
+<p>src/main/java/jpql/domain/Team.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Team.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Entity
+public class Team {
+
+    public Team() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = &quot;team&quot;)
+    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&lt;Member&gt; getMembers() {
+        return members;
+    }
+
+    public void setMembers(List&lt;Member&gt; members) {
+        this.members = members;
+    }
+}
+</code></pre>
+</details> 	
+<blockquote>
+<p>src/main/java/jpql/domain/Order.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Order.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = &quot;ORDERS&quot;) //ORDER 가 예약어라 ORDERS로 테이블 명칭 지정
+public class Order {
+    public Order() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private int orderAmount;
+
+    @Embedded
+    private Address orderAddress;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;PRODUCT_ID&quot;)
+    private Product product;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public Address getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(Address orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Address.java</p>
+</blockquote>
 <details title="펼치기/숨기기">
  	<summary> Address.java </summary>
-<pre><code> package relativemapping;
+<pre><code>package jpql.domain;
 
 import javax.persistence.Embeddable;
 import java.util.Objects;
@@ -274,15 +483,6 @@ public class Address {
     private String city;
     private String street;
     private String zipcode;
-
-    public Address() {
-    }
-
-    public Address(String city, String street, String zipcode) {
-        this.city = city;
-        this.street = street;
-        this.zipcode = zipcode;
-    }
 
     public String getCity() {
         return city;
@@ -311,231 +511,35 @@ public class Address {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Address)) return false;
         Address address = (Address) o;
-        return Objects.equals(city, address.city) &amp;&amp; Objects.equals(street, address.street) &amp;&amp; Objects.equals(zipcode, address.zipcode);
+        return Objects.equals(getCity(), address.getCity()) &amp;&amp; Objects.equals(getStreet(), address.getStreet()) &amp;&amp; Objects.equals(getZipcode(), address.getZipcode());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city, street, zipcode);
+        return Objects.hash(getCity(), getStreet(), getZipcode());
     }
+
 }
 </code></pre>
-</details>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Product.java</p>
+</blockquote>
 <details title="펼치기/숨기기">
- 	<summary> AddressEntity.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.security.PrivateKey;
-
-@Entity
-@Table(name = &quot;ADDRESS&quot;)
-public class AddressEntity {
-
-    public AddressEntity() {
-    }
-    public AddressEntity(String city, String street, String zipcode) {
-        this.address = new Address(city,street,zipcode);
-    }
-
-    @Id @GeneratedValue
-    private Long id;
-
-    private Address address;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Album.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-@Entity
-@DiscriminatorValue(&quot;A&quot;)
-public class Album extends Item{
-
-    private String artist;
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> BaseEntity.java </summary>
-<pre><code>package relativemapping;
+ 	<summary> Product.java </summary>
+<pre><code>package jpql.domain;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import java.time.LocalDateTime;
-
-@MappedSuperclass
-public abstract class BaseEntity {
-    @Column(name = &quot;REG_ID&quot;)
-    private String createBy;
-
-    @Column(name = &quot;REG_DT&quot;)
-    private LocalDateTime createDate;
-
-    @Column(name = &quot;MOD_ID&quot;)
-    private String LastModifiedBy;
-
-    @Column(name = &quot;MOD_DT&quot;)
-    private LocalDateTime LastModifiedDate;
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-
-    public String getLastModifiedBy() {
-        return LastModifiedBy;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        LastModifiedBy = lastModifiedBy;
-    }
-
-    public LocalDateTime getLastModifiedDate() {
-        return LastModifiedDate;
-    }
-
-    public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
-        LastModifiedDate = lastModifiedDate;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Book.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-@DiscriminatorValue(&quot;B&quot;)
-public class Book extends Item{
-    private String author;
-    private String isbn;
-
-    public String getAuthor() {
-        return author;
+public class Product {
+    public Product() {
     }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Child.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.*;
-
-@Entity
-public class Child {
-
-    public Child() {
-    }
-
-
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    private String name;
-
-    @ManyToOne
-    @JoinColumn(name = &quot;parent_id&quot;)
-    private Parent parent;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Parent getParent() {
-        return parent;
-    }
-
-    public void setParent(Parent parent) {
-        this.parent = parent;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Item.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.*;
-
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Item {
 
     @Id @GeneratedValue
     private Long id;
@@ -543,6 +547,8 @@ public abstract class Item {
     private String name;
 
     private int price;
+
+    private int stockAmount;
 
     public Long getId() {
         return id;
@@ -567,415 +573,35 @@ public abstract class Item {
     public void setPrice(int price) {
         this.price = price;
     }
-}
+
+    public int getStockAmount() {
+        return stockAmount;
+    }
+
+    public void setStockAmount(int stockAmount) {
+        this.stockAmount = stockAmount;
+    }
+} 	
 </code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Member.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-
-@Entity
-public class Member {
-
-    public Member(){
-    }
-
-    @Id @GeneratedValue
-    private Long id;
-
-    @Column(name = &quot;USERNAME&quot;)
-    private String name;
-
-    @Embedded
-    private Address homeAddress;
-
-    @ElementCollection
-    @CollectionTable(name = &quot;FAVORITE_FOOD&quot;, joinColumns =
-            @JoinColumn(name = &quot;MEMBER_ID&quot;) // JoinColumn을 세팅하면 해당 키를 외래키로 사용합니다.
-    )
-
-    @Column(name = &quot;FOOD_NAME &quot;)
-    private Set&lt;String&gt; favoriteFoods = new HashSet&lt;&gt;();
-
-    public Long getId() {
-        return id;
-    }
-
-    /*
-    @OrderColumn(name = &quot;address_history_order&quot;)
-    @ElementCollection
-    @CollectionTable(name = &quot;ADDRESS&quot; , joinColumns =
-            @JoinColumn(name = &quot;MEMBER_ID&quot;)
-    )
-    private List&lt;Address&gt; addressHistory = new ArrayList&lt;&gt;();
-    */
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = &quot;MEMBER_ID&quot;)
-    private List&lt;AddressEntity&gt; addressHistory = new ArrayList&lt;&gt;();
-
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public Address getHomeAddress() {
-        return homeAddress;
-    }
-
-    public void setHomeAddress(Address homeAddress) {
-        this.homeAddress = homeAddress;
-    }
-
-    public Set&lt;String&gt; getFavoriteFoods() {
-        return favoriteFoods;
-    }
-
-    public void setFavoriteFoods(Set&lt;String&gt; favoriteFoods) {
-        this.favoriteFoods = favoriteFoods;
-    }
-
-    public List&lt;AddressEntity&gt; getAddressHistory() {
-        return addressHistory;
-    }
-
-    public void setAddressHistory(List&lt;AddressEntity&gt; addressHistory) {
-        this.addressHistory = addressHistory;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> MemberProduct.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-@Entity
-@Table(name = &quot;ORDERS&quot;)
-public class MemberProduct {
-    @Id @GeneratedValue
-    private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = &quot;MEMBER_ID&quot;)
-    private Member member;
-
-    @ManyToOne
-    @JoinColumn(name = &quot;PRODUCT_ID&quot;)
-    private Product product;
-
-    @Column(name = &quot;ORDERAMOUNT&quot;)
-    private int orderAmount;
-
-    @Column(name = &quot;ORDERCOUNT&quot;)
-    private int orderCount;
-
-    public Member getMember() {
-        return member;
-    }
-
-    @Column(name = &quot;ORDERDATE&quot;)
-    private LocalDate orderDate;
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Movie.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-
-@Entity
-@DiscriminatorValue(&quot;M&quot;)
-public class Movie extends Item{
-    private String director;
-    private String actor;
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public String getActor() {
-        return actor;
-    }
-
-    public void setActor(String actor) {
-        this.actor = actor;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Parent.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-public class Parent {
-
-    public Parent() {
-    }
-
-
-    @Id
-    @GeneratedValue
-    @Column(name = &quot;parent_id&quot;)
-    private Long id;
-
-    private String name;
-
-    @OneToMany(mappedBy = &quot;parent&quot;,  orphanRemoval = true)
-    private List&lt;Child&gt; childList = new ArrayList&lt;&gt;();
-
-    public void addChild(Child child){
-        childList.add(child);
-        child.setParent(this);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List&lt;Child&gt; getChildList() {
-        return childList;
-    }
-
-    public void setChildList(List&lt;Child&gt; childList) {
-        this.childList = childList;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Period.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.Embeddable;
-import java.time.LocalDateTime;
-
-@Embeddable
-public class Period {
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-
-    public Period() {
-    }
-
-    public Period(LocalDateTime startDate, LocalDateTime endDate) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    public Boolean isIncumbent(){
-
-        LocalDateTime today = LocalDateTime.now();
-        /*
-            System.out.println(this.startDate);
-            System.out.println(today);
-            System.out.println(this.startDate.isEqual(today)); // 주어진 시간과 같은지
-            System.out.println(this.startDate.isBefore(today)); // 주어진 시간보다 이전인지
-            System.out.println(this.startDate.isAfter(today)); // 주어진 시간보다 이후인지
-
-            System.out.println(this.endDate);
-            System.out.println(today);
-            System.out.println(this.endDate.isEqual(today)); // 주어진 시간과 같은지
-            System.out.println(this.endDate.isBefore(today)); // 주어진 시간보다 이전인지
-            System.out.println(this.endDate.isAfter(today)); // 주어진 시간보다 이후인지
-        */
-
-        if( ! this.startDate.isAfter(today) &amp;&amp; this.endDate.isAfter(today)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-
-    public LocalDateTime getStartDate() {
-        return startDate;
-    }
-
-    private void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    private void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
-}
-</code></pre>
-</details>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/JplMain.java</p>
+</blockquote>
 <details title="펼치기/숨기기">
  	<summary> Product.java </summary>
-<pre><code>package relativemapping;
+<pre><code>package jpql;
 
-import javax.persistence.*;
-import java.util.List;
+import jpql.domain.*;
 
-@Entity
-public class Product {
-    @Id @GeneratedValue
-    private Long id;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
-    @OneToMany(mappedBy = &quot;product&quot;)
-    private List&lt;MemberProduct&gt; memberProducts;
-
-
-    private  String name;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> Team.java </summary>
-<pre><code>package relativemapping;
-
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-
-
-@Entity
-public class Team extends BaseEntity{
-
-    public Team(){
-    }
-
-    public Team(Long id, String username){
-        this.id = id;
-        this.name = name;
-    }
-
-    @Id @GeneratedValue
-    @Column(name = &quot;TEAM_ID&quot;)
-    private Long id;
-    @Column(name = &quot;NAME&quot;)
-    private String name;
-
-    @OneToMany
-    @JoinColumn(name = &quot;TEAM_ID&quot;)
-    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
-
-    public List&lt;Member&gt; getMembers() {
-        return members;
-    }
-
-    public void setMembers(List&lt;Member&gt; members) {
-        this.members = members;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-}
-</code></pre>
-</details>
-<details title="펼치기/숨기기">
- 	<summary> JpaMain.java </summary>
-<pre><code>package relativemapping;
-
-import org.hibernate.Hibernate;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Set;
-
-public class JpaMain {
+public class JpqlMain {
     //psvm 단축키로 생성 가능
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;relativemapping&quot;);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;jpql&quot;);
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
@@ -983,51 +609,23 @@ public class JpaMain {
 
         try{
 
+            Team team1 = new Team();
+            team1.setName(&quot;팀1&quot;);
 
-            Member member = new Member();
-            member.setName(&quot;member1&quot;);
-            member.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
-
-            member.getFavoriteFoods().add(&quot;치킨&quot;);
-            member.getFavoriteFoods().add(&quot;피자&quot;);
-            member.getFavoriteFoods().add(&quot;햄버거&quot;);
-
-           /* member.getAddressHistory().add(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
-            member.getAddressHistory().add(new Address(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));*/
-
-            member.getAddressHistory().add(new AddressEntity(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
-            member.getAddressHistory().add(new AddressEntity(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
-
-            em.persist(member);
-
-            em.flush();
-            em.clear();
-
-            System.out.println(&quot;===================================&quot;);
-
-            Member findMember = em.find(Member.class, member.getId());
-
-            // home1 -&gt; new1
-            //findMember.getHomeAddress().setCity(&quot;new1&quot;); // 값 타입의 set은 사이드이펙트가 발생할 문제가 있어 set X
-            /*Address oldAddress = findMember.getHomeAddress();
-            findMember.setHomeAddress(new Address(&quot;new1&quot;, oldAddress.getStreet(), oldAddress.getZipcode()));*/
+            Member member1 = new Member();
+            member1.setUsername(&quot;오과장&quot;);
+            member1.setAge(35);
+            member1.setTeam(team1);
             
-            
-            // 치킨 -&gt; 한식
-            /*findMember.getFavoriteFoods().remove(&quot;치킨&quot;);
-            findMember.getFavoriteFoods().add(&quot;한식&quot;);*/
 
+            Member member2 = new Member();
+            member2.setUsername(&quot;육대리&quot;);
+            member2.setAge(28);
+            member2.setTeam(team1);
 
-            /*findMember.getAddressHistory().remove(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
-            findMember.getAddressHistory().add(new Address(&quot;new2&quot;, &quot;street1&quot;, &quot;10000&quot;));*/
-
-
-
-            /*
-                remove 내부에서 equals()를 통하여 값이 완전 똑같은 객체를 지우게 되는데, equals와 hashcode를
-                == 비교에서, 값 전체를 비교해 같은 값을 가지는 지로 변경하지 않으면 값이 삭제 되지 않고
-                계속 추가가 되는 버그를 발생시킬 수 있습니다.
-            */
+            em.persist(team1);
+            em.persist(member1);
+            em.persist(member2);
 
             tx.commit();
 
@@ -1042,275 +640,237 @@ public class JpaMain {
 
 }
 </code></pre>
-</details>
-<blockquote>
-<p>JpaMain.java</p>
-</blockquote>
-<pre><code>	...
+</details> 
+<h3 id="jpql-문법">JPQL 문법<a class="anchor" href="#jpql-문법">#</a></h3>
+<hr>
+<pre><code>SELECT_문 :: =
 
-            Member member1 = new Member();
-            member1.setName(&quot;member1&quot;);
-            member1.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
-
-            member1.getFavoriteFoods().add(&quot;치킨&quot;);
-            member1.getFavoriteFoods().add(&quot;피자&quot;);
-            member1.getFavoriteFoods().add(&quot;햄버거&quot;);
-
-            member1.getAddressHistory().add(new AddressEntity(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
-            member1.getAddressHistory().add(new AddressEntity(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
-
-            em.persist(member1);
-
-            em.flush();
-            em.clear();
-
-            System.out.println(&quot;===================================&quot;);
-
-            List&lt;Member&gt; members =  em.createQuery(
-                    &quot;select m from Member m where m.name like '%m%' &quot;
-                    , Member.class
-            ).getResultList();
-
-            for (Member member: members){
-                System.out.println(&quot;member &quot;+ member);
-            }
-
-            tx.commit();
-
-	...
+	SELECT_절
+	FROM_절
+	[WHERE_절]
+	[GROUP BY_절]
+	[HAVING_절]
+	[ORDER BY_절]
+	
+UPDATE_문 ::
+	UPDATE_절 
+	[WHERE_절]
+	
+DELETE_문 ::
+	DELETE_절 
+	[WHERE_절]
 </code></pre>
 <blockquote>
-<p>테이블을 대상으로 쿼리를 작성하는게 아니라 엔티티를 대상으로 쿼리를 작성하기 때문에, 컬럼의 username이 아니라 엔티티의 name 으로 조건을 작성, 결과는 테이블의 컬럼명 username 으로 만들어짐.</p>
+<p>SQL 문법과 동일 하다고 보시면 됩니다. <BR>
+UPDATE 문은 뒤에 벌크 연산이라는 새로운 기능 전 사원 10% 연봉 인상 등 내용 설명 예정</p>
 </blockquote>
+<h3 id="jpql-문법-1">JPQL 문법<a class="anchor" href="#jpql-문법-1">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>SELECT M FROM Member as m WHERE m.age &gt; 18</li>
+<li>엔티티 속성은 대소문자 구분 O (Member, age)</li>
+<li>JPQL 키워드는 대소문자 구분 X (SELECT, FROM, where)</li>
+<li>엔티티 이름 사용, 테이블 이름이 아님 (Member) (컬럼명 대신 엔티티 속성명)</li>
+<li><mark>별칭은 필수(m)</mark> (as는 생략 가능)</li>
+</ul>
+</blockquote>
+<h3 id="jpql-집합과-정렬">JPQL 집합과 정렬<a class="anchor" href="#jpql-집합과-정렬">#</a></h3>
+<hr>
+<blockquote>
+<p>ansi 표준 SQL의 기능과 사용법 동일</p>
+</blockquote>
+<pre><code>SELECT 
+	COUMT(m) // 회원수
+	, SUM(m.aget) // 나이 합
+	, AVG(m.aget) // 나이 평균
+	, MAX(m.aget) // 최대 나이 
+	, MIN(m.aget) // 최소 나이 
+FROM Member m
+</code></pre>
+<blockquote>
+<ul>
+<li>GROUP BY, HAVING</li>
+<li>ORDER BY</li>
+</ul>
+</blockquote>
+<h3 id="typequery-query">TypeQuery, Query<a class="anchor" href="#typequery-query">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>TypeQuery : 반환 타입이 명확할 떄 사용</li>
+<li>Query : 반환 타입이 명확하지 않을 때 사용</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>TypeQuery</p>
+</blockquote>
+<pre><code>	TypeQuery&lt;Member&gt; query = 
+		em.createQuery(&quot;SELECT m FROM Member m&quot;, Member.class);
+</code></pre>
+<blockquote>
+<p>Query</p>
+</blockquote>
+<pre><code>	Query&lt;Member&gt; query = 
+		em.createQuery(&quot;SELECT m.username, m.age FROM Member m&quot;);
+</code></pre>
+<blockquote>
+<p>인텔리 제이에서</p>
+</blockquote>
+<pre><code>	 em.createQuery(&quot;SELECT m from Member m&quot;, Member.class);
+</code></pre>
+<blockquote>
+<p>이 로우를 블록으로 잡고 Ctrl + Alt + V 를 누르면, 아래와 같이 
+메서드 콜하는 구문에서 자동으로 리턴값 변수 생성해준다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/jpql/img-005.png" alt="contact"></p>
+<blockquote>
+<p>createQuery에 2번째 파라미터를 넣으면 반환 타입은 자동으로 TypedQuery<Member> 으로 설정 해 주는것을 알 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>반면에 createQuery에 2번째 파라미터를 안넣으면 반환 타입은 자동으로 Query로 설정 해 주는것을 알 수 있습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/jpql/img-006.png" alt="contact"></p>
+<blockquote>
+<p>그리고 하나의 값을 반환 받고자 할때,</p>
+</blockquote>
+<pre><code>TypedQuery&lt;String&gt; query = em.createQuery(&quot;SELECT m.username from Member m&quot;, String.class);
+</code></pre>
+<blockquote>
+<p>이런식으로 문자열로 이름을 반환 타입을 지정해 받을 수 있지만, 이름과, 나이 복합적인 값을 받아와 타입이 불명확한 경우 Query로 반환 타입을 지정하여 사용합니다.</p>
+</blockquote>
+<pre><code>Query query = em.createQuery(&quot;SELECT m.username, m.age from Member m&quot;);
+</code></pre>
+<h3 id="결과-조회-api">결과 조회 API<a class="anchor" href="#결과-조회-api">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>query.getResultList() : <mark>결과가 하나 이상일 때</mark>, 리스트 반환
+<ul>
+<li>결과가 없으면 빈 리스트 반환</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>query.getSingleResult() : <mark>결과가 정확히 하나일 때</mark>, 단일 객체 반환
+<ul>
+<li>결과가 없으면 : javax.persistence.NoResultException</li>
+<li>둘 이상이면 : javax.persistence.NonUniqueResultException</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>query.getResultList();</p>
+</blockquote>
+<pre><code>            TypedQuery&lt;Member&gt; query = em.createQuery(&quot;SELECT m FROM Member m&quot;, Member.class);
+
+            List&lt;Member&gt; resultList = query.getResultList();
+
+            //iter + tab 자동 이터레이터 생성
+            for (Member member : resultList) {
+                System.out.println(member);
+            }
+</code></pre>
+<blockquote>
+<p>query.getSingleResult();</p>
+</blockquote>
+<pre><code>		   TypedQuery&lt;Member&gt; query = em.createQuery(&quot;SELECT m FROM Member m WHERE m.id = 1L&quot;, Member.class);
+
+            Member singleResult = query.getSingleResult();
+
+            System.out.println(singleResult);
+</code></pre>
+<blockquote>
+<p>getSingleResult()는 값 1건이 정확히 있을 때 사용</p>
+</blockquote>
+<blockquote>
+<p>1건 이상일 때 javax.persistence.NonUniqueResultException는 것은 그래도 괜찮지만, 
+결과가 없을 때도 Exception 터지기 때문에 Try Catch로 예외처리를 각각 해줘야 하기 때문에 불편한 점이 있습니다. 그래서 논란이 많은데</p>
+</blockquote>
+<blockquote>
+<p>Spring Date JPA 를 사용하게 되면은 여기에서는 추상화 되어, Null을 반환 하거나 Optional을 반환하게 되어있습니다. Spring Date JPA와 헤깔리면 안됩니다.</p>
+</blockquote>
+<h3 id="파라미터-바인딩---이름-기준-위치-기준">파라미터 바인딩 - 이름 기준, 위치 기준<a class="anchor" href="#파라미터-바인딩---이름-기준-위치-기준">#</a></h3>
+<hr>
+<blockquote>
+<p>이름 기준 매핑</p>
+</blockquote>
+<pre><code>TypedQuery&lt;Member&gt; query = em.createQuery(&quot;SELECT m FROM Member m WHERE m.username= :username); 
+
+query.setParameter(&quot;username&quot;, usernameParam);
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>            TypedQuery&lt;Member&gt; query = em.createQuery(&quot;SELECT m FROM Member m WHERE m.username = :username&quot;, Member.class);
+
+            query.setParameter(&quot;username&quot;, &quot;오과장&quot;);
+            Member singleResult = query.getSingleResult();
+
+            System.out.println(singleResult.toString());
+</code></pre>
 <blockquote>
 <p>console</p>
 </blockquote>
 <pre><code>Hibernate: 
-    /* select
+    /* SELECT
         m 
-    from
+    FROM
         Member m 
-    where
-        m.name like '%김%'  */ select
-            member0_.id as id1_6_,
-            member0_.city as city2_6_,
-            member0_.street as street3_6_,
-            member0_.zipcode as zipcode4_6_,
-            member0_.USERNAME as username5_6_ 
+    WHERE
+        m.username = :username */ select
+            member0_.id as id1_0_,
+            member0_.age as age2_0_,
+            member0_.TEAM_ID as team_id4_0_,
+            member0_.username as username3_0_ 
         from
             Member member0_ 
         where
-            member0_.USERNAME like '%m%'
-</code></pre>
-<p><img src="/images/develop/backend/orm-jpa-basic/jpql/img-001.png" alt="contact"></p>
-<blockquote>
-<p>문법이 sql과 거의 비슷, * 대신 객체의 Alias인 m 으로 전체 조회를 할 수 있습니다. <br>
-또 m.name, m.id &hellip; 등 각각 접근하여 사용할 수 있습니다.</p>
-</blockquote>
-<h4 id="jpql과-실행된-sql">JPQL과 실행된 SQL<a class="anchor" href="#jpql과-실행된-sql">#</a></h4>
-<pre><code>	String jpql = &quot;select m from Member m where m.age &gt; 18&quot;;
-	
-	List&lt;Member&gt; result = em.createQuery(jpql, Member.class).getResultList();
-</code></pre>
-<pre><code>실행된 SQL
-	select 
-		m.id as id,
-		m.age as age,
-		m.username as username,
-		m.TEAM_ID as TEAM_ID
-	from 
-		Member m
-	where 
-		m.age &gt; 18
-</code></pre>
-<h3 id="criteria">Criteria<a class="anchor" href="#criteria">#</a></h3>
-<hr>
-<h4 id="criteria-소개">Criteria 소개<a class="anchor" href="#criteria-소개">#</a></h4>
-<blockquote>
-<p>JPQL은 단순한 String 이기 때문에 동적 쿼리를 생성하기 힘이 듭니다.</p>
-</blockquote>
-<blockquote>
-<p>예를 들면</p>
-</blockquote>
-<pre><code>	String jpql = &quot;select m from Member&quot;;
-	
-	String username; 
-	
-	if(username != null){
-		String sWhere  = &quot;where m.name like '%m%'&quot;;
-		jpql += sWhere;
-	}
-
-	List&lt;Member&gt; result = em.createQuery(jpql, Member.class).getResultList();
+            member0_.username=?
+Member{id=2, username='오과장', age=35, team=jpql.domain.Team@c7a977f}
 </code></pre>
 <blockquote>
-<p>간단한 조건 하나 추가하여도, 지저분해지는 것을 알 수 있습니다. <br>
-실무에서 사용하기에 버그도 많이 발생하고 불편한 점이 있습니다.</p>
+<p>순서 기준 매핑</p>
 </blockquote>
-<blockquote>
-<p>Ibatis나 MyBatis는 동적쿼리를 작성하는데 장점이 있습니다.</p>
-</blockquote>
-<blockquote>
-<p>그래서 동적쿼리 뿐만 아니지만, 대안으로 자바 표준으로 Criteria가 나오게 되었습니다.</p>
-</blockquote>
-<pre><code>// Criteria 사용 준비
-CriteriaBuilder cb = em.getCriteriaBuilder();
-CriteriaQuery&lt;Member&gt; query = cb.createQuery(Member.class);
+<pre><code>TypedQuery&lt;Member&gt; query = em.createQuery(&quot;SELECT m FROM Member m WHERE m.username= ?1); 
 
-// 루트 클래스 조회 (조회를 시작할 클래스)
-Root&lt;Member&gt; m = query.from(Member.class);
-
-// 쿼리 생성 
-CriteriaQuery&lt;Member&gt; cq = query.select(m).where(cb.equal(m.get(&quot;name&quot;), &quot;kim hun&quot;)); // 엔티티의 속성명 name
-List&lt;Member&gt; resultList = em.createQuery(cq).getResultList();
-
+query.setParameter(1, usernameParam);
 </code></pre>
 <blockquote>
-<p>JpaMain.java - Criteria 사용</p>
+<p>Member.java</p>
 </blockquote>
-<pre><code>            // Criteria 사용 준비
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery&lt;Member&gt; query = cb.createQuery(Member.class);
+<pre><code>            TypedQuery&lt;Member&gt; query = em.createQuery(&quot;SELECT m FROM Member m WHERE m.username = ?1&quot;, Member.class);
 
-            // 루트 클래스 조회 (조회를 시작할 클래스)
-            Root&lt;Member&gt; m = query.from(Member.class);
+            query.setParameter(1, &quot;오과장&quot;);
+            Member singleResult = query.getSingleResult();
 
-            // 쿼리 생성
-            CriteriaQuery&lt;Member&gt; cq = query.select(m).where(cb.equal(m.get(&quot;name&quot;), &quot;member1&quot;));
-            List&lt;Member&gt; resultList = em.createQuery(cq).getResultList();
-
-            tx.commit();
+            System.out.println(singleResult.toString());
 </code></pre>
 <blockquote>
 <p>console</p>
 </blockquote>
 <pre><code>Hibernate: 
-    /* select
-        generatedAlias0 
-    from
-        Member as generatedAlias0 
-    where
-        generatedAlias0.name=:param0 */ select
-            member0_.id as id1_6_,
-            member0_.city as city2_6_,
-            member0_.street as street3_6_,
-            member0_.zipcode as zipcode4_6_,
-            member0_.USERNAME as username5_6_ 
+    /* SELECT
+        m 
+    FROM
+        Member m 
+    WHERE
+        m.username = ?1 */ select
+            member0_.id as id1_0_,
+            member0_.age as age2_0_,
+            member0_.TEAM_ID as team_id4_0_,
+            member0_.username as username3_0_ 
         from
             Member member0_ 
         where
-            member0_.USERNAME=?
-</code></pre>
-<p><img src="/images/develop/backend/orm-jpa-basic/jpql/img-002.png" alt="contact"></p>
-<blockquote>
-<p>자바 소스로 쿼리를 작성하기 때문에 오타로 인한 오류는 IDE에서 알려주거나 오류로 알 수 있는 장점이 있고 또한 동적쿼리를 작성할때 편리함을 얻을 수 있습니다.</p>
-</blockquote>
-<blockquote>
-<p>하지만 Criteria 방식은 복잡해 지면 좀더 분석하기 어려워집니다.</p>
-</blockquote>
-<pre><code>            CriteriaQuery&lt;Member&gt; cq = query.select(m);
-
-            String username = &quot;member1&quot;;
-
-            if (!username.equals(null)){
-                cq.where(cb.equal(m.get(&quot;name&quot;), username));
-            }
+            member0_.username=?
+Member{id=2, username='오과장', age=35, team=jpql.domain.Team@c7a977f}
 </code></pre>
 <blockquote>
-<p>실무에서는 쿼리를 작성했던 사람도 보기 힘들 정도로 직관성이 떨어지고, 유지 보수가 힘들어지기 때문에 사용하지 않는다고 합니다.</p>
-</blockquote>
-<h4 id="criteria-정리">Criteria 정리<a class="anchor" href="#criteria-정리">#</a></h4>
-<blockquote>
-<ul>
-<li>문자가 아닌 자바 코드로 JPQL을 작성할 수 있음</li>
-<li>JPQL 빌더 역활</li>
-<li>JPA 공식 기능</li>
-<li><mark>단점 : 너무 복잡하고 실용성이 없다.</mark></li>
-<li>Criteria 대신에 QueryDSL 사용 권장</li>
-</ul>
-</blockquote>
-<h3 id="querydsl">QueryDSL<a class="anchor" href="#querydsl">#</a></h3>
-<hr>
-<h4 id="querydsl-소개">QueryDSL 소개<a class="anchor" href="#querydsl-소개">#</a></h4>
-<pre><code>// JPQL
-// select m from Member m where m.age &gt; 18
-JPAFactoryQuery query = new JPAFactoryQuery(em);
-QMember m = QMember.member;
-
-List&lt;Member&gt; list =
-	query.selectFrom(m)
-		.where(m.age.gt(18))
-		.orderBy(m.name.desc())
-		.fetch();
-
-</code></pre>
-<blockquote>
-<p>SQL과 비슷한 형태로 되어있는 것을 확인 할 수 있습니다. <br></p>
-</blockquote>
-<blockquote>
-<ul>
-<li>문자가 아닌 나바코드로 JPQL을 작성할 수 있음</li>
-<li>JPQL 빌더 역할</li>
-<li>컴파일 시점에 문법 오류를 찾을 수 있음</li>
-<li>동적쿼리 작성 편함</li>
-<li><mark>단순하고 쉬움</mark></li>
-<li><mark>실무 사용 권장</mark></li>
-</ul>
-</blockquote>
-<blockquote>
-<p>queryDSL은 설정이 힘든만큼 SQL과 비슷하여 작성이 쉽고 오류도 컴파일러에서 검출해주며, 동적쿼리에도 강력한 기능을 보여줍니다.<br>
-이후 queryDSL 강의에서 좀더 깊이 배우고 정리하도록 하겠습니다.</p>
-</blockquote>
-<h3 id="native-sql">Native SQL<a class="anchor" href="#native-sql">#</a></h3>
-<hr>
-<h4 id="native-sql-소개">Native SQL 소개<a class="anchor" href="#native-sql-소개">#</a></h4>
-<blockquote>
-<ul>
-<li>JPA가 제공하는 SQL을 직접 사용하는 기능</li>
-<li>JPQL로 해결할 수 없는 특정 데이터베이스에 의존적인 기능</li>
-<li>예) 오라클 CONNECT BY, 특정 DB만 사용하는 SQL 문법</li>
-</ul>
-</blockquote>
-<pre><code>String sql = 
-	&quot;SELECT ID, AGE, TEAM_ID, NAME FROM MEMBER WHERE NAME = 'Kim'&quot;;  // ** 엔티티를 대상으로 쿼리 작성이 아닌 테이블 대상으로 쿼리를 하기때문에 테이블 컬럼명을 사용합니다.
-	
-List&lt;Member&gt; resultList = 
-	em.createNativeQuery(sql, Member.class)
-		.getResultList();
-
-</code></pre>
-<blockquote>
-<p>console</p>
-</blockquote>
-<pre><code>Hibernate: 
-    /* dynamic native SQL query */ select
-        * 
-    from
-        Member 
-    where
-        username like '%m%' 
-relativemapping.Member@4cafa9aa
-</code></pre>
-<blockquote>
-<p>네이티브 쿼리를 사용한다면, 네이티브 쿼리를 사용하는 것보다 다음 SpringJdbcTemplate 를 사용하거나 마이바티스 사용 추천</p>
-</blockquote>
-<h3 id="jdbc-직접사용-springjdbctemplate-등">JDBC 직접사용, SpringJdbcTemplate 등<a class="anchor" href="#jdbc-직접사용-springjdbctemplate-등">#</a></h3>
-<hr>
-<h4 id="jdbc-직접사용-springjdbctemplate-등-소개">JDBC 직접사용, SpringJdbcTemplate 등 소개<a class="anchor" href="#jdbc-직접사용-springjdbctemplate-등-소개">#</a></h4>
-<blockquote>
-<ul>
-<li>JPA를 사용하면서 JDBC 커넥션을 직접 사용하거나, 스프링 JdbcTemplate, 마이바티스 등을 함께 사용가능</li>
-<li>단 영속성 컨텍스트를 적절한 시점에 강제로 플러시 필요</li>
-<li>예) JPA를 우회해서 SQL을 실행하기 직전에 영속성 컨텍스트 수동 플러시</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>주의해야 할 사항으로는 이런 JDBC나 Template, 마이바티스 같은 라이브러리들은 JPA와 관련이 없기 때문에 <br>
-영속성 컨텍스트의 기능과 별개, 그렇기 때문에 commit 된 상태가 되어야 데이터를 조회할 수 있어서 영속성 컨텍스트를 플러시 해줘야 <br>
-등록된 데이터가 사용가능하다.</p>
-</blockquote>
-<blockquote>
-<p>커밋을 하거나, JPA의 기능을 이용한 쿼리(JPQL, Criteria, NativeQuery&hellip;) 등은 자동 플러시</p>
+<p>위치 기준 보다 이름 기준을 권장합니다. 위치 기반이면, 중간에 하나가 끼어들면 다 수정해야하며, 잘못 매핑되면 장애로 이어질 가능성이 다분합니다.</p>
 </blockquote>
 <h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
@@ -1349,12 +909,17 @@ relativemapping.Member@4cafa9aa
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-6/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/object-oriented-query-language/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">JPA 실전 예제 6 - 값 타입 매핑</span>
+        <span class="pagination__title">JPA 객체지향 쿼리 언어 소개</span>
     </a>
   
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >object references an unsaved transient instance - save the transient instance before flushing 에러</span>
+    </a>
   
 </div>
 
@@ -1424,18 +989,18 @@ relativemapping.Member@4cafa9aa
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">JPA 객체지향 쿼리 언어(JPQL)</div> 
+          <div class="toc-post-title">JPQL(Java persistence Query Language)</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#목차">목차</a></li>
-    <li><a href="#객체지향-쿼리-언어-소개">객체지향 쿼리 언어 소개</a>
+    <li><a href="#jpql---기본-문법과-기능">JPQL - 기본 문법과 기능</a>
       <ul>
         <li><a href="#jpa에서-제공되는-다양한-쿼리-방법">JPA에서 제공되는 다양한 쿼리 방법</a></li>
-        <li><a href="#jpql">JPQL</a></li>
-        <li><a href="#criteria">Criteria</a></li>
-        <li><a href="#querydsl">QueryDSL</a></li>
-        <li><a href="#native-sql">Native SQL</a></li>
-        <li><a href="#jdbc-직접사용-springjdbctemplate-등">JDBC 직접사용, SpringJdbcTemplate 등</a></li>
+        <li><a href="#jpql-문법">JPQL 문법</a></li>
+        <li><a href="#jpql-문법-1">JPQL 문법</a></li>
+        <li><a href="#jpql-집합과-정렬">JPQL 집합과 정렬</a></li>
+        <li><a href="#typequery-query">TypeQuery, Query</a></li>
+        <li><a href="#결과-조회-api">결과 조회 API</a></li>
+        <li><a href="#파라미터-바인딩---이름-기준-위치-기준">파라미터 바인딩 - 이름 기준, 위치 기준</a></li>
       </ul>
     </li>
   </ul>
