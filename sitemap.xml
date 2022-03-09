@@ -23,12 +23,22 @@
   </url>
   
   <url>
+    <loc>https://offetuoso.github.io/categories/java/</loc>
+    <lastmod>2022-03-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://offetuoso.github.io/tags/jpa/</loc>
     <lastmod>2022-03-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/subcategories/jpa/</loc>
+    <lastmod>2022-03-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/projection/</loc>
     <lastmod>2022-03-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -75,11 +85,6 @@
   <url>
     <loc>https://offetuoso.github.io/tags/%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa/</loc>
     <lastmod>2022-03-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/categories/java/</loc>
-    <lastmod>2022-03-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
