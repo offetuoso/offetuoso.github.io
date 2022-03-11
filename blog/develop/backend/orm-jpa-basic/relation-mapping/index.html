@@ -83,7 +83,7 @@
       "datePublished": "2021-12-29 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-12-29 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/relation-mapping\/",
-      "wordCount" : "3028",
+      "wordCount" : "3029",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -1309,8 +1309,8 @@ Member를 수정한다면, 기존의 member를 제거하고 수정한 member로 
     public String toString() {
         return &quot;Member{&quot; +
                 &quot;id=&quot; + id +
-                &quot;, username='&quot; + username + '\'' +
-                &quot;, team=&quot; + team +	// team.toString() 과 같음
+                &quot;, username='&quot; + username 
+                &quot;, team=&quot; + team +	// team.toString() 과 같음 양방향 매핑시에 무한 루프
                 '}';
     }
 
