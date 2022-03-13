@@ -7,7 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 07 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 조인(JOIN)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/join/</link>
+      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/join/</guid>
+      <description>JPA 조인(JOIN)  조인    내부 조인   SELECT m from Member m JOIN m.team tSELECT m from Member m INNER JOIN m.team t  SQL과 비슷하지만 엔티티 중심으로 JPQL이 작성되며, Member의 Team 엔티티에 Alias를 t로 주어 조인 쿼리를 작성합니다.
+   외부 조인   SELECT m from Member m LEFT JOIN m.team tSELECT m from Member m LEFT OUTER JOIN m.team t   세타 조인 연관관계가 없는 조인, 관계 없는 컬럼끼리의 조인   SELECT count(m) from Member m, Team t WHERE m.</description>
+    </item>
+    
+    <item>
+      <title>JPA Paging API</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/paging-api/</link>
+      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/paging-api/</guid>
+      <description>JPA Paging API  페이징 API   JPA는 페이징을 다음 두 API로 추상화
+   setFirstResult(int startPosition) : 조회 시작 위치 (0 부터 시작) setMaxResults(int maxResult) : 조회할 데이터 수    Oracle 또는 MySql에서 페이징을 구현하기 위해서는 rownum을 사용하고 정렬을 위해 order by를 적용하려면 또 한번 더 감싸서 페이징을 쿼리를 작성하게 되어 3뎁스 까지도 나오게 되어 지저분한 쿼리가 됩니다.
+  그런데 JPA는 2가지 API만 사용하면됩니다. 페이징은 단지 몇번째 부터 몇개 가져와야 하는지 밖에 없습니다.</description>
+    </item>
+    
     <item>
       <title>JPA Projection(SELECT)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/projection/</link>
@@ -15,7 +36,7 @@
       
       <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/projection/</guid>
       <description>JPA Projection(SELECT)  이전 소스   src/main/java/jpql/domain/Member.java
-  Member.java package jpql.domain;import javax.persistence.*;@Entitypublic class Member {public Member(){}@Id @GeneratedValueprivate Long id;private String username;private int age;@ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)private Team team = new Team();public Long getId() {return id;}public void setId(Long id) {this.id = id;}public String getUsername() {return username;}public void setUsername(String username) {this.</description>
+  Member.java package jpql.domain;import javax.persistence.*;@Entitypublic class Member {public Member(){}@Id @GeneratedValueprivate Long id;private String username;private int age;@ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)//private Team team = new Team();private Team team;public Long getId() {return id;}public void setId(Long id) {this.id = id;}public String getUsername() {return username;}public void setUsername(String username) {this.</description>
     </item>
     
     <item>
@@ -24,8 +45,7 @@
       <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/</guid>
-      <description>object references an unsaved transient instance - save the transient instance before flushing 에러 오류 org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing 원인  @ManyToOne 또는 @OneToMany 매핑을 사용 할때 부모 엔티티에 포함된 FK가 아직 영속되지 않아 생긴 영속성 전이(CASCADE)에 대한 오류 발생
- 문제가된 소스 설명   Member 엔티티는 id, username, team 을 가지고 있다. Team은 id 와 name 을 가지고 있다.</description>
+      <description>object references an unsaved transient instance - save the transient instance before flushing 에러 오류 org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing 원인   @ManyToOne 또는 @OneToMany 매핑을 사용 할때 부모 엔티티에 포함된 FK가 아직 영속되지 않아 생긴 영속성 전이(CASCADE)에 대한 오류 발생    N:1 관계시 양방향 설정시, 연결된 엔티티 객체를 생성 시 FK가 필수로 필요   @ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)private Team team = new Team(); // &amp;lt;&amp;lt;   Member를 생성할 때, Team이 필수 값이 아니라면, new Team() 으로 미리 생성해 둘 필요가 없다.</description>
     </item>
     
     <item>
