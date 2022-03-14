@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 13 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 14 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 서브 쿼리(Sub Query)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/</link>
+      <pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/</guid>
+      <description>JPA 서브 쿼리(Sub Query)  서브 쿼리    나이가 평균보다 많은 회원   SELECT m FROM Member m WHERE m.age &amp;gt; (SELECT AVG(m2.age) FROM Member m2)   한 건이라도 주문한 고객   SELECT m FROM Member m WHERE (SELECT COUNT(o) FROM Order o WHERE m = o.member) &amp;gt; 0  일반적인 SQL과 같이 서브 쿼리를 사용할 수 있습니다.
+ 서브 쿼리 지원 함수    [NOT] EXISTS (subquery) : 서브쿼리에 결과가 존재하면 참  {ALL|ANY|SOME} (subquery) ALL 모두 만족하면 참 ANY, SOME: 같은 의미, 조건을 하나라도 만족하면 참   [NOT] IN (subquery) : 서브쿼리의 결과 중 하나라도 같은 것이 있으면 참   서브 쿼리 지원 함수 - 예제   팀A 소속인 회원   SELECT m FROM Member mWHERE EXISTS (SELECT t FROM m.</description>
+    </item>
+    
     <item>
       <title>JPA 조인(JOIN)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/join/</link>
