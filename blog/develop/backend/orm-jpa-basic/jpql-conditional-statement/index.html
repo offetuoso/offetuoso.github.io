@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>JPQL 조건문(CONDITIONAL STATEMENT) | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="JPQL 조건문(CONDITIONAL STATEMENT)">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+ 
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+     
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPQL 조건문(CONDITIONAL STATEMENT)",
+      "headline" : "JPQL 조건문(CONDITIONAL STATEMENT)",
+      "description" : "JPQL 조건문(CONDITIONAL STATEMENT)",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-03-15 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-03-15 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql-conditional-statement\/",
+      "wordCount" : "1078",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPQL 조건문(CONDITIONAL STATEMENT)
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPQL 조건문(CONDITIONAL STATEMENT)
+            </h1>		
+            <time datetime="2022-03-15 00:00:00 &#43;0000 UTC" class="post__date">2022-03-15</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="jpql-조건문conditional-statement">JPQL 조건문(CONDITIONAL STATEMENT)</h1>
+<hr>
+<h2 id="조건문">조건문<a class="anchor" href="#조건문">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>기본 CASE 문</li>
+</ul>
+</blockquote>
+<pre><code>SELECT 
+	CASE WHEN m.age &lt;= 10 THEN '학생요금'
+          WHEN m.age &gt;= 60 THEN '경로요금'
+          ELSE '일반요금'
+     END
+FROM Member m     
+</code></pre>
+<blockquote>
+<ul>
+<li>단순 CASE 문</li>
+</ul>
+</blockquote>
+<pre><code>SELECT 
+	CASE t.name
+		WHEN '팀A' THEN '인센티브110%'
+		WHEN '팀B' THEN '인센티브120%'
+		ELSE '인센티브105%'
+	END
+FROM Team t		
+</code></pre>
+<blockquote>
+<ul>
+<li>COALESCE : 하나씩 조회해서 NULL이 아니면 반환
+사용자 이름이 없으면 &lsquo;이름 없는 회원&rsquo;을 반환</li>
+</ul>
+</blockquote>
+<pre><code>SELECT COALESCE(m.username,'이름 없는 회원') FROM Member m
+</code></pre>
+<blockquote>
+<ul>
+<li>NULLIF : 두 값이 같으면  NULL 반환, 다르면 첫번째 값 반환
+사용자 이름이 &lsquo;관리자&rsquo;면 NULL을 반환하고 나머지는 본인의 이름을 반환</li>
+</ul>
+</blockquote>
+<pre><code>SELECT NULLIF(m.username,'관리자') FROM Member m
+</code></pre>
+<h4 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h4>
+<hr>
+<blockquote>
+<p>src/main/java/jpql/domain/Member.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Member.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String username;
+
+    private int age;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;TEAM_ID&quot;)
+    private Team team = new Team();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public jpql.domain.Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(jpql.domain.Team team) {
+        this.team = team;
+    }
+    
+    @Override
+    public String toString() {
+        return &quot;Member{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, age=&quot; + age +
+                '}';
+    }
+}
+</code></pre>
+</details>
+<blockquote>
+<p>src/main/java/jpql/domain/Team.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Team.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Entity
+public class Team {
+
+    public Team() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = &quot;team&quot;)
+    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&lt;Member&gt; getMembers() {
+        return members;
+    }
+
+    public void setMembers(List&lt;Member&gt; members) {
+        this.members = members;
+    }
+}
+</code></pre>
+</details> 	
+<blockquote>
+<p>src/main/java/jpql/domain/Order.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Order.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = &quot;ORDERS&quot;) //ORDER 가 예약어라 ORDERS로 테이블 명칭 지정
+public class Order {
+    public Order() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private int orderAmount;
+
+    @Embedded
+    private Address orderAddress;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;PRODUCT_ID&quot;)
+    private Product product;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public Address getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(Address orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Address.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Address.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.Embeddable;
+import java.util.Objects;
+
+@Embeddable
+public class Address {
+    private String city;
+    private String street;
+    private String zipcode;
+
+    public String getCity() {
+        return city;
+    }
+
+    private void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    private void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    private void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getCity(), address.getCity()) &amp;&amp; Objects.equals(getStreet(), address.getStreet()) &amp;&amp; Objects.equals(getZipcode(), address.getZipcode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCity(), getStreet(), getZipcode());
+    }
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Product.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Product.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Product {
+    public Product() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    private int price;
+
+    private int stockAmount;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getStockAmount() {
+        return stockAmount;
+    }
+
+    public void setStockAmount(int stockAmount) {
+        this.stockAmount = stockAmount;
+    }
+} 	
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/JpqlMain.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> JpqlMain.java </summary>
+<pre><code>package jpql;
+
+import jpql.domain.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+public class JpqlMain {
+    //psvm 단축키로 생성 가능
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;jpql&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+		
+
+        }catch (Exception e){
+            e.printStackTrace();
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+    }
+
+}
+</code></pre>
+</details> 
+<h3 id="기본-case-문">기본 CASE 문<a class="anchor" href="#기본-case-문">#</a></h3>
+<hr>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;member&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+           String sQuery = &quot;SELECT &quot; +
+                            &quot;CASE WHEN m.age &lt;= 10 THEN '학생요금' &quot;+
+                                 &quot;WHEN m.age &gt;= 60 THEN '경로요금' &quot;+
+                            &quot;ELSE '일반요금' END &quot; +
+                            &quot;FROM Member m &quot;;
+            List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
+                    .getResultList();
+
+            for(String s : resultList){
+                System.out.println(s);
+            }
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        CASE 
+            WHEN m.age &lt;= 10 THEN '학생요금' 
+            WHEN m.age &gt;= 60 THEN '경로요금' 
+            ELSE '일반요금' 
+        END 
+    FROM
+        Member m  */ select
+            case 
+                when member0_.age&lt;=10 then '학생요금' 
+                when member0_.age&gt;=60 then '경로요금' 
+                else '일반요금' 
+            end as col_0_0_ 
+        from
+            Member member0_
+
+일반요금
+
+</code></pre>
+<blockquote>
+<p>쿼리가 문자열이기 때문에 띄어쓰기를 잘해야합니다. 라인의 마지막이 &quot; &quot; 공백이여야 다음 줄의 첫 문자와 연결되지 않습니다.</p>
+</blockquote>
+<h3 id="단순-case-문">단순 CASE 문<a class="anchor" href="#단순-case-문">#</a></h3>
+<hr>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>
+            Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;member&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+           String sQuery = &quot;SELECT &quot; +
+                            &quot;CASE t.name &quot; +
+                                 &quot;WHEN 'team1' THEN '인센티브110' &quot;+
+                                 &quot;WHEN 'team2' THEN '인센티브120' &quot;+
+                            &quot;ELSE '인센티브105%' END &quot; +
+                            &quot;FROM Team t &quot;;
+            List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
+                    .getResultList();
+
+            for(String s : resultList){
+                System.out.println(s);
+            }
+
+            tx.commit();
+</code></pre>
+<pre><code>Hibernate: 
+    /* SELECT
+        CASE t.name 
+            WHEN 'team1' THEN '인센티브110' 
+            WHEN 'team2' THEN '인센티브120' 
+            ELSE '인센티브105%' 
+        END 
+    FROM
+        Team t  */ select
+            case team0_.name 
+                when 'team1' then '인센티브110' 
+                when 'team2' then '인센티브120' 
+                else '인센티브105%' 
+            end as col_0_0_ 
+        from
+            Team team0_
+            
+인센티브110
+</code></pre>
+<h3 id="coalesce">COALESCE<a class="anchor" href="#coalesce">#</a></h3>
+<hr>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>		  Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(null); // *** 이름을 NULL로 세팅
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT COALESCE(m.username, '이름 없는 회원') FROM Member m&quot;;
+
+            List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
+                    .getResultList();
+
+            for(String s : resultList){
+                System.out.println(s);
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert jpql.domain.Member
+        */ insert 
+        into
+            Member
+            (age, TEAM_ID, type, username, id) 
+        values
+            (?, ?, ?, ?, ?)
+Hibernate: 
+    /* SELECT
+        COALESCE(m.username,
+        '이름 없는 회원') 
+    FROM
+        Member m */ select
+            coalesce(member0_.username,
+            '이름 없는 회원') as col_0_0_ 
+        from
+            Member member0_
+
+이름 없는 회원
+
+</code></pre>
+<h3 id="nullif">NULLIF<a class="anchor" href="#nullif">#</a></h3>
+<hr>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;관리자&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT NULLIF(m.username, '관리자') FROM Member m&quot;;
+
+            List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
+                    .getResultList();
+
+            for(String s : resultList){
+                System.out.println(s);
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        NULLIF(m.username,
+        '관리자') 
+    FROM
+        Member m */ select
+            nullif(member0_.username,
+            '관리자') as col_0_0_ 
+        from
+            Member member0_
+
+null
+
+</code></pre>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">JPA 서브 쿼리(Sub Query)</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPQL 조건문(CONDITIONAL STATEMENT)</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#조건문">조건문</a>
+      <ul>
+        <li></li>
+        <li><a href="#기본-case-문">기본 CASE 문</a></li>
+        <li><a href="#단순-case-문">단순 CASE 문</a></li>
+        <li><a href="#coalesce">COALESCE</a></li>
+        <li><a href="#nullif">NULLIF</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+</body>
+
+</html>

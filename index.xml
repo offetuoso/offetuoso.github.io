@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 14 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPQL 조건문(CONDITIONAL STATEMENT)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-conditional-statement/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-conditional-statement/</guid>
+      <description>JPQL 조건문(CONDITIONAL STATEMENT)  조건문    기본 CASE 문   SELECT CASE WHEN m.age &amp;lt;= 10 THEN &#39;학생요금&#39;WHEN m.age &amp;gt;= 60 THEN &#39;경로요금&#39;ELSE &#39;일반요금&#39;ENDFROM Member m    단순 CASE 문   SELECT CASE t.nameWHEN &#39;팀A&#39; THEN &#39;인센티브110%&#39;WHEN &#39;팀B&#39; THEN &#39;인센티브120%&#39;ELSE &#39;인센티브105%&#39;ENDFROM Team t	   COALESCE : 하나씩 조회해서 NULL이 아니면 반환 사용자 이름이 없으면 &amp;lsquo;이름 없는 회원&amp;rsquo;을 반환   SELECT COALESCE(m.</description>
+    </item>
+    
     <item>
       <title>JPA 서브 쿼리(Sub Query)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/</link>
