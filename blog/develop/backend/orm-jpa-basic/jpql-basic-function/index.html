@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>JPQL 조건문(CONDITIONAL STATEMENT) | offetuoso&#39;s Blog</title>
+  <title>JPQL 기본 함수(BASIC FUNCTION) | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="JPQL 조건문(CONDITIONAL STATEMENT)">
+  <meta name="description" content="JPQL 기본 함수(BASIC FUNCTION)">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -70,9 +70,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "JPQL 조건문(CONDITIONAL STATEMENT)",
-      "headline" : "JPQL 조건문(CONDITIONAL STATEMENT)",
-      "description" : "JPQL 조건문(CONDITIONAL STATEMENT)",
+      "name" : "JPQL 기본 함수(BASIC FUNCTION)",
+      "headline" : "JPQL 기본 함수(BASIC FUNCTION)",
+      "description" : "JPQL 기본 함수(BASIC FUNCTION)",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -82,8 +82,8 @@
       "copyrightYear" : "2022",
       "datePublished": "2022-03-15 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-03-15 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql-conditional-statement\/",
-      "wordCount" : "1078",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql-basic-function\/",
+      "wordCount" : "1717",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -165,62 +165,36 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	JPQL 조건문(CONDITIONAL STATEMENT)
+		            	JPQL 기본 함수(BASIC FUNCTION)
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	JPQL 조건문(CONDITIONAL STATEMENT)
+		       	JPQL 기본 함수(BASIC FUNCTION)
             </h1>		
             <time datetime="2022-03-15 00:00:00 &#43;0000 UTC" class="post__date">2022-03-15</time> 
           </header>
           <article class="post__content">
               
-<h1 id="jpql-조건문conditional-statement">JPQL 조건문(CONDITIONAL STATEMENT)</h1>
+<h1 id="jpql-기본-함수basic-function">JPQL 기본 함수(BASIC FUNCTION)</h1>
 <hr>
-<h2 id="조건문">조건문<a class="anchor" href="#조건문">#</a></h2>
+<h2 id="jpql-기본-함수">JPQL 기본 함수<a class="anchor" href="#jpql-기본-함수">#</a></h2>
 <hr>
 <blockquote>
-<ul>
-<li>기본 CASE 문</li>
-</ul>
+<p>JPQL에서 제공하는 표준함수로 DB에 상관없이 사용가능</p>
 </blockquote>
-<pre><code>SELECT 
-	CASE WHEN m.age &lt;= 10 THEN '학생요금'
-          WHEN m.age &gt;= 60 THEN '경로요금'
-          ELSE '일반요금'
-     END
-FROM Member m     
-</code></pre>
 <blockquote>
 <ul>
-<li>단순 CASE 문</li>
+<li>CONCAT</li>
+<li>SUBSTRING</li>
+<li>TRIM</li>
+<li>LOWER, UPPER</li>
+<li>LENGTH</li>
+<li>LOCATE</li>
+<li>ABS, SQRT, MOD</li>
+<li>SIZE, INDEX(JPA 용도)</li>
 </ul>
 </blockquote>
-<pre><code>SELECT 
-	CASE t.name
-		WHEN '팀A' THEN '인센티브110%'
-		WHEN '팀B' THEN '인센티브120%'
-		ELSE '인센티브105%'
-	END
-FROM Team t		
-</code></pre>
-<blockquote>
-<ul>
-<li>COALESCE : 하나씩 조회해서 NULL이 아니면 반환
-사용자 이름이 없으면 &lsquo;이름 없는 회원&rsquo;을 반환</li>
-</ul>
-</blockquote>
-<pre><code>SELECT COALESCE(m.username,'이름 없는 회원') FROM Member m
-</code></pre>
-<blockquote>
-<ul>
-<li>NULLIF : 두 값이 같으면  NULL 반환, 다르면 첫번째 값 반환
-사용자 이름이 &lsquo;관리자&rsquo;면 NULL을 반환하고 나머지는 본인의 이름을 반환</li>
-</ul>
-</blockquote>
-<pre><code>SELECT NULLIF(m.username,'관리자') FROM Member m
-</code></pre>
 <h4 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h4>
 <hr>
 <blockquote>
@@ -560,17 +534,21 @@ public class JpqlMain {
 }
 </code></pre>
 </details> 
-<h3 id="기본-case-문">기본 CASE 문<a class="anchor" href="#기본-case-문">#</a></h3>
+<h3 id="concat">CONCAT<a class="anchor" href="#concat">#</a></h3>
 <hr>
+<blockquote>
+<p>입력받은 2개의 문자열을 합치는 함수 <br>
+JPA는 &lsquo;문자열&rsquo; || &lsquo;문자열&rsquo; 도 사용 가능합니다.</p>
+</blockquote>
 <blockquote>
 <p>JpqlMain.java</p>
 </blockquote>
-<pre><code>Team team = new Team();
+<pre><code>            Team team = new Team();
             team.setName(&quot;team1&quot;);
             em.persist(team);
 
             Member member1 = new Member();
-            member1.setUsername(&quot;member&quot;);
+            member1.setUsername(&quot;Member1&quot;);
             member1.setAge(30);
             member1.changeTeam(team);
             member1.setType(MemberType.USER);
@@ -581,56 +559,46 @@ public class JpqlMain {
             em.clear();
 
 
-           String sQuery = &quot;SELECT &quot; +
-                            &quot;CASE WHEN m.age &lt;= 10 THEN '학생요금' &quot;+
-                                 &quot;WHEN m.age &gt;= 60 THEN '경로요금' &quot;+
-                            &quot;ELSE '일반요금' END &quot; +
-                            &quot;FROM Member m &quot;;
+            String sQuery = &quot;SELECT concat(m.username , '(', m.age, '세)')  FROM Member m&quot;;
+
             List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
                     .getResultList();
 
             for(String s : resultList){
                 System.out.println(s);
             }
+
+            tx.commit();
 </code></pre>
 <blockquote>
 <p>console</p>
 </blockquote>
 <pre><code>Hibernate: 
     /* SELECT
-        CASE 
-            WHEN m.age &lt;= 10 THEN '학생요금' 
-            WHEN m.age &gt;= 60 THEN '경로요금' 
-            ELSE '일반요금' 
-        END 
+        concat(m.username ,
+        ' (',
+        m.age,
+        '세)') 
     FROM
-        Member m  */ select
-            case 
-                when member0_.age&lt;=10 then '학생요금' 
-                when member0_.age&gt;=60 then '경로요금' 
-                else '일반요금' 
-            end as col_0_0_ 
+        Member m */ select
+            (member0_.username||' ('||member0_.age||'세)') as col_0_0_ 
         from
             Member member0_
 
-일반요금
-
+관리자 (30세)
 </code></pre>
 <blockquote>
-<p>쿼리가 문자열이기 때문에 띄어쓰기를 잘해야합니다. 라인의 마지막이 &quot; &quot; 공백이여야 다음 줄의 첫 문자와 연결되지 않습니다.</p>
+<p>|| 으로 문자열 합치기</p>
 </blockquote>
-<h3 id="단순-case-문">단순 CASE 문<a class="anchor" href="#단순-case-문">#</a></h3>
-<hr>
 <blockquote>
 <p>JpqlMain.java</p>
 </blockquote>
-<pre><code>
-            Team team = new Team();
+<pre><code>            Team team = new Team();
             team.setName(&quot;team1&quot;);
             em.persist(team);
 
             Member member1 = new Member();
-            member1.setUsername(&quot;member&quot;);
+            member1.setUsername(&quot;Member1&quot;);
             member1.setAge(30);
             member1.changeTeam(team);
             member1.setType(MemberType.USER);
@@ -641,12 +609,8 @@ public class JpqlMain {
             em.clear();
 
 
-           String sQuery = &quot;SELECT &quot; +
-                            &quot;CASE t.name &quot; +
-                                 &quot;WHEN 'team1' THEN '인센티브110' &quot;+
-                                 &quot;WHEN 'team2' THEN '인센티브120' &quot;+
-                            &quot;ELSE '인센티브105%' END &quot; +
-                            &quot;FROM Team t &quot;;
+            String sQuery = &quot;SELECT ('A'||'B') FROM Member m&quot;;
+
             List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
                     .getResultList();
 
@@ -658,34 +622,41 @@ public class JpqlMain {
 </code></pre>
 <pre><code>Hibernate: 
     /* SELECT
-        CASE t.name 
-            WHEN 'team1' THEN '인센티브110' 
-            WHEN 'team2' THEN '인센티브120' 
-            ELSE '인센티브105%' 
-        END 
+        'A' || 'B' 
     FROM
-        Team t  */ select
-            case team0_.name 
-                when 'team1' then '인센티브110' 
-                when 'team2' then '인센티브120' 
-                else '인센티브105%' 
-            end as col_0_0_ 
+        Member m */ select
+            ('A'||'B') as col_0_0_ 
         from
-            Team team0_
+            Member member0_
             
-인센티브110
+AB
 </code></pre>
-<h3 id="coalesce">COALESCE<a class="anchor" href="#coalesce">#</a></h3>
+<blockquote>
+<p>|| 으로 문자열을 합칠때 인텔리제이에서 오류라고 나오지만</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/basic-function/img-001.png" alt="contact"></p>
+<blockquote>
+<p>언어 또는 참조 삽입 취소 옵션을 선택하면 해당 오류라고 체크 되는 것을 해제 할 수있습니다.</p>
+</blockquote>
+<h3 id="substring">SUBSTRING<a class="anchor" href="#substring">#</a></h3>
 <hr>
+<blockquote>
+<p>문자열을 필요한 필요한 만큼 잘러 문자열로 반환하는 함수</p>
+</blockquote>
+<blockquote>
+<p>SUBSTRING(&lsquo;원본&rsquo;, 시작 위치, 길이)</p>
+</blockquote>
+<pre><code>	SELECT SUBSTRING(m.username, 2, 3) FROM Member m
+</code></pre>
 <blockquote>
 <p>JpqlMain.java</p>
 </blockquote>
-<pre><code>		  Team team = new Team();
+<pre><code>            Team team = new Team();
             team.setName(&quot;team1&quot;);
             em.persist(team);
 
             Member member1 = new Member();
-            member1.setUsername(null); // *** 이름을 NULL로 세팅
+            member1.setUsername(&quot;관리자&quot;);
             member1.setAge(30);
             member1.changeTeam(team);
             member1.setType(MemberType.USER);
@@ -696,7 +667,448 @@ public class JpqlMain {
             em.clear();
 
 
-            String sQuery = &quot;SELECT COALESCE(m.username, '이름 없는 회원') FROM Member m&quot;;
+            String sQuery = &quot;SELECT SUBSTRING(m.username, 2, 3) FROM Member m&quot;;
+
+            List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
+                    .getResultList();
+
+            for(String s : resultList){
+                System.out.println(s);
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        SUBSTRING(m.username,
+        2,
+        3) 
+    FROM
+        Member m */ select
+            substring(member0_.username,
+            2,
+            3) as col_0_0_ 
+        from
+            Member member0_
+            
+리자
+</code></pre>
+<h3 id="trim">TRIM<a class="anchor" href="#trim">#</a></h3>
+<hr>
+<blockquote>
+<p>문자열의 공백을 제거하는 함수
+TRIM, LTRIM, RTRIM이 있습니다.</p>
+</blockquote>
+<pre><code>SELECT TRIM(' 이름 ') FROM Member m // 결과 &quot;이름&quot;
+SELECT RTRIM(' 이름 ') FROM Member m  // 결과 &quot; 이름&quot;
+SELECT LTRIM(' 이름 ') FROM Member m  // 결과 &quot;이름 &quot;
+</code></pre>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;관리자&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT TRIM(' 이름 ') FROM Member m&quot;;
+
+            List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
+                    .getResultList();
+
+            for(String s : resultList){
+                System.out.println(s);
+            }
+
+            tx.commit();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert jpql.domain.Member
+        */ insert 
+        into
+            Member
+            (age, TEAM_ID, type, username, id) 
+        values
+            (?, ?, ?, ?, ?)
+Hibernate: 
+    /* SELECT
+        LTRIM(' 이름 ') 
+    FROM
+        Member m */ select
+            ltrim(' 이름 ') as col_0_0_ 
+        from
+            Member member0_
+
+이름 // &quot;이름&quot; 공백 양쪽 제거됨
+</code></pre>
+<h3 id="lower-upper">LOWER, UPPER<a class="anchor" href="#lower-upper">#</a></h3>
+<hr>
+<blockquote>
+<p>문자열 전체 대문자 치환, 소문자 치환</p>
+</blockquote>
+<pre><code>SELECT LOWER(m.username) FROM Member m  // member1
+SELECT UPPER(m.username) FROM Member m  // MEMBER1
+</code></pre>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;Member1&quot;); // ** 대소문자 섞인 문자열
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT UPPER(m.username) FROM Member m&quot;;
+
+            List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
+                    .getResultList();
+
+            for(String s : resultList){
+                System.out.println(s);
+            }
+
+            tx.commit();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        UPPER(m.username) 
+    FROM
+        Member m */ select
+            upper(member0_.username) as col_0_0_ 
+        from
+            Member member0_
+MEMBER1
+</code></pre>
+<h3 id="length">LENGTH<a class="anchor" href="#length">#</a></h3>
+<hr>
+<blockquote>
+<p>문자열의 길이</p>
+</blockquote>
+<pre><code>SELECT LENGTH('Member1') FROM Member m  // 7
+</code></pre>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code> 		  Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;Member1&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT LENGTH(m.username) FROM Member m&quot;;
+
+            List&lt;Integer&gt; resultList = em.createQuery(sQuery, Integer.class)
+                    .getResultList();
+
+            for(Integer s : resultList){
+                System.out.println(s);
+            }
+
+            tx.commit();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        UPPER(m.username) 
+    FROM
+        Member m */ select
+            upper(member0_.username) as col_0_0_ 
+        from
+            Member member0_
+MEMBER1
+</code></pre>
+<h3 id="locate">LOCATE<a class="anchor" href="#locate">#</a></h3>
+<hr>
+<blockquote>
+<p>문자열에서 검색할 문자의 위치를 숫자로 반환해 주는 함수</p>
+</blockquote>
+<pre><code>SELECT LOCATE('mb', 'Member1')  FROM Member m // 3
+</code></pre>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;Member1&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT LOCATE('mb', m.username)  FROM Member m&quot;;
+
+            List&lt;Integer&gt; resultList = em.createQuery(sQuery, Integer.class)
+                    .getResultList();
+
+            for(Integer s : resultList){
+                System.out.println(s);
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        LOCATE('mb',
+        m.username)  
+    FROM
+        Member m */ select
+            locate('mb',
+            member0_.username) as col_0_0_ 
+        from
+            Member member0_
+            
+3
+</code></pre>
+<h3 id="abs-sqrt-mod">ABS, SQRT, MOD<a class="anchor" href="#abs-sqrt-mod">#</a></h3>
+<hr>
+<blockquote>
+<p>기본적으로 데이터베이스들에서 제공하는 수학관련 함수들</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>ABS(x) : x의 절대값을 구하는 함수입니다.</li>
+<li>SQRT(x) : 양수 x 에 대한 제곱근을 반환합니다.</li>
+<li>MOD(n, m) :  n을 m으로 나눈 나머지를 반환합니다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;Member1&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT &quot; +
+                    &quot;ABS(-120) AS x1&quot; +
+                    &quot;, SQRT(4) AS x2&quot; +
+                    &quot;, MOD(6,2) AS x3&quot; +
+                    &quot; FROM Member m&quot;;
+
+            List&lt;Object[]&gt; resultList = em.createQuery(sQuery)
+                    .getResultList();
+
+            Object[] result = resultList.get(0);
+
+            for(Object o : result){
+                System.out.println(o);
+            }
+
+            tx.commit();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>    /* SELECT
+        ABS(-120) AS x1,
+        SQRT(4) AS x2,
+        MOD(6,
+        2) AS x3 
+    FROM
+        Member m */ select
+            abs(-120) as col_0_0_,
+            sqrt(4) as col_1_0_,
+            mod(6,
+            2) as col_2_0_ 
+        from
+            Member member0_
+            
+120 // x1
+2.0 // x2
+0   // x3
+
+</code></pre>
+<h3 id="size-indexjpa-용도">SIZE, INDEX(JPA 용도)<a class="anchor" href="#size-indexjpa-용도">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>SIZE : 1:N의 양방향 관계에서 컬렉션(엔티티 리스트)의 사이즈를 반환해 줍니다.</li>
+</ul>
+</blockquote>
+<pre><code>SELECT size(t.members) FROM Team t
+SELECT t.members.size FROM Team t
+</code></pre>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;Member1&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT t.members.size FROM Team t&quot;;
+
+            List&lt;Integer&gt; resultList = em.createQuery(sQuery, Integer.class)
+                    .getResultList();
+
+            for(Integer s : resultList){
+                System.out.println(s.intValue());
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<ul>
+<li>INDEX : @OrderColumn에서만 지원되는 정렬된 목록 엘리먼츠(요소, 항목)의 위치 값</li>
+</ul>
+</blockquote>
+<pre><code>SELECT toDo FROM Employee e JOIN e.toDoList toDo WHERE INDEX(toDo) = 1
+</code></pre>
+<blockquote>
+<p>@OrderColumn 자체에도 문제가 있기 때문에 사용 비추천</p>
+<ul>
+<li>중간에 리스트에서 데이터가 빠지거나 그러면 데이터가 Null로 들어오는 문제 등</li>
+</ul>
+</blockquote>
+<h2 id="사용자-정의-함수-호출">사용자 정의 함수 호출<a class="anchor" href="#사용자-정의-함수-호출">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>하이버네이트는 사용전 방언에 추가해야 한다.
+<ul>
+<li>사용하는 DB 방언을 상속받고, 사용자 정의 함수를 등록한다.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<pre><code>SELECT FUNCTION('group_concat', i.name) FROM Item i
+
+SELECT  group_concat(m.username) FROM Member m // InteliJ에서 문법 오류가 나지만 하이버네이트에서 지원함
+
+</code></pre>
+<blockquote>
+<p>jpql.dialect.MyH2Dialect.java - H2Dialect를 상속 받는 새로운 H2Dialect 생성</p>
+</blockquote>
+<pre><code>package jpql.dialect;
+
+import org.hibernate.dialect.H2Dialect;
+import org.hibernate.dialect.function.StandardSQLFunction;
+import org.hibernate.type.StandardBasicTypes;
+
+
+public class MyH2Dialect extends H2Dialect{
+    public MyH2Dialect(){
+        registerFunction(&quot;group_concat&quot;, new StandardSQLFunction(&quot;group_concat&quot;, StandardBasicTypes.STRING)); //H2Dialect가 미리 생성해둔 group_concat이라는 H2 함수 (MySql도 있는 함수)
+        
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>persistence.xml -</p>
+</blockquote>
+<pre><code>&lt;!-- &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt; --&gt;
+
+&lt;property name=&quot;hibernate.dialect&quot; value=&quot;jpql.dialect.MyH2Dialect&quot;/&gt; &lt;!-- 새로 만든 H2Dialect 사용 --&gt;
+
+</code></pre>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>           Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;Member1&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER);
+
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;Member2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team);
+            member2.setType(MemberType.USER);
+
+            em.persist(member2);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT function('group_concat', m.username ) FROM Member m&quot;;
 
             List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
                     .getResultList();
@@ -720,67 +1132,47 @@ public class JpqlMain {
             (?, ?, ?, ?, ?)
 Hibernate: 
     /* SELECT
-        COALESCE(m.username,
-        '이름 없는 회원') 
+        function('group_concat',
+        m.username ) 
     FROM
         Member m */ select
-            coalesce(member0_.username,
-            '이름 없는 회원') as col_0_0_ 
+            group_concat(member0_.username) as col_0_0_ 
         from
             Member member0_
+            
+Member1,Member2
 
-이름 없는 회원
-
-</code></pre>
-<h3 id="nullif">NULLIF<a class="anchor" href="#nullif">#</a></h3>
-<hr>
-<blockquote>
-<p>JpqlMain.java</p>
-</blockquote>
-<pre><code>Team team = new Team();
-            team.setName(&quot;team1&quot;);
-            em.persist(team);
-
-            Member member1 = new Member();
-            member1.setUsername(&quot;관리자&quot;);
-            member1.setAge(30);
-            member1.changeTeam(team);
-            member1.setType(MemberType.USER);
-
-            em.persist(member1);
-
-            em.flush();
-            em.clear();
-
-
-            String sQuery = &quot;SELECT NULLIF(m.username, '관리자') FROM Member m&quot;;
-
-            List&lt;String&gt; resultList = em.createQuery(sQuery, String.class)
-                    .getResultList();
-
-            for(String s : resultList){
-                System.out.println(s);
-            }
-
-            tx.commit();
 </code></pre>
 <blockquote>
-<p>console</p>
+<p>다행히 하이버네이트 구현체를 사용하게 되면, 예를 들어 MySQL dialect에는 MySQL에 종속적이긴 하지만 표준 함수에 포함되지 않는 함수들을 미리 만들어 두었습니다.</p>
 </blockquote>
-<pre><code>Hibernate: 
-    /* SELECT
-        NULLIF(m.username,
-        '관리자') 
-    FROM
-        Member m */ select
-            nullif(member0_.username,
-            '관리자') as col_0_0_ 
-        from
-            Member member0_
-
-null
-
-</code></pre>
+<blockquote>
+<p>DB 종속적이다 보니 DB를 변경하면 지원이 안된다는 단점을 가지고 있습니다.</p>
+</blockquote>
+<h3 id="intelij에서-jpql-문법-오류날때">InteliJ에서 Jpql 문법 오류날때<a class="anchor" href="#intelij에서-jpql-문법-오류날때">#</a></h3>
+<blockquote>
+<p>예&gt; &ldquo;SELECT m.id||&lsquo;번&rsquo; AS no FROM Member m&rdquo;</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>Un-inject Language/Refference (언어 또는 참조 삽입 취소)</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/basic-function/img-001.png" alt="contact"></p>
+<blockquote>
+<ol start="2">
+<li>Inject language or refferenct (언어 삽입 설정)</li>
+</ol>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/basic-function/img-002.png" alt="contact"></p>
+<p><img src="/images/develop/backend/orm-jpa-basic/basic-function/img-003.png" alt="contact"></p>
+<blockquote>
+<p>ID(I): Hibernate query 선택</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/basic-function/img-004.png" alt="contact"></p>
+<blockquote>
+<p>문법오류 안나는 것을 확인 할 수 있습니다.</p>
+</blockquote>
 <h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
@@ -818,17 +1210,12 @@ null
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-conditional-statement/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">JPA 서브 쿼리(Sub Query)</span>
+        <span class="pagination__title">JPQL 조건문(CONDITIONAL STATEMENT)</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-basic-function/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >JPQL 기본 함수(BASIC FUNCTION)</span>
-    </a>
   
 </div>
 
@@ -898,16 +1285,25 @@ null
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">JPQL 조건문(CONDITIONAL STATEMENT)</div> 
+          <div class="toc-post-title">JPQL 기본 함수(BASIC FUNCTION)</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#조건문">조건문</a>
+    <li><a href="#jpql-기본-함수">JPQL 기본 함수</a>
       <ul>
         <li></li>
-        <li><a href="#기본-case-문">기본 CASE 문</a></li>
-        <li><a href="#단순-case-문">단순 CASE 문</a></li>
-        <li><a href="#coalesce">COALESCE</a></li>
-        <li><a href="#nullif">NULLIF</a></li>
+        <li><a href="#concat">CONCAT</a></li>
+        <li><a href="#substring">SUBSTRING</a></li>
+        <li><a href="#trim">TRIM</a></li>
+        <li><a href="#lower-upper">LOWER, UPPER</a></li>
+        <li><a href="#length">LENGTH</a></li>
+        <li><a href="#locate">LOCATE</a></li>
+        <li><a href="#abs-sqrt-mod">ABS, SQRT, MOD</a></li>
+        <li><a href="#size-indexjpa-용도">SIZE, INDEX(JPA 용도)</a></li>
+      </ul>
+    </li>
+    <li><a href="#사용자-정의-함수-호출">사용자 정의 함수 호출</a>
+      <ul>
+        <li><a href="#intelij에서-jpql-문법-오류날때">InteliJ에서 Jpql 문법 오류날때</a></li>
       </ul>
     </li>
   </ul>

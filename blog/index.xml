@@ -9,6 +9,17 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>JPQL 기본 함수(BASIC FUNCTION)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-basic-function/</link>
+      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-basic-function/</guid>
+      <description>JPQL 기본 함수(BASIC FUNCTION)  JPQL 기본 함수   JPQL에서 제공하는 표준함수로 DB에 상관없이 사용가능
+   CONCAT SUBSTRING TRIM LOWER, UPPER LENGTH LOCATE ABS, SQRT, MOD SIZE, INDEX(JPA 용도)   이전 소스   src/main/java/jpql/domain/Member.java
+  Member.java package jpql.domain;import javax.persistence.*;@Entitypublic class Member {public Member(){}@Id @GeneratedValueprivate Long id;private String username;private int age;@ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)private Team team = new Team();public Long getId() {return id;}public void setId(Long id) {this.</description>
+    </item>
+    
+    <item>
       <title>JPQL 조건문(CONDITIONAL STATEMENT)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-conditional-statement/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
