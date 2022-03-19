@@ -75,8 +75,10 @@
       <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/projection/</guid>
-      <description>JPA Projection(SELECT)  이전 소스   src/main/java/jpql/domain/Member.java
-  Member.java package jpql.domain;import javax.persistence.*;@Entitypublic class Member {public Member(){}@Id @GeneratedValueprivate Long id;private String username;private int age;@ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)//private Team team = new Team();private Team team;public Long getId() {return id;}public void setId(Long id) {this.id = id;}public String getUsername() {return username;}public void setUsername(String username) {this.</description>
+      <description>JPA Projection(SELECT)  셀렉션과 프로젝션 셀렉션  데이터베이스에서 행단위로 데이터를 조회하는 방식 예) SELECT m.* FROM MEMBER m
+ 프로젝션  데이터베이스에서 열단위로 데이터를 조회하는 방식 예) SELECT m.username, m.age FROM MEMBER m
+   프로젝션과 셀렉션 동시 사용 가능   이전 소스   src/main/java/jpql/domain/Member.java
+  Member.java package jpql.domain;import javax.persistence.*;@Entitypublic class Member {public Member(){}@Id @GeneratedValueprivate Long id;private String username;private int age;@ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)//private Team team = new Team();private Team team;public Long getId() {return id;}public void setId(Long id) {this.</description>
     </item>
     
     <item>

@@ -83,7 +83,7 @@
       "datePublished": "2022-03-07 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-03-07 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/projection\/",
-      "wordCount" : "1910",
+      "wordCount" : "1942",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -178,6 +178,22 @@
               
 <h1 id="jpa-projectionselect">JPA Projection(SELECT)</h1>
 <hr>
+<h2 id="셀렉션과-프로젝션">셀렉션과 프로젝션<a class="anchor" href="#셀렉션과-프로젝션">#</a></h2>
+<h3 id="셀렉션">셀렉션<a class="anchor" href="#셀렉션">#</a></h3>
+<blockquote>
+<p>데이터베이스에서 행단위로 데이터를 조회하는 방식 <br>
+예) SELECT m.* FROM MEMBER m</p>
+</blockquote>
+<h3 id="프로젝션">프로젝션<a class="anchor" href="#프로젝션">#</a></h3>
+<blockquote>
+<p>데이터베이스에서 열단위로 데이터를 조회하는 방식 <br>
+예) SELECT m.username, m.age FROM MEMBER m</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>프로젝션과 셀렉션 동시 사용 가능</li>
+</ul>
+</blockquote>
 <h4 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h4>
 <hr>
 <blockquote>
@@ -1179,9 +1195,10 @@ member1
           <div class="toc-post-title">JPA Projection(SELECT)</div> 
         <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#셀렉션과-프로젝션">셀렉션과 프로젝션</a>
       <ul>
-        <li></li>
+        <li><a href="#셀렉션">셀렉션</a></li>
+        <li><a href="#프로젝션">프로젝션</a></li>
       </ul>
     </li>
     <li><a href="#projectionselect">Projection(SELECT)</a>
