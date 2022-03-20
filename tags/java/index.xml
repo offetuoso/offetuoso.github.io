@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 15 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 19 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPQL 경로 표현식(PATH EXPRESSION)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-path-expression/</link>
+      <pubDate>Sat, 19 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-path-expression/</guid>
+      <description>JPQL 경로 표현식(PATH EXPRESSION)  경로 표현식   .(점|dot)을 찍어 객체를 탐색 하는 것
+ SELECT m.username -&amp;gt; 상태 필드FROM mJOIN m.team t	-&amp;gt; 단일 값 연관 필드JOIN m.order o -&amp;gt; 컬렉션 값 연관 필드WHERE t.name = &#39;team1&#39;   .을 통해 상태 필드, 단일 값 연관 필드, 컬렉션 값 연관 필드를 탐색하느냐에 따라서 상태 필드 표현식, 단일 값 연관 필드 표현식, 콜렉션 값 연관 필드 표현식 3가지 표현식이 있으며 내부적으로 각각 다른 동작을 하게 됩니다.</description>
+    </item>
+    
     <item>
       <title>JPQL 기본 함수(BASIC FUNCTION)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-basic-function/</link>
