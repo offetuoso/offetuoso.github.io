@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 19 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPQL 페치 조인(Fetch Join)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-fetch-join/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-fetch-join/</guid>
+      <description>JPQL 페치 조인(Fetch Join)   실무에서 정말 정말 중요함 쿼리가 여러번 나갈거 같은 쿼리를 한방 쿼리로 변환
+ 페치 조인    SQL 조인 종류가 아니다. JPQL에서 성능 최적화를 위해 제공하는 기능 연관된 엔티티나 컬렉션을 SQL 한 번에 함께 조회하는 기능 join fetch 명령어 사용 [LEFT [OUTER] | INNER] JOIN FETCH 조인경로   엔티티 페치 조인    회원을 조회하면서 연관된 팀도 함께 조회(SQL 한 번에) SQL을 보면 회원 뿐만 아니라 팀(T.</description>
+    </item>
+    
     <item>
       <title>JPQL 경로 표현식(PATH EXPRESSION)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-path-expression/</link>
