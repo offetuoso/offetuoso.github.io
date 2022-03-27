@@ -9,6 +9,21 @@
     <copyright>© 2021</copyright>
     <lastBuildDate>Mon, 21 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EC%9E%90%EB%B0%94-orm-%ED%91%9C%EC%A4%80-jpa/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>JPQL 다형성 쿼리(Polymorphic Query)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-polymorphic-query/</link>
+      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-polymorphic-query/</guid>
+      <description>JPQL 다형성 쿼리(Polymorphic Query)   이번 시간에는 다형성 쿼리에 대해 정리를해 보겠습니다.
+ 다형성 쿼리   JPA가 이러한 다형성을 위해 제공하는 특수한 기능들이 있습니다.
+ TYPE   조회 대상을 특정 자식으로 한정
+  예) Item 중에 Book, Movie를 조회해라
+  [JPQL]
+ SELECT i FROM Item iWHERE TYPE(i) IN (Book, Movie)  [SQL]
+ SELECT i.* from Item iWHERE i.DTYPE IN (&#39;B&#39;, &#39;M&#39;) TREAT (JPA2.</description>
+    </item>
+    
+    <item>
       <title>JPQL 페치 조인(Fetch Join)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-fetch-join/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
