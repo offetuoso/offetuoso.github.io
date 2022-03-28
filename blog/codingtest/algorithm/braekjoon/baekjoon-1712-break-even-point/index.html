@@ -1,7 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>BAEKJOON - 1712 손익분기점 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="백준 손익분기점">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="백준 손익분기점">
+  <meta property="og:description" content="백준 손익분기점">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "BAEKJOON - 1712 손익분기점",
+      "headline" : "BAEKJOON - 1712 손익분기점",
+      "description" : "백준 손익분기점",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-07-04 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-04 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/braekjoon\/baekjoon-1712-break-even-point\/",
+      "wordCount" : "246",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	BAEKJOON - 1712 손익분기점
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	BAEKJOON - 1712 손익분기점
+            </h1>		
+            <time datetime="2021-07-04 00:00:00 &#43;0000 UTC" class="post__date">2021-07-04</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="baekjoon---1712-손익분기점break-even-point">BAEKJOON - 1712 손익분기점(break even point)</h1>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<p>원문 : <a href="https://www.acmicpc.net/problem/1712">백준 1712 링크</a></p>
+<blockquote>
+<p>노트북 제조하는데 노트북 판매 대수에 상관없이 A만원의 고정 비용이 든다.<br>
+한 대의 노트북을 생산하는 데에는 B만원의 가변 비용이 든다<br>
+A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데는 총 1,070만원이 들며,<br> 열 대 생산하는 데는 총 1,700만원이 든다.<br>
+노트북 가격이 C만원으로 책정되었다고 한다.<br>
+생산 대수를 늘려 가다 보면 어느 순간 총 수입(판매비용)이 총 비용(=고정비용+가변비용)보다 많아지게 된다. 최초로 총 수입이 총 비용보다 많아져 이익이 발생하는 지점을 손익분기점(BREAK-EVEN POINT)이라고 한다.<br>
+A, B, C가 주어졌을 때, 손익분기점을 구하는 프로그램을 작성하시오.</p>
+</blockquote>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<blockquote>
+<ul>
+<li>첫째 줄에 A, B, C가 빈 칸을 사이에 두고 순서대로 주어진다. A, B, C는 21억 이하의 자연수이다.</li>
+<li>첫 번째 줄에 손익분기점 즉 최초로 이익이 발생하는 판매량을 출력한다. 손익분기점이 존재하지 않으면 -1을 출력한다.</li>
+</ul>
+</blockquote>
+<h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
+<pre><code>예제 입력 1 
+1000 70 170
+예제 출력 1 
+11
+예제 입력 2 
+3 2 1
+예제 출력 2 
+-1
+예제 입력 3 
+2100000000 9 10
+예제 출력 3 
+2100000001
+</code></pre>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<blockquote>
+<p>일단 하나씩 계산해서 손익분기점을 찾아보았으나.. 시간초과에 걸린다.</p>
+</blockquote>
+<pre><code>a, b, c = map(int, input().split())
+
+
+qty = 0
+
+if(c &lt; 2):
+	print(-1)
+	exit()
+else :
+	while True :
+		qty += 1
+		formula1 = a + (b*qty)
+		formula2 = (c*qty)
+
+		if(formula1 &lt; formula2):
+			print(formula2)
+			break
+	
+</code></pre>
+<blockquote>
+<p>루프 없이 어떻게 계산을 해야할까 고민하다 가변, 판매단가만 곱했을때 변하는것을 보고 <br>
+<code>판매단가 - 가변비용</code>를 생각하였다.</p>
+</blockquote>
+<pre><code>a, b, c = map(int, input().split())
+
+if(b &gt;= c):	# 가변비용이 판매단가와 같거나 크면, 아무리 수량을 늘려도 손익분기점에 도달하지 못한다
+	print(-1)
+else :
+	print((a//(c-b))+1) # (고정비/(단가-가변비용)) +1 (+1를 추가되어 손익분기점이 됨)
+
+</code></pre>
+<blockquote>
+</blockquote>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<pre><code>
+</code></pre>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/baekjoon/">BAEKJOON</a>
+    </li></ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-7578-tomato/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">BAEKJOON - 7578 토마토</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2798-black-jack/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >BAEKJOON - 2798 블랙잭</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">BAEKJOON - 1712 손익분기점</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a></li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#input-output">input output</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +428,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

@@ -1,7 +1,818 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>JPA 실전 예제 2 - 연관관계 매핑 시작 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="연관관계 매핑 시작">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="연관관계 매핑 시작">
+  <meta property="og:description" content="연관관계 매핑 시작">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPA 실전 예제 2 - 연관관계 매핑 시작",
+      "headline" : "JPA 실전 예제 2 - 연관관계 매핑 시작",
+      "description" : "연관관계 매핑 시작",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-01-03 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-01-03 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/practical-example-2\/",
+      "wordCount" : "910",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPA 실전 예제 2 - 연관관계 매핑 시작
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPA 실전 예제 2 - 연관관계 매핑 시작
+            </h1>		
+            <time datetime="2022-01-03 00:00:00 &#43;0000 UTC" class="post__date">2022-01-03</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="실전-예제-2---연관관계-매핑-시작">실전 예제 2 - 연관관계 매핑 시작</h1>
+<h2 id="요구사항-분석">요구사항 분석<a class="anchor" href="#요구사항-분석">#</a></h2>
+<hr>
+<blockquote>
+<p>실전 예제 1 요구사항 분석과 기본 매핑에서 테이블에 맞춘 설계를 했던 것에 연관 관계 매핑을 적용 시켜 보도록 하겠습니다.</p>
+</blockquote>
+<h3 id="테이블-구조">테이블 구조<a class="anchor" href="#테이블-구조">#</a></h3>
+<hr>
+<blockquote>
+<p>테이블 구조는 이전과 같다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/practical-example-1/img-002.png" alt="contact"></p>
+<h3 id="객체-구조">객체 구조<a class="anchor" href="#객체-구조">#</a></h3>
+<hr>
+<blockquote>
+<p>참조를 사용하도록 변경</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/practical-example-2/img-001.png" alt="contact"></p>
+<blockquote>
+<p>OrderItem과 Item에서 N:1이면서 화살표가 OrderItem에서 Item으로 단방향인 것을 알 수 있는데, 이는 주문된 아이템(OrderItem) 입장에서는 어떠한 아이템(Item)인지 알아야하지만, 아이템 입장에서는 통계 같은 프로그램을 하지 않는 이상 이 아이템이 어떠한 아이템 주문이 되었는지 알 필요가 없습니다.</p>
+</blockquote>
+<blockquote>
+<p>또한 실제 개발을 할때는 Member에 굳이 Orders를 가지지 않는 것이 바람직하다고 합니다. 객체 지향적으로는 Member에 Orders가 있는게 맞지만, 
+<br> Member에 Orders 그리고 Orders에서 Member와 OrderItem을 참조하며 모든 연관관계를 추가 하지 말고 (추가 하다보면 끝이 없습니다.)
+<br> 적절하게 관심사를 분리하여 Order에 Member를 파라미터로 바로 Order에서 Member와 OrderItem을 참조하면 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>현재는 예제이기 때문에, Member에 Orders를 추가하여 앙뱡향 연관관계를 실습해 보겠습니다.</p>
+</blockquote>
+<h4 id="단방향-매핑-추가">단방향 매핑 추가<a class="anchor" href="#단방향-매핑-추가">#</a></h4>
+<blockquote>
+<p>우선 단방향 연관관계 매핑부터 진행 하도록 하겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>Order.java</p>
+</blockquote>
+<pre><code>package jpabasic.jpashop.domain;
+
+import javax.persistence.*;
+import jpabasic.jpashop.domain.Member;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+@Table(name = &quot;ORDERS&quot;) // DB에 따라 ORDER가 예약어일 경우가 있어 ORDERS
+public class Order {
+
+    public Order(){}
+
+    @Id
+    @GeneratedValue
+    @Column(name=&quot;ORDER_ID&quot;)
+    private Long id;
+
+    private LocalDateTime orderDate;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
+    @ManyToOne
+    private Member member;
+
+   
+}
+
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package jpabasic.jpashop.domain;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+public class Member {
+
+    public Member(){}
+
+    @Id @GeneratedValue
+    @Column(name=&quot;MEMBER_ID&quot;)
+    private Long id;
+    private String name;
+    private String cicy;
+    private String street;
+    private String zipcode;
+
+}
+
+</code></pre>
+<blockquote>
+<p>OrderItem.java</p>
+</blockquote>
+<pre><code>package jpabasic.jpashop.domain;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class OrderItem {
+    public OrderItem(){}
+
+    @Id @GeneratedValue
+    @Column(name = &quot;OFDER_ITEM_ID&quot;)
+    private Long id;
+
+    private int orderPrice;
+
+    private int count;
+
+    @ManyToOne
+    private Order order;
+
+    @ManyToOne
+    private Item item;
+
+}
+
+</code></pre>
+<blockquote>
+<p>Item.java</p>
+</blockquote>
+<pre><code>package jpabasic.jpashop.domain;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class Item {
+    public Item(){}
+
+    @Id @GeneratedValue
+    @Column(name=&quot;ITEM_ID&quot;)
+    private Long id;
+    private String name;
+    private int price;
+    private int stockQuantity;
+
+}
+
+</code></pre>
+<h4 id="양방향-매핑-추가">양방향 매핑 추가<a class="anchor" href="#양방향-매핑-추가">#</a></h4>
+<blockquote>
+<p>단방향 매핑을 하였으니 Member에서 Order로 Order에서 OrderItem 으로 역방향 매핑을 추가하도록 하겠습니다. 그리고 setter와 getter 또한 추가 하도록 하겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>Order.java</p>
+</blockquote>
+<pre><code>package jpabasic.jpashop.domain;
+
+import javax.persistence.*;
+import jpabasic.jpashop.domain.Member;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+@Entity
+@Table(name = &quot;ORDERS&quot;) // DB에 따라 ORDER가 예약어일 경우가 있어 ORDERS
+public class Order {
+
+    public Order(){}
+
+    @Id
+    @GeneratedValue
+    @Column(name=&quot;ORDER_ID&quot;)
+    private Long id;
+
+    private LocalDateTime orderDate;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
+    @ManyToOne
+    private Member member;
+
+    @OneToMany(mappedBy = &quot;order&quot;)
+    private List&lt;OrderItem&gt; orderItems = new ArrayList&lt;&gt;(); //관례상 초기 값을 두어 NullPointer Exception을 방지
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public List&lt;OrderItem&gt; getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List&lt;OrderItem&gt; orderItems) {
+        this.orderItems = orderItems;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package jpabasic.jpashop.domain;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+public class Member {
+
+    public Member(){}
+
+    @Id @GeneratedValue
+    @Column(name=&quot;MEMBER_ID&quot;)
+    private Long id;
+    private String name;
+    private String cicy;
+    private String street;
+    private String zipcode;
+
+    @OneToMany(mappedBy = &quot;member&quot;)
+    private List&lt;Order&gt; orders = new ArrayList&lt;&gt;(); //관례상 초기 값을 두어 NullPointer Exception을 방지
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCicy() {
+        return cicy;
+    }
+
+    public void setCicy(String cicy) {
+        this.cicy = cicy;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public List&lt;Order&gt; getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List&lt;Order&gt; orders) {
+        this.orders = orders;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>OrderItem.java</p>
+</blockquote>
+<pre><code>package jpabasic.jpashop.domain;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class OrderItem {
+    public OrderItem(){
+    }
+
+    @Id @GeneratedValue
+    @Column(name = &quot;OFDER_ITEM_ID&quot;)
+    private Long id;
+
+    private int orderPrice;
+
+    private int count;
+
+    @ManyToOne
+    private Order order;
+
+    @ManyToOne
+    private Item item;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(int orderPrice) {
+        this.orderPrice = orderPrice;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>Item.java</p>
+</blockquote>
+<pre><code>package jpabasic.jpashop.domain;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+public class Item {
+    public Item(){
+    }
+
+    public Item(String name, int price, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
+
+    @Id @GeneratedValue
+    @Column(name=&quot;ITEM_ID&quot;)
+    private Long id;
+    private String name;
+    private int price;
+    private int stockQuantity;
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+}
+
+</code></pre>
+<h4 id="연관관계-편의-메소드-추가">연관관계 편의 메소드 추가<a class="anchor" href="#연관관계-편의-메소드-추가">#</a></h4>
+<blockquote>
+<p>JpaMain.java 에서</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/practical-example-2/img-002.png" alt="contact"></p>
+<blockquote>
+<p>메소드 생성을 하여 Order의 addOrderItem 편의 메소드 작성</p>
+</blockquote>
+<blockquote>
+<p>Order.java</p>
+</blockquote>
+<pre><code>	...
+    public void setOrderItems(List&lt;OrderItem&gt; orderItems) {
+        this.orderItems = orderItems;
+    }
+    ...
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/practical-example-2/img-003.png" alt="contact"></p>
+<blockquote>
+<p>Order.java</p>
+</blockquote>
+<pre><code>	...
+    public void addMember(Member member) {
+        this.member = member;
+        member.getOrders().add(this);
+    }
+    ...
+</code></pre>
+<blockquote>
+<p>할 수 있다면 최대한 단방향으로 개발하여도 상관은 없으나 이후 복잡한 JPQL등 사용할때 그때 가서 고려해도 상관 없다. 그렇기 때문에 단방향 설계를 잘하는 것이 중요하다.</p>
+</blockquote>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a><a class="anchor" href="#참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">#</a></h4>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >JPA 다양한 연관관계 매핑</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPA 실전 예제 2 - 연관관계 매핑 시작</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#요구사항-분석">요구사항 분석</a>
+      <ul>
+        <li><a href="#테이블-구조">테이블 구조</a></li>
+        <li><a href="#객체-구조">객체 구조</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +826,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

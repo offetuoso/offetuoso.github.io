@@ -1,7 +1,964 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>JPQL 타입 표현(Type Expression) | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="JPQL 타입 표현(Type Expression)">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="JPQL 타입 표현(Type Expression)">
+  <meta property="og:description" content="JPQL 타입 표현(Type Expression)">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPQL 타입 표현(Type Expression)",
+      "headline" : "JPQL 타입 표현(Type Expression)",
+      "description" : "JPQL 타입 표현(Type Expression)",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-03-14 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-03-14 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql-type-expression\/",
+      "wordCount" : "1225",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPQL 타입 표현(Type Expression)
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPQL 타입 표현(Type Expression)
+            </h1>		
+            <time datetime="2022-03-14 00:00:00 &#43;0000 UTC" class="post__date">2022-03-14</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="jpql-타입-표현type-expression">JPQL 타입 표현(Type Expression)</h1>
+<hr>
+<h2 id="jpql-타입-표현">JPQL 타입 표현<a class="anchor" href="#jpql-타입-표현">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>문자 : &lsquo;HELLO&rsquo;, &lsquo;She'&rsquo;s&rsquo;
+<ul>
+<li>따옴표(single quotation) 표현시 single quotation 2개 ''</li>
+</ul>
+</li>
+<li>숫자 : 10L(Long), 10D(Double), 10F(Float)</li>
+<li>Boolean : TRUE, FALSE</li>
+<li>ENUM : jpabook.MemberType.Admin (전체 패키지명 포함)</li>
+<li>엔티티 타입 : TYPE(m) = Member (상속 관계에서 사용)</li>
+</ul>
+</blockquote>
+<h4 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h4>
+<hr>
+<blockquote>
+<p>src/main/java/jpql/domain/Member.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Member.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String username;
+
+    private int age;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;TEAM_ID&quot;)
+    private Team team = new Team();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public jpql.domain.Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(jpql.domain.Team team) {
+        this.team = team;
+    }
+    
+    @Override
+    public String toString() {
+        return &quot;Member{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, age=&quot; + age +
+                '}';
+    }
+}
+</code></pre>
+</details>
+<blockquote>
+<p>src/main/java/jpql/domain/Team.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Team.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Entity
+public class Team {
+
+    public Team() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = &quot;team&quot;)
+    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&lt;Member&gt; getMembers() {
+        return members;
+    }
+
+    public void setMembers(List&lt;Member&gt; members) {
+        this.members = members;
+    }
+}
+</code></pre>
+</details> 	
+<blockquote>
+<p>src/main/java/jpql/domain/Order.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Order.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = &quot;ORDERS&quot;) //ORDER 가 예약어라 ORDERS로 테이블 명칭 지정
+public class Order {
+    public Order() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private int orderAmount;
+
+    @Embedded
+    private Address orderAddress;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;PRODUCT_ID&quot;)
+    private Product product;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public Address getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(Address orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Address.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Address.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.Embeddable;
+import java.util.Objects;
+
+@Embeddable
+public class Address {
+    private String city;
+    private String street;
+    private String zipcode;
+
+    public String getCity() {
+        return city;
+    }
+
+    private void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    private void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    private void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getCity(), address.getCity()) &amp;&amp; Objects.equals(getStreet(), address.getStreet()) &amp;&amp; Objects.equals(getZipcode(), address.getZipcode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCity(), getStreet(), getZipcode());
+    }
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Product.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Product.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Product {
+    public Product() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    private int price;
+
+    private int stockAmount;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getStockAmount() {
+        return stockAmount;
+    }
+
+    public void setStockAmount(int stockAmount) {
+        this.stockAmount = stockAmount;
+    }
+} 	
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/JpqlMain.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> JpqlMain.java </summary>
+<pre><code>package jpql;
+
+import jpql.domain.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+public class JpqlMain {
+    //psvm 단축키로 생성 가능
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;jpql&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+		
+
+        }catch (Exception e){
+            e.printStackTrace();
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+    }
+
+}
+</code></pre>
+</details> 
+<h3 id="문자-숫자-boolean-실습">문자, 숫자, Boolean 실습<a class="anchor" href="#문자-숫자-boolean-실습">#</a></h3>
+<hr>
+<blockquote>
+<p>JpqlMain.java - 문자, 숫자, Boolean</p>
+</blockquote>
+<pre><code> Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;member&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+            String teamName = &quot;team1&quot;;
+
+            String sQuery = &quot;SELECT m.username, 'HELLO SHE''s', TRUE, 10L  FROM Member m LEFT OUTER JOIN m.team t on t.name = m.username&quot;;
+            List&lt;Object[]&gt; result = em.createQuery(sQuery)
+                    .getResultList();
+
+            for (Object[] objects : result){
+                System.out.println(&quot;objects = &quot;+ objects[0]);
+                System.out.println(&quot;objects = &quot;+ objects[1]);
+                System.out.println(&quot;objects = &quot;+ objects[2]);
+                System.out.println(&quot;objects = &quot;+ objects[3]);
+            }
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        m.username,
+        'HELLO SHE''s',
+        TRUE,
+        10L  
+    FROM
+        Member m 
+    LEFT OUTER JOIN
+        m.team t 
+            on t.name = m.username */ select
+                member0_.username as col_0_0_,
+                'HELLO SHE''s' as col_1_0_,
+                1 as col_2_0_,
+                10 as col_3_0_ 
+        from
+            Member member0_ 
+        left outer join
+            Team team1_ 
+                on member0_.TEAM_ID=team1_.id 
+                and (
+                    team1_.name=member0_.username
+                )
+objects = member 		// 컬럼 - m.name
+objects = HELLO SHE's 	// 문자열 - 'HELLO SHE''s'
+objects = true 		// 불린 - TRUE
+objects = 10   		// 숫자 - 10L
+
+</code></pre>
+<h3 id="enum-실습">Enum 실습<a class="anchor" href="#enum-실습">#</a></h3>
+<hr>
+<blockquote>
+<p>JpqlMain.java - Enum Jpql에서 사용</p>
+</blockquote>
+<blockquote>
+<p>Member.java - MemberType 추가</p>
+</blockquote>
+<pre><code>...
+     @Enumerated(EnumType.STRING) // 기본이 숫자 EnumType.ORDINAL 이기 때문에 String으로 필수로 세팅
+    private MemberType type;
+
+    public MemberType getType() {
+        return type;
+    }
+
+    public void setType(MemberType type) {
+        this.type = type;
+    }
+...
+</code></pre>
+<blockquote>
+<p>MemberType.java</p>
+</blockquote>
+<pre><code>package jpql.domain;
+
+public enum MemberType {
+    ADMIN, USER
+}
+
+</code></pre>
+<pre><code>Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;member&quot;);
+            member1.setAge(30);
+            member1.changeTeam(team);
+            member1.setType(MemberType.USER); // *** Member 타입 추가
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+            String teamName = &quot;team1&quot;;
+
+            String sQuery = &quot;SELECT m.username, 'HELLO SHE''s', TRUE, 10L  FROM Member m LEFT OUTER JOIN m.team t on t.name = m.username&quot;
+                            + &quot; WHERE m.type = jpql.domain.MemberType.USER &quot;; // *** Member 타입 조회 조건 추가
+            List&lt;Object[]&gt; result = em.createQuery(sQuery)
+                    .getResultList();
+
+            for (Object[] objects : result){
+                System.out.println(&quot;objects = &quot;+ objects[0]);
+                System.out.println(&quot;objects = &quot;+ objects[1]);
+                System.out.println(&quot;objects = &quot;+ objects[2]);
+                System.out.println(&quot;objects = &quot;+ objects[3]);
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        m.username,
+        'HELLO SHE''s',
+        TRUE,
+        10L  
+    FROM
+        Member m 
+    LEFT OUTER JOIN
+        m.team t 
+            on t.name = m.username 
+    WHERE
+        m.type = jpql.domain.MemberType.USER  */ select
+            member0_.username as col_0_0_,
+            'HELLO SHE''s' as col_1_0_,
+            1 as col_2_0_,
+            10 as col_3_0_ 
+        from
+            Member member0_ 
+        left outer join
+            Team team1_ 
+                on member0_.TEAM_ID=team1_.id 
+                and (
+                    team1_.name=member0_.username
+                ) 
+        where
+             member0_.type='USER' // *** MemberType 조건 추가
+            
+objects = member
+objects = HELLO SHE's
+objects = true
+objects = 10
+</code></pre>
+<blockquote>
+<p>패키지 명은 길기 때문에 파라미터 바인딩을 통해 코드를 줄일 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java - MemberType 파라미터로 세팅</p>
+</blockquote>
+<pre><code>String teamName = &quot;team1&quot;;
+
+            String sQuery = &quot;SELECT m.username, 'HELLO SHE''s', TRUE, 10L  FROM Member m LEFT OUTER JOIN m.team t on t.name = m.username&quot;
+                            + &quot; WHERE m.type = :userType &quot;;
+            List&lt;Object[]&gt; result = em.createQuery(sQuery)
+                    .setParameter(&quot;userType&quot;, MemberType.USER)
+                    .getResultList();
+</code></pre>
+<h3 id="entity-타입-실습">Entity 타입 실습<a class="anchor" href="#entity-타입-실습">#</a></h3>
+<hr>
+<blockquote>
+<p>예제를 진행하기 위해 실전 예제를 사용했던 프로젝트를 불러와 사용하겠습니다.</p>
+</blockquote>
+<p><a href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-6/">실전 예제 6 - 값 타입 매핑</a></p>
+<blockquote>
+<p>Item 같은 경우에 상속관계로 Album, Book, Movie 가 있는데, Book 관련 된것만 조회하고 싶을때</p>
+</blockquote>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>            Book book = new Book();
+            book.setName(&quot;JPA&quot;);
+            book.setAuthor(&quot;김영한&quot;);
+            em.persist(book);
+
+            List&lt;Item&gt; result = em.createQuery(&quot;SELECT i FROM Item i WHERE TYPE(i) = Book &quot;, Item.class).getResultList(); // *** TYPE(i) = Book
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        i 
+    FROM
+        Item i 
+    WHERE
+        TYPE(i) = Book  */ select
+            item0_.ITEM_ID as item_id2_3_,
+            item0_.MOD_ID as mod_id3_3_,
+            item0_.MOD_DT as mod_dt4_3_,
+            item0_.REG_ID as reg_id5_3_,
+            item0_.REG_DT as reg_dt6_3_,
+            item0_.name as name7_3_,
+            item0_.price as price8_3_,
+            item0_.stockQuantity as stockqua9_3_,
+            item0_.author as author10_3_,
+            item0_.isbn as isbn11_3_,
+            item0_.artist as artist12_3_,
+            item0_.etc as etc13_3_,
+            item0_.actor as actor14_3_,
+            item0_.director as directo15_3_,
+            item0_.DTYPE as dtype1_3_ 
+        from
+            Item item0_ 
+        where
+            item0_.DTYPE='B' // *** TYPE(i) = Book
+
+</code></pre>
+<h2 id="jpql-기타-표현">JPQL 기타 표현<a class="anchor" href="#jpql-기타-표현">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>SQL과 문법이 같음</li>
+<li>EXISTS, IN</li>
+<li>AND, OR, NOT</li>
+<li>=, &gt;, &gt;=, &lt;, &lt;=, &lt;&gt;</li>
+<li>BETWEEN, LIKE, IS NULL</li>
+</ul>
+</blockquote>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/join/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">JPA 조인(JOIN)</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >JPA 서브 쿼리(Sub Query)</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPQL 타입 표현(Type Expression)</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#jpql-타입-표현">JPQL 타입 표현</a>
+      <ul>
+        <li></li>
+        <li><a href="#문자-숫자-boolean-실습">문자, 숫자, Boolean 실습</a></li>
+        <li><a href="#enum-실습">Enum 실습</a></li>
+        <li><a href="#entity-타입-실습">Entity 타입 실습</a></li>
+      </ul>
+    </li>
+    <li><a href="#jpql-기타-표현">JPQL 기타 표현</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +972,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

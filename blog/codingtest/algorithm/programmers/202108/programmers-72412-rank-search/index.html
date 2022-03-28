@@ -1,7 +1,640 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>Programmers 72412 순위 검색 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="72412 순위 검색">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="72412 순위 검색">
+  <meta property="og:description" content="72412 순위 검색">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "Programmers 72412 순위 검색",
+      "headline" : "Programmers 72412 순위 검색",
+      "description" : "72412 순위 검색",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-08-07 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-08-07 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202108\/programmers-72412-rank-search\/",
+      "wordCount" : "1342",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	Programmers 72412 순위 검색
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	Programmers 72412 순위 검색
+            </h1>		
+            <time datetime="2021-08-07 00:00:00 &#43;0000 UTC" class="post__date">2021-08-07</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="programmers---72412-순위-검색">Programmers - 72412 순위 검색</h1>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/72412">Programmers 72412 링크</a></p>
+<blockquote>
+<p>카카오는 하반기 경력 개발자 공개채용을 진행 중에 있으며 현재 지원서 접수와 코딩테스트가 종료되었습니다. 이번 채용에서 지원자는 지원서 작성 시 아래와 같이 4가지 항목을 반드시 선택하도록 하였습니다.</p>
+</blockquote>
+<blockquote>
+<p>코딩테스트 참여 개발언어 항목에 cpp, java, python 중 하나를 선택해야 합니다. <br>
+지원 직군 항목에 backend와 frontend 중 하나를 선택해야 합니다. <br>
+지원 경력구분 항목에 junior와 senior 중 하나를 선택해야 합니다. <br>
+선호하는 소울푸드로 chicken과 pizza 중 하나를 선택해야 합니다. <br>
+인재영입팀에 근무하고 있는 니니즈는 코딩테스트 결과를 분석하여 채용에 참여한 개발팀들에 제공하기 위해 지원자들의 지원 조건을 선택하면 해당 조건에 맞는 지원자가 몇 명인 지 쉽게 알 수 있는 도구를 만들고 있습니다.
+예를 들어, 개발팀에서 궁금해하는 문의사항은 다음과 같은 형태가 될 수 있습니다. <br>
+코딩테스트에 java로 참여했으며, backend 직군을 선택했고, junior 경력이면서, 소울푸드로 pizza를 선택한 사람 중 코딩테스트 점수를 50점 이상 받은 지원자는 몇 명인가? <br></p>
+</blockquote>
+<blockquote>
+<p>물론 이 외에도 각 개발팀의 상황에 따라 아래와 같이 다양한 형태의 문의가 있을 수 있습니다. <br></p>
+</blockquote>
+<blockquote>
+<p>코딩테스트에 python으로 참여했으며, frontend 직군을 선택했고, senior 경력이면서, 소울푸드로 chicken을 선택한 사람 중 코딩테스트 점수를 100점 이상 받은 사람은 모두 몇 명인가? <br>
+코딩테스트에 cpp로 참여했으며, senior 경력이면서, 소울푸드로 pizza를 선택한 사람 중 코딩테스트 점수를 100점 이상 받은 사람은 모두 몇 명인가? <br>
+backend 직군을 선택했고, senior 경력이면서 코딩테스트 점수를 200점 이상 받은 사람은 모두 몇 명인가? <br>
+소울푸드로 chicken을 선택한 사람 중 코딩테스트 점수를 250점 이상 받은 사람은 모두 몇 명인가? <br>
+코딩테스트 점수를 150점 이상 받은 사람은 모두 몇 명인가? <br>
+즉, 개발팀에서 궁금해하는 내용은 다음과 같은 형태를 갖습니다. <br></p>
+</blockquote>
+<blockquote>
+<p>* [조건]을 만족하는 사람 중 코딩테스트 점수를 X점 이상 받은 사람은 모두 몇 명인가?
+[문제]
+지원자가 지원서에 입력한 4가지의 정보와 획득한 코딩테스트 점수를 하나의 문자열로 구성한 값의 배열 info,  <br>개발팀이 궁금해하는 문의조건이 문자열 형태로 담긴 배열 query가 매개변수로 주어질 때, <br>
+각 문의조건에 해당하는 사람들의 숫자를 순서대로 배열에 담아 return 하도록 solution 함수를 완성해 주세요.</p>
+</blockquote>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<blockquote>
+<ul>
+<li>info 배열의 크기는 1 이상 50,000 이하입니다.</li>
+<li>info 배열 각 원소의 값은 지원자가 지원서에 입력한 4가지 값과 코딩테스트 점수를 합친 &ldquo;개발언어 직군 경력 소울푸드 점수&rdquo; 형식입니다.</li>
+<li>개발언어는 cpp, java, python 중 하나입니다.</li>
+<li>직군은 backend, frontend 중 하나입니다.</li>
+<li>경력은 junior, senior 중 하나입니다.</li>
+<li>소울푸드는 chicken, pizza 중 하나입니다.</li>
+<li>점수는 코딩테스트 점수를 의미하며, 1 이상 100,000 이하인 자연수입니다.</li>
+<li>각 단어는 공백문자(스페이스 바) 하나로 구분되어 있습니다.</li>
+<li>query 배열의 크기는 1 이상 100,000 이하입니다.</li>
+<li>query의 각 문자열은 &ldquo;[조건] X&rdquo; 형식입니다.</li>
+<li>[조건]은 &ldquo;개발언어 and 직군 and 경력 and 소울푸드&rdquo; 형식의 문자열입니다.</li>
+<li>언어는 cpp, java, python, - 중 하나입니다.</li>
+<li>직군은 backend, frontend, - 중 하나입니다.</li>
+<li>경력은 junior, senior, - 중 하나입니다.</li>
+<li>소울푸드는 chicken, pizza, - 중 하나입니다.</li>
+<li>&lsquo;-&rsquo; 표시는 해당 조건을 고려하지 않겠다는 의미입니다.</li>
+<li>X는 코딩테스트 점수를 의미하며 조건을 만족하는 사람 중 X점 이상 받은 사람은 모두 몇 명인 지를 의미합니다.</li>
+<li>각 단어는 공백문자(스페이스 바) 하나로 구분되어 있습니다.</li>
+<li>예를 들면, &ldquo;cpp and - and senior and pizza 500&quot;은 &ldquo;cpp로 코딩테스트를 봤으며, 경력은 senior 이면서 &gt;- 소울푸드로 pizza를 선택한 지원자 중 코딩테스트 점수를 500점 이상 받은 사람은 모두 몇 명인가?&ldquo;를 의미합니다.</li>
+</ul>
+</blockquote>
+<p>###입력 형식</p>
+<table>
+<thead>
+<tr>
+<th>info</th>
+<th>query</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[&ldquo;java backend junior pizza 150&rdquo;,&ldquo;python frontend senior chicken 210&rdquo;,&ldquo;python frontend senior chicken 150&rdquo;,&ldquo;cpp backend senior pizza 260&rdquo;,&ldquo;java backend junior chicken 80&rdquo;,&ldquo;python backend senior chicken 50&rdquo;]</td>
+<td>[&ldquo;java and backend and junior and pizza 100&rdquo;,&ldquo;python and frontend and senior and chicken 200&rdquo;,&ldquo;cpp and - and senior and pizza 250&rdquo;,&quot;- and backend and senior and - 150&rdquo;,&quot;- and - and - and chicken 100&rdquo;,&quot;- and - and - and - 150&rdquo;]</td>
+<td>[1,1,1,1,2,4]</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>입출력 예에 대한 설명
+지원자 정보를 표로 나타내면 다음과 같습니다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>언어</th>
+<th>직군</th>
+<th>경력</th>
+<th>소울 푸드</th>
+<th>점수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>java</td>
+<td>backend</td>
+<td>junior</td>
+<td>pizza</td>
+<td>150</td>
+</tr>
+<tr>
+<td>python</td>
+<td>frontend</td>
+<td>senior</td>
+<td>chicken</td>
+<td>210</td>
+</tr>
+<tr>
+<td>python</td>
+<td>frontend</td>
+<td>senior</td>
+<td>chicken</td>
+<td>150</td>
+</tr>
+<tr>
+<td>cpp</td>
+<td>backend</td>
+<td></td>
+<td>senior</td>
+<td>pizza</td>
+</tr>
+<tr>
+<td>java</td>
+<td>backend</td>
+<td>junior</td>
+<td>chicken</td>
+<td>80</td>
+</tr>
+<tr>
+<td>python</td>
+<td>backend</td>
+<td>senior</td>
+<td>chicken</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>&ldquo;java and backend and junior and pizza 100&rdquo; : java로 코딩테스트를 봤으며, backend 직군을 선택했고 junior 경력이면서 소울푸드로 pizza를 선택한 지원자 중 코딩테스트 점수를 100점 이상 받은 지원자는 1명 입니다.</li>
+<li>&ldquo;python and frontend and senior and chicken 200&rdquo; : python으로 코딩테스트를 봤으며, frontend 직군을 선택했고, senior 경력이면서 소울 푸드로 chicken을 선택한 지원자 중 코딩테스트 점수를 200점 이상 받은 지원자는 1명 입니다.</li>
+<li>&ldquo;cpp and - and senior and pizza 250&rdquo; : cpp로 코딩테스트를 봤으며, senior 경력이면서 소울푸드로 pizza를 선택한 지원자 중 코딩테스트 점수를 250점 이상 받은 지원자는 1명 입니다.</li>
+<li>&ldquo;- and backend and senior and - 150&rdquo; : backend 직군을 선택했고, senior 경력인 지원자 중 코딩테스트 점수를 150점 이상 받은 지원자는 1명 입니다.</li>
+<li>&ldquo;- and - and - and chicken 100&rdquo; : 소울푸드로 chicken을 선택한 지원자 중 코딩테스트 점수를 100점 이상을 받은 지원자는 2명 입니다.</li>
+<li>&ldquo;- and - and - and - 150&rdquo; : 코딩테스트 점수를 150점 이상 받은 지원자는 4명 입니다.</li>
+</ul>
+</blockquote>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<blockquote>
+<p>테스트 케이스를 통과하였지만, 효율성을 통과하지 못한 답변 1</p>
+</blockquote>
+<pre><code>   def solution(info, query):
+    answer = []
+    datas = []
+    query_cnt = 5
+    for i in range(0,len(info)) :
+        datas.append(re.split(r' ',info[i]))
+
+    for i in range(0,len(query)) :
+        _datas = datas 
+        order = str(query[i].replace('and ', '', query_cnt)).split()
+    
+        
+        for k in range(0,query_cnt) :
+            if k &lt; query_cnt-1 :
+                _datas =  [user for user in _datas if order[k] == user[k] or order[k] == '-'] 
+            else : 
+                _datas =  [user for user in _datas if int(order[k]) &lt;= int(user[k]) or order[k] == '-'] 
+        
+        
+        answer.append(len(_datas))
+
+    return answer
+</code></pre>
+<blockquote>
+<p>테스트 케이스를 통과하였지만, 효율성을 통과하지 못한 답변 2</p>
+</blockquote>
+<pre><code>import re
+
+def solution(info, query):
+    answer = []
+    datas = []
+    query_cnt = 5
+    for i in range(0,len(info)) :
+        datas.append(re.split(r' ',info[i]))
+
+    for i in range(0,len(query)) :
+        _datas = datas 
+        order = str(query[i].replace('and ', '', query_cnt)).split()
+    
+        _datas =  [user for user in _datas if order[0] == user[0] or order[0] == '-'] 
+        _datas =  [user for user in _datas if order[1] == user[1] or order[1] == '-'] 
+        _datas =  [user for user in _datas if order[2] == user[2] or order[2] == '-'] 
+        _datas =  [user for user in _datas if order[3] == user[3] or order[3] == '-'] 
+        _datas =  [user for user in _datas if int(order[4]) &lt;= int(user[4]) or order[4] == '-'] 
+        answer.append(len(_datas))
+
+    return answer
+</code></pre>
+<blockquote>
+<p>-까지 포함된 모든 경우의 수를 키로 만들어 dic 으로 점수를 저장
+dic을 정렬하고 2진검색을 사용하여 검색</p>
+</blockquote>
+<pre><code>def solution(info, query):
+    answer = []
+    dic = {}
+    comb = [0, 1, 2, 3]
+    for i in info:
+        data = i.split()
+        conditions = data[:-1]
+        score = int(data[-1])
+
+        for j in range(5):
+            for k in list(combinations(comb, j)):
+                temp = conditions.copy()
+                for idx in k:
+                    temp[idx] = '-'
+                key = ''.join(temp)
+                if key in dic:
+                    dic[key].append(score)
+                else:
+                    dic[key] = [score]
+
+    for value in dic.values():  
+        value.sort()
+
+    for i in query:
+        q_list = []
+        for j in i.split():
+            if j == 'and':
+                continue
+            q_list.append(j)
+
+        key = ''.join(q_list[:-1])
+        value = int(q_list[-1])
+     
+        if key in dic:
+            dic_list = dic[key]
+
+            index = bisect_left(dic_list, value)
+            answer.append(len(dic_list) - index)
+        else:
+            answer.append(0)
+            continue
+    return answer
+</code></pre>
+<h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
+<pre><code>from itertools import combinations
+def solution(info, query):
+    answer = []
+    db = {}
+    for i in info:                   # info에 대해 반복
+        temp = i.split()
+        conditions = temp[:-1]       # 조건들만 모으고, 점수 따로
+        score = int(temp[-1])  
+        for n in range(5):           # 조건들에 대해 조합을 이용해서  
+            combi = list(combinations(range(4), n))
+            for c in combi:
+                t_c = conditions.copy()
+                for v in c:          # '-'를 포함한 새로운 조건을 만들어냄.
+                    t_c[v] = '-'
+                changed_t_c = '/'.join(t_c)
+                if changed_t_c in db:     # 모든 조건의 경우에 수에 대해 딕셔너리
+                    db[changed_t_c].append(score)
+                else:
+                    db[changed_t_c] = [score]
+
+    for value in db.values():             # 딕셔너리 내 모든 값 정렬
+        value.sort()
+ 
+    for q in query:                       # query의 모든 조건에 대해서
+        qry = [i for i in q.split() if i != 'and']
+        qry_cnd = '/'.join(qry[:-1])
+        qry_score = int(qry[-1])
+        if qry_cnd in db:                 # 딕셔너리 내에 값이 존재한다면,
+            data = db[qry_cnd]
+            if len(data) &gt; 0:          
+                start, end = 0, len(data)     # lower bound 알고리즘 통해 인덱스 찾고,
+                while start != end and start != len(data):
+                    if data[(start + end) // 2] &gt;= qry_score:
+                        end = (start + end) // 2
+                    else:
+                        start = (start + end) // 2 + 1
+                answer.append(len(data) - start)      # 해당 인덱스부터 끝까지의 갯수가 정답
+        else:
+            answer.append(0)
+
+    return answer
+
+</code></pre>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<pre><code>info = [&quot;java backend junior pizza 150&quot;,&quot;python frontend senior chicken 210&quot;,&quot;python frontend senior chicken 150&quot;,&quot;cpp backend senior pizza 260&quot;,&quot;java backend junior chicken 80&quot;,&quot;python backend senior chicken 50&quot;]	
+query = [&quot;java and backend and junior and pizza 100&quot;,&quot;python and frontend and senior and chicken 200&quot;,&quot;cpp and - and senior and pizza 250&quot;,&quot;- and backend and senior and - 150&quot;,&quot;- and - and - and chicken 100&quot;,&quot;- and - and - and - 150&quot;]
+solution(info, query)
+
+</code></pre>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
+    </li></ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-67257-maximize-formula/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Programmers 67257 수식 최대화</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-12910-divisible-array-of-numbers/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Programmers 12910 나누어 떨어지는 숫자 배열</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">Programmers 72412 순위 검색</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a></li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#others-solution">Others Solution</a></li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +648,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

@@ -1,7 +1,528 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>Programmers 17677 뉴스 클러스터링 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="17677 뉴스 클러스터링">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="17677 뉴스 클러스터링">
+  <meta property="og:description" content="17677 뉴스 클러스터링">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "Programmers 17677 뉴스 클러스터링",
+      "headline" : "Programmers 17677 뉴스 클러스터링",
+      "description" : "17677 뉴스 클러스터링",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-07-26 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-26 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202107\/programmers-17677-news-clustering\/",
+      "wordCount" : "735",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	Programmers 17677 뉴스 클러스터링
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	Programmers 17677 뉴스 클러스터링
+            </h1>		
+            <time datetime="2021-07-26 00:00:00 &#43;0000 UTC" class="post__date">2021-07-26</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="programmers---17677-뉴스-클러스터링">Programmers - 17677 뉴스 클러스터링</h1>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/17677">Programmers 17677 링크</a></p>
+<blockquote>
+<p>뉴스 클러스터링<br>
+여러 언론사에서 쏟아지는 뉴스, 특히 속보성 뉴스를 보면 비슷비슷한 제목의 기사가 많아 정작 필요한 기사를 찾기가 어렵다.<br>
+Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들이 편리하게 다양한 뉴스를 찾아볼 수 있도록 문제점을 개선하는 업무를 맡게 되었다.</p>
+</blockquote>
+<blockquote>
+<p>개발의 방향을 잡기 위해 튜브는 우선 최근 화제가 되고 있는 &ldquo;카카오 신입 개발자 공채&rdquo; 관련 기사를 검색해보았다.</p>
+</blockquote>
+<blockquote>
+<p>카카오 첫 공채..&lsquo;블라인드&rsquo; 방식 채용<br>
+카카오, 합병 후 첫 공채.. 블라인드 전형으로 개발자 채용<br>
+카카오, 블라인드 전형으로 신입 개발자 공채<br>
+카카오 공채, 신입 개발자 코딩 능력만 본다<br>
+카카오, 신입 공채.. &ldquo;코딩 실력만 본다&rdquo;<br>
+카카오 &ldquo;코딩 능력만으로 2018 신입 개발자 뽑는다&rdquo;<br>
+기사의 제목을 기준으로 &ldquo;블라인드 전형&quot;에 주목하는 기사와 &ldquo;코딩 테스트&quot;에 주목하는 기사로 나뉘는 걸 발견했다.<br>
+튜브는 이들을 각각 묶어서 보여주면 카카오 공채 관련 기사를 찾아보는 사용자에게 유용할 듯싶었다.</p>
+</blockquote>
+<blockquote>
+<p>유사한 기사를 묶는 기준을 정하기 위해서 논문과 자료를 조사하던 튜브는 &ldquo;자카드 유사도&quot;라는 방법을 찾아냈다.<br></p>
+</blockquote>
+<blockquote>
+<p>자카드 유사도는 집합 간의 유사도를 검사하는 여러 방법 중의 하나로 알려져 있다. 두 집합 A, B 사이의 자카드 유사도 J(A, B)는 두 집합의 교집합 크기를 두 집합의 합집합 크기로 나눈 값으로 정의된다.</p>
+</blockquote>
+<blockquote>
+<p>예를 들어 집합 A = {1, 2, 3}, 집합 B = {2, 3, 4}라고 할 때,<br>
+교집합 A ∩ B = {2, 3}, 합집합 A ∪ B = {1, 2, 3, 4}이 되므로,<br>
+집합 A, B 사이의 자카드 유사도 J(A, B) = 2/4 = 0.5가 된다.<br>
+집합 A와 집합 B가 모두 공집합일 경우에는 나눗셈이 정의되지 않으니 따로 J(A, B) = 1로 정의한다.</p>
+</blockquote>
+<blockquote>
+<p>자카드 유사도는 원소의 중복을 허용하는 다중집합에 대해서 확장할 수 있다. <br>
+다중집합 A는 원소 &ldquo;1&quot;을 3개 가지고 있고, 다중집합 B는 원소 &ldquo;1&quot;을 5개 가지고 있다고 하자.<br>
+이 다중집합의 교집합 A ∩ B는 원소 &ldquo;1&quot;을 min(3, 5)인 3개, 합집합 A ∪ B는 원소 &ldquo;1&quot;을 max(3, 5)인 5개 가지게 된다. <br>
+다중집합 A = {1, 1, 2, 2, 3}, 다중집합 B = {1, 2, 2, 4, 5}라고 하면, <br>
+교집합 A ∩ B = {1, 2, 2}, 합집합 A ∪ B = {1, 1, 2, 2, 3, 4, 5}가 되므로,<br>
+자카드 유사도 J(A, B) = 3/7, 약 0.42가 된다.<br></p>
+</blockquote>
+<blockquote>
+<p>이를 이용하여 문자열 사이의 유사도를 계산하는데 이용할 수 있다. <br>
+문자열 &ldquo;FRANCE&quot;와 &ldquo;FRENCH&quot;가 주어졌을 때, 이를 두 글자씩 끊어서 다중집합을 만들 수 있다. <br>
+각각 {FR, RA, AN, NC, CE}, {FR, RE, EN, NC, CH}가 되며, 교집합은 {FR, NC}, <br>
+합집합은 {FR, RA, AN, NC, CE, RE, EN, CH}가 되므로, 두 문자열 사이의 자카드 유사도 J(&ldquo;FRANCE&rdquo;, &ldquo;FRENCH&rdquo;) = 2/8 = 0.25가 된다.</p>
+</blockquote>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<p>###입력 형식</p>
+<blockquote>
+<p>입력으로는 str1과 str2의 두 문자열이 들어온다. 각 문자열의 길이는 2 이상, 1,000 이하이다.<br>
+입력으로 들어온 문자열은 두 글자씩 끊어서 다중집합의 원소로 만든다. 이때 영문자로 된 글자 쌍만 유효하고,<br>
+기타 공백이나 숫자, 특수 문자가 들어있는 경우는 그 글자 쌍을 버린다. 예를 들어 &ldquo;ab+&ldquo;가 입력으로 들어오면,<br> 
+&ldquo;ab&quot;만 다중집합의 원소로 삼고, &ldquo;b+&ldquo;는 버린다.<br>
+다중집합 원소 사이를 비교할 때, 대문자와 소문자의 차이는 무시한다. &ldquo;AB&quot;와 &ldquo;Ab&rdquo;, &ldquo;ab&quot;는 같은 원소로 취급한다.</p>
+</blockquote>
+<p>###출력 형식</p>
+<blockquote>
+<p>입력으로 들어온 두 문자열의 자카드 유사도를 출력한다. 유사도 값은 0에서 1 사이의 실수이므로, <br>
+이를 다루기 쉽도록 65536을 곱한 후에 소수점 아래를 버리고 정수부만 출력한다.</p>
+</blockquote>
+<h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
+<blockquote>
+<p>예제 입출력</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>str1</th>
+<th>str2</th>
+<th>answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FRANCE</td>
+<td>french</td>
+<td>16384</td>
+</tr>
+<tr>
+<td>handshake</td>
+<td>shake hands</td>
+<td>65536</td>
+</tr>
+<tr>
+<td>aa1+aa2</td>
+<td>AAAA12</td>
+<td>43690</td>
+</tr>
+<tr>
+<td>E=M*C^2</td>
+<td>e=m*c^2</td>
+<td>6553644&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<pre><code>import math
+from collections import Counter
+
+def makeArr(str) :
+    arr = [] 
+    prv = ''
+    for crr in str : 
+        if prv != '' :
+            if crr.isalpha() and prv.isalpha() :
+                arr.append(prv+crr)
+        prv = crr
+    return sorted(arr)
+
+def J(A, B):
+    answer = 0
+    intersection = []
+    union = []
+
+    try :
+
+        for i in range(len(A)) : 
+            for j in range(len(B)) : 
+                if A[i] == B[j] :
+                    intersection.append(A[i])
+                    union.append(A[i])
+                    B[j] = None
+                    A[i] = None    
+        
+        for a in A : 
+            if a is not None :
+                union.append(a)
+        for b in B : 
+            if b is not None :
+                union.append(b)
+
+        if answer == 0 and len(union) != 0:
+            answer = len(intersection)/len(union)
+        elif answer == 0 and len(union) == 0:
+            answer = 1
+
+    except :
+        answer = 1
+
+    return math.trunc(answer*65536)
+
+def solution(str1, str2):
+    
+      
+    str1 = str1.lower()
+    str2 = str2.lower()
+    A = makeArr(str1)
+    B = makeArr(str2)
+    
+    return J(A, B)
+</code></pre>
+<h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
+<pre><code>import re
+import math
+
+def solution(str1, str2):
+    str1 = [str1[i:i+2].lower() for i in range(0, len(str1)-1) if not re.findall('[^a-zA-Z]+', str1[i:i+2])]
+    str2 = [str2[i:i+2].lower() for i in range(0, len(str2)-1) if not re.findall('[^a-zA-Z]+', str2[i:i+2])]
+
+    gyo = set(str1) &amp; set(str2)
+    hap = set(str1) | set(str2)
+
+    if len(hap) == 0 :
+        return 65536
+
+    gyo_sum = sum([min(str1.count(gg), str2.count(gg)) for gg in gyo])
+    hap_sum = sum([max(str1.count(hh), str2.count(hh)) for hh in hap])
+
+    return math.floor((gyo_sum/hap_sum)*65536)
+</code></pre>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<pre><code>#solution('11111', '111')
+#solution('FRANCE', 'french')
+#solution('handshake', 'shake hands')
+#solution('AAAA12','aa1+aa2') #43690
+#solution('E=M*C^2', 'e=m*c^2')
+
+</code></pre>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
+    </li></ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12948-phone-number-masking/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Programmers 12948 핸드폰 번호 가리기</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42626-more-spicy/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Programmers 42626 더 맵게</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">Programmers 17677 뉴스 클러스터링</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a></li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#input-output">input output</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#others-solution">Others Solution</a></li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +536,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

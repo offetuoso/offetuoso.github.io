@@ -1,7 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>JPA Projection(SELECT) | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="Projection(SELECT)">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="Projection(SELECT)">
+  <meta property="og:description" content="Projection(SELECT)">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPA Projection(SELECT)",
+      "headline" : "JPA Projection(SELECT)",
+      "description" : "Projection(SELECT)",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-03-07 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-03-07 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/projection\/",
+      "wordCount" : "1942",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPA Projection(SELECT)
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPA Projection(SELECT)
+            </h1>		
+            <time datetime="2022-03-07 00:00:00 &#43;0000 UTC" class="post__date">2022-03-07</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="jpa-projectionselect">JPA Projection(SELECT)</h1>
+<hr>
+<h2 id="셀렉션과-프로젝션">셀렉션과 프로젝션<a class="anchor" href="#셀렉션과-프로젝션">#</a></h2>
+<h3 id="셀렉션">셀렉션<a class="anchor" href="#셀렉션">#</a></h3>
+<blockquote>
+<p>데이터베이스에서 행단위로 데이터를 조회하는 방식 <br>
+예) SELECT m.* FROM MEMBER m</p>
+</blockquote>
+<h3 id="프로젝션">프로젝션<a class="anchor" href="#프로젝션">#</a></h3>
+<blockquote>
+<p>데이터베이스에서 열단위로 데이터를 조회하는 방식 <br>
+예) SELECT m.username, m.age FROM MEMBER m</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>프로젝션과 셀렉션 동시 사용 가능</li>
+</ul>
+</blockquote>
+<h4 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h4>
+<hr>
+<blockquote>
+<p>src/main/java/jpql/domain/Member.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Member.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String username;
+
+    private int age;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;TEAM_ID&quot;)
+    //private Team team = new Team();
+    private Team team;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public jpql.domain.Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(jpql.domain.Team team) {
+        this.team = team;
+    }
+    
+    @Override
+    public String toString() {
+        return &quot;Member{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, age=&quot; + age +
+                '}';
+    }
+}
+</code></pre>
+</details>
+<blockquote>
+<p>src/main/java/jpql/domain/Team.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Team.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Entity
+public class Team {
+
+    public Team() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = &quot;team&quot;)
+    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&lt;Member&gt; getMembers() {
+        return members;
+    }
+
+    public void setMembers(List&lt;Member&gt; members) {
+        this.members = members;
+    }
+}
+</code></pre>
+</details> 	
+<blockquote>
+<p>src/main/java/jpql/domain/Order.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Order.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = &quot;ORDERS&quot;) //ORDER 가 예약어라 ORDERS로 테이블 명칭 지정
+public class Order {
+    public Order() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private int orderAmount;
+
+    @Embedded
+    private Address orderAddress;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;PRODUCT_ID&quot;)
+    private Product product;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public Address getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(Address orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Address.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Address.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.Embeddable;
+import java.util.Objects;
+
+@Embeddable
+public class Address {
+    private String city;
+    private String street;
+    private String zipcode;
+
+    public String getCity() {
+        return city;
+    }
+
+    private void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    private void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    private void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getCity(), address.getCity()) &amp;&amp; Objects.equals(getStreet(), address.getStreet()) &amp;&amp; Objects.equals(getZipcode(), address.getZipcode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCity(), getStreet(), getZipcode());
+    }
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Product.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Product.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Product {
+    public Product() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    private int price;
+
+    private int stockAmount;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getStockAmount() {
+        return stockAmount;
+    }
+
+    public void setStockAmount(int stockAmount) {
+        this.stockAmount = stockAmount;
+    }
+} 	
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/JpqlMain.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> JpqlMain.java </summary>
+<pre><code>package jpql;
+
+import jpql.domain.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+public class JpqlMain {
+    //psvm 단축키로 생성 가능
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;jpql&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+
+            Team team1 = new Team();
+            team1.setName(&quot;팀1&quot;);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;오과장&quot;);
+            member1.setAge(35);
+            member1.setTeam(team1);
+            
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;육대리&quot;);
+            member2.setAge(28);
+            member2.setTeam(team1);
+
+            em.persist(team1);
+            em.persist(member1);
+            em.persist(member2);
+
+            tx.commit();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+    }
+
+}
+</code></pre>
+</details> 
+<h2 id="projectionselect">Projection(SELECT)<a class="anchor" href="#projectionselect">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>SELECT 절에 조회할 대상을 지정하는 것</li>
+<li>프로젝션 대상 : 엔티티, 임베디드 타입, 스칼라 타입(숫자, 문자등 기본 데이터 타입)</li>
+<li>엔티티 프로젝션 -&gt; SELECT m FROM Member m</li>
+<li>엔티티 프로젝션 (조인) -&gt; SELECT m.team FROM Member m</li>
+<li>임베디드 타입 프로젝션 -&gt; SELECT m.address FROM Member m</li>
+<li>스칼라 타입 프로젝션  -&gt; SELECT m.username, m.age FROM Member m</li>
+<li>DISTINCT로 중복 제거</li>
+</ul>
+</blockquote>
+<h3 id="엔티티-프로젝션">엔티티 프로젝션<a class="anchor" href="#엔티티-프로젝션">#</a></h3>
+<blockquote>
+<p>엔티티 프로젝션에서 또 깊이 생각해 볼것은 조회한 엔티티가 과연 영속성 컨텍스트에서 관리가 되는지 입니다.</p>
+</blockquote>
+<blockquote>
+<p>엔티티를 추가하고 플러시, 클리어 후 조회한 엔티티(findMember)를 수정하였을 때,  Update 문이 실행되는지 확인해 보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>...
+	                 Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;member1&quot;);
+            member1.setAge(35);
+            member1.setTeam(team);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+            List&lt;Member&gt; result = em.createQuery(&quot;SELECT m FROM Member m&quot;, Member.class)
+                    .getResultList();
+
+            Member findMember = result.get(0);
+            findMember.setAge(28);
+
+...
+</code></pre>
+<blockquote>
+<p>강의를 따라 실습하던 도중 예기치 않은 오류를 만나게 되었습니다.</p>
+</blockquote>
+<pre><code>org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing
+</code></pre>
+<details title="펼치기/숨기기">
+ 	<summary> 더보기 </summary>
+<p><a href="/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/">object references an unsaved transient instance - save the transient instance before flushing 에러
+</a></p>
+<blockquote>
+<p>간략하게 말씀드리면 flush 할때, Member와 N:1 연관관계에 있는 Team 의 FK를 먼저 영속화 하지 않고 Member를 영속화 하는 것이 문제라고 오류를 발생시킵니다.</p>
+</blockquote>
+<blockquote>
+<p>이에 대한 해결은</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>CascadeType 지정</li>
+<li>FK를 가지는 엔티티를 먼저 영속화 후 엔티티 영속화</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>~하지만, 저장 시 강사님의 결과와 달라 문의를 남겨 두었습니다. ~</p>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>연관관계 매핑시 제가 잘못한 것이 있어 수정을 합니다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>    @ManyToOne
+    @JoinColumn(name = &quot;TEAM_ID&quot;)
+    private Team team = new Team();
+</code></pre>
+<blockquote>
+<p>수업을 충분히 정리하며 들으셨던 분들은 한눈에 눈치채셨겠지만, N:1 관계에서 1의 입장에서 예를 들어 Team.java에서는 private List<Member> members = new ArrayList&lt;&gt;(); 이렇게 배열을 미리 생성해두지만, Member.java 입장에서는 선언만 해두면 되는것을 = new Team()으로 생성을 해두었던것이 잘못이였습니다.</p>
+</blockquote>
+<blockquote>
+<p>Team team = new Team(); 으로 생성을 해두면 생성시 Team의 PK인 TEAM_ID를 JPA에서 Member를 영속화할때 필요로 하기 때문에 오류를 발생하게 됩니다.</p>
+</blockquote>
+<pre><code>    @ManyToOne
+    @JoinColumn(name = &quot;TEAM_ID&quot;)
+    private Team team;
+</code></pre>
+<p><a href="https://www.inflearn.com/questions/469025">인프런 QnA : org.hibernate.TransientPropertyValueException 질문드립니다.</a></p>
+<blockquote>
+<p>답변이 달리는 대로 정리하여 수정하겠습니다.</p>
+</blockquote>
+</details>
+<blockquote>
+<p>테스트 결과 놀라운 사실을 알게 되었습니다. 영속화 이후 flush와 clear 이후  조회해온 값을 수정한다면 과연</p>
+</blockquote>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert jpql.domain.Team
+        */ insert 
+        into
+            Team
+            (name, id) 
+        values
+            (?, ?)
+Hibernate: 
+    /* insert jpql.domain.Member
+        */ insert 
+        into
+            Member
+            (age, TEAM_ID, username, id) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* SELECT
+        m 
+    FROM
+        Member m */ select
+            member0_.id as id1_0_,
+            member0_.age as age2_0_,
+            member0_.TEAM_ID as team_id4_0_,
+            member0_.username as username3_0_ 
+        from
+            Member member0_
+Hibernate: 
+    select
+        team0_.id as id1_3_0_,
+        team0_.name as name2_3_0_ 
+    from
+        Team team0_ 
+    where
+        team0_.id=?
+Hibernate: 
+    /* update
+        jpql.domain.Member */ update
+            Member 
+        set
+            age=?,
+            TEAM_ID=?,
+            username=? 
+        where
+            id=?
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/projection/img-001.png" alt="contact"></p>
+<blockquote>
+<p>최초 나이를 35로 생성했다가, 28로 수정한 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<h3 id="엔티티-프로젝션-조인">엔티티 프로젝션 (조인)<a class="anchor" href="#엔티티-프로젝션-조인">#</a></h3>
+<blockquote>
+<p>또한 조회한 Member에서 Team 객체를 얻어와 Team을 수정한 다면 과연 어떻게 될까 테스트 해 보았습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>          Team team = new Team();
+            team.setName(&quot;team1&quot;);
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;member1&quot;);
+            member1.setAge(35);
+            member1.setTeam(team);
+
+            em.persist(member1);
+
+            em.flush();
+            em.clear();
+
+            List&lt;Member&gt; result = em.createQuery(&quot;SELECT m FROM Member m&quot;, Member.class)
+                    .getResultList();
+
+            Member findMember = result.get(0);
+            findMember.setAge(28);
+
+            Team findTeam = findMember.getTeam();
+            findTeam.setName(&quot;team2&quot;);
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert jpql.domain.Team
+        */ insert 
+        into
+            Team
+            (name, id) 
+        values
+            (?, ?)
+Hibernate: 
+    /* insert jpql.domain.Member
+        */ insert 
+        into
+            Member
+            (age, TEAM_ID, username, id) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* SELECT
+        m 
+    FROM
+        Member m */ select
+            member0_.id as id1_0_,
+            member0_.age as age2_0_,
+            member0_.TEAM_ID as team_id4_0_,
+            member0_.username as username3_0_ 
+        from
+            Member member0_
+Hibernate: 
+    select
+        team0_.id as id1_3_0_,
+        team0_.name as name2_3_0_ 
+    from
+        Team team0_ 
+    where
+        team0_.id=?
+Hibernate: 
+    /* update
+        jpql.domain.Member */ update
+            Member 
+        set
+            age=?,
+            TEAM_ID=?,
+            username=? 
+        where
+            id=?
+Hibernate: 
+    /* update
+        jpql.domain.Team */ update
+            Team 
+        set
+            name=? 
+        where
+            id=?
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/projection/img-002.png" alt="contact"></p>
+<blockquote>
+<p>놀랍게도 조회한 Member 뿐만 아니라 Team까지 영속성 컨텍스트에서 관리가 되어, 수정을 하여도 업데이트 문이 발생되었고 원하는 결과 수정한 Team의 이름이 team2로 수정된 것을 확인 할 수 있었습니다.</p>
+</blockquote>
+<blockquote>
+<p>또한 Team 엔티티를 조회하는 다른 방법이 있습니다.</p>
+</blockquote>
+<pre><code>	TypedQuery&lt;Team&gt; query =  em.createQuery(&quot;SELECT m.team FROM Member m&quot;, Team.class)
+</code></pre>
+<blockquote>
+<p>Member의 team을 조회하여 Team 객체로 반환하는 것입니다. 이럴 경우 JPA에서 자동적으로 조인 쿼리로 실행해 줍니다.</p>
+</blockquote>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        m.team 
+    FROM
+        Member m */ select
+            team1_.id as id1_3_,
+            team1_.name as name2_3_ 
+        from
+            Member member0_ 
+        inner join
+            Team team1_ 
+                on member0_.TEAM_ID=team1_.id
+</code></pre>
+<blockquote>
+<p>JPQL에서는 SELECT m.team FROM Member로 간단히 나오지만 SQL은 INNER JOIN이 적용되어 나간 것을 확인 할 수 있습니다. <br>
+이후 경로 표현식에서 다루겠지만 JPQL와 SQL 최대한 비슷하게 생성되고 동작하는 것이 좋습니다. <br> 성능의 문제가 될때 쿼리 튜닝을 진행하면 JPQL과 SQL이 같아야 가독성과 유지보수성이 높아집니다.</p>
+</blockquote>
+<blockquote>
+<p>그래서 위의 코드를 JPQL로 다시 작성하면</p>
+</blockquote>
+<pre><code>	TypedQuery&lt;Team&gt; query =  em.createQuery(&quot;SELECT t FROM Member m JOIN m.team t&quot;, Team.class)
+</code></pre>
+<blockquote>
+<p>위와 동일한 결과지만 JPQL과 SQL이 같아 소스를 이해하는데 큰 도움이 됩니다.</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Member m 
+    JOIN
+        m.team t */ select
+            team1_.id as id1_3_,
+            team1_.name as name2_3_ 
+        from
+            Member member0_ 
+        inner join
+            Team team1_ 
+                on member0_.TEAM_ID=team1_.id
+</code></pre>
+<h3 id="임베디드-프로젝션">임베디드 프로젝션<a class="anchor" href="#임베디드-프로젝션">#</a></h3>
+<blockquote>
+<p>또한 Order 안에 있는 값타입 orderAddress를 조회할 때도 아래와 같은 방법으로 값을 조회하면 됩니다. orderAddress는 Order안에 포함되어있기 때문에 SELECT 문으로 Address 의 속성들을 조회할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>이를 임베디드 프로젝션이라고 합니다.</p>
+</blockquote>
+<pre><code>        em.createQuery(&quot;SELECT O.orderAddress from Order O&quot;, Address.class).getResultList();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        O.orderAddress 
+    from
+        
+    Order O */ select
+        order0_.city as col_0_0_,
+        order0_.street as col_0_1_,
+        order0_.zipcode as col_0_2_ from
+            ORDERS order0_
+</code></pre>
+<blockquote>
+<p>값 타입이 가지고 있는 한계는</p>
+</blockquote>
+<p><del>em.createQuery(&ldquo;SELECT a from Address a&rdquo;, Address.class).getResultList();</del></p>
+<blockquote>
+<p>값 타입은 다른 엔티티에 소속되어있기 때문에 위와 같이 Address를 주체로 사용 할 수 없습니다.</p>
+</blockquote>
+<h3 id="스칼라-타입-프로젝션">스칼라 타입 프로젝션<a class="anchor" href="#스칼라-타입-프로젝션">#</a></h3>
+<blockquote>
+<p>스칼라 타입 프로젝션은 SQL 작성하듯 원하는 컬럼들을 막가져 오는 것입니다.</p>
+</blockquote>
+<pre><code> em.createQuery(&quot;SELECT m.username, m.username FROM Member m&quot;)
+                    .getResultList();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        m.username,
+        m.username 
+    FROM
+        Member m */ select
+            distinct member0_.username as col_0_0_,
+            member0_.username as col_1_0_ 
+        from
+            Member member0_
+</code></pre>
+<blockquote>
+<p>스칼라 프로젝션은 일반 SQL 문과 거의 똑같다고 보시면 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>이러한 경우 궁금증이 발생하는데, String username과 int age 타입이 다른데 어떻게 가져와야 할까요</p>
+</blockquote>
+<h4 id="프로젝션---여러-값-조회">프로젝션 - 여러 값 조회<a class="anchor" href="#프로젝션---여러-값-조회">#</a></h4>
+<blockquote>
+<ul>
+<li>SELECT m.username, m.age FROM Meber m
+<ol>
+<li>Query 타입으로 조회</li>
+<li>Object[] 타입으로 조회</li>
+<li>new 명령어로 조회 
+- 단순 값을 DTO로 바로 조회
+SELECT new jpql.MemberDto(m.username, m.age) FROM Memver m 
+- 패키지 명을 포함한 전체 클래스 명 입력
+- 순서와 타입이 일치하는 생성자 필요</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h5 id="쿼리-타입으로-조회">쿼리 타입으로 조회<a class="anchor" href="#쿼리-타입으로-조회">#</a></h5>
+<blockquote>
+<p>이전에 정리하였던 반환 타입이 명확하지 않을때 사용하는 Query 타입 (Query query &hellip;)</p>
+</blockquote>
+<pre><code>	Query query = em.createQuery(&quot;SELECT  m.username, m.username FROM Member m&quot;);
+</code></pre>
+<h5 id="object로-조회">Object[]로 조회<a class="anchor" href="#object로-조회">#</a></h5>
+<blockquote>
+<p>하나의 로우를 오브젝트 리스트로 변환하여 받을 수 있습니다.</p>
+</blockquote>
+<pre><code>            List resultList = em.createQuery(&quot;SELECT  m.username, m.age FROM Member m&quot;).getResultList();
+
+            Object obj = resultList.get(0);
+
+            Object[] result = (Object[]) obj;
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        m.username,
+        m.age 
+    FROM
+        Member m */ select
+            member0_.username as col_0_0_,
+            member0_.age as col_1_0_ 
+        from
+            Member member0_
+
+member1
+35
+</code></pre>
+<blockquote>
+<p>이러한 불편함이 있기 때문에 TypeQuery를 이용하여 Object를 명시하여 받아 오는 방식도 있습니다</p>
+</blockquote>
+<pre><code>            List&lt;Object[]&gt; resultList = em.createQuery(&quot;SELECT  m.username, m.age FROM Member m&quot;).getResultList();
+
+            Object[] result = resultList.get(0);
+
+           for (Object o : result){
+               System.out.println(o);
+           }
+</code></pre>
+<blockquote>
+<p>이렇게 하면 리스트 타입을 Obejct로 캐스팅 하는 1스탭을 줄일 수 있지만 불편한것은 비슷합니다.</p>
+</blockquote>
+<h4 id="new-명령어로-조회">new 명령어로 조회<a class="anchor" href="#new-명령어로-조회">#</a></h4>
+<blockquote>
+<ul>
+<li>단순 값을 DTO로 바로 조회</li>
+<li>패키지 명을 포함하는 전체 클래스 명 입력</li>
+<li>순서와 타입이 일치하는  생성자 필요</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>src/main/java/jpql/dto/MemberDTO.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> MemberDTO </summary>
+<pre><code>package jpql.dto;
+
+public class MemberDTO {
+    public MemberDTO(String ussername, int age) {
+        this.ussername = ussername;
+        this.age = age;
+    }
+    private String ussername;
+    private int age;
+
+    public String getUssername() {
+        return ussername;
+    }
+
+    public void setUssername(String ussername) {
+        this.ussername = ussername;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+</code></pre>
+</details>
+<pre><code>em.createQuery(&quot;SELECT  m FROM Member m&quot;, Member.class).getResultList();
+</code></pre>
+<blockquote>
+<p>위와 같이 m 처럼 엔티티 자체를 조회할 때가 아니라면</p>
+</blockquote>
+<blockquote>
+<p>new 오퍼레이션을 사용해야 합니다. 생성자를 호하듯이 경로를 다 적어 사용합니다.</p>
+</blockquote>
+<pre><code>            List&lt;MemberDTO&gt; resultList = em.createQuery(&quot;SELECT  new jpql.dto.MemberDTO(m.username, m.age) FROM Member m&quot;, MemberDTO.class).getResultList();
+
+            for(MemberDTO m : resultList){
+                System.out.println(m.getUssername());
+                System.out.println(m.getAge());
+            }
+</code></pre>
+<p>console</p>
+<pre><code>Hibernate: 
+    /* SELECT
+        new jpql.dto.MemberDTO(m.username,
+        m.age) 
+    FROM
+        Member m */ select
+            member0_.username as col_0_0_,
+            member0_.age as col_1_0_ 
+        from
+            Member member0_
+
+member1
+35
+</code></pre>
+<blockquote>
+<p>훨씬 깔끔해 지지만 JPQL 자체가 문자열이다 보니 패키지 명이 길어지면 다 적어줘야 하는 단점이 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>그렇다면 패키지명을 문자열 변수로 받아서 매핑해 주는 방법은 과연</p>
+</blockquote>
+<pre><code>            String memberDtoPath = &quot;jpql.dto.MemberDTO&quot;;
+
+            List&lt;MemberDTO&gt; resultList = em.createQuery(&quot;SELECT  new &quot;+memberDtoPath+&quot; (m.username, m.age) FROM Member m&quot;, MemberDTO.class).getResultList();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>
+Hibernate: 
+    /* SELECT
+        new jpql.dto.MemberDTO (m.username,
+        m.age) 
+    FROM
+        Member m */ select
+            member0_.username as col_0_0_,
+            member0_.age as col_1_0_ 
+        from
+            Member member0_
+
+member1
+35
+</code></pre>
+<blockquote>
+<p>이후에는 QueryDSL에서는 패키지명을 임포트 해서 사용할 수 있기 때문에 
+굳이 JPQL에서 패키지 경로를 문자열 변수로 더해주는 작업은 불필요 할꺼같네요.</p>
+</blockquote>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">object references an unsaved transient instance - save the transient instance before flushing 에러</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/paging-api/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >JPA Paging API</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPA Projection(SELECT)</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#셀렉션과-프로젝션">셀렉션과 프로젝션</a>
+      <ul>
+        <li><a href="#셀렉션">셀렉션</a></li>
+        <li><a href="#프로젝션">프로젝션</a></li>
+      </ul>
+    </li>
+    <li><a href="#projectionselect">Projection(SELECT)</a>
+      <ul>
+        <li><a href="#엔티티-프로젝션">엔티티 프로젝션</a></li>
+        <li><a href="#엔티티-프로젝션-조인">엔티티 프로젝션 (조인)</a></li>
+        <li><a href="#임베디드-프로젝션">임베디드 프로젝션</a></li>
+        <li><a href="#스칼라-타입-프로젝션">스칼라 타입 프로젝션</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +1277,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

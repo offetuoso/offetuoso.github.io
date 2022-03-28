@@ -1,7 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>Programmers 81301 숫자 문자열과 영단어 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="Programmers 숫자 문자열과 영단어">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="Programmers 숫자 문자열과 영단어">
+  <meta property="og:description" content="Programmers 숫자 문자열과 영단어">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "Programmers 81301 숫자 문자열과 영단어",
+      "headline" : "Programmers 81301 숫자 문자열과 영단어",
+      "description" : "Programmers 숫자 문자열과 영단어",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-07-17 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-07-17 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202107\/programmers-81301-numeric-strings-and-english-words\/",
+      "wordCount" : "481",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	Programmers 81301 숫자 문자열과 영단어
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	Programmers 81301 숫자 문자열과 영단어
+            </h1>		
+            <time datetime="2021-07-17 00:00:00 &#43;0000 UTC" class="post__date">2021-07-17</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="programmers---81301-숫자-문자열과-영단어">Programmers - 81301 숫자 문자열과 영단어</h1>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/81301">Programmers 81301 링크</a></p>
+<blockquote>
+<p>네오와 프로도가 숫자놀이를 하고 있습니다. 네오가 프로도에게 숫자를 건넬 때 일부 자릿수를 영단어로 바꾼 카드를 건네주면 프로도는 원래 숫자를 찾는 게임입니다.</p>
+</blockquote>
+<blockquote>
+<p>다음은 숫자의 일부 자릿수를 영단어로 바꾸는 예시입니다.</p>
+</blockquote>
+<pre><code>1478 → &quot;one4seveneight&quot;
+234567 → &quot;23four5six7&quot;
+10203 → &quot;1zerotwozero3&quot;
+</code></pre>
+<blockquote>
+<p>이렇게 숫자의 일부 자릿수가 영단어로 바뀌어졌거나, 혹은 바뀌지 않고 그대로인 문자열 s가 매개변수로 주어집니다. s가 의미하는 원래 숫자를 return 하도록 solution 함수를 완성해주세요.</p>
+</blockquote>
+<blockquote>
+<p>참고로 각 숫자에 대응되는 영단어는 다음 표와 같습니다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>숫자</th>
+<th>영단어</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>zero</td>
+</tr>
+<tr>
+<td>1</td>
+<td>one</td>
+</tr>
+<tr>
+<td>2</td>
+<td>two</td>
+</tr>
+<tr>
+<td>3</td>
+<td>three</td>
+</tr>
+<tr>
+<td>4</td>
+<td>four</td>
+</tr>
+<tr>
+<td>5</td>
+<td>five</td>
+</tr>
+<tr>
+<td>6</td>
+<td>six</td>
+</tr>
+<tr>
+<td>7</td>
+<td>seven</td>
+</tr>
+<tr>
+<td>8</td>
+<td>eight</td>
+</tr>
+<tr>
+<td>9</td>
+<td>nine</td>
+</tr>
+</tbody>
+</table>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<blockquote>
+<ul>
+<li>1 ≤ s의 길이 ≤ 50</li>
+<li>s가 &ldquo;zero&rdquo; 또는 &ldquo;0&quot;으로 시작하는 경우는 주어지지 않습니다.</li>
+<li>return 값이 1 이상 2,000,000,000 이하의 정수가 되는 올바른 입력만 s로 주어집니다.</li>
+</ul>
+</blockquote>
+<h2 id="input-output">input output<a class="anchor" href="#input-output">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>s</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&ldquo;one4seveneight&rdquo;</td>
+<td>1478</td>
+</tr>
+<tr>
+<td>&ldquo;23four5six7&rdquo;</td>
+<td>234567</td>
+</tr>
+<tr>
+<td>&ldquo;2three45sixseven&rdquo;</td>
+<td>234567</td>
+</tr>
+<tr>
+<td>&ldquo;123&rdquo;</td>
+<td>123</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>입출력 예 #1<br>
+문제 예시와 같습니다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예 #2<br>
+문제 예시와 같습니다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예 #3<br>
+&ldquo;three&quot;는 3, &ldquo;six&quot;는 6, &ldquo;seven&quot;은 7에 대응되기 때문에 정답은 입출력 예 #2와 같은 234567이 됩니다.<br>
+입출력 예 #2와 #3과 같이 같은 정답을 가리키는 문자열이 여러 가지가 나올 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>입출력 예 #4 <br>
+s에는 영단어로 바뀐 부분이 없습니다.</p>
+</blockquote>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<h3 id="배열과-반복문을-이용한-해결">배열과 반복문을 이용한 해결<a class="anchor" href="#배열과-반복문을-이용한-해결">#</a></h3>
+<blockquote>
+<ol>
+<li>배열에 담는다. (배열인덱스가 0부터 시작이므로 zero 부터 nine 까지 인덱스와 숫자 영단어와 매핑이 된다.</li>
+<li>문자열 s를 numbers를 순회하며, 숫자 영단어(numbers[i])의 값을 숫자(str(i)) 값으로 리플레이스</li>
+</ol>
+</blockquote>
+<pre><code>def solution(s):
+    numbers = [&quot;zero&quot;,&quot;one&quot;,&quot;two&quot;,&quot;three&quot;,&quot;four&quot;,&quot;five&quot;,&quot;six&quot;,&quot;seven&quot;,&quot;eight&quot;,&quot;nine&quot;]
+    for i in range(0, len(numbers)) :
+        s = s.replace(numbers[i],str(i))
+    return int(s)
+</code></pre>
+<h3 id="배열과-reduce를-이용한-해결">배열과 reduce()를 이용한 해결<a class="anchor" href="#배열과-reduce를-이용한-해결">#</a></h3>
+<blockquote>
+<p>reduce를 누적 집계 목적으로 사용하는게 일반적이지만, 반복 처리에도 사용가능하다는 것을 배웠다.</p>
+</blockquote>
+<pre><code>from functools import reduce
+def solution(s):
+    numbers = [&quot;zero&quot;,&quot;one&quot;,&quot;two&quot;,&quot;three&quot;,&quot;four&quot;,&quot;five&quot;,&quot;six&quot;,&quot;seven&quot;,&quot;eight&quot;,&quot;nine&quot;]
+    return int(reduce(lambda value, idx : value.replace(numbers[idx], str(idx)), range(len(numbers)) ,s))
+</code></pre>
+<h4 id="reduce">reduce()<a class="anchor" href="#reduce">#</a></h4>
+<blockquote>
+<p>reduce(function, iterable(순회 가능한 데이터) [, initializer=None(초기값)])</p>
+<ul>
+<li>누적 집계를 위해서 사용한다.</li>
+<li>파라미터의 function에는2가지 인자가 존재한다. (value(누적대상), element(iterable의 현재 값))</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>reduce()를 통해 풀수 있다는 것을 다른 사람의 코드로 확인후 풀어보면서, 이해가 안가는 것이 생겨 <br>
+reduce() 함수를 찾아보게 되었다.</p>
+</blockquote>
+<blockquote>
+<p>reduce(lambda value, idx : formula , [0,1,2&hellip;9], &lsquo;one4seveneight&rsquo;) 여기에서 value와 idx의 값 매핑이 생각했던 것과 달랐다. <br>
+reduce(lambda a, b : formula , x, y) a는 x, b는 y로 매핑될것 같았지만, a는 y가 b는 x가 매핑되었다. 
+왜 이런 결과가 나오나 이해가 되지 않아 검색하던 도중 reduce의 코드를 보고 이해가 되었다.</p>
+</blockquote>
+<h4 id="reduce-code-a-hrefhttpsdocspythonorg311libraryfunctoolshtmlhighlightreducefunctoolsreducelinka">reduce code <a href="https://docs.python.org/3.11/library/functools.html?highlight=reduce#functools.reduce">link</a><a class="anchor" href="#reduce-code-a-hrefhttpsdocspythonorg311libraryfunctoolshtmlhighlightreducefunctoolsreducelinka">#</a></h4>
+<pre><code>def reduce(function, iterable, initializer=None):
+    it = iter(iterable)
+    
+    if initializer is None:	# initializer가 입력이 되지않은 경우
+        value = next(it) # 첫값을 뽑고 인덱스++	
+    else:					# initializer가 입력이된 경우
+        value = initializer 
+        
+    for element in it:
+        value = function(value, element)
+        
+    return value
+</code></pre>
+<blockquote>
+<p>reduce의 파라미터중 initializer가 입력이 되지않는 일반적인 경우  <br>
+function의 첫번째 파라미터는 <mark>최초 iterable의 첫번째 값이며</mark>, 이후 function의 결과값(누적된 값)이 들어간다.</p>
+</blockquote>
+<blockquote>
+<p>reduce의 파라미터중 initializer가 입력이 되어 있는 경우 <br>
+function의 첫번째 파라미터는 <mark>최초 initializer 값이며</mark>, 이후 function의 결과값(누적된 값)이 들어간다.</p>
+</blockquote>
+<blockquote>
+<p>생각했던 lambda a,b: a+b (10,20) 같은 function(10,20)의 파라미터 세팅이 아닌, <br>
+reduce(lambda a,b: a+b, [0,1,2,&hellip;9],100)의  function(100,0) 파라미터 세팅이였다.</p>
+</blockquote>
+<h2 id="others-solution">Others Solution<a class="anchor" href="#others-solution">#</a></h2>
+<pre><code>from functools import reduce
+digit={'zero':'0','one':'1','two':'2','three':'3','four':'4','five':'5','six':'6','seven':'7','eight':'8','nine':'9'}
+def solution(s):
+    return int(reduce(lambda ans,d:ans.replace(d,digit[d]),digit.keys(),s))
+</code></pre>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<pre><code>a = [&quot;one4seveneight&quot;, &quot;23four5six7&quot;, &quot;2three45sixseven&quot;, &quot;123&quot;]
+
+for i in a :
+    solution(i)
+
+</code></pre>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
+    </li></ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-64061-crane-puppet-game/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Programmers 64061 크레인 인형 뽑기</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42862-gym-suit/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Programmers 42862 체육복</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">Programmers 81301 숫자 문자열과 영단어</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a></li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#input-output">input output</a></li>
+    <li><a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#배열과-반복문을-이용한-해결">배열과 반복문을 이용한 해결</a></li>
+        <li><a href="#배열과-reduce를-이용한-해결">배열과 reduce()를 이용한 해결</a></li>
+      </ul>
+    </li>
+    <li><a href="#others-solution">Others Solution</a></li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +562,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

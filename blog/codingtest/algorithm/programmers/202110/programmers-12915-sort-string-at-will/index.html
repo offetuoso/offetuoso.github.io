@@ -1,7 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>Programmers 12915 문자열 내 마음대로 정렬하기 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="12915 문자열 내 마음대로 정렬하기">
+  <meta name="keywords" content="Algorithm , CodingTest">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="12915 문자열 내 마음대로 정렬하기">
+  <meta property="og:description" content="12915 문자열 내 마음대로 정렬하기">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "Programmers 12915 문자열 내 마음대로 정렬하기",
+      "headline" : "Programmers 12915 문자열 내 마음대로 정렬하기",
+      "description" : "12915 문자열 내 마음대로 정렬하기",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-10-12 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-10-12 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/codingtest\/algorithm\/programmers\/202110\/programmers-12915-sort-string-at-will\/",
+      "wordCount" : "192",
+      "keywords" : ["Algorithm", "CodingTest", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	Programmers 12915 문자열 내 마음대로 정렬하기
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	Programmers 12915 문자열 내 마음대로 정렬하기
+            </h1>		
+            <time datetime="2021-10-12 00:00:00 &#43;0000 UTC" class="post__date">2021-10-12</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="programmers---12915-문자열-내-마음대로-정렬하기">Programmers - 12915 문자열 내 마음대로 정렬하기</h1>
+<h2 id="task-description">Task description<a class="anchor" href="#task-description">#</a></h2>
+<p>원문 : <a href="https://programmers.co.kr/learn/courses/30/lessons/12915">Programmers 12915 링크</a></p>
+<h3 id="문제-설명">문제 설명<a class="anchor" href="#문제-설명">#</a></h3>
+<blockquote>
+<p>문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를 들어 strings가 [&ldquo;sun&rdquo;, &ldquo;bed&rdquo;, &ldquo;car&rdquo;]이고 n이 1이면 각 단어의 인덱스 1의 문자 &ldquo;u&rdquo;, &ldquo;e&rdquo;, &ldquo;a&quot;로 strings를 정렬합니다.</p>
+</blockquote>
+<h2 id="condition">Condition<a class="anchor" href="#condition">#</a></h2>
+<blockquote>
+<ul>
+<li>strings는 길이 1 이상, 50이하인 배열입니다.</li>
+<li>strings의 원소는 소문자 알파벳으로 이루어져 있습니다.</li>
+<li>strings의 원소는 길이 1 이상, 100이하인 문자열입니다.</li>
+<li>모든 strings의 원소의 길이는 n보다 큽니다.</li>
+<li>인덱스 1의 문자가 같은 문자열이 여럿 일 경우, 사전순으로 앞선 문자열이 앞쪽에 위치합니다.</li>
+</ul>
+</blockquote>
+<p>###입력 형식</p>
+<blockquote>
+<p>입출력 예</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>strings</th>
+<th>n</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[&ldquo;sun&rdquo;, &ldquo;bed&rdquo;, &ldquo;car&rdquo;]</td>
+<td>1</td>
+<td>[&ldquo;car&rdquo;, &ldquo;bed&rdquo;, &ldquo;sun&rdquo;]</td>
+</tr>
+<tr>
+<td>[&ldquo;abce&rdquo;, &ldquo;abcd&rdquo;, &ldquo;cdx&rdquo;]</td>
+<td>2</td>
+<td>[&ldquo;abcd&rdquo;, &ldquo;abce&rdquo;, &ldquo;cdx&rdquo;]</td>
+</tr>
+</tbody>
+</table>
+<h2 id="solution">Solution<a class="anchor" href="#solution">#</a></h2>
+<pre><code>import java.util.ArrayList;
+import java.util.Collections;
+
+class SortStringAtWill {
+	
+	public static void main(String[] args) {
+		String[] strings = {&quot;car&quot;, &quot;bed&quot;, &quot;sun&quot;};
+		String[] result = new SortStringAtWill().solution(strings, 1);
+		
+		for(int i=0; i&lt;result.length;i++) {
+			System.out.println(result[i]);
+		}
+	}
+	
+    public String[] solution(String[] strings, int n) {
+        
+    	ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();
+    	
+    	
+    	for(int i=0;i&lt;strings.length;i++) {
+    		list.add(strings[i].charAt(n)+strings[i]);
+    	}
+    	
+    	Collections.sort(list);
+    	
+    	for(int i=0; i&lt;list.size();i++) {
+    		strings[i] = list.get(i).substring(1);
+    	}
+    	
+		return strings;
+    }
+}
+
+</code></pre>
+<h2 id="testcase">TestCase<a class="anchor" href="#testcase">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>strings</th>
+<th>n</th>
+<th>return</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[&ldquo;sun&rdquo;, &ldquo;bed&rdquo;, &ldquo;car&rdquo;]</td>
+<td>1</td>
+<td>[&ldquo;car&rdquo;, &ldquo;bed&rdquo;, &ldquo;sun&rdquo;]</td>
+</tr>
+<tr>
+<td>[&ldquo;abce&rdquo;, &ldquo;abcd&rdquo;, &ldquo;cdx&rdquo;]</td>
+<td>2</td>
+<td>[&ldquo;abcd&rdquo;, &ldquo;abce&rdquo;, &ldquo;cdx&rdquo;]</td>
+</tr>
+</tbody>
+</table>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/algorithm/">Algorithm</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/codingtest/">CodingTest</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/programmers/">Programmers</a>
+    </li></ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12917-descending-order/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">Programmers 12917 문자열 내림차순으로 배치하기</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/frontend/vue/vue-webpack/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >Vue.js WebPack 설정하기</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">Programmers 12915 문자열 내 마음대로 정렬하기</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#task-description">Task description</a>
+      <ul>
+        <li><a href="#문제-설명">문제 설명</a></li>
+      </ul>
+    </li>
+    <li><a href="#condition">Condition</a></li>
+    <li><a href="#solution">Solution</a></li>
+    <li><a href="#testcase">TestCase</a></li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +458,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

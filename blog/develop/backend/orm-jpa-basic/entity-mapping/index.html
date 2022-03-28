@@ -1,7 +1,1385 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>JPA 객체와 매핑 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="객체와 매핑">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="객체와 매핑">
+  <meta property="og:description" content="객체와 매핑">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPA 객체와 매핑",
+      "headline" : "JPA 객체와 매핑",
+      "description" : "객체와 매핑",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2021",
+      "datePublished": "2021-12-24 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2021-12-24 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/entity-mapping\/",
+      "wordCount" : "2141",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPA 객체와 매핑
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPA 객체와 매핑
+            </h1>		
+            <time datetime="2021-12-24 00:00:00 &#43;0000 UTC" class="post__date">2021-12-24</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="객체와-매핑">객체와 매핑</h1>
+<hr>
+<h2 id="객체와-테이블-매핑">객체와 테이블 매핑<a class="anchor" href="#객체와-테이블-매핑">#</a></h2>
+<hr>
+<h3 id="목차">목차<a class="anchor" href="#목차">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>객체와 테이블 매핑</li>
+<li>필드와 컬럼 매핑</li>
+<li>기본 키 매핑</li>
+<li>실전 예제 - 1. 요구사항 분석과 기본 매핑</li>
+</ul>
+</blockquote>
+<h3 id="엔티티-매핑-소개">엔티티 매핑 소개<a class="anchor" href="#엔티티-매핑-소개">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>객체와 테이블 매핑 : @Entity, @Table</li>
+<li>필드와 컬럼 매핑 : @Column</li>
+<li>기본키 매핑 : @Id</li>
+<li>연관관계 매핑 : @ManyToOne, @JoinColumn</li>
+</ul>
+</blockquote>
+<h3 id="객체와-테이블-매핑-1">객체와 테이블 매핑<a class="anchor" href="#객체와-테이블-매핑-1">#</a></h3>
+<hr>
+<h3 id="entity">@Entity<a class="anchor" href="#entity">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>@Entity가 붙은 클래스는 JPA가 관리, 엔티티라 부른다.</li>
+<li>JPA를 사용해서 테이블과 매핑할 클래스는 <mart>@Entity</mark> 필수</li>
+<li>주의
+<ul>
+<li>기본 생성자 필수 (파라미터가 없는 public 또는 proteted 생성자)</li>
+<li>final 클래스, enum, interface, inner 클래스 사용 X</li>
+<li>저장할 필드에 final 사용 X</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="entity-속성-정리">@Entity 속성 정리<a class="anchor" href="#entity-속성-정리">#</a></h4>
+<blockquote>
+<ul>
+<li>속성 : name
+<ul>
+<li>JPA에서 사용할 엔티티 이름을 지정한다.</li>
+<li>기본값 : 클래스 이름을 그대로 사용</li>
+<li>같은 클래스 이름이 없으면 가급적 기본값을 사용한다.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity //JPA가 관리하는 객체 Entity
+//@Entity(name=&quot;Member&quot;) //기본 값이 아닌 다른 이름으로 Entity 명을 지정할때 사용
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<h3 id="table">@Table<a class="anchor" href="#table">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>@Table은 엔티티와 매핑할 테이블 지정</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>기능</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>매핑할 이름</td>
+<td>엔티티 이름을 사용</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>데이터베이스 catalog 매핑</td>
+<td></td>
+</tr>
+<tr>
+<td>schema</td>
+<td>데이터베이스 schema 매핑</td>
+<td></td>
+</tr>
+<tr>
+<td>uniqueConstraints(DDL)</td>
+<td>DDL 생성시에 유니크 제약조건 생성</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity 
+@Table(name=&quot;MBR&quot;) //데이터베이스의 MBR 테이블로 매핑하여, SQL이 MBR로 생성
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<h3 id="데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성<a class="anchor" href="#데이터베이스-스키마-자동-생성">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>DDL을 애플리케이션 실행 시점에 자동 생성</li>
+<li>테이블 중심 -&gt; 객체 중심</li>
+<li>데이터베이스 방언을 활용해서 데이터베이스에 맞는 적절한 DDL 생성</li>
+<li>이렇게 <mark>생성된 DDL은 개발장비에서만 사용</mark></li>
+<li>생성된 DDL은 운영서버에서는 사용하지 않거나, 적절히 다듬은 후 사용</li>
+</ul>
+</blockquote>
+<h3 id="데이터베이스-스키마-자동-생성---속성">데이터베이스 스키마 자동 생성 - 속성<a class="anchor" href="#데이터베이스-스키마-자동-생성---속성">#</a></h3>
+<blockquote>
+<ul>
+<li>persistence.xml 옵션</li>
+</ul>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create</td>
+<td>기존테이블 삭제 후 다시 생성 (Drop + Create)</td>
+</tr>
+<tr>
+<td>create-drop</td>
+<td>create와 같으나 종료시점에 테이블 Drop</td>
+</tr>
+<tr>
+<td>update</td>
+<td>변경분만 반영(운영 DB에는 사용하면 안됨)</td>
+</tr>
+<tr>
+<td>validation</td>
+<td>엔티티와 테이블이 정상 매핑되어있는지만 확인</td>
+</tr>
+<tr>
+<td>none</td>
+<td>사용하지 않음</td>
+</tr>
+</tbody>
+</table>
+<h4 id="create">Create<a class="anchor" href="#create">#</a></h4>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;persistence version=&quot;2.2&quot;
+             xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+             xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd&quot;&gt;
+    &lt;persistence-unit name=&quot;hello&quot;&gt;
+        &lt;properties&gt;
+            &lt;!-- 필수 속성 --&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.driver&quot; value=&quot;org.h2.Driver&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.user&quot; value=&quot;sa&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.password&quot; value=&quot;&quot;/&gt;
+            &lt;property name=&quot;javax.persistence.jdbc.url&quot; value=&quot;jdbc:h2:tcp://localhost/~/test&quot;/&gt;
+            &lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
+
+            &lt;!-- 옵션 --&gt;
+            &lt;property name=&quot;hibernate.show_sql&quot; value=&quot;true&quot;/&gt;  &lt;!-- 실행 sql 로깅 --&gt;
+            &lt;property name=&quot;hibernate.format_sql&quot; value=&quot;true&quot;/&gt;  &lt;!-- 실행 sql 포메팅 --&gt;
+
+            &lt;!-- /* insert hellojpa.Member */ JPA가 Inser 를 해서 이 쿼리가 나왔다는 것을 주석으로 설명 --&gt;
+            &lt;property name=&quot;hibernate.use_sql_comments&quot; value=&quot;true&quot;/&gt;
+
+            &lt;!-- 한번에 같은 데이터 베이스에 데이터를 집어넣을때 모아서 한번에 인서트 하는 jdbc batch의 수를 지정--&gt;
+            &lt;property name=&quot;hibernate.jdbc.batch_size&quot; value=&quot;10&quot;/&gt;
+
+            &lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt;
+        &lt;/properties&gt;
+    &lt;/persistence-unit&gt;
+&lt;/persistence&gt;
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-001.png" alt="contact"></p>
+<blockquote>
+<p>Member 테이블을 먼저 drop하고 create 문을 실행</p>
+</blockquote>
+<h4 id="create---컬럼-추가-후-애플리케이션-재실행">Create - 컬럼 추가 후 애플리케이션 재실행<a class="anchor" href="#create---컬럼-추가-후-애플리케이션-재실행">#</a></h4>
+<blockquote>
+<p>Member.Java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+    private int age; // 추가된 컬럼
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name, int age){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>이후 다시 애플리케이션을 다시 실행시켜보면,</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-002.png" alt="contact"></p>
+<blockquote>
+<p>추가된 컬럼을 포함하여 Member 테이블이 다시 생성된다.</p>
+</blockquote>
+<h4 id="create-drop">create-drop<a class="anchor" href="#create-drop">#</a></h4>
+<blockquote>
+<p>create와 같지만 종료시점에 생성한 테이블 모두 drop, 예를들어 테스트 케이스 수행후 삭제할때 사용가능</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>...
+            &lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create-drop&quot; /&gt;
+...
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-003.png" alt="contact"></p>
+<blockquote>
+<p>종료시에 drop을 하는것을 볼 수 있다.</p>
+</blockquote>
+<h4 id="update">update<a class="anchor" href="#update">#</a></h4>
+<blockquote>
+<p>추가 했던 age를 잠깐 다시 돌려두고, create 후 update를 실행해 보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt;
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>다시 update로 수정후 애플리케이션 재시작</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;update&quot; /&gt;
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+    private int age;
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name, int age){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-004.png" alt="contact"></p>
+<blockquote>
+<p>추가된 컬럼만 alter table을 통하여 스키마 수정됩니다.</p>
+</blockquote>
+<blockquote>
+<p>만약, 컬럼을 삭제한 뒤의 update 상태에서 애플리케이션 재시작할 경우에는</p>
+</blockquote>
+<blockquote>
+<p>Memeber.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+    private String name;
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Member(Long id, String name){
+        this.id = id;
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-005.png" alt="contact"></p>
+<blockquote>
+<p>삭제된 컬럼은 update 옵션에 의해 alter table로 수정되지 않습니다. H2 데이터베이스에서 확인하면</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-006.png" alt="contact"></p>
+<blockquote>
+<p>변경이 안된 테이블을 확인 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>실수라도 테이블 컬럼을 삭제하여, 데이터가 날아갈 수 있기 때문에 <mark>컬럼 삭제는 update 옵션에서 변경을 지원하지 않습니다</mark>.</p>
+</blockquote>
+<h4 id="validate">validate<a class="anchor" href="#validate">#</a></h4>
+<blockquote>
+<p>테이블과 entity가 정상 매핑되어있는지 확인해 줍니다.</p>
+</blockquote>
+<blockquote>
+<p>새로운 컬럼을 추가하고</p>
+</blockquote>
+<blockquote>
+<p>Memeber.java</p>
+</blockquote>
+<pre><code>    private String address;
+</code></pre>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;validate&quot; /&gt;
+</code></pre>
+<blockquote>
+<p>애플리케이션 재시작</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-007.png" alt="contact"></p>
+<blockquote>
+<p>Schema-validation: missing column [address] in table [Member] <br>
+MEMBER 테이블에 address가 없다고 오류가 발생하게 됩니다.</p>
+</blockquote>
+<h4 id="none">none<a class="anchor" href="#none">#</a></h4>
+<blockquote>
+<p>스키마 자동 생성 사용안함으로 설정<br>
+주석으로 해두는 것과 비슷하며, create, create-drop, update, validate가 아닌 어떤 문자열이 들어가 있어도 none과 같음</p>
+</blockquote>
+<h4 id="데이터베이스-방언-별로-달라지는것-확인-varchar">데이터베이스 방언 별로 달라지는것 확인 (varchar)<a class="anchor" href="#데이터베이스-방언-별로-달라지는것-확인-varchar">#</a></h4>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt;
+</code></pre>
+<blockquote>
+<p>create로 스키마 자동생성 옵션을 설정해 두고 재실행</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml - H2 방언 설정</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-008.png" alt="contact"></p>
+<blockquote>
+<p>persistence.xml - Oracle 방언 설정</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.Oracle8iDialect&quot;/&gt;
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-009.png" alt="contact"></p>
+<blockquote>
+<p>방언에 따라서 적절하게 데이터베이스에 맞게 해석을 해서 실행을 해주는 것을 확인 할 수 있습니다.
+다시 H2로 되돌려둠</p>
+</blockquote>
+<blockquote>
+<p>persistence.xml - H2 방언 설정</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.dialect&quot; value=&quot;org.hibernate.dialect.H2Dialect&quot;/&gt;
+</code></pre>
+<h4 id="데이터베이스-스키마-자동-생성---주의">데이터베이스 스키마 자동 생성 - 주의<a class="anchor" href="#데이터베이스-스키마-자동-생성---주의">#</a></h4>
+<blockquote>
+<ul>
+<li><mark>운영 장비에는 절대 create, create-drop, update 사용하면 안된다.</mark></li>
+<li>개발 초기 단계는 create 또는 update</li>
+<li>테스트 서버는 update 또는 validate</li>
+<li>스테이징과 운영 서버는 validate 또는 none</li>
+</ul>
+</blockquote>
+<h4 id="ddl-생성-기능">DDL 생성 기능<a class="anchor" href="#ddl-생성-기능">#</a></h4>
+<blockquote>
+<p>DDL 생성 기능은 DDL을 자동 생성할 때만 사용되고 JPA의 실행 로직에는 영향을 주지 않는다.<br></p>
+</blockquote>
+<blockquote>
+<p>제약조건 추가 : 회원 이름은 필수, 10자 초과 X<br></p>
+<ul>
+<li>@Column(nullable = false, length = 10) <br></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>유니크 제약조건 추가 <br></p>
+<ul>
+<li>@Table(uniqueConstraints = {@UniqueConstraint( name = &ldquo;NAME_AGE_UNIQUE&rdquo;,
+columnNames = {&ldquo;NAME&rdquo;, &ldquo;AGE&rdquo;} )})</li>
+</ul>
+</blockquote>
+<h4 id="제약조건-추가">제약조건 추가<a class="anchor" href="#제약조건-추가">#</a></h4>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>    @Column(unique = true, length = 10)
+    private String name;
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-010.png" alt="contact"></p>
+<blockquote>
+<p>Member entity의 name 사이즈가 varchar(10)으로 생성되고, alter table을 통해 제약조건을 추가한 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<h3 id="필드와-컬럼-매핑">필드와 컬럼 매핑<a class="anchor" href="#필드와-컬럼-매핑">#</a></h3>
+<hr>
+<h4 id="요청사항-추가">요청사항 추가<a class="anchor" href="#요청사항-추가">#</a></h4>
+<blockquote>
+<ol>
+<li>회원은 일반 회원과 관리자로 구분해야 한다.</li>
+<li>회원 가입일과 수정일이 있어야 한다.</li>
+<li>회원을 설명할 수 있는 필드가 있어야 한다. 이 필드는 길이 제한이 없다.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+
+    @Column(name=&quot;name&quot;, length = 10) // 엔티티 명은 userName으로, DB 컬럼명을 name으로 매핑하여 사용 지정
+    private String userName;
+
+    private Integer age;  // Integer 타입으로 생성하면 DB에서도 가장 Integer랑 가장 적절한 컬럼으로 숫자 타입 생성
+
+    @Enumerated(EnumType.STRING) // 객체에서 ENUM 타입을 쓰고싶을때, DB에는 이넘 타입이 없음(비슷한 것이 있는 DB도 있음)
+    private RoleType roleType;
+
+    @Temporal(TemporalType.TIMESTAMP) // 날짜타입생성 Date, Time, Timestamp 3가지 타입이 있음
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modifiedDate;
+
+    @Lob // DB에 varchar를 넘어서는 문자를 넣고 싶을때, 예를 들면 게시판 contents, 파일 바이너리 등
+    private String description;
+
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>RoleType.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+public enum RoleType {
+    USER, ADMIN
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java 의 tx.transaction 내부 소스를 지우고 실행한다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-011.png" alt="contact"></p>
+<h3 id="매핑-어노테이션-정리">매핑 어노테이션 정리<a class="anchor" href="#매핑-어노테이션-정리">#</a></h3>
+<p>&mdash;&mdash;&mdash;&mdash;-ㄴ</p>
+<table>
+<thead>
+<tr>
+<th>어노테이션</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Column</td>
+<td>컬럼 매핑</td>
+</tr>
+<tr>
+<td>@Temporal</td>
+<td>날짜 타입 매핑</td>
+</tr>
+<tr>
+<td>@Enumerated</td>
+<td>enum 타입 매핑</td>
+</tr>
+<tr>
+<td>@Lob</td>
+<td>BLOB, CLOB 매핑</td>
+</tr>
+<tr>
+<td>@Transient</td>
+<td>특정 필드를 컬럼에 매핑하지 않음(매핑 무시)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="column-옵션-정리">@Column 옵션 정리<a class="anchor" href="#column-옵션-정리">#</a></h3>
+<hr>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>필드와 매핑할 테이블의 컬럼 이름</td>
+<td>객체의 필드 이름</td>
+</tr>
+<tr>
+<td>inertable</td>
+<td>등록 가능여부</td>
+<td>Ture</td>
+</tr>
+<tr>
+<td>updatable</td>
+<td>변경 가능여부</td>
+<td>Ture</td>
+</tr>
+<tr>
+<td>nullable(DDL)</td>
+<td>null 값의 허용 여부 설정. false로 설정하면 DDL 생성 시에 not null 제약조건이 붙는다.</td>
+<td></td>
+</tr>
+<tr>
+<td>unique(DDL)</td>
+<td>@Table의 uniqueConstraints와 같지만 한 컬럼에 간단히 유니크 제약조건을 걸 때 사용 한다.</td>
+<td></td>
+</tr>
+<tr>
+<td>columnDefinition(DDL)</td>
+<td>데이터베이스 컬럼 정보를 직접 줄 수 있다. <br> ex) varchar(100) default &lsquo;EMPTY&rsquo;</td>
+<td>필드의 자바 타입과 방언 정보를 사용</td>
+</tr>
+<tr>
+<td>length(DDL)</td>
+<td>문자 길이 제약조건, String 타입에만 사용</td>
+<td>255</td>
+</tr>
+<tr>
+<td>percision,<br>scale(DDL)</td>
+<td>BigDecimal 타입에서 사용한다(BigInteger도 사용할 수 있다).<br>precision은 소수점을 포함한 전체 자릿수를, scale은 소수의 자리수다. 참고로 double, float 타입에는 적용되지 않는다. 정밀한 소수를 다루어야 할 때만 사용한다.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>insertable과 updateable은 기본적으로 True로 되어있으며, updateable = false 라면, JPA를 통하여 inesert를 하지만, 변경에 대해서 update를 하지 않는다. <br></p>
+</blockquote>
+<blockquote>
+<p>nullable은 기본적으로 true이며, false로 설정하면, <code>name varchar(255) not null</code> DDL에 not null 제약조건이 걸린다.</p>
+</blockquote>
+<blockquote>
+<p>unique는 잘 사용하지 않는다. 제약조건 생성시 <code>alter table Member add constraint UK_ektea8vp6e3low620iewuxhlq unique (name)</code> 이런식으로 임의의 유니크 키가 생성되어 오류가 났을때 바로 알아보기가 힘들기 때문. <br>
+그래서 @Table를 사용해 제약조건을 지정하여 사용합니다.</p>
+</blockquote>
+<pre><code>&gt; - @Table(uniqueConstraints = {@UniqueConstraint( name = &quot;NAME_AGE_UNIQUE&quot;,
+	 columnNames = {&quot;NAME&quot;, &quot;AGE&quot;} )})
+</code></pre>
+<h3 id="enumerated">@Enumerated<a class="anchor" href="#enumerated">#</a></h3>
+<hr>
+<blockquote>
+<p>자바 enum 타입을 매피할 때 사용</p>
+</blockquote>
+<blockquote>
+<p><mark>주의 ! ORDINAL 사용 X</mark></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>설명</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>EnumType.ORDINAL : enum 순서를 데이터 베이스에 저장</td>
+<td>EnumType.ORDINAL</td>
+</tr>
+<tr>
+<td>value</td>
+<td>EnumType.STRING : enum 이름를 데이터 베이스에 저장</td>
+<td>EnumType.ORDINAL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumtypeordinal-와-enumtypestring-비교">EnumType.ORDINAL 와 EnumType.STRING 비교<a class="anchor" href="#enumtypeordinal-와-enumtypestring-비교">#</a></h4>
+<h5 id="enumtypeordinal-일때">EnumType.ORDINAL 일때<a class="anchor" href="#enumtypeordinal-일때">#</a></h5>
+<blockquote>
+<p>Member.java - EnumType.ORDINAL으로 설정 (Setter Getter 추가)</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+public class Member {
+
+    @Id
+    private Long id;
+
+    @Column(name=&quot;name&quot;, length = 10) // 엔티티 명은 userName으로, DB 컬럼명을 name으로 매핑하여 사용 지정
+    private String userName;
+
+    private Integer age;  // Integer 타입으로 생성하면 DB에서도 가장 Integer랑 가장 적절한 컬럼으로 숫자 타입 생성
+
+    @Enumerated(EnumType.ORDINAL) // Enum의 인덱스가 들어감
+    //@Enumerated(EnumType.STRING) // 객체에서 ENUM 타입을 쓰고싶을때, DB에는 이넘 타입이 없음(비슷한 것이 있는 DB도 있음)
+    private RoleType roleType;
+
+    @Temporal(TemporalType.TIMESTAMP) // 날짜타입생성 Date, Time, Timestamp 3가지 타입이 있음
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modifiedDate;
+
+    @Lob // DB에 varchar를 넘어서는 문자를 넣고 싶을때, 예를 들면 게시판 contents, 파일 바이너리 등
+    private String description;
+
+
+    // JPA 기본적으로 동적으로 객체를 생성하는 기능이 있어, 기본 생성자도 추가해줘야 된다.
+    public Member() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public RoleType getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>
+            Member member = new Member();
+            member.setId(21L);
+            member.setAge(27);
+            member.setUserName(&quot;테스트 A&quot;);
+            member.setRoleType(RoleType.ADMIN);
+            em.persist(member);
+            tx.commit();
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-012.png" alt="contact"></p>
+<blockquote>
+<p>roleType가 Integer로 생성된 것이 확인 됩니다. DB에 어떻게 저장되었는지 확인 해보겠습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-013.png" alt="contact"></p>
+<blockquote>
+<p>EnumType.ORDINAL 로 설정시 DB에는 roleType enum의 인덱스가 들어갑니다. <br> 
+EnumType.ORDINAL을 사용하면 안되는 점이 요구사항으로 Guest가 추가되었다고 생각하게 되면 일반적으로 권한의 중요도에 따라 <br>
+Guest, User, Admin 순으로 수정을 하였다고 생각하면, DB에 저장되어있는 roleType은 User가 0, Admin이 1인 상태라 데이터의 매핑이 잘못된 데이터가 생기게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>RoleType.java</p>
+</blockquote>
+<pre><code>package hellojpa;
+
+public enum RoleType {
+    GUEST, USER, ADMIN
+}
+
+</code></pre>
+<blockquote>
+<p>persistence.xml</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;update&quot; /&gt; &lt;!-- create, create-drop, update, validate, none --&gt;
+</code></pre>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>            Member member3 = new Member();
+            member3.setId(23L);
+            member3.setAge(29);
+            member3.setUserName(&quot;테스트 C&quot;);
+            member3.setRoleType(RoleType.GUEST);
+            em.persist(member3);
+
+            tx.commit();
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-014.png" alt="contact"></p>
+<blockquote>
+<p>enum의 0번째 인덱스에 GUEST가 추가되면서 DB의 RoleType이 3번째 사용자 빼고 전부 잘못된 것을 확인할 수 있습니다.</p>
+</blockquote>
+<h4 id="enumtypestring-일때">EnumType.STRING 일때<a class="anchor" href="#enumtypestring-일때">#</a></h4>
+<blockquote>
+<p>persistence.xml - 다시 create로 바꿔 설정</p>
+</blockquote>
+<pre><code>&lt;property name=&quot;hibernate.hbm2ddl.auto&quot; value=&quot;create&quot; /&gt; &lt;!-- create, create-drop, update, validate, none --&gt;
+</code></pre>
+<blockquote>
+<p>Memeber.java - EnumType.STRING 으로 설정</p>
+</blockquote>
+<pre><code>    // 객체에서 ENUM 타입을 쓰고싶을때, DB에는 이넘 타입이 없음(비슷한 것이 있는 DB도 있음)
+    //@Enumerated(EnumType.ORDINAL) // Enum의 인덱스가 들어감
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+</code></pre>
+<blockquote>
+<p>재실행</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-015.png" alt="contact"></p>
+<blockquote>
+<p>roleType 가 varchar(255)로 생성된 것을 확인</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-016.png" alt="contact"></p>
+<blockquote>
+<p>roleType의 데이터가 GUEST로 들어간 것을 확인할 수 있습니다. 몇자 아끼려다 큰 장애를 경험할 수 있기 때문에 ORDINAL이 아니라 STRING으로 사용하길 권장드립니다.</p>
+</blockquote>
+<h3 id="temporal">@Temporal<a class="anchor" href="#temporal">#</a></h3>
+<hr>
+<blockquote>
+<p>날짜 타입(java.util.Date, java.util.Canendar)를 매핑할 때 사용 <br></p>
+</blockquote>
+<blockquote>
+<p>참고 : LocalDate, LocalDateTime을 사용할 때는 생략 가능(최신 하이버네이트 지원)</p>
+</blockquote>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>    private LocalDate createdAt;
+    private LocalDate modifiedAt;
+    private LocalDateTime createdTime;
+    private LocalDateTime modifiedTime;
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/entity-mapping/img-017.png" alt="contact"></p>
+<blockquote>
+<p>createdAt, modifiedAt 은 DATE 타입으로 생성되었고, createdTime, modifiedTime은 TIMESTAMP로 생성된 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<h3 id="lob">@Lob<a class="anchor" href="#lob">#</a></h3>
+<hr>
+<blockquote>
+<p>데이터베이스 BLOB, CLOB 타입과 매핑</p>
+<ul>
+<li>@Lob에는 지정할 수 있는 속성이 없다.</li>
+<li>매핑하는 필드 타입이 문자면 CLOB 매핑, 나머지는 BLOB 매핑
+<ul>
+<li>CLOB : String, char[], java.sql.CLOB</li>
+<li>BLOB : byte[], java.sql.BLOB</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="transient">@Transient<a class="anchor" href="#transient">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>필드 매핑 사용 X</li>
+<li>데이터베이스에 저장X, 조회X</li>
+<li>주로 메모리상에서만 임시로 어떤 값을 보관하고 싶을 때 사용</li>
+</ul>
+</blockquote>
+<pre><code>	@Transient
+	private Integer temp;
+</code></pre>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/persistence-manage/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">JPA 영속성 관리</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >JPA 실전 예제 1 - 요구사항 분석과 기본 매핑</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPA 객체와 매핑</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#객체와-테이블-매핑">객체와 테이블 매핑</a>
+      <ul>
+        <li><a href="#목차">목차</a></li>
+        <li><a href="#엔티티-매핑-소개">엔티티 매핑 소개</a></li>
+        <li><a href="#객체와-테이블-매핑-1">객체와 테이블 매핑</a></li>
+        <li><a href="#entity">@Entity</a></li>
+        <li><a href="#table">@Table</a></li>
+        <li><a href="#데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성</a></li>
+        <li><a href="#데이터베이스-스키마-자동-생성---속성">데이터베이스 스키마 자동 생성 - 속성</a></li>
+        <li><a href="#필드와-컬럼-매핑">필드와 컬럼 매핑</a></li>
+        <li><a href="#매핑-어노테이션-정리">매핑 어노테이션 정리</a></li>
+        <li><a href="#column-옵션-정리">@Column 옵션 정리</a></li>
+        <li><a href="#enumerated">@Enumerated</a></li>
+        <li><a href="#temporal">@Temporal</a></li>
+        <li><a href="#lob">@Lob</a></li>
+        <li><a href="#transient">@Transient</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +1393,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

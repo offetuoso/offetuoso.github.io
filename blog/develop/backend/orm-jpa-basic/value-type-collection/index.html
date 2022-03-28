@@ -1,7 +1,1449 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>JPA 값 타입 컬렉션 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="JPA 값 타입 비교">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="JPA 값 타입 비교">
+  <meta property="og:description" content="JPA 값 타입 비교">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPA 값 타입 컬렉션",
+      "headline" : "JPA 값 타입 컬렉션",
+      "description" : "JPA 값 타입 비교",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-02-19 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-02-19 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/value-type-collection\/",
+      "wordCount" : "2463",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPA 값 타입 컬렉션
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPA 값 타입 컬렉션
+            </h1>		
+            <time datetime="2022-02-19 00:00:00 &#43;0000 UTC" class="post__date">2022-02-19</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="값-타입-컬렉션-value-type-collection">값 타입 컬렉션 (Value Type Collection)</h1>
+<hr>
+<h2 id="값-타입-컬렉션">값 타입 컬렉션<a class="anchor" href="#값-타입-컬렉션">#</a></h2>
+<hr>
+<blockquote>
+<p>값 타입 컬렉션이란 값타입을 컬렉션에 담아서 사용하는 것을 의미 합니다.</p>
+</blockquote>
+<blockquote>
+<p>Member가 faviriteFoods와 addressHistory 라는 두가지 컬렉션을 가지고 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>DB 테이블로 구현할때 문제가 됩니다. 값 타입이 하나 일때는 필드 속성으로 해서 Member 테이블에 넣으면 되었는데</p>
+</blockquote>
+<blockquote>
+<p>관계형 DB에는 컬렉션을 담을 수 있는 구조가 없습니다. 요즘에서야 JSON 타입을 지원하는 데이터베이스도 있긴합니다.</p>
+</blockquote>
+<blockquote>
+<p>관계형 DB에서 이런 구조를 사용하기 위해 1:N 관계의 각 테이블을 생성하여야 합니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/value-type-collection/img-001.png" alt="contact"></p>
+<blockquote>
+<p>아래 FAVORITE_FOOD 와 ADDRESS에 식별자 없이 MEMBER_ID와 각 테이블의 PK와 결합하여 복합키로 사용합니다. 여기에 시퀀스를 추가하게 되면, 값 타입이 아닌 엔티티가 되어버리기 때문에 시퀀스를 사용 할 수 없습니다.</p>
+</blockquote>
+<blockquote>
+<p>Member.java - favoriteFoods와 addressHistory를 추가</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    @Column(name = &quot;USERNAME&quot;)
+    private String name;
+
+    @Embedded
+    private Address homeAddress;
+    
+    //*****************************************************************
+
+    @ElementCollection // 컬렉션 객체임을 알려주는 어노테이션
+    @CollectionTable(name = &quot;FAVORITE_FOOD&quot;, joinColumns = 
+            @JoinColumn(name = &quot;MEMBER_ID&quot;) // JoinColumn을 세팅하면 해당 키를 외래키로 사용합니다.
+    )
+    @Column(name = &quot;FOOD_NAME &quot;)
+    private Set&lt;String&gt; favoriteFoods = new HashSet&lt;&gt;();
+
+    @ElementCollection
+    @CollectionTable(name = &quot;ADDRESS&quot; , joinColumns =
+            @JoinColumn(name = &quot;MEMBER_ID&quot;)
+    )
+    private List&lt;Address&gt; addressHistory = new ArrayList&lt;&gt;();
+    
+    //*****************************************************************
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+    
+     public Set&lt;String&gt; getFavoriteFoods() {
+        return favoriteFoods;
+    }
+
+    public void setFavoriteFoods(Set&lt;String&gt; favoriteFoods) {
+        this.favoriteFoods = favoriteFoods;
+    }
+
+    public List&lt;Address&gt; getAddressHistory() {
+        return addressHistory;
+    }
+
+    public void setAddressHistory(List&lt;Address&gt; addressHistory) {
+        this.addressHistory = addressHistory;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>Address.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.Embeddable;
+import java.util.Objects;
+
+@Embeddable
+public class Address {
+    private String city;
+    private String street;
+    private String zipcode;
+
+    public Address() {
+    }
+
+    public Address(String city, String street, String zipcode) {
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    private void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    private void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    private void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(city, address.city) &amp;&amp; Objects.equals(street, address.street) &amp;&amp; Objects.equals(zipcode, address.zipcode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(city, street, zipcode);
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java - 애플리케이션 재시작</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import org.hibernate.Hibernate;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class JpaMain {
+    //psvm 단축키로 생성 가능
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;relativemapping&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    
+    create table ADDRESS (
+       MEMBER_ID bigint not null, // *** Member의 키가 외래키로 세팅
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255)
+    )
+Hibernate: 
+    
+    create table FAVORITE_FOOD (
+       MEMBER_ID bigint not null,
+        FOOD_NAME varchar(255)
+    )
+Hibernate: 
+    
+    create table Member (
+       id bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        USERNAME varchar(255),
+        TEAM_ID bigint,
+        primary key (id)
+    )    
+</code></pre>
+<h3 id="값-타입-컬렉션의-설명">값 타입 컬렉션의 설명<a class="anchor" href="#값-타입-컬렉션의-설명">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>값 타입을 하나 이상 저장할 때 사용</li>
+<li>@ElementCollection, @CollectionTable 사용</li>
+<li>데이터베이스는 컬렉션을 같은 테이블에 저장할 수 없다.
+그렇기 때문에 1:N의 테이블로 별도로 생성해 줘야 하며, 조인을 위한 외래키(연결할 테이블의 PK키)를 추가해 줘야한다.</li>
+<li>컬렉션을 저장하기 위한 별도의 테이블이 필요함</li>
+</ul>
+</blockquote>
+<h3 id="값-타입-컬렉션의-사용">값 타입 컬렉션의 사용<a class="anchor" href="#값-타입-컬렉션의-사용">#</a></h3>
+<hr>
+<h4 id="값-타입-저장">값 타입 저장<a class="anchor" href="#값-타입-저장">#</a></h4>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>	...
+
+            Member member = new Member();
+            member.setName(&quot;member1&quot;);
+            member.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            member.getFavoriteFoods().add(&quot;치킨&quot;);
+            member.getFavoriteFoods().add(&quot;피자&quot;);
+            member.getFavoriteFoods().add(&quot;햄버거&quot;);
+
+            member.getAddressHistory().add(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            member.getAddressHistory().add(new Address(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            em.persist(member);
+            
+            tx.commit();
+	...
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    call next value for hibernate_sequence
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (city, street, zipcode, USERNAME, id) 
+        values
+            (?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.addressHistory */ insert 
+        into
+            ADDRESS
+            (MEMBER_ID, city, street, zipcode) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.addressHistory */ insert 
+        into
+            ADDRESS
+            (MEMBER_ID, city, street, zipcode) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.favoriteFoods */ insert 
+        into
+            FAVORITE_FOOD
+            (MEMBER_ID, FOOD_NAME) 
+        values
+            (?, ?)
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.favoriteFoods */ insert 
+        into
+            FAVORITE_FOOD
+            (MEMBER_ID, FOOD_NAME) 
+        values
+            (?, ?)
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.favoriteFoods */ insert 
+        into
+            FAVORITE_FOOD
+            (MEMBER_ID, FOOD_NAME) 
+        values
+            (?, ?)
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/value-type-collection/img-002.png" alt="contact"></p>
+<blockquote>
+<p>흥미로운 점은 Member만 Persist()를 통해 저장했을 뿐인데, 값 타입 컬렉션인 favoriteFoods와 addressHistory도 저장된 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>Embedded 타입인 homeAddress는 그렇다 쳐도 다른 테이블인 값 타입 컬렉션들 모두 저장이 되었습니다.</p>
+</blockquote>
+<blockquote>
+<p>크게 보면, Member의 name, homeAddress, favoriteFoods, addressHistory 모두 값 타입으로 볼 수 있기 때문에 Member의 라이프사이클에 따라 값 타입들도 관리되는 것도 당연한 것입니다.</p>
+</blockquote>
+<h4 id="값-타입-조회">값 타입 조회<a class="anchor" href="#값-타입-조회">#</a></h4>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>    Member member = new Member();
+            member.setName(&quot;member1&quot;);
+            member.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            member.getFavoriteFoods().add(&quot;치킨&quot;);
+            member.getFavoriteFoods().add(&quot;피자&quot;);
+            member.getFavoriteFoods().add(&quot;햄버거&quot;);
+
+            member.getAddressHistory().add(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            member.getAddressHistory().add(new Address(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            System.out.println(&quot;===================================&quot;);
+
+            Member findMember = em.find(Member.class, member.getId());
+
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>===================================
+Hibernate: 
+    select
+        member0_.id as id1_6_0_,
+        member0_.city as city2_6_0_,
+        member0_.street as street3_6_0_,
+        member0_.zipcode as zipcode4_6_0_,
+        member0_.USERNAME as username5_6_0_ 
+    from
+        Member member0_ 
+    where
+        member0_.id=?
+</code></pre>
+<blockquote>
+<p>Member만 조회된 것을 확인 할 수 있습니다. <br> Member에 포함된 city, street, zipcode 는 함께 불러옵니다.</p>
+</blockquote>
+<h4 id="값-타입-컬렉션에서도-지연-로딩-전략-사용">값 타입 컬렉션에서도 지연 로딩 전략 사용<a class="anchor" href="#값-타입-컬렉션에서도-지연-로딩-전략-사용">#</a></h4>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>Member member = new Member();
+            member.setName(&quot;member1&quot;);
+            member.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            member.getFavoriteFoods().add(&quot;치킨&quot;);
+            member.getFavoriteFoods().add(&quot;피자&quot;);
+            member.getFavoriteFoods().add(&quot;햄버거&quot;);
+
+            member.getAddressHistory().add(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            member.getAddressHistory().add(new Address(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            System.out.println(&quot;===================================&quot;);
+
+            Member findMember = em.find(Member.class, member.getId());
+
+            findMember.getFavoriteFoods();
+
+            List&lt;Address&gt; addressHistory = findMember.getAddressHistory();
+
+            for (Address address : addressHistory){
+                System.out.println(&quot;address_city = &quot;+address.getCity());
+            }
+
+            Set&lt;String&gt; favoritFoods = findMember.getFavoriteFoods();
+
+            for (String favoritFood : favoritFoods){
+                System.out.println(&quot;favoritFood = &quot;+favoritFood);
+            }
+
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    select
+        member0_.id as id1_6_0_,
+        member0_.city as city2_6_0_,
+        member0_.street as street3_6_0_,
+        member0_.zipcode as zipcode4_6_0_,
+        member0_.USERNAME as username5_6_0_ 
+    from
+        Member member0_ 
+    where
+        member0_.id=?
+Hibernate: 
+    select
+        addresshis0_.MEMBER_ID as member_i1_0_0_,
+        addresshis0_.city as city2_0_0_,
+        addresshis0_.street as street3_0_0_,
+        addresshis0_.zipcode as zipcode4_0_0_ 
+    from
+        ADDRESS addresshis0_ 
+    where
+        addresshis0_.MEMBER_ID=?
+address_city = old1
+address_city = old2
+Hibernate: 
+    select
+        favoritefo0_.MEMBER_ID as member_i1_4_0_,
+        favoritefo0_.FOOD_NAME as food_nam2_4_0_ 
+    from
+        FAVORITE_FOOD favoritefo0_ 
+    where
+        favoritefo0_.MEMBER_ID=?
+favoritFood = 치킨
+favoritFood = 햄버거
+favoritFood = 피자
+
+</code></pre>
+<h4 id="값-타입-수정">값 타입 수정<a class="anchor" href="#값-타입-수정">#</a></h4>
+<blockquote>
+<p>JpaMain.java - homeAddress 수정</p>
+</blockquote>
+<pre><code>
+ Member member = new Member();
+            member.setName(&quot;member1&quot;);
+            member.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            member.getFavoriteFoods().add(&quot;치킨&quot;);
+            member.getFavoriteFoods().add(&quot;피자&quot;);
+            member.getFavoriteFoods().add(&quot;햄버거&quot;);
+
+            member.getAddressHistory().add(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            member.getAddressHistory().add(new Address(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            System.out.println(&quot;===================================&quot;);
+
+            Member findMember = em.find(Member.class, member.getId());
+
+            // home1 -&gt; new1
+            //findMember.getHomeAddress().setCity(&quot;new1&quot;); // 값 타입의 set은 사이드이펙트가 발생할 문제가 있어 set X
+            Address oldAddress = findMember.getHomeAddress();
+            findMember.setHomeAddress(new Address(&quot;new1&quot;, oldAddress.getStreet(), oldAddress.getZipcode()));
+            
+</code></pre>
+<blockquote>
+<p>이전 시간에서 Address의 set을 private로 변경하여 외부에서 사용 못하게 처리하였습니다. set을 통해 수정하면, 참조하고 있는 모든 곳에서 Update문이 발생할 수 있기 때문입니다.</p>
+</blockquote>
+<blockquote>
+<p>그렇기 때문에 new 를 통해 새로운 객체를 생성해 갈아껴 주는 작업을 합니다.</p>
+</blockquote>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* update
+        relativemapping.Member */ update
+            Member 
+        set
+            city=?,
+            street=?,
+            zipcode=?,
+            USERNAME=? 
+        where
+            id=?
+</code></pre>
+<blockquote>
+<p>다음은 Set을 사용하는 값 타입 컬렉션 favoriteFoods의 &ldquo;치킨&quot;의 값을 &ldquo;한식&quot;으로 변경해 보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpaMain.java - favoriteFoods의 Elements 수정</p>
+</blockquote>
+<pre><code>
+            Member member = new Member();
+            member.setName(&quot;member1&quot;);
+            member.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            member.getFavoriteFoods().add(&quot;치킨&quot;);
+            member.getFavoriteFoods().add(&quot;피자&quot;);
+            member.getFavoriteFoods().add(&quot;햄버거&quot;);
+
+            member.getAddressHistory().add(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            member.getAddressHistory().add(new Address(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            System.out.println(&quot;===================================&quot;);
+
+            Member findMember = em.find(Member.class, member.getId());
+
+            // home1 -&gt; new1
+            //findMember.getHomeAddress().setCity(&quot;new1&quot;); // 값 타입의 set은 사이드이펙트가 발생할 문제가 있어 set X
+            Address oldAddress = findMember.getHomeAddress();
+            findMember.setHomeAddress(new Address(&quot;new1&quot;, oldAddress.getStreet(), oldAddress.getZipcode()));
+            
+            
+            // 치킨 -&gt; 한식
+            findMember.getFavoriteFoods().remove(&quot;치킨&quot;);
+            findMember.getFavoriteFoods().add(&quot;한식&quot;);
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* delete collection row relativemapping.Member.favoriteFoods */ delete 
+        from
+            FAVORITE_FOOD 
+        where
+            MEMBER_ID=? 
+            and FOOD_NAME=?
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.favoriteFoods */ insert 
+        into
+            FAVORITE_FOOD
+            (MEMBER_ID, FOOD_NAME) 
+        values
+            (?, ?)
+
+</code></pre>
+<blockquote>
+<p>값 타입 컬렉션의 값만 수정하여도 어떤 것이 변경되었는지 JPA가 분석하여 수정해 줍니다.</p>
+</blockquote>
+<blockquote>
+<p>마치 영속성 전이가 이루어지는 것처럼 동작합니다.</p>
+</blockquote>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>Member member = new Member();
+            member.setName(&quot;member1&quot;);
+            member.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            member.getFavoriteFoods().add(&quot;치킨&quot;);
+            member.getFavoriteFoods().add(&quot;피자&quot;);
+            member.getFavoriteFoods().add(&quot;햄버거&quot;);
+
+            member.getAddressHistory().add(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            member.getAddressHistory().add(new Address(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            System.out.println(&quot;===================================&quot;);
+
+            Member findMember = em.find(Member.class, member.getId());
+
+            // home1 -&gt; new1
+            //findMember.getHomeAddress().setCity(&quot;new1&quot;); // 값 타입의 set은 사이드이펙트가 발생할 문제가 있어 set X
+            /*Address oldAddress = findMember.getHomeAddress();
+            findMember.setHomeAddress(new Address(&quot;new1&quot;, oldAddress.getStreet(), oldAddress.getZipcode()));*/
+            
+            
+            // 치킨 -&gt; 한식
+            /*findMember.getFavoriteFoods().remove(&quot;치킨&quot;);
+            findMember.getFavoriteFoods().add(&quot;한식&quot;);*/
+
+
+            findMember.getAddressHistory().remove(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            findMember.getAddressHistory().add(new Address(&quot;new2&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            /*
+                remove 내부에서 equals()를 통하여 값이 완전 똑같은 객체를 지우게 되는데, equals와 hashcode를
+                == 비교에서, 값 전체를 비교해 같은 값을 가지는 지로 변경하지 않으면 값이 삭제 되지 않고
+                계속 추가가 되는 버그를 발생시킬 수 있습니다.
+            */
+</code></pre>
+<blockquote>
+<p>remove 내부에서 equals()를 통하여 값이 완전 똑같은 객체를 지우게 되는데, equals와 hashcode를 == 비교에서, 값 전체를 비교해 같은 값을 가지는 지로 변경하지 않으면 값이 삭제 되지 않고 계속 추가가 되는 버그를 발생시킬 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* delete collection relativemapping.Member.addressHistory */ delete 
+        from
+            ADDRESS 
+        where
+            MEMBER_ID=?
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.addressHistory */ insert 
+        into
+            ADDRESS
+            (MEMBER_ID, city, street, zipcode) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.addressHistory */ insert 
+        into
+            ADDRESS
+            (MEMBER_ID, city, street, zipcode) 
+        values
+            (?, ?, ?, ?)
+</code></pre>
+<blockquote>
+<p>실행 후 결과를 보면 수정하려는 값만, 지우고 새로 추가한 값만 인서트 하는 것을 예상했겠지만 다르게 수행하는 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<pre><code>        from
+            ADDRESS 
+        where
+            MEMBER_ID=?
+</code></pre>
+<blockquote>
+<p>Member의 id에 해당하는 모든 주소를 지우고</p>
+</blockquote>
+<pre><code>insert 
+        into
+            ADDRESS
+            (MEMBER_ID, city, street, zipcode) 
+        values
+            (?, ?, ?, ?)
+</code></pre>
+<blockquote>
+<p>삭제된 new Address(&ldquo;old1&rdquo;, &ldquo;street1&rdquo;, &ldquo;10000&rdquo;) 의 해당하는 값 이외의 Address를 다시 인서트 하고</p>
+</blockquote>
+<pre><code>insert 
+        into
+            ADDRESS
+            (MEMBER_ID, city, street, zipcode) 
+        values
+            (?, ?, ?, ?)
+</code></pre>
+<blockquote>
+<p>추가된 new Address(&ldquo;new2&rdquo;, &ldquo;street1&rdquo;, &ldquo;10000&rdquo;) 의 Address가 다시 인스트 됩니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/value-type-collection/img-003.png" alt="contact"></p>
+<blockquote>
+<p>수정 후 결과를 보면, 잘 수정되어있는 결과를 볼 수 있습니다.</p>
+</blockquote>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<p>값 타입 컬렉션은 영속성 전이(Cascade)+ 고아 객체 제거 기능을 필수로 가진다고 볼 수 있다.</p>
+</blockquote>
+<h3 id="값-타입-컬렉션의-제약사항">값 타입 컬렉션의 제약사항<a class="anchor" href="#값-타입-컬렉션의-제약사항">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>값 타입은 엔티티와 다르게 식별자 개념이 없다.</li>
+<li>값은 변경하면 추적이 어렵다.</li>
+<li>값 타입 컬렉션에 변경 사항이 발생하면, 주인 엔티티와 연관된 모든 데이터를 삭제하고, 값 타입 컬렉션에 있는 현재 값을 모두 다시 저장한다.</li>
+<li>값 타입 컬렉션을 매핑하는 테이블은 모든 컬럼을 묶어서 기본키를 구성해야함 (null 입력 x, 중복저장x)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Jpa가 생성한 ADDRESS 를 보면 기본 키를 사용할 컬럼이 존재 하지 않기 때문에 모든 키를 복합키로 사용해야 하는데, 그렇게 되면 null 입력이 되지 않기 때문에 문제가 발생.</p>
+</blockquote>
+<blockquote>
+<p>console - ADDRESS DDL</p>
+</blockquote>
+<pre><code>Hibernate: 
+    
+    create table ADDRESS (
+       MEMBER_ID bigint not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255)
+    )
+</code></pre>
+<h4 id="list--ordercolumn">List + @OrderColumn<a class="anchor" href="#list--ordercolumn">#</a></h4>
+<blockquote>
+<p>@OrderColumn을 추가하면 테이블에 Order 번호가  컬럼이 생성되며 JPA 값 타입 컬렉션에서도 순서가 있는 컬렉션으로 FK + OrderColumn 으로 키를 매핑하게 됩니다.</p>
+</blockquote>
+<pre><code>@OrderColumn(name = &quot;address_history_order&quot;)
+    @ElementCollection
+    @CollectionTable(name = &quot;ADDRESS&quot; , joinColumns =
+            @JoinColumn(name = &quot;MEMBER_ID&quot;)
+    )
+    private List&lt;Address&gt; addressHistory = new ArrayList&lt;&gt;();
+</code></pre>
+<blockquote>
+<p>위에서 말했던 특정할 만한 컬럼이 없어, 외래키와 모든 컬럼을 PK로 잡던 문제점을 해결할 수 있지만.</p>
+</blockquote>
+<blockquote>
+<p>실제로 @OrderColumn은 실무에서 사용하기에는 단점이 너무 많습니다. 원하는 대로 동작하지 않는게 많고 순서대로 0, 1,2,3 인데 중간에 2 하나를 빼먹은 경우 2가 null 로 들어오는 등 문제가 있어 사용하지 않는것이 바람직합니다.</p>
+</blockquote>
+<blockquote>
+<p>이렇게 값 타입 컬렉션을 복잡하게 사용할 경우 다른 방식으로 풀어서 개발해야 합니다.</p>
+</blockquote>
+<h3 id="값-타입-컬렉션의-대안사항">값 타입 컬렉션의 대안사항<a class="anchor" href="#값-타입-컬렉션의-대안사항">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>실무에서는 상황에 따라 <mark>값 타입 컬렉션 대신에 일대다 관계를 고려</mark></li>
+<li>일대다 관계를 위한 엔티티를 만들고, 여기에서 값 타입을 사용</li>
+<li>영속성 전이(Cascade) + 고아 객체 제거를 사용해서 값 타입 컬렉션 처럼 사용</li>
+<li>AddressEntity로 만들어 내부에 값 타입을 임베디드 하여 엔티티로 승급시킴</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>AddressEntity.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.security.PrivateKey;
+
+@Entity
+@Table(name = &quot;ADDRESS&quot;)
+public class AddressEntity {
+
+    public AddressEntity() {
+    }
+    public AddressEntity(String city, String street, String zipcode) {
+        this.address = new Address(city,street,zipcode);
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private Address address;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>Member.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    @Column(name = &quot;USERNAME&quot;)
+    private String name;
+
+    @Embedded
+    private Address homeAddress;
+
+    @ElementCollection
+    @CollectionTable(name = &quot;FAVORITE_FOOD&quot;, joinColumns =
+            @JoinColumn(name = &quot;MEMBER_ID&quot;) // JoinColumn을 세팅하면 해당 키를 외래키로 사용합니다.
+    )
+
+    @Column(name = &quot;FOOD_NAME &quot;)
+    private Set&lt;String&gt; favoriteFoods = new HashSet&lt;&gt;();
+
+    public Long getId() {
+        return id;
+    }
+
+    /*
+    @OrderColumn(name = &quot;address_history_order&quot;)
+    @ElementCollection
+    @CollectionTable(name = &quot;ADDRESS&quot; , joinColumns =
+            @JoinColumn(name = &quot;MEMBER_ID&quot;)
+    )
+    private List&lt;Address&gt; addressHistory = new ArrayList&lt;&gt;();
+    */
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = &quot;MEMBER_ID&quot;)
+    private List&lt;AddressEntity&gt; addressHistory = new ArrayList&lt;&gt;();
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public Set&lt;String&gt; getFavoriteFoods() {
+        return favoriteFoods;
+    }
+
+    public void setFavoriteFoods(Set&lt;String&gt; favoriteFoods) {
+        this.favoriteFoods = favoriteFoods;
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import org.hibernate.Hibernate;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
+
+public class JpaMain {
+    //psvm 단축키로 생성 가능
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;relativemapping&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+
+
+            Member member = new Member();
+            member.setName(&quot;member1&quot;);
+            member.setHomeAddress(new Address(&quot;home1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            member.getFavoriteFoods().add(&quot;치킨&quot;);
+            member.getFavoriteFoods().add(&quot;피자&quot;);
+            member.getFavoriteFoods().add(&quot;햄버거&quot;);
+
+           /* member.getAddressHistory().add(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            member.getAddressHistory().add(new Address(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));*/
+
+// *** Entity로 변경
+            member.getAddressHistory().add(new AddressEntity(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            member.getAddressHistory().add(new AddressEntity(&quot;old2&quot;, &quot;street1&quot;, &quot;10000&quot;));
+
+            em.persist(member);
+
+            em.flush();
+            em.clear();
+
+            System.out.println(&quot;===================================&quot;);
+
+            Member findMember = em.find(Member.class, member.getId());
+
+            // home1 -&gt; new1
+            //findMember.getHomeAddress().setCity(&quot;new1&quot;); // 값 타입의 set은 사이드이펙트가 발생할 문제가 있어 set X
+            /*Address oldAddress = findMember.getHomeAddress();
+            findMember.setHomeAddress(new Address(&quot;new1&quot;, oldAddress.getStreet(), oldAddress.getZipcode()));*/
+            
+            
+            // 치킨 -&gt; 한식
+            /*findMember.getFavoriteFoods().remove(&quot;치킨&quot;);
+            findMember.getFavoriteFoods().add(&quot;한식&quot;);*/
+
+
+            /*findMember.getAddressHistory().remove(new Address(&quot;old1&quot;, &quot;street1&quot;, &quot;10000&quot;));
+            findMember.getAddressHistory().add(new Address(&quot;new2&quot;, &quot;street1&quot;, &quot;10000&quot;));*/
+
+            /*
+                remove 내부에서 equals()를 통하여 값이 완전 똑같은 객체를 지우게 되는데, equals와 hashcode를
+                == 비교에서, 값 전체를 비교해 같은 값을 가지는 지로 변경하지 않으면 값이 삭제 되지 않고
+                계속 추가가 되는 버그를 발생시킬 수 있습니다.
+            */
+
+            tx.commit();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (city, street, zipcode, USERNAME, id) 
+        values
+            (?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.AddressEntity
+        */ insert 
+        into
+            ADDRESS
+            (city, street, zipcode, id) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.AddressEntity
+        */ insert 
+        into
+            ADDRESS
+            (city, street, zipcode, id) 
+        values
+            (?, ?, ?, ?)
+Hibernate: 
+    /* create one-to-many row relativemapping.Member.addressHistory */ update
+        ADDRESS 
+    set
+        MEMBER_ID=? 
+    where
+        id=?
+Hibernate: 
+    /* create one-to-many row relativemapping.Member.addressHistory */ update
+        ADDRESS 
+    set
+        MEMBER_ID=? 
+    where
+        id=?
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.favoriteFoods */ insert 
+        into
+            FAVORITE_FOOD
+            (MEMBER_ID, FOOD_NAME) 
+        values
+            (?, ?)
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.favoriteFoods */ insert 
+        into
+            FAVORITE_FOOD
+            (MEMBER_ID, FOOD_NAME) 
+        values
+            (?, ?)
+Hibernate: 
+    /* insert collection
+        row relativemapping.Member.favoriteFoods */ insert 
+        into
+            FAVORITE_FOOD
+            (MEMBER_ID, FOOD_NAME) 
+        values
+            (?, ?)
+===================================
+Hibernate: 
+    select
+        member0_.id as id1_6_0_,
+        member0_.city as city2_6_0_,
+        member0_.street as street3_6_0_,
+        member0_.zipcode as zipcode4_6_0_,
+        member0_.USERNAME as username5_6_0_ 
+    from
+        Member member0_ 
+    where
+        member0_.id=?
+
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/value-type-collection/img-004.png" alt="contact"></p>
+<blockquote>
+<p>ADDRESS 테이블에 Update로 MEMBER_ID를 업데이트 하게 되는것은 1:N 관계에서 양방향 관계가 아닐 시 외래키가 다른 테이블에 있기 때문에 업데이트함.</p>
+</blockquote>
+<blockquote>
+<p>연관관계 강의 1:N를 보면 알 수 있습니다.</p>
+</blockquote>
+<p><a href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/#%EC%9D%BC%EB%8C%80%EB%8B%A4-%EB%8B%A8%EB%B0%A9%ED%96%A5">JPA 다양한 연관관계 매핑</a></p>
+<blockquote>
+<p>독자적인 PK를 가지는 순간 값 타입이 아니라 엔티티가 됩니다.</p>
+</blockquote>
+<blockquote>
+<p><mark>엔티티로 변경 하였기 때문에 수정을 하여도 문제가 없습니다 !!</mark></p>
+</blockquote>
+<blockquote>
+<p>값 타입을 엔티티로 래핑 하여, 엔티티로 사용하는 것을 값 타입을 승급한다 라고 합니다.</p>
+</blockquote>
+<blockquote>
+<p>실무에서 이런 방식을 사용하여, 값 타입을 많이 사용한다고 합니다.</p>
+</blockquote>
+<h4 id="값-타입-컬렉션을-언제-쓰는가-">값 타입 컬렉션을 언제 쓰는가 ?<a class="anchor" href="#값-타입-컬렉션을-언제-쓰는가-">#</a></h4>
+<blockquote>
+<p>진짜 간단한 콤보박스의 옵션 값 정도의 기능 개발할때 사용.</p>
+</blockquote>
+<blockquote>
+<p>값을 추적할 일이 없고 변경되어도 문제가 없을때 사용.</p>
+</blockquote>
+<h3 id="정리">정리<a class="anchor" href="#정리">#</a></h3>
+<blockquote>
+<ul>
+<li>엔티티의 타입의 특징
+<ul>
+<li>식별자O</li>
+<li>생명 주기 관리</li>
+<li>공유</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>값 타입의 특징
+<ul>
+<li>식별자X</li>
+<li>생명 주기를 엔티티에 의존</li>
+<li>공유 하지 않는 것이 안전(복사해서 사용)</li>
+<li>불변 객체로 만드는 것이 안전</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>값 타입은 정말 값 타입이라 판단될 때만 사용
+엔티티와 값 타입을 혼동해서 엔티티를 값 타입으로 만들면 안됨
+식별자가 필요하고, 지속해서 값을 추적, 변경해야 한다면 그것은 값 타입이 아닌 엔티티</p>
+</blockquote>
+<h4 id="참고-1">참고<a class="anchor" href="#참고-1">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/immutable-object/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">JPA 값 타입과 불변 객체</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-6/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >JPA 실전 예제 6 - 값 타입 매핑</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPA 값 타입 컬렉션</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#값-타입-컬렉션">값 타입 컬렉션</a>
+      <ul>
+        <li><a href="#값-타입-컬렉션의-설명">값 타입 컬렉션의 설명</a></li>
+        <li><a href="#값-타입-컬렉션의-사용">값 타입 컬렉션의 사용</a></li>
+        <li><a href="#값-타입-컬렉션의-제약사항">값 타입 컬렉션의 제약사항</a></li>
+        <li><a href="#값-타입-컬렉션의-대안사항">값 타입 컬렉션의 대안사항</a></li>
+        <li><a href="#정리">정리</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +1457,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

@@ -1,7 +1,1503 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>JPA 프록시와 연관관계 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="프록시와 연관간계">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="프록시와 연관간계">
+  <meta property="og:description" content="프록시와 연관간계">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPA 프록시와 연관관계",
+      "headline" : "JPA 프록시와 연관관계",
+      "description" : "프록시와 연관간계",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-01-19 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-01-19 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/proxy-and-relation\/",
+      "wordCount" : "2566",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPA 프록시와 연관관계
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPA 프록시와 연관관계
+            </h1>		
+            <time datetime="2022-01-19 00:00:00 &#43;0000 UTC" class="post__date">2022-01-19</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="프록시와-상속관계">프록시와 상속관계</h1>
+<hr>
+<h2 id="목차">목차<a class="anchor" href="#목차">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>프록시</li>
+<li>즉시 로딩과 지연 로딩</li>
+<li>지연 로딩 활용</li>
+<li>영속성 전이 : CASCADE</li>
+<li>고아 객체</li>
+<li>영속성 전이 + 고아객체, 생명주기</li>
+</ul>
+</blockquote>
+<h3 id="프록시">프록시<a class="anchor" href="#프록시">#</a></h3>
+<hr>
+<h4 id="member를-조회할때-team도-함께-조회해야-할까">Member를 조회할때 Team도 함께 조회해야 할까?<a class="anchor" href="#member를-조회할때-team도-함께-조회해야-할까">#</a></h4>
+<p><img src="/images/develop/backend/orm-jpa-basic/proxy-and-relation/img-001.png" alt="contact"></p>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>    private static void printMember(Member member){
+        System.out.println(&quot;username = &quot;+member.getUsername());
+    }
+
+    private static void printMemberAndTeam(Member member){
+        String username = member.getUsername();
+        System.out.println(&quot;username = &quot;+username);
+
+        Team team = member.getTeam();
+        System.out.println(&quot;team = &quot;+team.getName());
+    }
+</code></pre>
+<blockquote>
+<p>Member객체를 출력하는 메서드와 Member객체와 Member가 가지는 Team 객체를 출력하는 메서드가 있을때, Member만 조회하는 쿼리를 수행할때 Team까지 Join을 통하여 조회 쿼리를 수행한다면 자원낭비이다.<br>
+JPA는 지연로딩과 Proxy를 이용하여 이것을 해결합니다.</p>
+</blockquote>
+<h4 id="프록시-기초">프록시 기초<a class="anchor" href="#프록시-기초">#</a></h4>
+<blockquote>
+<ul>
+<li>em.find() vs <mark>em.getRefernce()</mark></li>
+<li>em.find() : 데이터베이스를 통해서 실제 엔티티 객체 조회</li>
+<li>em.getRefernce() : <mark>데이터베이스 조회를 미루는 가짜(프록시) 엔티티 객체 조회</mark></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Member.java -  Team 이외의 다른 연관관계 제거</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.*;
+
+
+@Entity
+public class Member extends BaseEntity{
+
+    public Member(){
+    }
+
+    public Member(Long id, String username){
+        this.id = id;
+        this.username = username;
+    }
+
+    @Id @GeneratedValue
+    @Column(name = &quot;MEMBER_ID&quot;)
+    private Long id;
+
+    @Column(name = &quot;USERNAME&quot;)
+    private String username;
+
+    @ManyToOne
+    @JoinColumn
+    private Team team;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+}
+
+</code></pre>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>package relativemapping;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class JpaMain {
+    //psvm 단축키로 생성 가능
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;relativemapping&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+
+            Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername(&quot;MemberA&quot;);
+            member.setCreateBy(&quot;kim&quot;);
+            member.setCreateDate(LocalDateTime.now());
+            member.setTeam(team);
+            em.persist(member);
+            em.flush();
+            em.clear();
+
+            Member findMember = em.find(Member.class, member.getId());
+
+            tx.commit();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+    }
+
+    private static void printMember(Member member){
+        System.out.println(&quot;username = &quot;+member.getUsername());
+    }
+
+    private static void printMemberAndTeam(Member member){
+        String username = member.getUsername();
+        System.out.println(&quot;username = &quot;+username);
+
+        Team team = member.getTeam();
+        System.out.println(&quot;team = &quot;+team.getName());
+    }
+}
+
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert relativemapping.Team
+        */ insert 
+        into
+            Team
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, NAME, TEAM_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+        
+findMember.id = 2
+findMember.userName = MemberA
+
+</code></pre>
+<blockquote>
+<p>Member와 Team이 Join된 쿼리로 Select 되어 나오는 것을 확인 할 수 있다.</p>
+</blockquote>
+<blockquote>
+<p>JpaMain.java - em.find() -&gt; em.getReference(),<br>
+//System.out.println(&ldquo;findMember.id = &ldquo;+findMember.getId()); // 주석처리 <br>
+//System.out.println(&ldquo;findMember.userName = &ldquo;+findMember.getUsername()); // 주석처리</p>
+</blockquote>
+<pre><code>			 Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername(&quot;MemberA&quot;);
+            member.setCreateBy(&quot;kim&quot;);
+            member.setCreateDate(LocalDateTime.now());
+            member.setTeam(team);
+            em.persist(member);
+            em.flush();
+            em.clear();
+
+            //Member findMember = em.find(Member.class, member.getId());
+            Member findMember = em.getReference(Member.class, member.getId());
+
+            //System.out.println(&quot;findMember.id = &quot;+findMember.getId());
+            //System.out.println(&quot;findMember.userName = &quot;+findMember.getUsername());
+
+            //printMemberAndTeam(findMember);
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert relativemapping.Team
+        */ insert 
+        into
+            Team
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, NAME, TEAM_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+
+</code></pre>
+<blockquote>
+<p>Select Sql이 실행되지 않는것을 확인 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpaMain.java - em.find() -&gt; em.getReference(),<br>
+System.out.println(&ldquo;findMember.id = &ldquo;+findMember.getId()); // 주석해제 <br>
+System.out.println(&ldquo;findMember.userName = &ldquo;+findMember.getUsername()); // 주석해제</p>
+</blockquote>
+<pre><code>			 Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername(&quot;MemberA&quot;);
+            member.setCreateBy(&quot;kim&quot;);
+            member.setCreateDate(LocalDateTime.now());
+            member.setTeam(team);
+            em.persist(member);
+            em.flush();
+            em.clear();
+
+            //Member findMember = em.find(Member.class, member.getId());
+            Member findMember = em.getReference(Member.class, member.getId());
+				
+			 System.out.println(&quot;findMember.class = &quot;+findMember.getClass()); // 클래스 확인
+            System.out.println(&quot;findMember.id = &quot;+findMember.getId()); // 주석해제 
+            System.out.println(&quot;findMember.userName = &quot;+findMember.getUsername()); // 주석해제 
+
+            //printMemberAndTeam(findMember);
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert relativemapping.Team
+        */ insert 
+        into
+            Team
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, NAME, TEAM_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+            
+findMember.class = class relativemapping.Member$HibernateProxy$kQ2LbNHi
+
+findMember.id = 2
+
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+        
+findMember.userName = MemberA
+
+Process finished with exit code 0
+
+
+</code></pre>
+<blockquote>
+<p>getReferance()를 수행하는 시점에는 Select 쿼리를 날리지 않음. 이 값이 실제 사용되는 시점에 Select 쿼리를 수행해 DB메서 데이터를 가져옴. <br>
+findMember.class = class relativemapping.Member$HibernateProxy$kQ2LbNHi Member.java가 아니라 HibernateProxy 인것으로 확인됨 <br>
+JPA에서 만든 가상의 프록시 Class</p>
+</blockquote>
+<h4 id="프록시-기초-1">프록시 기초<a class="anchor" href="#프록시-기초-1">#</a></h4>
+<p><img src="/images/develop/backend/orm-jpa-basic/proxy-and-relation/img-002.png" alt="contact"></p>
+<blockquote>
+<p>em.getRefence() 를 수행하면 하이버네이트는 프록시라는 가짜 엔티티 객체를 넘겨줍니다. <br>
+껍데기는 똑같은데 텅텅 빈 객체로 넘겨줍니다. 그리고 target이라는 속성이 있는데 이게 진짜 레퍼런스 입니다.</p>
+</blockquote>
+<h4 id="프록시-특징">프록시 특징<a class="anchor" href="#프록시-특징">#</a></h4>
+<blockquote>
+<ul>
+<li>실제 클래스를 상속받아서 만들어짐</li>
+<li>실제 클레스와 겉 모양이 같다.</li>
+<li>사용하는 입장에서는 진짜 객체인지 프록시 객체인지 구분 하지 않고 사용하면 됨(이론상)</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/proxy-and-relation/img-003.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>프록시 객체는 실제 객체의 참조(target)를 보관</li>
+<li>프록시 객체를 호출하면 프록시 객체는 실제 객체의 메소드 호출</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/proxy-and-relation/img-004.png" alt="contact"></p>
+<h4 id="프록시-객체의-초기화">프록시 객체의 초기화<a class="anchor" href="#프록시-객체의-초기화">#</a></h4>
+<pre><code>Member member = em.getReference(Member.class, 1L);
+member.getName();
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/proxy-and-relation/img-005.png" alt="contact"></p>
+<blockquote>
+<p>JpaMain.java -</p>
+</blockquote>
+<pre><code>Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername(&quot;MemberA&quot;);
+            member.setCreateBy(&quot;kim&quot;);
+            member.setCreateDate(LocalDateTime.now());
+            member.setTeam(team);
+            em.persist(member);
+            em.flush();
+            em.clear();
+
+            //Member findMember = em.find(Member.class, member.getId());
+            Member findMember = em.getReference(Member.class, member.getId());
+
+            System.out.println(&quot;findMember.class = &quot;+findMember.getClass()); 
+            System.out.println(&quot;findMember.id = &quot;+findMember.getId()); 
+            System.out.println(&quot;findMember.userName = &quot;+findMember.getUsername());  // getUsername() 호출
+
+            System.out.println(&quot;findMember.userName = &quot;+findMember.getUsername());  // getUsername() 호출 2
+
+            tx.commit();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert relativemapping.Team
+        */ insert 
+        into
+            Team
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, NAME, TEAM_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+            
+findMember.class = class relativemapping.Member$HibernateProxy$kQ2LbNHi
+
+findMember.id = 2
+
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+        
+findMember.userName = MemberA
+
+findMember.userName = MemberA
+
+Process finished with exit code 0
+
+
+</code></pre>
+<blockquote>
+<p>프록시 생성후 findMember.userName()를 위해 select SQL을 호출하지만, 2번째 findMember.userName() 호출할땐 target에 값이 있고 이미 초기화가 되어 있는 프록시 이기 때문에 조회없이 값을 출력하게 됩니다.</p>
+</blockquote>
+<h4 id="프록시의-특징">프록시의 특징<a class="anchor" href="#프록시의-특징">#</a></h4>
+<blockquote>
+<ul>
+<li>프록시 객체는 처음 사용할 때 한 번만 초기화</li>
+<li>프록시 객체를 초기화 할 때, <mark>프록시 객체가 실제 엔티티로 바뀌는 것은 아님</mark>, 초기화되면 프록시 객체를 통해서 실제 엔티티에 접근 가능</li>
+</ul>
+</blockquote>
+<h5 id="프록시-객체가-실제-엔티티로-바뀌는-것은-아님">프록시 객체가 실제 엔티티로 바뀌는 것은 아님<a class="anchor" href="#프록시-객체가-실제-엔티티로-바뀌는-것은-아님">#</a></h5>
+<blockquote>
+<p>JpaMain.java - findMember.getUsername() 전후로 findMember.getClass() 객체 타입 확인</p>
+</blockquote>
+<pre><code>			Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername(&quot;MemberA&quot;);
+            member.setCreateBy(&quot;kim&quot;);
+            member.setCreateDate(LocalDateTime.now());
+            member.setTeam(team);
+            em.persist(member);
+            em.flush();
+            em.clear();
+
+            //Member findMember = em.find(Member.class, member.getId());
+            Member findMember = em.getReference(Member.class, member.getId());
+
+            System.out.println(&quot;findMember.class before = &quot;+findMember.getClass());
+
+            System.out.println(&quot;findMember.userName = &quot;+findMember.getUsername());
+
+            System.out.println(&quot;findMember.class after = &quot;+findMember.getClass());
+
+            //printMemberAndTeam(findMember);
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    call next value for hibernate_sequence
+Hibernate: 
+    call next value for hibernate_sequence
+Hibernate: 
+    /* insert relativemapping.Team
+        */ insert 
+        into
+            Team
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, NAME, TEAM_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+findMember.class before = class relativemapping.Member$HibernateProxy$uziW0Tt8
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+findMember.userName = MemberA
+findMember.class after = class relativemapping.Member$HibernateProxy$uziW0Tt8
+
+Process finished with exit code 0
+
+</code></pre>
+<blockquote>
+<ul>
+<li>프록시 객체는 원본 엔티티를 상속받음, 따라서 타입 체크시 주의해야함 (==비교 실패, 대신 instance of 사용)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>영속성 컨텍스트에 찾는 엔티티가 이미 있으면 em.getReference()를 호출해도 실제 엔티티 반환 (반대로 em.getReference()로 조회 후 엔티티를 조회하면 프록시 객체로 반환)</li>
+<li>영속성 컨텍스트의 도움을 받을 수 없는 준영속 상태일 때, 프록시를 초기화 하면 문제 발생 <br>
+(하이버네이트는 org.hivernate.LazyInitializationException 예외룰 터트림)</li>
+</ul>
+</blockquote>
+<h5 id="엔티티-객체--비교">엔티티 객체 == 비교<a class="anchor" href="#엔티티-객체--비교">#</a></h5>
+<blockquote>
+<p>JpaMain.java - em.find(), em.find() 타입비교</p>
+</blockquote>
+<pre><code>			Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;MemberA&quot;);
+            member1.setCreateBy(&quot;kim&quot;);
+            member1.setCreateDate(LocalDateTime.now());
+            member1.setTeam(team);
+            em.persist(member1);
+            Member member2 = new Member();
+            member2.setUsername(&quot;MemberA&quot;);
+
+            member2.setCreateBy(&quot;kim&quot;);
+            member2.setCreateDate(LocalDateTime.now());
+            member2.setTeam(team);
+            em.persist(member2);
+
+
+            em.flush();
+            em.clear();
+
+            Member m1 = em.find(Member.class, member1.getId());
+            Member m2 = em.find(Member.class, member2.getId());
+
+			
+            System.out.println(&quot;m1 == m2 &quot; + (m1.getClass() == m2.getClass())); // m1 == m2true
+</code></pre>
+<h5 id="엔티티-객체-프록시-객체--비교">엔티티 객체, 프록시 객체 == 비교<a class="anchor" href="#엔티티-객체-프록시-객체--비교">#</a></h5>
+<blockquote>
+<p>JpaMain.java - em.find(), em.getReference() 타입비교</p>
+</blockquote>
+<pre><code>		    Member m1 = em.find(Member.class, member1.getId());
+            Member m2 = em.getReference(Member.class, member2.getId());
+
+            System.out.println(&quot;m1 == m2 &quot; + (m1.getClass() == m2.getClass()));
+// m1 == m2 false
+</code></pre>
+<blockquote>
+<p>비교한 em.find로 가져온 엔티티 객체와 getReference를 통해 만든 프록시 객체는 == 비교를 하면 false로 나옵니다. <br>
+지금이야 같은 JpaMain에서 보면 쉽겠지만 아래와 같은 메소드를 사용한다면 함수 내부에서 어떤 객체가 넘어오는지 알기 힘듭니다.</p>
+</blockquote>
+<blockquote>
+<p>JpaMain.java - 메소드를 생성하고 내부에서 객체 == 비교</p>
+</blockquote>
+<pre><code>	...
+	
+	logic(m1,m2);
+    ...
+   
+    private static void logic(Member m1, Member m2) {
+        System.out.println(&quot;m1 == m2 &quot; + (m1.getClass() == m2.getClass())); 
+    }
+	
+</code></pre>
+<h5 id="프록시-객체-instanceof-체크">프록시 객체 instanceof 체크<a class="anchor" href="#프록시-객체-instanceof-체크">#</a></h5>
+<blockquote>
+<p>JpaMain.java - 메소드를 생성하고 내부에서 객체 instanceof로 체크</p>
+</blockquote>
+<pre><code>    ...
+	
+    logic(m1,m2);
+    ...
+    
+   
+   private static void logic(Member m1, Member m2) {
+        System.out.println(&quot;m1 instanceof Member &quot; + (m1 instanceof Member));
+        System.out.println(&quot;m2 instanceof Member &quot; + (m2 instanceof Member));
+    }
+
+</code></pre>
+<h5 id="영속성-컨텍스트1차-캐시에-찾는-엔티티가-있으면-emgetreference를-호출해도-실제-엔티티-반환">영속성 컨텍스트(1차 캐시)에 찾는 엔티티가 있으면 em.getReference()를 호출해도 실제 엔티티 반환<a class="anchor" href="#영속성-컨텍스트1차-캐시에-찾는-엔티티가-있으면-emgetreference를-호출해도-실제-엔티티-반환">#</a></h5>
+<blockquote>
+<p>JpaMain.java - 영속성 컨텍스트에 엔티티 추가 후 em.getReference()</p>
+</blockquote>
+<pre><code>          Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;MemberA&quot;);
+            member1.setCreateBy(&quot;kim&quot;);
+            member1.setCreateDate(LocalDateTime.now());
+            member1.setTeam(team);
+            em.persist(member1);
+            Member member2 = new Member();
+            member2.setUsername(&quot;MemberA&quot;);
+
+            member2.setCreateBy(&quot;kim&quot;);
+            member2.setCreateDate(LocalDateTime.now());
+            member2.setTeam(team);
+            em.persist(member2);
+
+
+            em.flush();
+            em.clear();
+
+            Member r1 = em.getReference(Member.class, member1.getId());
+            System.out.println(&quot;r1 = &quot; + r1.getClass());
+
+            Member r2 = em.getReference(Member.class,member1.getId());
+
+            System.out.println(&quot;r2 = &quot; + r2.getClass());
+            
+            System.out.println(&quot;r1 == r2 &quot; + (r1 == r2));
+
+            tx.commit();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>  select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+        
+m1 = class relativemapping.Member
+
+r1 = class relativemapping.Member
+
+m1 == r1 true
+
+</code></pre>
+<blockquote>
+<p>m1과 r1 모두 Member 엔티티 객체 클래스로 나오는 것을 확인할 수 있습니다. 두가지 이유가 있는데 하나는 <br>
+영속성 컨텍스트에 이미 있는데 프록시로 가져 와봐야 이점이 없는데 프록시로 가져올 필요가 없습니다. 원본인 엔티티 객체를 반환하는게 더 성능 최적화에 도움이 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>또한 JPA에서는 영속성 컨텍스트 안에서 같은 Member를 엔티티에서 조회하거나, 레퍼런스로 조회해 와도 컬렉션에서 == 비교한 것처럼 같은 값으로 인식해 줍니다.</p>
+</blockquote>
+<blockquote>
+<p>JPA는 한 트랜젝션 안에서 같은 객체에 대한 보장을 해줍니다.</p>
+</blockquote>
+<blockquote>
+<p>r1 과 r2  둘다 레퍼런스면 두개의 프록시 객체는 동일하고, == 비교시 true 를 반환 합니다.</p>
+</blockquote>
+<pre><code>            Member r1 = em.getReference(Member.class, member1.getId());
+            System.out.println(&quot;r1 = &quot; + r1.getClass());
+
+            Member r2 = em.getReference(Member.class,member1.getId());
+
+            System.out.println(&quot;r2 = &quot; + r2.getClass());
+            
+            System.out.println(&quot;r1 == r2 &quot; + (r1 == r2));
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>	r1 = class relativemapping.Member$HibernateProxy$3dvhAszH
+	r2 = class relativemapping.Member$HibernateProxy$3dvhAszH
+	r1 == r2 true
+</code></pre>
+<blockquote>
+<p>JpaMain.java - 레퍼런스로 조회 후 일반 엔티티 조회 시</p>
+</blockquote>
+<pre><code>			Member r1 = em.getReference(Member.class, member1.getId());
+            System.out.println(&quot;r1 = &quot; + r1.getClass());
+
+            Member m1 = em.find(Member.class,member1.getId());
+
+            System.out.println(&quot;m1 = &quot; + m1.getClass());
+
+            System.out.println(&quot;r1 == m1 &quot; + (r1 == m1));
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>r1 = class relativemapping.Member$HibernateProxy$vH2td1yz
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+        
+m1 = class relativemapping.Member$HibernateProxy$vH2td1yz
+
+r1 == m1 true
+
+</code></pre>
+<blockquote>
+<p>em.getReference() 이후 em.find()또한 proxy로 조회된것을 확인할 수 있습니다. 이는 같은 컨텍스트 안에서 같은 객체로 반환해 주는 JPA의 특징입니다.</p>
+</blockquote>
+<h5 id="영속성-컨텍스트의-도움을-받을-수-없는-준영속-상태일-때-프록시를-초기화하면-문제-발생">영속성 컨텍스트의 도움을 받을 수 없는 준영속 상태일 때, 프록시를 초기화하면 문제 발생<a class="anchor" href="#영속성-컨텍스트의-도움을-받을-수-없는-준영속-상태일-때-프록시를-초기화하면-문제-발생">#</a></h5>
+<blockquote>
+<p>JpaaAin.java - 영속성 컨텍스트에서 제거된 경우  <br>
+getReference() 후 getUsername()을 통해 초기화</p>
+</blockquote>
+<pre><code>     	  Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;MemberA&quot;);
+            member1.setCreateBy(&quot;kim&quot;);
+            member1.setCreateDate(LocalDateTime.now());
+            member1.setTeam(team);
+            em.persist(member1);
+            Member member2 = new Member();
+            member2.setUsername(&quot;MemberA&quot;);
+
+            member2.setCreateBy(&quot;kim&quot;);
+            member2.setCreateDate(LocalDateTime.now());
+            member2.setTeam(team);
+            em.persist(member2);
+
+
+            em.flush();
+            em.clear();
+
+            Member r1 = em.getReference(Member.class, member1.getId());
+            System.out.println(&quot;r1 = &quot; + r1.getClass());
+
+
+            em.detach(r1); // 영속성 컨텍스트에서 r1을 제거
+            //  em.clear();
+
+            r1.getUsername(); //컨텍스트에서 제거된 경우
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert relativemapping.Team
+        */ insert 
+        into
+            Team
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, NAME, TEAM_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+r1 = class relativemapping.Member$HibernateProxy$Sq3ipbiV
+
+org.hibernate.LazyInitializationException: could not initialize proxy [relativemapping.Member#2] - no Session //영속성 컨텍스트 없다는 이야기
+	at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:170)
+	at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:310)
+	at org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor.intercept(ByteBuddyInterceptor.java:45)
+	at org.hibernate.proxy.ProxyConfiguration$InterceptorDispatcher.intercept(ProxyConfiguration.java:95)
+	at relativemapping.Member$HibernateProxy$Sq3ipbiV.getUsername(Unknown Source)
+	at relativemapping.JpaMain.main(JpaMain.java:52)
+</code></pre>
+<blockquote>
+<p>JpaaAin.java - 영속성 컨텍스트가 종료된경우
+getReference() 후 getUsername()을 통해 초기화</p>
+</blockquote>
+<pre><code>     	  Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;MemberA&quot;);
+            member1.setCreateBy(&quot;kim&quot;);
+            member1.setCreateDate(LocalDateTime.now());
+            member1.setTeam(team);
+            em.persist(member1);
+            Member member2 = new Member();
+            member2.setUsername(&quot;MemberA&quot;);
+
+            member2.setCreateBy(&quot;kim&quot;);
+            member2.setCreateDate(LocalDateTime.now());
+            member2.setTeam(team);
+            em.persist(member2);
+
+
+            em.flush();
+            em.clear();
+
+            Member r1 = em.getReference(Member.class, member1.getId());
+            System.out.println(&quot;r1 = &quot; + r1.getClass());
+
+
+            em.close(); // 컨텍스트 종료
+
+            r1.getUsername(); //컨텍스트 종료된 이후 프록시 객체 초기화
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* insert relativemapping.Team
+        */ insert 
+        into
+            Team
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, NAME, TEAM_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+r1 = class relativemapping.Member$HibernateProxy$t0KzgTxZ
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+1월 26, 2022 10:57:16 오후 org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PoolState stop
+INFO: HHH10001008: Cleaning up connection pool [jdbc:h2:tcp://localhost/~/test]
+
+Process finished with exit code 0
+
+</code></pre>
+<blockquote>
+<p>강의에 의하면 LazyInitializationException( &ldquo;could not initialize proxy  - the owning Session was closed&rdquo; ) exception이 나와야 하지만,  <br></p>
+</blockquote>
+<blockquote>
+<p>5.4.0.Final 버전까지는 예외가 발생하는데 5.4.1.Final 버전부터 예외가 발생하지 않습니다. <br></p>
+</blockquote>
+<blockquote>
+<p>트랜잭션을 종료하지 않은 상태에서 세션(엔티티메니져)을 닫았기 때문에 아직 트랜잭션이 살아있습니다.</p>
+</blockquote>
+<h4 id="프록시-확인">프록시 확인<a class="anchor" href="#프록시-확인">#</a></h4>
+<blockquote>
+<ul>
+<li>프록시 인스턴스 초기화 여부 확인
+PersistenceUnitUtil.isLoaded(Object entity)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>프록시 클래스 확인 방법
+entity.getClass().getName() 출력 (&hellip;javasist&hellip;or HibernateProxy..)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>프록시 강제 초기화
+org.hibernate.initialize(entity);</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>참고 :JPA 표준은 강제 초기화 없음
+강제 호출 : member.getName()</p>
+</blockquote>
+<h5 id="프록시-인스턴스-초기화-여부-확인">프록시 인스턴스 초기화 여부 확인<a class="anchor" href="#프록시-인스턴스-초기화-여부-확인">#</a></h5>
+<blockquote>
+<p>JpaMain.java - emf.getPersistenceUnitUtil().isLoaded() 사용</p>
+</blockquote>
+<pre><code>
+	  	  Team team = new Team();
+            team.setName(&quot;TeamA&quot;);
+            team.setCreateBy(&quot;kim&quot;);
+            team.setCreateDate(LocalDateTime.now());
+            em.persist(team);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;MemberA&quot;);
+            member1.setCreateBy(&quot;kim&quot;);
+            member1.setCreateDate(LocalDateTime.now());
+            member1.setTeam(team);
+            em.persist(member1);
+            Member member2 = new Member();
+            member2.setUsername(&quot;MemberA&quot;);
+
+            member2.setCreateBy(&quot;kim&quot;);
+            member2.setCreateDate(LocalDateTime.now());
+            member2.setTeam(team);
+            em.persist(member2);
+
+
+            em.flush();
+            em.clear();
+
+            Member r1 = em.getReference(Member.class, member1.getId());
+            System.out.println(&quot;r1 = &quot; + r1.getClass());
+
+            //엔티티 매니저 팩토리에서 PersistenceUnitUtil를 받아와 사용
+            System.out.println(&quot;isLoaded = &quot;+ emf.getPersistenceUnitUtil().isLoaded(r1) );
+
+            r1.getUsername();
+
+            System.out.println(&quot;isLoaded = &quot;+ emf.getPersistenceUnitUtil().isLoaded(r1) );
+
+
+            tx.commit();
+            
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>
+Hibernate: 
+    /* insert relativemapping.Member
+        */ insert 
+        into
+            Member
+            (MOD_ID, MOD_DT, REG_ID, REG_DT, USERNAME, MEMBER_ID) 
+        values
+            (?, ?, ?, ?, ?, ?)
+            
+r1 = class relativemapping.Member$HibernateProxy$qay0PhKw //프록시 생성
+
+isLoaded = false // 프록시 초기화전 false
+
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+        
+isLoaded = true // 프록시 초기화전 true
+
+</code></pre>
+<h5 id="프록시-확인-방법">프록시 확인 방법<a class="anchor" href="#프록시-확인-방법">#</a></h5>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>
+		System.out.println(&quot;r1 = &quot; + r1.getClass());
+
+</code></pre>
+<p>console</p>
+<pre><code>
+r1 = class relativemapping.Member$HibernateProxy$qay0PhKw
+
+</code></pre>
+<h5 id="프록시-강제-초기화">프록시 강제 초기화<a class="anchor" href="#프록시-강제-초기화">#</a></h5>
+<blockquote>
+<p>JpaMain.java</p>
+</blockquote>
+<pre><code>
+		   r1.getUsername(); // 프록시 강제 초기화 (하이버네이트, 표준 JPA)
+		   
+		   //Hibernate.initialize(r1); //하이버네이트 only
+
+            System.out.println(&quot;isLoaded = &quot;+ emf.getPersistenceUnitUtil().isLoaded(r1) );
+
+</code></pre>
+<p>console</p>
+<pre><code>
+Hibernate: 
+    select
+        member0_.MEMBER_ID as member_i1_3_0_,
+        member0_.MOD_ID as mod_id2_3_0_,
+        member0_.MOD_DT as mod_dt3_3_0_,
+        member0_.REG_ID as reg_id4_3_0_,
+        member0_.REG_DT as reg_dt5_3_0_,
+        member0_.TEAM_ID as team_id7_3_0_,
+        member0_.USERNAME as username6_3_0_,
+        team1_.TEAM_ID as team_id1_7_1_,
+        team1_.MOD_ID as mod_id2_7_1_,
+        team1_.MOD_DT as mod_dt3_7_1_,
+        team1_.REG_ID as reg_id4_7_1_,
+        team1_.REG_DT as reg_dt5_7_1_,
+        team1_.NAME as name6_7_1_ 
+    from
+        Member member0_ 
+    left outer join
+        Team team1_ 
+            on member0_.TEAM_ID=team1_.TEAM_ID 
+    where
+        member0_.MEMBER_ID=?
+        
+isLoaded = true
+
+</code></pre>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a><a class="anchor" href="#참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">#</a></h4>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-4/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">JPA 실전 예제 4 - 상속관계 매핑</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >JPA 즉시 로딩과 지연로딩</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPA 프록시와 연관관계</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#목차">목차</a>
+      <ul>
+        <li><a href="#프록시">프록시</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +1511,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>

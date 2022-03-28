@@ -1,7 +1,2486 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
 
+<head>
+  <title>JPQL 페치 조인(Fetch Join) | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="JPQL 페치 조인(Fetch Join)">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="JPQL 페치 조인(Fetch Join)">
+  <meta property="og:description" content="JPQL 페치 조인(Fetch Join)">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "JPQL 페치 조인(Fetch Join)",
+      "headline" : "JPQL 페치 조인(Fetch Join)",
+      "description" : "JPQL 페치 조인(Fetch Join)",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-03-21 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-03-21 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql-fetch-join\/",
+      "wordCount" : "5074",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	JPQL 페치 조인(Fetch Join)
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	JPQL 페치 조인(Fetch Join)
+            </h1>		
+            <time datetime="2022-03-21 00:00:00 &#43;0000 UTC" class="post__date">2022-03-21</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="jpql-페치-조인fetch-join">JPQL 페치 조인(Fetch Join)</h1>
+<hr>
+<blockquote>
+<p>실무에서 정말 정말 중요함 <br>
+쿼리가 여러번 나갈거 같은 쿼리를 한방 쿼리로 변환</p>
+</blockquote>
+<h2 id="페치-조인">페치 조인<a class="anchor" href="#페치-조인">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>SQL 조인 종류가 아니다.</li>
+<li>JPQL에서 <mark>성능 최적화</mark>를 위해 제공하는 기능</li>
+<li>연관된 엔티티나 컬렉션을 <mark>SQL 한 번에 함께 조회</mark>하는 기능</li>
+<li>join fetch 명령어 사용</li>
+<li>[LEFT [OUTER] | INNER] JOIN FETCH 조인경로</li>
+</ul>
+</blockquote>
+<h2 id="엔티티-페치-조인">엔티티 페치 조인<a class="anchor" href="#엔티티-페치-조인">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>회원을 조회하면서 연관된 팀도 함께 조회(SQL 한 번에)</li>
+<li>SQL을 보면 회원 뿐만 아니라 <mark>팀(T.*)</mark>도 함께 <mark>SELECT</mark></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>[JPQL]</p>
+</blockquote>
+<pre><code>SELECT m FROM Member m JOIN FETCH m.team
+</code></pre>
+<br>
+<blockquote>
+<p>LEFT OUTER JOIN에 FETCH 만 붙였을 뿐</p>
+</blockquote>
+<blockquote>
+<p>[SQL]</p>
+</blockquote>
+<pre><code>SELECT M.*, T.* FROM MEMBER M INNER JOIN TEAM T ON M.TEAM_ID = T.ID
+</code></pre>
+<blockquote>
+<p>M.*, T.*은 모든 컬럼을 축약 <br>
+SELECT m 만 했는데, 프로젝션에 Member와 Team의 모든 컬럼 추가</p>
+</blockquote>
+<blockquote>
+<p>과거 나왔던 즉시 로딩과 흡사한거 같지만, 개발자가 원하는 대로 객체 그래프를 한번에 조회할 것을 명시적으로 동적인 타이밍에 사용 할 수 있습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/fetch-join/img-001.png" alt="contact"></p>
+<p><img src="/images/develop/backend/orm-jpa-basic/fetch-join/img-002.png" alt="contact"></p>
+<blockquote>
+<p>JPA에서 컬렉션을 조회하면, 위 그림과 같다면 회원1,2,3 그리고 팀A,팀B 레퍼런스로 JPA가 5개의 엔티티로 만들어 영속성 컨텍스트의 1차 캐시에 보관하고 그림과 같은 형태로 반환합니다.</p>
+</blockquote>
+<h3 id="페치-조인-미사용">페치 조인 미사용<a class="anchor" href="#페치-조인-미사용">#</a></h3>
+<hr>
+<blockquote>
+<p>JPQL &ldquo;SELECT m FROM Member m&quot;로 호출 후 Member와 Team의 @ManyToOne FetchType.LAZY 설정을 통한 지연로딩 사용</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();		//팀A 생성
+            team1.setName(&quot;팀A&quot;);			
+            em.persist(team1);		
+
+            Team team2 = new Team();		//팀B 생성
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            Team team3 = new Team();		//팀C 생성
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+
+            Member member1 = new Member();		//회원1 생성
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();		//회원2 생성
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();		//회원3 생성
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();		//회원4 생성
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT m FROM Member m&quot;;
+
+            List&lt;Member&gt; resultList = em.createQuery(sQuery, Member.class)
+                    .getResultList();
+
+            int i = 0;
+            for(Member member : resultList){
+                if(member.getTeam() != null){
+                    System.out.println(&quot;Member = &quot; + member.getUsername()+&quot;, team = &quot;+member.getTeam().getName());
+                } else{
+                    System.out.println(&quot;Member = &quot; + member.getUsername()+&quot;, team = null&quot;);
+                }
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 				// MEMBER 조회 회원 4명 가져옴
+    /* SELECT
+        m 
+    FROM
+        Member m */ select
+            member0_.id as id1_0_,
+            member0_.age as age2_0_,
+            member0_.TEAM_ID as team_id5_0_,
+            member0_.type as type3_0_,
+            member0_.username as username4_0_ 
+        from
+            Member member0_
+            
+Hibernate: 				// 회원1의 Team 지연로딩 발생 팀A 조회
+    select
+        team0_.id as id1_3_0_,
+        team0_.name as name2_3_0_ 
+    from
+        Team team0_ 
+    where
+        team0_.id=?
+        
+Member = 회원1, team = 팀A	// i=0, 
+Member = 회원2, team = 팀A	// i=1,  회원2의 Team 1차 캐시 조회
+
+Hibernate:  				// 회원3의 Team 지연로딩 발생 팀B 조회
+    select
+        team0_.id as id1_3_0_,
+        team0_.name as name2_3_0_ 
+    from
+        Team team0_ 
+    where
+        team0_.id=?
+        
+Member = 회원3, team = 팀B	// i=2
+Member = 회원4, team = null	// i=3
+</code></pre>
+<blockquote>
+<p>현재 4명의 회원을 조회 하였고, 지연로딩을 통해 팀A와 팀B가 조회 되었습니다. 자세하게 수행된 것을 보면</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>Member를 조회</li>
+<li>Roof 시작 (회원1, 회원2, 회원3, 회원4)</li>
+<li>회원1 출력, 회원1의 Team 조회 후 팀A 1차 캐시</li>
+<li>회원2 출력, 1차 캐시의 팀A 조회</li>
+<li>회원3 출력, 회원3의 Team 조회 후 팀B 1차 캐시</li>
+<li>회원4 출력</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>문제는 최악의 경우 회원 조회 쿼리 + 팀의 수 N만큼 조회쿼리가 발행할 수 있습니다. O(N+1)</p>
+</blockquote>
+<blockquote>
+<p>이것은 즉시로딩이거나 지연로딩 모두 같은 문제가 발생합니다. 이것을 해결하기 위해서 Fetch Join을 사용합니다.</p>
+</blockquote>
+<h3 id="페치-조인-사용">페치 조인 사용<a class="anchor" href="#페치-조인-사용">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>JPQL &ldquo;SELECT m FROM Member m JOIN fetch m.team t&quot;로 호출</li>
+<li>JPQL &ldquo;SELECT m FROM Member m LEFT JOIN fetch m.team t&quot;로 OUTER JOIN으로도 가능</li>
+</ul>
+</blockquote>
+<h4 id="페치-조인-사용-코드">페치 조인 사용 코드<a class="anchor" href="#페치-조인-사용-코드">#</a></h4>
+<pre><code>String jpql = &quot;select m from Member m join fetch m.team t&quot;;
+List&lt;Member&gt; members = em.createQuery(jpql, Member.class)
+                         .getResultList();
+for(Member member : members){
+	System.out.println(&quot;userName&quot;+member.getUsername()+&quot;,&quot;+
+					&quot;teamName&quot;+member.getTeam().getName());
+}
+</code></pre>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+
+            String sQuery = &quot;SELECT m FROM Member m JOIN fetch m.team t &quot;;
+
+            List&lt;Member&gt; resultList = em.createQuery(sQuery, Member.class)
+                    .getResultList();
+
+            int i = 0;
+            for(Member member : resultList){
+                System.out.println(&quot;Member = &quot; + member.getUsername()+&quot;, team = &quot;+member.getTeam().getName());
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console - INNER JOIN FETCH</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        m 
+    FROM
+        Member m 
+    JOIN
+        fetch m.team t  */ select
+            member0_.id as id1_0_0_,
+            team1_.id as id1_3_1_,
+            member0_.age as age2_0_0_,
+            member0_.TEAM_ID as team_id5_0_0_,
+            member0_.type as type3_0_0_,
+            member0_.username as username4_0_0_,
+            team1_.name as name2_3_1_ /* 팀의 정보 조인을 통해 미리 들어감*/
+        from
+            Member member0_ 
+        inner join
+            Team team1_ 
+                on member0_.TEAM_ID=team1_.id
+                
+Member = 회원1, team = 팀A
+Member = 회원2, team = 팀A
+Member = 회원3, team = 팀B
+
+</code></pre>
+<blockquote>
+<p>SELECT 문을 1번만 수행한 것을 확인할 수 있습니다. 조회 시점에 Team의 데이터 또한 프록시가 아니라, 실제 데이터로 채워져 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>Member와 Team의 INNER 조인이기 때문에 회원4의 정보가 없는 것 또한 확인 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java - LEFT OUTER JOIN FETCH</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT m FROM Member m LEFT JOIN fetch m.team t &quot;;
+
+            List&lt;Member&gt; resultList = em.createQuery(sQuery, Member.class)
+                    .getResultList();
+
+            for(Member member : resultList){
+                if(member.getTeam() != null){
+                    System.out.println(&quot;Member = &quot; + member.getUsername()+&quot;, team = &quot;+member.getTeam().getName());
+                }else{
+                    System.out.println(&quot;Member = &quot; + member.getUsername()+&quot;, team = null&quot;);
+                }
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        m 
+    FROM
+        Member m 
+    LEFT JOIN
+        fetch m.team t  */ select
+            member0_.id as id1_0_0_,
+            team1_.id as id1_3_1_,
+            member0_.age as age2_0_0_,
+            member0_.TEAM_ID as team_id5_0_0_,
+            member0_.type as type3_0_0_,
+            member0_.username as username4_0_0_,
+            team1_.name as name2_3_1_ 
+        from
+            Member member0_ 
+        left outer join
+            Team team1_ 
+                on member0_.TEAM_ID=team1_.id
+
+Member = 회원1, team = 팀A
+Member = 회원2, team = 팀A
+Member = 회원3, team = 팀B
+Member = 회원4, team = null
+
+</code></pre>
+<blockquote>
+<p>회원4까지 조회 된것을 확인할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>결국 지연로딩을 세팅한다고 하여도, Fetch 조인이 우선입니다.</p>
+</blockquote>
+<h2 id="컬렉션-페치-조인">컬렉션 페치 조인<a class="anchor" href="#컬렉션-페치-조인">#</a></h2>
+<hr>
+<blockquote>
+<p>1:N 관계, 컬렉션 페치 조인 <br>
+Team의 입장에서 Member를 조회</p>
+</blockquote>
+<blockquote>
+<p>[JPQL]</p>
+</blockquote>
+<pre><code>SELECT t
+  FROM Team t JOIN FETCH t.members m
+ WHERE t.name = '팀A'
+</code></pre>
+<br>
+<blockquote>
+<p>[SQL]</p>
+</blockquote>
+<pre><code>SELECT T.*, M.*
+  FROM TEAM T 
+ INNER JOIN MEMBER M ON T.ID = M.TEAM_ID
+</code></pre>
+<h3 id="컬렉션-페치-조인-1">컬렉션 페치 조인<a class="anchor" href="#컬렉션-페치-조인-1">#</a></h3>
+<hr>
+<blockquote>
+<p>JpqlMain.java - INNER JOIN FETCH</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT t FROM Team t LEFT JOIN fetch t.members m &quot;;
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .getResultList();
+
+            for(Team team : resultList){
+                    System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t 
+    LEFT JOIN
+        fetch t.members m  */ select
+            team0_.id as id1_3_0_,
+            members1_.id as id1_0_1_,
+            team0_.name as name2_3_0_,
+            members1_.age as age2_0_1_,
+            members1_.TEAM_ID as team_id5_0_1_,
+            members1_.type as type3_0_1_,
+            members1_.username as username4_0_1_,
+            members1_.TEAM_ID as team_id5_0_0__,
+            members1_.id as id1_0_0__ 
+        from
+            Team team0_ 
+        left outer join
+            Member members1_ 
+                on team0_.id=members1_.TEAM_ID
+                
+Team = 팀A, members[Member{id=4, username='회원1', age=31}, Member{id=5, username='회원2', age=32}]
+Team = 팀A, members[Member{id=4, username='회원1', age=31}, Member{id=5, username='회원2', age=32}]
+Team = 팀B, members[Member{id=6, username='회원3', age=33}]
+Team = 팀C, members[]
+</code></pre>
+<blockquote>
+<p>각 팀과 팀의 팀원들을 출력하였습니다. 하지만 여기서 이상한 점은</p>
+</blockquote>
+<blockquote>
+<p>팀A는 2번 나왔습니다. 왜냐하면, 팀A의 회원은 2명이기 때문입니다. <br> 여기서 조심해야 할것은 바로 이것입니다.</p>
+</blockquote>
+<blockquote>
+<p>Team의 Member 컬렉션을 가져온다고 하여도, Member의 수 만큼 조인을 통하여 데이터가 늘어나기 때문에 잊지 말고 신경을 써야합니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/fetch-join/img-003.png" alt="contact"></p>
+<blockquote>
+<p>Join을 통해 팀A * [회원1, 회원2]의 Team List가 2개가 됩니다. Roof를 통해, 팀A가 2번 돌며, 팀A와 getMembers 컬렉션을 2번 찍게 됩니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/fetch-join/img-004.png" alt="contact"></p>
+<blockquote>
+<p>위 쿼리를 조회하고 ID가 1인 Team을 영속성 컨텍스트(1차 캐시)에 담고, 2번째에는 영속성 컨텍스트에 이미 있기 때문에 스킵</p>
+</blockquote>
+<blockquote>
+<p>같은 주소를 사용하는 결과가 2줄이 나오게 됩니다. 페치조인을 했기 때문에 팀A는 회원1, 2를 가지게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>SQL과 같은 결과로 리턴해 주며 예를 들어 팀A와 회원1, 회원 2의 데이터를 2개의 로우로 주는 것을 어떤 사용자는 1줄만 원할 수 있고 2줄을 모두 원할 수 있기 때문에 이러한 결정은 사용자에게 넘기게 됩니다. 뒤에서 팀A가 2줄이 나오는 것을 한줄로 합쳐 결과를 설정을 통해 만들 수도 있습니다.</p>
+</blockquote>
+<h2 id="페치-조인과-distinct">페치 조인과 DISTINCT<a class="anchor" href="#페치-조인과-distinct">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>SQL의 DISTINCT는 중복된 결과를 제거하는 명령</li>
+<li>JPQL의 DISTINCT 2가지 기능 제공
+<ol>
+<li>SQL에 DISTINCT를 추가</li>
+<li>애플리케이션에서 엔티티 중복제거</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<h3 id="team-조회와-team-t-join-tmembers-m-비교">Team 조회와 Team t JOIN t.members m 비교<a class="anchor" href="#team-조회와-team-t-join-tmembers-m-비교">#</a></h3>
+<hr>
+<blockquote>
+<p>더 보기 쉬운 테스트를 위해 팀C 추가는 주석해 두겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>그리고 DISTINCT 테스트 이전에 &ldquo;SELECT t FROM Team t&quot;와 &ldquo;SELECT t FROM Team t JOIN FETCH t.members m&quot;의 차이를 보며 결과의 차이를 먼저 확인 해보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java - &ldquo;SELECT t FROM Team t&rdquo;</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            /*
+            // DISTINCT 를 통해 테스트의 편의를 위해 주석
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+            */
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT t FROM Team t JOIN FETCH t.members m&quot;;
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            /*
+            for(Team team : resultList){
+                System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+            */
+
+            tx.commit();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t */ select
+            team0_.id as id1_3_,
+            team0_.name as name2_3_ 
+        from
+            Team team0_
+            
+resultCnt = 2
+
+/** H2 Console
+ID  	| NAME
+-----+------  
+1	| 팀A
+2	| 팀B
+**/
+
+</code></pre>
+<blockquote>
+<p>Team만 조회 했기 때문에 2건이 나옵니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java - &ldquo;SELECT t FROM Team t&rdquo;</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            /*
+            // DISTINCT 를 통해 테스트의 편의를 위해 주석
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+            */
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT t FROM Team t JOIN FETCH t.members m&quot;; // ***  JOIN FETCH t.members m 추가
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            /*
+            for(Team team : resultList){
+                System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+            */
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t 
+    JOIN
+        FETCH t.members m */ select
+            team0_.id as id1_3_0_,
+            members1_.id as id1_0_1_,
+            team0_.name as name2_3_0_,
+            members1_.age as age2_0_1_,
+            members1_.TEAM_ID as team_id5_0_1_,
+            members1_.type as type3_0_1_,
+            members1_.username as username4_0_1_,
+            members1_.TEAM_ID as team_id5_0_0__,
+            members1_.id as id1_0_0__ 
+        from
+            Team team0_ 
+        inner join
+            Member members1_ 
+                on team0_.id=members1_.TEAM_ID
+
+resultCnt = 3
+
+/** H2 Console
+ID	| NAME	| AGE	| TEAM_ID		| TYPE		| USERNAME
+-----+--------+--------+-------------+-------------+----------
+1	| 팀A		| 31		| 1			| USER		| 회원1
+1	| 팀A		| 32		| 1			| USER		| 회원2
+2	| 팀B		| 33		| 2			| USER		| 회원3
+**/
+
+</code></pre>
+<blockquote>
+<p>Team과 Member의 Inner Join 으로 인해 Team의 데이터가 Team * Member 된 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<h3 id="sql의-distinct-추가">SQL의 DISTINCT 추가<a class="anchor" href="#sql의-distinct-추가">#</a></h3>
+<hr>
+<pre><code>SELECT DISTINCT t FROM 
+  Team t JOIN t.members
+</code></pre>
+<blockquote>
+<p>SQL에 DISTINCT를 추가 하지만 데이터가 다르므로 SQL 결과에서 중복제거 실패</p>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/fetch-join/img-005.png" alt="contact"></p>
+<blockquote>
+<p>JpqlMain.java - Sql DISTINCT</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            /*
+            // DISTINCT 를 통해 테스트의 편의를 위해 주석
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+            */
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT DISTINCT t FROM Team t JOIN FETCH t.members m&quot;;
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            /*
+            for(Team team : resultList){
+                System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+            */
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        DISTINCT t 
+    FROM
+        Team t 
+    JOIN
+        FETCH t.members m */ select
+            distinct team0_.id as id1_3_0_,
+            members1_.id as id1_0_1_,
+            team0_.name as name2_3_0_,
+            members1_.age as age2_0_1_,
+            members1_.TEAM_ID as team_id5_0_1_,
+            members1_.type as type3_0_1_,
+            members1_.username as username4_0_1_,
+            members1_.TEAM_ID as team_id5_0_0__,
+            members1_.id as id1_0_0__ 
+        from
+            Team team0_ 
+        inner join
+            Member members1_ 
+                on team0_.id=members1_.TEAM_ID
+                
+/** H2 Console
+ID	TEAM_ID  	NAME  	AGE	TYPE		USERNAME
+1	3		팀A		31	USER		회원1
+1	4		팀A		32	USER		회원2
+2	5		팀B		33	USER		회원3
+**/                
+                
+</code></pre>
+<blockquote>
+<p>1, 2 번 로우는 Team의 데이터 ID와 Name은 같지만, Member의 데이터 ID, USERNAME까지 같지 않기 때문에 중복제거되지 않습니다.</p>
+</blockquote>
+<blockquote>
+<p>SQL에서는 완전히 데이터가 똑같아야 DISTINCT 됩니다.</p>
+</blockquote>
+<h3 id="애플리케이션에서-엔티티-중복제거">애플리케이션에서 엔티티 중복제거<a class="anchor" href="#애플리케이션에서-엔티티-중복제거">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>DISTINCT가 추가로 애플리케이션에서 중복 제거시도</li>
+<li>같은 식별자를 가진 <mark>Team 엔티티 제거</mark>
+(애플리케이션에서 컬렉션을 퍼올릴때)</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/orm-jpa-basic/fetch-join/img-006.png" alt="contact"></p>
+<blockquote>
+<p>팀A가 같은 엔티티를 보면 중복이 제거된 결과 리스트를 반환해 줍니다.</p>
+</blockquote>
+<blockquote>
+<p>[DISTINCT 추가시 결과] <br>
+teamname = 팀A, Team@0x100
+-&gt; username = 회원1, member = Member@0x200
+-&gt; username = 회원2, member = Member@0x300</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java - 결과 For 문으로 출력</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            /*
+            // DISTINCT 를 통해 테스트의 편의를 위해 주석
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+            */
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT DISTINCT t FROM Team t JOIN FETCH t.members m&quot;;
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            for(Team team : resultList){ // ** 주석 제거
+                System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        DISTINCT t 
+    FROM
+        Team t 
+    JOIN
+        FETCH t.members m */ select
+            distinct team0_.id as id1_3_0_,
+            members1_.id as id1_0_1_,
+            team0_.name as name2_3_0_,
+            members1_.age as age2_0_1_,
+            members1_.TEAM_ID as team_id5_0_1_,
+            members1_.type as type3_0_1_,
+            members1_.username as username4_0_1_,
+            members1_.TEAM_ID as team_id5_0_0__,
+            members1_.id as id1_0_0__ 
+        from
+            Team team0_ 
+        inner join
+            Member members1_ 
+                on team0_.id=members1_.TEAM_ID
+
+resultCnt = 2
+
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+Team = 팀B, members [Member{id=5, username='회원3', age=33}]
+
+</code></pre>
+<blockquote>
+<p>실제 수행된 쿼리를 H2 console 에서 실행해 보면 3건이 나온다 하지만, 결과 리스트의 갯수는 2건이 나오며, 조회 결과를 출력시 처음 우리가 원했던 결과인 팀A가 Team = 팀A, members [Member{id=3, username=&lsquo;회원1&rsquo;, age=31}, Member{id=4, username=&lsquo;회원2&rsquo;, age=32}] 로 1건만 나온다.</p>
+</blockquote>
+<pre><code>            String sQuery = &quot;SELECT DISTINCT t FROM Team t JOIN FETCH t.members m&quot;;
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .getResultList();
+</code></pre>
+<blockquote>
+<p>Jpql에서 DISTINCT를 사용하면 결과를 컬렉션에 담을때 JPA에서 한번더 중복을 제거해 줍니다.</p>
+</blockquote>
+<blockquote>
+<p>애플리케이션에서 올라올때, 이 컬렉션에 담기는 데이터가 중복이니까 JPA가 한번더 걸러준겁니다.</p>
+</blockquote>
+<h2 id="페치-조인과-일반-조인의-차이">페치 조인과 일반 조인의 차이<a class="anchor" href="#페치-조인과-일반-조인의-차이">#</a></h2>
+<hr>
+<h3 id="일반-조인">일반 조인<a class="anchor" href="#일반-조인">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>일반 조인 실행시 <mark>연관된 엔티티를 함께 조회하지 않음</mark></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>[JPQL]</p>
+</blockquote>
+<pre><code>SELECT t
+  FROM Team t JOIN t.members m
+ WHERE t.name = '팀A'
+</code></pre>
+<br>
+<blockquote>
+<p>[SQL]</p>
+</blockquote>
+<pre><code>SELECT T.*
+  FROM Team T 
+  INNER JOIN F Member M ON T.ID = M.TEAM_ID
+ WHERE T.name = '팀A'
+</code></pre>
+<blockquote>
+<p>DISTINCT는 테스트를 해보았으니 제거 하고 일반 조인을 하였을때, 생성되는 쿼리를 자세히 살펴보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>	...
+	
+            String sQuery = &quot;SELECT  t FROM Team t JOIN t.members m&quot;;
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            for(Team team : resultList){
+                System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+
+
+	...
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t 
+    JOIN
+        t.members m */ select
+            team0_.id as id1_3_,
+            team0_.name as name2_3_ 
+        from
+            Team team0_ 
+        inner join
+            Member members1_ 
+                on team0_.id=members1_.TEAM_ID
+                
+resultCnt = 3
+
+Hibernate: 
+    select
+        members0_.TEAM_ID as team_id5_0_0_,
+        members0_.id as id1_0_0_,
+        members0_.id as id1_0_1_,
+        members0_.age as age2_0_1_,
+        members0_.TEAM_ID as team_id5_0_1_,
+        members0_.type as type3_0_1_,
+        members0_.username as username4_0_1_ 
+    from
+        Member members0_ 
+    where
+        members0_.TEAM_ID=?
+        
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+
+Hibernate: 
+    select
+        members0_.TEAM_ID as team_id5_0_0_,
+        members0_.id as id1_0_0_,
+        members0_.id as id1_0_1_,
+        members0_.age as age2_0_1_,
+        members0_.TEAM_ID as team_id5_0_1_,
+        members0_.type as type3_0_1_,
+        members0_.username as username4_0_1_ 
+    from
+        Member members0_ 
+    where
+        members0_.TEAM_ID=?
+        
+Team = 팀B, members [Member{id=5, username='회원3', age=33}]
+</code></pre>
+<blockquote>
+<p>inner join이 정상적으로 적용된것을 확인 할 수 있습니다. <br> 
+프로젝션에 team0_.id as id1_3_, team0_.name as name2_3_ Team의 컬럼만 가져온 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p><mark>일반 Join문</mark>은 SQL에서 Join만 실행 되는 것이지 데이터를 퍼올리는 것은 <mark>Team에 관한 것만</mark> 가져오게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>그런데 문제는 Roof를 돌릴때 아직 Members가 초기화가 안되어있습니다.</p>
+</blockquote>
+<blockquote>
+<p>그렇기 때문에 Roof를 돌면서 team.getMembers()를 호출하게 되면, 지연로딩을 통해 조회된 Team의 엔티티 만큼 Member를 조회하는 쿼리가 발생하게 됩니다.</p>
+</blockquote>
+<h3 id="페치-조인-1">페치 조인<a class="anchor" href="#페치-조인-1">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>페치 조인은 연관된 엔티티를 함께 조회함</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>[JPQL]</p>
+</blockquote>
+<pre><code>SELECT t
+  FROM Team t JOIN FETCH t.members m
+ WHERE t.name = '팀A'
+</code></pre>
+<br>
+<blockquote>
+<p>[SQL]</p>
+</blockquote>
+<pre><code>SELECT T.*, M.*
+  FROM Team T 
+  INNER JOIN F Member M ON T.ID = M.TEAM_ID
+ WHERE T.name = '팀A'
+</code></pre>
+<blockquote>
+<p>위와 같은 문제가 발생할때 FETCH 만 추가해 보면</p>
+</blockquote>
+<pre><code>	...
+
+            String sQuery = &quot;SELECT  t FROM Team t JOIN FETCH t.members m&quot;; //** FETCH 추가
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            for(Team team : resultList){
+                System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+	...
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t 
+    JOIN
+        FETCH t.members m */ select
+            team0_.id as id1_3_0_,
+            members1_.id as id1_0_1_,
+            team0_.name as name2_3_0_,
+            members1_.age as age2_0_1_,
+            members1_.TEAM_ID as team_id5_0_1_,
+            members1_.type as type3_0_1_,
+            members1_.username as username4_0_1_,
+            members1_.TEAM_ID as team_id5_0_0__,
+            members1_.id as id1_0_0__ 
+        from
+            Team team0_ 
+        inner join
+            Member members1_ 
+                on team0_.id=members1_.TEAM_ID
+                
+resultCnt = 3
+
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+Team = 팀B, members [Member{id=5, username='회원3', age=33}]
+</code></pre>
+<blockquote>
+<p>이게 일반 조인과 페치조인의 차이입니다.</p>
+</blockquote>
+<blockquote>
+<p>페치 조인을 이용해 1+N의 문제를 모두 해결한다고 보면 됩니다.</p>
+</blockquote>
+<h4 id="일반-조인과-페치-조인-정리">일반 조인과 페치 조인 정리<a class="anchor" href="#일반-조인과-페치-조인-정리">#</a></h4>
+<blockquote>
+<ul>
+<li>JPQL은 결과를 반환할 때 연관관계 고려X</li>
+<li>단지 SELECT 절에 지정한 엔티티만 조회할 뿐</li>
+<li>여기서는 팀 엔티티만 조회하고, 회원 엔티티는 조회하지 안습니다.</li>
+<li>페치 조인을 사용할 때만 연관된 엔티티도 함께 <mark>조회(즉시 로딩)</mark></li>
+<li><mark>페치 조인은 객체 그래프를 SQL 한번에 조회하는 개념</mark></li>
+</ul>
+</blockquote>
+<h2 id="페치-조인의-특징과-한계---1">페치 조인의 특징과 한계 - 1<a class="anchor" href="#페치-조인의-특징과-한계---1">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li><mark>페치 조인 대상에는 별칭을 줄 수 없다.(별칭 사용하지 않는게 관례)</mark>
+<ul>
+<li>하이버네이트는 가능, 가급적 사용X</li>
+</ul>
+</li>
+<li><mark>둘 이상의 컬렉션은 페치 조인 할 수 없다.</mark></li>
+<li><mark>컬렉션을 페치 조인하면 페이징 API(setFirstResult, setMaxResults)를 사용할 수 없다.</mark>
+<ul>
+<li>일대일, 다대일 같은 단일 값 연관 필드들은 페치 조인해도 페이징 가능</li>
+<li>하이버네이트는 경고 로그를 남기고 메모리에서 페이징(매우 위험)</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="페치-조인-대상에는-별칭을-줄-수-없다">페치 조인 대상에는 별칭을 줄 수 없다.<a class="anchor" href="#페치-조인-대상에는-별칭을-줄-수-없다">#</a></h3>
+<hr>
+<blockquote>
+<p>별칭 사용하지 않는게 관례</p>
+</blockquote>
+<blockquote>
+<p>페치 조인은 엔티티와 연관된 모든 엔티티를 조회하는 것이기 때문에 성능을 위해 별칭을 통해 (ex: tt.name = &lsquo;A&rsquo;) 조건을 걸거나 하면 안됩니다. 그렇게 사용하고 싶다면 페치 조인이 아닌 일반 조인과 프로젝션에서 조회할 컬럼을 지정해서 사용해야합니다.</p>
+</blockquote>
+<blockquote>
+<p>만일 Members에서 특정한 member만 필터로 조회해 가져오고 싶다면  Team과 Member의 Fetch 조인이 아닌, Member에서 조회하는 방식으로 해결해야 합니다.</p>
+</blockquote>
+<blockquote>
+<p>JPA에서 객체 그래프 탐색의 컨셉은 연관된 엔티티의 모든 데이터 조회입니다. 그렇기 때문에 컬렉션을 필터링해 가져 오는 것은 잘못된 사용입니다.</p>
+</blockquote>
+<blockquote>
+<p>만일 된다고 하여도, CASCADE와 같은 설정이 이것 저것 되어있다면 필터링 된 컬렉션의 데이터 조작시 필터에서 제외된 데이터들이 삭제가 된다던가 그런 문제를 낳을 수도 있을 것입니다.</p>
+</blockquote>
+<blockquote>
+<p>또 같은 엔티티의 컬렉션을 한곳에서는 전체 조회하고, 한쪽에서는 필터를 통해 10개만 가져왔을때, 영속성 컨텍스트 입장에서는 같은 엔티티의 컬렉션의 데이터가 다르기에 애매한 입장이 될 것입니다.</p>
+</blockquote>
+<blockquote>
+<p>예외로 사용하게 되는 때는 A 와 B의 Fetch 조인 B와 C의 fetch 조인 이런식으로 사용할 때도 있다고 하지만, 정합성 이슈 때문에 거의 사용하지 않는다고 합니다.</p>
+</blockquote>
+<h3 id="둘-이상의-컬렉션은-페치-조인-할-수-없다">둘 이상의 컬렉션은 페치 조인 할 수 없다.<a class="anchor" href="#둘-이상의-컬렉션은-페치-조인-할-수-없다">#</a></h3>
+<hr>
+<blockquote>
+<p>만약에 Team에 Members 외에 OfficeSupplies(비품들)이라는 컬렉션이 1:N으로 가지고 있다면 1:N:M의 관계로 <br>
+Team * Members * OfficeSupplies 데이터가 늘어날 수도 있습니다. 이런경우 데이터 정확성에 이슈가 있다고 합니다.</p>
+</blockquote>
+<h3 id="컬렉션을-페치-조인하면-페이징-api-를-사용할-수-없다">컬렉션을 페치 조인하면 페이징 API 를 사용할 수 없다.<a class="anchor" href="#컬렉션을-페치-조인하면-페이징-api-를-사용할-수-없다">#</a></h3>
+<hr>
+<blockquote>
+<p>setFirstResult, setMaxResults</p>
+</blockquote>
+<blockquote>
+<p>일대일, 다대일 같은 단일 값 연관 필드들은 페치 조인해도 페이징이 가능합니다. 왜냐하면 데이터 뻥튀기(조인으로 인한 1*N)가 발생하지 않기 때문입니다.</p>
+</blockquote>
+<h4 id="일대다-관계에서-페치-조인-시-페이징-문제">일대다 관계에서 페치 조인 시 페이징 문제<a class="anchor" href="#일대다-관계에서-페치-조인-시-페이징-문제">#</a></h4>
+<hr>
+<blockquote>
+<p>페이징이라는 기능은 DB입장에서 ROW를 줄이는 방법입니다.</p>
+</blockquote>
+<blockquote>
+<p>Member와 Team의 조인을 통해 2건이 나왔을때 &lsquo;팀A&rsquo;의 데이터의 위치 로우가 10(&lsquo;회원1 데이터&rsquo;)과 11(&lsquo;회원2 데이터&rsquo;)이라고 가정해 보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>페이징을 통해 1페이지를 가져올 경우 결과로 &lsquo;팀A&rsquo;의 .getMembers() 를 했을경우 조회 결과의 데이터에서는 &lsquo;회원1&rsquo;의 데이터만 존재하기 때문에 &lsquo;팀A&rsquo;에 속한 회원이 1명만 조회되는 잘못된 결과가 발생하게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>JPA가 객체 그래프를 생성하는 것은 조회된 데이터 기반이기 때문에 회원2가 page 2에 있는것을 모르기 때문에 컬렉션에 데이터가 잘못 나옵니다.</p>
+</blockquote>
+<h4 id="하이버네이트는-경고-로그를-남기고-메모리에서-페이징매우-위험">하이버네이트는 경고 로그를 남기고 메모리에서 페이징(매우 위험)<a class="anchor" href="#하이버네이트는-경고-로그를-남기고-메모리에서-페이징매우-위험">#</a></h4>
+<hr>
+<blockquote>
+<p>버전에 따라 다르겠지만 한번 테스트 해보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code> String sQuery = &quot;SELECT  t FROM Team t JOIN fetch t.members m&quot;;
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .setFirstResult(0)
+                    .setMaxResults(1)
+                    .getResultList();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>//** 경고 발생
+WARN: HHH000104: firstResult/maxResults specified with collection fetch; applying in memory! 
+
+Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t 
+    JOIN
+        fetch t.members m */ select
+            team0_.id as id1_3_0_,
+            members1_.id as id1_0_1_,
+            team0_.name as name2_3_0_,
+            members1_.age as age2_0_1_,
+            members1_.TEAM_ID as team_id5_0_1_,
+            members1_.type as type3_0_1_,
+            members1_.username as username4_0_1_,
+            members1_.TEAM_ID as team_id5_0_0__,
+            members1_.id as id1_0_0__ 
+        from
+            Team team0_ 
+        inner join
+            Member members1_ 
+                on team0_.id=members1_.TEAM_ID   
+        
+        // ** 페이징 관련 쿼리 없음 
+                
+resultCnt = 1
+
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+</code></pre>
+<blockquote>
+<p>WARN: HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!</p>
+</blockquote>
+<blockquote>
+<p>위 경고의 의미는 데이터들을 메모리로 퍼올려서 메모리에서 paging 을 적용한다는 뜻으로 데이터가 100만건이라면 100만건 모두 메모리에서 paging을 처리하다가 시스템에 장애가 발생할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>JPA에서 객체 그래프의 개념은 연관된 모든 데이터를 보여주는 것이기 때문에 전체 데이터를 가져온 후에 경고를 남기고 메모리 상에서 페이징을 처리하게 됩니다. 매우 위험</p>
+</blockquote>
+<h3 id="1n-페치-조인-페이징-사용-제한-해결책">1:N 페치 조인 페이징 사용 제한 해결책<a class="anchor" href="#1n-페치-조인-페이징-사용-제한-해결책">#</a></h3>
+<hr>
+<h4 id="1-쿼리의-대상을-뒤집어-1n-쿼리를-n1-쿼리로-만들어-사용">1. 쿼리의 대상을 뒤집어 1:N 쿼리를 N:1 쿼리로 만들어 사용<a class="anchor" href="#1-쿼리의-대상을-뒤집어-1n-쿼리를-n1-쿼리로-만들어-사용">#</a></h4>
+<blockquote>
+<p>다른 방식으로 해결을 할 수 있는데, 1:N의 관계에서 문제가 되지만 반대로 N:1로 반대로 쿼리를 사용하면 해결할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            /*
+            // DISTINCT 를 통해 테스트의 편의를 위해 주석
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+            */
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT  m FROM Member m JOIN fetch m.team t&quot;;
+
+            List&lt;Member&gt; resultList = em.createQuery(sQuery, Member.class)
+                    .setFirstResult(0)
+                    .setMaxResults(1)
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            for(Member member : resultList){
+                System.out.println(&quot;Team = &quot; + member.getTeam().getName()+&quot;, members &quot;+member.getTeam().getMembers());
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        m 
+    FROM
+        Member m 
+    JOIN
+        fetch m.team t */ select
+            member0_.id as id1_0_0_,
+            team1_.id as id1_3_1_,
+            member0_.age as age2_0_0_,
+            member0_.TEAM_ID as team_id5_0_0_,
+            member0_.type as type3_0_0_,
+            member0_.username as username4_0_0_,
+            team1_.name as name2_3_1_ 
+        from
+            Member member0_ 
+        inner join
+            Team team1_ 
+                on member0_.TEAM_ID=team1_.id limit ?
+resultCnt = 1
+
+Hibernate: 
+    select
+        members0_.TEAM_ID as team_id5_0_0_,
+        members0_.id as id1_0_0_,
+        members0_.id as id1_0_1_,
+        members0_.age as age2_0_1_,
+        members0_.TEAM_ID as team_id5_0_1_,
+        members0_.type as type3_0_1_,
+        members0_.username as username4_0_1_ 
+    from
+        Member members0_ 
+    where
+        members0_.TEAM_ID=?
+
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+
+</code></pre>
+<h4 id="2-fetch를-제거하고-n1을-batchsize로-해결">2. Fetch를 제거하고, n+1을 @BatchSize로 해결<a class="anchor" href="#2-fetch를-제거하고-n1을-batchsize로-해결">#</a></h4>
+<hr>
+<blockquote>
+<p>아까도 테스트 해서 보았지만, &ldquo;SELECT  t FROM Team t&rdquo; Team만 조회한 후 Roof에서 Members를 호출하게 되면 지연로딩이 발생하며 N+1 문제가 발생합니다. 이러한 문제를 @BatchSize를 사용하여 해결 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>Fetch Join 제거, paging은 그대로 사용</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java - Fetch Join 제거</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            /*
+            // DISTINCT 를 통해 테스트의 편의를 위해 주석
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+            */
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT  t FROM Team t&quot;; // Fetch 조인 제거
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .setFirstResult(0)
+                    .setMaxResults(2)
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            for(Team team : resultList){
+                System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+
+            tx.commit();
+
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t */ select
+            team0_.id as id1_3_,
+            team0_.name as name2_3_ 
+        from
+            Team team0_ limit ?
+            
+resultCnt = 2
+
+Hibernate: 
+    select
+        members0_.TEAM_ID as team_id5_0_0_,
+        members0_.id as id1_0_0_,
+        members0_.id as id1_0_1_,
+        members0_.age as age2_0_1_,
+        members0_.TEAM_ID as team_id5_0_1_,
+        members0_.type as type3_0_1_,
+        members0_.username as username4_0_1_ 
+    from
+        Member members0_ 
+    where
+        members0_.TEAM_ID=?
+        
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+
+Hibernate: 
+    select
+        members0_.TEAM_ID as team_id5_0_0_,
+        members0_.id as id1_0_0_,
+        members0_.id as id1_0_1_,
+        members0_.age as age2_0_1_,
+        members0_.TEAM_ID as team_id5_0_1_,
+        members0_.type as type3_0_1_,
+        members0_.username as username4_0_1_ 
+    from
+        Member members0_ 
+    where
+        members0_.TEAM_ID=?
+        
+Team = 팀B, members [Member{id=5, username='회원3', age=33}]
+
+</code></pre>
+<blockquote>
+<p>결과를 확인해 보면, Team을 조회한 Select 문 1개, 조회된 Team을 Roof를 통해 getMembers() 를 했기 때문에 지연 로딩이 발생하며, Roof로 도는 Team의 수만큼 Select 문이 발생합니다.</p>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>@BatchSize 적용</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>하이버네이트가 제공하는 org.hibernate.annotations.BatchSize 어노테이션을 이용하면 연관된 엔티티를 조회할 때 지정된 size 만큼 SQL의 IN절을 사용해서 조회합니다.</p>
+</blockquote>
+<blockquote>
+<p>만약 지정한 사이즈가 100이고, 150개의 데이터를 조회한다면 IN 절에 100개를 넣어 쿼리를 날리고, 나머지 IN절에 50개 를 넣은 쿼리를 실행하게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>Team.java - @BatchSize 적용</p>
+</blockquote>
+<pre><code>    ...
+    @OneToMany(mappedBy = &quot;team&quot;)
+    @BatchSize(size = 100) // ** 1000 이하의 숫자에서 적절히 사용 
+    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
+    ...
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t */ select
+            team0_.id as id1_3_,
+            team0_.name as name2_3_ 
+        from
+            Team team0_ limit ?
+
+resultCnt = 2
+
+Hibernate: 
+    /* load one-to-many jpql.domain.Team.members */ select
+        members0_.TEAM_ID as team_id5_0_1_,
+        members0_.id as id1_0_1_,
+        members0_.id as id1_0_0_,
+        members0_.age as age2_0_0_,
+        members0_.TEAM_ID as team_id5_0_0_,
+        members0_.type as type3_0_0_,
+        members0_.username as username4_0_0_ 
+    from
+        Member members0_ 
+    where
+        members0_.TEAM_ID in (
+            ?, ?
+        )
+
+Team = 팀A, members [Member{id=3, username='회원1', age=31}, Member{id=4, username='회원2', age=32}]
+
+Team = 팀B, members [Member{id=5, username='회원3', age=33}]
+
+</code></pre>
+<blockquote>
+<p>N+1의 쿼리 실행에서 IN 절을 사용하여 1+1로 변경 된것을 확인 할 수 있습니다.</p>
+</blockquote>
+<h5 id="batchsize의-설정-사이즈-초과">@BatchSize의 설정 사이즈 초과<a class="anchor" href="#batchsize의-설정-사이즈-초과">#</a></h5>
+<hr>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            Team team3 = new Team(); // ** 팀C 생성
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();  // ** 회원4 생성
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.changeTeam(team3);      // ** 회원4 팀C로 변경
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            String sQuery = &quot;SELECT  t FROM Team t&quot;; // Fetch 조인 제거
+
+            List&lt;Team&gt; resultList = em.createQuery(sQuery, Team.class)
+                    .setFirstResult(0)
+                    .setMaxResults(3)		// ** 페이징 MaxResults 3으로 하여 결과 3건 
+                    .getResultList();
+
+            System.out.println(&quot;resultCnt = &quot; + resultList.size());
+
+            for(Team team : resultList){
+                System.out.println(&quot;Team = &quot; + team.getName()+&quot;, members &quot;+team.getMembers());
+            }
+
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>Team.java - @BatchSize(size = 2)</p>
+</blockquote>
+<pre><code>    @OneToMany(mappedBy = &quot;team&quot;)
+    @BatchSize(size = 2) // ** 배치사이즈 2로 수정
+    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* SELECT
+        t 
+    FROM
+        Team t */ select
+            team0_.id as id1_3_,
+            team0_.name as name2_3_ 
+        from
+            Team team0_ limit ?
+            
+resultCnt = 3
+
+Hibernate: 
+    /* load one-to-many jpql.domain.Team.members */ select
+        members0_.TEAM_ID as team_id5_0_1_,
+        members0_.id as id1_0_1_,
+        members0_.id as id1_0_0_,
+        members0_.age as age2_0_0_,
+        members0_.TEAM_ID as team_id5_0_0_,
+        members0_.type as type3_0_0_,
+        members0_.username as username4_0_0_ 
+    from
+        Member members0_ 
+    where
+        members0_.TEAM_ID in (
+            ?, ?
+        )
+        
+Team = 팀A, members [Member{id=4, username='회원1', age=31}, Member{id=5, username='회원2', age=32}]
+Team = 팀B, members [Member{id=6, username='회원3', age=33}]
+
+Hibernate: 
+    /* load one-to-many jpql.domain.Team.members */ select
+        members0_.TEAM_ID as team_id5_0_1_,
+        members0_.id as id1_0_1_,
+        members0_.id as id1_0_0_,
+        members0_.age as age2_0_0_,
+        members0_.TEAM_ID as team_id5_0_0_,
+        members0_.type as type3_0_0_,
+        members0_.username as username4_0_0_ 
+    from
+        Member members0_ 
+    where
+        members0_.TEAM_ID=?
+        
+Team = 팀C, members [Member{id=7, username='회원4', age=34}]
+</code></pre>
+<blockquote>
+<p>@BatchSize의 설정된 size가 2이기 때문에 Team을 조회한 Select 문 1개와 <br>
+팀A의 TEAM_ID, 팀B의 TEAM_ID를 IN 절을 이용한 Member Select 쿼리 1개 <br>
+팀C의 TEAM_ID을 이용한 Member Select 쿼리 1개, 총 3개의 쿼리가 실행된 것을 볼 수 있습니다.</p>
+</blockquote>
+<h2 id="페치-조인의-특징과-한계---2">페치 조인의 특징과 한계 - 2<a class="anchor" href="#페치-조인의-특징과-한계---2">#</a></h2>
+<hr>
+<blockquote>
+<ul>
+<li>연관된 엔티티들을 SQL 한 번으로 조회 - 성능 최적화</li>
+<li>엔티티에직접 적용하는 글로벌 로딩 전략보다 우선함
+<ul>
+<li>@OneToMany(fetch = FetchType.LAZY) // 글로벌 로딩 전략</li>
+</ul>
+</li>
+<li>실무에서 글로벌 로딩 전략은 모두 지연 로딩</li>
+<li>최적화가 필요한 곳은 페치 조인 적용
+<ul>
+<li>N+1이 발생하는 곳은 Fetch 조인</li>
+<li>N+1이 발생하며, 페이징이 필요하다 @BatchSize 설정</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="페치-조인---정리">페치 조인 - 정리<a class="anchor" href="#페치-조인---정리">#</a></h2>
+<blockquote>
+<ul>
+<li>모든 것을 페치 조인으로 해결할 수 는 없음</li>
+<li>페치 조인은 객체 그래프를 유지할 때 사용하면 효과적</li>
+<li>여러 테이블을 조인해서 엔티티가 가진 모양이 아닌 전혀 다른 결과를 내야하면, 페치 조인 보다는 일반 조인을 사용하고 필요한 데이터들만 조회해서 DTO로 반환하는 것이 효과적</li>
+</ul>
+</blockquote>
+<h4 id="페치-조인-이후-데이터를-담아-반환하는-방법-3가지">페치 조인 이후 데이터를 담아 반환하는 방법 3가지<a class="anchor" href="#페치-조인-이후-데이터를-담아-반환하는-방법-3가지">#</a></h4>
+<blockquote>
+<ol>
+<li>엔티티를 페치조인 해서 엔티티를 그대로 사용</li>
+<li>페치 조인을 하여 조회 하고 애플리케이션에서 DTO로 변환해 사용</li>
+<li>처음부터 JPQL에서 New 생성자를 통해서 DTO를 지정해서 DTO로 반환해서 사용</li>
+</ol>
+</blockquote>
+<h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
+<hr>
+<blockquote>
+<p>src/main/java/jpql/domain/Member.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Member.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+
+@Entity
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String username;
+
+    private int age;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;TEAM_ID&quot;)
+    private Team team = new Team();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public jpql.domain.Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(jpql.domain.Team team) {
+        this.team = team;
+    }
+    
+    @Override
+    public String toString() {
+        return &quot;Member{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, age=&quot; + age +
+                '}';
+    }
+}
+</code></pre>
+</details>
+<blockquote>
+<p>src/main/java/jpql/domain/Team.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Team.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+@Entity
+public class Team {
+
+    public Team() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = &quot;team&quot;)
+    private List&lt;Member&gt; members = new ArrayList&lt;&gt;();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&lt;Member&gt; getMembers() {
+        return members;
+    }
+
+    public void setMembers(List&lt;Member&gt; members) {
+        this.members = members;
+    }
+    
+    @Override
+    public String toString() {
+        return &quot;Team{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, name='&quot; + name + '\'' +
+                '}';
+    }
+}
+</code></pre>
+</details> 	
+<blockquote>
+<p>src/main/java/jpql/domain/Order.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Order.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = &quot;ORDERS&quot;) //ORDER 가 예약어라 ORDERS로 테이블 명칭 지정
+public class Order {
+    public Order() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private int orderAmount;
+
+    @Embedded
+    private Address orderAddress;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;PRODUCT_ID&quot;)
+    private Product product;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getOrderAmount() {
+        return orderAmount;
+    }
+
+    public void setOrderAmount(int orderAmount) {
+        this.orderAmount = orderAmount;
+    }
+
+    public Address getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(Address orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Address.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Address.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.Embeddable;
+import java.util.Objects;
+
+@Embeddable
+public class Address {
+    private String city;
+    private String street;
+    private String zipcode;
+
+    public String getCity() {
+        return city;
+    }
+
+    private void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    private void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    private void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getCity(), address.getCity()) &amp;&amp; Objects.equals(getStreet(), address.getStreet()) &amp;&amp; Objects.equals(getZipcode(), address.getZipcode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCity(), getStreet(), getZipcode());
+    }
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/domain/Product.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Product.java </summary>
+<pre><code>package jpql.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Product {
+    public Product() {
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String name;
+
+    private int price;
+
+    private int stockAmount;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getStockAmount() {
+        return stockAmount;
+    }
+
+    public void setStockAmount(int stockAmount) {
+        this.stockAmount = stockAmount;
+    }
+} 	
+</code></pre>
+</details> 
+<blockquote>
+<p>src/main/java/jpql/JpqlMain.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> JpqlMain.java </summary>
+<pre><code>package jpql;
+
+import jpql.domain.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+public class JpqlMain {
+    //psvm 단축키로 생성 가능
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;jpql&quot;);
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        tx.begin(); // [트랜잭션] 시작
+
+        try{
+		
+
+        }catch (Exception e){
+            e.printStackTrace();
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+    }
+
+}
+</code></pre>
+</details> 
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    </ul>
 
  
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-path-expression/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">JPQL 경로 표현식(PATH EXPRESSION)</span>
+    </a>
+  
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-polymorphic-query/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >JPQL 다형성 쿼리(Polymorphic Query)</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">JPQL 페치 조인(Fetch Join)</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#페치-조인">페치 조인</a></li>
+    <li><a href="#엔티티-페치-조인">엔티티 페치 조인</a>
+      <ul>
+        <li><a href="#페치-조인-미사용">페치 조인 미사용</a></li>
+        <li><a href="#페치-조인-사용">페치 조인 사용</a></li>
+      </ul>
+    </li>
+    <li><a href="#컬렉션-페치-조인">컬렉션 페치 조인</a>
+      <ul>
+        <li><a href="#컬렉션-페치-조인-1">컬렉션 페치 조인</a></li>
+      </ul>
+    </li>
+    <li><a href="#페치-조인과-distinct">페치 조인과 DISTINCT</a>
+      <ul>
+        <li><a href="#team-조회와-team-t-join-tmembers-m-비교">Team 조회와 Team t JOIN t.members m 비교</a></li>
+        <li><a href="#sql의-distinct-추가">SQL의 DISTINCT 추가</a></li>
+        <li><a href="#애플리케이션에서-엔티티-중복제거">애플리케이션에서 엔티티 중복제거</a></li>
+      </ul>
+    </li>
+    <li><a href="#페치-조인과-일반-조인의-차이">페치 조인과 일반 조인의 차이</a>
+      <ul>
+        <li><a href="#일반-조인">일반 조인</a></li>
+        <li><a href="#페치-조인-1">페치 조인</a></li>
+      </ul>
+    </li>
+    <li><a href="#페치-조인의-특징과-한계---1">페치 조인의 특징과 한계 - 1</a>
+      <ul>
+        <li><a href="#페치-조인-대상에는-별칭을-줄-수-없다">페치 조인 대상에는 별칭을 줄 수 없다.</a></li>
+        <li><a href="#둘-이상의-컬렉션은-페치-조인-할-수-없다">둘 이상의 컬렉션은 페치 조인 할 수 없다.</a></li>
+        <li><a href="#컬렉션을-페치-조인하면-페이징-api-를-사용할-수-없다">컬렉션을 페치 조인하면 페이징 API 를 사용할 수 없다.</a></li>
+        <li><a href="#1n-페치-조인-페이징-사용-제한-해결책">1:N 페치 조인 페이징 사용 제한 해결책</a></li>
+      </ul>
+    </li>
+    <li><a href="#페치-조인의-특징과-한계---2">페치 조인의 특징과 한계 - 2</a></li>
+    <li><a href="#페치-조인---정리">페치 조인 - 정리</a>
+      <ul>
+        <li></li>
+        <li><a href="#이전-소스">이전 소스</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
 
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
@@ -15,3 +2494,9 @@
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+
+
+</body>
+
+</html>
