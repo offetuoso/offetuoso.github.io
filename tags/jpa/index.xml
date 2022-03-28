@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 21 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 27 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPQL 엔티티 직접 사용(Direct Use Of Entity)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-direct-use-of-entity/</link>
+      <pubDate>Sun, 27 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-direct-use-of-entity/</guid>
+      <description>JPQL 엔티티 직접 사용(Direct Use Of Entity)  엔티티 직접 사용  기본 키 값   JPQL에서 엔티티를 직접 사용하면 SQL로 어떠한 쿼리가 실행되는 지에 대한 정리 입니다.
+  COUNT(m) 같은 SQL 함수에서 엔티티를 직접 사용했을때, SQL에서 해당 엔티티의 식별자인 기본 키 값을 사용하게됩니다.
+  [JPQL]
+ SELECT COUNT(m.id) FROM Member M // 엔티티의 아이디를 사용SELECT COUNT(m) FROM Member M // 엔티티를 직접 사용  [SQL] (둘다 같은 다음 SQL 실행)</description>
+    </item>
+    
     <item>
       <title>JPQL 다형성 쿼리(Polymorphic Query)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-polymorphic-query/</link>
