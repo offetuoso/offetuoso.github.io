@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 27 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPQL 네임드 쿼리(Named Query)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-named-query/</link>
+      <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-named-query/</guid>
+      <description>JPQL 네임드 쿼리(Named Query)  Named 쿼리  @NamedQuery   쿼리를 엔티티 같은 곳에 미리 선언을 해둘 수 있는 기능. 쿼리를 재활용 해서 사용할 수 있습니다.
+ @Entity@NamedQuery(name = &amp;quot;member.findByUsername&amp;quot;,query = &amp;quot;SELECT m FROM Member WHERE n.username :username&amp;quot;)public class Member {...}List&amp;lt;Member&amp;gt; resultList = em.createQuery(&amp;quot;Member.findByUsername&amp;quot;, Member.class).setParameter(&amp;quot;username&amp;quot;, &amp;quot;회원1&amp;quot;).getResultList(); 정적 쿼리    미리 정의해서 이름을 부여해두고 사용하는 JPQL 정적 쿼리 어노테이션, XML에 정의 애플리케이션 로딩 시점에 초기화 후 재사용  애플리케이션 로딩 시점에 정적인 쿼리를 JPA 또는 하이버네이트가 SQL로 파싱을 하고, 캐싱을 합니다.</description>
+    </item>
+    
     <item>
       <title>JPQL 엔티티 직접 사용(Direct Use Of Entity)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-direct-use-of-entity/</link>

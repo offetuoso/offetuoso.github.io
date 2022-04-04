@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>JPQL 엔티티 직접 사용(Direct Use Of Entity) | offetuoso&#39;s Blog</title>
+  <title>JPQL 네임드 쿼리(Named Query) | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="JPQL 엔티티 직접 사용(Direct Use Of Entity)">
+  <meta name="description" content="JPQL 네임드 쿼리(Named Query)">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="JPQL 엔티티 직접 사용(Direct Use Of Entity)">
-  <meta property="og:description" content="JPQL 엔티티 직접 사용(Direct Use Of Entity)">
+  <meta property="og:title" content="JPQL 네임드 쿼리(Named Query)">
+  <meta property="og:description" content="JPQL 네임드 쿼리(Named Query)">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "JPQL 엔티티 직접 사용(Direct Use Of Entity)",
-      "headline" : "JPQL 엔티티 직접 사용(Direct Use Of Entity)",
-      "description" : "JPQL 엔티티 직접 사용(Direct Use Of Entity)",
+      "name" : "JPQL 네임드 쿼리(Named Query)",
+      "headline" : "JPQL 네임드 쿼리(Named Query)",
+      "description" : "JPQL 네임드 쿼리(Named Query)",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-03-27 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-03-27 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql-direct-use-of-entity\/",
-      "wordCount" : "1408",
+      "datePublished": "2022-03-28 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-03-28 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql-named-query\/",
+      "wordCount" : "1411",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,50 +170,145 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	JPQL 엔티티 직접 사용(Direct Use Of Entity)
+		            	JPQL 네임드 쿼리(Named Query)
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	JPQL 엔티티 직접 사용(Direct Use Of Entity)
+		       	JPQL 네임드 쿼리(Named Query)
             </h1>		
-            <time datetime="2022-03-27 00:00:00 &#43;0000 UTC" class="post__date">2022-03-27</time> 
+            <time datetime="2022-03-28 00:00:00 &#43;0000 UTC" class="post__date">2022-03-28</time> 
           </header>
           <article class="post__content">
               
-<h1 id="jpql-엔티티-직접-사용direct-use-of-entity">JPQL 엔티티 직접 사용(Direct Use Of Entity)</h1>
+<h1 id="jpql-네임드-쿼리named-query">JPQL 네임드 쿼리(Named Query)</h1>
 <hr>
-<h2 id="엔티티-직접-사용">엔티티 직접 사용<a class="anchor" href="#엔티티-직접-사용">#</a></h2>
+<h2 id="named-쿼리">Named 쿼리<a class="anchor" href="#named-쿼리">#</a></h2>
 <hr>
-<h3 id="기본-키-값">기본 키 값<a class="anchor" href="#기본-키-값">#</a></h3>
+<h3 id="namedquery">@NamedQuery<a class="anchor" href="#namedquery">#</a></h3>
 <hr>
 <blockquote>
-<p>JPQL에서 엔티티를 직접 사용하면 SQL로 어떠한 쿼리가 실행되는 지에 대한 정리 입니다.</p>
+<p>쿼리를 엔티티 같은 곳에 미리 선언을 해둘 수 있는 기능. 쿼리를 재활용 해서 사용할 수 있습니다.</p>
 </blockquote>
-<blockquote>
-<p>COUNT(m) 같은 SQL 함수에서 엔티티를 직접 사용했을때, SQL에서 해당 엔티티의 식별자인 기본 키 값을 사용하게됩니다.</p>
-</blockquote>
-<blockquote>
-<p>[JPQL]</p>
-</blockquote>
-<pre><code>SELECT COUNT(m.id) FROM Member M // 엔티티의 아이디를 사용
+<pre><code>@Entity
+@NamedQuery(
+	name = &quot;member.findByUsername&quot;,
+	query = &quot;SELECT m FROM Member WHERE n.username :username&quot;
+)
 
-SELECT COUNT(m) FROM Member M // 엔티티를 직접 사용
+public class Member {
+	...
+}
 
+List&lt;Member&gt; resultList = 
+	em.createQuery(&quot;Member.findByUsername&quot;, Member.class)
+	  .setParameter(&quot;username&quot;, &quot;회원1&quot;)
+	  .getResultList();
 </code></pre>
-<br>
+<h3 id="정적-쿼리">정적 쿼리<a class="anchor" href="#정적-쿼리">#</a></h3>
+<hr>
 <blockquote>
-<p>[SQL] (둘다 같은 다음 SQL 실행)</p>
+<ul>
+<li>미리 정의해서 이름을 부여해두고 사용하는 JPQL</li>
+<li>정적 쿼리</li>
+<li>어노테이션, XML에 정의</li>
+<li>애플리케이션 로딩 시점에 초기화 후 재사용
+<ul>
+<li>애플리케이션 로딩 시점에 정적인 쿼리를 JPA 또는 하이버네이트가 SQL로 파싱을 하고, 캐싱을 합니다.</li>
+</ul>
+</li>
+<li><mark>애플리케이션 로딩 시점에 쿼리를 검증</mark></li>
+</ul>
 </blockquote>
-<pre><code>SELECT COUNT(m.id) as CNT FROM Member m
-</code></pre>
+<h4 id="namedquery-사용-테스트">@NamedQuery 사용 테스트<a class="anchor" href="#namedquery-사용-테스트">#</a></h4>
 <blockquote>
-<p>엔티티를 파라미터로 전달</p>
+<p>Member.java</p>
 </blockquote>
-<pre><code>String jpql = &quot;SELECT m FROM Member m WHERE m WHERE m = :member&quot;;
-List resultList = em.createQuery(jqpl)
-                    .setParameter(&quot;member&quot;, member)
-                    .getResultList();
+<pre><code>package jpql.domain;
+
+import javax.persistence.*;
+import jpql.domain.*;
+
+
+@Entity
+@NamedQuery(name = &quot;Member.findByUsername&quot;, // * 관례로 엔티티명.쿼리명 으로 많이 사용
+            query = &quot;SELECT m FROM Member m WHERE m.username = :username&quot;
+)
+public class Member {
+
+    public Member(){
+    }
+
+    @Id @GeneratedValue
+    private Long id;
+
+    private String username;
+
+    private int age;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = &quot;TEAM_ID&quot;)
+    private Team team;
+
+    public void changeTeam(Team team){
+        this.team = team;
+        team.getMembers().add(this);
+    }
+
+    @Enumerated(EnumType.STRING) // 기본이 숫자 EnumType.ORDINAL 이기 때문에 String으로 필수로 세팅
+    private MemberType type;
+
+    public MemberType getType() {
+        return type;
+    }
+
+    public void setType(MemberType type) {
+        this.type = type;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Member{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, username='&quot; + username + '\'' +
+                &quot;, age=&quot; + age +
+                /*&quot;, team=&quot; + team  //toString 양방향 적용시 무한루프될 가능성 toString 에서는 연관관계 제거  */
+                '}';
+    }
+}
+
 </code></pre>
 <blockquote>
 <p>JpqlMain.java</p>
@@ -261,10 +356,9 @@ List resultList = em.createQuery(jqpl)
             em.flush();
             em.clear();
 
-            String sQuery = &quot;SELECT m FROM Member m WHERE m = :mmbr&quot;;
 
-            List&lt;Member&gt; resultList = em.createQuery(sQuery, Member.class)
-                    .setParameter(&quot;mmbr&quot;,member1)
+            List&lt;Member&gt; resultList = em.createNamedQuery(&quot;Member.findByUsername&quot;, Member.class)
+                    .setParameter(&quot;username&quot;, &quot;회원1&quot;)
                     .getResultList();
 
 
@@ -274,331 +368,146 @@ List resultList = em.createQuery(jqpl)
 
             tx.commit();
 </code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* Member.findByUsername */ select
+        member0_.id as id1_0_,
+        member0_.age as age2_0_,
+        member0_.TEAM_ID as team_id5_0_,
+        member0_.type as type3_0_,
+        member0_.username as username4_0_ 
+    from
+        Member member0_ 
+    where
+        member0_.username=?
+        
+name = 회원1, age = 31
+
+</code></pre>
+<h4 id="애플리케이션-로딩-시점에-쿼리를-검증">애플리케이션 로딩 시점에 쿼리를 검증<a class="anchor" href="#애플리케이션-로딩-시점에-쿼리를-검증">#</a></h4>
+<blockquote>
+<p>만약 누군가가 쿼리를 작성할때 실수로 오타를 냈다고 하고 테스트를 해보겠습니다.</p>
+</blockquote>
+<pre><code>@Entity
+@NamedQuery(name = &quot;Member.findByUsername&quot;, // * 관례로 엔티티명.쿼리명 으로 많이 사용
+            query = &quot;SELECT m FROM Membe m WHERE m.username = :username&quot;
+)
+</code></pre>
+<blockquote>
+<p>JpqlMain.java - 애플리케이션 재시작</p>
+</blockquote>
 <blockquote>
 <p>console</p>
 </blockquote>
 <pre><code>
-Hibernate: 
-    /* SELECT
-        m 
-    FROM
-        Member m 
-    WHERE
-        m = :mmbr */ select
-            member0_.id as id1_0_,
-            member0_.age as age2_0_,
-            member0_.TEAM_ID as team_id5_0_,
-            member0_.type as type3_0_,
-            member0_.username as username4_0_ 
-        from
-            Member member0_ 
-        where
-            member0_.id=?
-            
-        
-name = 회원1, age = 31
+Caused by: org.hibernate.HibernateException: Errors in named queries: 
+Member.findByUsername failed because of: org.hibernate.hql.internal.ast.QuerySyntaxException: Membe is not mapped [SELECT m FROM Membe m WHERE m.username = :username]
+	at org.hibernate.internal.SessionFactoryImpl.&lt;init&gt;(SessionFactoryImpl.java:341)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	... 4 more
 
 
 </code></pre>
 <blockquote>
-<p>식별자를 직접 전달</p>
+<p>어노테이션에 등록이 되어있기 때문에 Jpa가 미리 파싱을 하고 캐싱을 하려는 중</p>
 </blockquote>
-<pre><code>String jpql = &quot;SELECT m FROM Member m WHERE m.id = :memberId&quot;;
-List resultList = em.createQuery(jqpl)
-                    .setParameter(&quot;memberId&quot;, memberId)
-                    .getResultList();
+<blockquote>
+<p>문법이 맞지 않는 상황이 벌어지면 오류를 발생시킵니다.</p>
+</blockquote>
+<pre><code>Member.findByUsername failed because of: org.hibernate.hql.internal.ast.QuerySyntaxException: Membe is not mapped [SELECT m FROM Membe m WHERE m.username = :username]
 </code></pre>
 <blockquote>
-<p>JpqlMain.java</p>
+<p>개발하면서 가장 좋은 에러는 즉시 나는 에러가 좋습니다. 바로 찾을 수 있고 수정할 수 있기 때문입니다. 그러면 가장 안좋은 에러는 사용자가 사용중에 무언가 액션을 했을때 나는 오류입니다. 그리고 그 중간 정도의 오류는 컴파일 시점에 나는 오류입니다. 어떻게든지 로컬에서라도 실행은 시키고 배포를 하기 때문에 대부분의 오류를 다 잡아줄수 있습니다.</p>
 </blockquote>
-<pre><code>            Team team1 = new Team();
-            team1.setName(&quot;팀A&quot;);
-            em.persist(team1);
-
-            Team team2 = new Team();
-            team2.setName(&quot;팀B&quot;);
-            em.persist(team2);
-
-            Team team3 = new Team();
-            team3.setName(&quot;팀C&quot;);
-            em.persist(team3);
-
-            Member member1 = new Member();
-            member1.setUsername(&quot;회원1&quot;);
-            member1.setAge(31);
-            member1.changeTeam(team1);
-            member1.setType(MemberType.USER);
-            em.persist(member1);
-
-            Member member2 = new Member();
-            member2.setUsername(&quot;회원2&quot;);
-            member2.setAge(32);
-            member2.changeTeam(team1);
-            member2.setType(MemberType.USER);
-            em.persist(member2);
-
-            Member member3 = new Member();
-            member3.setUsername(&quot;회원3&quot;);
-            member3.setAge(33);
-            member3.changeTeam(team2);
-            member3.setType(MemberType.USER);
-            em.persist(member3);
-
-            Member member4 = new Member();
-            member4.setUsername(&quot;회원4&quot;);
-            member4.setAge(34);
-            member4.changeTeam(team3);
-            member4.setType(MemberType.USER);
-            em.persist(member4);
-
-            em.flush();
-            em.clear();
-
-
-            String sQuery = &quot;SELECT m FROM Member m WHERE m.id = :mmbrId&quot;;
-
-            List&lt;Member&gt; resultList = em.createQuery(sQuery, Member.class)
-                    .setParameter(&quot;mmbrId&quot;,member1.getId())
-                    .getResultList();
-
-
-            for(Member member : resultList){
-                System.out.println(&quot;name = &quot; + member.getUsername()+ &quot;, age = &quot; + member.getAge());
-            }
-
-            tx.commit();
+<h3 id="named-쿼리---xml에-정의">Named 쿼리 - XML에 정의<a class="anchor" href="#named-쿼리---xml에-정의">#</a></h3>
+<blockquote>
+<p>[META-INF/persistence.xml]</p>
+</blockquote>
+<pre><code>&lt;persistance-unit name=&quot;jpabook&quot;&gt;
+	&lt;mapping-file&gt;META-INF/ormMember.xml&lt;/mapping-file&gt;
 </code></pre>
 <blockquote>
-<p>console</p>
+<p>[META-INF/ormMemer.xml]</p>
 </blockquote>
-<pre><code>Hibernate: 
-    /* SELECT
-        m 
-    FROM
-        Member m 
-    WHERE
-        m.id = :mmbrId */ select
-            member0_.id as id1_0_,
-            member0_.age as age2_0_,
-            member0_.TEAM_ID as team_id5_0_,
-            member0_.type as type3_0_,
-            member0_.username as username4_0_ 
-        from
-            Member member0_ 
-        where
-            member0_.id=?
-            
-name = 회원1, age = 31
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;entity-mappings xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence/orm&quot; version=&quot;2.1&quot;&gt;
+	
+	&lt;named-query name=&quot;Member.findByUsername&quot;&gt;
+		&lt;query&gt;&lt;![CDATA[
+			SELECT m
+			FROM Member m
+			WHERE m.username = :username
+		]]&gt;&lt;/query&gt;
+	&lt;/named-query&gt;
+	
+	&lt;named-query name=&quot;Member.count&quot;&gt;
+		&lt;query&gt;&lt;![CDATA[
+			SELECT COUNT(m) FROM Member m
+		]]&gt;&lt;/query&gt;
+	&lt;/named-query&gt;
+	
+&lt;/entity-mappings&gt;
+</code></pre>
+<h3 id="named-쿼리-환경에-따른-설정">Named 쿼리 환경에 따른 설정<a class="anchor" href="#named-쿼리-환경에-따른-설정">#</a></h3>
+<blockquote>
+<ul>
+<li>XML이 항상 우선권을 가진다.</li>
+<li>애플리케이션 운영 환경에 따라 다른 XML을 배포할 수 있다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>스프링 데이터 JPA를 사용하게 되면 인터페이스 바로 위에 사용 가능합니다.</p>
+</blockquote>
+<blockquote>
+<p>Spring Data JPA</p>
+</blockquote>
+<pre><code>public interface UserRepository extends JpaReposotory&lt;User, Long&gt;{
+	@Query(&quot;SELECT u from User u WHERE u.emailAddress = ?1&quot;)
+	User findByEmailAddress(String emailAddress);
+}
 
 </code></pre>
 <blockquote>
-<p>실행된 SQL</p>
+<p>스프링 JPA는 JPA를 편하게 사용하기 위해 추상화 하여, JPA의 껍데기 역활만 합니다. <br>
+@Query(&ldquo;SELECT u from User u WHERE u.emailAddress = ?1&rdquo;) 가 바로 Named 쿼리 입니다. <br>
+JPA가 해당 어노테이션과 쿼리를 Named 쿼리로 등록합니다. 그래서 애플리케이션 로딩 시점에 파싱하게 되고 문법 오류가 있으면 바로 잡아주게 됩니다.</p>
 </blockquote>
-<pre><code>SELECT m.* FROM Member m WHERE m.id = ?
-</code></pre>
-<h3 id="외래-키-값">외래 키 값<a class="anchor" href="#외래-키-값">#</a></h3>
+<h2 id="결론">결론<a class="anchor" href="#결론">#</a></h2>
 <hr>
-<blockquote>
-<p>외래 키 값은</p>
-</blockquote>
-<blockquote>
-<p>Member.java</p>
-</blockquote>
-<pre><code>    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = &quot;TEAM_ID&quot;)   // ** 연관관계로 매핑된 외래키
-    private Team team;
+<pre><code>@Entity
+@NamedQuery(
+	name = &quot;member.findByUsername&quot;,
+	query = &quot;SELECT m FROM Member WHERE n.username :username&quot;
+)
+
+public class Member {
+	...
+}
+
+List&lt;Member&gt; resultList = 
+	em.createQuery(&quot;Member.findByUsername&quot;, Member.class)
+	  .setParameter(&quot;username&quot;, &quot;회원1&quot;)
+	  .getResultList();
 </code></pre>
 <blockquote>
-<p>엔티티를 파라미터로 전달</p>
+<p>위와 같이 엔티티에 Named Query를 추가하는 것은 코드가 매우 지저분 해지고, <br>
+결국 실무에서는 Spring Data JPA를 섞어 쓰는게 좋기 때문에</p>
 </blockquote>
-<pre><code>Team team = em.find(Team.class, 1L);
+<blockquote>
+<p>Spring Data JPA</p>
+</blockquote>
+<pre><code>public interface UserRepository extends JpaReposotory&lt;User, Long&gt;{
+	@Query(&quot;SELECT u from User u WHERE u.emailAddress = ?1&quot;)
+	User findByEmailAddress(String emailAddress);
+}
 
-String jpql = &quot;SELECT m FROM Member m WHERE m.team = :team&quot;;
-
-List resultList = em.createQury(jpql)
-                    .setParameter(&quot;team&quot;, team)
-                    .getResultList();
 </code></pre>
 <blockquote>
-<p>JpqlMain.java</p>
+<p>이와 같이 Spring Data JPA 방식으로 개발하는게 좋습니다.</p>
 </blockquote>
-<pre><code>            Team team1 = new Team();
-            team1.setName(&quot;팀A&quot;);
-            em.persist(team1);
-
-            Team team2 = new Team();
-            team2.setName(&quot;팀B&quot;);
-            em.persist(team2);
-
-            Team team3 = new Team();
-            team3.setName(&quot;팀C&quot;);
-            em.persist(team3);
-
-            Member member1 = new Member();
-            member1.setUsername(&quot;회원1&quot;);
-            member1.setAge(31);
-            member1.changeTeam(team1);
-            member1.setType(MemberType.USER);
-            em.persist(member1);
-
-            Member member2 = new Member();
-            member2.setUsername(&quot;회원2&quot;);
-            member2.setAge(32);
-            member2.changeTeam(team1);
-            member2.setType(MemberType.USER);
-            em.persist(member2);
-
-            Member member3 = new Member();
-            member3.setUsername(&quot;회원3&quot;);
-            member3.setAge(33);
-            member3.changeTeam(team2);
-            member3.setType(MemberType.USER);
-            em.persist(member3);
-
-            Member member4 = new Member();
-            member4.setUsername(&quot;회원4&quot;);
-            member4.setAge(34);
-            member4.changeTeam(team3);
-            member4.setType(MemberType.USER);
-            em.persist(member4);
-
-            em.flush();
-            em.clear();
-
-            String sQuery = &quot;SELECT m FROM Member m WHERE m.team = :team&quot;;
-
-            List&lt;Member&gt; resultList = em.createQuery(sQuery, Member.class)
-                    .setParameter(&quot;team&quot;,team1)
-                    .getResultList();
-
-
-            for(Member member : resultList){
-                System.out.println(&quot;name = &quot; + member.getUsername()+ &quot;, age = &quot; + member.getAge());
-            }
-
-            tx.commit();
-</code></pre>
-<blockquote>
-<p>console</p>
-</blockquote>
-<pre><code>Hibernate: 
-    /* SELECT
-        m 
-    FROM
-        Member m 
-    WHERE
-        m.team = :team */ select
-            member0_.id as id1_0_,
-            member0_.age as age2_0_,
-            member0_.TEAM_ID as team_id5_0_,
-            member0_.type as type3_0_,
-            member0_.username as username4_0_ 
-        from
-            Member member0_ 
-        where
-            member0_.TEAM_ID=?
-            
-name = 회원1, age = 31
-name = 회원2, age = 32
-</code></pre>
-<blockquote>
-<p>식별자를 직접 전달</p>
-</blockquote>
-<pre><code>Team team = em.find(Team.class, 1L);
-
-String jpql = &quot;SELECT m FROM Member m WHERE m.team.id = :teamId&quot;;
-
-List resultList = em.createQury(jpql)
-                    .setParameter(&quot;teamId&quot;, teamId)
-                    .getResultList();
-</code></pre>
-<blockquote>
-<p>JpqlMain.java</p>
-</blockquote>
-<pre><code>            Team team1 = new Team();
-            team1.setName(&quot;팀A&quot;);
-            em.persist(team1);
-
-            Team team2 = new Team();
-            team2.setName(&quot;팀B&quot;);
-            em.persist(team2);
-
-            Team team3 = new Team();
-            team3.setName(&quot;팀C&quot;);
-            em.persist(team3);
-
-            Member member1 = new Member();
-            member1.setUsername(&quot;회원1&quot;);
-            member1.setAge(31);
-            member1.changeTeam(team1);
-            member1.setType(MemberType.USER);
-            em.persist(member1);
-
-            Member member2 = new Member();
-            member2.setUsername(&quot;회원2&quot;);
-            member2.setAge(32);
-            member2.changeTeam(team1);
-            member2.setType(MemberType.USER);
-            em.persist(member2);
-
-            Member member3 = new Member();
-            member3.setUsername(&quot;회원3&quot;);
-            member3.setAge(33);
-            member3.changeTeam(team2);
-            member3.setType(MemberType.USER);
-            em.persist(member3);
-
-            Member member4 = new Member();
-            member4.setUsername(&quot;회원4&quot;);
-            member4.setAge(34);
-            member4.changeTeam(team3);
-            member4.setType(MemberType.USER);
-            em.persist(member4);
-
-            em.flush();
-            em.clear();
-
-            String sQuery = &quot;SELECT m FROM Member m WHERE m.team.id = :teamId&quot;;
-
-            List&lt;Member&gt; resultList = em.createQuery(sQuery, Member.class)
-                    .setParameter(&quot;teamId&quot;,team1.getId())
-                    .getResultList();
-
-
-            for(Member member : resultList){
-                System.out.println(&quot;name = &quot; + member.getUsername()+ &quot;, age = &quot; + member.getAge());
-            }
-
-            tx.commit();
-</code></pre>
-<blockquote>
-<p>console</p>
-</blockquote>
-<pre><code>Hibernate: 
-    /* SELECT
-        m 
-    FROM
-        Member m 
-    WHERE
-        m.team.id = :teamId */ select
-            member0_.id as id1_0_,
-            member0_.age as age2_0_,
-            member0_.TEAM_ID as team_id5_0_,
-            member0_.type as type3_0_,
-            member0_.username as username4_0_ 
-        from
-            Member member0_ 
-        where
-            member0_.TEAM_ID=?
-            
-name = 회원1, age = 31
-name = 회원2, age = 32
-</code></pre>
-<blockquote>
-<p>실행된 SQL</p>
-</blockquote>
-<pre><code>SELECT m.* FROM Member m WHERE m.team_id = ? 
-</code></pre>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
 <blockquote>
@@ -983,17 +892,12 @@ public class JpqlMain {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-polymorphic-query/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-direct-use-of-entity/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">JPQL 다형성 쿼리(Polymorphic Query)</span>
+        <span class="pagination__title">JPQL 엔티티 직접 사용(Direct Use Of Entity)</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-named-query/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >JPQL 네임드 쿼리(Named Query)</span>
-    </a>
   
 </div>
 
@@ -1063,13 +967,19 @@ public class JpqlMain {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">JPQL 엔티티 직접 사용(Direct Use Of Entity)</div> 
+          <div class="toc-post-title">JPQL 네임드 쿼리(Named Query)</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#엔티티-직접-사용">엔티티 직접 사용</a>
+    <li><a href="#named-쿼리">Named 쿼리</a>
       <ul>
-        <li><a href="#기본-키-값">기본 키 값</a></li>
-        <li><a href="#외래-키-값">외래 키 값</a></li>
+        <li><a href="#namedquery">@NamedQuery</a></li>
+        <li><a href="#정적-쿼리">정적 쿼리</a></li>
+        <li><a href="#named-쿼리---xml에-정의">Named 쿼리 - XML에 정의</a></li>
+        <li><a href="#named-쿼리-환경에-따른-설정">Named 쿼리 환경에 따른 설정</a></li>
+      </ul>
+    </li>
+    <li><a href="#결론">결론</a>
+      <ul>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
