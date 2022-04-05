@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 04 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 에필로그(Epilogue)</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-epilogue/</link>
+      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-epilogue/</guid>
+      <description>JPA 에필로그(Epilogue)   장장 4개월의 기간동안 강의를 보며, 강의 PPT를 읽고 넘기는 것이 아니라 하나 하나 블로그로 정리를 한다는 목적으로 타자연습을 하였습니다.
+  조금이라도 머리에 남기 바라는 심정과 고질적인 독수리 타법을 개선하고자 노력하였습니다.
+  일이 바쁘다, 몸이 아프다 라는 핑계로 매우 늦게 완강을 하였지만, 결국 해냈습니다.
+  사실 SI에서 JPA를 만져볼 일이 없지만, 저와 같이 새로운 것에 도전하고 배우려는 사람이 늘어나고 지금보다 JPA가 더 많은 기업에서 사용하고 많은 개발자들이 사용하는 날이 온다면 SI에서도 당연히 JPA를 사용하는 날이 오리라 믿습니다.</description>
+    </item>
+    
     <item>
       <title>JPQL 벌크 연산(Bulk Operation)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/bulk-operation/</link>
