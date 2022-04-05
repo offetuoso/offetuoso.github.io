@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>JPQL 네임드 쿼리(Named Query) | offetuoso&#39;s Blog</title>
+  <title>JPQL 벌크 연산(Bulk Operation) | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="JPQL 네임드 쿼리(Named Query)">
+  <meta name="description" content="JPQL 벌크 연산(Bulk Operation)">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="JPQL 네임드 쿼리(Named Query)">
-  <meta property="og:description" content="JPQL 네임드 쿼리(Named Query)">
+  <meta property="og:title" content="JPQL 벌크 연산(Bulk Operation)">
+  <meta property="og:description" content="JPQL 벌크 연산(Bulk Operation)">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "JPQL 네임드 쿼리(Named Query)",
-      "headline" : "JPQL 네임드 쿼리(Named Query)",
-      "description" : "JPQL 네임드 쿼리(Named Query)",
+      "name" : "JPQL 벌크 연산(Bulk Operation)",
+      "headline" : "JPQL 벌크 연산(Bulk Operation)",
+      "description" : "JPQL 벌크 연산(Bulk Operation)",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-03-28 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-03-28 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/jpql-named-query\/",
-      "wordCount" : "1411",
+      "datePublished": "2022-04-04 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-04-04 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/orm-jpa-basic\/bulk-operation\/",
+      "wordCount" : "1569",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,145 +170,198 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	JPQL 네임드 쿼리(Named Query)
+		            	JPQL 벌크 연산(Bulk Operation)
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	JPQL 네임드 쿼리(Named Query)
+		       	JPQL 벌크 연산(Bulk Operation)
             </h1>		
-            <time datetime="2022-03-28 00:00:00 &#43;0000 UTC" class="post__date">2022-03-28</time> 
+            <time datetime="2022-04-04 00:00:00 &#43;0000 UTC" class="post__date">2022-04-04</time> 
           </header>
           <article class="post__content">
               
-<h1 id="jpql-네임드-쿼리named-query">JPQL 네임드 쿼리(Named Query)</h1>
-<hr>
-<h2 id="named-쿼리">Named 쿼리<a class="anchor" href="#named-쿼리">#</a></h2>
-<hr>
-<h3 id="namedquery">@NamedQuery<a class="anchor" href="#namedquery">#</a></h3>
+<h1 id="jpql-벌크-연산bulk-operation">JPQL 벌크 연산(Bulk Operation)</h1>
 <hr>
 <blockquote>
-<p>쿼리를 엔티티 같은 곳에 미리 선언을 해둘 수 있는 기능. 쿼리를 재활용 해서 사용할 수 있습니다.</p>
+<p>여러 건(대량의 데이터)을 한 번에 수정하거나 삭제하는 방법</p>
 </blockquote>
-<pre><code>@Entity
-@NamedQuery(
-	name = &quot;member.findByUsername&quot;,
-	query = &quot;SELECT m FROM Member WHERE n.username :username&quot;
-)
-
-public class Member {
-	...
-}
-
-List&lt;Member&gt; resultList = 
-	em.createQuery(&quot;Member.findByUsername&quot;, Member.class)
-	  .setParameter(&quot;username&quot;, &quot;회원1&quot;)
-	  .getResultList();
-</code></pre>
-<h3 id="정적-쿼리">정적 쿼리<a class="anchor" href="#정적-쿼리">#</a></h3>
+<h2 id="벌크-연산">벌크 연산<a class="anchor" href="#벌크-연산">#</a></h2>
 <hr>
 <blockquote>
 <ul>
-<li>미리 정의해서 이름을 부여해두고 사용하는 JPQL</li>
-<li>정적 쿼리</li>
-<li>어노테이션, XML에 정의</li>
-<li>애플리케이션 로딩 시점에 초기화 후 재사용
-<ul>
-<li>애플리케이션 로딩 시점에 정적인 쿼리를 JPA 또는 하이버네이트가 SQL로 파싱을 하고, 캐싱을 합니다.</li>
-</ul>
+<li>재고가 10개 미만인 모든 상품의 가격을 10% 상승하려면?</li>
+<li>JPA 변경 감지(Duty Checking) 기능으로 실행하려면 너무 많은 SQL 실행
+<ol>
+<li>재고가 10개 미만인 상품을 리스트로 조회한다.</li>
+<li>상품 엔티티의 가격을 10% 증가한다.</li>
+<li>트랜잭션 커밋 시점에 변경감지가 동작한다.</li>
+</ol>
 </li>
-<li><mark>애플리케이션 로딩 시점에 쿼리를 검증</mark></li>
+<li>변경된 데이터가 100건이라면 100번의 UPDATE SQL실행</li>
 </ul>
 </blockquote>
-<h4 id="namedquery-사용-테스트">@NamedQuery 사용 테스트<a class="anchor" href="#namedquery-사용-테스트">#</a></h4>
+<h3 id="벌크-연산-예제">벌크 연산 예제<a class="anchor" href="#벌크-연산-예제">#</a></h3>
+<hr>
 <blockquote>
-<p>Member.java</p>
+<ul>
+<li>쿼리 한 번으로 여러 테이블 로우 변경(엔티티)</li>
+<li><mark>excuteUpdate()의 결과는 영향받은 엔티티 수 반환</mark></li>
+<li><mark>UPDATE, DELETE 지원</mark></li>
+<li><mark>INSERT(insert into .. select, 하이버네이트 지원)</mark>
+JPA 표준 스펙에는 없는데 하이버네이트는 지원</li>
+</ul>
 </blockquote>
-<pre><code>package jpql.domain;
+<pre><code>String qlString = &quot;UPDATE Product p &quot; +
+				&quot;SET p.price = p.price * 1.1 &quot; +
+				&quot;WHERE p.stockAmount &lt; :stockAmount&quot;;
+				
+int resultCount = em.createQuery(qlString)
+				.setParameter(&quot;stockAmount&quot;, 10)
+				.executeUpdate();			
 
-import javax.persistence.*;
-import jpql.domain.*;
+</code></pre>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>
+            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
 
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
 
-@Entity
-@NamedQuery(name = &quot;Member.findByUsername&quot;, // * 관례로 엔티티명.쿼리명 으로 많이 사용
-            query = &quot;SELECT m FROM Member m WHERE m.username = :username&quot;
-)
-public class Member {
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
 
-    public Member(){
-    }
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
 
-    @Id @GeneratedValue
-    private Long id;
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
 
-    private String username;
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
 
-    private int age;
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.changeTeam(team3);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = &quot;TEAM_ID&quot;)
-    private Team team;
+            em.flush();
+            em.clear();
 
-    public void changeTeam(Team team){
-        this.team = team;
-        team.getMembers().add(this);
-    }
+            int resultCnt = em.createQuery(&quot;UPDATE Member m SET m.age =  m.age+1&quot;)
+                    .executeUpdate();
 
-    @Enumerated(EnumType.STRING) // 기본이 숫자 EnumType.ORDINAL 이기 때문에 String으로 필수로 세팅
-    private MemberType type;
+            System.out.println(resultCnt);
 
-    public MemberType getType() {
-        return type;
-    }
+            tx.commit();
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* UPDATE
+        Member m 
+    SET
+        m.age =  m.age+1 */ update
+            Member 
+        set
+            age=age+1
+            
+4 // 결과 4명
 
-    public void setType(MemberType type) {
-        this.type = type;
-    }
+</code></pre>
+<p><img src="/images/develop/backend/orm-jpa-basic/bulk-operation/img-001.png" alt="contact"></p>
+<blockquote>
+<p>모든 사용자 나이 +1 업데이트된 결과를 볼 수 있습니다.</p>
+</blockquote>
+<h3 id="벌크-연산-주의">벌크 연산 주의<a class="anchor" href="#벌크-연산-주의">#</a></h3>
+<hr>
+<blockquote>
+<p><mark>벌크 연산은 영속성 컨텍스트를 무시하고 데이터베이스에 직접 쿼리</mark> <br></p>
+</blockquote>
+<blockquote>
+<p>이를 간단히 해결하기 위해서는</p>
+<ol>
+<li>벌크 연산을 먼저 실행</li>
+<li><mark>벌크 연한 수행 후 영속성 컨텍스트 초기화</mark></li>
+<li>em.refresh() 사용</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>예를 들어 회원의 연봉이 5천만원 이였는데<br>
+회원의 연봉을 엔티티로 조회했더니 5천만원이였고 벌크 연산이 실행되어 6천만원으로 업데이트가 됨<br>
+DB에는 6천만원으로 되어있고, 엔티티에는 5천만원으로 남아있는 상태가 됩니다.
+이러한 경우에는 벌크 연산 후 엔티티를 초기화 한다면 아무 문제가 없습니다.</p>
+</blockquote>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
 
-    public Long getId() {
-        return id;
-    }
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
 
-    public String getUsername() {
-        return username;
-    }
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
 
-    public int getAge() {
-        return age;
-    }
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.changeTeam(team3);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+			
+		   // FLUSH 자동 호출 (커밋, query실행, 강제 Flush)
+            int resultCnt = em.createQuery(&quot;UPDATE Member m SET m.age =  m.age+1&quot;)
+                    .executeUpdate();
+            System.out.println(resultCnt);
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
-    @Override
-    public String toString() {
-        return &quot;Member{&quot; +
-                &quot;id=&quot; + id +
-                &quot;, username='&quot; + username + '\'' +
-                &quot;, age=&quot; + age +
-                /*&quot;, team=&quot; + team  //toString 양방향 적용시 무한루프될 가능성 toString 에서는 연관관계 제거  */
-                '}';
-    }
-}
-
+            tx.commit();
 </code></pre>
 <blockquote>
 <p>JpqlMain.java</p>
@@ -356,15 +409,15 @@ public class Member {
             em.flush();
             em.clear();
 
+            int resultCnt = em.createQuery(&quot;UPDATE Member m SET m.age =  m.age+1&quot;)
+                    .executeUpdate();
 
-            List&lt;Member&gt; resultList = em.createNamedQuery(&quot;Member.findByUsername&quot;, Member.class)
-                    .setParameter(&quot;username&quot;, &quot;회원1&quot;)
-                    .getResultList();
+            System.out.println(resultCnt);
 
-
-            for(Member member : resultList){
-                System.out.println(&quot;name = &quot; + member.getUsername()+ &quot;, age = &quot; + member.getAge());
-            }
+            System.out.println(&quot;member1.getAge() = &quot;+member1.getAge());	//*** 출력 추가
+            System.out.println(&quot;member2.getAge() = &quot;+member2.getAge());
+            System.out.println(&quot;member3.getAge() = &quot;+member3.getAge());
+            System.out.println(&quot;member4.getAge() = &quot;+member4.getAge());
 
             tx.commit();
 </code></pre>
@@ -372,141 +425,218 @@ public class Member {
 <p>console</p>
 </blockquote>
 <pre><code>Hibernate: 
-    /* Member.findByUsername */ select
-        member0_.id as id1_0_,
-        member0_.age as age2_0_,
-        member0_.TEAM_ID as team_id5_0_,
-        member0_.type as type3_0_,
-        member0_.username as username4_0_ 
-    from
-        Member member0_ 
-    where
-        member0_.username=?
-        
-name = 회원1, age = 31
+    /* UPDATE
+        Member m 
+    SET
+        m.age =  m.age+1 */ update
+            Member 
+        set
+            age=age+1
+4
+member1.getAge() = 31
+member2.getAge() = 32
+member3.getAge() = 33
+member4.getAge() = 34
+
+종료 코드 0(으)로 완료된 프로세스
 
 </code></pre>
-<h4 id="애플리케이션-로딩-시점에-쿼리를-검증">애플리케이션 로딩 시점에 쿼리를 검증<a class="anchor" href="#애플리케이션-로딩-시점에-쿼리를-검증">#</a></h4>
+<p><img src="/images/develop/backend/orm-jpa-basic/bulk-operation/img-002.png" alt="contact"></p>
 <blockquote>
-<p>만약 누군가가 쿼리를 작성할때 실수로 오타를 냈다고 하고 테스트를 해보겠습니다.</p>
+<p>출력된 결과는 31, 32, 33 살이지만 데이터베이스에서 조회한 결과는 32, 33, 34 로 1살 추가된 것을 확인 할 수 있습니다.</p>
 </blockquote>
-<pre><code>@Entity
-@NamedQuery(name = &quot;Member.findByUsername&quot;, // * 관례로 엔티티명.쿼리명 으로 많이 사용
-            query = &quot;SELECT m FROM Membe m WHERE m.username = :username&quot;
-)
+<blockquote>
+<p>벌크 연산은 영속성 컨텍스트와 상관없이 DB에 직접 수정하기 때문에 영속성 컨텍스트에는 DB에 벌크 연산으로 수정되기 전 데이터가 남아있습니다.</p>
+</blockquote>
+<blockquote>
+<p>잘못 사용하다가 데이터 접합성 문제가 생길 수 있어 조심해야 합니다.</p>
+</blockquote>
+<h4 id="벌크-연한-수행-후-영속성-컨텍스트-초기화">벌크 연한 수행 후 영속성 컨텍스트 초기화<a class="anchor" href="#벌크-연한-수행-후-영속성-컨텍스트-초기화">#</a></h4>
+<blockquote>
+<p>JqplMain.java</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.changeTeam(team3);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+
+            em.flush();
+            em.clear();
+
+            int resultCnt = em.createQuery(&quot;UPDATE Member m SET m.age =  m.age+1&quot;)
+                    .executeUpdate();
+
+            System.out.println(resultCnt);
+
+            em.clear(); // 영속성 컨텍스트를 초기화 한후 다시 조회
+
+            Member findMember1 = em.find(Member.class, member1.getId());
+            Member findMember2 = em.find(Member.class, member2.getId());
+            Member findMember3 = em.find(Member.class, member3.getId());
+            Member findMember4 = em.find(Member.class, member4.getId());
+
+            System.out.println(&quot;findMember1.getAge() = &quot;+findMember1.getAge());
+            System.out.println(&quot;findMember2.getAge() = &quot;+findMember2.getAge());
+            System.out.println(&quot;findMember3.getAge() = &quot;+findMember3.getAge());
+            System.out.println(&quot;findMember4.getAge() = &quot;+findMember4.getAge());
 </code></pre>
-<blockquote>
-<p>JpqlMain.java - 애플리케이션 재시작</p>
-</blockquote>
 <blockquote>
 <p>console</p>
 </blockquote>
-<pre><code>
-Caused by: org.hibernate.HibernateException: Errors in named queries: 
-Member.findByUsername failed because of: org.hibernate.hql.internal.ast.QuerySyntaxException: Membe is not mapped [SELECT m FROM Membe m WHERE m.username = :username]
-	at org.hibernate.internal.SessionFactoryImpl.&lt;init&gt;(SessionFactoryImpl.java:341)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
-	... 4 more
+<pre><code>Hibernate: 
+    select
+        member0_.id as id1_0_0_,
+        member0_.age as age2_0_0_,
+        member0_.TEAM_ID as team_id5_0_0_,
+        member0_.type as type3_0_0_,
+        member0_.username as username4_0_0_ 
+    from
+        Member member0_ 
+    where
+        member0_.id=?
+        
+4
 
-
-</code></pre>
-<blockquote>
-<p>어노테이션에 등록이 되어있기 때문에 Jpa가 미리 파싱을 하고 캐싱을 하려는 중</p>
-</blockquote>
-<blockquote>
-<p>문법이 맞지 않는 상황이 벌어지면 오류를 발생시킵니다.</p>
-</blockquote>
-<pre><code>Member.findByUsername failed because of: org.hibernate.hql.internal.ast.QuerySyntaxException: Membe is not mapped [SELECT m FROM Membe m WHERE m.username = :username]
-</code></pre>
-<blockquote>
-<p>개발하면서 가장 좋은 에러는 즉시 나는 에러가 좋습니다. 바로 찾을 수 있고 수정할 수 있기 때문입니다. 그러면 가장 안좋은 에러는 사용자가 사용중에 무언가 액션을 했을때 나는 오류입니다. 그리고 그 중간 정도의 오류는 컴파일 시점에 나는 오류입니다. 어떻게든지 로컬에서라도 실행은 시키고 배포를 하기 때문에 대부분의 오류를 다 잡아줄수 있습니다.</p>
-</blockquote>
-<h3 id="named-쿼리---xml에-정의">Named 쿼리 - XML에 정의<a class="anchor" href="#named-쿼리---xml에-정의">#</a></h3>
-<blockquote>
-<p>[META-INF/persistence.xml]</p>
-</blockquote>
-<pre><code>&lt;persistance-unit name=&quot;jpabook&quot;&gt;
-	&lt;mapping-file&gt;META-INF/ormMember.xml&lt;/mapping-file&gt;
-</code></pre>
-<blockquote>
-<p>[META-INF/ormMemer.xml]</p>
-</blockquote>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;entity-mappings xmlns=&quot;http://xmlns.jcp.org/xml/ns/persistence/orm&quot; version=&quot;2.1&quot;&gt;
-	
-	&lt;named-query name=&quot;Member.findByUsername&quot;&gt;
-		&lt;query&gt;&lt;![CDATA[
-			SELECT m
-			FROM Member m
-			WHERE m.username = :username
-		]]&gt;&lt;/query&gt;
-	&lt;/named-query&gt;
-	
-	&lt;named-query name=&quot;Member.count&quot;&gt;
-		&lt;query&gt;&lt;![CDATA[
-			SELECT COUNT(m) FROM Member m
-		]]&gt;&lt;/query&gt;
-	&lt;/named-query&gt;
-	
-&lt;/entity-mappings&gt;
-</code></pre>
-<h3 id="named-쿼리-환경에-따른-설정">Named 쿼리 환경에 따른 설정<a class="anchor" href="#named-쿼리-환경에-따른-설정">#</a></h3>
-<blockquote>
-<ul>
-<li>XML이 항상 우선권을 가진다.</li>
-<li>애플리케이션 운영 환경에 따라 다른 XML을 배포할 수 있다.</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>스프링 데이터 JPA를 사용하게 되면 인터페이스 바로 위에 사용 가능합니다.</p>
-</blockquote>
-<blockquote>
-<p>Spring Data JPA</p>
-</blockquote>
-<pre><code>public interface UserRepository extends JpaReposotory&lt;User, Long&gt;{
-	@Query(&quot;SELECT u from User u WHERE u.emailAddress = ?1&quot;)
-	User findByEmailAddress(String emailAddress);
-}
+findMember1.getAge() = 32
+findMember2.getAge() = 33
+findMember3.getAge() = 34
+findMember4.getAge() = 35
 
 </code></pre>
 <blockquote>
-<p>스프링 JPA는 JPA를 편하게 사용하기 위해 추상화 하여, JPA의 껍데기 역활만 합니다. <br>
-@Query(&ldquo;SELECT u from User u WHERE u.emailAddress = ?1&rdquo;) 가 바로 Named 쿼리 입니다. <br>
-JPA가 해당 어노테이션과 쿼리를 Named 쿼리로 등록합니다. 그래서 애플리케이션 로딩 시점에 파싱하게 되고 문법 오류가 있으면 바로 잡아주게 됩니다.</p>
+<p>벌크 연산을 사용하고 바로 직후에 엔티티를 사용하면, 컨텍스트에 1차 캐시된 데이터를 사용하기 때문에 em.clear를 이용해 <br>
+영속성 컨텍스트를 초기화 후 사용</p>
 </blockquote>
-<h2 id="결론">결론<a class="anchor" href="#결론">#</a></h2>
+<h4 id="emrefresh">em.refresh()<a class="anchor" href="#emrefresh">#</a></h4>
+<blockquote>
+<p>JpqlMain.java</p>
+</blockquote>
+<pre><code>            Team team1 = new Team();
+            team1.setName(&quot;팀A&quot;);
+            em.persist(team1);
+
+            Team team2 = new Team();
+            team2.setName(&quot;팀B&quot;);
+            em.persist(team2);
+
+            Team team3 = new Team();
+            team3.setName(&quot;팀C&quot;);
+            em.persist(team3);
+
+            Member member1 = new Member();
+            member1.setUsername(&quot;회원1&quot;);
+            member1.setAge(31);
+            member1.changeTeam(team1);
+            member1.setType(MemberType.USER);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername(&quot;회원2&quot;);
+            member2.setAge(32);
+            member2.changeTeam(team1);
+            member2.setType(MemberType.USER);
+            em.persist(member2);
+
+            Member member3 = new Member();
+            member3.setUsername(&quot;회원3&quot;);
+            member3.setAge(33);
+            member3.changeTeam(team2);
+            member3.setType(MemberType.USER);
+            em.persist(member3);
+
+            Member member4 = new Member();
+            member4.setUsername(&quot;회원4&quot;);
+            member4.setAge(34);
+            member4.changeTeam(team3);
+            member4.setType(MemberType.USER);
+            em.persist(member4);
+            
+            // em.flush(); // em.refresh는 영속성 컨텍스트에서 관리되는 항목만 적용가능
+            // em.clear(); 
+            
+
+            int resultCnt = em.createQuery(&quot;UPDATE Member m SET m.age =  m.age+1&quot;)
+                    .executeUpdate();
+
+            System.out.println(resultCnt);
+
+            em.refresh(member1);
+            em.refresh(member2);
+            em.refresh(member3);
+            em.refresh(member4);
+
+            System.out.println(&quot;member1.getAge() = &quot;+member1.getAge());
+            System.out.println(&quot;member2.getAge() = &quot;+member2.getAge());
+            System.out.println(&quot;member3.getAge() = &quot;+member3.getAge());
+            System.out.println(&quot;member4.getAge() = &quot;+member4.getAge());
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>Hibernate: 
+    /* load jpql.domain.Member */ select
+        member0_.id as id1_0_0_,
+        member0_.age as age2_0_0_,
+        member0_.TEAM_ID as team_id5_0_0_,
+        member0_.type as type3_0_0_,
+        member0_.username as username4_0_0_ 
+    from
+        Member member0_ 
+    where
+        member0_.id=?
+member1.getAge() = 32
+member2.getAge() = 33
+member3.getAge() = 34
+member4.getAge() = 35
+</code></pre>
+<h4 id="spring-data-jpa---modifying-queries">Spring Data JPA - Modifying Queries<a class="anchor" href="#spring-data-jpa---modifying-queries">#</a></h4>
+<blockquote>
+<p>Sprimg Data JPA에서는 @Modifying 애노테이션을 이용해 벌크 연산 쿼리를 사용할 수 있으며, 마찬가지로 벌크 연산과  같이 영속성 컨텍스트를 무시하고 데이터베이스에 직접 수정하기 때문에 주의 해야합니다. Spring Data JPA의 기능을 사용하기 이전에 원리를 미리 배워둬야 장애를 예방하고 왜 그런 문제가 생기는지 알 수 있습니다.</p>
+</blockquote>
+<pre><code>@Modifying
+@Query(&quot;UPDATE User u SET u.firstname = ?1 WHERE u.lastname = ?2&quot;)
+int setFixedFirstnameFor(String fristname, String lastname);
+</code></pre>
+<h3 id="정리">정리<a class="anchor" href="#정리">#</a></h3>
 <hr>
-<pre><code>@Entity
-@NamedQuery(
-	name = &quot;member.findByUsername&quot;,
-	query = &quot;SELECT m FROM Member WHERE n.username :username&quot;
-)
-
-public class Member {
-	...
-}
-
-List&lt;Member&gt; resultList = 
-	em.createQuery(&quot;Member.findByUsername&quot;, Member.class)
-	  .setParameter(&quot;username&quot;, &quot;회원1&quot;)
-	  .getResultList();
-</code></pre>
 <blockquote>
-<p>위와 같이 엔티티에 Named Query를 추가하는 것은 코드가 매우 지저분 해지고, <br>
-결국 실무에서는 Spring Data JPA를 섞어 쓰는게 좋기 때문에</p>
-</blockquote>
-<blockquote>
-<p>Spring Data JPA</p>
-</blockquote>
-<pre><code>public interface UserRepository extends JpaReposotory&lt;User, Long&gt;{
-	@Query(&quot;SELECT u from User u WHERE u.emailAddress = ?1&quot;)
-	User findByEmailAddress(String emailAddress);
-}
-
-</code></pre>
-<blockquote>
-<p>이와 같이 Spring Data JPA 방식으로 개발하는게 좋습니다.</p>
+<p>벌크 연산을 사용할 때는 벌크 연한 수행 후 무지성으로 영속성 컨텍스트 초기화 하고, 
+단건의 수정 삭제에 대해서는 일반적인 JPA가 제공하는 Update와 Delete를 사용하는게 안전합니다.</p>
 </blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
@@ -892,17 +1022,12 @@ public class JpqlMain {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-direct-use-of-entity/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-named-query/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">JPQL 엔티티 직접 사용(Direct Use Of Entity)</span>
+        <span class="pagination__title">JPQL 네임드 쿼리(Named Query)</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/bulk-operation/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >JPQL 벌크 연산(Bulk Operation)</span>
-    </a>
   
 </div>
 
@@ -972,19 +1097,14 @@ public class JpqlMain {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">JPQL 네임드 쿼리(Named Query)</div> 
+          <div class="toc-post-title">JPQL 벌크 연산(Bulk Operation)</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#named-쿼리">Named 쿼리</a>
+    <li><a href="#벌크-연산">벌크 연산</a>
       <ul>
-        <li><a href="#namedquery">@NamedQuery</a></li>
-        <li><a href="#정적-쿼리">정적 쿼리</a></li>
-        <li><a href="#named-쿼리---xml에-정의">Named 쿼리 - XML에 정의</a></li>
-        <li><a href="#named-쿼리-환경에-따른-설정">Named 쿼리 환경에 따른 설정</a></li>
-      </ul>
-    </li>
-    <li><a href="#결론">결론</a>
-      <ul>
+        <li><a href="#벌크-연산-예제">벌크 연산 예제</a></li>
+        <li><a href="#벌크-연산-주의">벌크 연산 주의</a></li>
+        <li><a href="#정리">정리</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
