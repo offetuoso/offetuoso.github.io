@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Java</title>
       <link>https://offetuoso.github.io/tags/java/</link>
-      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/java/</guid>
       <description></description>
@@ -20,7 +20,7 @@
     <item>
       <title>JPA</title>
       <link>https://offetuoso.github.io/tags/jpa/</link>
-      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/jpa/</guid>
       <description></description>
@@ -29,25 +29,43 @@
     <item>
       <title>ORM</title>
       <link>https://offetuoso.github.io/tags/orm/</link>
-      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/orm/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Spring</title>
+      <link>https://offetuoso.github.io/tags/spring/</link>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>김영한</title>
       <link>https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/</link>
-      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>스프링부트 JPA 활용</title>
+      <link>https://offetuoso.github.io/tags/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-jpa-%ED%99%9C%EC%9A%A9/</link>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/tags/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-jpa-%ED%99%9C%EC%9A%A9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>인프런</title>
       <link>https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/</link>
-      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/</guid>
       <description></description>

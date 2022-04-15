@@ -7,7 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 05 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[스프링부트 JPA 활용] View 환경 설정</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/view-preferences/</link>
+      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/view-preferences/</guid>
+      <description>View 환경 설정 Thymeleaf  Thymeleaf
+  Spring에서도 밀고 있고, 스프링과 많은 기능을 제공하고 있어, Jsp 보다 Thymeleaf를 사용하는 추세입니다.
+  장점은
+  자연 템플릿 (Natural Templates) 마크업을 깨트리지 않고 html 마커 안에 프로그래밍 문법을 넣어 기능을 개발 할 수 있습니다. WAS 없이도 브라우저만으로도 템플릿의 결과물을 볼 수 있습니다.
+ &amp;lt;table&amp;gt;&amp;lt;thead&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;th th:text=&amp;quot;#{msgs.headers.name}&amp;quot;&amp;gt;Name&amp;lt;/th&amp;gt;&amp;lt;th th:text=&amp;quot;#{msgs.headers.price}&amp;quot;&amp;gt;Price&amp;lt;/th&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/thead&amp;gt;&amp;lt;tbody&amp;gt;&amp;lt;tr th:each=&amp;quot;prod: ${allProducts}&amp;quot;&amp;gt;&amp;lt;td th:text=&amp;quot;${prod.name}&amp;quot;&amp;gt;Oranges&amp;lt;/td&amp;gt;&amp;lt;td th:text=&amp;quot;${#numbers.formatDecimal(prod.price, 1, 2)}&amp;quot;&amp;gt;0.</description>
+    </item>
+    
+    <item>
+      <title>[스프링부트 JPA 활용] 프로젝트 생성</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/new-project-setting/</link>
+      <pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/new-project-setting/</guid>
+      <description>스프링부트 JPA 활용(Using SpringBoot JPA)  목차    프로젝트 생성 라이브러리 살펴보기 H2 데이터베이스 설치 JPA와 DB 설정, 동작확인   프로젝트 생성    스프링 부트 스타터(https://start.spring.io/) 사용기능 : Web, Thymeleaf, JPA, H2, Lombok  groupId : jpabook artifactId : jpashop      프로젝트 타입은 Gradle Project 최근에는 Maven이 아니라 Gradle이 많이 사용된다고 합니다.
+  언어는 당연히 자바 !
+  스프링부트는 안정화 버전을 추천하며, 전 2.</description>
+    </item>
+    
     <item>
       <title>JPA 에필로그(Epilogue)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-epilogue/</link>
