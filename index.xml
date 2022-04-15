@@ -33,7 +33,7 @@
     </item>
     
     <item>
-      <title>JPA 에필로그(Epilogue)</title>
+      <title>[자바 ORM 표준 JPA] JPA 에필로그(Epilogue)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-epilogue/</link>
       <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
       
@@ -45,7 +45,7 @@
     </item>
     
     <item>
-      <title>JPQL 벌크 연산(Bulk Operation)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 벌크 연산(Bulk Operation)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/bulk-operation/</link>
       <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
       
@@ -55,7 +55,7 @@
     </item>
     
     <item>
-      <title>JPQL 네임드 쿼리(Named Query)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 네임드 쿼리(Named Query)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-named-query/</link>
       <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -65,7 +65,7 @@
     </item>
     
     <item>
-      <title>JPQL 엔티티 직접 사용(Direct Use Of Entity)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 엔티티 직접 사용(Direct Use Of Entity)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-direct-use-of-entity/</link>
       <pubDate>Sun, 27 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -77,7 +77,7 @@
     </item>
     
     <item>
-      <title>JPQL 다형성 쿼리(Polymorphic Query)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 다형성 쿼리(Polymorphic Query)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-polymorphic-query/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -92,7 +92,7 @@
     </item>
     
     <item>
-      <title>JPQL 페치 조인(Fetch Join)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 페치 조인(Fetch Join)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-fetch-join/</link>
       <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -102,7 +102,7 @@
     </item>
     
     <item>
-      <title>JPQL 경로 표현식(PATH EXPRESSION)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 경로 표현식(PATH EXPRESSION)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-path-expression/</link>
       <pubDate>Sat, 19 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -112,7 +112,7 @@
     </item>
     
     <item>
-      <title>JPQL 기본 함수(BASIC FUNCTION)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 기본 함수(BASIC FUNCTION)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-basic-function/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -123,7 +123,7 @@
     </item>
     
     <item>
-      <title>JPQL 조건문(CONDITIONAL STATEMENT)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 조건문(CONDITIONAL STATEMENT)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-conditional-statement/</link>
       <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -132,7 +132,7 @@
     </item>
     
     <item>
-      <title>JPA 서브 쿼리(Sub Query)</title>
+      <title>[자바 ORM 표준 JPA] JPA 서브 쿼리(Sub Query)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/</link>
       <pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -142,7 +142,7 @@
     </item>
     
     <item>
-      <title>JPQL 타입 표현(Type Expression)</title>
+      <title>[자바 ORM 표준 JPA] JPQL 타입 표현(Type Expression)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-type-expression/</link>
       <pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -152,7 +152,7 @@
     </item>
     
     <item>
-      <title>JPA 조인(JOIN)</title>
+      <title>[자바 ORM 표준 JPA] JPA 조인(JOIN)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/join/</link>
       <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -162,7 +162,7 @@
     </item>
     
     <item>
-      <title>JPA Paging API</title>
+      <title>[자바 ORM 표준 JPA] JPA Paging API</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/paging-api/</link>
       <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -173,7 +173,7 @@
     </item>
     
     <item>
-      <title>JPA Projection(SELECT)</title>
+      <title>[자바 ORM 표준 JPA] JPA Projection(SELECT)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/projection/</link>
       <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -194,7 +194,7 @@
     </item>
     
     <item>
-      <title>JPQL(Java persistence Query Language)</title>
+      <title>[자바 ORM 표준 JPA] JPQL(Java persistence Query Language)</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql/</link>
       <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -208,7 +208,7 @@
     </item>
     
     <item>
-      <title>JPA 객체지향 쿼리 언어 소개</title>
+      <title>[자바 ORM 표준 JPA] JPA 객체지향 쿼리 언어 소개</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/object-oriented-query-language/</link>
       <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
       
@@ -218,7 +218,7 @@
     </item>
     
     <item>
-      <title>JPA 실전 예제 6 - 값 타입 매핑</title>
+      <title>[자바 ORM 표준 JPA] JPA 실전 예제 6 - 값 타입 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-6/</link>
       <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -227,7 +227,7 @@
     </item>
     
     <item>
-      <title>JPA 값 타입 컬렉션</title>
+      <title>[자바 ORM 표준 JPA] JPA 값 타입 컬렉션</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type-collection/</link>
       <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -240,7 +240,7 @@
     </item>
     
     <item>
-      <title>JPA 값 타입과 불변 객체</title>
+      <title>[자바 ORM 표준 JPA] JPA 값 타입과 불변 객체</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/immutable-object/</link>
       <pubDate>Sat, 12 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -250,7 +250,7 @@
     </item>
     
     <item>
-      <title>JPA 임베디드 타입</title>
+      <title>[자바 ORM 표준 JPA] JPA 임베디드 타입</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/embedded-type/</link>
       <pubDate>Tue, 08 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -261,7 +261,7 @@
     </item>
     
     <item>
-      <title>JPA 값 타입</title>
+      <title>[자바 ORM 표준 JPA] JPA 값 타입</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type/</link>
       <pubDate>Mon, 07 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -270,7 +270,7 @@
     </item>
     
     <item>
-      <title>JPA 실전 예제 5 - 연관관계 관리</title>
+      <title>[자바 ORM 표준 JPA] JPA 실전 예제 5 - 연관관계 관리</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-5/</link>
       <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -281,7 +281,7 @@
     </item>
     
     <item>
-      <title>JPA 영속성 전이(CASCADE)와 고아 객체</title>
+      <title>[자바 ORM 표준 JPA] JPA 영속성 전이(CASCADE)와 고아 객체</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/cascade/</link>
       <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
       
@@ -292,7 +292,7 @@
     </item>
     
     <item>
-      <title>JPA 즉시 로딩과 지연로딩</title>
+      <title>[자바 ORM 표준 JPA] JPA 즉시 로딩과 지연로딩</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/</link>
       <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -303,7 +303,7 @@
     </item>
     
     <item>
-      <title>JPA 프록시와 연관관계</title>
+      <title>[자바 ORM 표준 JPA] JPA 프록시와 연관관계</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/proxy-and-relation/</link>
       <pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -313,7 +313,7 @@
     </item>
     
     <item>
-      <title>JPA 실전 예제 4 - 상속관계 매핑</title>
+      <title>[자바 ORM 표준 JPA] JPA 실전 예제 4 - 상속관계 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-4/</link>
       <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -323,7 +323,7 @@
     </item>
     
     <item>
-      <title>JPA @MappedSuperclass</title>
+      <title>[자바 ORM 표준 JPA] JPA @MappedSuperclass</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapped-superclass/</link>
       <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -333,7 +333,7 @@
     </item>
     
     <item>
-      <title>JPA 상속관계 매핑</title>
+      <title>[자바 ORM 표준 JPA] JPA 상속관계 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/proxy-and-relation/</link>
       <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -343,7 +343,7 @@
     </item>
     
     <item>
-      <title>JPA 실전 예제 3 - 다양한 연관관계 매핑</title>
+      <title>[자바 ORM 표준 JPA] JPA 실전 예제 3 - 다양한 연관관계 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-3/</link>
       <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -353,7 +353,7 @@
     </item>
     
     <item>
-      <title>JPA 다양한 연관관계 매핑</title>
+      <title>[자바 ORM 표준 JPA] JPA 다양한 연관관계 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/</link>
       <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -362,7 +362,7 @@
     </item>
     
     <item>
-      <title>JPA 실전 예제 2 - 연관관계 매핑 시작</title>
+      <title>[자바 ORM 표준 JPA] JPA 실전 예제 2 - 연관관계 매핑 시작</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-2/</link>
       <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -371,6 +371,16 @@
  테이블 구조   테이블 구조는 이전과 같다.
  객체 구조   참조를 사용하도록 변경
   OrderItem과 Item에서 N:1이면서 화살표가 OrderItem에서 Item으로 단방향인 것을 알 수 있는데, 이는 주문된 아이템(OrderItem) 입장에서는 어떠한 아이템(Item)인지 알아야하지만, 아이템 입장에서는 통계 같은 프로그램을 하지 않는 이상 이 아이템이 어떠한 아이템 주문이 되었는지 알 필요가 없습니다.</description>
+    </item>
+    
+    <item>
+      <title>[자바 ORM 표준 JPA] JPA 연관관계 매핑</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</link>
+      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</guid>
+      <description>연관관계 매핑   테이블에 맞춰서 외래키를 가져오면서 설계하는 방식이 아닌 order.getMember()이런식으로 연관관계를 맺어서 좀더 객체지향 식으로 설계할 수 있는지 알아보겠습니다. 여태 까지는 어려움이 없었겠지만, 관계형 DB와 객체지향 사이에서 오는 간극이 크고 각각의 패러다임이 다르기 때문에 어려움이 있습니다.
+ 목표    객체와 테이블 연관관계 차이를 이해 객체의 참조와 테이블의 외래 키를 매핑 용어 이해  방향(Direction) : 단방향, 양방향 다중성(Multiplicity) : 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M)의 이해 연관관계의 주인(Owner) : 객체의 양방향 관계는 괸리 주인이 필요     목차    연관관계가 필요한 이유 단방향 연관관계 양방향 연관관계와 연관관계의 주인 실전예제 - 2.</description>
     </item>
     
     <item>
@@ -385,17 +395,7 @@
     </item>
     
     <item>
-      <title>JPA 연관관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</link>
-      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</guid>
-      <description>연관관계 매핑   테이블에 맞춰서 외래키를 가져오면서 설계하는 방식이 아닌 order.getMember()이런식으로 연관관계를 맺어서 좀더 객체지향 식으로 설계할 수 있는지 알아보겠습니다. 여태 까지는 어려움이 없었겠지만, 관계형 DB와 객체지향 사이에서 오는 간극이 크고 각각의 패러다임이 다르기 때문에 어려움이 있습니다.
- 목표    객체와 테이블 연관관계 차이를 이해 객체의 참조와 테이블의 외래 키를 매핑 용어 이해  방향(Direction) : 단방향, 양방향 다중성(Multiplicity) : 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M)의 이해 연관관계의 주인(Owner) : 객체의 양방향 관계는 괸리 주인이 필요     목차    연관관계가 필요한 이유 단방향 연관관계 양방향 연관관계와 연관관계의 주인 실전예제 - 2.</description>
-    </item>
-    
-    <item>
-      <title>JPA 기본키 매핑</title>
+      <title>[자바 ORM 표준 JPA] JPA 기본키 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -404,7 +404,7 @@
     </item>
     
     <item>
-      <title>JPA 실전 예제 1 - 요구사항 분석과 기본 매핑</title>
+      <title>[자바 ORM 표준 JPA] JPA 실전 예제 1 - 요구사항 분석과 기본 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</link>
       <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -413,7 +413,7 @@
     </item>
     
     <item>
-      <title>JPA 객체와 매핑</title>
+      <title>[자바 ORM 표준 JPA] JPA 객체와 매핑</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/entity-mapping/</link>
       <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -422,7 +422,7 @@
     </item>
     
     <item>
-      <title>JPA 영속성 관리</title>
+      <title>[자바 ORM 표준 JPA] JPA 영속성 관리</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/persistence-manage/</link>
       <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -432,7 +432,7 @@
     </item>
     
     <item>
-      <title>JPA 시작</title>
+      <title>[자바 ORM 표준 JPA] JPA 시작</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/start-jpa/</link>
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
@@ -445,7 +445,7 @@
     </item>
     
     <item>
-      <title>JPA 소개</title>
+      <title>[자바 ORM 표준 JPA] JPA 소개</title>
       <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/about-jpa/</link>
       <pubDate>Tue, 14 Dec 2021 00:00:00 +0000</pubDate>
       
