@@ -7,7 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 13 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/subcategories/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/subcategories/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[스프링부트 JPA 활용] H2 데이터베이스 설치 및 세팅</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/h2-preferences/</link>
+      <pubDate>Sat, 16 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/h2-preferences/</guid>
+      <description>H2 데이터베이스 설치 및 세팅  H2 데이터베이스   개발이나 테스트 용도로 가볍고 편리한 DB, 웹 화면 제공
+ 다운로드 및 설치    사용 환경에 따라 받으시면 되며, 저는 1.4.200 버전을 받아 설치 하였습니다.
+ H2 Database 설치   JPA 시작 과거 포스팅 참조
+  H2 Database 설치  H2 홈페이지에서 OS에 맞는 설치 파일을 다운로드한다.
+  C:\Program Files (x86)\H2\bin\h2.bat 실행
+  jdbc:h2:~/jpashop (최초 1회, 세션키 유지한 상태로 실행)</description>
+    </item>
+    
     <item>
       <title>[스프링부트 JPA 활용] View 환경 설정</title>
       <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/view-preferences/</link>

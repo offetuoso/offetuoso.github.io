@@ -7,7 +7,32 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 13 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Spring] @Bean과 @Component</title>
+      <link>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</link>
+      <pubDate>Sun, 17 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</guid>
+      <description>[Spring] @Bean 과 @Component  @Bean 과 @Component 어노테이션이란 ?   IoC Container는 특정 어노테이션이 달려있는 클래스를 빈으로 만들기 위해 빈 스캐닝을 합니다.
+   @Configuration @Bean @Component @Repository @Service @Controller    대표적으로 빈으로 사용 할 수 있게 해주는 어노테이션은 대표적으로 빈으로 사용 할 수 있도록 해주는 어노테이션은 @Bean과 @Component이 있습니다.
+ @Bean VS @Component  @Bean   개발자가 작성한 메소드를 통해 반환되는 객체를 Bean으로 만듬.</description>
+    </item>
+    
+    <item>
+      <title>[스프링부트 JPA 활용] H2 데이터베이스 설치 및 세팅</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/h2-preferences/</link>
+      <pubDate>Sat, 16 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/h2-preferences/</guid>
+      <description>H2 데이터베이스 설치 및 세팅  H2 데이터베이스   개발이나 테스트 용도로 가볍고 편리한 DB, 웹 화면 제공
+ 다운로드 및 설치    사용 환경에 따라 받으시면 되며, 저는 1.4.200 버전을 받아 설치 하였습니다.
+ H2 Database 설치   JPA 시작 과거 포스팅 참조
+  H2 Database 설치  H2 홈페이지에서 OS에 맞는 설치 파일을 다운로드한다.
+  C:\Program Files (x86)\H2\bin\h2.bat 실행
+  jdbc:h2:~/jpashop (최초 1회, 세션키 유지한 상태로 실행)</description>
+    </item>
+    
     <item>
       <title>[스프링부트 JPA 활용] View 환경 설정</title>
       <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/view-preferences/</link>

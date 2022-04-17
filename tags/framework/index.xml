@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>framework on offetuoso&#39;s Blog</title>
+    <title>Framework on offetuoso&#39;s Blog</title>
     <link>https://offetuoso.github.io/tags/framework/</link>
-    <description>Recent content in framework on offetuoso&#39;s Blog</description>
+    <description>Recent content in Framework on offetuoso&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 12 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/framework/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/framework/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Spring] @Bean과 @Component</title>
+      <link>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</link>
+      <pubDate>Sun, 17 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</guid>
+      <description>[Spring] @Bean 과 @Component  @Bean 과 @Component 어노테이션이란 ?   IoC Container는 특정 어노테이션이 달려있는 클래스를 빈으로 만들기 위해 빈 스캐닝을 합니다.
+   @Configuration @Bean @Component @Repository @Service @Controller    대표적으로 빈으로 사용 할 수 있게 해주는 어노테이션은 대표적으로 빈으로 사용 할 수 있도록 해주는 어노테이션은 @Bean과 @Component이 있습니다.
+ @Bean VS @Component  @Bean   개발자가 작성한 메소드를 통해 반환되는 객체를 Bean으로 만듬.</description>
+    </item>
+    
     <item>
       <title>Vue.js WebPack 설정하기</title>
       <link>https://offetuoso.github.io/blog/develop/frontend/vue/vue-webpack/</link>
