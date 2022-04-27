@@ -7,7 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sat, 16 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[스프링부트 JPA 활용] JPA 동작확인</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/</link>
+      <pubDate>Sun, 17 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/</guid>
+      <description>JPA 동작확인  JPA와 DB설정   여태까지 application.properties 를 이용해왔는데, 간혹 yml을 사용하는 것을 봐왔는데 이번에 사용하게 되었습니다.
+  resources/application.properties를 확장자를 변경하여 백업(또는 제거) 하고 같은 resources/ 위치에 application.yml 생성
+  resources/application.yml
+ spring:datasource:url: jdbc:h2:tcp://localhost/~/jpashop; # MVCC=true H2 1.4.200 버전부터 MVCC 옵션이 제거되었습니다. username: sapassword:driver-class-name: org.h2.Driverjpa:hibernate:ddl-auto: create # 애플리케이션 동작 시점에 엔티티 재생성properties:# show_sql: true #sysout을 통해 남기는 sqlformat_sql: truedatabase: h2devtools:livereload:enabled: true # livereload 사용시 활성화restart:enabled: false #운영 에서는 제거.</description>
+    </item>
+    
     <item>
       <title>[스프링부트 JPA 활용] H2 데이터베이스 설치 및 세팅</title>
       <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/h2-preferences/</link>

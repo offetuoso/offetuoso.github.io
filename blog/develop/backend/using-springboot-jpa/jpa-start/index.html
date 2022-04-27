@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>[스프링부트 JPA 활용] JPA 동작확인 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="[스프링부트 JPA 활용] JPA 동작확인">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="[스프링부트 JPA 활용] JPA 동작확인">
+  <meta property="og:description" content="[스프링부트 JPA 활용] JPA 동작확인">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "[스프링부트 JPA 활용] JPA 동작확인",
+      "headline" : "[스프링부트 JPA 활용] JPA 동작확인",
+      "description" : "[스프링부트 JPA 활용] JPA 동작확인",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-04-17 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-04-17 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/jpa-start\/",
+      "wordCount" : "1060",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-using-springboot-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	[스프링부트 JPA 활용] JPA 동작확인
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	[스프링부트 JPA 활용] JPA 동작확인
+            </h1>		
+            <time datetime="2022-04-17 00:00:00 &#43;0000 UTC" class="post__date">2022-04-17</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="jpa-동작확인">JPA 동작확인</h1>
+<hr>
+<h2 id="jpa와-db설정">JPA와 DB설정<a class="anchor" href="#jpa와-db설정">#</a></h2>
+<hr>
+<blockquote>
+<p>여태까지 application.properties 를 이용해왔는데, 간혹 yml을 사용하는 것을 봐왔는데 이번에 사용하게 되었습니다.</p>
+</blockquote>
+<blockquote>
+<p>resources/application.properties를 확장자를 변경하여 백업(또는 제거) 하고 같은 resources/ 위치에 application.yml 생성</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/h2-preferences/img-002.png" alt="contact"></p>
+<blockquote>
+<p>resources/application.yml</p>
+</blockquote>
+<pre><code>spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jpashop; # MVCC=true H2 1.4.200 버전부터 MVCC 옵션이 제거되었습니다. 
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create # 애플리케이션 동작 시점에 엔티티 재생성
+    properties:
+#      show_sql: true #sysout을 통해 남기는 sql
+      format_sql: true
+    database: h2
+     
+  devtools:
+    livereload:
+      enabled: true # livereload 사용시 활성화
+    restart:
+      enabled: false #운영 에서는 제거.
+
+  thymeleaf:
+    cache: false
+
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+</code></pre>
+<blockquote>
+<p>이렇게만 세팅하여도 SpringBoot에서 커넥션풀(HikariCP) 설정을 해줍니다.</p>
+</blockquote>
+<blockquote>
+<p>이러한 설정에 대한 메뉴얼은 스프링부트의 LEARN의 버전별 Reference Doc.에 있습니다.</p>
+</blockquote>
+<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/">
+https://docs.spring.io/spring-boot/docs/current/reference/html/
+</a>
+<p><img src="/images/develop/backend/using-springboot-jpa/h2-preferences/img-003.png" alt="contact"></p>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-004.png" alt="contact"></p>
+<details title="펼치기/숨기기">
+ 	<summary> MVCC=true 옵션 설명 </summary>
+<h4 id="mvcctrue">MVCC=true<a class="anchor" href="#mvcctrue">#</a></h4>
+<blockquote>
+<ul>
+<li>다중 버전 동시성 제어 (Multi-Version Concurrency Control)</li>
+<li>동시성을 제어하기 위해 사용하는 매커니즘 중 하나</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>동시성이란 데이터베이스에 동시 접근하는 것을 의미</p>
+</blockquote>
+<blockquote>
+<p>일관성과 동시성은 반비례관계 동시성↑일관성↓ / 동시성↓일관성↑</p>
+</blockquote>
+<blockquote>
+<p>동시에 DB에 접근하는 사람이 많으면 데이터가 일관적이지 않을 수 있기 때문에 동시성을 낮출수 밖에 없다.</p>
+</blockquote>
+<blockquote>
+<p>&lsquo;동시성 제어&rsquo;란 동시에 실행되는 트랜잭션을 최소화하며, 일관성을 최대화 하여 데이터 무결성 유지 되도록 하는것이 목표</p>
+</blockquote>
+<blockquote>
+<p>읽기와 쓰기가 서로의 작업을 방해해 동시성 저하와 리소스 Lock을 사용함에도 데이터 일관성이 훼손될 수 있는 문제를 해결하기 위해 MVCC 매커니즘을 사용</p>
+</blockquote>
+<h4 id="mvcc-매커니즘">MVCC 매커니즘<a class="anchor" href="#mvcc-매커니즘">#</a></h4>
+<blockquote>
+<ul>
+<li>데이터를 변경 할 때 변경사항을 Undo 영역에 저장.</li>
+<li>데이터를 읽다가 트랜잭션 시작한 시점 이후 변경된 값을 발견하면 Undo 영역에 저장된 정보를 이용해 버전을 생성하고 그것을 읽는다.</li>
+</ul>
+</blockquote>
+<h4 id="장점">장점<a class="anchor" href="#장점">#</a></h4>
+<blockquote>
+<ul>
+<li>Lock을 기다릴 필요가 없어 일반적인 RDBMS보다 빠르다.</li>
+<li>데이터를 읽을 때 다른 사용자의 CRUD에 영향을 받지 않는다.</li>
+</ul>
+</blockquote>
+<h4 id="단점">단점<a class="anchor" href="#단점">#</a></h4>
+<blockquote>
+<ul>
+<li>데이터의 버전 충돌이 있을 수 있다.
+<ul>
+<li>애플리케이션 영역에서 문제를 해결해야함.</li>
+</ul>
+</li>
+<li>사용하지 않는 버전들에 대한 정리가 필요하다.</li>
+</ul>
+</blockquote>
+</details>
+<h2 id="jpa-동작확인-1">JPA 동작확인<a class="anchor" href="#jpa-동작확인-1">#</a></h2>
+<hr>
+<h3 id="엔티티-생성">엔티티 생성<a class="anchor" href="#엔티티-생성">#</a></h3>
+<hr>
+<blockquote>
+<p>엔티티 패키지 java/jpabook/jpashop/entity 패키지 생성</p>
+</blockquote>
+<blockquote>
+<p>java/jpabook/jpashop/entity/Member.java</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.entity;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+@Getter @Setter // Lombok으로 Getter Setter 사용
+public class Member {
+
+    @Id @GeneratedValue
+    private Long id;
+    private String username;
+
+}
+
+</code></pre>
+<blockquote>
+<p>엔티티 패키지 java/jpabook/jpashop/repository 패키지 생성</p>
+</blockquote>
+<h4 id="persistencecontext">@PersistenceContext<a class="anchor" href="#persistencecontext">#</a></h4>
+<blockquote>
+<p>JPA를 쓰기 때문에 EntityManger가 있어야 하는데 SpringBoot를 사용하면 스프링컨텍스트 위에서 동작하기 때문에, &lsquo;@PersistenceContext&rsquo;가 붙어진 EntityManger에  EntityManger 객체를 스프링에서 자동으로 주입해줍니다.</p>
+</blockquote>
+<blockquote>
+<p>java/jpabook/jpashop/repository/MemberRepository.java</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.repository;
+
+import jpabook.jpashop.entity.Member;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+@Repository
+public class MemberRepository {
+
+    @PersistenceContext
+    private EntityManager em;
+
+    public Long save(Member member){
+        em.persist(member);
+        return member.getId();
+    }
+
+    public Member find(Long id){
+        return em.find(Member.class, id);
+    }
+}
+
+
+</code></pre>
+<blockquote>
+<p>return member.getId(); member를 직접 반환하지 않고 member.getId()를 반환하는 이유는</p>
+</blockquote>
+<blockquote>
+<p>command와 query를 분리해라 라는 원칙에 따라서</p>
+</blockquote>
+<blockquote>
+<p>저장을 하고나온 member는 바로 사용하게 되면 사이드이펙트가 발생할 여지가 있기 때문에, 최소한의 id만 리턴하여 다시 사용할때는 다시 조회해서 사용하는게 안전합니다.</p>
+</blockquote>
+<h3 id="테스트-코드">테스트 코드<a class="anchor" href="#테스트-코드">#</a></h3>
+<blockquote>
+<p>테스트 코드를 작성할 클래스명을 블록잡아서 Alt + Enter &gt; 테스트 생성</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-005.png" alt="contact"></p>
+<blockquote>
+<p>JUnit5로 선택하고 확인</p>
+</blockquote>
+<blockquote>
+<p>Alt + Insert로 빈 테스트코드 생성</p>
+</blockquote>
+<h5 id="테스트코드-라이브템플릿-추가">테스트코드 라이브템플릿 추가<a class="anchor" href="#테스트코드-라이브템플릿-추가">#</a></h5>
+<blockquote>
+<p>Ctrl + Alt + S</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-006.png" alt="contact"></p>
+<blockquote>
+<p>추가를 눌러 tdd로 새로운 템플릿을 작성합니다.</p>
+</blockquote>
+<pre><code>@Test
+public void $NAME$() throws Exception{
+    //given
+    $END$
+    //when
+    
+    //then
+}
+</code></pre>
+<blockquote>
+<p>java/jpabook/jpashop/repository/MemberRepositoryTest.java</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.repository;
+
+import jpabook.jpashop.entity.Member;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+class MemberRepositoryTest {
+
+    @Autowired MemberRepository memberRepository;
+
+    @Test
+    public void memberTest() throws Exception{
+        //given
+        Member member = new Member();
+        member.setUsername(&quot;MemberA&quot;);
+
+        //when
+        Long saveId = memberRepository.save(member);
+        Member findMember = memberRepository.find(saveId);
+
+        //then
+        Assertions.assertEquals(findMember.getId(), member.getId());
+        Assertions.assertEquals(findMember.getUsername(), member.getUsername());
+
+    }
+}
+</code></pre>
+<blockquote>
+<p>테스트를 실행하면, 오류가 발생합니다.</p>
+</blockquote>
+<pre><code>No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call; nested exception is javax.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call
+
+현재 스레드에 사용할 수 있는 실제 트랜잭션이 있는 EntityManager가 없습니다. '영속' 호출을 안정적으로 처리할 수 없습니다. 중첩 예외는 javax.persistence.TransactionRequiredException입니다: 현재 스레드에 사용할 수 있는 실제 트랜잭션이 있는 EntityManager가 없습니다. '영속' 호출을 안정적으로 처리할 수 없습니다.
+
+</code></pre>
+<blockquote>
+<p>EntityManager는 트랜잭션 안에서 동작하여야 안정적인 처리를 할 수 있다는 오류를 뱉어냅니다.</p>
+</blockquote>
+<blockquote>
+<p>MemberRepositoryTest.java</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.repository;
+
+import jpabook.jpashop.entity.Member;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@Transactional 
+/* org.springframework.transaction.annotation.Transactional 권장 */
+class MemberRepositoryTest {
+
+    @Autowired MemberRepository memberRepository;
+
+    @Test
+    public void memberTest() throws Exception{
+        //given
+        Member member = new Member();
+        member.setUsername(&quot;MemberA&quot;);
+
+        //when
+        Long saveId = memberRepository.save(member);
+        Member findMember = memberRepository.find(saveId);
+
+        //then
+        Assertions.assertEquals(findMember.getId(), member.getId());
+        Assertions.assertEquals(findMember.getUsername(), member.getUsername());
+
+    }
+}
+
+</code></pre>
+<blockquote>
+<p>다시 테스트를 실행하면 테스트가 성공한 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-007.png" alt="contact"></p>
+<blockquote>
+<p>Test를 진행하면 DB에 쌓이지 않고 Rollback을 하게 되는데 @Rollback(false) 어노테이션을 추가하면 데이터가 쌓이는 것을 확인 할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>여기까지 확인을 하게되면 JPA가 잘 세팅 되어있는 것을 확인 할 수있습니다.</p>
+</blockquote>
+<h4 id="junit5">Junit5<a class="anchor" href="#junit5">#</a></h4>
+<blockquote>
+<p>Junit4의 assertThat() 과 isEqualTo 사용하기 위해서는 Hamcrest 라이브러리의 도움을 받아햐 합니다.</p>
+</blockquote>
+<blockquote>
+<p>gradle.build</p>
+</blockquote>
+<pre><code>dependencies{
+	implementation 'org.hamcrest:hamcrest-core:2.2'
+}
+</code></pre>
+<pre><code>import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+ assertThat(findMember, equalTo(member));
+ assertThat(findMember, is(member));
+ 
+</code></pre>
+<blockquote>
+<p>생성한 member와 조회한 findMember는 같은 객체일까 ?</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.repository;
+
+import jpabook.jpashop.entity.Member;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
+
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@Transactional
+/*@Rollback(false) 테스트 시 데이터 쌓임 */
+class MemberRepositoryTest {
+
+    @Autowired MemberRepository memberRepository;
+
+    @Test
+    public void memberTest() throws Exception{
+        //given
+        Member member = new Member();
+        member.setUsername(&quot;MemberA&quot;);
+
+        //when
+        Long saveId = memberRepository.save(member);
+        Member findMember = memberRepository.find(saveId);
+
+        //then
+        Assertions.assertEquals(findMember.getId(), member.getId());
+        Assertions.assertEquals(findMember.getUsername(), member.getUsername());
+        assertThat(findMember, equalTo(member));
+    }
+}
+</code></pre>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-008.png" alt="contact"></p>
+<blockquote>
+<p>같은 영속성 컨텍스트 안에서는 생성한 객체와 조회한 객체가 같습니다.</p>
+</blockquote>
+<blockquote>
+<p>1차 캐시에 값이 있기 때문에, 굳이 재조회를 하지 않고 값을 찾아 넣어줍니다.</p>
+</blockquote>
+<h3 id="jar-빌드해서-동작-확인">Jar 빌드해서 동작 확인<a class="anchor" href="#jar-빌드해서-동작-확인">#</a></h3>
+<blockquote>
+<p>Gradle 빌드를 합니다.</p>
+</blockquote>
+<blockquote>
+<p>윈도우 cmd 창 프로젝트 경로에서</p>
+</blockquote>
+<pre><code>.\gradlew.bat // 배치 실행 자동으로 .\이 붙네요
+
+.\gradlew build //윈도우 11에서는 이렇게도 실행되네요 
+
+</code></pre>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-009.png" alt="contact"></p>
+<blockquote>
+<p>실행을 마치고 나면, ~~\jpashop\build\libs 프로젝트 빌드 라이브러리 안에 Jar 파일이 생성됩니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-010.png" alt="contact"></p>
+<blockquote>
+<p>생성된 Jar를 실행해 봅니다.</p>
+</blockquote>
+<pre><code>java -jar .\jpashop-0.0.1-SNAPSHOT.jar
+</code></pre>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-011.png" alt="contact"></p>
+<blockquote>
+<p>스프링부트에서는 Jar기동만 해도 스프링부트가 톰캣을 실행 시키는군요 이런 방식으로는 처음 구동해 보네요</p>
+</blockquote>
+<h4 id="스프링부트의-자동설정">스프링부트의 자동설정<a class="anchor" href="#스프링부트의-자동설정">#</a></h4>
+<blockquote>
+<p>스프링부트를 통해 persistence.xml이나 localContainerEntityFactoryBean 등 번거러운 설정을 자동으로 해준다.</p>
+</blockquote>
+<h3 id="쿼리-파라미터-로그-남기기">쿼리 파라미터 로그 남기기<a class="anchor" href="#쿼리-파라미터-로그-남기기">#</a></h3>
+<blockquote>
+<p><a href="https://github.com/gavlyukovskiy/spring-boot-data-source-decorator">https://github.com/gavlyukovskiy/spring-boot-data-source-decorator</a></p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-012.png" alt="contact"></p>
+<blockquote>
+<p>오픈소스로 사용할 수 있는 라이브러리 spring-boot-data-source-decorator의 P6Spy를 추가해 보도록 하겠습니다.</p>
+</blockquote>
+<pre><code>P6Spy - 대부분의 Connection, Statement 및 ResultSet 메소드 호출을 가로채는 것을 포함하여 SQL 쿼리를 가로채고 기록하는 기능을 추가합니다.
+</code></pre>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-013.png" alt="contact"></p>
+<blockquote>
+<p>Quick Start를 보고 p6spy를 build.gradle에 추가합니다.</p>
+</blockquote>
+<pre><code>dependencies {
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'
+}
+</code></pre>
+<blockquote>
+<p>이후 설정 리로딩 후 라이브러리를 받은 후 바로 적용이 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>테스트를 돌려보면, p6spy 가 포함된 로그를 볼 수 있습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/jpa-start/img-014.png" alt="contact"></p>
+<blockquote>
+<p>p6spy 설정 application.yml에 필요한 옵션을 추가하면 된다.</p>
+</blockquote>
+<pre><code># JDBC 이벤트를 기록하기 위해 P6LogFactory 등록
+decorator.datasource.p6spy.enable-logging=true
+# com.p6spy.engine.spy.appender.SingleLineFormat 대신 com.p6spy.engine.spy.appender.MultiLineFormat 사용
+decorator.datasource.p6spy.multiline=true
+# 기본 리스너 [slf4j, sysout, file, custom]에 대한 로깅 사용
+decorator.datasource.p6spy.logging=slf4j
+# 사용할 로그 파일(logging=file일 때만)
+decorator.datasource.p6spy.log-file=spy.log
+# 사용할 클래스 파일(logging=custom인 경우에만). 클래스는 com.p6spy.engine.spy.appender.FormattedLogger를 구현해야 합니다.
+decorator.datasource.p6spy.custom-appender-class=my.custom.LoggerClass
+# 사용자 지정 로그 형식(지정된 경우 com.p6spy.engine.spy.appender.CustomLineFormat이 이 로그 형식과 함께 사용됨)
+decorator.datasource.p6spy.log 형식=
+# 정규식 패턴을 사용하여 로그 메시지를 필터링합니다. 지정된 경우 일치하는 메시지만 기록됩니다.
+decorator.datasource.p6spy.log-filter.pattern=
+# 추적 시스템에 유효한 SQL 문자열(실제 값으로 대체된 '?')을 보고합니다.
+# 참고 이 설정은 로깅 메시지에 영향을 주지 않습니다.
+decorator.datasource.p6spy.tracing.include-parameter-values=true
+</code></pre>
+<blockquote>
+<p>이런 기능들은 개발시 편리와 도움을 주지만, 운영에 배포할 때에는 성능에 이슈가 있을 수 있어서 성능 테스트 이후 제거하거나 수정해서 
+배포를 하도록해야합니다.</p>
+</blockquote>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-%ED%99%9C%EC%9A%A9-1">실전! 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발 - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/spring/">Spring</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/h2-preferences/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] H2 데이터베이스 설치 및 세팅</span>
+    </a>
+  
+
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >[Spring] @Bean과 @Component</span>
+    </a>
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">[스프링부트 JPA 활용] JPA 동작확인</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#jpa와-db설정">JPA와 DB설정</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#jpa-동작확인-1">JPA 동작확인</a>
+      <ul>
+        <li><a href="#엔티티-생성">엔티티 생성</a></li>
+        <li><a href="#테스트-코드">테스트 코드</a></li>
+        <li><a href="#jar-빌드해서-동작-확인">Jar 빌드해서 동작 확인</a></li>
+        <li><a href="#쿼리-파라미터-로그-남기기">쿼리 파라미터 로그 남기기</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9349865689631647"
+     data-ad-slot="1516247131"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+</body>
+
+</html>
