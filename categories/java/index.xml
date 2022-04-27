@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 17 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[스프링부트 JPA 활용] 요구사항 분석</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/requirement-analysis/</link>
+      <pubDate>Wed, 27 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/requirement-analysis/</guid>
+      <description>도메인 분석 설계  목차    요구사항 분석 도메인 모델과 테이블 설계 엔티티 클래스 개발 엔티티 설계시 주의점   요구사항 분석   회원기능
+ 회원가입 - 이름, 도시, 거리, 우편번호 입력 받아 회원을 등록 회원 목록 - 가입자 seq, 이름, 도시, 주소, 우편번호 조회가능    상품기능
+ 상품등록 - 상품명, 가격, 수량, 저자, ISBN 입력받아 상품등록 상품목록 - 등록된 상품 seq, 상품명, 가격 재고수량, 수정버튼 상품수정 - 상품명, 가격, 수량, 저자, ISBN 저장한 값 로드 후 상품수정    상품 주문</description>
+    </item>
+    
     <item>
       <title>[Spring] @Bean과 @Component</title>
       <link>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</link>

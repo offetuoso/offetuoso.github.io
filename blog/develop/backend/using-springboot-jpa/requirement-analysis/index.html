@@ -2,14 +2,14 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[Spring] @Bean과 @Component | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 요구사항 분석 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="@Bean과 @Component">
-  <meta name="keywords" content="Spring">
+  <meta name="description" content="[스프링부트 JPA 활용] JPA 동작확인">
+  <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="@Bean과 @Component">
-  <meta property="og:description" content="@Bean과 @Component">
+  <meta property="og:title" content="[스프링부트 JPA 활용] JPA 동작확인">
+  <meta property="og:description" content="[스프링부트 JPA 활용] JPA 동작확인">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[Spring] @Bean과 @Component",
-      "headline" : "[Spring] @Bean과 @Component",
-      "description" : "@Bean과 @Component",
+      "name" : "[스프링부트 JPA 활용] 요구사항 분석",
+      "headline" : "[스프링부트 JPA 활용] 요구사항 분석",
+      "description" : "[스프링부트 JPA 활용] JPA 동작확인",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,11 +85,11 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-04-17 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-04-17 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/framework\/spring\/spring-bean-component\/",
-      "wordCount" : "81",
-      "keywords" : ["Spring", "Blog"]
+      "datePublished": "2022-04-27 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-04-27 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/requirement-analysis\/",
+      "wordCount" : "186",
+      "keywords" : ["ORM", "Blog"]
     }
   
   </script>
@@ -165,57 +165,107 @@
         <div class="post">
           <header class="post__header">
              
-            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            	<div class="header-inner" style="background-image: url('/images/title/bg-using-springboot-jpa.png');">
             
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[Spring] @Bean과 @Component
+		            	[스프링부트 JPA 활용] 요구사항 분석
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[Spring] @Bean과 @Component
+		       	[스프링부트 JPA 활용] 요구사항 분석
             </h1>		
-            <time datetime="2022-04-17 00:00:00 &#43;0000 UTC" class="post__date">2022-04-17</time> 
+            <time datetime="2022-04-27 00:00:00 &#43;0000 UTC" class="post__date">2022-04-27</time> 
           </header>
           <article class="post__content">
               
-<h1 id="spring-bean-과-component">[Spring] @Bean 과 @Component</h1>
+<h1 id="도메인-분석-설계">도메인 분석 설계</h1>
 <hr>
-<h2 id="bean-과-component-어노테이션이란-">@Bean 과 @Component 어노테이션이란 ?<a class="anchor" href="#bean-과-component-어노테이션이란-">#</a></h2>
+<h2 id="목차">목차<a class="anchor" href="#목차">#</a></h2>
 <hr>
 <blockquote>
-<p>IoC Container는 특정 어노테이션이 달려있는 클래스를 빈으로 만들기 위해 빈 스캐닝을 합니다.</p>
+<ol>
+<li>요구사항 분석</li>
+<li>도메인 모델과 테이블 설계</li>
+<li>엔티티 클래스 개발</li>
+<li>엔티티 설계시 주의점</li>
+</ol>
 </blockquote>
+<h2 id="요구사항-분석">요구사항 분석<a class="anchor" href="#요구사항-분석">#</a></h2>
+<hr>
+<p><img src="/images/develop/backend/using-springboot-jpa/requirement-analysis/img-001.png" alt="contact"></p>
+<blockquote>
+<p>회원기능</p>
+<ol>
+<li>회원가입 - 이름, 도시, 거리, 우편번호 입력 받아 회원을 등록</li>
+<li>회원 목록 - 가입자 seq, 이름, 도시, 주소, 우편번호 조회가능</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>상품기능</p>
+<ol>
+<li>상품등록 - 상품명, 가격, 수량, 저자, ISBN 입력받아 상품등록</li>
+<li>상품목록 - 등록된 상품 seq, 상품명, 가격 재고수량, 수정버튼</li>
+<li>상품수정 - 상품명, 가격, 수량, 저자, ISBN 저장한 값 로드 후 상품수정</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>상품 주문</p>
+<ol>
+<li>상품 주문 - 주문회원(선택), 상품(선택), 주문수량을 입력받아 상품 주문, 주문한 물품 수량 감소
+, 주문 수량과 재고 수량 비교</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>주문 목록 - 주문 seq, 주문자명, 대표상품 이름, 대표상품 주문가격, 대표상품 주문 수량, 상태(주문,취소), 일시, 주문 취소 버튼
+검색 기능 회원명, 주문상태</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>주문 취소 - 구매한 물품 갯수만큼 재고 증가, 주문 상태 취소로 변경, 일시 취소 일자로 변경</li>
+</ol>
+</blockquote>
+<h3 id="기능-목록">기능 목록<a class="anchor" href="#기능-목록">#</a></h3>
 <blockquote>
 <ul>
-<li>@Configuration</li>
-<li>@Bean</li>
-<li>@Component</li>
-<li>@Repository</li>
-<li>@Service</li>
-<li>@Controller</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>대표적으로 빈으로 사용 할 수 있게 해주는 어노테이션은 대표적으로 빈으로 사용 할 수 있도록 해주는 어노테이션은 @Bean과 @Component이 있습니다.</p>
-</blockquote>
-<h2 id="bean-vs-component">@Bean VS @Component<a class="anchor" href="#bean-vs-component">#</a></h2>
-<hr>
-<h3 id="bean">@Bean<a class="anchor" href="#bean">#</a></h3>
-<hr>
-<blockquote>
-<p>개발자가 작성한 <mark>메소드를 통해 반환되는 객체를 Bean으로 만듬.</mark></p>
+<li>회원 기능
 <ul>
-<li>@Bean은 개발자가 직접 제어가 불가능한 외부 라이브러리를 사용할 때 사용.</li>
-<li>@Configuration을 선언한 클래스 내부에서 사용</li>
+<li>회원등록</li>
+<li>조회</li>
+</ul>
+</li>
+<li>상품 기능
+<ul>
+<li>상품 수정</li>
+<li>상품 조회</li>
+</ul>
+</li>
+<li>주문 기능
+<ul>
+<li>상품 주문</li>
+<li>주문 내역 조회</li>
+<li>주문 취소</li>
+</ul>
+</li>
+<li>기타 요구사항
+<ul>
+<li>상품은 재고관리가 필요</li>
+<li>상품의 종류는 도서, 음반, 영화가 있다.</li>
+<li>상품은 카테고리로 구분 할 수 있다.</li>
+<li>상품 주문시 배송 정보를 입력할 수 있다.</li>
+</ul>
+</li>
 </ul>
 </blockquote>
-<h3 id="component">@Component<a class="anchor" href="#component">#</a></h3>
-<hr>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
-<p>@Component는 개발자가 직접 작성한 <mark>Class를 Bean으로 만듬.</mark></p>
+<ul>
+<li><a href="https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-%ED%99%9C%EC%9A%A9-1">실전! 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발 - 김영한</a></li>
+</ul>
 </blockquote>
 
 
@@ -228,30 +278,35 @@
 
 <ul class="tags__list">
     
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
     <li class="tag__item">
         <a class="tag__link" href="https://offetuoso.github.io/tags/spring/">Spring</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/framework/">Framework</a>
-    </li>
-    <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/springframework/">SpringFramework</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
     </li></ul>
 
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] JPA 동작확인</span>
+        <span class="pagination__title">[Spring] @Bean과 @Component</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/requirement-analysis/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 요구사항 분석</span>
-    </a>
   
 </div>
 
@@ -321,14 +376,13 @@
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[Spring] @Bean과 @Component</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 요구사항 분석</div> 
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#bean-과-component-어노테이션이란-">@Bean 과 @Component 어노테이션이란 ?</a></li>
-    <li><a href="#bean-vs-component">@Bean VS @Component</a>
+    <li><a href="#목차">목차</a></li>
+    <li><a href="#요구사항-분석">요구사항 분석</a>
       <ul>
-        <li><a href="#bean">@Bean</a></li>
-        <li><a href="#component">@Component</a></li>
+        <li><a href="#기능-목록">기능 목록</a></li>
       </ul>
     </li>
   </ul>
