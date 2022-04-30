@@ -2,7 +2,7 @@
 <html lang="ko-KR">
 
 <head>
-  <title>JPA 상속관계 매핑 | offetuoso&#39;s Blog</title>
+  <title>[자바 ORM 표준 JPA] JPA 상속관계 매핑 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
@@ -14,10 +14,15 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
- 
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
      crossorigin="anonymous"></script>
-     
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="상속관계 매핑">
+  <meta property="og:description" content="상속관계 매핑">
      
   
   
@@ -33,6 +38,7 @@
 
   <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
   <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
 	
   <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
@@ -49,7 +55,7 @@
   
   
     
-    <link type="text/css" rel="stylesheet" href="/css/post.min.c1274de8056ec037f13599c0d02235374755c57628d6e76941b24971bc31d943.css" integrity="sha256-wSdN6AVuwDfxNZnA0CI1N0dVxXYo1udpQbJJcbwx2UM="/>
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
   
     
     <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
@@ -69,8 +75,8 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "JPA 상속관계 매핑",
-      "headline" : "JPA 상속관계 매핑",
+      "name" : "[자바 ORM 표준 JPA] JPA 상속관계 매핑",
+      "headline" : "[자바 ORM 표준 JPA] JPA 상속관계 매핑",
       "description" : "상속관계 매핑",
       "inLanguage" : "en-US",
       "author" : "",
@@ -164,12 +170,12 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	JPA 상속관계 매핑
+		            	[자바 ORM 표준 JPA] JPA 상속관계 매핑
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	JPA 상속관계 매핑
+		       	[자바 ORM 표준 JPA] JPA 상속관계 매핑
             </h1>		
             <time datetime="2022-01-13 00:00:00 &#43;0000 UTC" class="post__date">2022-01-13</time> 
           </header>
@@ -249,7 +255,7 @@ ITEM과 ALBUM 두번의 인서트와 조회는 ITEM_ID로 조인을 해서 가�
 <li>@DiscriminaterValue(&ldquo;XXX&rdquo;)</li>
 </ul>
 </blockquote>
-<h4 id="상속관계-구현">상속관계 구현</h4>
+<h4 id="상속관계-구현">상속관계 구현<a class="anchor" href="#상속관계-구현">#</a></h4>
 <blockquote>
 <p>Item.java</p>
 </blockquote>
@@ -491,7 +497,7 @@ Process finished with exit code 0
 <blockquote>
 <p>따로 설정을 하지 않으니 단일(통합) 테이블 전략을 사용하여, ITEM 하나의 테이블에 모든 속성들이 생성되는것을 확인할 수 있습니다.</p>
 </blockquote>
-<h4 id="1-조인전략---예제">1. 조인전략 - 예제</h4>
+<h4 id="1-조인전략---예제">1. 조인전략 - 예제<a class="anchor" href="#1-조인전략---예제">#</a></h4>
 <blockquote>
 <p>부모 클래스(Item.java)에서 <br>
 @Inheritance(strategy = InheritanceType.JOINED) 추가</p>
@@ -539,7 +545,7 @@ Hibernate:
     )
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/inheritance-mapping/img-006.png" alt="contact"></p>
-<h5 id="조인전략---insert">조인전략 - Insert</h5>
+<h5 id="조인전략---insert">조인전략 - Insert<a class="anchor" href="#조인전략---insert">#</a></h5>
 <blockquote>
 <p>JpaMain.java - Movie 객체 생성</p>
 </blockquote>
@@ -574,7 +580,7 @@ Hibernate:
             (?, ?, ?)
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/inheritance-mapping/img-007.png" alt="contact"></p>
-<h5 id="조인전략---select">조인전략 - Select</h5>
+<h5 id="조인전략---select">조인전략 - Select<a class="anchor" href="#조인전략---select">#</a></h5>
 <blockquote>
 <p>JpaMain.java - Movie 객체 생성 후 flush()와 clear() 후 조회 추가</p>
 </blockquote>
@@ -614,7 +620,7 @@ Hibernate:
         movie0_.id=?
 </code></pre>
 <p><img src="/images/develop/backend/orm-jpa-basic/inheritance-mapping/img-008.png" alt="contact"></p>
-<h4 id="부모-클래스에서-하위-클래스를-구분">부모 클래스에서 하위 클래스를 구분</h4>
+<h4 id="부모-클래스에서-하위-클래스를-구분">부모 클래스에서 하위 클래스를 구분<a class="anchor" href="#부모-클래스에서-하위-클래스를-구분">#</a></h4>
 <blockquote>
 <p>실제로 부모 테이블만 조회 하였을때, 어떤 자식의 테이블과 조인을 해야 하는지 알 수 없는 경우 <br>자식 테이블들을 각각 조회해 봐야 하는 불편함이 있습니다. 이러한 문제에 도움을 주고자 <br>JPA에서는 Discriminator 라는 어노테이션들을 지원하여 어떤 하위 테이블의 데이터인지 구분해 줍니다.</p>
 </blockquote>
@@ -660,7 +666,7 @@ Hibernate:
 <blockquote>
 <p>하지만, 회사의 Rule이나 DBA 의견에 따라 숫자, 문자 또는 코드로 관리하게 된다면</p>
 </blockquote>
-<h4 id="dtype-구분값-지정">DTYPE 구분값 지정</h4>
+<h4 id="dtype-구분값-지정">DTYPE 구분값 지정<a class="anchor" href="#dtype-구분값-지정">#</a></h4>
 <blockquote>
 <p>자식 클래스에서 각각 @DiscriminatorValue(&ldquo;anything&rdquo;)</p>
 </blockquote>
@@ -689,7 +695,7 @@ public class Book extends Item{
 <p>JpaMain.java 애플리케이션 재시작</p>
 </blockquote>
 <p><img src="/images/develop/backend/orm-jpa-basic/inheritance-mapping/img-010.png" alt="contact"></p>
-<h4 id="2-단일-테이블-전략---예제">2. 단일 테이블 전략 - 예제</h4>
+<h4 id="2-단일-테이블-전략---예제">2. 단일 테이블 전략 - 예제<a class="anchor" href="#2-단일-테이블-전략---예제">#</a></h4>
 <blockquote>
 <p>단일 테이블 전략은 테이블을 나누지 않고 하나의 테이블로 통합하여 사용하는 전략입니다. <br>
 상속전략을 변경만 해도 빠르게 적용됩니다.</p>
@@ -807,7 +813,7 @@ Hibernate:
 <blockquote>
 <p>Jpa를 사용하지 않는다면 많은 소스코드들과 쿼리 들을 수정했어야 했을 것입니다.</p>
 </blockquote>
-<h4 id="3-구현-클래스마다-테이블-전략---예제">3. 구현 클래스마다 테이블 전략 - 예제</h4>
+<h4 id="3-구현-클래스마다-테이블-전략---예제">3. 구현 클래스마다 테이블 전략 - 예제<a class="anchor" href="#3-구현-클래스마다-테이블-전략---예제">#</a></h4>
 <p><img src="/images/develop/backend/orm-jpa-basic/inheritance-mapping/img-004.png" alt="contact"></p>
 <blockquote>
 <p>Joined 속성과 똑같지만, ITEM 테이블을 없애고(추상클래스로 변경) ITEM의 속성을 밑의 자식 테이블에 위치 시키는 전략입니다.</p>
@@ -979,7 +985,7 @@ where
 </blockquote>
 <h3 id="각각-전략들의-장단점">각각 전략들의 장단점<a class="anchor" href="#각각-전략들의-장단점">#</a></h3>
 <hr>
-<h4 id="조인-전략의-장단점">조인 전략의 장/단점</h4>
+<h4 id="조인-전략의-장단점">조인 전략의 장/단점<a class="anchor" href="#조인-전략의-장단점">#</a></h4>
 <blockquote>
 <ul>
 <li>장점
@@ -1002,7 +1008,7 @@ where
 </li>
 </ul>
 </blockquote>
-<h4 id="단일-테이블-전략-장단점">단일 테이블 전략 장/단점</h4>
+<h4 id="단일-테이블-전략-장단점">단일 테이블 전략 장/단점<a class="anchor" href="#단일-테이블-전략-장단점">#</a></h4>
 <blockquote>
 <ul>
 <li>장점
@@ -1023,7 +1029,7 @@ where
 </li>
 </ul>
 </blockquote>
-<h4 id="구현-클래스마다-테이블-전략-장단점">구현 클래스마다 테이블 전략 장/단점</h4>
+<h4 id="구현-클래스마다-테이블-전략-장단점">구현 클래스마다 테이블 전략 장/단점<a class="anchor" href="#구현-클래스마다-테이블-전략-장단점">#</a></h4>
 <blockquote>
 <p><mark>이 전략은 데이터베이스 설계자와 ORM 전문가 둘 다 추천하지 않음</mark></p>
 </blockquote>
@@ -1057,7 +1063,7 @@ where
 <blockquote>
 <p>하지만 조인전략과 단일테이블 전략에서는 ITEM만 사용하기 때문에 구현 클래스마다 전략은 매우 큰 단점을 가지고 있는것을 알 수 있습니다.</p>
 </blockquote>
-<h4 id="상속관계-매핑-정리">상속관계 매핑 정리</h4>
+<h4 id="상속관계-매핑-정리">상속관계 매핑 정리<a class="anchor" href="#상속관계-매핑-정리">#</a></h4>
 <blockquote>
 <p>기본적으로 조인전략을 가져가고 설계나 구조 상황에 따라 조인전략과 단일 테이블 전략에서 고민 <br> 
 비즈니스 적으로 중요하지 않고 데이터가 그리 많지 않다면 단일테이블 전략을 선택해 시간과 일정을 절약  <br>
@@ -1066,7 +1072,7 @@ where
 <blockquote>
 <p><mark>테이블마다 전략은 고려대상 아님</mark></p>
 </blockquote>
-<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a></h4>
+<h4 id="참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">참고- <a href="https://www.inflearn.com/course/ORM-JPA-Basic">자바 ORM 표준 JPA - 김영한</a><a class="anchor" href="#참고--a-hrefhttpswwwinflearncomcourseorm-jpa-basic자바-orm-표준-jpa---김영한a">#</a></h4>
 
 
               
@@ -1078,8 +1084,9 @@ where
 
 <ul class="tags__list">
     
+    
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
     </li>
     <li class="tag__item">
         <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
@@ -1088,26 +1095,25 @@ where
         <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
     </li>
     <li class="tag__item">
-        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
-    </li>
-    </ul>
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li></ul>
 
  
 		          <div class="pagination">
   
     <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-3/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">JPA 실전 예제 3 - 다양한 연관관계 매핑</span>
+        <span class="pagination__title">[자바 ORM 표준 JPA] JPA 실전 예제 3 - 다양한 연관관계 매핑</span>
     </a>
   
 
   
     <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapped-superclass/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >JPA @MappedSuperclass</span>
+      <span class="pagination__title" >[자바 ORM 표준 JPA] JPA @MappedSuperclass</span>
     </a>
   
 </div>
@@ -1178,7 +1184,7 @@ where
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">JPA 상속관계 매핑</div> 
+          <div class="toc-post-title">[자바 ORM 표준 JPA] JPA 상속관계 매핑</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
@@ -1242,6 +1248,23 @@ where
       </div>
     </article>
 </script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9349865689631647"
+     data-ad-slot="1516247131"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
 </body>
 
 </html>
