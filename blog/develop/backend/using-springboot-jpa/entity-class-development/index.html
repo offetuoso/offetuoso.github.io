@@ -88,7 +88,7 @@
       "datePublished": "2022-05-01 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-05-01 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/entity-class-development\/",
-      "wordCount" : "680",
+      "wordCount" : "854",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -195,6 +195,7 @@
 </blockquote>
 <h2 id="엔티티-클래스-개발">엔티티 클래스 개발<a class="anchor" href="#엔티티-클래스-개발">#</a></h2>
 <hr>
+<p><img src="/images/develop/backend/using-springboot-jpa/domain-model-and-db-architecture/img-007.png" alt="contact"></p>
 <blockquote>
 <ul>
 <li>예제에서는 설명을 쉽게하기 위해 엔타타 클래스에 Getter, Setter를 모두 열고, 최대한 단순하게 설계</li>
@@ -534,7 +535,83 @@ public enum DeliveryStatus {
 }
 
 </code></pre>
-<p><img src="/images/develop/backend/using-springboot-jpa/domain-model-and-db-architecture/img-001.png" alt="contact"></p>
+<h4 id="order---delivery">Order - Delivery<a class="anchor" href="#order---delivery">#</a></h4>
+<blockquote>
+<p>1:1 관계에서는 FK를 어느 위치에 둬도 상관은 없지만, Order에서 Delivery를 조회하는게 Delivery에서 Order를 조회 하는것보다 많기 때문에 FK를 더 많이 접근하는 엔티티에 FK를 위치 시킵니다.</p>
+</blockquote>
+<blockquote>
+<p>Order - @JoinColumn(name = &ldquo;delivery_id&rdquo;) 추가</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter @Setter
+@Table(name = &quot;orders&quot;)
+public class Order {
+
+    @Id @GeneratedValue
+    @Column(name=&quot;order_id&quot;)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;member_id&quot;) // Order의 member가 수정되면 Order의 외래키 값이 변경됩니다.
+    private Member member;
+
+    @OneToMany(mappedBy = &quot;order&quot;) // 연관관계의 주인인 OrderItem의 order로 매핑 되어있다는 뜻
+    private List&lt;OrderItem&gt; orderItems = new ArrayList&lt;&gt;();
+
+    @OneToOne
+    @JoinColumn(name = &quot;delivery_id&quot;)
+    private Delivery delivery;
+
+    private LocalDateTime orderDate; //주문시간
+
+    @Enumerated(EnumType.STRING) // EnumType.ORDINAL(숫자라 순서바뀌면 큰일)이 기본이지만 무조건 EnumType.STRING(문자 코드)
+    private OrderStatus status; // 주문상태 [ORDER, CANCEL]
+}
+
+</code></pre>
+<blockquote>
+<p>Delivery.java - @OneToOne(mappedBy = &ldquo;delivery&rdquo;) 추가</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Getter @Setter
+public class Delivery {
+
+    public Delivery() {
+    }
+
+    @Id @GeneratedValue
+    @Column(name = &quot;delivery_id&quot;)
+    private Long id;
+
+    @OneToOne(mappedBy = &quot;delivery&quot;)
+    private Order order;
+
+    @Embedded
+    private Address address;
+
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus status; //READY, COMP
+
+}
+
+</code></pre>
 <h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
