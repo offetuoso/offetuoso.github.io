@@ -88,7 +88,7 @@
       "datePublished": "2022-05-08 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-05-08 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/entity-class-development\/",
-      "wordCount" : "855",
+      "wordCount" : "1121",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -612,8 +612,138 @@ public class Delivery {
 }
 
 </code></pre>
-<h3 id="categoryjava">Category.java<a class="anchor" href="#categoryjava">#</a></h3>
+<h3 id="categoryjava">CATEGORY.java<a class="anchor" href="#categoryjava">#</a></h3>
+<h4 id="category----item-n--m">CATEGORY -  ITEM (N : M)<a class="anchor" href="#category----item-n--m">#</a></h4>
 <hr>
+<blockquote>
+<p>N:M 관계를 JPA로 구현하기 위해서는 테이블과 테이블 사이에 JoinTable을 추가해 N:1, 1:M 구조가 되게끔 생성합니다.</p>
+</blockquote>
+<blockquote>
+<p>Category.java</p>
+<ul>
+<li>@ManyToMany 추가</li>
+<li>@JoinTable 추가</li>
+</ul>
+</blockquote>
+<pre><code>package jpabook.jpashop.domain;
+
+import jpabook.jpashop.domain.item.Item;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter @Setter
+public class Category {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;category_id&quot;)
+    private Long id;
+
+    private String name;
+
+    @ManyToMany
+    @JoinTable(name = &quot;category_item&quot;
+            , joinColumns = @JoinColumn(name = &quot;category_id&quot;)
+            , inverseJoinColumns = @JoinColumn(name = &quot;item_id&quot;)
+    )
+    private List&lt;Item&gt; items = new ArrayList&lt;&gt;();
+
+}
+
+</code></pre>
+<blockquote>
+<p>Item.java - @ManyToMany(mappedBy = &ldquo;items&rdquo;) 추가</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.domain.item;
+
+import jpabook.jpashop.domain.Category;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = &quot;dtype&quot;)
+@Getter @Setter
+public abstract class Item {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;item_id&quot;)
+    private Long id;
+
+    private String name;
+    private int price;
+    private int stockQuantity;
+
+    @ManyToMany(mappedBy = &quot;items&quot;)
+    private List&lt;Category&gt; categories = new ArrayList&lt;&gt;();
+
+}
+
+</code></pre>
+<h4 id="category의-계층형-관계">Category의 계층형 관계<a class="anchor" href="#category의-계층형-관계">#</a></h4>
+<hr>
+<blockquote>
+<p>카테고리나 코드 같은 엔티티는 본인과 부모 관계의 계층형 관계의 구조로 구성할 수 있는데 
+parent와 child 모두 본인 엔티티에 가지게 된다. <br> 
+코드성 테이블 생성시 부모(또는 그룹코드)를 가지고 있지만, JPA에서는 자식을 조회할 수 있도록 child도 가진다.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>@ManyToOne - 추가</li>
+<li>@OneToMany - 추가</li>
+</ul>
+</blockquote>
+<pre><code>package jpabook.jpashop.domain;
+
+import jpabook.jpashop.domain.item.Item;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter @Setter
+public class Category {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;category_id&quot;)
+    private Long id;
+
+    private String name;
+
+    @ManyToMany
+    @JoinTable(name = &quot;category_item&quot;
+            , joinColumns = @JoinColumn(name = &quot;category_id&quot;)
+            , inverseJoinColumns = @JoinColumn(name = &quot;item_id&quot;)
+    )
+    private List&lt;Item&gt; items = new ArrayList&lt;&gt;();
+
+    @ManyToOne
+    @JoinColumn(name = &quot;parent_id&quot;)
+    private Category parent;
+
+    @OneToMany(mappedBy = &quot;parent&quot;)
+    private List&lt;Category&gt; child = new ArrayList&lt;&gt;();
+}
+
+</code></pre>
+<blockquote>
+<p>애플리케이션을 실행</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/entity-class-development/img-001.png" alt="contact"></p>
+<blockquote>
+<p>테이블이 정상적으로 생성된것을 확인할 수 있습니다.</p>
+</blockquote>
 <h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
@@ -744,7 +874,7 @@ public class Delivery {
         <li><a href="#itemjava">Item.java</a></li>
         <li><a href="#deliveryjava">Delivery.java</a></li>
         <li><a href="#deliverystatusjava">DeliveryStatus.java</a></li>
-        <li><a href="#categoryjava">Category.java</a></li>
+        <li><a href="#categoryjava">CATEGORY.java</a></li>
       </ul>
     </li>
   </ul>
