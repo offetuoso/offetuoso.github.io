@@ -14,7 +14,8 @@
       <pubDate>Sun, 08 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/entity-class-development/</guid>
-      <description>도메인 분석 설계  목차    요구사항 분석 도메인 모델과 테이블 설계 엔티티 클래스 개발 엔티티 설계시 주의점   엔티티 클래스 개발    예제에서는 설명을 쉽게하기 위해 엔타타 클래스에 Getter, Setter를 모두 열고, 최대한 단순하게 설계 실무에서는 가급적 Getter, Setter는 꼭 필요한 경우에만 사용하는 것을 추천    참고 : 이론적으로 Getter, Setter를 모두 제공하지 않고, 꼭 필요한 별도의 메서드를 제공하는게 가장 이상적이다. 하지만 실무에서 엔티티의 데이는 조회할 일이 너무 많으므로, Getter의 경우 모두 열어 두는 것이 편리하다.</description>
+      <description>도메인 분석 설계  목차    요구사항 분석 도메인 모델과 테이블 설계 엔티티 클래스 개발 엔티티 설계시 주의점   엔티티 클래스 개발    예제에서는 설명을 쉽게하기 위해 엔타타 클래스에 Getter, Setter를 모두 열고, 최대한 단순하게 설계 실무에서는 가급적 Getter, Setter는 꼭 필요한 경우에만 사용하는 것을 추천   도메인 패키지 생성   jpabook/jpashop/domain 패키지를 생성하여 추가할 엔티티 클래스들을 모아두도록 하겠습니다.
+  기존의 jpabook/jpashop/entity의 패키지는 지우도록 하겠습니다.</description>
     </item>
     
     <item>
