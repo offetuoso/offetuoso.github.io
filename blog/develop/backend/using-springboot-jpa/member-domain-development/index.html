@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 애플리케이션 구현 준비 | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 회원 도메인 개발 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 애플리케이션 구현 준비">
+  <meta name="description" content="[스프링부트 JPA 활용] 회원 도메인 개발">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 애플리케이션 구현 준비">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 애플리케이션 구현 준비">
+  <meta property="og:title" content="[스프링부트 JPA 활용] 회원 도메인 개발">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 회원 도메인 개발">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 애플리케이션 구현 준비",
-      "headline" : "[스프링부트 JPA 활용] 애플리케이션 구현 준비",
-      "description" : "[스프링부트 JPA 활용] 애플리케이션 구현 준비",
+      "name" : "[스프링부트 JPA 활용] 회원 도메인 개발",
+      "headline" : "[스프링부트 JPA 활용] 회원 도메인 개발",
+      "description" : "[스프링부트 JPA 활용] 회원 도메인 개발",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-05-17 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-05-17 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/preparing-for-application-implementation\/",
-      "wordCount" : "1122",
+      "datePublished": "2022-05-19 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-05-19 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/member-domain-development\/",
+      "wordCount" : "1031",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,193 +170,20 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 애플리케이션 구현 준비
+		            	[스프링부트 JPA 활용] 회원 도메인 개발
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 애플리케이션 구현 준비
+		       	[스프링부트 JPA 활용] 회원 도메인 개발
             </h1>		
-            <time datetime="2022-05-17 00:00:00 &#43;0000 UTC" class="post__date">2022-05-17</time> 
+            <time datetime="2022-05-19 00:00:00 &#43;0000 UTC" class="post__date">2022-05-19</time> 
           </header>
           <article class="post__content">
               
-<h1 id="애플리케이션-구현-준비">애플리케이션 구현 준비</h1>
+<h1 id="애플리케이션-구현">애플리케이션 구현</h1>
 <hr>
 <h2 id="목차">목차<a class="anchor" href="#목차">#</a></h2>
-<hr>
-<blockquote>
-<ol>
-<li>구현 요구사항</li>
-<li>애플리케이션 아키텍쳐</li>
-</ol>
-</blockquote>
-<h2 id="구현-요구사항">구현 요구사항<a class="anchor" href="#구현-요구사항">#</a></h2>
-<hr>
-<blockquote>
-<p>이번에는 애플리케이션을 어떻게 구현할지에 대한 구현 요구사항이랑 애플리케이션 아키텍처에 대하여 정리하겠습니다.</p>
-</blockquote>
-<blockquote>
-<p>도메인 설계가 다 끝났는데, 그것은 데이터 적인 설계였고 이번에는 어디까지 구현할지 범위에 대한 요구사항을 정리해 보도록 하겠습니다.</p>
-</blockquote>
-<p><img src="/images/develop/backend/using-springboot-jpa/requirement-analysis/img-001.png" alt="contact"></p>
-<blockquote>
-<ul>
-<li>회원 기능
-<ul>
-<li>회원 등록</li>
-<li>회원 조회</li>
-</ul>
-</li>
-<li>상품 기능
-<ul>
-<li>상품 등록</li>
-<li>상품 수정</li>
-<li>상품 조회</li>
-</ul>
-</li>
-<li>주문 기능
-<ul>
-<li>상품 주문</li>
-<li>주문 내역 조회</li>
-<li>주문 취소</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="회원-기능">회원 기능<a class="anchor" href="#회원-기능">#</a></h3>
-<hr>
-<h4 id="회원-등록">회원 등록<a class="anchor" href="#회원-등록">#</a></h4>
-<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-001.png" alt="contact"></p>
-<blockquote>
-<ul>
-<li>회원 등록하는 페이지이며, 비지니스 메서드를 통해 회원등록 구현 되어야 합니다.</li>
-</ul>
-</blockquote>
-<h4 id="회원-조회">회원 조회<a class="anchor" href="#회원-조회">#</a></h4>
-<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-002.png" alt="contact"></p>
-<blockquote>
-<ul>
-<li>등록된 회원을 조회하고 화면에 리스트로 뿌려줘야 합니다.</li>
-</ul>
-</blockquote>
-<h3 id="회원-기능-1">회원 기능<a class="anchor" href="#회원-기능-1">#</a></h3>
-<hr>
-<h4 id="상품-등록">상품 등록<a class="anchor" href="#상품-등록">#</a></h4>
-<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-003.png" alt="contact"></p>
-<blockquote>
-<ul>
-<li>상품을 등록하고 수정할 수 있어야 합니다.</li>
-<li>상품종류를 선택하여, 각각의 상품을 등록할 수 있어야 합니다.</li>
-</ul>
-</blockquote>
-<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-004.png" alt="contact"></p>
-<blockquote>
-<ul>
-<li>등록된 상품을 조회할 수 있어야 합니다.</li>
-<li>수정버튼을 눌러 상품을 수정할 수 있습니다.</li>
-</ul>
-</blockquote>
-<h3 id="주문-기능">주문 기능<a class="anchor" href="#주문-기능">#</a></h3>
-<hr>
-<h4 id="상품-주문">상품 주문<a class="anchor" href="#상품-주문">#</a></h4>
-<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-005.png" alt="contact"></p>
-<blockquote>
-<ul>
-<li>등록된 회원과 재고가 있는 상품을 선택 후 주문수량을 입력해 주문을 등록합니다.</li>
-<li>주문 수량은 재고보다 많으면 안됩니다.</li>
-<li>주문수량이 적절하면 주문이 됩니다.</li>
-</ul>
-</blockquote>
-<h4 id="주문-내역-조회">주문 내역 조회<a class="anchor" href="#주문-내역-조회">#</a></h4>
-<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-006.png" alt="contact"></p>
-<blockquote>
-<ul>
-<li>주문을 하면 주문 내역에 리스트 형태로 조회가 됩니다.</li>
-</ul>
-</blockquote>
-<h4 id="주문-취소">주문 취소<a class="anchor" href="#주문-취소">#</a></h4>
-<blockquote>
-<ul>
-<li>주문을 하면, 주문한 물품 갯수에 따라 상품 재고가 줄어듭니다.</li>
-<li>취소를 하면 주문한 상품의 재고가 다시 늘어납니다.</li>
-</ul>
-</blockquote>
-<h4 id="검색">검색<a class="anchor" href="#검색">#</a></h4>
-<blockquote>
-<ul>
-<li>조건에 따라 조회가 가능합니다.</li>
-</ul>
-</blockquote>
-<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-007.png" alt="contact"></p>
-<h3 id="기능구현-제외">기능구현 제외<a class="anchor" href="#기능구현-제외">#</a></h3>
-<hr>
-<blockquote>
-<p>선택과 집중을 하기 위하여 강좌에서 예제를 단순화 하여 다음 기능은 구현하지 않습니다.</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>로그인과 권한 관리 X</li>
-<li>파라미터 검증과 예외 처리 단순화</li>
-<li>상품은 도서만 사용</li>
-<li>카테고리는 사용 X</li>
-<li>배송 정보는 사용 X</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>강좌를 정리하고 추가적으로 공부할 여력이 된다면 추가 하도록 하겠습니다.</p>
-</blockquote>
-<h2 id="애플리케이션-아키텍처">애플리케이션 아키텍처<a class="anchor" href="#애플리케이션-아키텍처">#</a></h2>
-<hr>
-<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-008.png" alt="contact"></p>
-<h3 id="계층형-구조">계층형 구조<a class="anchor" href="#계층형-구조">#</a></h3>
-<hr>
-<blockquote>
-<p>Controller를 통해 Service, Repository를 거처 DB에 접근하지만, Controller에서 Repository를 바로 접근하여 DB에 접근할 수 있게 유연하게 개발하도록 하겠습니다.</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>controller, web : 웹 계층</li>
-<li>service : 비즈니스 로직, 트랜잭션 처리</li>
-<li>repository : JPA를 직접 사용하는 계층, 엔티티 매니저 사용</li>
-<li>domain : 엔티티가 모여있는 계층, 모든 계층에서 사용</li>
-</ul>
-</blockquote>
-<h3 id="계층형-구조-1">계층형 구조<a class="anchor" href="#계층형-구조-1">#</a></h3>
-<hr>
-<blockquote>
-<ul>
-<li>controller, web : 웹 계층</li>
-<li>service : 비즈니스 로직, 트랜잭션 처리</li>
-<li>repository : JPA를 직접 사용하는 계층, 엔티티 매니저 사용</li>
-<li>domain : 엔티티가 모여있는 계층, 모든 계층에서 사용</li>
-</ul>
-</blockquote>
-<h3 id="패키지-구조">패키지 구조<a class="anchor" href="#패키지-구조">#</a></h3>
-<hr>
-<blockquote>
-<ul>
-<li>jpabook.jpashop
-<ul>
-<li>domain</li>
-<li>exection</li>
-<li>repository</li>
-<li>service</li>
-<li>web</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="개발-순서">개발 순서<a class="anchor" href="#개발-순서">#</a></h3>
-<hr>
-<blockquote>
-<ol>
-<li>서비스, 리포지토리 계층을 개발</li>
-<li>테스트 케이스를 작성 및 검증</li>
-<li>웹 계층 적용</li>
-</ol>
-</blockquote>
-<h3 id="개발-목차">개발 목차<a class="anchor" href="#개발-목차">#</a></h3>
 <hr>
 <blockquote>
 <ol>
@@ -422,6 +249,125 @@
 <li>QueryDSL 소개</li>
 <li>마무리</li>
 </ul>
+</blockquote>
+<h2 id="회원-도메인-개발">회원 도메인 개발<a class="anchor" href="#회원-도메인-개발">#</a></h2>
+<hr>
+<h4 id="구현-기능">구현 기능<a class="anchor" href="#구현-기능">#</a></h4>
+<hr>
+<blockquote>
+<ul>
+<li>회원 등록</li>
+<li>회원 목록 조회</li>
+</ul>
+</blockquote>
+<h4 id="순서">순서<a class="anchor" href="#순서">#</a></h4>
+<hr>
+<blockquote>
+<ol>
+<li>회원 엔티티 코드 다시 보기</li>
+<li>회원 리포지토리 개발</li>
+<li>회원 서비스 개발</li>
+<li>회원 기능 테스트</li>
+</ol>
+</blockquote>
+<h3 id="회원-엔티티-코드-다시-보기">회원 엔티티 코드 다시 보기<a class="anchor" href="#회원-엔티티-코드-다시-보기">#</a></h3>
+<hr>
+<blockquote>
+<p>java/jpabook/jpashop/domain/Member.java</p>
+</blockquote>
+<pre><code>	package jpabook.jpashop.domain;
+	
+	import lombok.Getter;
+	import lombok.Setter;
+	
+	import javax.persistence.*;
+	import java.util.ArrayList;
+	import java.util.List;
+	
+	@Entity
+	@Getter @Setter
+	public class Member {
+	
+	    public Member() {
+	    }
+	
+	    @Id @GeneratedValue
+	    @Column(name = &quot;member_id&quot;)
+	    private Long id;
+	
+	    private String name;
+	
+	    @Embedded
+	    private Address address;
+	
+	
+	    @OneToMany(mappedBy = &quot;member&quot;)
+	    private List&lt;Order&gt; orders = new ArrayList&lt;&gt;();
+	
+	}
+</code></pre>
+<blockquote>
+<p>간단하게 id, name, address, 1:N 관계로 orders가 속성으로 있었고, 이를 사용해 리포지토리를 개발하도록 하겠습니다.</p>
+</blockquote>
+<h3 id="회원-리포지토리-개발">회원 리포지토리 개발<a class="anchor" href="#회원-리포지토리-개발">#</a></h3>
+<hr>
+<h4 id="리포지토리-디렉토리-생성">리포지토리 디렉토리 생성<a class="anchor" href="#리포지토리-디렉토리-생성">#</a></h4>
+<blockquote>
+<p>java/jpabook/jpashop/repository 위치에 리포지토리 경로 생성</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/member-domain-development/img-001.png" alt="contact"></p>
+<h4 id="회원-리포지토리-생성">회원 리포지토리 생성<a class="anchor" href="#회원-리포지토리-생성">#</a></h4>
+<blockquote>
+<p>java/jpabook/jpashop/repository/MemberRepository.java</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.repository;
+
+import jpabook.jpashop.domain.Member;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
+
+@Repository
+public class MemberRepository {
+
+    @PersistenceContext
+    private EntityManager em;
+
+    public void save(Member member){
+        em.persist(member);
+    }
+
+    public Member findOne(Long id){
+        return em.find(Member.class, id);
+    }
+
+    public List&lt;Member&gt; findAll(){
+
+        return em.createQuery(&quot;select m from Member m&quot;, Member.class)
+                .getResultList();
+    }
+
+    public List&lt;Member&gt; findByName(String name){
+        return em.createQuery(&quot;select m from Member m where m.name = :name&quot;, Member.class)
+                .setParameter(&quot;name&quot;,name).getResultList();
+    }
+
+}
+
+</code></pre>
+<h4 id="repository">@Repository<a class="anchor" href="#repository">#</a></h4>
+<blockquote>
+<p>스프링을 사용하기 때문에 @Repository 어노테이션을 리포지토리에 추가하게 되면, 컴포넌트 스캔에 의해서 자동으로 스프링 빈으로 관리가 되게 됩니다.</p>
+</blockquote>
+<h4 id="persistencecontext">@PersistenceContext<a class="anchor" href="#persistencecontext">#</a></h4>
+<blockquote>
+<p>또한 JPA를 사용하므로 스프링에서 제공하는 @PersistenceContext로 private EntityManager em를 추가합니다. 그러면 스프링이 EntityManager 객체를 만들어서 주입(injection)해주게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>만약 EntityManagerFactory를 직접 사용하고 싶다면 @PersistenceUnit을 사용하면 private EntityManagerFactory emf를 주입받을 수 있습니다.</p>
 </blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
@@ -850,17 +796,12 @@ public class Category {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/entity-class-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/preparing-for-application-implementation/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 엔티티 클래스 개발</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 애플리케이션 구현 준비</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-domain-development/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 회원 도메인 개발</span>
-    </a>
   
 </div>
 
@@ -930,25 +871,15 @@ public class Category {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 애플리케이션 구현 준비</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 회원 도메인 개발</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
-    <li><a href="#구현-요구사항">구현 요구사항</a>
+    <li><a href="#회원-도메인-개발">회원 도메인 개발</a>
       <ul>
-        <li><a href="#회원-기능">회원 기능</a></li>
-        <li><a href="#회원-기능-1">회원 기능</a></li>
-        <li><a href="#주문-기능">주문 기능</a></li>
-        <li><a href="#기능구현-제외">기능구현 제외</a></li>
-      </ul>
-    </li>
-    <li><a href="#애플리케이션-아키텍처">애플리케이션 아키텍처</a>
-      <ul>
-        <li><a href="#계층형-구조">계층형 구조</a></li>
-        <li><a href="#계층형-구조-1">계층형 구조</a></li>
-        <li><a href="#패키지-구조">패키지 구조</a></li>
-        <li><a href="#개발-순서">개발 순서</a></li>
-        <li><a href="#개발-목차">개발 목차</a></li>
+        <li></li>
+        <li><a href="#회원-엔티티-코드-다시-보기">회원 엔티티 코드 다시 보기</a></li>
+        <li><a href="#회원-리포지토리-개발">회원 리포지토리 개발</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
