@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>[스프링부트 JPA 활용] 구현 요구사항 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="[스프링부트 JPA 활용] 구현 요구사항">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="[스프링부트 JPA 활용] 구현 요구사항">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 구현 요구사항">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "[스프링부트 JPA 활용] 구현 요구사항",
+      "headline" : "[스프링부트 JPA 활용] 구현 요구사항",
+      "description" : "[스프링부트 JPA 활용] 구현 요구사항",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-05-17 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-05-17 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/preparing-for-application-implementation\/",
+      "wordCount" : "1121",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-using-springboot-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	[스프링부트 JPA 활용] 구현 요구사항
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	[스프링부트 JPA 활용] 구현 요구사항
+            </h1>		
+            <time datetime="2022-05-17 00:00:00 &#43;0000 UTC" class="post__date">2022-05-17</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="애플리케이션-구현-준비">애플리케이션 구현 준비</h1>
+<hr>
+<h2 id="목차">목차<a class="anchor" href="#목차">#</a></h2>
+<hr>
+<blockquote>
+<ol>
+<li>구현 요구사항</li>
+<li>애플리케이션 아키텍쳐</li>
+</ol>
+</blockquote>
+<h2 id="구현-요구사항">구현 요구사항<a class="anchor" href="#구현-요구사항">#</a></h2>
+<hr>
+<blockquote>
+<p>이번에는 애플리케이션을 어떻게 구현할지에 대한 구현 요구사항이랑 애플리케이션 아키텍처에 대하여 정리하겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>도메인 설계가 다 끝났는데, 그것은 데이터 적인 설계였고 이번에는 어디까지 구현할지 범위에 대한 요구사항을 정리해 보도록 하겠습니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/requirement-analysis/img-001.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>회원 기능
+<ul>
+<li>회원 등록</li>
+<li>회원 조회</li>
+</ul>
+</li>
+<li>상품 기능
+<ul>
+<li>상품 등록</li>
+<li>상품 수정</li>
+<li>상품 조회</li>
+</ul>
+</li>
+<li>주문 기능
+<ul>
+<li>상품 주문</li>
+<li>주문 내역 조회</li>
+<li>주문 취소</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="회원-기능">회원 기능<a class="anchor" href="#회원-기능">#</a></h3>
+<hr>
+<h4 id="회원-등록">회원 등록<a class="anchor" href="#회원-등록">#</a></h4>
+<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-001.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>회원 등록하는 페이지이며, 비지니스 메서드를 통해 회원등록 구현 되어야 합니다.</li>
+</ul>
+</blockquote>
+<h4 id="회원-조회">회원 조회<a class="anchor" href="#회원-조회">#</a></h4>
+<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-002.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>등록된 회원을 조회하고 화면에 리스트로 뿌려줘야 합니다.</li>
+</ul>
+</blockquote>
+<h3 id="회원-기능-1">회원 기능<a class="anchor" href="#회원-기능-1">#</a></h3>
+<hr>
+<h4 id="상품-등록">상품 등록<a class="anchor" href="#상품-등록">#</a></h4>
+<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-003.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>상품을 등록하고 수정할 수 있어야 합니다.</li>
+<li>상품종류를 선택하여, 각각의 상품을 등록할 수 있어야 합니다.</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-004.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>등록된 상품을 조회할 수 있어야 합니다.</li>
+<li>수정버튼을 눌러 상품을 수정할 수 있습니다.</li>
+</ul>
+</blockquote>
+<h3 id="주문-기능">주문 기능<a class="anchor" href="#주문-기능">#</a></h3>
+<hr>
+<h4 id="상품-주문">상품 주문<a class="anchor" href="#상품-주문">#</a></h4>
+<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-005.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>등록된 회원과 재고가 있는 상품을 선택 후 주문수량을 입력해 주문을 등록합니다.</li>
+<li>주문 수량은 재고보다 많으면 안됩니다.</li>
+<li>주문수량이 적절하면 주문이 됩니다.</li>
+</ul>
+</blockquote>
+<h4 id="주문-내역-조회">주문 내역 조회<a class="anchor" href="#주문-내역-조회">#</a></h4>
+<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-006.png" alt="contact"></p>
+<blockquote>
+<ul>
+<li>주문을 하면 주문 내역에 리스트 형태로 조회가 됩니다.</li>
+</ul>
+</blockquote>
+<h4 id="주문-취소">주문 취소<a class="anchor" href="#주문-취소">#</a></h4>
+<blockquote>
+<ul>
+<li>주문을 하면, 주문한 물품 갯수에 따라 상품 재고가 줄어듭니다.</li>
+<li>취소를 하면 주문한 상품의 재고가 다시 늘어납니다.</li>
+</ul>
+</blockquote>
+<h4 id="검색">검색<a class="anchor" href="#검색">#</a></h4>
+<blockquote>
+<ul>
+<li>조건에 따라 조회가 가능합니다.</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-007.png" alt="contact"></p>
+<h3 id="기능구현-제외">기능구현 제외<a class="anchor" href="#기능구현-제외">#</a></h3>
+<hr>
+<blockquote>
+<p>선택과 집중을 하기 위하여 강좌에서 예제를 단순화 하여 다음 기능은 구현하지 않습니다.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>로그인과 권한 관리 X</li>
+<li>파라미터 검증과 예외 처리 단순화</li>
+<li>상품은 도서만 사용</li>
+<li>카테고리는 사용 X</li>
+<li>배송 정보는 사용 X</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>강좌를 정리하고 추가적으로 공부할 여력이 된다면 추가 하도록 하겠습니다.</p>
+</blockquote>
+<h2 id="애플리케이션-아키텍처">애플리케이션 아키텍처<a class="anchor" href="#애플리케이션-아키텍처">#</a></h2>
+<hr>
+<p><img src="/images/develop/backend/using-springboot-jpa/preparing-for-application-implementation/img-008.png" alt="contact"></p>
+<h3 id="계층형-구조">계층형 구조<a class="anchor" href="#계층형-구조">#</a></h3>
+<hr>
+<blockquote>
+<p>Controller를 통해 Service, Repository를 거처 DB에 접근하지만, Controller에서 Repository를 바로 접근하여 DB에 접근할 수 있게 유연하게 개발하도록 하겠습니다.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>controller, web : 웹 계층</li>
+<li>service : 비즈니스 로직, 트랜잭션 처리</li>
+<li>repository : JPA를 직접 사용하는 계층, 엔티티 매니저 사용</li>
+<li>domain : 엔티티가 모여있는 계층, 모든 계층에서 사용</li>
+</ul>
+</blockquote>
+<h3 id="계층형-구조-1">계층형 구조<a class="anchor" href="#계층형-구조-1">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>controller, web : 웹 계층</li>
+<li>service : 비즈니스 로직, 트랜잭션 처리</li>
+<li>repository : JPA를 직접 사용하는 계층, 엔티티 매니저 사용</li>
+<li>domain : 엔티티가 모여있는 계층, 모든 계층에서 사용</li>
+</ul>
+</blockquote>
+<h3 id="패키지-구조">패키지 구조<a class="anchor" href="#패키지-구조">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li>jpabook.jpashop
+<ul>
+<li>domain</li>
+<li>exection</li>
+<li>repository</li>
+<li>service</li>
+<li>web</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="개발-순서">개발 순서<a class="anchor" href="#개발-순서">#</a></h3>
+<hr>
+<blockquote>
+<ol>
+<li>서비스, 리포지토리 계층을 개발</li>
+<li>테스트 케이스를 작성 및 검증</li>
+<li>웹 계층 적용</li>
+</ol>
+</blockquote>
+<h3 id="목차-1">목차<a class="anchor" href="#목차-1">#</a></h3>
+<hr>
+<blockquote>
+<ol>
+<li>회원 도메인 개발</li>
+</ol>
+<ul>
+<li>회원 리포지토리 개발</li>
+<li>회원 서비스 개발</li>
+<li>기능 테스트</li>
+</ul>
+<ol start="2">
+<li>상품 도메인 개발</li>
+</ol>
+<ul>
+<li>상품 엔티티개발(비즈니스 로직추가)</li>
+<li>상품 리포지토리 개발</li>
+<li>상품 서비스 개발</li>
+</ul>
+<ol start="3">
+<li>주문 도메인 개발</li>
+</ol>
+<ul>
+<li>주문, 주문상품 엔티티 개발</li>
+<li>주문 리포지토리 개발</li>
+<li>주문 서비스 개발</li>
+</ul>
+<ol start="4">
+<li>웹 계층 개발</li>
+</ol>
+<ul>
+<li>홈 화면과 레이아웃</li>
+<li>회원 등록</li>
+<li>회원 목록 조회</li>
+<li>상품 등록</li>
+<li>상품 목록</li>
+<li>상품 수정</li>
+<li>변경 감지와 병함(merge)</li>
+<li>상품 주문</li>
+<li>주문 목록 검색, 취소</li>
+</ul>
+<ol start="5">
+<li>API 개발 기본</li>
+</ol>
+<ul>
+<li>회원 등록 API</li>
+<li>회원 수정 API</li>
+<li>회원 조회 API</li>
+</ul>
+<ol start="6">
+<li>API 개발 고급</li>
+</ol>
+<ul>
+<li>조회용 샘플 데이터 입력</li>
+<li>지연 로딩과 조회 성능 최적화</li>
+<li>페이징과 한계 돌파</li>
+<li>OSIV와 성능 최적화</li>
+</ul>
+<ol start="7">
+<li>다음으로</li>
+</ol>
+<ul>
+<li>스프링 데이터 JPA 소개</li>
+<li>QueryDSL 소개</li>
+<li>마무리</li>
+</ul>
+</blockquote>
+<h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
+<hr>
+<blockquote>
+<p>java/jpabook/jpashop/domain/Member.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Member.java </summary>
+<pre><code>package jpabook.jpashop.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter @Setter
+public class Member {
+
+    public Member() {
+    }
+
+    @Id @GeneratedValue
+    @Column(name = &quot;member_id&quot;)
+    private Long id;
+
+    private String name;
+
+    @Embedded
+    private Address address;
+
+
+    @OneToMany(mappedBy = &quot;member&quot;)
+    private List&lt;Order&gt; orders = new ArrayList&lt;&gt;();
+
+}
+</code></pre>
+</details>
+<blockquote>
+<p>java/jpabook/jpashop/domain/Address.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Address.java </summary>
+<pre><code>package jpabook.jpashop.domain;
+
+import lombok.Getter;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+@Getter
+public class Address {
+
+    private String city;
+    private String street;
+    private String zipcode;
+
+    protected Address(){
+    }
+
+    public Address(String city, String street, String zipcode){
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+    }
+
+}
+</code></pre>
+</details> 	
+<blockquote>
+<p>java/jpabook/jpashop/domain/Order.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Order.java </summary>
+<pre><code>package jpabook.jpashop.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter @Setter
+@Table(name = &quot;orders&quot;)
+public class Order {
+
+    @Id @GeneratedValue
+    @Column(name=&quot;order_id&quot;)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)  // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;member_id&quot;) // Order의 member가 수정되면 Order의 외래키 값이 변경됩니다.
+    private Member member;
+
+
+    // mappedBy 연관관계의 주인인 OrderItem의 order로 매핑 되어있다는 뜻
+    @OneToMany(mappedBy = &quot;order&quot;, cascade = CascadeType.ALL)
+    private List&lt;OrderItem&gt; orderItems = new ArrayList&lt;&gt;();
+
+
+    // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = &quot;delivery_id&quot;)
+    private Delivery delivery;
+
+    private LocalDateTime orderDate; //주문시간
+
+    @Enumerated(EnumType.STRING) // EnumType.ORDINAL(숫자라 순서바뀌면 큰일)이 기본이지만 무조건 EnumType.STRING(문자 코드)
+    private OrderStatus status; // 주문상태 [ORDER, CANCEL]
+
+
+    //==연관관계 메서드 (양방향 연관관계시 추가)==//
+    public void setMember(Member member){
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
+    public void addOrderItem(OrderItem orderItem){
+        this.orderItems.add(orderItem);
+        orderItem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery){
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
+
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/domain/OrderItem.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> OrderItem.java </summary>
+<pre><code>package jpabook.jpashop.domain;
+
+import jpabook.jpashop.domain.item.Item;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Getter @Setter
+public class OrderItem {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;order_item_id&quot;)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY) // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;item_id&quot;)
+    private Item item;
+
+    @ManyToOne(fetch = FetchType.LAZY) // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;order_id&quot;)
+    private Order order;
+
+    private int orderPrice; //주문 당시의 가격
+    private int count; //주문 수량
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/domain/OrderStatus.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> OrderStatus.java </summary>
+<pre><code>package jpabook.jpashop.domain;
+
+import jpabook.jpashop.domain.item.Item;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Getter @Setter
+public class OrderItem {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;order_item_id&quot;)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY) // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;item_id&quot;)
+    private Item item;
+
+    @ManyToOne(fetch = FetchType.LAZY) // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;order_id&quot;)
+    private Order order;
+
+    private int orderPrice; //주문 당시의 가격
+    private int count; //주문 수량
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/domain/Delivery.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Delivery.java </summary>
+<pre><code>package jpabook.jpashop.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Getter @Setter
+public class Delivery {
+
+    public Delivery() {
+    }
+
+    @Id @GeneratedValue
+    @Column(name = &quot;delivery_id&quot;)
+    private Long id;
+
+    @OneToOne(fetch = FetchType.LAZY  // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+            , mappedBy = &quot;delivery&quot;)
+    private Order order;
+
+    @Embedded
+    private Address address;
+
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus status; //READY, COMP
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/domain/item/Item.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Item.java </summary>
+<pre><code>package jpabook.jpashop.domain.item;
+
+import jpabook.jpashop.domain.Category;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = &quot;dtype&quot;)
+@Getter @Setter
+public abstract class Item {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;item_id&quot;)
+    private Long id;
+
+    private String name;
+    private int price;
+    private int stockQuantity;
+
+    @ManyToMany(mappedBy = &quot;items&quot;)
+    private List&lt;Category&gt; categories = new ArrayList&lt;&gt;();
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/domain/item/Album.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Album.java </summary>
+<pre><code>package jpabook.jpashop.domain.item;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(&quot;A&quot;) //구분값 A
+@Getter @Setter
+public class Album extends Item{
+    private String artist;
+    private String etc;
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/domain/item/Book.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Book.java </summary>
+<pre><code>package jpabook.jpashop.domain.item;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(&quot;B&quot;) //구분값 B
+@Getter @Setter
+public class Book extends Item{
+    private String author;
+    private String isbn;
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/domain/item/Movie.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Movie.java </summary>
+<pre><code>package jpabook.jpashop.domain.item;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue(&quot;M&quot;) //구분값 M
+@Getter @Setter
+public class Movie extends Item{
+    private String director;
+    private String actor;
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/domain/Category.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> Category.java </summary>
+<pre><code>package jpabook.jpashop.domain;
+
+import jpabook.jpashop.domain.item.Item;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter @Setter
+public class Category {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;category_id&quot;)
+    private Long id;
+
+    private String name;
+
+    @ManyToMany
+    @JoinTable(name = &quot;category_item&quot;
+            , joinColumns = @JoinColumn(name = &quot;category_id&quot;)
+            , inverseJoinColumns = @JoinColumn(name = &quot;item_id&quot;)
+    )
+    private List&lt;Item&gt; items = new ArrayList&lt;&gt;();
+
+    @ManyToOne(fetch = FetchType.LAZY)  // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;parent_id&quot;)
+    private Category parent;
+
+    @OneToMany(mappedBy = &quot;parent&quot;)
+    private List&lt;Category&gt; child = new ArrayList&lt;&gt;();
+
+    //==연관관계 메서드 (양방향 연관관계시 추가)==//
+    public void addChildCategory(Category child){
+        this.child.add(child);
+        child.setParent(this);
+    }
+}
+</code></pre>
+</details> 
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-%ED%99%9C%EC%9A%A9-1">실전! 스프링 부트와 JPA 활용1 - 웹 애플리케이션 개발 - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/spring/">Spring</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/entity-class-development/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 엔티티 클래스 개발</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">[스프링부트 JPA 활용] 구현 요구사항</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#목차">목차</a></li>
+    <li><a href="#구현-요구사항">구현 요구사항</a>
+      <ul>
+        <li><a href="#회원-기능">회원 기능</a></li>
+        <li><a href="#회원-기능-1">회원 기능</a></li>
+        <li><a href="#주문-기능">주문 기능</a></li>
+        <li><a href="#기능구현-제외">기능구현 제외</a></li>
+      </ul>
+    </li>
+    <li><a href="#애플리케이션-아키텍처">애플리케이션 아키텍처</a>
+      <ul>
+        <li><a href="#계층형-구조">계층형 구조</a></li>
+        <li><a href="#계층형-구조-1">계층형 구조</a></li>
+        <li><a href="#패키지-구조">패키지 구조</a></li>
+        <li><a href="#개발-순서">개발 순서</a></li>
+        <li><a href="#목차-1">목차</a></li>
+        <li><a href="#이전-소스">이전 소스</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9349865689631647"
+     data-ad-slot="1516247131"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+</body>
+
+</html>
