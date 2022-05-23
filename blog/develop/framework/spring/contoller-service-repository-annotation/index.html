@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>[Spring] @Controller, @Service, @Repository 어노테이션 | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="@Controller, @Service, @Repository 어노테이션">
+  <meta name="keywords" content="Spring">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="@Controller, @Service, @Repository 어노테이션">
+  <meta property="og:description" content="@Controller, @Service, @Repository 어노테이션">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "[Spring] @Controller, @Service, @Repository 어노테이션",
+      "headline" : "[Spring] @Controller, @Service, @Repository 어노테이션",
+      "description" : "@Controller, @Service, @Repository 어노테이션",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-05-20 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-05-20 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/framework\/spring\/contoller-service-repository-annotation\/",
+      "wordCount" : "937",
+      "keywords" : ["Spring", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-index.jpg');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	[Spring] @Controller, @Service, @Repository 어노테이션
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	[Spring] @Controller, @Service, @Repository 어노테이션
+            </h1>		
+            <time datetime="2022-05-20 00:00:00 &#43;0000 UTC" class="post__date">2022-05-20</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="spring-contextcomponent-scan과-component">[Spring] context:component-scan과 @Component</h1>
+<hr>
+<h2 id="component-scan">Component-scan<a class="anchor" href="#component-scan">#</a></h2>
+<hr>
+<blockquote>
+<p>기존에 오래된 버전의 스프링으로 프로젝트를 진행했을때, 가장 어려운 점이 XML을 이용한 설정이였고, 그중에 생성한 Java 파일들이 Bean으로 사용할 수 있도록 각각 추가하여 설정하는 부분이 있었습니다.</p>
+</blockquote>
+<blockquote>
+<p>application.xml</p>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+  &lt;bean id=&quot;testService&quot; class=&quot;com.spring.test.TestService&quot; /&gt;
+  &lt;bean id=&quot;testRepository&quot; class=&quot;com.spring.test.TestRepository&quot;/&gt;
+
+&lt;/beans&gt;
+
+</code></pre>
+<blockquote>
+<p>component-scan은 이러한 일련의 작업을 드라마틱하게 줄여주는 기능입니다.</p>
+</blockquote>
+<blockquote>
+<p>component-scan의 대상으로는</p>
+</blockquote>
+<p><img src="/images/develop/framework/spring/component-scan-and-component/img-001.png" alt="contact"></p>
+<blockquote>
+<p>@Component를 포함하여 @Component를 상속 받는 @Controller, @Service, @Repository가 대상이 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>해당 어노테이션이 붙은 클래스들을 스캔하여 bean으로서 생성해주는 것을 가능하게 해주는 설정입니다.</p>
+</blockquote>
+<blockquote>
+<p>component-scan은 XML에서의 설정과 Java에서의 설정 2가지 방법이 있습니다.</p>
+</blockquote>
+<h3 id="xml에서의-component-scan-설정">XML에서의 Component-scan 설정<a class="anchor" href="#xml에서의-component-scan-설정">#</a></h3>
+<hr>
+<blockquote>
+<p>component-scan은 context xmlns(이하 xml namespace)에 정의되어 있는 접두어를 통해 사용 가능한데, 이때 위에서 언급하였듯이 어노테이션이 붙은 클래스들을 스캔하여 bean으로 만들기 위해서 base-package=&ldquo;패키 지명&quot;을 통해 스캔 범위를 정할 수 있습니다.</p>
+</blockquote>
+<pre><code>&lt;context:component-scan base-package=&quot;패키지명&quot;/&gt; 
+</code></pre>
+<blockquote>
+<p>application.xml</p>
+</blockquote>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+  &lt;context:component-scan base-package=&quot;com.spring.test&quot;/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<h3 id="xml에서의-component-scan의-customize">XML에서의 Component-scan의 Customize<a class="anchor" href="#xml에서의-component-scan의-customize">#</a></h3>
+<hr>
+<blockquote>
+<p>설정한 Component-scan에 대하여 필터를 이용한 스캐닝의 커스터마이징에 대해서 살펴보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>Customize이라는 것은 기본 적용된 설정을 수정하여 좀더 세부적인 설정을 하는 것입니다.</p>
+</blockquote>
+<h4 id="context접두어를-이용하는-component-scan의-두-가지-필터">context접두어를 이용하는 component-scan의 두 가지 필터<a class="anchor" href="#context접두어를-이용하는-component-scan의-두-가지-필터">#</a></h4>
+<blockquote>
+<ul>
+<li>context:include-filter : 필터를 통해 포함시키고자 하는 대상.</li>
+<li>context:exclude-filter : 필터를 통해 제외시키고자 하는 대상.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>이 두 가지는 모두 type, expression 속성을 갖는데, 이때 사용되는 값들은 다음과 같습니다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Example Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>annotation</td>
+<td>org.example.SomeAnnotation</td>
+<td>타겟 컴포넌트의 타입 레벨에 존재하는 어노테이션을 스캔</td>
+</tr>
+<tr>
+<td>assignable</td>
+<td>org.example.SomeClass</td>
+<td>지정한 타입과 할당(extends/implements)할 수 있는 클래스들을 스캔</td>
+</tr>
+<tr>
+<td>aspectj</td>
+<td>org.example..*Service+</td>
+<td>aspectj의 표현식과 매치되는 컴포넌트들을 스캔</td>
+</tr>
+<tr>
+<td>regex</td>
+<td>org.example.Default.*</td>
+<td>클래스 이름이 정규 표현식과 매치되는 컴포넌트들을 스캔</td>
+</tr>
+</tbody>
+</table>
+<pre><code>&lt;context:component-scan base-package=&quot;최상위 패키지명&quot; use-default-filters=&quot;false&quot;&gt;
+  &lt;context:include-filter type=&quot;aspectj&quot; expression=&quot;하위 패키지명&quot; /&gt;
+  &lt;context:include-filter type=&quot;aspectj&quot; expression=&quot;하위 패키지명&quot; /&gt;
+	...
+&lt;/context:component-scan&gt;
+</code></pre>
+<h5 id="use-default-filters-속성">use-default-filters 속성<a class="anchor" href="#use-default-filters-속성">#</a></h5>
+<blockquote>
+<p>use-default-filters은 컴포넌트 스캔을 할 것인지, 안할 것인지에 대한 옵션이며 기본값은 true입니다. 
+true인경우 @Component, @Controller, @Repository, @Service와 같은 기본 컴포넌트를 스캔한다는 의미이며, 반대로 false는 기본 컴포넌트를 스캔하지 않는다는 것입니다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Example Expression</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>use-default-filters</td>
+<td>true</td>
+<td>default, 컴포넌트 스캔 사용</td>
+</tr>
+<tr>
+<td>use-default-filters</td>
+<td>false</td>
+<td>컴포넌트 스캔 미사용</td>
+</tr>
+</tbody>
+</table>
+<h3 id="java-에서의-component-scan-설정">Java 에서의 component-scan 설정<a class="anchor" href="#java-에서의-component-scan-설정">#</a></h3>
+<hr>
+<h4 id="java-파일로-직접-bean-등록-설정">Java 파일로 직접 Bean 등록 설정<a class="anchor" href="#java-파일로-직접-bean-등록-설정">#</a></h4>
+<h5 id="1-setter-방식의-bean-주입-방식">1. Setter 방식의 Bean 주입 방식<a class="anchor" href="#1-setter-방식의-bean-주입-방식">#</a></h5>
+<blockquote>
+<p>ApplicationConfig.java</p>
+</blockquote>
+<pre><code>@Configuration // Bean 설정 파일임을 알려주기 위한 어노테이션
+public class ApplicationConfig {
+
+    @Bean
+    public TestRepository testRepository(){
+        return new TestRepository();
+    }
+
+    @Bean
+    public TestService testService(){
+        TestService testService = new TestService();
+        testService.setTestRepository(testRepository()); // Setter 방식의 의존성 주입
+        return testService;
+    }
+}
+</code></pre>
+<h5 id="2-메소드-파라미터로-의존성-주입">2. 메소드 파라미터로 의존성 주입<a class="anchor" href="#2-메소드-파라미터로-의존성-주입">#</a></h5>
+<blockquote>
+</blockquote>
+<blockquote>
+<p>ApplicationConfig.java</p>
+</blockquote>
+<pre><code>@Configuration // Bean 설정 파일임을 알려주기 위한 어노테이션
+public class ApplicationConfig {
+
+    @Bean
+    public TestRepository testRepository(){
+        return new TestRepository();
+    }
+
+    @Bean
+    public TestService testService(TestRepository testRepository){
+        TestService testService = new TestService();
+        testService.setTestRepository(testRepository);
+        return testService;
+    }
+}
+</code></pre>
+<blockquote>
+<p>Java 설정 파일에 직접 Bean 등록은 XML 직접 Bean 등록의 단점과 
+마찬가지로 하나하나 Bean으로 등록을 해줘야합니다.</p>
+</blockquote>
+<blockquote>
+<p>그래서 나온 개념이 Component Scan 방식입니다.</p>
+</blockquote>
+<h4 id="java-파일로-component-scan-방식-설정">Java 파일로 Component Scan 방식 설정<a class="anchor" href="#java-파일로-component-scan-방식-설정">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>ComponentScan option</th>
+<th>type safe</th>
+<th>parameter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basePackageClasses</td>
+<td>Type Safe</td>
+<td>Application.class</td>
+</tr>
+<tr>
+<td>basePackages</td>
+<td>Not Type Safe</td>
+<td>com.spring.test</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>ApplicationConfig.java</p>
+</blockquote>
+<pre><code>@Configuration // Bean 설정파일이다를 알려주기 위해서
+@ComponentScan(basePackageClasses = Application.class) 
+//@ComponentScan(basePackages = &quot;com.spring.test&quot;) 
+public class ApplicationConfig {
+
+}
+</code></pre>
+<blockquote>
+<p>Application.java</p>
+</blockquote>
+<pre><code>public class Application {
+
+    public static void main(String[] args) {
+        // Java 파일로 ApplicationContext를 생성하기 때문에
+        // AnnotationConfigApplicationContext 클래스를 사용한다.
+        ApplicationContext context = 
+        new AnnotationConfigApplicationContext(ApplicationConfig.class);
+
+        
+        String[] beans = context.getBeanDefinitionNames();
+        System.out.println(Arrays.toString(beans)); // ApplicationContext 안에 등록된 Bean들을 출력
+
+        // context.getBean()을 호출하면 Object 타입이 Return되기 때문에
+        // 타입 캐스팅을 해줘야한다.
+        TestService testService = (TestService) context.getBean(&quot;testService&quot;);
+
+    }
+}
+</code></pre>
+<h3 id="component">@Component<a class="anchor" href="#component">#</a></h3>
+<hr>
+<blockquote>
+<p>IoC Container는 특정 어노테이션이 달려있는 클래스를 빈으로 만들기 위해 빈 스캐닝을 합니다.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>@Configuration</li>
+<li>@Bean</li>
+<li>@Component</li>
+<li>@Repository</li>
+<li>@Service</li>
+<li>@Controller</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>그중 @Component는 &ldquo;이 클래스를 정의했으니 빈으로 등록하라&rdquo; 라는 뜻으로, 
+개발자가 직접 작성한 Class 위에 선언하면 됩니다.</p>
+</blockquote>
+<pre><code>@Component
+public class TestClassSample {
+
+...
+
+</code></pre>
+<p><img src="/images/develop/framework/spring/component-scan-and-component/img-001.png" alt="contact"></p>
+<blockquote>
+<p>그리고 @Controller, @Service, @Repository 모두 @Component를 상속받아 컴포넌트 스캔에 의해서 자동으로 스프링 빈으로 관리가 되게 됩니다.</p>
+</blockquote>
+<h3 id="controller-service-repository">@Controller, @Service, @Repository<a class="anchor" href="#controller-service-repository">#</a></h3>
+<hr>
+<blockquote>
+<p>해당 어노테이션들은 @Component를 상속 받기 때문에 Component Scan의 대상입니다.</p>
+</blockquote>
+<p><img src="/images/develop/framework/spring/component-scan-and-component/img-002.png" alt="contact"></p>
+<blockquote>
+<p>그리고 각각의 어노테이션들을 설명하기 위해 MVC 패턴 모델을 먼저 아는 것이 중요합니다.</p>
+</blockquote>
+<h4 id="mvc-모델">MVC 모델<a class="anchor" href="#mvc-모델">#</a></h4>
+<blockquote>
+<p>MVC 모델이란 Model, View, Controller의 약자로서 개발을 할때 3가지 역할로 나누어 개발하는 방법론입니다.</p>
+</blockquote>
+<p><img src="/images/develop/framework/spring/component-scan-and-component/img-003.png" alt="contact"></p>
+<h5 id="model">Model<a class="anchor" href="#model">#</a></h5>
+<blockquote>
+<p>어 어플리케이션이 무엇을 할 것인지 정의하는 부분 입니다. 즉, 내부 비즈니스 로직을 처리하기 위한 역할을 합니다. <br> DB와 연동하여 사용자가 입력한 데이터나 사용자에게 출력할 데이터를 다룹니다. 특히 여러 개의 데이터 변경 작업을 하나의 작업으로 묶는 트랜잭션을 다루는 일도 합니다.
+<br> Controller 이하 Service(ServiceImpl), DAO(Repository), SQL(JPQL, Persistence)이 Model에 해당합니다.</p>
+</blockquote>
+<h5 id="view">View<a class="anchor" href="#view">#</a></h5>
+<blockquote>
+<p>최종 사용자에게 무엇을 화면(UI)로 보여줍니다. 화면에 무엇을 보여주기 위한 역할 이며, 모델이 처리한 데이터나 그 작업 결과를 가지고 사용자에게 출력할 화면을 만듭니다. 만든 화면은 웹 브라우저가 랜더링합니다.</p>
+</blockquote>
+<h5 id="controller">Controller<a class="anchor" href="#controller">#</a></h5>
+<blockquote>
+<p>Model과 View 사이에 있는 컴포넌트이며, View에서 클라이언트의 요청에 맞게 Model이 데이터를 어떻게 처리할지 알려주는 역할을 합니다. 클라이언트가 보낸 데이터가 있다면, 모델을 호출할 때 전달하기 쉽게 적절히 가공하며, Model이 로직 수행을 완료하면 그 결과를 가지고 화면을 생성하도록 View에 전달합니다.</p>
+</blockquote>
+<h4 id="스프링과-controller">스프링과 Controller<a class="anchor" href="#스프링과-controller">#</a></h4>
+<blockquote>
+<p>스프링에서 컨트롤러를 지정해주기 위한 어노테이션은 @Controller와 @RestController가 있습니다. <br>
+두 어노테이션은 컨트롤러(*Controller.java)에 붙여두면, 컴포넌트 스캔에 의해서 자동으로 스프링 빈으로 관리가 되게 됩니다.</p>
+</blockquote>
+<h5 id="controller-1">@Controller<a class="anchor" href="#controller-1">#</a></h5>
+<blockquote>
+<p>전통적인 Spring MVC의 컨트롤러인 @Controller는 주로 View를 반환하기 위해 사용합니다.</p>
+</blockquote>
+<blockquote>
+<p>하지만 <mark>@ResponseBody</mark> 어노테이션을 같이 사용하면 RestController와 똑같은 기능을 수행할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>즉, JSON/XML형태로 객체 데이터 반환을 목적으로 동작할 수 있습니다.</p>
+</blockquote>
+<h5 id="restcontroller">@RestController<a class="anchor" href="#restcontroller">#</a></h5>
+<blockquote>
+<p>RestController는 Controller에서 @ResponseBody 어노테이션이 붙은 효과를 지니게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>즉, 주용도는 JSON/XML형태로 객체 데이터 반환을 목적으로 합니다.</p>
+</blockquote>
+<h4 id="service">@Service<a class="anchor" href="#service">#</a></h4>
+<blockquote>
+<p>비즈니스 로직에(*Service.java) @Service 어노테이션을 추가하면, 컴포넌트 스캔에 의해서 자동으로 스프링 빈으로 관리가 되게 됩니다.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>비즈니스 로직이나 리포지토리 레이어를 호출하는 함수에 사용</li>
+<li>다른 어노테이션과 다르게 @Component에 추가된 기능은 없음</li>
+<li>비즈니스 로직에 @Service 어노테이션을 추가해야 나중에 추가적인 exception handling을 해줄 수도 있음</li>
+</ul>
+</blockquote>
+<h4 id="repository">@Repository<a class="anchor" href="#repository">#</a></h4>
+<blockquote>
+<p>DAO(*Dao.java) 클래스 또는 JPA의 Repository(*Repository.java)에 @Repository 어노테이션을 추가하면, 컴포넌트 스캔에 의해서 자동으로 스프링 빈으로 관리가 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>또 @Component와 다르게 Exception translation 라는 특성이 추가됩니다.</p>
+</blockquote>
+<h5 id="exception-translation">Exception translation<a class="anchor" href="#exception-translation">#</a></h5>
+<blockquote>
+<p>@Component를 사용하면, Persistence 기술(JPA 또는 Hibernate API)를 사용하면, 네이티브 예외 클래스를 처리할지 정해야합니다. Persistence 기술에 따라 HibernateException PersistenceException의 하위 클래스를 던지겠지만, 모두 런타임 예외라 선언하거나 Catch 하지 않아도 됩니다. 던져지는 예외의 타입을 알 수 있는 방법이 없기 때문에 각각 다 예외처리 하거나 전체를 다 예외처리 해야하는 문제가 있어 @Repository를 사용하여 Exception translation의 특성을 이용해 예외가 더 디테일 하게 스프링의 커스텀 예외 계층 구조로 변환하여 처리할 수 있도록 해야합니다.</p>
+</blockquote>
+<p><a href="https://goodgid.github.io/Spring-Framework-ApplicationContext-XML-Component-Scan/">[Spring] context:component-scan에 관하여</a>
+<a href="https://fbtmdwhd33.tistory.com/261">[Spring] context:component-scan에 관하여</a>
+<a href="https://codevang.tistory.com/258">@Repository, @Service 어노테이션</a>
+<a href="https://godekdls.github.io/Spring%20Data%20Access/ormdataaccess/">Object Relational Mapping (ORM) Data Access</a><a href="https://godekdls.github.io/Spring%20Data%20Access/ormdataaccess/">Controller, Service, Repository 가 무엇일까?</a></p>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/spring/">Spring</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/framework/">Framework</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/springframework/">SpringFramework</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-domain-development/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 회원 도메인 개발</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">[Spring] @Controller, @Service, @Repository 어노테이션</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#component-scan">Component-scan</a>
+      <ul>
+        <li><a href="#xml에서의-component-scan-설정">XML에서의 Component-scan 설정</a></li>
+        <li><a href="#xml에서의-component-scan의-customize">XML에서의 Component-scan의 Customize</a></li>
+        <li><a href="#java-에서의-component-scan-설정">Java 에서의 component-scan 설정</a></li>
+        <li><a href="#component">@Component</a></li>
+        <li><a href="#controller-service-repository">@Controller, @Service, @Repository</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9349865689631647"
+     data-ad-slot="1516247131"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+</body>
+
+</html>

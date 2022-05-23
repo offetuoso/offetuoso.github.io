@@ -4,7 +4,57 @@
   
   <url>
     <loc>https://offetuoso.github.io/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/develop/framework/spring/contoller-service-repository-annotation/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/framework/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/java/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/spring/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/subcategories/spring/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/springframework/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/subcategories/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/</loc>
+    <lastmod>2022-05-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,22 +63,7 @@
   </url>
   
   <url>
-    <loc>https://offetuoso.github.io/blog/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/categories/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://offetuoso.github.io/tags/java/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/categories/java/</loc>
     <lastmod>2022-05-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -44,21 +79,6 @@
   
   <url>
     <loc>https://offetuoso.github.io/tags/orm/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/tags/spring/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/subcategories/</loc>
-    <lastmod>2022-05-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/tags/</loc>
     <lastmod>2022-05-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -104,21 +124,6 @@
   
   <url>
     <loc>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/</loc>
-    <lastmod>2022-04-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/tags/framework/</loc>
-    <lastmod>2022-04-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/subcategories/spring/</loc>
-    <lastmod>2022-04-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/tags/springframework/</loc>
     <lastmod>2022-04-17T00:00:00+00:00</lastmod>
   </url>
   

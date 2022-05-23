@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Thu, 19 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Spring] @Controller, @Service, @Repository 어노테이션</title>
+      <link>https://offetuoso.github.io/blog/develop/framework/spring/contoller-service-repository-annotation/</link>
+      <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/framework/spring/contoller-service-repository-annotation/</guid>
+      <description>[Spring] context:component-scan과 @Component  Component-scan   기존에 오래된 버전의 스프링으로 프로젝트를 진행했을때, 가장 어려운 점이 XML을 이용한 설정이였고, 그중에 생성한 Java 파일들이 Bean으로 사용할 수 있도록 각각 추가하여 설정하는 부분이 있었습니다.
+  application.xml
+ &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;&amp;lt;bean id=&amp;quot;testService&amp;quot; class=&amp;quot;com.spring.test.TestService&amp;quot; /&amp;gt;&amp;lt;bean id=&amp;quot;testRepository&amp;quot; class=&amp;quot;com.spring.test.TestRepository&amp;quot;/&amp;gt;&amp;lt;/beans&amp;gt;  component-scan은 이러한 일련의 작업을 드라마틱하게 줄여주는 기능입니다.
+  component-scan의 대상으로는
+  @Component를 포함하여 @Component를 상속 받는 @Controller, @Service, @Repository가 대상이 됩니다.</description>
+    </item>
+    
     <item>
       <title>[스프링부트 JPA 활용] 회원 도메인 개발</title>
       <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-domain-development/</link>
