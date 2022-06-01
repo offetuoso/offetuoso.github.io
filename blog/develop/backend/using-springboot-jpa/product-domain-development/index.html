@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 회원 도메인 개발 | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 상품 도메인 개발 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 회원 도메인 개발">
+  <meta name="description" content="[스프링부트 JPA 활용] 상품 도메인 개발">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 회원 도메인 개발">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 회원 도메인 개발">
+  <meta property="og:title" content="[스프링부트 JPA 활용] 상품 도메인 개발">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 상품 도메인 개발">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 회원 도메인 개발",
-      "headline" : "[스프링부트 JPA 활용] 회원 도메인 개발",
-      "description" : "[스프링부트 JPA 활용] 회원 도메인 개발",
+      "name" : "[스프링부트 JPA 활용] 상품 도메인 개발",
+      "headline" : "[스프링부트 JPA 활용] 상품 도메인 개발",
+      "description" : "[스프링부트 JPA 활용] 상품 도메인 개발",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-05-19 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-05-19 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/member-domain-development\/",
-      "wordCount" : "1031",
+      "datePublished": "2022-05-31 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-05-31 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/product-domain-development\/",
+      "wordCount" : "1755",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,14 +170,14 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 회원 도메인 개발
+		            	[스프링부트 JPA 활용] 상품 도메인 개발
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 회원 도메인 개발
+		       	[스프링부트 JPA 활용] 상품 도메인 개발
             </h1>		
-            <time datetime="2022-05-19 00:00:00 &#43;0000 UTC" class="post__date">2022-05-19</time> 
+            <time datetime="2022-05-31 00:00:00 &#43;0000 UTC" class="post__date">2022-05-31</time> 
           </header>
           <article class="post__content">
               
@@ -250,134 +250,33 @@
 <li>마무리</li>
 </ul>
 </blockquote>
-<h2 id="회원-도메인-개발">회원 도메인 개발<a class="anchor" href="#회원-도메인-개발">#</a></h2>
+<h2 id="상품-도메인-개발">상품 도메인 개발<a class="anchor" href="#상품-도메인-개발">#</a></h2>
 <hr>
-<h4 id="구현-기능">구현 기능<a class="anchor" href="#구현-기능">#</a></h4>
-<hr>
+<h4 id="구현기능">구현기능<a class="anchor" href="#구현기능">#</a></h4>
 <blockquote>
 <ul>
-<li>회원 등록</li>
-<li>회원 목록 조회</li>
+<li>상품등록</li>
+<li>상품 목록 조회</li>
+<li>상품 수정</li>
 </ul>
 </blockquote>
 <h4 id="구현순서">구현순서<a class="anchor" href="#구현순서">#</a></h4>
+<blockquote>
+<ul>
+<li>상품 엔티티 개발(비즈니스 로직 추가)</li>
+<li>상품 리포지토리 개발</li>
+<li>상품 서비스 개발</li>
+<li>상품 기능 테스트</li>
+</ul>
+</blockquote>
+<h3 id="상품-엔티티-개발비즈니스-로직-추가">상품 엔티티 개발(비즈니스 로직 추가)<a class="anchor" href="#상품-엔티티-개발비즈니스-로직-추가">#</a></h3>
 <hr>
 <blockquote>
-<ol>
-<li>회원 엔티티 코드 다시 보기</li>
-<li>회원 리포지토리 개발</li>
-<li>회원 서비스 개발</li>
-<li>회원 기능 테스트</li>
-</ol>
+<p>Item.java</p>
 </blockquote>
-<h3 id="회원-엔티티-코드-다시-보기">회원 엔티티 코드 다시 보기<a class="anchor" href="#회원-엔티티-코드-다시-보기">#</a></h3>
-<hr>
-<blockquote>
-<p>java/jpabook/jpashop/domain/Member.java</p>
-</blockquote>
-<pre><code>	package jpabook.jpashop.domain;
-	
-	import lombok.Getter;
-	import lombok.Setter;
-	
-	import javax.persistence.*;
-	import java.util.ArrayList;
-	import java.util.List;
-	
-	@Entity
-	@Getter @Setter
-	public class Member {
-	
-	    public Member() {
-	    }
-	
-	    @Id @GeneratedValue
-	    @Column(name = &quot;member_id&quot;)
-	    private Long id;
-	
-	    private String name;
-	
-	    @Embedded
-	    private Address address;
-	
-	
-	    @OneToMany(mappedBy = &quot;member&quot;)
-	    private List&lt;Order&gt; orders = new ArrayList&lt;&gt;();
-	
-	}
-</code></pre>
-<blockquote>
-<p>간단하게 id, name, address, 1:N 관계로 orders가 속성으로 있었고, 이를 사용해 리포지토리를 개발하도록 하겠습니다.</p>
-</blockquote>
-<h3 id="회원-리포지토리-개발">회원 리포지토리 개발<a class="anchor" href="#회원-리포지토리-개발">#</a></h3>
-<hr>
-<h4 id="리포지토리-디렉토리-생성">리포지토리 디렉토리 생성<a class="anchor" href="#리포지토리-디렉토리-생성">#</a></h4>
-<blockquote>
-<p>java/jpabook/jpashop/repository 위치에 리포지토리 경로 생성</p>
-</blockquote>
-<p><img src="/images/develop/backend/using-springboot-jpa/member-domain-development/img-001.png" alt="contact"></p>
-<h4 id="회원-리포지토리-생성">회원 리포지토리 생성<a class="anchor" href="#회원-리포지토리-생성">#</a></h4>
-<blockquote>
-<p>java/jpabook/jpashop/repository/MemberRepository.java</p>
-</blockquote>
-<pre><code>package jpabook.jpashop.repository;
+<pre><code>package jpabook.jpashop.domain.item;
 
-import jpabook.jpashop.domain.Member;
-import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import java.util.List;
-
-@Repository
-public class MemberRepository {
-
-    @PersistenceContext
-    private EntityManager em;
-
-    public void save(Member member){
-        em.persist(member);
-    }
-
-    public Member findOne(Long id){
-        return em.find(Member.class, id);
-    }
-
-    public List&lt;Member&gt; findAll(){
-
-        return em.createQuery(&quot;select m from Member m&quot;, Member.class)
-                .getResultList();
-    }
-
-    public List&lt;Member&gt; findByName(String name){
-        return em.createQuery(&quot;select m from Member m where m.name = :name&quot;, Member.class)
-                .setParameter(&quot;name&quot;,name).getResultList();
-    }
-
-}
-
-</code></pre>
-<h4 id="repository">@Repository<a class="anchor" href="#repository">#</a></h4>
-<blockquote>
-<p>스프링을 사용하기 때문에 @Repository 어노테이션을 리포지토리에 추가하게 되면, 컴포넌트 스캔에 의해서 자동으로 스프링 빈으로 관리가 되게 됩니다.</p>
-</blockquote>
-<h4 id="persistencecontext">@PersistenceContext<a class="anchor" href="#persistencecontext">#</a></h4>
-<blockquote>
-<p>또한 JPA를 사용하므로 스프링에서 제공하는 @PersistenceContext로 private EntityManager em를 추가합니다. 그러면 스프링이 EntityManager 객체를 만들어서 주입(injection)해주게 됩니다.</p>
-</blockquote>
-<blockquote>
-<p>만약 EntityManagerFactory를 직접 사용하고 싶다면 @PersistenceUnit을 사용하면 private EntityManagerFactory emf를 주입받을 수 있습니다.</p>
-</blockquote>
-<h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
-<hr>
-<blockquote>
-<p>java/jpabook/jpashop/domain/Member.java</p>
-</blockquote>
-<details title="펼치기/숨기기">
- 	<summary> Member.java </summary>
-<pre><code>package jpabook.jpashop.domain;
-
+import jpabook.jpashop.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -386,26 +285,232 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = &quot;dtype&quot;)
 @Getter @Setter
-public class Member {
-
-    public Member() {
-    }
+public abstract class Item {
 
     @Id @GeneratedValue
-    @Column(name = &quot;member_id&quot;)
+    @Column(name = &quot;item_id&quot;)
     private Long id;
 
     private String name;
+    private int price;
+    private int stockQuantity;
 
-    @Embedded
-    private Address address;
+    @ManyToMany(mappedBy = &quot;items&quot;)
+    private List&lt;Category&gt; categories = new ArrayList&lt;&gt;();
+    
+    //==비즈니스 로직==//
 
+    /**
+     * 재고 증가
+     * @param quantity
+     */
 
-    @OneToMany(mappedBy = &quot;member&quot;)
-    private List&lt;Order&gt; orders = new ArrayList&lt;&gt;();
+    /**
+     * 재고 감소
+     * @param quantity
+     */
 
 }
+
+</code></pre>
+<blockquote>
+<p>일반적으로 비즈니스 로직에서 수량을 증가하거나 감소시키는 로직을 수행할 때 아이템의 갯수를 가져와 수량을 더한 후 다시 수량을 Set을 통해 변경된 데이터를 적용 시키는 방법으로 했습니다.</p>
+</blockquote>
+<blockquote>
+<p>하지만 객체지향적으로 생각해 보면 데이터를 가지고 있는 곳에 개수를 추가하고 감소하는 비즈니스 로직을 가지고 있는것이 응집력이 더 좋습니다.</p>
+</blockquote>
+<blockquote>
+<p>엔티티 내부에서 해결할 수 있는 비즈니스 로직은 엔티티에서 처리하는 것이 좀더 객체지향적인 개발 방법입니다.</p>
+</blockquote>
+<blockquote>
+<p>Item.java - 재고 증가</p>
+</blockquote>
+<pre><code>/**
+     * 재고 증가
+     * @param quantity
+     */
+    public void addStock(int quantity){
+        this.stockQuantity += quantity; //현재 재고수량에 파라미터로 받은 수량을 더합니다.
+    }
+
+</code></pre>
+<blockquote>
+<p>Item.java - 재고 감소</p>
+</blockquote>
+<pre><code> /**
+     * 재고 감소
+     * @param quantity
+     */
+    public void removeStock(int quantity){
+        int restStock = this.stockQuantity - quantity; //파라미터를 뺀 변경된 재고수량
+
+        if (restStock &lt; 0) {
+            throw new NotEnoughStockException(&quot;need more stock&quot;); //변경된 재고수량이 0보다 작으면 예외를 던짐
+        }
+        this.stockQuantity = restStock;
+    }
+</code></pre>
+<h4 id="사용자-정의-예외-생성-generate-custom-exception">사용자 정의 예외 생성 (Generate Custom Exception)<a class="anchor" href="#사용자-정의-예외-생성-generate-custom-exception">#</a></h4>
+<blockquote>
+<p>RuntimeException을 상속받아 메서드들을 오버라이딩 받아 새로 추가한 사용자 정의 예외 생성 NotEnoughStockException를 RuntimeException과 같이 사용</p>
+</blockquote>
+<blockquote>
+<p>java/jpabook/exception 폴더 생성 후</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-domain-development/img-001.png" alt="contact"></p>
+<blockquote>
+<p>NotEnoughStockException.java 생성</p>
+</blockquote>
+<blockquote>
+<p>inteliJ Alt + Insert (Generate) - Method Overriding</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-domain-development/img-002.png" alt="contact"></p>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-domain-development/img-003.png" alt="contact"></p>
+<blockquote>
+<p>java/jpabook/exception/NotEnoughStockException.java</p>
+</blockquote>
+<pre><code>public NotEnoughStockException() {
+        super();
+    }
+
+    public NotEnoughStockException(String message) {
+        super(message);
+    }
+
+    public NotEnoughStockException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotEnoughStockException(Throwable cause) {
+        super(cause);
+    }
+
+    protected NotEnoughStockException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+</code></pre>
+<blockquote>
+</blockquote>
+<pre><code>package jpabook.jpashop.domain.item;
+
+import jpabook.exception.NotEnoughStockException;
+import jpabook.jpashop.domain.Category;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = &quot;dtype&quot;)
+@Getter @Setter
+public abstract class Item {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;item_id&quot;)
+    private Long id;
+
+    private String name;
+    private int price;
+    private int stockQuantity;
+
+    @ManyToMany(mappedBy = &quot;items&quot;)
+    private List&lt;Category&gt; categories = new ArrayList&lt;&gt;();
+
+    //==비즈니스 로직==//
+
+    /**
+     * 재고 증가
+     * @param quantity
+     */
+    public void addStock(int quantity){
+        this.stockQuantity += quantity;
+    }
+
+    /**
+     * 재고 감소
+     * @param quantity
+     */
+    public void removeStock(int quantity){
+        int restStock = this.stockQuantity - quantity;
+
+        if (restStock &lt; 0) {
+            throw new NotEnoughStockException(&quot;need more stock&quot;);
+        }
+        this.stockQuantity = restStock;
+    }
+}
+
+</code></pre>
+<h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
+<hr>
+<blockquote>
+<p>/main/resources/application.properties</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> application.properties </summary>
+<pre><code>spring.devtools.restart.enabled=true
+spring.devtools.restart.poll-interval=2s
+spring.devtools.restart.quiet-period=1s
+spring.thymeleaf.cache=false
+spring.jpa.properties.hibernate.format_sql=true
+</code></pre>
+</details>
+<blockquote>
+<p>main/resources/application.properties</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> application.properties </summary>
+<pre><code>spring.devtools.restart.enabled=true
+spring.devtools.restart.poll-interval=2s
+spring.devtools.restart.quiet-period=1s
+spring.thymeleaf.cache=false
+spring.jpa.properties.hibernate.format_sql=true
+</code></pre>
+</details>
+<blockquote>
+<p>main/resources/application.yml</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> application.yml </summary>
+<pre><code>spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jpashop; # MVCC=true H2 1.4.200 버전부터 MVCC 옵션이 제거되었습니다.
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # 애플리케이션 동작 시점에 엔티티 재생성
+      use_sql_comments: true
+    database: h2
+
+  devtools:
+    livereload:
+      enabled: true # livereload 사용시 활성화
+    restart:
+      enabled: false #운영 에서는 제거.
+
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace #파라미터 로깅
+    org.hibernate.type.descriptor.sql: trace
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging : true
+      multiline: true
+      logging: slf4j
 </code></pre>
 </details>
 <blockquote>
@@ -756,6 +861,270 @@ public class Category {
 }
 </code></pre>
 </details> 
+<blockquote>
+<p>java/jpabook/jpashop/repository/MemberRepository.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> MemberRepository.java </summary>
+<pre><code>package jpabook.jpashop.repository;
+
+import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
+
+@Repository
+@RequiredArgsConstructor
+public class MemberRepository {
+
+    /*
+    //최초 소스이며 아래 소스로 대체
+    @PersistenceContext // EntityManager는 @PersistenceContext라는 표준 어노테이션을 통해서만 가능 (@AutoWired 불가)
+    private EntityManager em;
+    */
+
+    /*
+    //2번째 버전의 소스이며, @RequiredArgsConstructor로 대체
+    @Autowired //스프링 DATA JPA 에서 지원
+    private EntityManager em;
+
+    public MemberRepository(EntityManager em){
+        this.em = em;
+    }
+    */
+
+    private final EntityManager em;
+
+    public void save(Member member){
+        em.persist(member);
+    }
+
+    public Member findOne(Long id){
+        return em.find(Member.class, id);
+    }
+
+    public List&lt;Member&gt; findAll(){
+
+        return em.createQuery(&quot;select m from Member m&quot;, Member.class)
+                .getResultList();
+    }
+
+    public List&lt;Member&gt; findByName(String name){
+        return em.createQuery(&quot;select m from Member m where m.name = :name&quot;, Member.class)
+                .setParameter(&quot;name&quot;,name).getResultList();
+    }
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/service/MemberService.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> MemberService.java </summary>
+<pre><code>package jpabook.jpashop.service;
+
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+
+
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor  // 생성자 주입
+public class MemberService {
+
+    /*
+    // 최초 코드 이며, Setter Injection로 대체
+    @Autowired
+    private MemberRepository memberRepository;
+    */
+
+    /*
+    //Constructor Injection로 대체
+    private MemberRepository memberRepository;
+
+    public void setMemberService(MemberRepository memberRepository) { //Setter Injection
+        this.memberRepository = memberRepository;
+    }
+    */
+
+    /*
+    // @RequiredArgsConstructor로 대체
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) { //Constructor Injection
+        this.memberRepository = memberRepository;
+    }
+    */
+
+    private final MemberRepository memberRepository;
+
+    /**
+     * 회원 가입
+     */
+    @Transactional(readOnly = false)
+    public Long join(Member member){
+        validateDuplicateMember(member); //중복 회원 검증
+        memberRepository.save(member);
+        return member.getId(); //save()를 통해 em.persist()를 수행하므로 Member 엔티티의 키 생성을 보장함
+    }
+
+    private void validateDuplicateMember(Member member) {
+        List&lt;Member&gt; findMembers = memberRepository.findByName(member.getName());
+        if(findMembers.size() != 0){
+            throw new IllegalStateException(&quot;이미 존재하는 회원입니다.&quot;);
+        }
+
+    }
+
+    /**
+     * 회원 전체 조회
+     */
+    //@Transactional(readOnly = true)
+    public List&lt;Member&gt; findMembers(){
+        return memberRepository.findAll();
+    }
+
+    /**
+     * 회원 조회
+     */
+    //@Transactional(readOnly = true)
+    public Member findOne(Long memberId){
+        return memberRepository.findOne(memberId);
+    }
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>test/java/jpabook/jpashop/service/MemberServiceTest.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> MemberServiceTest.java </summary>
+<pre><code>package jpabook.jpashop.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+
+@SpringBootTest
+@Transactional
+class MemberServiceTest {
+
+    // 테스트 케이스에서는 다른곳에서 참조할 곳이 없으므로 @Autowired로 사용
+    @Autowired MemberRepository memberRepository;
+    @Autowired MemberService memberService;
+    @Autowired EntityManager em;
+
+    @Test
+    //@Rollback(value = false)
+    public void 회원가입() throws Exception{
+        //given //given : 이렇게 주어졌을때
+        Member member = new Member();
+        member.setName(&quot;userA&quot;);
+        
+        //when //when : 이렇게 하면
+        Long savedId = memberService.join(member);
+
+        //then //then : 이렇게 된다.
+        // JPA안에서 하나의 트랜잭션에서 같은 엔티티에서 PK 키가 같으면 같은 영속성 컨텍스트 1차 캐시로 같은 객체로 관리
+        em.flush();
+        assertEquals(member, memberRepository.findOne(savedId));
+    }
+
+
+    @Test
+    public void 중복_회원_예외() throws Exception{
+        //given
+
+        String username = &quot;user&quot;;
+        Member member1 = new Member();
+        member1.setName(username);
+
+        Member member2 = new Member();
+        member2.setName(username);
+
+        //when
+        memberService.join(member1);
+
+        //then
+        IllegalStateException thrown = assertThrows(IllegalStateException.class, () -&gt; memberService.join(member2));
+
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>test/resources/application.properties</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> application.properties </summary>
+<pre><code>spring.devtools.restart.enabled=true
+spring.devtools.restart.poll-interval=2s
+spring.devtools.restart.quiet-period=1s
+spring.thymeleaf.cache=false
+spring.jpa.properties.hibernate.format_sql=true
+</code></pre>
+</details> 
+<blockquote>
+<p>test/resources/application.yml</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> application.yml </summary>
+<pre><code>spring:
+#  datasource:
+  #    url: jdbc:h2:mem:test
+  #    username: sa
+  #    password:
+  #    driver-class-name: org.h2.Driver
+  #  jpa:
+  #    hibernate:
+  #      ddl-auto: create-drop # 애플리케이션 동작 시점에 엔티티 재생성
+  #     use_sql_comments: true
+  #   database: h2
+
+  devtools:
+    livereload:
+      enabled: true # livereload 사용시 활성화
+    restart:
+      enabled: false #운영 에서는 제거.
+
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace #파라미터 로깅
+    org.hibernate.type.descriptor.sql: trace
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging : true
+      multiline: true
+      logging: slf4j
+</code></pre>
+</details> 
 <h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
@@ -796,17 +1165,12 @@ public class Category {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/preparing-for-application-implementation/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-logic-test-code/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 애플리케이션 구현 준비</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 회원 기능 테스트</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/framework/spring/contoller-service-repository-annotation/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[Spring] @Controller, @Service, @Repository 어노테이션</span>
-    </a>
   
 </div>
 
@@ -876,15 +1240,14 @@ public class Category {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 회원 도메인 개발</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 상품 도메인 개발</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
-    <li><a href="#회원-도메인-개발">회원 도메인 개발</a>
+    <li><a href="#상품-도메인-개발">상품 도메인 개발</a>
       <ul>
         <li></li>
-        <li><a href="#회원-엔티티-코드-다시-보기">회원 엔티티 코드 다시 보기</a></li>
-        <li><a href="#회원-리포지토리-개발">회원 리포지토리 개발</a></li>
+        <li><a href="#상품-엔티티-개발비즈니스-로직-추가">상품 엔티티 개발(비즈니스 로직 추가)</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
