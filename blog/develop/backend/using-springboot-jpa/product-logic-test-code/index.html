@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 상품 리포지토리 개발 | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 상품 서비스 개발 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 상품 도메인 개발">
+  <meta name="description" content="[스프링부트 JPA 활용] 상품 서비스 개발">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 상품 도메인 개발">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 상품 도메인 개발">
+  <meta property="og:title" content="[스프링부트 JPA 활용] 상품 서비스 개발">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 상품 서비스 개발">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 상품 리포지토리 개발",
-      "headline" : "[스프링부트 JPA 활용] 상품 리포지토리 개발",
-      "description" : "[스프링부트 JPA 활용] 상품 도메인 개발",
+      "name" : "[스프링부트 JPA 활용] 상품 서비스 개발",
+      "headline" : "[스프링부트 JPA 활용] 상품 서비스 개발",
+      "description" : "[스프링부트 JPA 활용] 상품 서비스 개발",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-01 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-06-01 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/1-product-repository-development\/",
-      "wordCount" : "1500",
+      "datePublished": "2022-06-02 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-06-02 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/product-logic-test-code\/",
+      "wordCount" : "2000",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,14 +170,14 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 상품 리포지토리 개발
+		            	[스프링부트 JPA 활용] 상품 서비스 개발
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 상품 리포지토리 개발
+		       	[스프링부트 JPA 활용] 상품 서비스 개발
             </h1>		
-            <time datetime="2022-06-01 00:00:00 &#43;0000 UTC" class="post__date">2022-06-01</time> 
+            <time datetime="2022-06-02 00:00:00 &#43;0000 UTC" class="post__date">2022-06-02</time> 
           </header>
           <article class="post__content">
               
@@ -250,68 +250,238 @@
 <li>마무리</li>
 </ul>
 </blockquote>
-<h2 id="상품-리포지토리-개발">상품 리포지토리 개발<a class="anchor" href="#상품-리포지토리-개발">#</a></h2>
+<h2 id="상품-기능-테스트">상품 기능 테스트<a class="anchor" href="#상품-기능-테스트">#</a></h2>
 <hr>
-<h3 id="상품-리포지토리">상품 리포지토리<a class="anchor" href="#상품-리포지토리">#</a></h3>
+<h3 id="테스트-요구사항">테스트 요구사항<a class="anchor" href="#테스트-요구사항">#</a></h3>
 <hr>
 <blockquote>
-<p>java/jpabook/jpashop/repository/ItemRepository.java</p>
+<ul>
+<li>상품등록을 성공해야한다.</li>
+<li>음반, 책, 영화 각각 저장하여 성공하여야한다.</li>
+</ul>
 </blockquote>
-<pre><code>package jpabook.jpashop.repository;
+<h3 id="테스트-코드-작성">테스트 코드 작성<a class="anchor" href="#테스트-코드-작성">#</a></h3>
+<hr>
+<blockquote>
+<p>ItemService에서 Intelij IDEA의 단축키 Ctrl + Shift + T 
+(이클립스 스타일 시 go to Test 단축키 변경)</p>
+</blockquote>
+<blockquote>
+<p>생성된것을 확인</p>
+</blockquote>
+<blockquote>
+<p>이전에 생성한 tdd + Tab (라이브 템플릿) 사용</p>
+</blockquote>
+<blockquote>
+<p>tdd + Tab (라이브 템플릿)</p>
+</blockquote>
+<pre><code>@Test
+    public void 회원가입() throws Exception{
+        //given 
+        
+        //when 
 
+        //then 
+    }
+</code></pre>
+<blockquote>
+<ul>
+<li>given : 이렇게 주어졌을때</li>
+<li>when : 이렇게 하면</li>
+<li>then : 이렇게 된다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>아래 링크 참조</p>
+</blockquote>
+<blockquote>
+<p><a href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C">[스프링부트 JPA 활용] JPA 동작확인</a></p>
+</blockquote>
+<h4 id="상품등록-테스트">상품등록 테스트<a class="anchor" href="#상품등록-테스트">#</a></h4>
+<blockquote>
+<p>상품은 Album, Book, Movie 3가지 종류가 있습니다. 이를 각각 저장해 저장된 엔티티객체와 DB에서 읽어온 객체를 비교해 보도록 하겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>음반 상품등록</p>
+</blockquote>
+<pre><code>	@Test
+    public void 음반_상품등록() throws Exception{
+        //given
+        Item item = new Album();
+        item.setName(&quot;멜론 TOP 100&quot;);
+        ((Album) item).setArtist(&quot;Various Artists&quot;);
+        ((Album) item).setEtc(&quot;방탄소년단 외 다수&quot;);
+        item.setPrice(20000);
+        item.addStock(50);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+</code></pre>
+<blockquote>
+<p>책 상품등록</p>
+</blockquote>
+<pre><code>	@Test
+    public void 책_상품등록() throws Exception{
+        //given
+        Item item = new Book();
+        item.setName(&quot;JPA BOOK&quot;);
+        ((Book) item).setAuthor(&quot;김영한&quot;);
+        ((Book) item).setIsbn(&quot;11111&quot;);
+        item.setPrice(15000);
+        item.addStock(100);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+</code></pre>
+<blockquote>
+<p>영화 상품등록</p>
+</blockquote>
+<pre><code>	@Test
+    public void 영화_상품등록() throws Exception{
+        //given
+        Item item = new Movie();
+        item.setName(&quot;쥬라기월드: 도미니언&quot;);
+        ((Movie) item).setDirector(&quot;콜린 트레보로우&quot;);
+        ((Movie) item).setActor(&quot;크리스 프랫&quot;);
+        item.setPrice(15000);
+        item.addStock(1000);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+</code></pre>
+<blockquote>
+<p>test/java/jpabook/jpashop/service/ItemServiceTest.java</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import jpabook.jpashop.domain.item.Album;
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+import jpabook.jpashop.domain.item.Movie;
+import jpabook.jpashop.repository.ItemRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 
-@Repository
-@RequiredArgsConstructor
-public class ItemRepository {
+@SpringBootTest
+@Transactional
+class ItemServiceTest {
+    // 테스트 케이스에서는 다른곳에서 참조할 곳이 없으므로 @Autowired로 사용
+    @Autowired ItemRepository itemRepository;
+    @Autowired ItemService itemService;
+    @Autowired EntityManager em;
 
-    private final EntityManager em;
+    @Test
+    public void 음반_상품등록() throws Exception{
+        //given
+        Item item = new Album();
+        item.setName(&quot;멜론 TOP 100&quot;);
+        ((Album) item).setArtist(&quot;Various Artists&quot;);
+        ((Album) item).setEtc(&quot;방탄소년단 외 다수&quot;);
+        item.setPrice(20000);
+        item.addStock(50);
 
-    public void save(Item item){
-        if (item.getId() == null){
-            em.persist(item);
-        }else{
-            em.merge(item);
-        }
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
     }
+    
+    @Test
+    public void 책_상품등록() throws Exception{
+        //given
+        Item item = new Book();
+        item.setName(&quot;JPA BOOK&quot;);
+        ((Book) item).setAuthor(&quot;김영한&quot;);
+        ((Book) item).setIsbn(&quot;11111&quot;);
+        item.setPrice(15000);
+        item.addStock(100);
 
-    public Item findOne(Long id){
-        return em.find(Item.class, id);
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
     }
+    
+    @Test
+    public void 영화_상품등록() throws Exception{
+        //given
+        Item item = new Movie();
+        item.setName(&quot;쥬라기월드: 도미니언&quot;);
+        ((Movie) item).setDirector(&quot;콜린 트레보로우&quot;);
+        ((Movie) item).setActor(&quot;크리스 프랫&quot;);
+        item.setPrice(15000);
+        item.addStock(1000);
 
-    public List&lt;Item&gt; findAll(){
-        return em.createQuery(&quot;select i from Item i&quot;, Item.class)
-                .getResultList();
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
     }
 }
+</code></pre>
+<blockquote>
+<p>console</p>
+</blockquote>
+<pre><code>	insert 
+	  into 
+	  	item 
+	  		(name, price, stock_quantity, author, isbn, dtype, item_id) 
+	  	values 
+	  		('JPA BOOK', 15000, 100, '김영한', '11111', 'B', 1);
+2022-06-02 23:39:12.492  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752492 | took 0ms | rollback | connection 4| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
+
+
+	insert 
+	  into 
+	  	item 
+	  		(name, price, stock_quantity, artist, etc, dtype, item_id) 
+	  	values 
+	  		('멜론 TOP 100', 20000, 50, 'Various Artists', '방탄소년단 외 다수', 'A', 2);
+2022-06-02 23:39:12.524  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752524 | took 0ms | rollback | connection 5| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
+
+
+	insert 
+	  into 
+	  	item 
+	  		(name, price, stock_quantity, actor, director, dtype, item_id) 
+	  	values 
+	  		('쥬라기월드: 도미니언', 15000, 1000, '크리스 프랫', '콜린 트레보로우', 'M', 3);
+2022-06-02 23:39:12.540  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752540 | took 0ms | rollback | connection 6| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
 
 </code></pre>
 <blockquote>
-<p>특이한 점은 save 메소드를 구현할때, Id값이 있는지 체크 하여 없으면 persist() 있으면 merge()를 사용하였습니다.</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>persist(entity) : DB에 추가하려면 완전히 새로운 엔티티와 함께 ​​사용해야합니다 (엔티티가 이미 DB에 존재하는 경우 EntityExistsException 발생).</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>merge(entity) : 엔티티가 분리되어 변경된 경우 엔티티를 영속성 컨텍스트로 되돌리려면 사용되어야합니다.</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>merge는 이후 웹 어플리케이션 구현할때 더 자세히 설명하도록 하겠습니다.</p>
-</blockquote>
-<blockquote>
-<p>전반적인 문맥을 이해해야 설명하기 더 명확해지기 때문입니다.</p>
+<p>각각 dtype에 맞게 잘 저장된것을 확인 할 수 있습니다. 또한 모든 테스트가 통과된 것을 확인 할 수 있습니다.</p>
 </blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
+<h4 id="설정">설정<a class="anchor" href="#설정">#</a></h4>
 <blockquote>
 <p>/main/resources/application.properties</p>
 </blockquote>
@@ -364,6 +534,59 @@ decorator:
       logging: slf4j
 </code></pre>
 </details>
+<blockquote>
+<p>test/resources/application.properties</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> application.properties </summary>
+<pre><code>spring.devtools.restart.enabled=true
+spring.devtools.restart.poll-interval=2s
+spring.devtools.restart.quiet-period=1s
+spring.thymeleaf.cache=false
+spring.jpa.properties.hibernate.format_sql=true
+</code></pre>
+</details> 
+<blockquote>
+<p>test/resources/application.yml</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> application.yml </summary>
+<pre><code>spring:
+#  datasource:
+  #    url: jdbc:h2:mem:test
+  #    username: sa
+  #    password:
+  #    driver-class-name: org.h2.Driver
+  #  jpa:
+  #    hibernate:
+  #      ddl-auto: create-drop # 애플리케이션 동작 시점에 엔티티 재생성
+  #     use_sql_comments: true
+  #   database: h2
+
+  devtools:
+    livereload:
+      enabled: true # livereload 사용시 활성화
+    restart:
+      enabled: false #운영 에서는 제거.
+
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace #파라미터 로깅
+    org.hibernate.type.descriptor.sql: trace
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging : true
+      multiline: true
+      logging: slf4j
+</code></pre>
+</details> 
+<h4 id="엔티티">엔티티<a class="anchor" href="#엔티티">#</a></h4>
 <blockquote>
 <p>java/jpabook/jpashop/domain/Address.java</p>
 </blockquote>
@@ -735,6 +958,7 @@ public class Category {
 }
 </code></pre>
 </details> 
+<h4 id="도메인">도메인<a class="anchor" href="#도메인">#</a></h4>
 <blockquote>
 <p>java/jpabook/jpashop/repository/MemberRepository.java</p>
 </blockquote>
@@ -883,57 +1107,84 @@ public class MemberService {
 </code></pre>
 </details> 
 <blockquote>
-<p>test/resources/application.properties</p>
+<p>java/jpabook/jpashop/repository/ItemRepository.java</p>
 </blockquote>
 <details title="펼치기/숨기기">
- 	<summary> application.properties </summary>
-<pre><code>spring.devtools.restart.enabled=true
-spring.devtools.restart.poll-interval=2s
-spring.devtools.restart.quiet-period=1s
-spring.thymeleaf.cache=false
-spring.jpa.properties.hibernate.format_sql=true
+ 	<summary> ItemRepository.java </summary>
+<pre><code>package jpabook.jpashop.repository;
+
+import jpabook.jpashop.domain.item.Item;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import java.util.List;
+
+@Repository
+@RequiredArgsConstructor
+public class ItemRepository {
+
+    private final EntityManager em;
+
+    public void save(Item item){
+        if (item.getId() == null){
+            em.persist(item);
+        }else{
+            em.merge(item);
+        }
+    }
+
+    public Item findOne(Long id){
+        return em.find(Item.class, id);
+    }
+
+    public List&lt;Item&gt; findAll(){
+        return em.createQuery(&quot;select i from Item i&quot;, Item.class)
+                .getResultList();
+    }
+}
 </code></pre>
 </details> 
 <blockquote>
-<p>test/resources/application.yml</p>
+<p>java/jpabook/jpashop/service/ItemService.java</p>
 </blockquote>
 <details title="펼치기/숨기기">
- 	<summary> application.yml </summary>
-<pre><code>spring:
-#  datasource:
-  #    url: jdbc:h2:mem:test
-  #    username: sa
-  #    password:
-  #    driver-class-name: org.h2.Driver
-  #  jpa:
-  #    hibernate:
-  #      ddl-auto: create-drop # 애플리케이션 동작 시점에 엔티티 재생성
-  #     use_sql_comments: true
-  #   database: h2
+ 	<summary> ItemService.java </summary>
+<pre><code>package jpabook.jpashop.service;
 
-  devtools:
-    livereload:
-      enabled: true # livereload 사용시 활성화
-    restart:
-      enabled: false #운영 에서는 제거.
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.ItemRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-  thymeleaf:
-    cache: false
+import java.util.List;
 
-logging:
-  level:
-    org.hibernate.SQL: debug
-    org.hibernate.type: trace #파라미터 로깅
-    org.hibernate.type.descriptor.sql: trace
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor  // 생성자 주입
+public class ItemService {
 
-decorator:
-  datasource:
-    p6spy:
-      enable-logging : true
-      multiline: true
-      logging: slf4j
+    private final ItemRepository itemRepository;
+
+    @Transactional
+    public Item saveItem(Item item){
+        itemRepository.save(item);
+        return item; //등록한 엔티티 정보 리턴, api response 리턴 및 test code 검증용
+    }
+
+    public List&lt;Item&gt; findItems(){
+        return itemRepository.findAll();
+    }
+
+    public Item findItem(Long item_id){
+        return itemRepository.findOne(item_id);
+    }
+
+}
 </code></pre>
 </details> 
+<h4 id="테스트">테스트<a class="anchor" href="#테스트">#</a></h4>
 <blockquote>
 <p>test/java/jpabook/jpashop/service/MemberServiceTest.java</p>
 </blockquote>
@@ -1039,17 +1290,12 @@ class MemberServiceTest {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-domain-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-repository-development/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 상품 도메인 개발</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 상품 리포지토리 개발</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-logic-test-code/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 상품 서비스 개발</span>
-    </a>
   
 </div>
 
@@ -1119,13 +1365,14 @@ class MemberServiceTest {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 상품 리포지토리 개발</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 상품 서비스 개발</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
-    <li><a href="#상품-리포지토리-개발">상품 리포지토리 개발</a>
+    <li><a href="#상품-기능-테스트">상품 기능 테스트</a>
       <ul>
-        <li><a href="#상품-리포지토리">상품 리포지토리</a></li>
+        <li><a href="#테스트-요구사항">테스트 요구사항</a></li>
+        <li><a href="#테스트-코드-작성">테스트 코드 작성</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
