@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 상품 서비스 개발 | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 주문 도메인 개발 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 상품 서비스 개발">
+  <meta name="description" content="[스프링부트 JPA 활용] 주문 도메인 개발">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 상품 서비스 개발">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 상품 서비스 개발">
+  <meta property="og:title" content="[스프링부트 JPA 활용] 주문 도메인 개발">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 주문 도메인 개발">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 상품 서비스 개발",
-      "headline" : "[스프링부트 JPA 활용] 상품 서비스 개발",
-      "description" : "[스프링부트 JPA 활용] 상품 서비스 개발",
+      "name" : "[스프링부트 JPA 활용] 주문 도메인 개발",
+      "headline" : "[스프링부트 JPA 활용] 주문 도메인 개발",
+      "description" : "[스프링부트 JPA 활용] 주문 도메인 개발",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-02 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-06-02 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/product-logic-test-code\/",
-      "wordCount" : "2000",
+      "datePublished": "2022-06-03 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-06-03 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/order-domain-development\/",
+      "wordCount" : "2678",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,14 +170,14 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 상품 서비스 개발
+		            	[스프링부트 JPA 활용] 주문 도메인 개발
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 상품 서비스 개발
+		       	[스프링부트 JPA 활용] 주문 도메인 개발
             </h1>		
-            <time datetime="2022-06-02 00:00:00 &#43;0000 UTC" class="post__date">2022-06-02</time> 
+            <time datetime="2022-06-03 00:00:00 &#43;0000 UTC" class="post__date">2022-06-03</time> 
           </header>
           <article class="post__content">
               
@@ -250,234 +250,431 @@
 <li>마무리</li>
 </ul>
 </blockquote>
-<h2 id="상품-기능-테스트">상품 기능 테스트<a class="anchor" href="#상품-기능-테스트">#</a></h2>
+<h2 id="주문-도메인-개발">주문 도메인 개발<a class="anchor" href="#주문-도메인-개발">#</a></h2>
 <hr>
-<h3 id="테스트-요구사항">테스트 요구사항<a class="anchor" href="#테스트-요구사항">#</a></h3>
+<blockquote>
+<p>지금까지 설명했던것 중에 가장 중요한 부분입니다. 비지니스 로직이 서로 얽혀서 돌아가는 것을 JPA와 엔티티를 가지고 
+어떻게 풀어 내는지 아실 수 있습니다.</p>
+</blockquote>
+<h2 id="주문-주문-상품-엔티티-개발">주문, 주문 상품 엔티티 개발<a class="anchor" href="#주문-주문-상품-엔티티-개발">#</a></h2>
+<hr>
+<blockquote>
+<p>또 트랜잭션 스크립트 패턴과 도메인 모델 패턴 중 도메인 모델 패턴을 많이 접해 보지 못했을 텐데 예제를 통해 접해 볼 수 있습니다.</p>
+</blockquote>
+<h4 id="구현-기능">구현 기능<a class="anchor" href="#구현-기능">#</a></h4>
+<blockquote>
+<ul>
+<li>상품 주문</li>
+<li>주문 내역 조회</li>
+<li>주문 취소</li>
+</ul>
+</blockquote>
+<h5 id="상품-주문">상품 주문<a class="anchor" href="#상품-주문">#</a></h5>
+<blockquote>
+<ul>
+<li>주문서 작성</li>
+<li>사용자를 선택</li>
+<li>상품종류를 선택</li>
+<li>상품종류를 선택에 따라 상품 콤보박스 변경</li>
+<li>상품 선택</li>
+<li>주문수량 입력 후 저장
+<ul>
+<li>선택한 상품 입력 주문수량 만큼 감소</li>
+</ul>
+</li>
+<li>주문 내역 리스트 이동</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/order-domain-development/img-001.png" alt="contact"></p>
+<h5 id="주문-내역-조회">주문 내역 조회<a class="anchor" href="#주문-내역-조회">#</a></h5>
+<blockquote>
+<ul>
+<li>주문 내역 추가</li>
+<li>주문 내역 검색</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/order-domain-development/img-002.png" alt="contact"></p>
+<h5 id="주문-취소">주문 취소<a class="anchor" href="#주문-취소">#</a></h5>
+<blockquote>
+<ul>
+<li>주문 상태 변경
+<ul>
+<li>주문 수량 만큼 해당 취소 상품 갯수 추가</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/order-domain-development/img-003.png" alt="contact"></p>
+<h4 id="구현-순서">구현 순서<a class="anchor" href="#구현-순서">#</a></h4>
 <hr>
 <blockquote>
 <ul>
-<li>상품등록을 성공해야한다.</li>
-<li>음반, 책, 영화 각각 저장하여 성공하여야한다.</li>
+<li>주문 엔티티, 주문상품 엔티티 개발</li>
+<li>주문 리포지토리개발</li>
+<li>주문 서비스 개발</li>
+<li>주문 검색 기능 개발</li>
+<li>주문 기능 테스트</li>
 </ul>
 </blockquote>
-<h3 id="테스트-코드-작성">테스트 코드 작성<a class="anchor" href="#테스트-코드-작성">#</a></h3>
+<h3 id="주문-엔티티-주문상품-엔티티-개발">주문 엔티티, 주문상품 엔티티 개발<a class="anchor" href="#주문-엔티티-주문상품-엔티티-개발">#</a></h3>
 <hr>
 <blockquote>
-<p>ItemService에서 Intelij IDEA의 단축키 Ctrl + Shift + T 
-(이클립스 스타일 시 go to Test 단축키 변경)</p>
+<p>Order뿐만 아니라 OrderItem, Delivery를 생성해야 하기 때문에 생성 메서드를 Order 엔티티에 생성합니다.</p>
 </blockquote>
 <blockquote>
-<p>생성된것을 확인</p>
+<p>생성할때 밖에서 set, set, set 으로 각각의 엔티티를 설정하는것이 아니라 static 메서드를 호출해 한번에 생성합니다.</p>
 </blockquote>
+<h4 id="생성-메서드">생성 메서드<a class="anchor" href="#생성-메서드">#</a></h4>
 <blockquote>
-<p>이전에 생성한 tdd + Tab (라이브 템플릿) 사용</p>
+<p>Order.java - 생성 메서드</p>
 </blockquote>
-<blockquote>
-<p>tdd + Tab (라이브 템플릿)</p>
-</blockquote>
-<pre><code>@Test
-    public void 회원가입() throws Exception{
-        //given 
-        
-        //when 
+<pre><code>    //== 생성 메서드 ==//
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){ // OrderItem...  여러개를 넘길 수 있음
 
-        //then 
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
+        for (OrderItem orderItem : orderItems){
+            order.addOrderItem(orderItem);
+        }
+        order.setStatus(OrderStatus.ORDER);
+        order.setOrderDate(LocalDateTime.now());
+
+        return order;
+    }
+
+</code></pre>
+<blockquote>
+<p>해당 코드의 스타일이 중요한 점은 주문을 생성할때, 한곳에 기능을 모아 수정시 돌아다니며 수정할 필요가 없습니다.</p>
+</blockquote>
+<blockquote>
+<p>OrderItem.java - 생성 메서드
+orderPrice를 item의 가격에서 안가져오고, 파라미터로 따로 받는 이유는 구매 당시의 가격을 받기 위함</p>
+</blockquote>
+<pre><code>    //==생성 메서드==//
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count){ 
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+		
+		// 주문 수량만큼 재고를 감소시킴 
+        item.removeStock(count);
+        return orderItem;
+    }
+</code></pre>
+<h4 id="비즈니스-로직">비즈니스 로직<a class="anchor" href="#비즈니스-로직">#</a></h4>
+<blockquote>
+<p>이미 배송완료된 상품은 취소가 불가능하다는 체크로직을 엔티티 안에 넣어 관리합니다.</p>
+</blockquote>
+<blockquote>
+<p>Order.java - 비지니스 로직 (주문 취소)</p>
+</blockquote>
+<pre><code>//==비즈니스 로직==//
+    /**
+     * 주문 취소
+     */
+    public void cancel(){
+        // 배송이 완료된 주문은 취소가 불가
+        if (delivery.getStatus() == DeliveryStatus.COMP){
+            throw new IllegalStateException(&quot;이미 배송이 완료된 상품은 취소가 불가능합니다.&quot;);
+        }
+
+        this.setStatus(OrderStatus.CANCEL);
+
+        for (OrderItem orderItem : this.orderItems){
+            orderItem.cancel();
+        }
+    }
+
+</code></pre>
+<blockquote>
+<p>OrderItem.java - 비지니스 로직 (주문 취소)</p>
+</blockquote>
+<pre><code>    //==비즈니스 로직==//
+    /**
+     * 주문 취소
+     */
+    public void cancel() {
+        getItem().addStock(this.count);
+    }
+</code></pre>
+<h4 id="조회-로직">조회 로직<a class="anchor" href="#조회-로직">#</a></h4>
+<blockquote>
+<p>Order에서 OrderItem에 가서 주문 수량과 주문 가격을 계산해주는 getTotalPrice()를 생성하고 
+Order에서 orderItems의 각각의 getTotalPrice()의 합계를 반환합니다.</p>
+</blockquote>
+<blockquote>
+<p>OrderItem.java - 조회 로직 (주문 금액 가져오기)</p>
+</blockquote>
+<pre><code>    /**
+     * 주문상품 전체 가격 조회
+     */
+    public int getTotalPrice() {
+        return getOrderPrice() * getOrderPrice();
     }
 </code></pre>
 <blockquote>
-<ul>
-<li>given : 이렇게 주어졌을때</li>
-<li>when : 이렇게 하면</li>
-<li>then : 이렇게 된다.</li>
-</ul>
+<p>Order.java - 조회 로직 (전체 주문 가격 조회)</p>
 </blockquote>
-<blockquote>
-<p>아래 링크 참조</p>
-</blockquote>
-<blockquote>
-<p><a href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C">[스프링부트 JPA 활용] JPA 동작확인</a></p>
-</blockquote>
-<h4 id="상품등록-테스트">상품등록 테스트<a class="anchor" href="#상품등록-테스트">#</a></h4>
-<blockquote>
-<p>상품은 Album, Book, Movie 3가지 종류가 있습니다. 이를 각각 저장해 저장된 엔티티객체와 DB에서 읽어온 객체를 비교해 보도록 하겠습니다.</p>
-</blockquote>
-<blockquote>
-<p>음반 상품등록</p>
-</blockquote>
-<pre><code>	@Test
-    public void 음반_상품등록() throws Exception{
-        //given
-        Item item = new Album();
-        item.setName(&quot;멜론 TOP 100&quot;);
-        ((Album) item).setArtist(&quot;Various Artists&quot;);
-        ((Album) item).setEtc(&quot;방탄소년단 외 다수&quot;);
-        item.setPrice(20000);
-        item.addStock(50);
+<pre><code>  //==조회 로직==//
+    /**
+     * 전체 주문 가격 조회
+     */
+    public int getTotalPrice(){
+        int totalPrice = 0;
 
-        //when
-        Item savedItem = itemService.saveItem(item);
+        for (OrderItem orderItem : this.orderItems) {
+            totalPrice += orderItem.getTotalPrice();
+        }
 
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+        return totalPrice;
     }
 </code></pre>
 <blockquote>
-<p>책 상품등록</p>
+<p>위의 코드를 좀더 심플하게 변경할 수 있습니다.</p>
 </blockquote>
-<pre><code>	@Test
-    public void 책_상품등록() throws Exception{
-        //given
-        Item item = new Book();
-        item.setName(&quot;JPA BOOK&quot;);
-        ((Book) item).setAuthor(&quot;김영한&quot;);
-        ((Book) item).setIsbn(&quot;11111&quot;);
-        item.setPrice(15000);
-        item.addStock(100);
-
-        //when
-        Item savedItem = itemService.saveItem(item);
-
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+<h4 id="sum으로-바꾸기-replace-with-sum">sum()으로 바꾸기 (Replace with sum())<a class="anchor" href="#sum으로-바꾸기-replace-with-sum">#</a></h4>
+<blockquote>
+<p>InteliJ 기능을 이용해서 자바 스트림을 이용해 간결하게 변경합니다.</p>
+</blockquote>
+<h5 id="alt--enter---현재-컨텍스트에-대한-액션을-표시">Alt + Enter - 현재 컨텍스트에 대한 액션을 표시<a class="anchor" href="#alt--enter---현재-컨텍스트에-대한-액션을-표시">#</a></h5>
+<p><img src="/images/develop/backend/using-springboot-jpa/order-domain-development/img-004.png" alt="contact"></p>
+<pre><code>    //==조회 로직==//
+    /**
+     * 전체 주문 가격 조회
+     */
+    public int getTotalPrice(){
+        int totalPrice = this.orderItems.stream().mapToInt(OrderItem::getTotalPrice).sum();
+        return totalPrice;
+    }
+</code></pre>
+<h5 id="ctrl--alt--n---인라인화">Ctrl + Alt + N - 인라인화<a class="anchor" href="#ctrl--alt--n---인라인화">#</a></h5>
+<blockquote>
+<p>인라인화는 return의 변수와 속성 변수의 이름이 같은경우 return에 속성 변수에 세팅한 코드를 세팅해 간결하게 변경합니다.</p>
+</blockquote>
+<pre><code>    //==조회 로직==//
+    /**
+     * 전체 주문 가격 조회
+     */
+    public int getTotalPrice(){
+        return this.orderItems.stream()
+                .mapToInt(OrderItem::getTotalPrice)
+                .sum();
     }
 </code></pre>
 <blockquote>
-<p>영화 상품등록</p>
+<p>Order.java</p>
 </blockquote>
-<pre><code>	@Test
-    public void 영화_상품등록() throws Exception{
-        //given
-        Item item = new Movie();
-        item.setName(&quot;쥬라기월드: 도미니언&quot;);
-        ((Movie) item).setDirector(&quot;콜린 트레보로우&quot;);
-        ((Movie) item).setActor(&quot;크리스 프랫&quot;);
-        item.setPrice(15000);
-        item.addStock(1000);
+<pre><code>package jpabook.jpashop.domain;
 
-        //when
-        Item savedItem = itemService.saveItem(item);
-
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
-    }
-</code></pre>
-<blockquote>
-<p>test/java/jpabook/jpashop/service/ItemServiceTest.java</p>
-</blockquote>
-<pre><code>package jpabook.jpashop.service;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import jpabook.jpashop.domain.item.Album;
-import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
-import jpabook.jpashop.domain.item.Movie;
-import jpabook.jpashop.repository.ItemRepository;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.EntityManager;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-@SpringBootTest
-@Transactional
-class ItemServiceTest {
-    // 테스트 케이스에서는 다른곳에서 참조할 곳이 없으므로 @Autowired로 사용
-    @Autowired ItemRepository itemRepository;
-    @Autowired ItemService itemService;
-    @Autowired EntityManager em;
+@Entity
+@Getter @Setter
+@Table(name = &quot;orders&quot;)
+public class Order {
 
-    @Test
-    public void 음반_상품등록() throws Exception{
-        //given
-        Item item = new Album();
-        item.setName(&quot;멜론 TOP 100&quot;);
-        ((Album) item).setArtist(&quot;Various Artists&quot;);
-        ((Album) item).setEtc(&quot;방탄소년단 외 다수&quot;);
-        item.setPrice(20000);
-        item.addStock(50);
+    @Id @GeneratedValue
+    @Column(name=&quot;order_id&quot;)
+    private Long id;
 
-        //when
-        Item savedItem = itemService.saveItem(item);
+    @ManyToOne(fetch = FetchType.LAZY)  // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;member_id&quot;) // Order의 member가 수정되면 Order의 외래키 값이 변경됩니다.
+    private Member member;
 
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+
+    // mappedBy 연관관계의 주인인 OrderItem의 order로 매핑 되어있다는 뜻
+    @OneToMany(mappedBy = &quot;order&quot;, cascade = CascadeType.ALL)
+    private List&lt;OrderItem&gt; orderItems = new ArrayList&lt;&gt;();
+
+
+    // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = &quot;delivery_id&quot;)
+    private Delivery delivery;
+
+    private LocalDateTime orderDate; //주문시간
+
+    @Enumerated(EnumType.STRING) // EnumType.ORDINAL(숫자라 순서바뀌면 큰일)이 기본이지만 무조건 EnumType.STRING(문자 코드)
+    private OrderStatus status; // 주문상태 [ORDER, CANCEL]
+
+
+    //==연관관계 메서드 (양방향 연관관계시 추가)==//
+    public void setMember(Member member){
+        this.member = member;
+        member.getOrders().add(this);
     }
-    
-    @Test
-    public void 책_상품등록() throws Exception{
-        //given
-        Item item = new Book();
-        item.setName(&quot;JPA BOOK&quot;);
-        ((Book) item).setAuthor(&quot;김영한&quot;);
-        ((Book) item).setIsbn(&quot;11111&quot;);
-        item.setPrice(15000);
-        item.addStock(100);
 
-        //when
-        Item savedItem = itemService.saveItem(item);
-
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    public void addOrderItem(OrderItem orderItem){
+        this.orderItems.add(orderItem);
+        orderItem.setOrder(this);
     }
-    
-    @Test
-    public void 영화_상품등록() throws Exception{
-        //given
-        Item item = new Movie();
-        item.setName(&quot;쥬라기월드: 도미니언&quot;);
-        ((Movie) item).setDirector(&quot;콜린 트레보로우&quot;);
-        ((Movie) item).setActor(&quot;크리스 프랫&quot;);
-        item.setPrice(15000);
-        item.addStock(1000);
 
-        //when
-        Item savedItem = itemService.saveItem(item);
+    public void setDelivery(Delivery delivery){
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
 
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    //== 생성 메서드==//
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){ // OrderItem...  여러개를 넘길 수 있음
+
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
+        for (OrderItem orderItem : orderItems){
+            order.addOrderItem(orderItem);
+        }
+        order.setStatus(OrderStatus.ORDER);
+        order.setOrderDate(LocalDateTime.now());
+
+        return order;
+    }
+
+    //==비즈니스 로직==//
+    /**
+     * 주문 취소
+     */
+    public void cancel(){
+        // 배송이 완료된 주문은 취소가 불가
+        if (delivery.getStatus() == DeliveryStatus.COMP){
+            throw new IllegalStateException(&quot;이미 배송이 완료된 상품은 취소가 불가능합니다.&quot;);
+        }
+
+        this.setStatus(OrderStatus.CANCEL);
+
+        for (OrderItem orderItem : this.orderItems){
+            orderItem.cancel();
+        }
+    }
+
+
+    //==조회 로직==//
+    /**
+     * 전체 주문 가격 조회
+     */
+    public int getTotalPrice(){
+
+        /*
+        int totalPrice = 0;
+
+        for (OrderItem orderItem : this.orderItems) {
+            totalPrice += orderItem.getTotalPrice();
+        }
+
+        return totalPrice;
+        */
+
+
+        return this.orderItems.stream()
+                .mapToInt(OrderItem::getTotalPrice)
+                .sum();
     }
 }
+
 </code></pre>
 <blockquote>
-<p>console</p>
+<p>OrderItem.java</p>
 </blockquote>
-<pre><code>	insert 
-	  into 
-	  	item 
-	  		(name, price, stock_quantity, author, isbn, dtype, item_id) 
-	  	values 
-	  		('JPA BOOK', 15000, 100, '김영한', '11111', 'B', 1);
-2022-06-02 23:39:12.492  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752492 | took 0ms | rollback | connection 4| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
+<pre><code>package jpabook.jpashop.domain;
+
+import jpabook.jpashop.domain.item.Item;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+
+@Entity
+@Getter @Setter
+public class OrderItem {
+
+    @Id @GeneratedValue
+    @Column(name = &quot;order_item_id&quot;)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY) // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;item_id&quot;)
+    private Item item;
+
+    @ManyToOne(fetch = FetchType.LAZY) // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
+    @JoinColumn(name = &quot;order_id&quot;)
+    private Order order;
+
+    private int orderPrice; //주문 당시의 가격
+    private int count; //주문 수량
 
 
-	insert 
-	  into 
-	  	item 
-	  		(name, price, stock_quantity, artist, etc, dtype, item_id) 
-	  	values 
-	  		('멜론 TOP 100', 20000, 50, 'Various Artists', '방탄소년단 외 다수', 'A', 2);
-2022-06-02 23:39:12.524  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752524 | took 0ms | rollback | connection 5| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
+    //==생성 메서드==//
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count){ //orderPrice는 구매 당시의 가격을 받기 위함
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStock(count);
+        return orderItem;
+    }
 
 
-	insert 
-	  into 
-	  	item 
-	  		(name, price, stock_quantity, actor, director, dtype, item_id) 
-	  	values 
-	  		('쥬라기월드: 도미니언', 15000, 1000, '크리스 프랫', '콜린 트레보로우', 'M', 3);
-2022-06-02 23:39:12.540  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752540 | took 0ms | rollback | connection 6| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
+    //==비즈니스 로직==//
+    /**
+     * 주문 취소
+     */
+    public void cancel() {
+        getItem().addStock(this.count);
+    }
+
+
+    //==조회 로직==//
+    /**
+     * 주문상품 전체 가격 조회
+     */
+    public int getTotalPrice() {
+        return getOrderPrice() * getOrderPrice();
+    }
+}
 
 </code></pre>
+<h3 id="생성-메서드-사용-시-생성자-사용-제약">생성 메서드 사용 시 생성자 사용 제약<a class="anchor" href="#생성-메서드-사용-시-생성자-사용-제약">#</a></h3>
+<hr>
 <blockquote>
-<p>각각 dtype에 맞게 잘 저장된것을 확인 할 수 있습니다. 또한 모든 테스트가 통과된 것을 확인 할 수 있습니다.</p>
+<p>생성 메서드를 사용하게 되면, new를 이용해 엔티티 객체를 생성하는 것을 막아야합니다. <br>
+왜냐하면, 다른 코드 스타일로 개발하면 유지보수가 불편할 뿐만 아니라 추가로 컬럼의 변경이 있을때 각각의 코드에서 수정이 필요하기 때문입니다.</p>
+</blockquote>
+<blockquote>
+<p>Order.java</p>
+</blockquote>
+<pre><code>@Entity
+@Getter @Setter
+@Table(name = &quot;orders&quot;)
+public class Order {
+
+    protected Order() {} //생성자를 사용 불가로 하고 CteateOrder 사용 유도
+</code></pre>
+<blockquote>
+<p>OrderItem.java</p>
+</blockquote>
+<pre><code>@Entity
+@Getter @Setter
+public class OrderItem {
+
+    protected OrderItem() {} //생성자를 사용 불가로 하고 CteateOrderItem 사용 유도
+</code></pre>
+<blockquote>
+<p>해당 생성자를 protected로 적용하는 것을 Lombok을 통해 더 편리하게 사용 할 수 있습니다.</p>
+</blockquote>
+<pre><code>@NoArgsConstructor(access = AccessLevel.PROTECTED)
+</code></pre>
+<p><img src="/images/develop/backend/using-springboot-jpa/order-domain-development/img-005.png" alt="contact"></p>
+<blockquote>
+<p>만일 누군가 생성자를 통해 Order나 OrderItem을 생성하려 하면, 빨간줄로 오류를 뱉어 내기 때문에, 해당 소스에 가서 확인 후 @NoArgsConstructor(access = AccessLevel.PROTECTED)를 보고 다른 생성 방법을 찾아 개발을 할 수 있을 것 입니다.</p>
 </blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
@@ -678,8 +875,6 @@ public class Order {
         this.delivery = delivery;
         delivery.setOrder(this);
     }
-
-
 }
 </code></pre>
 </details> 
@@ -1250,6 +1445,91 @@ class MemberServiceTest {
 }
 </code></pre>
 </details> 
+<blockquote>
+<p>test/java/jpabook/jpashop/service/ItemServiceTest.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> ItemServiceTest.java </summary>
+<pre><code>package jpabook.jpashop.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import jpabook.jpashop.domain.item.Album;
+import jpabook.jpashop.domain.item.Book;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.domain.item.Movie;
+import jpabook.jpashop.repository.ItemRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+
+@SpringBootTest
+@Transactional
+class ItemServiceTest {
+    // 테스트 케이스에서는 다른곳에서 참조할 곳이 없으므로 @Autowired로 사용
+    @Autowired ItemRepository itemRepository;
+    @Autowired ItemService itemService;
+    @Autowired EntityManager em;
+
+    @Test
+    public void 음반_상품등록() throws Exception{
+        //given
+        Item item = new Album();
+        item.setName(&quot;멜론 TOP 100&quot;);
+        ((Album) item).setArtist(&quot;Various Artists&quot;);
+        ((Album) item).setEtc(&quot;방탄소년단 외 다수&quot;);
+        item.setPrice(20000);
+        item.addStock(50);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+    
+    @Test
+    public void 책_상품등록() throws Exception{
+        //given
+        Item item = new Book();
+        item.setName(&quot;JPA BOOK&quot;);
+        ((Book) item).setAuthor(&quot;김영한&quot;);
+        ((Book) item).setIsbn(&quot;11111&quot;);
+        item.setPrice(15000);
+        item.addStock(100);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+    
+    @Test
+    public void 영화_상품등록() throws Exception{
+        //given
+        Item item = new Movie();
+        item.setName(&quot;쥬라기월드: 도미니언&quot;);
+        ((Movie) item).setDirector(&quot;콜린 트레보로우&quot;);
+        ((Movie) item).setActor(&quot;크리스 프랫&quot;);
+        item.setPrice(15000);
+        item.addStock(1000);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+}
+</code></pre>
+</details>
 <h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
@@ -1290,16 +1570,16 @@ class MemberServiceTest {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-repository-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-logic-test-code/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 상품 리포지토리 개발</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 상품 서비스 개발</span>
     </a>
   
 
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-domain-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-order-service-development/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 주문 도메인 개발</span>
+      <span class="pagination__title" >[스프링부트 JPA 활용] 주문 서비스 개발</span>
     </a>
   
 </div>
@@ -1370,14 +1650,16 @@ class MemberServiceTest {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 상품 서비스 개발</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 주문 도메인 개발</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
-    <li><a href="#상품-기능-테스트">상품 기능 테스트</a>
+    <li><a href="#주문-도메인-개발">주문 도메인 개발</a></li>
+    <li><a href="#주문-주문-상품-엔티티-개발">주문, 주문 상품 엔티티 개발</a>
       <ul>
-        <li><a href="#테스트-요구사항">테스트 요구사항</a></li>
-        <li><a href="#테스트-코드-작성">테스트 코드 작성</a></li>
+        <li></li>
+        <li><a href="#주문-엔티티-주문상품-엔티티-개발">주문 엔티티, 주문상품 엔티티 개발</a></li>
+        <li><a href="#생성-메서드-사용-시-생성자-사용-제약">생성 메서드 사용 시 생성자 사용 제약</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>

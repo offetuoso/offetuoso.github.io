@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Thu, 02 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[스프링부트 JPA 활용] 주문 서비스 개발</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-order-service-development/</link>
+      <pubDate>Sat, 04 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-order-service-development/</guid>
+      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   주문 서비스 개발   java/jpabook/jpashop/service/OrderService.</description>
+    </item>
+    
+    <item>
+      <title>[스프링부트 JPA 활용] 주문 도메인 개발</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-domain-development/</link>
+      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-domain-development/</guid>
+      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   주문 도메인 개발   지금까지 설명했던것 중에 가장 중요한 부분입니다.</description>
+    </item>
+    
     <item>
       <title>[스프링부트 JPA 활용] 상품 서비스 개발</title>
       <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-logic-test-code/</link>
