@@ -4,21 +4,61 @@
   
   <url>
     <loc>https://offetuoso.github.io/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-order-service-development/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/blog/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://offetuoso.github.io/categories/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/ide/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/idea/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/intellij/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/subcategories/intellij/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/intellij/intellij-shotcut/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/subcategories/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/tags/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/categories/tools/</loc>
+    <lastmod>2022-06-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-order-service-development/</loc>
     <lastmod>2022-06-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -49,16 +89,6 @@
   
   <url>
     <loc>https://offetuoso.github.io/tags/spring/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/subcategories/</loc>
-    <lastmod>2022-06-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://offetuoso.github.io/tags/</loc>
     <lastmod>2022-06-04T00:00:00+00:00</lastmod>
   </url>
   
