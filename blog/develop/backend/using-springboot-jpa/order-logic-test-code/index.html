@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 주문 서비스 개발 | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 주문 기능 테스트 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 주문 서비스 개발">
+  <meta name="description" content="[스프링부트 JPA 활용] 주문 기능 테스트">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 주문 서비스 개발">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 주문 서비스 개발">
+  <meta property="og:title" content="[스프링부트 JPA 활용] 주문 기능 테스트">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 주문 기능 테스트">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 주문 서비스 개발",
-      "headline" : "[스프링부트 JPA 활용] 주문 서비스 개발",
-      "description" : "[스프링부트 JPA 활용] 주문 서비스 개발",
+      "name" : "[스프링부트 JPA 활용] 주문 기능 테스트",
+      "headline" : "[스프링부트 JPA 활용] 주문 기능 테스트",
+      "description" : "[스프링부트 JPA 활용] 주문 기능 테스트",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-04 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-06-04 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/2-order-service-development\/",
-      "wordCount" : "2393",
+      "datePublished": "2022-06-13 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-06-13 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/order-logic-test-code\/",
+      "wordCount" : "2701",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,14 +170,14 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 주문 서비스 개발
+		            	[스프링부트 JPA 활용] 주문 기능 테스트
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 주문 서비스 개발
+		       	[스프링부트 JPA 활용] 주문 기능 테스트
             </h1>		
-            <time datetime="2022-06-04 00:00:00 &#43;0000 UTC" class="post__date">2022-06-04</time> 
+            <time datetime="2022-06-13 00:00:00 &#43;0000 UTC" class="post__date">2022-06-13</time> 
           </header>
           <article class="post__content">
               
@@ -250,177 +250,318 @@
 <li>마무리</li>
 </ul>
 </blockquote>
-<h2 id="주문-서비스-개발">주문 서비스 개발<a class="anchor" href="#주문-서비스-개발">#</a></h2>
+<h2 id="주문-기능-테스트">주문 기능 테스트<a class="anchor" href="#주문-기능-테스트">#</a></h2>
 <hr>
 <blockquote>
-<p>java/jpabook/jpashop/service/OrderService.java 생성</p>
+<p>테스트 할때는 스프링 기능 없이 메소드 하나 하나 단위 테스트 하는 것이 바람직하나 스프링과 JPA가 잘 엮여서 동작하는 것을 테스트 하기 때문에 통합테스트로 작성합니다.</p>
 </blockquote>
-<h3 id="주문">주문<a class="anchor" href="#주문">#</a></h3>
+<h3 id="테스트-요구사항">테스트 요구사항<a class="anchor" href="#테스트-요구사항">#</a></h3>
 <hr>
 <blockquote>
-<p>예제를 간략하게 하기 위해서 Order를 할때 한번에 한개를 주문 하도록 개발을 하였습니다. <br>
-여러 물품을 한번에 주문하게 하려면, 화면에서 멀티로 선택하게 되고 각 Order들을 전달받아 주문을 생성해야합니다.</p>
+<ul>
+<li>상품 주문이 성공해야 한다.</li>
+<li>상품을 주문할 때 재고 수량을 초과하면 안 된다.</li>
+<li>주문 취소가 성공해야한다.</li>
+</ul>
+</blockquote>
+<h3 id="테스트-코드-작성">테스트 코드 작성<a class="anchor" href="#테스트-코드-작성">#</a></h3>
+<hr>
+<blockquote>
+<p>ItemService에서 Intelij IDEA의 단축키 Ctrl + Shift + T 
+(이클립스 스타일 시 go to Test 단축키 변경)</p>
 </blockquote>
 <blockquote>
-<p>OrderService.java - 주문</p>
+<p>생성된것을 확인</p>
 </blockquote>
-<pre><code>@Service
-@Transactional(readOnly = true)
-@RequiredArgsConstructor
-public class OrderService {
+<blockquote>
+<p>이전에 생성한 tdd + Tab (라이브 템플릿) 사용</p>
+</blockquote>
+<blockquote>
+<p>tdd + Tab (라이브 템플릿)</p>
+</blockquote>
+<h4 id="상품주문-테스트">상품주문 테스트<a class="anchor" href="#상품주문-테스트">#</a></h4>
+<blockquote>
+<p>상품주문의 테스트 시나리오는 아래와 같습니다.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>given
+<ol>
+<li>회원 생성</li>
+<li>북 아이템 생성</li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>when
+3. 주문 생성</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>then
+4. 상품 주문시 상태는 ORDER
+5. 주문한 상품 종류 수가 일치해야한다.
+6. 주문 가격은 가격 * 수량이다.
+7. 주문 수량만큼 재고가 줄어야 한다.</li>
+</ul>
+</blockquote>
+<pre><code>package jpabook.jpashop.service;
 
-    private final OrderRepository orderRepository;
-    private final MemberRepository memberRepository;
-    private final ItemRepository itemRepository;
-	/**
-     * 주문
-     */
-    @Transactional
-    public Long order(Long memberId, Long itemId, int count){
+import jpabook.jpashop.domain.Address;
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderStatus;
+import jpabook.jpashop.domain.item.Book;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.ItemRepository;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.OrderRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-        // 엔티티 조회
-        Member member = memberRepository.findOne(memberId);
-        Item item = itemRepository.findOne(itemId);
+import javax.persistence.EntityManager;
 
-        // 배송정보 생성
-        Delivery delivery = new Delivery();
-        delivery.setAddress(member.getAddress());
-        delivery.setStatus(DeliveryStatus.READY);
+import static org.junit.jupiter.api.Assertions.*;
 
-        // 주문상품 생성
-        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
+@SpringBootTest
+@Transactional
+class OrderServiceTest {
 
-        // 주문생성
-        Order order = Order.createOrder(member, delivery , orderItem);
+    @Autowired ItemRepository itemRepository;
+    @Autowired MemberRepository memberRepository;
+    @Autowired OrderRepository orderRepository;
+    @Autowired OrderService orderService;
+    @Autowired EntityManager em;
 
-        // 주문 저장
-        orderRepository.save(order);
+    @Test
+    public void 상품주문() throws Exception{
+        //given
+        Member member = new Member();
+        member.setName(&quot;회원1&quot;);
+        member.setAddress(new Address(&quot;서울&quot;, &quot;강변로&quot;,&quot;123-123&quot;));
+        em.persist(member);
 
-        return order.getId();
+        int stockQuantity = 10;
+        Book book = new Book();
+        book.setName(&quot;JPA 기본서&quot;);
+        book.setPrice(100000);
+        book.setStockQuantity(stockQuantity);
+        em.persist(book);
+
+        int orderCount = 2;
+
+
+        //when
+        Long orderId = orderService.order(member.getId(), book.getId(), orderCount);
+
+        //then
+        Order getOrder = orderRepository.findOne(orderId);
+
+        assertEquals( OrderStatus.ORDER, getOrder.getStatus(), &quot;상품 주문시 상태는 ORDER&quot;);
+        assertEquals( 1, getOrder.getOrderItems().size(), &quot;주문한 상품 종류 수가 일치해야한다.&quot;);
+        assertEquals( 100000 * orderCount, getOrder.getTotalPrice(), &quot;주문 가격은 가격 * 수량이다.&quot;);
+        assertEquals( stockQuantity-orderCount, book.getStockQuantity(), &quot;주문 수량만큼 재고가 줄어야 한다.&quot;);
+
+    }
+
+}
+
+</code></pre>
+<h4 id="상품주문-테스트-1">상품주문 테스트<a class="anchor" href="#상품주문-테스트-1">#</a></h4>
+<blockquote>
+<p>회원과 아이템 생성은 동일하게 사용되므로 함수로 추출하여 사용</p>
+</blockquote>
+<p><img src="/images/develop/backend/using-springboot-jpa/order-logic-test/img-001.png" alt="contact"></p>
+<blockquote>
+<p>Intellij IDEA 단축키 함수추출 (ctrl + alt + M)</p>
+</blockquote>
+<pre><code>     Member member = createMember(); //회원1 생성
+
+     int stockQuantity = 10;
+     Book book = createBook(&quot;JPA 기본서&quot;,100000,stockQuantity);
+     
+     
+     private Member createMember() {
+        Member member = new Member();
+        member.setName(&quot;회원1&quot;);
+        member.setAddress(new Address(&quot;서울&quot;, &quot;강변로&quot;, &quot;123-123&quot;));
+        em.persist(member);
+        return member;
+     }
+        
+     private Book createBook(String name, int price, int stockQuantity) {
+        Book book = new Book();
+        book.setName(name);
+        book.setPrice(price);
+        book.setStockQuantity(stockQuantity);
+        em.persist(book);
+        return book;
     }
 </code></pre>
-<p><img src="/images/develop/backend/using-springboot-jpa/order-domain-development/img-001.png" alt="contact"></p>
-<blockquote>
-<p>주문 화면을 보면, 사용자를 선택하여 memberId, 아이템을 선택해 ItemId 그리고 개수를 입력 받습니다. <br></p>
-</blockquote>
-<blockquote>
-<p>입력받은 내역을 id들을 가지고 Member, Item을 조회하고 배송정보를 생성합니다.</p>
-</blockquote>
-<blockquote>
-<p>또한 주문 상품을 생성하고</p>
-</blockquote>
-<blockquote>
-<p>주문을 생성하여 저장합니다.</p>
-</blockquote>
-<blockquote>
-<p>Order만 저장하고 다른 OrderItem과 Delivery는 따로 저장을 하지 않는데요.</p>
-</blockquote>
-<blockquote>
-<p>이는 Order.java에서 cascade = CascadeType.ALL를 orderItems와 delivery에 추가해 두었기 때문입니다.</p>
-</blockquote>
-<h4 id="cascade">CASCADE<a class="anchor" href="#cascade">#</a></h4>
-<blockquote>
-<p>Order.java에 보면 orderItems, delivery에 cascade = CascadeType.ALL 옵션이 적용되어있습니다.</p>
-</blockquote>
-<pre><code>    // mappedBy 연관관계의 주인인 OrderItem의 order로 매핑 되어있다는 뜻
-    @OneToMany(mappedBy = &quot;order&quot;, cascade = CascadeType.ALL)
-    private List&lt;OrderItem&gt; orderItems = new ArrayList&lt;&gt;();
+<h5 id="테스트-코드에서-member와-book-생성-함수로-생성">테스트 코드에서 Member와 Book 생성 함수로 생성<a class="anchor" href="#테스트-코드에서-member와-book-생성-함수로-생성">#</a></h5>
+<pre><code> Member member = createMember();
 
-
-    // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = &quot;delivery_id&quot;)
-    private Delivery delivery;
+ Book book = createBook(&quot;JPA 기본서&quot;,100000,10);
 </code></pre>
+<h4 id="상품주문_재고수량초과-테스트">상품주문_재고수량초과 테스트<a class="anchor" href="#상품주문_재고수량초과-테스트">#</a></h4>
 <blockquote>
-<p>어디까지 CASCADE를 적용해야 하느냐에 많이들 고민 하지만,</p>
+<p>상품주문_재고수량초과 테스트 시나리오는 아래와 같습니다.</p>
 </blockquote>
 <blockquote>
-<p>Order와 OrderItem, Delivery 정도의 관계에만 사용합니다. OrderItem과 Delivery는 Order에만 사용하며, 동일한 라이프 사이클에서 관리를 해야할 떄 CASCADE를 이용하면 됩니다.</p>
+<ul>
+<li>given
+<ol>
+<li>회원 생성</li>
+<li>북 아이템 생성 (재고 수량 10개)</li>
+</ol>
+</li>
+</ul>
 </blockquote>
 <blockquote>
-<p>즉 다른곳에서 참조하지 않는 프라이빗한 경우 쓰면 도움을 받을 수 있습니다.</p>
+<ul>
+<li>when
+3. 주문 생성 (주문 수량 11개)</li>
+</ul>
 </blockquote>
 <blockquote>
-<p>최초에 개념이 헤깔리는 경우 이러한 기능을 넣지 않고 개발하다가. 리펙토링을 통해 추가하는 방법도 있습니다.</p>
+<ul>
+<li>then
+4. 재고 수량 부족 예외가 발생해야 한다. (성공)
+5. 재고 수량 부족 예외가 발생 안하면 실패</li>
+</ul>
 </blockquote>
-<h3 id="취소">취소<a class="anchor" href="#취소">#</a></h3>
-<hr>
-<pre><code>    /**
-     * 취소
-     */
-    public void cancelOrder(Long orderId){
-        // 주문 엔티티 조회
-        Order order = orderRepository.findOne(orderId);
-        // 주문 취소
-        order.cancel();
-    }
+<blockquote>
+<p>강의에서는 Junit4로 테스트 코드가 작성되어있지만, 내가 테스트 코드를 작성한 버전은 Junit5다 보니 예외에 대한 테스트 코드 작성 방법이 달랐다.</p>
+</blockquote>
+<blockquote>
+<p>JUnit4 Exception Test</p>
+</blockquote>
+<pre><code>@Test(expected = NotEnoughStockException.class)
+    public void 상품주문_재고수량초과() throws Exception{
+        //given
+        Member member = createMember(); //회원1 생성
 
-</code></pre>
-<blockquote>
-<p>취소는 매우 간결하게 작성되었습니다. 비지니스로직을 Order.java에서 구현해 두었기 때문입니다.</p>
-</blockquote>
-<blockquote>
-<p>Order.java</p>
-</blockquote>
-<pre><code>    /**
-     * 주문 취소
-     */
-    public void cancel(){
-        // 배송이 완료된 주문은 취소가 불가
-        if (delivery.getStatus() == DeliveryStatus.COMP){
-            throw new IllegalStateException(&quot;이미 배송이 완료된 상품은 취소가 불가능합니다.&quot;);
-        }
+        int stockQuantity = 10;
+        Item item = createBook(&quot;JPA 기본서&quot;,100000,stockQuantity);
+        int orderCount = 11;
+        
+        //when
+	   orderService.order(member.getId(), item.getId(), orderCount);
 
-        this.setStatus(OrderStatus.CANCEL);
+        //then
+        //fail(&quot;재고 수량 부족 예외가 발생해야 한다.&quot;);
 
-        for (OrderItem orderItem : this.orderItems){
-            orderItem.cancel();
-        }
     }
 </code></pre>
 <blockquote>
-<p>또 JPA의 장점 중 하나로 Order에서 cancel()을 사용하게 되면 따로 값으 변경이 있지만, 따로 Update를 코드로 작성하지는 않습니다.</p>
+<p>JUnit5 Exception Test</p>
 </blockquote>
-<blockquote>
-<p>JPA는 Duty Checking(변경감지)을 통해 수정된 엔티티의 값들을 자동으로 Update 쿼리를 날려줍니다.</p>
-</blockquote>
-<blockquote>
-<p>그렇기 때문에 OrderService에서 각각 조회해서 변경하고, 업데이트를 쿼리를 날려 수정하는 일련의 작업들을 줄일 수 있습니다.</p>
-</blockquote>
-<h3 id="검색">검색<a class="anchor" href="#검색">#</a></h3>
-<hr>
-<blockquote>
-<p>검색은 나중에 설명하기 때문에 껍데기만 만들어 둡니다.</p>
-</blockquote>
-<pre><code>    /**
-     * 검색
-     */
-    /*public List&lt;Order&gt; findOrders(OrderSearch orderSearch){
-        return orderRepository.notifyAll(orderSearch);
-    }*/
+<h5 id="만약-테스트시-예상과-다른-exception이-발생되었을때">만약 테스트시 예상과 다른 Exception이 발생되었을때<a class="anchor" href="#만약-테스트시-예상과-다른-exception이-발생되었을때">#</a></h5>
+<pre><code>    @Test
+    public void 상품주문_재고수량초과() throws Exception{
+        //given
+        Member member = createMember(); //회원1 생성
 
+        int stockQuantity = 10;
+        Item item = createBook(&quot;JPA 기본서&quot;,100000,stockQuantity);
+        int orderCount = 11;
+
+        //when
+        assertThrows(IllegalStateException.class, () -&gt; {
+            orderService.order(member.getId(), item.getId(), orderCount);
+        });
+
+        //then
+        //fail(&quot;재고 수량 부족 예외가 발생해야 한다.&quot;);
+
+    }
 </code></pre>
-<h3 id="도메인-모델-패턴과-트랜잭션-스크립트-패턴">도메인 모델 패턴과 트랜잭션 스크립트 패턴<a class="anchor" href="#도메인-모델-패턴과-트랜잭션-스크립트-패턴">#</a></h3>
-<hr>
 <blockquote>
-<p>주문 서비스의 주문과 주문 취소 메서드를 보면 비지니스 로직 대부분이 엔티티에 있습니다.</p>
+<p>console</p>
+</blockquote>
+<pre><code>Unexpected exception type thrown ==&gt; expected: &lt;java.lang.IllegalStateException&gt; but was: &lt;jpabook.exception.NotEnoughStockException&gt;
+필요   :java.lang.IllegalStateException
+실제   :jpabook.exception.NotEnoughStockException
+&lt;클릭하여 차이점 확인&gt;
+</code></pre>
+<h5 id="예상된-notenoughstockexception이-발생되었을때">예상된 NotEnoughStockException이 발생되었을때<a class="anchor" href="#예상된-notenoughstockexception이-발생되었을때">#</a></h5>
+<pre><code>    @Test
+    public void 상품주문_재고수량초과() throws Exception{
+        //given
+        Member member = createMember(); //회원1 생성
+
+        int stockQuantity = 10;
+        Item item = createBook(&quot;JPA 기본서&quot;,100000,stockQuantity);
+        int orderCount = 11;
+
+        //when
+        assertThrows(NotEnoughStockException.class, () -&gt; {
+            orderService.order(member.getId(), item.getId(), orderCount);
+        });
+
+        //then
+        //fail(&quot;재고 수량 부족 예외가 발생해야 한다.&quot;);
+
+    }
+</code></pre>
+<blockquote>
+<p>테스트 통과</p>
+</blockquote>
+<h4 id="주문취소-테스트">주문취소 테스트<a class="anchor" href="#주문취소-테스트">#</a></h4>
+<blockquote>
+<p>상품주문_재고수량초과 테스트 시나리오는 아래와 같습니다.</p>
 </blockquote>
 <blockquote>
-<p>서비스 계층은 단순히 엔티티에 필요한 요청을 위임하는 역할을 합니다.</p>
+<ul>
+<li>given
+<ol>
+<li>회원 생성</li>
+<li>북 아이템 생성 (재고 수량 10개)</li>
+<li>주문 생성 (주문 수량 2개)</li>
+</ol>
+</li>
+</ul>
 </blockquote>
 <blockquote>
-<p>이처럼 엔티티가 비지니스 로직을 가지고 객체 지향의 특성을 적극 활용하는 것을 도메인 모델 패턴(<a href="http://martinfowler.com/eaaCatalog/domainModel.html"><a href="http://martinfowler.com/eaaCatalog/domainModel.html">http://martinfowler.com/eaaCatalog/domainModel.html</a></a>)이라 합니다.</p>
+<ul>
+<li>when
+4. 주문 취소</li>
+</ul>
 </blockquote>
 <blockquote>
-<p>반대로 엔티티에는 비지니스 로직이 거의 없고 서비스 계층에서 대부분의 비지니스 로직을 처리하는 것을 트랜잭션 스크립트 패턴(<a href="https://martinfowler.com/eaaCatalog/transactionScript.html"><a href="https://martinfowler.com/eaaCatalog/transactionScript.html">https://martinfowler.com/eaaCatalog/transactionScript.html</a></a>)이라 합니다</p>
+<ul>
+<li>then
+5. 주문 취소 상태가 CANCEL인지 검증
+6. 주문 취소 후 주문한 Item의 수량이 다시 10개가 되었는지 검증</li>
+</ul>
 </blockquote>
-<blockquote>
-<p>도메인 패턴 모델은 ORM을 사용하는 프로젝트에 좀더 객체 지향 프로그램을 할 수 있게 도와주며, 꼭 트랜잭션 스크립트 모델이 나쁘다 잘못되었다는 내용이 아닙니다.</p>
-</blockquote>
-<blockquote>
-<p>하나의 프로젝트에서 양립을 하여 사용하는 경우도 있기 때문에 현재 개발하는 문맥에 따라 선택하면 됩니다.</p>
-</blockquote>
+<pre><code>@Test
+    public void 주문취소() throws Exception{
+        //given
+        Member member = createMember(); //회원1 생성
+
+        int stockQuantity = 10;
+        Item item = createBook(&quot;JPA 기본서&quot;,100000,stockQuantity);
+
+        int orderCount = 2;
+
+        Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
+
+        //when
+        orderService.cancelOrder(orderId);
+
+        //then
+        Order getOrder = orderRepository.findOne(orderId);
+        assertEquals( OrderStatus.CANCEL, getOrder.getStatus(), &quot;상품 주문 취소시 상태는 CANCEL&quot;);
+        assertEquals( 10, item.getStockQuantity(), &quot;주문이 취소된 상품은 그만큼 재고가 증가해야한다.&quot;);
+
+    }
+</code></pre>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
 <h4 id="설정">설정<a class="anchor" href="#설정">#</a></h4>
@@ -1252,6 +1393,84 @@ public class OrderRepository {
 }
 </code></pre>
 </details> 
+<blockquote>
+<p>java/jpabook/jpashop/service/OrderService.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> OrderService.java </summary>
+<pre><code>package jpabook.jpashop.service;
+
+import jpabook.jpashop.domain.*;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.ItemRepository;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+public class OrderService {
+
+    private final OrderRepository orderRepository;
+    private final MemberRepository memberRepository;
+    private final ItemRepository itemRepository;
+
+    /**
+     * 주문
+     */
+    @Transactional
+    public Long order(Long memberId, Long itemId, int count){
+
+        // 엔티티 조회
+        Member member = memberRepository.findOne(memberId);
+        Item item = itemRepository.findOne(itemId);
+
+        // 배송정보 생성
+        Delivery delivery = new Delivery();
+        delivery.setAddress(member.getAddress());
+        delivery.setStatus(DeliveryStatus.READY);
+
+        // 주문상품 생성
+        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
+
+        // 주문생성
+        Order order = Order.createOrder(member, delivery , orderItem);
+
+        // 주문 저장
+        orderRepository.save(order);
+
+        return order.getId();
+    }
+
+
+
+    /**
+     * 취소
+     */
+    public void cancelOrder(Long orderId){
+        // 주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+        // 주문 취소
+        order.cancel();
+
+    }
+
+
+    /**
+     * 검색
+     */
+    /*public List&lt;Order&gt; findOrders(OrderSearch orderSearch){
+        return orderRepository.notifyAll(orderSearch);
+    }*/
+
+}
+</code></pre>
+</details> 
 <h4 id="테스트">테스트<a class="anchor" href="#테스트">#</a></h4>
 <blockquote>
 <p>test/java/jpabook/jpashop/service/MemberServiceTest.java</p>
@@ -1443,16 +1662,16 @@ class ItemServiceTest {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-domain-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-order-service-development/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 주문 도메인 개발</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 주문 서비스 개발</span>
     </a>
   
 
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-logic-test-code/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/intellij/intellij-shotcut/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 주문 기능 테스트</span>
+      <span class="pagination__title" >IntelliJ IDEA 단축키 정리</span>
     </a>
   
 </div>
@@ -1523,16 +1742,14 @@ class ItemServiceTest {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 주문 서비스 개발</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 주문 기능 테스트</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
-    <li><a href="#주문-서비스-개발">주문 서비스 개발</a>
+    <li><a href="#주문-기능-테스트">주문 기능 테스트</a>
       <ul>
-        <li><a href="#주문">주문</a></li>
-        <li><a href="#취소">취소</a></li>
-        <li><a href="#검색">검색</a></li>
-        <li><a href="#도메인-모델-패턴과-트랜잭션-스크립트-패턴">도메인 모델 패턴과 트랜잭션 스크립트 패턴</a></li>
+        <li><a href="#테스트-요구사항">테스트 요구사항</a></li>
+        <li><a href="#테스트-코드-작성">테스트 코드 작성</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
