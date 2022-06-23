@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 상품 서비스 개발 | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 주문 검색 기능 개발 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 상품 서비스 개발">
+  <meta name="description" content="[스프링부트 JPA 활용] JPA에서 동적 쿼리를 어떻게 해결하는가?">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 상품 서비스 개발">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 상품 서비스 개발">
+  <meta property="og:title" content="[스프링부트 JPA 활용] JPA에서 동적 쿼리를 어떻게 해결하는가?">
+  <meta property="og:description" content="[스프링부트 JPA 활용] JPA에서 동적 쿼리를 어떻게 해결하는가?">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 상품 서비스 개발",
-      "headline" : "[스프링부트 JPA 활용] 상품 서비스 개발",
-      "description" : "[스프링부트 JPA 활용] 상품 서비스 개발",
+      "name" : "[스프링부트 JPA 활용] 주문 검색 기능 개발",
+      "headline" : "[스프링부트 JPA 활용] 주문 검색 기능 개발",
+      "description" : "[스프링부트 JPA 활용] JPA에서 동적 쿼리를 어떻게 해결하는가?",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-06-02 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-06-02 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/product-logic-test-code\/",
-      "wordCount" : "2000",
+      "datePublished": "2022-06-21 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-06-21 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/order-search-development\/",
+      "wordCount" : "3000",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -144,7 +144,8 @@
       </li>
     
       <li>
-	        <a  
+	        <a  class="active"
+	         
 	        
 	        
 	        href="javascript:proceedsearch();"
@@ -170,14 +171,14 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 상품 서비스 개발
+		            	[스프링부트 JPA 활용] 주문 검색 기능 개발
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 상품 서비스 개발
+		       	[스프링부트 JPA 활용] 주문 검색 기능 개발
             </h1>		
-            <time datetime="2022-06-02 00:00:00 &#43;0000 UTC" class="post__date">2022-06-02</time> 
+            <time datetime="2022-06-21 00:00:00 &#43;0000 UTC" class="post__date">2022-06-21</time> 
           </header>
           <article class="post__content">
               
@@ -250,235 +251,264 @@
 <li>마무리</li>
 </ul>
 </blockquote>
-<h2 id="상품-기능-테스트">상품 기능 테스트<a class="anchor" href="#상품-기능-테스트">#</a></h2>
+<h2 id="주문-검색-기능-개발">주문 검색 기능 개발<a class="anchor" href="#주문-검색-기능-개발">#</a></h2>
 <hr>
-<h3 id="테스트-요구사항">테스트 요구사항<a class="anchor" href="#테스트-요구사항">#</a></h3>
+<h3 id="jpa에서-동적-쿼리를-어떻게-해결해야-하는가">JPA에서 동적 쿼리를 어떻게 해결해야 하는가<a class="anchor" href="#jpa에서-동적-쿼리를-어떻게-해결해야-하는가">#</a></h3>
 <hr>
+<p><img src="/images/develop/backend/using-springboot-jpa/order-search-development/img-001.png" alt="contact"></p>
 <blockquote>
-<ul>
-<li>상품등록을 성공해야한다.</li>
-<li>음반, 책, 영화 각각 저장하여 성공하여야한다.</li>
-</ul>
-</blockquote>
-<h3 id="테스트-코드-작성">테스트 코드 작성<a class="anchor" href="#테스트-코드-작성">#</a></h3>
-<hr>
-<blockquote>
-<p>ItemService에서 Intelij IDEA의 단축키 Ctrl + Shift + T 
-(이클립스 스타일 시 go to Test 단축키 변경)</p>
+<p>화면을 보시면 회원명과 주문상태를 검색조건으로 필터링 할 수 있는 기능인 것을 확인 할 수 있습니다.<br>
+회원명이 있으면 회원에 대한 조건을, 상태를 선택하면 선택한 상태 조건을 동적으로 추가하고 제거해야 하기 때문에, 동적쿼리가 필요하게 됩니다.</p>
 </blockquote>
 <blockquote>
-<p>생성된것을 확인</p>
+<p>이전에 OrderRepository에 틀을 만들었던 것을 채워보도록 하겠습니다.</p>
+</blockquote>
+<h4 id="검색-기능">검색 기능<a class="anchor" href="#검색-기능">#</a></h4>
+<blockquote>
+<p>검색에 필요한</p>
 </blockquote>
 <blockquote>
-<p>이전에 생성한 tdd + Tab (라이브 템플릿) 사용</p>
+<p>java/jpabook/jpashop/repository/OrderSearch.java</p>
 </blockquote>
-<blockquote>
-<p>tdd + Tab (라이브 템플릿)</p>
-</blockquote>
-<pre><code>@Test
-    public void 회원가입() throws Exception{
-        //given 
-        
-        //when 
+<pre><code>package jpabook.jpashop.repository;
 
-        //then 
-    }
-</code></pre>
-<blockquote>
-<ul>
-<li>given : 이렇게 주어졌을때</li>
-<li>when : 이렇게 하면</li>
-<li>then : 이렇게 된다.</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>아래 링크 참조</p>
-</blockquote>
-<blockquote>
-<p><a href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C">[스프링부트 JPA 활용] JPA 동작확인</a></p>
-</blockquote>
-<h4 id="상품등록-테스트">상품등록 테스트<a class="anchor" href="#상품등록-테스트">#</a></h4>
-<blockquote>
-<p>상품은 Album, Book, Movie 3가지 종류가 있습니다. 이를 각각 저장해 저장된 엔티티객체와 DB에서 읽어온 객체를 비교해 보도록 하겠습니다.</p>
-</blockquote>
-<blockquote>
-<p>음반 상품등록</p>
-</blockquote>
-<pre><code>	@Test
-    public void 음반_상품등록() throws Exception{
-        //given
-        Item item = new Album();
-        item.setName(&quot;멜론 TOP 100&quot;);
-        ((Album) item).setArtist(&quot;Various Artists&quot;);
-        ((Album) item).setEtc(&quot;방탄소년단 외 다수&quot;);
-        item.setPrice(20000);
-        item.addStock(50);
+import jpabook.jpashop.domain.OrderStatus;
+import lombok.Getter;
+import lombok.Setter;
 
-        //when
-        Item savedItem = itemService.saveItem(item);
+@Getter @Setter
+public class OrderSearch {
 
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
-    }
-</code></pre>
-<blockquote>
-<p>책 상품등록</p>
-</blockquote>
-<pre><code>	@Test
-    public void 책_상품등록() throws Exception{
-        //given
-        Item item = new Book();
-        item.setName(&quot;JPA BOOK&quot;);
-        ((Book) item).setAuthor(&quot;김영한&quot;);
-        ((Book) item).setIsbn(&quot;11111&quot;);
-        item.setPrice(15000);
-        item.addStock(100);
+    private String memberName; // 회원 이름
+    private OrderStatus orderStatus; //주문 상태 [ORDER, CANCEL]
 
-        //when
-        Item savedItem = itemService.saveItem(item);
-
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
-    }
-</code></pre>
-<blockquote>
-<p>영화 상품등록</p>
-</blockquote>
-<pre><code>	@Test
-    public void 영화_상품등록() throws Exception{
-        //given
-        Item item = new Movie();
-        item.setName(&quot;쥬라기월드: 도미니언&quot;);
-        ((Movie) item).setDirector(&quot;콜린 트레보로우&quot;);
-        ((Movie) item).setActor(&quot;크리스 프랫&quot;);
-        item.setPrice(15000);
-        item.addStock(1000);
-
-        //when
-        Item savedItem = itemService.saveItem(item);
-
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
-    }
-</code></pre>
-<blockquote>
-<p>test/java/jpabook/jpashop/service/ItemServiceTest.java</p>
-</blockquote>
-<pre><code>package jpabook.jpashop.service;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import jpabook.jpashop.domain.item.Album;
-import jpabook.jpashop.domain.item.Book;
-import jpabook.jpashop.domain.item.Item;
-import jpabook.jpashop.domain.item.Movie;
-import jpabook.jpashop.repository.ItemRepository;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
-
-@SpringBootTest
-@Transactional
-class ItemServiceTest {
-    // 테스트 케이스에서는 다른곳에서 참조할 곳이 없으므로 @Autowired로 사용
-    @Autowired ItemRepository itemRepository;
-    @Autowired ItemService itemService;
-    @Autowired EntityManager em;
-
-    @Test
-    public void 음반_상품등록() throws Exception{
-        //given
-        Item item = new Album();
-        item.setName(&quot;멜론 TOP 100&quot;);
-        ((Album) item).setArtist(&quot;Various Artists&quot;);
-        ((Album) item).setEtc(&quot;방탄소년단 외 다수&quot;);
-        item.setPrice(20000);
-        item.addStock(50);
-
-        //when
-        Item savedItem = itemService.saveItem(item);
-
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
-    }
-    
-    @Test
-    public void 책_상품등록() throws Exception{
-        //given
-        Item item = new Book();
-        item.setName(&quot;JPA BOOK&quot;);
-        ((Book) item).setAuthor(&quot;김영한&quot;);
-        ((Book) item).setIsbn(&quot;11111&quot;);
-        item.setPrice(15000);
-        item.addStock(100);
-
-        //when
-        Item savedItem = itemService.saveItem(item);
-
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
-    }
-    
-    @Test
-    public void 영화_상품등록() throws Exception{
-        //given
-        Item item = new Movie();
-        item.setName(&quot;쥬라기월드: 도미니언&quot;);
-        ((Movie) item).setDirector(&quot;콜린 트레보로우&quot;);
-        ((Movie) item).setActor(&quot;크리스 프랫&quot;);
-        item.setPrice(15000);
-        item.addStock(1000);
-
-        //when
-        Item savedItem = itemService.saveItem(item);
-
-        //then
-        em.flush();
-        assertEquals(item, itemRepository.findOne(savedItem.getId()));
-    }
 }
-</code></pre>
-<blockquote>
-<p>console</p>
-</blockquote>
-<pre><code>	insert 
-	  into 
-	  	item 
-	  		(name, price, stock_quantity, author, isbn, dtype, item_id) 
-	  	values 
-	  		('JPA BOOK', 15000, 100, '김영한', '11111', 'B', 1);
-2022-06-02 23:39:12.492  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752492 | took 0ms | rollback | connection 4| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
-
-
-	insert 
-	  into 
-	  	item 
-	  		(name, price, stock_quantity, artist, etc, dtype, item_id) 
-	  	values 
-	  		('멜론 TOP 100', 20000, 50, 'Various Artists', '방탄소년단 외 다수', 'A', 2);
-2022-06-02 23:39:12.524  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752524 | took 0ms | rollback | connection 5| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
-
-
-	insert 
-	  into 
-	  	item 
-	  		(name, price, stock_quantity, actor, director, dtype, item_id) 
-	  	values 
-	  		('쥬라기월드: 도미니언', 15000, 1000, '크리스 프랫', '콜린 트레보로우', 'M', 3);
-2022-06-02 23:39:12.540  INFO 5672 --- [    Test worker] p6spy                                    : #1654180752540 | took 0ms | rollback | connection 6| url jdbc:h2:mem:1b70f279-db65-46bd-a9f3-0b1d472f66ad
 
 </code></pre>
 <blockquote>
-<p>각각 dtype에 맞게 잘 저장된것을 확인 할 수 있습니다. 또한 모든 테스트가 통과된 것을 확인 할 수 있습니다.</p>
+<p>만약 항상 파라미터가 있다면, 아래와 같은 코드로 검색은 끝나게 됩니다.</p>
 </blockquote>
+<blockquote>
+<p>OrderRepository.java</p>
+</blockquote>
+<pre><code>public List&lt;Order&gt; findAll(OrderSearch orderSearch){
+
+        List&lt;Order&gt; findOrders = em.createQuery(&quot;select o from Order o left join o.member m&quot; +
+                        &quot; where o.status = :status&quot; +
+                        &quot; and m.name like :memberName&quot; +
+                        &quot;&quot;, Order.class)
+                .setParameter(&quot;status&quot;, orderSearch.getOrderStatus())
+                .setParameter(&quot;memberName&quot;, orderSearch.getMemberName())
+                .getResultList();
+
+        return findOrders;
+    }
+</code></pre>
+<h5 id="검색-결과-수-제한">검색 결과 수 제한<a class="anchor" href="#검색-결과-수-제한">#</a></h5>
+<blockquote>
+<p>OrderRepository.java</p>
+</blockquote>
+<pre><code>public List&lt;Order&gt; findAll(OrderSearch orderSearch){
+
+        return em.createQuery(&quot;select o from Order o left join o.member m&quot; +
+                        &quot; where o.status = :status&quot; +
+                        &quot; and m.name like :name&quot; +
+                        &quot;&quot;, Order.class)
+                .setParameter(&quot;status&quot;, orderSearch.getOrderStatus())
+                .setParameter(&quot;name&quot;, orderSearch.getMemberName())
+                .setMaxResults(1000)  // 최대 1000건 조회
+                .getResultList();
+    }
+</code></pre>
+<h5 id="페이징-처리">페이징 처리<a class="anchor" href="#페이징-처리">#</a></h5>
+<blockquote>
+<p>OrderRepository.java</p>
+</blockquote>
+<pre><code>public List&lt;Order&gt; findAll(OrderSearch orderSearch){
+
+        return em.createQuery(&quot;select o from Order o left join o.member m&quot; +
+                        &quot; where o.status = :status&quot; +
+                        &quot; and m.name like :name&quot; +
+                        &quot;&quot;, Order.class)
+                .setParameter(&quot;status&quot;, orderSearch.getOrderStatus())
+                .setParameter(&quot;name&quot;, orderSearch.getMemberName())
+                .setFirstResult(10)  // 10페이지 부터 
+                .setMaxResults(1000) // 최대 1000건 조회
+                .getResultList();
+    }
+</code></pre>
+<blockquote>
+<p>만약 검색 파라미터가 없다고 한다면</p>
+</blockquote>
+<blockquote>
+<p>OrderRepository.java</p>
+</blockquote>
+<pre><code> public List&lt;Order&gt; findAll(OrderSearch orderSearch){
+
+        return em.createQuery(&quot;select o from Order o left join o.member m&quot; +
+                 //       &quot; where o.status = :status&quot; +
+                 //       &quot; and m.name like :name&quot; +
+                        &quot;&quot;, Order.class)
+                //.setParameter(&quot;status&quot;, orderSearch.getOrderStatus())
+                //.setParameter(&quot;name&quot;, orderSearch.getMemberName())
+                .setFirstResult(10)
+                .setMaxResults(1000)
+                .getResultList();
+    }
+</code></pre>
+<blockquote>
+<p>해당 소스 처럼 JPQL과 setParameter가 없으면 전체 조회가 될것 같습니다.</p>
+</blockquote>
+<blockquote>
+<p>JPA가 아닌 마이바티스나 아이바티스는 동적쿼리에 대해 비교적 간편히 적용 할 수 있지만, JPA에서 동적쿼리를 어떻게 해야할지 고민에 빠지게 됩니다.</p>
+</blockquote>
+<h3 id="1-jpql을-문자로-동적-쿼리-적용">1. JPQL을 문자로 동적 쿼리 적용<a class="anchor" href="#1-jpql을-문자로-동적-쿼리-적용">#</a></h3>
+<hr>
+<blockquote>
+<p>무식한 방법이지만, 동적 쿼리를 문자열로 만들어 조건에 따라 넣고 빼고 할 수 있지만 너무 복잡하고 조건이 많아진다면 유지보수는 불가능에 가까워지므로 이런 방법이 있다는 것만 확인 하고 넘어가겠습니니다.</p>
+</blockquote>
+<blockquote>
+<p>OrderRepository.java</p>
+</blockquote>
+<pre><code>     /**
+     *  String
+     * */
+    public List&lt;Order&gt; findAllByString(OrderSearch orderSearch){
+
+        String jpql = &quot;select o from Order o left join o.member m&quot;;
+
+        boolean isFirstCondition = true;
+
+        //주문 상태 검색
+        if(orderSearch.getOrderStatus() != null){
+            if(isFirstCondition){
+                jpql += &quot; where&quot;;
+                isFirstCondition = false;
+            }else{
+                jpql += &quot; and&quot;;
+            }
+            jpql += &quot;o.status = :status&quot;;
+        }
+
+        //회원 이름 검색
+        if(StringUtils.hasText(orderSearch.getMemberName())){
+            if(isFirstCondition){
+                jpql += &quot; where&quot;;
+                isFirstCondition = false;
+            }else{
+                jpql += &quot; and&quot;;
+            }
+            jpql += &quot;m.name like :name&quot;;
+        }
+
+
+        TypedQuery&lt;Order&gt; query = em.createQuery(jpql, Order.class)
+                .setMaxResults(1000);
+
+        //주문 상태 검색 setParameter
+        if(orderSearch.getOrderStatus() != null){
+            query.setParameter(&quot;status&quot;, orderSearch.getOrderStatus());
+        }
+
+        //회원 이름 검색 setParameter
+        if(StringUtils.hasText(orderSearch.getMemberName())){
+            query.setParameter(&quot;name&quot;, orderSearch.getMemberName());
+        }
+
+        return query.getResultList();
+    }
+</code></pre>
+<blockquote>
+<p>마이바티스, 아이바티스를 사용하는 이유가 이런 동적 쿼리를 편리하게 사용할 수 있기 때문입니다.</p>
+</blockquote>
+<h3 id="2-criteria-jpa-표준-동적-쿼리-적용">2. Criteria (JPA 표준) 동적 쿼리 적용<a class="anchor" href="#2-criteria-jpa-표준-동적-쿼리-적용">#</a></h3>
+<hr>
+<blockquote>
+<p>JPA에서 동적 쿼리를 위해 표준으로 만들었지만 실무에서 사용하기 힘든 부분이 있어 이번에도 간략하게 보고 넘어가겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>OrderRepository.java</p>
+</blockquote>
+<pre><code>     /**
+     *  JPA Criteria
+     * */
+    public List&lt;Order&gt; findAllByCriteria(OrderSearch orderSearch){
+
+        CriteriaBuilder cb = em.getCriteriaBuilder(); //엔티티 매니저에서 CriteriaBuilder를 가져옴
+
+        CriteriaQuery&lt;Order&gt; cq = cb.createQuery(Order.class); //CriteriaQuery 생성
+
+        Root&lt;Order&gt; o = cq.from(Order.class); // o를 Alias로 Root 생성
+
+        Join&lt;Object, Object&gt; m = o.join(&quot;member&quot;, JoinType.INNER); // m을 Alias로 join 한 Member 생성
+
+        List&lt;Predicate&gt; criteria = new ArrayList&lt;&gt;(); // 동적 쿼리에 대한 컨디션 조합을 배열을 통해 만들 수 있습니다.
+
+        //주문 상태 검색
+        if(orderSearch.getOrderStatus() != null){
+            Predicate status = cb.equal(o.get(&quot;status&quot;), orderSearch.getOrderStatus());
+            criteria.add(status);
+        }
+
+        //회원 이름 검색
+        if(StringUtils.hasText(orderSearch.getMemberName())){
+            Predicate name = cb.like(m.&lt;String&gt;get(&quot;name&quot;), &quot;%&quot;+orderSearch.getMemberName()+&quot;%&quot;);
+            criteria.add(name);
+        }
+
+        cq.where(cb.and(criteria.toArray(new Predicate[criteria.size()])));
+
+        TypedQuery&lt;Order&gt; query = em.createQuery(cq).setMaxResults(1000);
+        return query.getResultList();
+
+    }
+</code></pre>
+<blockquote>
+<p>이전의 문자열로 만든 것보다 동적쿼리를 훨씬 좋은 방식으로 만들 수 있지만, 치명적인 단점을 가지고 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>작성된 Criteria 코드를 봐도 어떤 쿼리가 만들어지는지 한번에 알 수 없기 때문에 유지보수성에 큰 고통을 겪을 것입니다.</p>
+</blockquote>
+<blockquote>
+<p>실무에서 운영 서비스에서 오류가 빵빵 나는데 쿼리를 열어 봤더니 저런 코드로 되어있다&hellip; 과연 빠르게 캐치하고 수정할 수 있을 것인가 고민해 보셔도 될것 같습니다.</p>
+</blockquote>
+<h3 id="3-querydsl-동적-쿼리-적용">3. Querydsl 동적 쿼리 적용<a class="anchor" href="#3-querydsl-동적-쿼리-적용">#</a></h3>
+<hr>
+<blockquote>
+<p>이러한 불편한점들을 해결하기 위해 많은 개발자들이 고심한 끝에 Querydsl을 만들었습니다. 이후 더 자세히 다루도록 하겠습니다.</p>
+</blockquote>
+<pre><code>     /**
+     *  Querydsl
+     * */
+    public List&lt;Order&gt; findAll(OrderSearch orderSearch){
+
+        QOrder order = QOrder.order;
+        QMember member = QMember.member;
+        
+        return query
+        			.select(order)
+        			.from(order)
+        			.join(order.member, member)
+        			.where(statusEq(orderSearch.getOrderStatus()),
+        					nameLike(orderSearch.getMemberName()))
+        			.limit(1000)
+        			.fetch();
+    }
+    
+    private BooleanExpression statusEq(OrderStatus statusCond){
+    		if(statusCond == null){
+    			return null;
+    		}
+    		return order.status.eq(statusCond);
+    }
+    
+    private BooleanExpression nameLike(String nameCond){
+    		if(!StringUtils.hasText(nameCond)){
+    			return null;
+    		}
+    		return member.name.like(nameCond);
+    }
+</code></pre>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
 <h4 id="설정">설정<a class="anchor" href="#설정">#</a></h4>
@@ -625,6 +655,7 @@ public class Address {
  	<summary> Order.java </summary>
 <pre><code>package jpabook.jpashop.domain;
 
+import jpabook.jpashop.domain.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -635,8 +666,11 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = &quot;orders&quot;)
 public class Order {
+
+    //protected Order() {} //생성자를 사용 불가로 하고 CteateOrder 사용 유도 // @NoArgsConstructor로 대체
 
     @Id @GeneratedValue
     @Column(name=&quot;order_id&quot;)
@@ -679,6 +713,63 @@ public class Order {
         delivery.setOrder(this);
     }
 
+    //== 생성 메서드==//
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){ // OrderItem...  여러개를 넘길 수 있음
+
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
+        for (OrderItem orderItem : orderItems){
+            order.addOrderItem(orderItem);
+        }
+        order.setStatus(OrderStatus.ORDER);
+        order.setOrderDate(LocalDateTime.now());
+
+        return order;
+    }
+
+    //==비즈니스 로직==//
+    /**
+     * 주문 취소
+     */
+    public void cancel(){
+        // 배송이 완료된 주문은 취소가 불가
+        if (delivery.getStatus() == DeliveryStatus.COMP){
+            throw new IllegalStateException(&quot;이미 배송이 완료된 상품은 취소가 불가능합니다.&quot;);
+        }
+
+        this.setStatus(OrderStatus.CANCEL);
+
+        for (OrderItem orderItem : this.orderItems){
+            orderItem.cancel();
+        }
+    }
+
+
+    //==조회 로직==//
+    /**
+     * 전체 주문 가격 조회
+     */
+    public int getTotalPrice(){
+
+        /*
+        int totalPrice = 0;
+
+        for (OrderItem orderItem : this.orderItems) {
+            totalPrice += orderItem.getTotalPrice();
+        }
+
+        return totalPrice;
+        */
+
+
+        return this.orderItems.stream()
+                .mapToInt(OrderItem::getTotalPrice)
+                .sum();
+    }
+
+
+
 
 }
 </code></pre>
@@ -698,8 +789,11 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderItem {
-
+    
+    //protected OrderItem() {} //생성자를 사용 불가로 하고 CteateOrderItem 사용 유도 //@NoArgsConstructor로 대체
+    
     @Id @GeneratedValue
     @Column(name = &quot;order_item_id&quot;)
     private Long id;
@@ -714,6 +808,36 @@ public class OrderItem {
 
     private int orderPrice; //주문 당시의 가격
     private int count; //주문 수량
+
+
+    //==생성 메서드==//
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count){ //orderPrice는 구매 당시의 가격을 받기 위함
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStock(count);
+        return orderItem;
+    }
+
+
+    //==비즈니스 로직==//
+    /**
+     * 주문 취소
+     */
+    public void cancel() {
+        getItem().addStock(this.count);
+    }
+
+
+    //==조회 로직==//
+    /**
+     * 주문상품 전체 가격 조회
+     */
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();;
+    }
 }
 </code></pre>
 </details> 
@@ -1184,6 +1308,116 @@ public class ItemService {
 }
 </code></pre>
 </details> 
+<blockquote>
+<p>java/jpabook/jpashop/repository/OrderRepository.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> OrderRepository.java </summary>
+<pre><code>package jpabook.jpashop.repository;
+
+import jpabook.jpashop.domain.Order;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import java.util.List;
+
+@Repository
+@RequiredArgsConstructor
+public class OrderRepository {
+
+    private final EntityManager em;
+
+    public void save(Order order){
+        em.persist(order);
+    }
+
+    public Order findOne(Long orderId){
+        return em.find(Order.class, orderId);
+    }
+
+    //public List&lt;Order&gt; findAll(OrderSearch orderSearch){}
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/service/OrderService.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> OrderService.java </summary>
+<pre><code>package jpabook.jpashop.service;
+
+import jpabook.jpashop.domain.*;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.ItemRepository;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.OrderRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+@RequiredArgsConstructor
+public class OrderService {
+
+    private final OrderRepository orderRepository;
+    private final MemberRepository memberRepository;
+    private final ItemRepository itemRepository;
+
+    /**
+     * 주문
+     */
+    @Transactional
+    public Long order(Long memberId, Long itemId, int count){
+
+        // 엔티티 조회
+        Member member = memberRepository.findOne(memberId);
+        Item item = itemRepository.findOne(itemId);
+
+        // 배송정보 생성
+        Delivery delivery = new Delivery();
+        delivery.setAddress(member.getAddress());
+        delivery.setStatus(DeliveryStatus.READY);
+
+        // 주문상품 생성
+        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
+
+        // 주문생성
+        Order order = Order.createOrder(member, delivery , orderItem);
+
+        // 주문 저장
+        orderRepository.save(order);
+
+        return order.getId();
+    }
+
+
+
+    /**
+     * 취소
+     */
+    public void cancelOrder(Long orderId){
+        // 주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+        // 주문 취소
+        order.cancel();
+
+    }
+
+
+    /**
+     * 검색
+     */
+    /*public List&lt;Order&gt; findOrders(OrderSearch orderSearch){
+        return orderRepository.notifyAll(orderSearch);
+    }*/
+
+}
+</code></pre>
+</details> 
 <h4 id="테스트">테스트<a class="anchor" href="#테스트">#</a></h4>
 <blockquote>
 <p>test/java/jpabook/jpashop/service/MemberServiceTest.java</p>
@@ -1250,6 +1484,213 @@ class MemberServiceTest {
 }
 </code></pre>
 </details> 
+<blockquote>
+<p>test/java/jpabook/jpashop/service/ItemServiceTest.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> ItemServiceTest.java </summary>
+<pre><code>package jpabook.jpashop.service;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import jpabook.jpashop.domain.item.Album;
+import jpabook.jpashop.domain.item.Book;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.domain.item.Movie;
+import jpabook.jpashop.repository.ItemRepository;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+
+@SpringBootTest
+@Transactional
+class ItemServiceTest {
+    // 테스트 케이스에서는 다른곳에서 참조할 곳이 없으므로 @Autowired로 사용
+    @Autowired ItemRepository itemRepository;
+    @Autowired ItemService itemService;
+    @Autowired EntityManager em;
+
+    @Test
+    public void 음반_상품등록() throws Exception{
+        //given
+        Item item = new Album();
+        item.setName(&quot;멜론 TOP 100&quot;);
+        ((Album) item).setArtist(&quot;Various Artists&quot;);
+        ((Album) item).setEtc(&quot;방탄소년단 외 다수&quot;);
+        item.setPrice(20000);
+        item.addStock(50);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+    
+    @Test
+    public void 책_상품등록() throws Exception{
+        //given
+        Item item = new Book();
+        item.setName(&quot;JPA BOOK&quot;);
+        ((Book) item).setAuthor(&quot;김영한&quot;);
+        ((Book) item).setIsbn(&quot;11111&quot;);
+        item.setPrice(15000);
+        item.addStock(100);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+    
+    @Test
+    public void 영화_상품등록() throws Exception{
+        //given
+        Item item = new Movie();
+        item.setName(&quot;쥬라기월드: 도미니언&quot;);
+        ((Movie) item).setDirector(&quot;콜린 트레보로우&quot;);
+        ((Movie) item).setActor(&quot;크리스 프랫&quot;);
+        item.setPrice(15000);
+        item.addStock(1000);
+
+        //when
+        Item savedItem = itemService.saveItem(item);
+
+        //then
+        em.flush();
+        assertEquals(item, itemRepository.findOne(savedItem.getId()));
+    }
+}
+</code></pre>
+</details>
+<blockquote>
+<p>test/java/jpabook/jpashop/service/OrderServiceTest.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> OrderServiceTest.java </summary>
+<pre><code>package jpabook.jpashop.service;
+
+import jpabook.jpashop.exception.NotEnoughStockException;
+import jpabook.jpashop.domain.Address;
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.OrderStatus;
+import jpabook.jpashop.domain.item.Book;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.repository.ItemRepository;
+import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.OrderRepository;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+@Transactional
+class OrderServiceTest {
+
+    @Autowired ItemRepository itemRepository;
+    @Autowired MemberRepository memberRepository;
+    @Autowired OrderRepository orderRepository;
+    @Autowired OrderService orderService;
+    @Autowired EntityManager em;
+
+    @Test
+    public void 상품주문() throws Exception{
+        //given
+        Member member = createMember(); //회원1 생성
+
+        int stockQuantity = 10;
+        Book book = createBook(&quot;JPA 기본서&quot;,100000,stockQuantity);
+
+        //when
+        int orderCount = 2;
+        Long orderId = orderService.order(member.getId(), book.getId(), orderCount);
+
+        //then
+        Order getOrder = orderRepository.findOne(orderId);
+
+        assertEquals( OrderStatus.ORDER, getOrder.getStatus(), &quot;상품 주문시 상태는 ORDER&quot;);
+        assertEquals( 1, getOrder.getOrderItems().size(), &quot;주문한 상품 종류 수가 일치해야한다.&quot;);
+        assertEquals( 100000 * orderCount, getOrder.getTotalPrice(), &quot;주문 가격은 가격 * 수량이다.&quot;);
+        assertEquals( stockQuantity-orderCount, book.getStockQuantity(), &quot;주문 수량만큼 재고가 줄어야 한다.&quot;);
+
+    }
+
+    @Test
+    public void 상품주문_재고수량초과() throws Exception{
+        //given
+        Member member = createMember(); //회원1 생성
+
+        int stockQuantity = 10;
+        Item item = createBook(&quot;JPA 기본서&quot;,100000,stockQuantity);
+
+        //when
+        int orderCount = 11;
+
+        assertThrows(NotEnoughStockException.class, () -&gt; {
+            orderService.order(member.getId(), item.getId(), orderCount);
+        });
+
+        //then
+        //fail(&quot;재고 수량 부족 예외가 발생해야 한다.&quot;);
+
+    }
+
+    @Test
+    public void 주문취소() throws Exception{
+        //given
+        Member member = createMember(); //회원1 생성
+
+        int stockQuantity = 10;
+        Item item = createBook(&quot;JPA 기본서&quot;,100000,stockQuantity);
+
+        int orderCount = 2;
+
+        Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
+
+        //when
+        orderService.cancelOrder(orderId);
+
+
+        //then
+        Order getOrder = orderRepository.findOne(orderId);
+        assertEquals( OrderStatus.CANCEL, getOrder.getStatus(), &quot;상품 주문 취소시 상태는 CANCEL&quot;);
+        assertEquals( 10, item.getStockQuantity(), &quot;주문이 취소된 상품은 그만큼 재고가 증가해야한다.&quot;);
+
+
+    }
+
+    private Member createMember() {
+        Member member = new Member();
+        member.setName(&quot;회원1&quot;);
+        member.setAddress(new Address(&quot;서울&quot;, &quot;강변로&quot;, &quot;123-123&quot;));
+        em.persist(member);
+        return member;
+    }
+    
+    private Book createBook(String name, int price, int stockQuantity) {
+        Book book = new Book();
+        book.setName(name);
+        book.setPrice(price);
+        book.setStockQuantity(stockQuantity);
+        em.persist(book);
+        return book;
+    }
+}
+</code></pre>
+</details>
 <h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
@@ -1290,17 +1731,12 @@ class MemberServiceTest {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-repository-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/intellij/intellij-shotcut/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 상품 리포지토리 개발</span>
+        <span class="pagination__title">IntelliJ IDEA 단축키 정리</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-domain-development/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 주문 도메인 개발</span>
-    </a>
   
 </div>
 
@@ -1370,14 +1806,16 @@ class MemberServiceTest {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 상품 서비스 개발</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 주문 검색 기능 개발</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
-    <li><a href="#상품-기능-테스트">상품 기능 테스트</a>
+    <li><a href="#주문-검색-기능-개발">주문 검색 기능 개발</a>
       <ul>
-        <li><a href="#테스트-요구사항">테스트 요구사항</a></li>
-        <li><a href="#테스트-코드-작성">테스트 코드 작성</a></li>
+        <li><a href="#jpa에서-동적-쿼리를-어떻게-해결해야-하는가">JPA에서 동적 쿼리를 어떻게 해결해야 하는가</a></li>
+        <li><a href="#1-jpql을-문자로-동적-쿼리-적용">1. JPQL을 문자로 동적 쿼리 적용</a></li>
+        <li><a href="#2-criteria-jpa-표준-동적-쿼리-적용">2. Criteria (JPA 표준) 동적 쿼리 적용</a></li>
+        <li><a href="#3-querydsl-동적-쿼리-적용">3. Querydsl 동적 쿼리 적용</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
