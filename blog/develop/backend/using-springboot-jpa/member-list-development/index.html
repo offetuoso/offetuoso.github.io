@@ -88,7 +88,7 @@
       "datePublished": "2022-07-02 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-07-02 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/member-list-development\/",
-      "wordCount" : "3603",
+      "wordCount" : "3409",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -251,22 +251,28 @@
 </ul>
 </blockquote>
 <h2 id="홈-화면과-레이아웃">홈 화면과 레이아웃<a class="anchor" href="#홈-화면과-레이아웃">#</a></h2>
-<h3 id="회원-등록">회원 등록<a class="anchor" href="#회원-등록">#</a></h3>
+<h3 id="회원-리스트">회원 리스트<a class="anchor" href="#회원-리스트">#</a></h3>
 <hr>
-<h4 id="member-controller-회원가입-페이지-이동get-매핑-추가">Member Controller 회원가입 페이지 이동(get) 매핑 추가<a class="anchor" href="#member-controller-회원가입-페이지-이동get-매핑-추가">#</a></h4>
 <blockquote>
-<p>java/jpabook/jpashop/controller/MemberController.java</p>
+<p>MemberController.java - memberList 메서드 추가</p>
 </blockquote>
 <pre><code>package jpabook.jpashop.controller;
 
+import jpabook.jpashop.domain.Address;
+import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.dto.MemberForm;
 import jpabook.jpashop.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -278,296 +284,20 @@ public class MemberController {
 
     @GetMapping(&quot;/members/new&quot;)
     public String newMembersForm(Model modal){
-        log.info(&quot;/members/new&quot;);
+        log.info(&quot;call get members/new&quot;);
 
         modal.addAttribute(&quot;memberForm&quot;, new MemberForm());
         return &quot;members/newMembersForm&quot;;
+
+
     }
-}
 
-</code></pre>
-<blockquote>
-<p>java/jpabook/jpashop/dto 
-데이터를 전송할 객체를 관리할 패키지를 생성</p>
-</blockquote>
-<blockquote>
-<p>기존에 OrderSearch도 java/jpabook/jpashop/dto 로 위치 변경</p>
-</blockquote>
-<blockquote>
-<p>java/jpabook/jpashop/dto/MemberForm.java</p>
-</blockquote>
-<pre><code>package jpabook.jpashop.dto;
-
-
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.validation.constraints.NotEmpty;
-
-
-@Getter @Setter
-public class MemberForm {
-
-    @NotEmpty(message = &quot;회원 이름은 필수 입니다.&quot;)
-    private String name;
-
-    private String city;
-    private String street;
-    private String zipcode;
-
-}
-
-</code></pre>
-<blockquote>
-<p>스프링 부트에서 유효성 검사를 위해 사용하는 어노테이션</p>
-</blockquote>
-<blockquote>
-<p>@NotEmpty 를 사용하려는데, IntelliJ 에서 자동완성으로 뜨지 않고 오류를 뱉는다.</p>
-</blockquote>
-<blockquote>
-<p>스프링 부트 2.2 이하는 javax.validation.constraints 패키지를 포함하고 있지만 스프링 부트 2.3 이상은 따로 의존성을 추가해주어야 한다.</p>
-</blockquote>
-<pre><code>	implementation 'org.springframework.boot:spring-boot-starter-validation'
-</code></pre>
-<h4 id="회원가입-입력-폼-뷰-생성">회원가입 입력 폼 뷰 생성<a class="anchor" href="#회원가입-입력-폼-뷰-생성">#</a></h4>
-<blockquote>
-<p>resources/templates/members/newMembersForm.html</p>
-</blockquote>
-<pre><code>
-&lt;!DOCTYPE HTML&gt;
-&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
-&lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
-&lt;style&gt;
-  .fieldError {
-    border-color: #bd2130;
-  }
-&lt;/style&gt;
-&lt;body&gt;
-
-&lt;div class=&quot;container&quot;&gt;
-  &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot;/&gt;
-
-  &lt;form role=&quot;form&quot; action=&quot;/members/new&quot; th:object=&quot;${memberForm}&quot; method=&quot;post&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label th:for=&quot;name&quot;&gt;이름&lt;/label&gt;
-
-      &lt;input type=&quot;text&quot; th:field=&quot;*{name}&quot; class=&quot;form-control&quot; placeholder=&quot;이름을 입력하세요&quot;
-             th:class=&quot;${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'&quot;&gt;
-      &lt;p th:if=&quot;${#fields.hasErrors('name')}&quot; th:errors=&quot;*{name}&quot;&gt;Incorrect date&lt;/p&gt;
-
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label th:for=&quot;city&quot;&gt;도시&lt;/label&gt;
-      &lt;input type=&quot;text&quot; th:field=&quot;*{city}&quot; class=&quot;form-control&quot; placeholder=&quot;도시를 입력하세요&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label th:for=&quot;street&quot;&gt;거리&lt;/label&gt;
-      &lt;input type=&quot;text&quot; th:field=&quot;*{street}&quot; class=&quot;form-control&quot; placeholder=&quot;거리를 입력하세요&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label th:for=&quot;zipcode&quot;&gt;우편번호&lt;/label&gt;
-      &lt;input type=&quot;text&quot; th:field=&quot;*{zipcode}&quot; class=&quot;form-control&quot; placeholder=&quot;우편번호를 입력하세요&quot;&gt;
-    &lt;/div&gt;
-    &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
-  &lt;/form&gt;
-  &lt;br/&gt;
-  &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
-&lt;/div&gt; &lt;!-- /container --&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-
-</code></pre>
-<blockquote>
-<p>Browser 소스보기</p>
-</blockquote>
-<pre><code>
-
-&lt;!DOCTYPE HTML&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;!-- Required meta tags --&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
-
-    &lt;!-- Bootstrap CSS --&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bootstrap.min.css&quot; integrity=&quot;sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T&quot; crossorigin=&quot;anonymous&quot;&gt;
-    &lt;!-- Custom styles for this template --&gt;
-    &lt;link href=&quot;/css/jumbotron-narrow.css&quot; rel=&quot;stylesheet&quot;&gt;
-
-    &lt;title&gt;Hello, world!&lt;/title&gt;
-&lt;/head&gt;
-&lt;style&gt;
-  .fieldError {
-    border-color: #bd2130;
-  }
-&lt;/style&gt;
-&lt;body&gt;
-
-&lt;div class=&quot;container&quot;&gt;
-  &lt;div class=&quot;header&quot;&gt;
-    &lt;ul class=&quot;nav nav-pills pull-right&quot;&gt;
-        &lt;li&gt;&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;a href=&quot;/&quot;&gt;&lt;h3 class=&quot;text-muted&quot;&gt;HELLO SHOP&lt;/h3&gt;&lt;/a&gt;
-&lt;/div&gt;
-
-  &lt;form role=&quot;form&quot; action=&quot;/members/new&quot; method=&quot;post&quot;&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;name&quot;&gt;이름&lt;/label&gt;
-
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;이름을 입력하세요&quot; id=&quot;name&quot; name=&quot;name&quot; value=&quot;&quot;&gt;
-      
-
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;city&quot;&gt;도시&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;도시를 입력하세요&quot; id=&quot;city&quot; name=&quot;city&quot; value=&quot;&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;street&quot;&gt;거리&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;거리를 입력하세요&quot; id=&quot;street&quot; name=&quot;street&quot; value=&quot;&quot;&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-group&quot;&gt;
-      &lt;label for=&quot;zipcode&quot;&gt;우편번호&lt;/label&gt;
-      &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;우편번호를 입력하세요&quot; id=&quot;zipcode&quot; name=&quot;zipcode&quot; value=&quot;&quot;&gt;
-    &lt;/div&gt;
-    &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
-  &lt;/form&gt;
-  &lt;br/&gt;
-  &lt;div class=&quot;footer&quot;&gt;
-    &lt;p&gt;&amp;copy; Hello Shop V2&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt; &lt;!-- /container --&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-
-</code></pre>
-<blockquote>
-<input type="text" th:field="*{city}" class="form-control" placeholder="도시를 입력하세요"> 
-</blockquote>
-<blockquote>
-<p>타임리프에서 작성한 코드를 실행시키면 아래와 같이 랜더링 되어 화면에서 볼 수 있습니다.</p>
-</blockquote>
-<blockquote>
-<input type="text" class="form-control" placeholder="도시를 입력하세요" id="city" name="city" value="">
-</blockquote>
-<blockquote>
-<p>타임리프에서 입력 폼을 사용 하는 것은 아래와 같습니다.</p>
-</blockquote>
-<h4 id="thymeleaf-입력-폼">thymeleaf 입력 폼<a class="anchor" href="#thymeleaf-입력-폼">#</a></h4>
-<h5 id="사용법">사용법<a class="anchor" href="#사용법">#</a></h5>
-<blockquote>
-<ul>
-<li>th:object : 커맨드 객체를 지정한다. ex) th:object=&quot;${memberForm}&quot; 
-controller 에서 modal.addAttribute(&ldquo;memberForm&rdquo;, new MemberForm()); 넘겨줌</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li><em>{&lsquo;필드명&rsquo;} : th:object 에서 선택한 객체에 접근한다.<br>
-th:field=&quot;</em>{name}&quot;</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>th:field : HTML 태그의 id, name, value 속성을 자동으로 변환</li>
-</ul>
-</blockquote>
-<pre><code>&lt;!-- before --&gt;
-&lt;input type=&quot;text&quot; th:field=&quot;*{name}&quot; /&gt;
-
-&lt;!-- after --&gt;
-&lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot; th:value=&quot;*{name}&quot;/&gt;
-</code></pre>
-<h4 id="member-controller-회원가입-처리post-추가">Member Controller 회원가입 처리(Post) 추가<a class="anchor" href="#member-controller-회원가입-처리post-추가">#</a></h4>
-<blockquote>
-<p>회원가입 입력 폼에서 submit 시 호출할 action(url)을 수행할 메소드 생성</p>
-   <form role="form" action="/members/new" method="post">
-</blockquote>
-<blockquote>
-<p>MemberController.java - @PostMapping(&quot;/members/new&quot;) 추가</p>
-</blockquote>
-<pre><code>
     @PostMapping(&quot;/members/new&quot;)
-    public String newMembers(@Valid MemberForm memberForm){ //@Valid를 추가해 입력받은 파라미터를 벨리데이션 체크를 합니다.
-
-        Address memberAddress = new Address(memberForm.getCity(), memberForm.getStreet(), memberForm.getZipcode());
-        Member newMember = new Member();
-
-        newMember.setName(memberForm.getName());
-        newMember.setAddress(memberAddress);
-
-        memberService.join(newMember);
-
-        return &quot;redirect:/&quot;; //첫번째 화면으로 이동
-	}
-</code></pre>
-<blockquote>
-<p>입력받은 MemberFrom에서 Address와 Member를 생성할 데이터를 getter로 찾아와 생성을 다 해주었는데, 
-MemberForm에서 Addres나 Member를 생성하여 반환할 수 도 있습니다.</p>
-</blockquote>
-<blockquote>
-</blockquote>
-<blockquote>
-<p>MemberForm.java</p>
-</blockquote>
-<pre><code>    public Address getNewAddress(){
-        return new Address(this.city, this.street, this.getZipcode());
-    }
-</code></pre>
-<blockquote>
-</blockquote>
-<pre><code>    @PostMapping(&quot;/members/new&quot;)
-    public String newMembers(@Valid MemberForm memberForm){ 
-
-        Member newMember = new Member();
-        newMember.setName(memberForm.getName());
-        newMember.setAddress(memberForm.getAddress());
-
-        memberService.join(newMember);
-
-        return &quot;redirect:/&quot;; //첫번째 화면으로 이동
-    }
-
-</code></pre>
-<blockquote>
-<p>조금더 깔끔해져 가독성이 좋아졌습니다.</p>
-</blockquote>
-<blockquote>
-<p>정상 등록과 실패 후 벨리데이션 체크가 되는지 확인해 보겠습니다.</p>
-</blockquote>
-<h4 id="동작-테스트">동작 테스트<a class="anchor" href="#동작-테스트">#</a></h4>
-<h5 id="회원등록-성공">회원등록 성공<a class="anchor" href="#회원등록-성공">#</a></h5>
-<p><img src="/images/develop/backend/using-springboot-jpa/member-join-development/img-001.png" alt="contact"></p>
-<p><img src="/images/develop/backend/using-springboot-jpa/member-join-development/img-002.png" alt="contact"></p>
-<blockquote>
-<p>데이터베이스에서 조회 시 회원이 잘 등록된 것을 확인 할 수 있습니다.</p>
-</blockquote>
-<h5 id="회원등록-실패">회원등록 실패<a class="anchor" href="#회원등록-실패">#</a></h5>
-<p><img src="/images/develop/backend/using-springboot-jpa/member-join-development/img-003.png" alt="contact"></p>
-<blockquote>
-<p>회원의 이름을 공백으로 하여 회원 등록을 해 봅니다.</p>
-</blockquote>
-<p><img src="/images/develop/backend/using-springboot-jpa/member-join-development/img-004.png" alt="contact"></p>
-<blockquote>
-<p>Spring에서 기본적으로 제공하는 Whitelabel Error Page가 뜨고,</p>
-</blockquote>
-<blockquote>
-<p>Validation failed for object=&lsquo;memberForm&rsquo;. Error count: 1</p>
-</blockquote>
-<blockquote>
-<p>default message [회원 이름은 필수 입니다.] 등 필수로 요구하는 값이 빠진채 등록요청 된 것을 서버에서 잘 체크하여 오류를 터트린 것을 확인 할 수 있습니다.</p>
-</blockquote>
-<blockquote>
-<p>하지만 오류를 발생 하는 것 보다</p>
-</blockquote>
-<pre><code>  @PostMapping(&quot;/members/new&quot;)
-    public String newMembers(@Valid MemberForm memberForm, BindingResult result){ // 처리 결과를 담는 객체
+    public String newMembers(@Valid MemberForm memberForm, BindingResult result){
+        log.info(&quot;call post members/new&quot;);
 
         if(result.hasErrors()){
-            return &quot;members/newMembersForm&quot;; // 바인딩 결과에 오류가 있을 경우 회원가입 입력 폼을 다시 보여줍니다.
+            return &quot;members/newMembersForm&quot;;
         }
 
         Member newMember = new Member();
@@ -578,57 +308,69 @@ MemberForm에서 Addres나 Member를 생성하여 반환할 수 도 있습니다
 
         return &quot;redirect:/&quot;; //첫번째 화면으로 이동
     }
-</code></pre>
-<p><img src="/images/develop/backend/using-springboot-jpa/member-join-development/img-003.png" alt="contact"></p>
-<blockquote>
-<p>BindingResult를 적용하고 난 후 다시 오류를 발생시켜 봅니다.</p>
-</blockquote>
-<p><img src="/images/develop/backend/using-springboot-jpa/member-join-development/img-005.png" alt="contact"></p>
-<blockquote>
-<p>아까 Whitelabel Error Page 터트리던 것보다 세련되게 화면에서 오류가 나지 않게 처리를 할 수 있습니다.</p>
-</blockquote>
-<h4 id="벨리데이션-체크-동작">벨리데이션 체크 동작<a class="anchor" href="#벨리데이션-체크-동작">#</a></h4>
-<blockquote>
-<ul>
-<li>MemberForm.java에서 벨리데이션 체크할 필드에  @NotEmpty(message = &ldquo;벨리데이션 메시지&rdquo;) 추가</li>
-</ul>
-</blockquote>
-<pre><code>    @NotEmpty(message = &quot;회원 이름은 필수 입니다.&quot;)
-    private String name;
-</code></pre>
-<blockquote>
-<ul>
-<li>MemberController.java에서 입력받은 파라미터에 @Valid 추가</li>
-</ul>
-</blockquote>
-<pre><code>    @PostMapping(&quot;/members/new&quot;)
-    public String newMembers(@Valid MemberForm memberForm, BindingResult result){
-</code></pre>
-<blockquote>
-<ul>
-<li>MemberController.java에 파라미터로 BindingResult 받아 오류가 있으면 기존화면으로 이동</li>
-</ul>
-</blockquote>
-<pre><code>    @PostMapping(&quot;/members/new&quot;)
-    public String newMembers(@Valid MemberForm memberForm, BindingResult result){
 
-    if(result.hasErrors()){
-        return &quot;members/newMembersForm&quot;;
+    @GetMapping(&quot;/members&quot;)
+    public String memberList(Model modal){
+        log.info(&quot;call get members&quot;);
+
+        List&lt;Member&gt; members = memberService.findMembers();
+        modal.addAttribute(&quot;members&quot;, members);
+
+        return &quot;members/memberList&quot;;
+
+
     }
+}
 
 </code></pre>
 <blockquote>
-<ul>
-<li>타임리프에서 BindingResult를 사용하여 오류 출력</li>
-</ul>
+<p>resources/templates/members/memberList.html</p>
 </blockquote>
-<pre><code>      &lt;input type=&quot;text&quot; th:field=&quot;*{name}&quot; class=&quot;form-control&quot; placeholder=&quot;이름을 입력하세요&quot;
-             th:class=&quot;${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'&quot;&gt;
-      &lt;p th:if=&quot;${#fields.hasErrors('name')}&quot; th:errors=&quot;*{name}&quot;&gt;Incorrect date&lt;/p&gt;
+<pre><code>
+&lt;!DOCTYPE HTML&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot; /&gt;
+    &lt;div&gt;
+        &lt;table class=&quot;table table-striped&quot;&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;이름&lt;/th&gt;
+                &lt;th&gt;도시&lt;/th&gt;
+                &lt;th&gt;주소&lt;/th&gt;
+                &lt;th&gt;우편번호&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr th:each=&quot;member : ${members}&quot;&gt;
+                &lt;td th:text=&quot;${member.id}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${member.name}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${member.address?.city}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${member.address?.street}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${member.address?.zipcode}&quot;&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+    &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
+
+&lt;/div&gt; &lt;!-- /container --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
 </code></pre>
 <blockquote>
-<p>fields.hasErrors에 &lsquo;name&rsquo;을 체크하여 박스의 아웃라인 색상을 빨강으로 변경하고, 
-P 태그에 @NotEmpty(message = &ldquo;벨리데이션 메시지&rdquo;)에 정의된 벨리데이션 메시지를 InnerHtml에 추가 합니다.</p>
+<td th:text="${member.address<mark>?</mark>.city}"></td> 
+</blockquote>
+<blockquote>
+<p>소스를 보시면 타임리프 문법중 address 하고 ?가 있는데, 이것은 타임리프의 기능으로 
+city가 null 이면 출력을 하지 않는 것입니다. null인 경우 nullPointException이 나오는데 이것을 if로 있는지 없는지 체크 하고 있는경우 없는경우 작성하다 보면 지저분해지는 것을 간편하게 사용할 수 있습니다.</p>
 </blockquote>
 <h3 id="추가">추가<a class="anchor" href="#추가">#</a></h3>
 <hr>
@@ -637,6 +379,19 @@ P 태그에 @NotEmpty(message = &ldquo;벨리데이션 메시지&rdquo;)에 정�
 </blockquote>
 <blockquote>
 <p>벨리데이션을 엔티티에서 하게되면, 소스가 지저분해 지고 화면에서의 벨리데이션과 엔티티에서의 벨리데이션을 분리 하지 못하기 때문에 추후 확장을 위해 분리하는 것을 권장드립니다.</p>
+</blockquote>
+<blockquote>
+<p>엔티티에 불필요한 화면에 대한 로직이 섞일 경우 화면을 수정했는데, 핵심 비즈니스 로직이 안돌거나 핵심 비즈니스 로직을 수정했는데 화면이 깨지는 눈물나는 사태가 발생할 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>또한 현재 예제에서 회원 리스트를 조회후 Member엔티티로 바로 전달하였는데, 이또한 Member엔티티가 아니라 DTO 객체를 통해 전달 하는게 좋습니다.</p>
+</blockquote>
+<h4 id="api를-만들때-절대로-엔티티entity를-반환하면-안되는-이유">API를 만들때 절대로 엔티티(Entity)를 반환하면 안되는 이유<a class="anchor" href="#api를-만들때-절대로-엔티티entity를-반환하면-안되는-이유">#</a></h4>
+<blockquote>
+<p><mark>API를 만들때 절대로 엔티티(Entity)를 반환하면 안되는 이유</mark>는 Member 엔티티에 Password를 추가하게 되면 Password가 그대로 노출되는 문제가 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>엔티티의 로직을 변경하게 되면 API Spec이 변경되어 기존과 전혀 다른 동작을 할 수도 있습니다.</p>
 </blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
@@ -1650,6 +1405,47 @@ public class OrderSearch {
 }
 </code></pre>
 </details> 
+<blockquote>
+<p>java/jpabook/jpashop/dto/MemberForm.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> MemberForm.java </summary>
+<pre><code>package jpabook.jpashop.dto;
+
+
+import jpabook.jpashop.domain.Address;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotEmpty;
+
+
+@Getter @Setter
+public class MemberForm {
+
+    @NotEmpty(message = &quot;회원 이름은 필수 입니다.&quot;)
+    private String name;
+
+    private String city;
+    private String street;
+    private String zipcode;
+
+    public Address getAddress(){
+        return new Address(this.city, this.street, this.getZipcode());
+    }
+
+    @Override
+    public String toString() {
+        return &quot;MemberForm{&quot; +
+                &quot;name='&quot; + name + '\'' +
+                &quot;, city='&quot; + city + '\'' +
+                &quot;, street='&quot; + street + '\'' +
+                &quot;, zipcode='&quot; + zipcode + '\'' +
+                '}';
+    }
+}
+</code></pre>
+</details> 
 <h4 id="컨트롤러">컨트롤러<a class="anchor" href="#컨트롤러">#</a></h4>
 <blockquote>
 <p>java/jpabook/jpashop/HelloController.java</p>
@@ -1672,6 +1468,93 @@ public class HelloController {
         System.out.println(1121);
 
         return &quot;hello&quot;; /* view 라는 페이지를 오픈*/
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/controller/HomeController.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> HomeController.java </summary>
+<pre><code>package jpabook.jpashop.controller;
+
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+@Slf4j
+public class HomeController {
+
+    //@Slf4j 사용
+    //Logger log = LoggerFactory.getLogger(getClass());
+
+    @RequestMapping(&quot;/&quot;)
+    public String Home(){
+        log.info(&quot;home controller&quot;);
+        return &quot;home&quot;;
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/controller/MemberController.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> MemberController.java </summary>
+<pre><code>package jpabook.jpashop.controller;
+
+import jpabook.jpashop.domain.Address;
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.dto.MemberForm;
+import jpabook.jpashop.service.MemberService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+
+import javax.validation.Valid;
+
+@Controller
+@RequiredArgsConstructor
+@Slf4j
+public class MemberController {
+    //@Slf4j 사용
+    //Logger log = LoggerFactory.getLogger(getClass());
+    private final MemberService memberService;
+
+    @GetMapping(&quot;/members/new&quot;)
+    public String newMembersForm(Model modal){
+        log.info(&quot;/members/new&quot;);
+
+        modal.addAttribute(&quot;memberForm&quot;, new MemberForm());
+        return &quot;members/newMembersForm&quot;;
+
+
+    }
+
+    @PostMapping(&quot;/members/new&quot;)
+    public String newMembers(@Valid MemberForm memberForm, BindingResult result){
+
+        if(result.hasErrors()){
+            return &quot;members/newMembersForm&quot;;
+        }
+
+        Member newMember = new Member();
+        newMember.setName(memberForm.getName());
+        newMember.setAddress(memberForm.getAddress());
+
+        memberService.join(newMember);
+
+        return &quot;redirect:/&quot;; //첫번째 화면으로 이동
     }
 }
 </code></pre>
@@ -1764,6 +1647,55 @@ public class HelloController {
 
     &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
 
+&lt;/div&gt; &lt;!-- /container --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</details> 
+<blockquote>
+<p>resources/templates/members/newMembersForm.html</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> newMembersForm.html </summary>
+<pre><code>&lt;!DOCTYPE HTML&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
+&lt;style&gt;
+  .fieldError {
+    border-color: #bd2130;
+  }
+&lt;/style&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot;/&gt;
+
+  &lt;form role=&quot;form&quot; action=&quot;/members/new&quot; th:object=&quot;${memberForm}&quot; method=&quot;post&quot;&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label th:for=&quot;name&quot;&gt;이름&lt;/label&gt;
+
+      &lt;input type=&quot;text&quot; th:field=&quot;*{name}&quot; class=&quot;form-control&quot; placeholder=&quot;이름을 입력하세요&quot;
+             th:class=&quot;${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'&quot;&gt;
+      &lt;p th:if=&quot;${#fields.hasErrors('name')}&quot; th:errors=&quot;*{name}&quot;&gt;Incorrect date&lt;/p&gt;
+
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label th:for=&quot;city&quot;&gt;도시&lt;/label&gt;
+      &lt;input type=&quot;text&quot; th:field=&quot;*{city}&quot; class=&quot;form-control&quot; placeholder=&quot;도시를 입력하세요&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label th:for=&quot;street&quot;&gt;거리&lt;/label&gt;
+      &lt;input type=&quot;text&quot; th:field=&quot;*{street}&quot; class=&quot;form-control&quot; placeholder=&quot;거리를 입력하세요&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label th:for=&quot;zipcode&quot;&gt;우편번호&lt;/label&gt;
+      &lt;input type=&quot;text&quot; th:field=&quot;*{zipcode}&quot; class=&quot;form-control&quot; placeholder=&quot;우편번호를 입력하세요&quot;&gt;
+    &lt;/div&gt;
+    &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+  &lt;br/&gt;
+  &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
 &lt;/div&gt; &lt;!-- /container --&gt;
 
 &lt;/body&gt;
@@ -2166,7 +2098,7 @@ class OrderServiceTest {
     <li><a href="#목차">목차</a></li>
     <li><a href="#홈-화면과-레이아웃">홈 화면과 레이아웃</a>
       <ul>
-        <li><a href="#회원-등록">회원 등록</a></li>
+        <li><a href="#회원-리스트">회원 리스트</a></li>
         <li><a href="#추가">추가</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
