@@ -88,7 +88,7 @@
       "datePublished": "2022-07-02 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-07-02 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/member-list-development\/",
-      "wordCount" : "3409",
+      "wordCount" : "3318",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -254,62 +254,9 @@
 <h3 id="회원-리스트">회원 리스트<a class="anchor" href="#회원-리스트">#</a></h3>
 <hr>
 <blockquote>
-<p>MemberController.java - memberList 메서드 추가</p>
+<p>MemberController.java - /members Mapping 추가</p>
 </blockquote>
-<pre><code>package jpabook.jpashop.controller;
-
-import jpabook.jpashop.domain.Address;
-import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.dto.MemberForm;
-import jpabook.jpashop.service.MemberService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.ui.Model;
-
-import javax.validation.Valid;
-import java.util.List;
-
-@Controller
-@RequiredArgsConstructor
-@Slf4j
-public class MemberController {
-    //@Slf4j 사용
-    //Logger log = LoggerFactory.getLogger(getClass());
-    private final MemberService memberService;
-
-    @GetMapping(&quot;/members/new&quot;)
-    public String newMembersForm(Model modal){
-        log.info(&quot;call get members/new&quot;);
-
-        modal.addAttribute(&quot;memberForm&quot;, new MemberForm());
-        return &quot;members/newMembersForm&quot;;
-
-
-    }
-
-    @PostMapping(&quot;/members/new&quot;)
-    public String newMembers(@Valid MemberForm memberForm, BindingResult result){
-        log.info(&quot;call post members/new&quot;);
-
-        if(result.hasErrors()){
-            return &quot;members/newMembersForm&quot;;
-        }
-
-        Member newMember = new Member();
-        newMember.setName(memberForm.getName());
-        newMember.setAddress(memberForm.getAddress());
-
-        memberService.join(newMember);
-
-        return &quot;redirect:/&quot;; //첫번째 화면으로 이동
-    }
-
-    @GetMapping(&quot;/members&quot;)
+<pre><code>    @GetMapping(&quot;/members&quot;)
     public String memberList(Model modal){
         log.info(&quot;call get members&quot;);
 
@@ -317,10 +264,7 @@ public class MemberController {
         modal.addAttribute(&quot;members&quot;, members);
 
         return &quot;members/memberList&quot;;
-
-
     }
-}
 
 </code></pre>
 <blockquote>
