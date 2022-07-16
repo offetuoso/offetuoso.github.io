@@ -88,7 +88,7 @@
       "datePublished": "2022-06-23 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-06-23 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/web-layer-development\/",
-      "wordCount" : "3142",
+      "wordCount" : "3194",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -1499,6 +1499,37 @@ public class OrderSearch {
     private String memberName; // 회원 이름
     private OrderStatus orderStatus; //주문 상태 [ORDER, CANCEL]
 
+}
+</code></pre>
+</details> 
+<h4 id="exception">Exception<a class="anchor" href="#exception">#</a></h4>
+<blockquote>
+<p>java/jpabook/jpashop/exception/NotEnoughStockException.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> NotEnoughStockException.java </summary>
+<pre><code>package jpabook.jpashop.exception;
+
+public class NotEnoughStockException extends RuntimeException{
+    public NotEnoughStockException() {
+        super();
+    }
+
+    public NotEnoughStockException(String message) {
+        super(message);
+    }
+
+    public NotEnoughStockException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotEnoughStockException(Throwable cause) {
+        super(cause);
+    }
+
+    protected NotEnoughStockException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 }
 </code></pre>
 </details> 

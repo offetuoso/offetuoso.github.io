@@ -88,7 +88,7 @@
       "datePublished": "2022-07-02 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-07-02 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/product-register-development\/",
-      "wordCount" : "3885",
+      "wordCount" : "3937",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -1962,6 +1962,37 @@ public class MemberController {
 &lt;/html&gt;
 </code></pre>
 </details> 
+<h4 id="exception">Exception<a class="anchor" href="#exception">#</a></h4>
+<blockquote>
+<p>java/jpabook/jpashop/exception/NotEnoughStockException.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> NotEnoughStockException.java </summary>
+<pre><code>package jpabook.jpashop.exception;
+
+public class NotEnoughStockException extends RuntimeException{
+    public NotEnoughStockException() {
+        super();
+    }
+
+    public NotEnoughStockException(String message) {
+        super(message);
+    }
+
+    public NotEnoughStockException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotEnoughStockException(Throwable cause) {
+        super(cause);
+    }
+
+    protected NotEnoughStockException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+}
+</code></pre>
+</details> 
 <h4 id="리소스">리소스<a class="anchor" href="#리소스">#</a></h4>
 <blockquote>
 <p><a href="https://drive.google.com/file/d/1-ZXtQaaeVmqKKquXKHrp_F3-se4O-R2k/view?usp=sharing">bootstrap-4.3.1-dist.zip</a></p>
@@ -2283,6 +2314,11 @@ class OrderServiceTest {
     </a>
   
 
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-list-development/">
+      <span class="pagination__label">Next Post</span>
+      <span class="pagination__title" >[스프링부트 JPA 활용] 상품 목록 화면 개발</span>
+    </a>
   
 </div>
 
