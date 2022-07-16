@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 회원 목록 화면 개발 | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 상품 등록 화면 개발 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 회원 목록 화면 개발">
+  <meta name="description" content="[스프링부트 JPA 활용] 상품 등록 화면 개발">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 회원 목록 화면 개발">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 회원 목록 화면 개발">
+  <meta property="og:title" content="[스프링부트 JPA 활용] 상품 등록 화면 개발">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 상품 등록 화면 개발">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 회원 목록 화면 개발",
-      "headline" : "[스프링부트 JPA 활용] 회원 목록 화면 개발",
-      "description" : "[스프링부트 JPA 활용] 회원 목록 화면 개발",
+      "name" : "[스프링부트 JPA 활용] 상품 등록 화면 개발",
+      "headline" : "[스프링부트 JPA 활용] 상품 등록 화면 개발",
+      "description" : "[스프링부트 JPA 활용] 상품 등록 화면 개발",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -87,8 +87,8 @@
       "copyrightYear" : "2022",
       "datePublished": "2022-07-02 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-07-02 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/member-list-development\/",
-      "wordCount" : "3318",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/product-register-development\/",
+      "wordCount" : "3885",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,12 +170,12 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 회원 목록 화면 개발
+		            	[스프링부트 JPA 활용] 상품 등록 화면 개발
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 회원 목록 화면 개발
+		       	[스프링부트 JPA 활용] 상품 등록 화면 개발
             </h1>		
             <time datetime="2022-07-02 00:00:00 &#43;0000 UTC" class="post__date">2022-07-02</time> 
           </header>
@@ -251,92 +251,343 @@
 </ul>
 </blockquote>
 <h2 id="홈-화면과-레이아웃">홈 화면과 레이아웃<a class="anchor" href="#홈-화면과-레이아웃">#</a></h2>
-<h3 id="회원-리스트">회원 리스트<a class="anchor" href="#회원-리스트">#</a></h3>
+<h3 id="상품-등록-화면-개발">상품 등록 화면 개발<a class="anchor" href="#상품-등록-화면-개발">#</a></h3>
 <hr>
 <blockquote>
-<p>MemberController.java - /members Mapping 추가</p>
+<p>강좌와 다르게 Item의 상속관계에 맞게 아이템들을 등록해 보려 합니다. <br>
+화면에서 셀렉트 박스로 dtype로 입력받고 컨트롤러에서 입력받은 dtype에 따라 Album, Book, Movie 엔티티를 Item 객체로 생성하여 저장을 할 것입니다.</p>
 </blockquote>
-<pre><code>    @GetMapping(&quot;/members&quot;)
-    public String memberList(Model modal){
-        log.info(&quot;call get members&quot;);
+<blockquote>
+<p>java/jpabook/jpashop/dto/ItemForm.java</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.dto;
 
-        List&lt;Member&gt; members = memberService.findMembers();
-        modal.addAttribute(&quot;members&quot;, members);
+import lombok.Getter;
+import lombok.Setter;
 
-        return &quot;members/memberList&quot;;
-    }
+@Getter @Setter
+public class ItemForm {
+    private long id; //수정을 위한 id도 추가 
 
+    private String name;
+    private int price; 
+    private int stockQuantity;
+
+    private String dtype; //아이템 타입 (A, B, M)
+    private String artist;
+    private String etc;
+    private String author;
+    private String isbn;
+    private String director;
+    private String actor;
+}
 </code></pre>
 <blockquote>
-<p>resources/templates/members/memberList.html</p>
+<p>ItemController.java</p>
 </blockquote>
 <pre><code>
-&lt;!DOCTYPE HTML&gt;
+package jpabook.jpashop.controller;
+
+import jpabook.jpashop.domain.item.Album;
+import jpabook.jpashop.domain.item.Book;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.domain.item.Movie;
+import jpabook.jpashop.dto.ItemForm;
+import jpabook.jpashop.exception.NotHasDiscriminator;
+import jpabook.jpashop.service.ItemService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
+
+@Controller
+@RequiredArgsConstructor
+@Slf4j
+public class ItemController {
+
+    private final ItemService itemService;
+
+    @GetMapping(&quot;/items/new&quot;)
+    public String newItemsForm(Model modal){
+        log.info(&quot;call get /items/new&quot;);
+
+        modal.addAttribute(&quot;itemForm&quot;, new ItemForm());
+        return &quot;items/newItemForm&quot;;
+    }
+
+    @PostMapping(&quot;/items/new&quot;)
+    public String newItems(@Valid ItemForm itemForm, BindingResult result, Model modal){
+        log.info(&quot;call post members/new&quot;);
+
+        if(result.hasErrors()){
+            return &quot;items/newItemForm&quot;;
+        }
+
+        Item item = null;
+        if(&quot;A&quot;.equals(itemForm.getDtype())){
+            item = new Album().createItem(itemForm); // 앨범 생성
+        }else if(&quot;B&quot;.equals(itemForm.getDtype())){
+            item = new Book().createItem(itemForm); // 책 생성
+        }else if(&quot;M&quot;.equals(itemForm.getDtype())){
+            item = new Movie().createItem(itemForm);  // 영화 생성
+        }else{
+            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
+        }
+
+        itemService.saveItem(item); // Item을 persist()
+
+        return  &quot;redirect:/items&quot;;
+    }
+}
+
+</code></pre>
+<h4 id="createitem">createItem()<a class="anchor" href="#createitem">#</a></h4>
+<blockquote>
+<p>Item에 abstract 메서드를 생성하고, 자식 엔티티인 Album, Book, Movie에서 @override 하여 사용</p>
+</blockquote>
+<blockquote>
+<p>Item.java</p>
+</blockquote>
+<pre><code> public abstract Item createItem(ItemForm itemForm);
+</code></pre>
+<blockquote>
+<p>Album.java</p>
+</blockquote>
+<pre><code>    @Override
+    public Item createItem(ItemForm itemForm) {
+        this.setName(itemForm.getName());
+        this.setPrice(itemForm.getPrice());
+        this.setStockQuantity(itemForm.getStockQuantity());
+        this.setArtist(itemForm.getArtist());
+        this.setEtc(itemForm.getEtc());
+        return this;
+    }
+</code></pre>
+<blockquote>
+<p>Book.java</p>
+</blockquote>
+<pre><code>    @Override
+    public Item createItem(ItemForm itemForm) {
+        super.name = itemForm.getName();
+        super.price = itemForm.getPrice();
+        super.stockQuantity = itemForm.getStockQuantity();
+        this.isbn = itemForm.getIsbn();
+        this.author = itemForm.getAuthor();
+        return this;
+    }
+</code></pre>
+<blockquote>
+<p>Movie.java</p>
+</blockquote>
+<pre><code>    @Override
+    public Item createItem(ItemForm itemForm) {
+        super.name = itemForm.getName();
+        super.price = itemForm.getPrice();
+        super.stockQuantity = itemForm.getStockQuantity();
+        this.director = itemForm.getDirector();
+        this.actor = itemForm.getActor();
+        return this;
+    }
+</code></pre>
+<h4 id="상품등록-화면">상품등록 화면<a class="anchor" href="#상품등록-화면">#</a></h4>
+<blockquote>
+<p>강의에서는 책에 대한 데이터를 집어 넣기 때문에, 등록 화면이 간략했는데 <br>
+dtype에 따라 다른 엔티티로 객체가 생성되어 들어가는 것을 테스트 해보고 싶었습니다. <br>
+dtype에 따라 화면과 벨리데이션할 필드가 동적으로 나뉘게 되어 @Valid가 아니라 화면에서 체크를 하였습니다.</p>
+</blockquote>
+<blockquote>
+<p>resources/templates/items/newItemForm.html</p>
+</blockquote>
+<pre><code>&lt;!DOCTYPE HTML&gt;
 &lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
 &lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-latest.min.js&quot;&gt;&lt;/script&gt;
+&lt;style&gt;
+    .hidden{
+        display: none;
+        width : inherit;
+        height : 400px;
+    }
+     .fieldError {
+         border-color: #bd2130;
+     }
+&lt;/style&gt;
+&lt;script&gt;
+    $(document).ready(function(){
+        fn_change_dtype();
+    });
+
+    let fn_submit = function() {
+        let dtype = $(&quot;#dtype&quot;).val();
+        $(&quot;.fieldError&quot;).removeClass(&quot;fieldError&quot;);
+        $(&quot;.errorMsg&quot;).remove();
+
+        if(dtype == ''){
+            //alert(&quot;상품구분을 선택하세요.&quot;);
+            $(&quot;#dtype&quot;).addClass(&quot;fieldError&quot;);
+            $(&quot;#dtype&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;상품 구분을 선택해 주세요.&lt;/p&gt;&quot;);
+            return false;
+        }
+        if($.trim($(&quot;#name&quot;).val()) == &quot;&quot;){
+            //alert(&quot;이름을 입력하세요.&quot;);
+            $(&quot;#name&quot;).addClass(&quot;fieldError&quot;);
+            $(&quot;#name&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;상품 이름을 입력하세요.&lt;/p&gt;&quot;);
+            return false;
+        }
+        if($.trim($(&quot;#stockQuantity&quot;).val()) == &quot;&quot; || $(&quot;#stockQuantity&quot;).val() == 0){
+            //alert(&quot;수량을 1이상 입력하세요.&quot;);
+            $(&quot;#stockQuantity&quot;).addClass(&quot;fieldError&quot;);
+            $(&quot;#stockQuantity&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;수량을 1이상 입력하세요.&lt;/p&gt;&quot;);
+            return false;
+        }
+
+        if(dtype == 'A'){
+            if($.trim($(&quot;#artist&quot;).val()) == &quot;&quot;){
+                //alert(&quot;아티스트를 입력하세요.&quot;);
+                $(&quot;#artist&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#artist&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;아티스트를 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+            if($.trim($(&quot;#etc&quot;).val()) == &quot;&quot;){
+                //alert(&quot;ETC를 입력하세요.&quot;);
+                $(&quot;#etc&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#etc&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;ETC를 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+        }else if(dtype == 'B'){
+            if($.trim($(&quot;#author&quot;).val()) == &quot;&quot;){
+                //alert(&quot;저자를 입력하세요.&quot;);
+                $(&quot;#author&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#author&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;저자를 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+            if($.trim($(&quot;#isbn&quot;).val()) == &quot;&quot;){
+                //alert(&quot;ISBN을 입력하세요.&quot;);
+                $(&quot;#isbn&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#isbn&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;ISBN을 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+
+        }else if(dtype == 'M'){
+            if($.trim($(&quot;#director&quot;).val()) == &quot;&quot;){
+                //alert(&quot;감독을 입력하세요.&quot;);
+                $(&quot;#director&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#director&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;감독을 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+            if($.trim($(&quot;#actor&quot;).val()) == &quot;&quot;){
+                //alert(&quot;배우를 입력하세요.&quot;);
+                $(&quot;#actor&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#actor&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;배우를 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+        }
+
+        $(&quot;#itemForm&quot;).submit();
+
+    };
+
+    let fn_change_dtype = function() {
+        let dtype = $(&quot;#dtype&quot;).val();
+        $(&quot;#itemForm&quot;)[0].reset();
+        $(&quot;#dtype&quot;).val(dtype);
+
+        //초기화
+        $(&quot;.hidden&quot;).css(&quot;display&quot;,&quot;none&quot;);
+
+        if(dtype == ''){
+            return false;
+        }else if(dtype == 'A'){
+            $(&quot;#sub-form-A&quot;).css(&quot;display&quot;,&quot;inline&quot;);
+        }else if(dtype == 'B'){
+            $(&quot;#sub-form-B&quot;).css(&quot;display&quot;,&quot;inline&quot;);
+        }else if(dtype == 'M'){
+            $(&quot;#sub-form-M&quot;).css(&quot;display&quot;,&quot;inline&quot;);
+        }
+    };
+&lt;/script&gt;
 &lt;body&gt;
 
 &lt;div class=&quot;container&quot;&gt;
-    &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot; /&gt;
-    &lt;div&gt;
-        &lt;table class=&quot;table table-striped&quot;&gt;
-            &lt;thead&gt;
-            &lt;tr&gt;
-                &lt;th&gt;#&lt;/th&gt;
-                &lt;th&gt;이름&lt;/th&gt;
-                &lt;th&gt;도시&lt;/th&gt;
-                &lt;th&gt;주소&lt;/th&gt;
-                &lt;th&gt;우편번호&lt;/th&gt;
-            &lt;/tr&gt;
-            &lt;/thead&gt;
-            &lt;tbody&gt;
-            &lt;tr th:each=&quot;member : ${members}&quot;&gt;
-                &lt;td th:text=&quot;${member.id}&quot;&gt;&lt;/td&gt;
-                &lt;td th:text=&quot;${member.name}&quot;&gt;&lt;/td&gt;
-                &lt;td th:text=&quot;${member.address?.city}&quot;&gt;&lt;/td&gt;
-                &lt;td th:text=&quot;${member.address?.street}&quot;&gt;&lt;/td&gt;
-                &lt;td th:text=&quot;${member.address?.zipcode}&quot;&gt;&lt;/td&gt;
-            &lt;/tr&gt;
-            &lt;/tbody&gt;
-        &lt;/table&gt;
-    &lt;/div&gt;
+    &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot;/&gt;
 
+    &lt;form id=&quot;itemForm&quot; th:action=&quot;@{/items/new}&quot; th:object=&quot;${itemForm}&quot; method=&quot;post&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label th:for=&quot;dtype&quot;&gt;상품구분&lt;/label&gt;
+            &lt;select th:field=&quot;*{dtype}&quot; class=&quot;form-control&quot; onchange=&quot;fn_change_dtype()&quot;&gt;
+                &lt;option value=&quot;&quot;&gt;상품구분&lt;/option&gt;
+                &lt;option value=&quot;A&quot;&gt;앨범&lt;/option&gt;
+                &lt;option value=&quot;B&quot;&gt;책&lt;/option&gt;
+                &lt;option value=&quot;M&quot;&gt;영화&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;!--&lt;p class=&quot;fieldError&quot; th:if=&quot;${#fields.hasErrors('dtype')}&quot; th:errors=&quot;*{dtype}&quot;&gt;Incorrect date&lt;/p&gt;--&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label th:for=&quot;name&quot;&gt;상품명&lt;/label&gt;
+            &lt;input type=&quot;text&quot; th:field=&quot;*{name}&quot; class=&quot;form-control&quot; placeholder=&quot;이름을 입력하세요&quot;&gt;
+        &lt;/div&gt;
+        &lt;!--&lt;p class=&quot;fieldError&quot; th:if=&quot;${#fields.hasErrors('name')}&quot; th:errors=&quot;*{name}&quot;&gt;Incorrect date&lt;/p&gt;--&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label th:for=&quot;price&quot;&gt;가격&lt;/label&gt;
+            &lt;input type=&quot;number&quot; th:field=&quot;*{price}&quot; class=&quot;form-control&quot; placeholder=&quot;가격을 입력하세요&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label th:for=&quot;stockQuantity&quot;&gt;수량&lt;/label&gt;
+            &lt;input type=&quot;number&quot; th:field=&quot;*{stockQuantity}&quot; class=&quot;form-control&quot; placeholder=&quot;수량을 입력하세요&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;sub-form-A&quot; class=&quot;sub-form hidden&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;artist&quot;&gt;아티스트&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{artist}&quot; class=&quot;form-control&quot; placeholder=&quot;아티스트를 입력하세요&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;etc&quot;&gt;ETC&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{etc}&quot; class=&quot;form-control&quot; placeholder=&quot;ETC를 입력하세요&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;sub-form-B&quot; class=&quot;sub-form hidden&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;author&quot;&gt;저자&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{author}&quot; class=&quot;form-control&quot; placeholder=&quot;저자를 입력하세요&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;isbn&quot;&gt;ISBN&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{isbn}&quot; class=&quot;form-control&quot; placeholder=&quot;ISBN을 입력하세요&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;sub-form-M&quot; class=&quot;sub-form hidden&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;director&quot;&gt;감독&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{director}&quot; class=&quot;form-control&quot; placeholder=&quot;감독을 입력하세요&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;actor&quot;&gt;배우&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{actor}&quot; class=&quot;form-control&quot; placeholder=&quot;배우를 입력하세요&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; onclick=&quot;fn_submit();&quot;&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;br/&gt;
     &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
 
 &lt;/div&gt; &lt;!-- /container --&gt;
+
 
 &lt;/body&gt;
 &lt;/html&gt;
 
 </code></pre>
-<blockquote>
-<td th:text="${member.address<mark>?</mark>.city}"></td> 
-</blockquote>
-<blockquote>
-<p>소스를 보시면 타임리프 문법중 address 하고 ?가 있는데, 이것은 타임리프의 기능으로 
-city가 null 이면 출력을 하지 않는 것입니다. null인 경우 nullPointException이 나오는데 이것을 if로 있는지 없는지 체크 하고 있는경우 없는경우 작성하다 보면 지저분해지는 것을 간편하게 사용할 수 있습니다.</p>
-</blockquote>
-<h3 id="추가">추가<a class="anchor" href="#추가">#</a></h3>
-<hr>
-<blockquote>
-<p>public String newMembers(@Valid Member member, BindingResult result){ 이런 식으로 바로 Member 엔티티로 받지 않는 이유는 Order와 같은 추가가 필요한 데이터들이나</p>
-</blockquote>
-<blockquote>
-<p>벨리데이션을 엔티티에서 하게되면, 소스가 지저분해 지고 화면에서의 벨리데이션과 엔티티에서의 벨리데이션을 분리 하지 못하기 때문에 추후 확장을 위해 분리하는 것을 권장드립니다.</p>
-</blockquote>
-<blockquote>
-<p>엔티티에 불필요한 화면에 대한 로직이 섞일 경우 화면을 수정했는데, 핵심 비즈니스 로직이 안돌거나 핵심 비즈니스 로직을 수정했는데 화면이 깨지는 눈물나는 사태가 발생할 수 있습니다.</p>
-</blockquote>
-<blockquote>
-<p>또한 현재 예제에서 회원 리스트를 조회후 Member엔티티로 바로 전달하였는데, 이또한 Member엔티티가 아니라 DTO 객체를 통해 전달 하는게 좋습니다.</p>
-</blockquote>
-<h4 id="api를-만들때-절대로-엔티티entity를-반환하면-안되는-이유">API를 만들때 절대로 엔티티(Entity)를 반환하면 안되는 이유<a class="anchor" href="#api를-만들때-절대로-엔티티entity를-반환하면-안되는-이유">#</a></h4>
-<blockquote>
-<p><mark>API를 만들때 절대로 엔티티(Entity)를 반환하면 안되는 이유</mark>는 Member 엔티티에 Password를 추가하게 되면 Password가 그대로 노출되는 문제가 있습니다.</p>
-</blockquote>
-<blockquote>
-<p>엔티티의 로직을 변경하게 되면 API Spec이 변경되어 기존과 전혀 다른 동작을 할 수도 있습니다.</p>
-</blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
 <h4 id="설정">설정<a class="anchor" href="#설정">#</a></h4>
@@ -1466,6 +1717,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -1477,16 +1729,16 @@ public class MemberController {
 
     @GetMapping(&quot;/members/new&quot;)
     public String newMembersForm(Model modal){
-        log.info(&quot;/members/new&quot;);
+        log.info(&quot;call get members/new&quot;);
 
         modal.addAttribute(&quot;memberForm&quot;, new MemberForm());
         return &quot;members/newMembersForm&quot;;
 
-
     }
 
     @PostMapping(&quot;/members/new&quot;)
-    public String newMembers(@Valid MemberForm memberForm, BindingResult result){
+    public String newMembers(@Valid MemberForm memberForm, BindingResult result, Model modal){
+        log.info(&quot;call post members/new&quot;);
 
         if(result.hasErrors()){
             return &quot;members/newMembersForm&quot;;
@@ -1498,7 +1750,20 @@ public class MemberController {
 
         memberService.join(newMember);
 
+
         return &quot;redirect:/&quot;; //첫번째 화면으로 이동
+    }
+
+    @GetMapping(&quot;/members&quot;)
+    public String memberList(Model modal){
+        log.info(&quot;call get members&quot;);
+
+        List&lt;Member&gt; members = memberService.findMembers();
+        modal.addAttribute(&quot;members&quot;, members);
+
+        return &quot;members/memberList&quot;;
+
+
     }
 }
 </code></pre>
@@ -1640,6 +1905,49 @@ public class MemberController {
   &lt;/form&gt;
   &lt;br/&gt;
   &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
+&lt;/div&gt; &lt;!-- /container --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</details> 
+<blockquote>
+<p>resources/templates/members/memberList.html</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> memberList.html </summary>
+<pre><code>&lt;!DOCTYPE HTML&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot; /&gt;
+    &lt;div&gt;
+        &lt;table class=&quot;table table-striped&quot;&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;이름&lt;/th&gt;
+                &lt;th&gt;도시&lt;/th&gt;
+                &lt;th&gt;주소&lt;/th&gt;
+                &lt;th&gt;우편번호&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr th:each=&quot;member : ${members}&quot;&gt;
+                &lt;td th:text=&quot;${member.id}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${member.name}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${member.address?.city}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${member.address?.street}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${member.address?.zipcode}&quot;&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+    &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
+
 &lt;/div&gt; &lt;!-- /container --&gt;
 
 &lt;/body&gt;
@@ -1920,7 +2228,15 @@ class OrderServiceTest {
     }
 }
 </code></pre>
-</details>
+</details>	
+<h5 id="상품구분을-선택하기-전-초기화면">상품구분을 선택하기 전 초기화면<a class="anchor" href="#상품구분을-선택하기-전-초기화면">#</a></h5>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-register-development/img-001.png" alt="contact"></p>
+<h5 id="상품구분을-앨범-선택">상품구분을 앨범 선택<a class="anchor" href="#상품구분을-앨범-선택">#</a></h5>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-register-development/img-002.png" alt="contact"></p>
+<h5 id="상품구분을-책-선택">상품구분을 책 선택<a class="anchor" href="#상품구분을-책-선택">#</a></h5>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-register-development/img-003.png" alt="contact"></p>
+<h5 id="상품구분을-영화-선택">상품구분을 영화 선택<a class="anchor" href="#상품구분을-영화-선택">#</a></h5>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-register-development/img-004.png" alt="contact"></p>
 <h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
 <blockquote>
 <ul>
@@ -1961,17 +2277,12 @@ class OrderServiceTest {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-join-view-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-list-development/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 회원 등록 화면 개발</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 회원 목록 화면 개발</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-register-development/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 상품 등록 화면 개발</span>
-    </a>
   
 </div>
 
@@ -2041,14 +2352,13 @@ class OrderServiceTest {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 회원 목록 화면 개발</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 상품 등록 화면 개발</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
     <li><a href="#홈-화면과-레이아웃">홈 화면과 레이아웃</a>
       <ul>
-        <li><a href="#회원-리스트">회원 리스트</a></li>
-        <li><a href="#추가">추가</a></li>
+        <li><a href="#상품-등록-화면-개발">상품 등록 화면 개발</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
