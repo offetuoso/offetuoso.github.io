@@ -15,9 +15,9 @@
       
       <guid>https://offetuoso.github.io/blog/intellij/intellij-shotcut/</guid>
       <description>IntelliJ IDEA 단축키 정리  Ctrl + Alt + N - 인라인화  인라인화는 return의 변수와 속성 변수의 이름이 같은경우 return에 속성 변수에 세팅한 코드를 세팅해 간결하게 변경합니다.
- Ctrl + Alt + V 변수 추출하기 (Extract -&amp;gt; Variable)  블록된 리턴 값 있는 메서드를 변수로 추출
- Ctrl + Alt + p 파라미터 추출하기 (Extract -&amp;gt; Parameter)  메서드의 변수를 파라미터로 받아오게 변경
- Ctrl + Alt + m 메서드 추출하기 (Extract -&amp;gt; Method)  해당 블록으로 선택된 로직을 메서드로 생성</description>
+ Ctrl + Alt + V - 변수 추출하기 (Extract -&amp;gt; Variable)  블록된 리턴 값 있는 메서드를 변수로 추출
+ Ctrl + Alt + p - 파라미터 추출하기 (Extract -&amp;gt; Parameter)  메서드의 변수를 파라미터로 받아오게 변경
+ Ctrl + Alt + m - 메서드 추출하기 (Extract -&amp;gt; Method)  해당 블록으로 선택된 로직을 메서드로 생성</description>
     </item>
     
   </channel>
