@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 상품 등록 화면 개발 | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 상품 수정 화면 개발 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 상품 등록 화면 개발">
+  <meta name="description" content="[스프링부트 JPA 활용] 상품 수정 화면 개발">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 상품 등록 화면 개발">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 상품 등록 화면 개발">
+  <meta property="og:title" content="[스프링부트 JPA 활용] 상품 수정 화면 개발">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 상품 수정 화면 개발">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 상품 등록 화면 개발",
-      "headline" : "[스프링부트 JPA 활용] 상품 등록 화면 개발",
-      "description" : "[스프링부트 JPA 활용] 상품 등록 화면 개발",
+      "name" : "[스프링부트 JPA 활용] 상품 수정 화면 개발",
+      "headline" : "[스프링부트 JPA 활용] 상품 수정 화면 개발",
+      "description" : "[스프링부트 JPA 활용] 상품 수정 화면 개발",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-07-02 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-07-02 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/product-register-development\/",
-      "wordCount" : "3970",
+      "datePublished": "2022-07-16 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-07-16 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/2-product-edit-development\/",
+      "wordCount" : "4656",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,14 +170,14 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 상품 등록 화면 개발
+		            	[스프링부트 JPA 활용] 상품 수정 화면 개발
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 상품 등록 화면 개발
+		       	[스프링부트 JPA 활용] 상품 수정 화면 개발
             </h1>		
-            <time datetime="2022-07-02 00:00:00 &#43;0000 UTC" class="post__date">2022-07-02</time> 
+            <time datetime="2022-07-16 00:00:00 &#43;0000 UTC" class="post__date">2022-07-16</time> 
           </header>
           <article class="post__content">
               
@@ -251,162 +251,94 @@
 </ul>
 </blockquote>
 <h2 id="홈-화면과-레이아웃">홈 화면과 레이아웃<a class="anchor" href="#홈-화면과-레이아웃">#</a></h2>
-<h3 id="상품-등록-화면-개발">상품 등록 화면 개발<a class="anchor" href="#상품-등록-화면-개발">#</a></h3>
+<h3 id="상품-수정-화면-개발">상품 수정 화면 개발<a class="anchor" href="#상품-수정-화면-개발">#</a></h3>
 <hr>
+<h4 id="itemcontrollerjava">ItemController.java<a class="anchor" href="#itemcontrollerjava">#</a></h4>
 <blockquote>
-<p>강좌와 다르게 Item의 상속관계에 맞게 아이템들을 등록해 보려 합니다. <br>
-화면에서 셀렉트 박스로 dtype로 입력받고 컨트롤러에서 입력받은 dtype에 따라 Album, Book, Movie 엔티티를 Item 객체로 생성하여 저장을 할 것입니다.</p>
+<p>/items/{itemId}/edit Get(수정 페이지 및 데이터) 요청을 처리할 리퀘스트 매핑 메서드 추가</p>
 </blockquote>
-<blockquote>
-<p>물론 각각의 아이템들 마다 관리 포인트를 나누어서 컨트롤러 부터 서비스, 레포지토리 까지 나누는것이 좋으나 <br>
-예제를 사용하기도 하고, JPA의 상속 관계를 사용 시 dtype를 통해 어떻게 유연하게 사용할 수 있을지 공부 겸 만들어 보았습니다.</p>
-</blockquote>
-<blockquote>
-<p>java/jpabook/jpashop/dto/ItemForm.java</p>
-</blockquote>
-<pre><code>package jpabook.jpashop.dto;
+<pre><code>...
+    @GetMapping(&quot;/items/{itemId}/edit&quot;)
+    public String editItemsForm(@PathVariable(&quot;itemId&quot;) Long itemId, Model modal){
+        log.info(&quot;call get /items/edit&quot;);
 
-import lombok.Getter;
-import lombok.Setter;
+        Item item = itemService.findOne(itemId);
 
-@Getter @Setter
-public class ItemForm {
-    private long id; //수정을 위한 id도 추가 
+        ItemForm itemForm = item.transItemForm();
 
-    private String name;
-    private int price; 
-    private int stockQuantity;
+        modal.addAttribute(&quot;itemForm&quot;, itemForm);
 
-    private String dtype; //아이템 타입 (A, B, M)
-    private String artist;
-    private String etc;
-    private String author;
-    private String isbn;
-    private String director;
-    private String actor;
-}
-</code></pre>
-<blockquote>
-<p>ItemController.java</p>
-</blockquote>
-<pre><code>
-package jpabook.jpashop.controller;
-
-import jpabook.jpashop.domain.item.Album;
-import jpabook.jpashop.domain.item.Book;
-import jpabook.jpashop.domain.item.Item;
-import jpabook.jpashop.domain.item.Movie;
-import jpabook.jpashop.dto.ItemForm;
-import jpabook.jpashop.exception.NotHasDiscriminator;
-import jpabook.jpashop.service.ItemService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.validation.Valid;
-
-@Controller
-@RequiredArgsConstructor
-@Slf4j
-public class ItemController {
-
-    private final ItemService itemService;
-
-    @GetMapping(&quot;/items/new&quot;)
-    public String newItemsForm(Model modal){
-        log.info(&quot;call get /items/new&quot;);
-
-        modal.addAttribute(&quot;itemForm&quot;, new ItemForm());
-        return &quot;items/newItemForm&quot;;
+        return &quot;items/editItemForm&quot;;
     }
-
-    @PostMapping(&quot;/items/new&quot;)
-    public String newItems(@Valid ItemForm itemForm, BindingResult result, Model modal){
-        log.info(&quot;call post members/new&quot;);
-
-        if(result.hasErrors()){
-            return &quot;items/newItemForm&quot;;
-        }
-
-        Item item = null;
-        if(&quot;A&quot;.equals(itemForm.getDtype())){
-            item = new Album().createItem(itemForm); // 앨범 생성
-        }else if(&quot;B&quot;.equals(itemForm.getDtype())){
-            item = new Book().createItem(itemForm); // 책 생성
-        }else if(&quot;M&quot;.equals(itemForm.getDtype())){
-            item = new Movie().createItem(itemForm);  // 영화 생성
-        }else{
-            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
-        }
-
-        itemService.saveItem(item); // Item을 persist()
-
-        return  &quot;redirect:/items&quot;;
-    }
-}
-
+...
 </code></pre>
-<h4 id="createitem">createItem()<a class="anchor" href="#createitem">#</a></h4>
+<h4 id="itemjava">Item.java<a class="anchor" href="#itemjava">#</a></h4>
 <blockquote>
-<p>Item에 abstract 메서드를 생성하고, 자식 엔티티인 Album, Book, Movie에서 @override 하여 사용</p>
+<p>Item 엔티티를 itemFrom 으로 변환해줄 transItemForm 추상 메서드를 추가하고 <br>
+Item의 자식들에서 각각 구현</p>
 </blockquote>
-<blockquote>
-<p>Item.java</p>
-</blockquote>
-<pre><code> public abstract Item createItem(ItemForm itemForm);
+<pre><code> public abstract ItemForm transItemForm();
 </code></pre>
 <blockquote>
 <p>Album.java</p>
 </blockquote>
-<pre><code>    @Override
-    public Item createItem(ItemForm itemForm) {
-        this.setName(itemForm.getName());
-        this.setPrice(itemForm.getPrice());
-        this.setStockQuantity(itemForm.getStockQuantity());
-        this.setArtist(itemForm.getArtist());
-        this.setEtc(itemForm.getEtc());
-        return this;
+<pre><code>@Override
+    public ItemForm transItemForm() {
+        Album album = (Album) this;
+
+        ItemForm itemForm = new ItemForm();
+        itemForm.setDtype(album.getDtype());
+        itemForm.setId(album.getId());
+        itemForm.setName(album.getName());
+        itemForm.setPrice(album.getPrice());
+        itemForm.setStockQuantity(album.getStockQuantity());
+
+        itemForm.setArtist(album.getArtist());
+        itemForm.setEtc(album.getEtc());
+
+        return itemForm;
     }
 </code></pre>
 <blockquote>
 <p>Book.java</p>
 </blockquote>
-<pre><code>    @Override
-    public Item createItem(ItemForm itemForm) {
-        super.name = itemForm.getName();
-        super.price = itemForm.getPrice();
-        super.stockQuantity = itemForm.getStockQuantity();
-        this.isbn = itemForm.getIsbn();
-        this.author = itemForm.getAuthor();
-        return this;
+<pre><code>@Override
+    public ItemForm transItemForm() {
+        Book book = (Book) this;
+
+        ItemForm itemForm = new ItemForm();
+        itemForm.setDtype(book.getDtype());
+        itemForm.setId(book.getId());
+        itemForm.setName(book.getName());
+        itemForm.setPrice(book.getPrice());
+        itemForm.setStockQuantity(book.getStockQuantity());
+
+        itemForm.setAuthor(book.getAuthor());
+        itemForm.setIsbn(book.getIsbn());
+
+        return itemForm;
     }
 </code></pre>
 <blockquote>
 <p>Movie.java</p>
 </blockquote>
-<pre><code>    @Override
-    public Item createItem(ItemForm itemForm) {
-        super.name = itemForm.getName();
-        super.price = itemForm.getPrice();
-        super.stockQuantity = itemForm.getStockQuantity();
-        this.director = itemForm.getDirector();
-        this.actor = itemForm.getActor();
-        return this;
+<pre><code>@Override
+    public ItemForm transItemForm() {
+        Movie movie = (Movie) this;
+        ItemForm itemForm = new ItemForm();
+        itemForm.setDtype(movie.getDtype());
+        itemForm.setId(movie.getId());
+        itemForm.setName(movie.getName());
+        itemForm.setPrice(movie.getPrice());
+        itemForm.setStockQuantity(movie.getStockQuantity());
+
+        itemForm.setDirector(movie.getDirector());
+        itemForm.setActor(movie.getActor());
+
+        return itemForm;
     }
 </code></pre>
-<h4 id="상품등록-화면">상품등록 화면<a class="anchor" href="#상품등록-화면">#</a></h4>
-<blockquote>
-<p>강의에서는 책에 대한 데이터를 집어 넣기 때문에, 등록 화면이 간략했는데 <br>
-dtype에 따라 다른 엔티티로 객체가 생성되어 들어가는 것을 테스트 해보고 싶었습니다. <br>
-dtype에 따라 화면과 벨리데이션할 필드가 동적으로 나뉘게 되어 @Valid가 아니라 화면에서 체크를 하였습니다.</p>
-</blockquote>
-<blockquote>
-<p>resources/templates/items/newItemForm.html</p>
-</blockquote>
+<h4 id="resourcestemplatesitemsedititemformhtml">resources/templates/items/editItemForm.html<a class="anchor" href="#resourcestemplatesitemsedititemformhtml">#</a></h4>
 <pre><code>&lt;!DOCTYPE HTML&gt;
 &lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
 &lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
@@ -513,6 +445,8 @@ dtype에 따라 화면과 벨리데이션할 필드가 동적으로 나뉘게 �
         }else if(dtype == 'M'){
             $(&quot;#sub-form-M&quot;).css(&quot;display&quot;,&quot;inline&quot;);
         }
+
+
     };
 &lt;/script&gt;
 &lt;body&gt;
@@ -524,13 +458,22 @@ dtype에 따라 화면과 벨리데이션할 필드가 동적으로 나뉘게 �
         &lt;div class=&quot;form-group&quot;&gt;
             &lt;label th:for=&quot;dtype&quot;&gt;상품구분&lt;/label&gt;
             &lt;select th:field=&quot;*{dtype}&quot; class=&quot;form-control&quot; onchange=&quot;fn_change_dtype()&quot;&gt;
-                &lt;option value=&quot;&quot;&gt;상품구분&lt;/option&gt;
+                &lt;option value=&quot;&quot; &gt;상품구분&lt;/option&gt;
                 &lt;option value=&quot;A&quot;&gt;앨범&lt;/option&gt;
                 &lt;option value=&quot;B&quot;&gt;책&lt;/option&gt;
                 &lt;option value=&quot;M&quot;&gt;영화&lt;/option&gt;
             &lt;/select&gt;
         &lt;/div&gt;
-        &lt;!--&lt;p class=&quot;fieldError&quot; th:if=&quot;${#fields.hasErrors('dtype')}&quot; th:errors=&quot;*{dtype}&quot;&gt;Incorrect date&lt;/p&gt;--&gt;
+
+       &lt;!-- &lt;select class=&quot;form-group form-control&quot;&gt;
+            &lt;th:block th:each=&quot;num : ${#numbers.sequence(1,10)}&quot;&gt;
+                &lt;option th:value=&quot;${num}&quot; th:text=&quot;${num}&quot; th:selected=&quot;${num} == ${itemForm.dtype}&quot;&gt;
+                &lt;/option&gt;
+            &lt;/th:block&gt;
+        &lt;/select&gt;--&gt;
+
+        &lt;!-- id --&gt;
+        &lt;input type=&quot;hidden&quot; th:field=&quot;*{id}&quot; /&gt;
 
         &lt;div class=&quot;form-group&quot;&gt;
             &lt;label th:for=&quot;name&quot;&gt;상품명&lt;/label&gt;
@@ -592,14 +535,67 @@ dtype에 따라 화면과 벨리데이션할 필드가 동적으로 나뉘게 �
 &lt;/html&gt;
 
 </code></pre>
-<h5 id="상품구분을-선택하기-전-초기화면">상품구분을 선택하기 전 초기화면<a class="anchor" href="#상품구분을-선택하기-전-초기화면">#</a></h5>
-<p><img src="/images/develop/backend/using-springboot-jpa/product-register-development/img-001.png" alt="contact"></p>
-<h5 id="상품구분을-앨범-선택">상품구분을 앨범 선택<a class="anchor" href="#상품구분을-앨범-선택">#</a></h5>
-<p><img src="/images/develop/backend/using-springboot-jpa/product-register-development/img-002.png" alt="contact"></p>
-<h5 id="상품구분을-책-선택">상품구분을 책 선택<a class="anchor" href="#상품구분을-책-선택">#</a></h5>
-<p><img src="/images/develop/backend/using-springboot-jpa/product-register-development/img-003.png" alt="contact"></p>
-<h5 id="상품구분을-영화-선택">상품구분을 영화 선택<a class="anchor" href="#상품구분을-영화-선택">#</a></h5>
-<p><img src="/images/develop/backend/using-springboot-jpa/product-register-development/img-004.png" alt="contact"></p>
+<h4 id="itemcontrollerjava-1">ItemController.java<a class="anchor" href="#itemcontrollerjava-1">#</a></h4>
+<blockquote>
+<p>/items/{itemId}/edit Post(수정) 요청을 처리할 리퀘스트 매핑 메서드 추가</p>
+</blockquote>
+<pre><code>...
+    @PostMapping(&quot;items/{itemId}/edit&quot;)
+    public String updateItem(@ModelAttribute(&quot;form&quot;) ItemForm itemForm){
+
+        Item item = itemService.transItemEntity(itemForm);
+        itemService.saveItem(item);
+        
+        return &quot;redirect:items&quot;;
+    }
+}
+
+...
+</code></pre>
+<blockquote>
+<p>ItemService.java</p>
+</blockquote>
+<pre><code>public Item transItemEntity(ItemForm itemForm) {
+        Item item = null;
+        String dtype = itemForm.getDtype();
+
+        if(&quot;A&quot;.equals(itemForm.getDtype())){
+            item = new Album().createItem(itemForm); // 앨범 생성
+        }else if(&quot;B&quot;.equals(itemForm.getDtype())){
+            item = new Book().createItem(itemForm); // 책 생성
+        }else if(&quot;M&quot;.equals(itemForm.getDtype())){
+            item = new Movie().createItem(itemForm);  // 영화 생성
+        }else{
+            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
+        }
+
+        return item;
+    }
+</code></pre>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-edit-development/img-001.png" alt="contact"></p>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-edit-development/img-002.png" alt="contact"></p>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-edit-development/img-003.png" alt="contact"></p>
+<p><img src="/images/develop/backend/using-springboot-jpa/product-edit-development/img-004.png" alt="contact"></p>
+<blockquote>
+<p>또한 URI에 Id 값을 포함하여 호출할때, 실제 운영을 할 때에는 보안 이슈가 있기때문에
+당연히 해당 사용자가 해당 상품의 Id 값의 권한이 있는지 확인 하여야 합니다.</p>
+</blockquote>
+<blockquote>
+<p>ItemRepository.java</p>
+</blockquote>
+<pre><code>public void save(Item item){
+        System.out.println(item.getId());
+        System.out.println(item.getId() == null);
+        if (item.getId() == null){
+            em.persist(item);
+        }else{
+            em.merge(item);
+        }
+    }
+</code></pre>
+<blockquote>
+<p>다음 강좌에는 JPA에서 어떤 방법으로 수정을 처리 하는지 또 또 변경감지와 병합 두가지 방법이 어떤 차이가 있는지 알아보겠습니다.</p>
+</blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
 <h4 id="설정">설정<a class="anchor" href="#설정">#</a></h4>
@@ -967,33 +963,60 @@ public class OrderItem {
 </blockquote>
 <details title="펼치기/숨기기">
  	<summary> Delivery.java </summary>
-<pre><code>package jpabook.jpashop.domain;
+<pre><code>package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.dto.ItemForm;
+import jpabook.jpashop.exception.NotEnoughStockException;
+import jpabook.jpashop.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = &quot;dtype&quot;)
 @Getter @Setter
-public class Delivery {
-
-    public Delivery() {
-    }
+public abstract class Item {
 
     @Id @GeneratedValue
-    @Column(name = &quot;delivery_id&quot;)
+    @Column(name = &quot;item_id&quot;)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY  // ToOne은 fetch = FetchType.LAZY로 꼭 !!! 세팅
-            , mappedBy = &quot;delivery&quot;)
-    private Order order;
+    protected String name;
+    protected int price;
+    protected int stockQuantity;
 
-    @Embedded
-    private Address address;
+    @ManyToMany(mappedBy = &quot;items&quot;)
+    private List&lt;Category&gt; categories = new ArrayList&lt;&gt;();
 
-    @Enumerated(EnumType.STRING)
-    private DeliveryStatus status; //READY, COMP
+    //==비즈니스 로직==//
+
+    /**
+     * 재고 증가
+     * @param quantity
+     */
+    public void addStock(int quantity){
+        this.stockQuantity += quantity;
+    }
+
+    /**
+     * 재고 감소
+     * @param quantity
+     */
+    public void removeStock(int quantity){
+        int restStock = this.stockQuantity - quantity;
+
+        if (restStock &lt; 0) {
+            throw new NotEnoughStockException(&quot;need more stock&quot;);
+        }
+        this.stockQuantity = restStock;
+    }
+
+    public abstract Item createItem(ItemForm itemForm);
 
 }
 </code></pre>
@@ -1063,6 +1086,7 @@ public abstract class Item {
  	<summary> Album.java </summary>
 <pre><code>package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.dto.ItemForm;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -1075,6 +1099,16 @@ import javax.persistence.Entity;
 public class Album extends Item{
     private String artist;
     private String etc;
+
+    @Override
+    public Item createItem(ItemForm itemForm) {
+        this.setName(itemForm.getName());
+        this.setPrice(itemForm.getPrice());
+        this.setStockQuantity(itemForm.getStockQuantity());
+        this.setArtist(itemForm.getArtist());
+        this.setEtc(itemForm.getEtc());
+        return this;
+    }
 }
 </code></pre>
 </details> 
@@ -1085,6 +1119,7 @@ public class Album extends Item{
  	<summary> Book.java </summary>
 <pre><code>package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.dto.ItemForm;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -1093,10 +1128,20 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue(&quot;B&quot;) //구분값 B
-@Getter @Setter
+@Getter
 public class Book extends Item{
     private String author;
     private String isbn;
+
+    @Override
+    public Item createItem(ItemForm itemForm) {
+        super.name = itemForm.getName();
+        super.price = itemForm.getPrice();
+        super.stockQuantity = itemForm.getStockQuantity();
+        this.isbn = itemForm.getIsbn();
+        this.author = itemForm.getAuthor();
+        return this;
+    }
 }
 </code></pre>
 </details> 
@@ -1107,18 +1152,28 @@ public class Book extends Item{
  	<summary> Movie.java </summary>
 <pre><code>package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.dto.ItemForm;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue(&quot;M&quot;) //구분값 M
-@Getter @Setter
+@Getter
 public class Movie extends Item{
     private String director;
     private String actor;
+
+    @Override
+    public Item createItem(ItemForm itemForm) {
+        super.name = itemForm.getName();
+        super.price = itemForm.getPrice();
+        super.stockQuantity = itemForm.getStockQuantity();
+        this.director = itemForm.getDirector();
+        this.actor = itemForm.getActor();
+        return this;
+    }
 }
 </code></pre>
 </details> 
@@ -1227,7 +1282,6 @@ public class MemberRepository {
         return em.createQuery(&quot;select m from Member m where m.name = :name&quot;, Member.class)
                 .setParameter(&quot;name&quot;,name).getResultList();
     }
-
 }
 </code></pre>
 </details> 
@@ -1246,8 +1300,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-
 
 @Service
 @Transactional(readOnly = true)
@@ -1568,8 +1620,6 @@ public class OrderService {
         return order.getId();
     }
 
-
-
     /**
      * 취소
      */
@@ -1578,9 +1628,7 @@ public class OrderService {
         Order order = orderRepository.findOne(orderId);
         // 주문 취소
         order.cancel();
-
     }
-
 
     /**
      * 검색
@@ -1780,6 +1828,82 @@ public class MemberController {
 }
 </code></pre>
 </details> 
+<blockquote>
+<p>java/jpabook/jpashop/controller/ItemController.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> ItemController.java </summary>
+<pre><code>package jpabook.jpashop.controller;
+
+import jpabook.jpashop.domain.item.Album;
+import jpabook.jpashop.domain.item.Book;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.domain.item.Movie;
+import jpabook.jpashop.dto.ItemForm;
+import jpabook.jpashop.exception.NotHasDiscriminator;
+import jpabook.jpashop.service.ItemService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@Controller
+@RequiredArgsConstructor
+@Slf4j
+public class ItemController {
+
+    private final ItemService itemService;
+
+    @GetMapping(&quot;/items/new&quot;)
+    public String newItemsForm(Model modal){
+        log.info(&quot;call get /items/new&quot;);
+
+        modal.addAttribute(&quot;itemForm&quot;, new ItemForm());
+        return &quot;items/newItemForm&quot;;
+    }
+    @PostMapping(&quot;/items/new&quot;)
+    public String newItems(@Valid ItemForm itemForm, BindingResult result, Model modal){
+        log.info(&quot;call post members/new&quot;);
+
+        if(result.hasErrors()){
+            return &quot;items/newItemForm&quot;;
+        }
+
+        Item item = null;
+        if(&quot;A&quot;.equals(itemForm.getDtype())){
+            item = new Album().createItem(itemForm); // 앨범 생성
+        }else if(&quot;B&quot;.equals(itemForm.getDtype())){
+            item = new Book().createItem(itemForm); // 책 생성
+        }else if(&quot;M&quot;.equals(itemForm.getDtype())){
+            item = new Movie().createItem(itemForm);  // 영화 생성
+        }else{
+            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
+        }
+
+        itemService.saveItem(item);
+
+        return  &quot;redirect:/items&quot;;
+
+    }
+
+    @GetMapping(&quot;/items&quot;)
+    public String itemList(Model modal){
+        log.info(&quot;call get /items&quot;);
+
+        List&lt;Item&gt; items = itemService.findItems();
+
+        modal.addAttribute(&quot;items&quot;, items);
+        return &quot;items/itemList&quot;;
+    }
+}
+</code></pre>
+</details> 
 <h4 id="뷰">뷰<a class="anchor" href="#뷰">#</a></h4>
 <blockquote>
 <p>resources/templates/fragments/bodyHeader.html</p>
@@ -1966,6 +2090,244 @@ public class MemberController {
 &lt;/html&gt;
 </code></pre>
 </details> 
+<blockquote>
+<p>resources/templates/items/newItemForm.html</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> newItemForm.html </summary>
+<pre><code>&lt;!DOCTYPE HTML&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
+&lt;script src=&quot;https://code.jquery.com/jquery-latest.min.js&quot;&gt;&lt;/script&gt;
+&lt;style&gt;
+    .hidden{
+        display: none;
+        width : inherit;
+        height : 400px;
+    }
+     .fieldError {
+         border-color: #bd2130;
+     }
+&lt;/style&gt;
+&lt;script&gt;
+    $(document).ready(function(){
+        fn_change_dtype();
+    });
+
+    let fn_submit = function() {
+        let dtype = $(&quot;#dtype&quot;).val();
+        $(&quot;.fieldError&quot;).removeClass(&quot;fieldError&quot;);
+        $(&quot;.errorMsg&quot;).remove();
+
+        if(dtype == ''){
+            //alert(&quot;상품구분을 선택하세요.&quot;);
+            $(&quot;#dtype&quot;).addClass(&quot;fieldError&quot;);
+            $(&quot;#dtype&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;상품 구분을 선택해 주세요.&lt;/p&gt;&quot;);
+            return false;
+        }
+        if($.trim($(&quot;#name&quot;).val()) == &quot;&quot;){
+            //alert(&quot;이름을 입력하세요.&quot;);
+            $(&quot;#name&quot;).addClass(&quot;fieldError&quot;);
+            $(&quot;#name&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;상품 이름을 입력하세요.&lt;/p&gt;&quot;);
+            return false;
+        }
+        if($.trim($(&quot;#stockQuantity&quot;).val()) == &quot;&quot; || $(&quot;#stockQuantity&quot;).val() == 0){
+            //alert(&quot;수량을 1이상 입력하세요.&quot;);
+            $(&quot;#stockQuantity&quot;).addClass(&quot;fieldError&quot;);
+            $(&quot;#stockQuantity&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;수량을 1이상 입력하세요.&lt;/p&gt;&quot;);
+            return false;
+        }
+
+        if(dtype == 'A'){
+            if($.trim($(&quot;#artist&quot;).val()) == &quot;&quot;){
+                //alert(&quot;아티스트를 입력하세요.&quot;);
+                $(&quot;#artist&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#artist&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;아티스트를 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+            if($.trim($(&quot;#etc&quot;).val()) == &quot;&quot;){
+                //alert(&quot;ETC를 입력하세요.&quot;);
+                $(&quot;#etc&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#etc&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;ETC를 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+        }else if(dtype == 'B'){
+            if($.trim($(&quot;#author&quot;).val()) == &quot;&quot;){
+                //alert(&quot;저자를 입력하세요.&quot;);
+                $(&quot;#author&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#author&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;저자를 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+            if($.trim($(&quot;#isbn&quot;).val()) == &quot;&quot;){
+                //alert(&quot;ISBN을 입력하세요.&quot;);
+                $(&quot;#isbn&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#isbn&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;ISBN을 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+
+        }else if(dtype == 'M'){
+            if($.trim($(&quot;#director&quot;).val()) == &quot;&quot;){
+                //alert(&quot;감독을 입력하세요.&quot;);
+                $(&quot;#director&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#director&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;감독을 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+            if($.trim($(&quot;#actor&quot;).val()) == &quot;&quot;){
+                //alert(&quot;배우를 입력하세요.&quot;);
+                $(&quot;#actor&quot;).addClass(&quot;fieldError&quot;);
+                $(&quot;#actor&quot;).parent().append(&quot;&lt;p class='errorMsg'&gt;배우를 입력하세요.&lt;/p&gt;&quot;);
+                return false;
+            }
+        }
+
+        $(&quot;#itemForm&quot;).submit();
+
+    };
+
+    let fn_change_dtype = function() {
+        let dtype = $(&quot;#dtype&quot;).val();
+        $(&quot;#itemForm&quot;)[0].reset();
+        $(&quot;#dtype&quot;).val(dtype);
+
+        //초기화
+        $(&quot;.hidden&quot;).css(&quot;display&quot;,&quot;none&quot;);
+
+        if(dtype == ''){
+            return false;
+        }else if(dtype == 'A'){
+            $(&quot;#sub-form-A&quot;).css(&quot;display&quot;,&quot;inline&quot;);
+        }else if(dtype == 'B'){
+            $(&quot;#sub-form-B&quot;).css(&quot;display&quot;,&quot;inline&quot;);
+        }else if(dtype == 'M'){
+            $(&quot;#sub-form-M&quot;).css(&quot;display&quot;,&quot;inline&quot;);
+        }
+
+
+    };
+&lt;/script&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot;/&gt;
+
+    &lt;form id=&quot;itemForm&quot; th:action=&quot;@{/items/new}&quot; th:object=&quot;${itemForm}&quot; method=&quot;post&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label th:for=&quot;dtype&quot;&gt;상품구분&lt;/label&gt;
+            &lt;select th:field=&quot;*{dtype}&quot; class=&quot;form-control&quot; onchange=&quot;fn_change_dtype()&quot;&gt;
+                &lt;option value=&quot;&quot;&gt;상품구분&lt;/option&gt;
+                &lt;option value=&quot;A&quot;&gt;앨범&lt;/option&gt;
+                &lt;option value=&quot;B&quot;&gt;책&lt;/option&gt;
+                &lt;option value=&quot;M&quot;&gt;영화&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;!--&lt;p class=&quot;fieldError&quot; th:if=&quot;${#fields.hasErrors('dtype')}&quot; th:errors=&quot;*{dtype}&quot;&gt;Incorrect date&lt;/p&gt;--&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label th:for=&quot;name&quot;&gt;상품명&lt;/label&gt;
+            &lt;input type=&quot;text&quot; th:field=&quot;*{name}&quot; class=&quot;form-control&quot; placeholder=&quot;이름을 입력하세요&quot;&gt;
+        &lt;/div&gt;
+        &lt;!--&lt;p class=&quot;fieldError&quot; th:if=&quot;${#fields.hasErrors('name')}&quot; th:errors=&quot;*{name}&quot;&gt;Incorrect date&lt;/p&gt;--&gt;
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label th:for=&quot;price&quot;&gt;가격&lt;/label&gt;
+            &lt;input type=&quot;number&quot; th:field=&quot;*{price}&quot; class=&quot;form-control&quot; placeholder=&quot;가격을 입력하세요&quot;&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label th:for=&quot;stockQuantity&quot;&gt;수량&lt;/label&gt;
+            &lt;input type=&quot;number&quot; th:field=&quot;*{stockQuantity}&quot; class=&quot;form-control&quot; placeholder=&quot;수량을 입력하세요&quot;&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;sub-form-A&quot; class=&quot;sub-form hidden&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;artist&quot;&gt;아티스트&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{artist}&quot; class=&quot;form-control&quot; placeholder=&quot;아티스트를 입력하세요&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;etc&quot;&gt;ETC&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{etc}&quot; class=&quot;form-control&quot; placeholder=&quot;ETC를 입력하세요&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;sub-form-B&quot; class=&quot;sub-form hidden&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;author&quot;&gt;저자&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{author}&quot; class=&quot;form-control&quot; placeholder=&quot;저자를 입력하세요&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;isbn&quot;&gt;ISBN&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{isbn}&quot; class=&quot;form-control&quot; placeholder=&quot;ISBN을 입력하세요&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;sub-form-M&quot; class=&quot;sub-form hidden&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;director&quot;&gt;감독&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{director}&quot; class=&quot;form-control&quot; placeholder=&quot;감독을 입력하세요&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;label th:for=&quot;actor&quot;&gt;배우&lt;/label&gt;
+                &lt;input type=&quot;text&quot; th:field=&quot;*{actor}&quot; class=&quot;form-control&quot; placeholder=&quot;배우를 입력하세요&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; onclick=&quot;fn_submit();&quot;&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;br/&gt;
+    &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
+
+&lt;/div&gt; &lt;!-- /container --&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</details> 
+<blockquote>
+<p>resources/templates/items/itemList.html</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> itemList.html </summary>
+<pre><code>&lt;!DOCTYPE HTML&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot;/&gt;
+
+    &lt;div&gt;
+        &lt;table class=&quot;table table-striped&quot;&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;상품명&lt;/th&gt;
+                &lt;th&gt;가격&lt;/th&gt;
+                &lt;th&gt;재고수량&lt;/th&gt;
+                &lt;th&gt;&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr th:each=&quot;item : ${items}&quot;&gt;
+                &lt;td th:text=&quot;${item.id}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.name}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.price}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.stockQuantity}&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;a href=&quot;#&quot; th:href=&quot;@{/items/{id}/edit (id=${item.id})}&quot; class=&quot;btn btn-primary&quot; role=&quot;button&quot;&gt;수정&lt;/a&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+    &lt;div th:replace=&quot;fragments/footer :: footer&quot;/&gt;
+
+&lt;/div&gt; &lt;!-- /container --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</details> 
 <h4 id="exception">Exception<a class="anchor" href="#exception">#</a></h4>
 <blockquote>
 <p>java/jpabook/jpashop/exception/NotEnoughStockException.java</p>
@@ -1992,6 +2354,36 @@ public class NotEnoughStockException extends RuntimeException{
     }
 
     protected NotEnoughStockException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/exception/NotHasDiscriminator.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> NotHasDiscriminator.java </summary>
+<pre><code>package jpabook.jpashop.exception;
+
+public class NotHasDiscriminator extends RuntimeException{
+    public NotHasDiscriminator() {
+        super();
+    }
+
+    public NotHasDiscriminator(String message) {
+        super(message);
+    }
+
+    public NotHasDiscriminator(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public NotHasDiscriminator(Throwable cause) {
+        super(cause);
+    }
+
+    protected NotHasDiscriminator(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }
@@ -2312,16 +2704,16 @@ class OrderServiceTest {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-list-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-register-development/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 회원 목록 화면 개발</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 상품 등록 화면 개발</span>
     </a>
   
 
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-product-edit-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-list-development/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 상품 수정 화면 개발</span>
+      <span class="pagination__title" >[스프링부트 JPA 활용] 상품 목록 화면 개발</span>
     </a>
   
 </div>
@@ -2392,13 +2784,13 @@ class OrderServiceTest {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 상품 등록 화면 개발</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 상품 수정 화면 개발</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
     <li><a href="#홈-화면과-레이아웃">홈 화면과 레이아웃</a>
       <ul>
-        <li><a href="#상품-등록-화면-개발">상품 등록 화면 개발</a></li>
+        <li><a href="#상품-수정-화면-개발">상품 수정 화면 개발</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
