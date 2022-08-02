@@ -88,7 +88,7 @@
       "datePublished": "2022-07-02 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-07-02 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/member-list-development\/",
-      "wordCount" : "3370",
+      "wordCount" : "3371",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -1310,6 +1310,7 @@ public class OrderService {
     /**
      * 취소
      */
+     @Transactional
     public void cancelOrder(Long orderId){
         // 주문 엔티티 조회
         Order order = orderRepository.findOne(orderId);

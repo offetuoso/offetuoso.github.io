@@ -88,7 +88,7 @@
       "datePublished": "2022-06-13 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-06-13 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/order-logic-test-code\/",
-      "wordCount" : "2753",
+      "wordCount" : "2754",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -1452,6 +1452,7 @@ public class OrderService {
     /**
      * 취소
      */
+     @Transactional
     public void cancelOrder(Long orderId){
         // 주문 엔티티 조회
         Order order = orderRepository.findOne(orderId);

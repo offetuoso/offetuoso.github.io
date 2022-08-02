@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge) | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발 | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)">
+  <meta name="description" content="[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)">
-  <meta property="og:description" content="[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)">
+  <meta property="og:title" content="[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발">
+  <meta property="og:description" content="[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)",
-      "headline" : "[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)",
-      "description" : "[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)",
+      "name" : "[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발",
+      "headline" : "[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발",
+      "description" : "[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -85,10 +85,10 @@
       "accountablePerson" : "",
       "copyrightHolder" : "",
       "copyrightYear" : "2022",
-      "datePublished": "2022-07-24 00:00:00 \u002b0000 UTC",
-      "dateModified" : "2022-07-24 00:00:00 \u002b0000 UTC",
-      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/jpa-dirty-checking-and-merge\/",
-      "wordCount" : "5646",
+      "datePublished": "2022-08-02 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-08-02 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/using-springboot-jpa\/order-list-search-and-cancel\/",
+      "wordCount" : "6256",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -144,7 +144,8 @@
       </li>
     
       <li>
-	        <a  
+	        <a  class="active"
+	         
 	        
 	        
 	        href="javascript:proceedsearch();"
@@ -170,14 +171,14 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)
+		            	[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)
+		       	[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발
             </h1>		
-            <time datetime="2022-07-24 00:00:00 &#43;0000 UTC" class="post__date">2022-07-24</time> 
+            <time datetime="2022-08-02 00:00:00 &#43;0000 UTC" class="post__date">2022-08-02</time> 
           </header>
           <article class="post__content">
               
@@ -251,16 +252,153 @@
 </ul>
 </blockquote>
 <h2 id="홈-화면과-레이아웃">홈 화면과 레이아웃<a class="anchor" href="#홈-화면과-레이아웃">#</a></h2>
-<h3 id="변경-감지dirty-checking-와-병합merge">변경 감지(Dirty Checking) 와 병합(merge)<a class="anchor" href="#변경-감지dirty-checking-와-병합merge">#</a></h3>
+<h3 id="주문-목록-검색-및-취소-개발">주문 목록 검색 및 취소 개발<a class="anchor" href="#주문-목록-검색-및-취소-개발">#</a></h3>
 <hr>
+<h4 id="상품리스트와-상품-검색">상품리스트와 상품 검색<a class="anchor" href="#상품리스트와-상품-검색">#</a></h4>
 <blockquote>
-<p>JPA를 사용하며 변경감지와 병합의 차이를 모르게 되면 많은 시간을 허비하게 되며, 정말 중요한 내용이니 꼭 이해 하고 넘어가야합니다.</p>
+<p>OrderController.java</p>
 </blockquote>
+<pre><code>	@GetMapping(&quot;/orders&quot;)
+    public String orderList(OrderSearch orderSearch, Model modal){
+        log.info(&quot;call get /orderList&quot;);
+
+		// 단순 조회가 목적이라면, 컨트롤러에서 바로 Repository로 호출해도 상관없다.
+        List&lt;Order&gt; orders = orderService.findOrders(orderSearch);
+
+        modal.addAttribute(&quot;orders&quot;, orders);
+
+        return &quot;order/orderList&quot;;
+    }
+</code></pre>
 <blockquote>
-<p>과거 Order 엔티티에서 취소를 구현했을때, 값을 수정하였지만 따로 업데이트에 대한 쿼리를 실행하지 않았지만 커밋 시점에 update가 되었던것을 확인 했었습니다.</p>
+<p>resources/templates/order/orderList.html</p>
 </blockquote>
+<pre><code>&lt;!DOCTYPE HTML&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head th:replace=&quot;fragments/header :: header&quot;/&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+
+    &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot;/&gt;
+
+    &lt;div&gt;
+        &lt;div&gt;
+            &lt;form th:object=&quot;${orderSearch}&quot; class=&quot;form-inline&quot;&gt;
+                &lt;div class=&quot;form-group mb-2&quot;&gt;
+                    &lt;input type=&quot;text&quot; th:field=&quot;*{memberName}&quot; class=&quot;form-control&quot; placeholder=&quot;회원명&quot;/&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;form-group mx-sm-1 mb-2&quot;&gt;
+                    &lt;select th:field=&quot;*{orderStatus}&quot; class=&quot;form-control&quot;&gt;
+                        &lt;option value=&quot;&quot;&gt;주문상태&lt;/option&gt;
+                        &lt;option th:each=&quot;status : ${T(jpabook.jpashop.domain.OrderStatus).values()}&quot;
+                                th:value=&quot;${status}&quot;
+                                th:text=&quot;${status}&quot;&gt;option
+                        &lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+                &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary mb-2&quot;&gt;검색&lt;/button&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+
+        &lt;table class=&quot;table table-striped&quot;&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;회원명&lt;/th&gt;
+                &lt;th&gt;대표상품 이름&lt;/th&gt;
+                &lt;th&gt;대표상품 주문가격&lt;/th&gt;
+                &lt;th&gt;대표상품 주문수량&lt;/th&gt;
+                &lt;th&gt;상태&lt;/th&gt;
+                &lt;th&gt;일시&lt;/th&gt;
+                &lt;th&gt;&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr th:each=&quot;item : ${orders}&quot;&gt;
+                &lt;td th:text=&quot;${item.id}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.member.name}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.orderItems[0].item.name}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.orderItems[0].orderPrice}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.orderItems[0].count}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.status}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.orderDate}&quot;&gt;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;a th:if=&quot;${item.status.name() == 'ORDER'}&quot; href=&quot;#&quot; th:href=&quot;'javascript:cancel('+${item.id}+')'&quot;
+                       class=&quot;btn btn-danger&quot;&gt;CANCEL&lt;/a&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+    &lt;div th:replace=&quot;fragments/footer :: footer&quot;/&gt;
+
+&lt;/div&gt; &lt;!-- /container --&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+    function cancel(id) {
+        var form = document.createElement(&quot;form&quot;);
+        form.setAttribute(&quot;method&quot;, &quot;post&quot;);
+        form.setAttribute(&quot;action&quot;, &quot;/orders/&quot; + id + &quot;/cancel&quot;);
+
+        console.log(form);
+
+        document.body.appendChild(form);
+
+
+        form.submit();
+    }
+&lt;/script&gt;
+&lt;/html&gt;
+
+</code></pre>
 <blockquote>
-<p>JPA에서는 플러시를 할때 변경 감지가 일어납니다.</p>
+<p>OrderController.java</p>
+</blockquote>
+<pre><code>	@PostMapping(&quot;/orders/{orderId}/cancel&quot;)
+    public String cancelOrder(@PathVariable(name = &quot;orderId&quot;) Long orderId){
+        log.info(&quot;call get /orderList&quot;);
+
+        orderService.cancelOrder(orderId);
+
+        return  &quot;redirect:/orders&quot;;
+    }
+</code></pre>
+<blockquote>
+<p>OrderService.java</p>
+</blockquote>
+<pre><code>    /**
+     * 취소
+     */
+    @Transactional
+    public void cancelOrder(Long orderId){
+        // 주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+        // 주문 취소
+        order.cancel();
+
+    }
+</code></pre>
+<blockquote>
+<p>OrderService.java</p>
+</blockquote>
+<pre><code>    /**
+     * 취소
+     */
+    @Transactional
+    public void cancelOrder(Long orderId){
+        // 주문 엔티티 조회
+        Order order = orderRepository.findOne(orderId);
+        // 주문 취소
+        order.cancel();
+
+    }
+</code></pre>
+<blockquote>
+<p>Order.java</p>
 </blockquote>
 <pre><code>    //==비즈니스 로직==//
     /**
@@ -278,453 +416,8 @@
             orderItem.cancel();
         }
     }
+    
 </code></pre>
-<blockquote>
-<p>기본 메커니즘은 이렇게 흘러가지만, 문제는 준영속 엔티티일 경우 일어납니다.</p>
-</blockquote>
-<h4 id="준영속-엔티티">준영속 엔티티<a class="anchor" href="#준영속-엔티티">#</a></h4>
-<blockquote>
-<p>영속성 컨텍스트가 더는 관리하지 않는 엔티티를 말합니다. <br></p>
-</blockquote>
-<blockquote>
-<p>여기서는 itemService.saveItem(book)에서 수정을 시도하는 Book객체 입니다. <br>
-Book 객체는 이미 DB에 한번 저장되어서 식별자가 존재 합니다. 이렇게 임의로 만들어낸 엔티티도 기존 식별자를 가지고 있으면 준영속 엔티티로 볼 수 있습니다.</p>
-</blockquote>
-<blockquote>
-<p>ItemService.java</p>
-</blockquote>
-<pre><code>	public Item transItemEntity(ItemForm itemForm) {
-        Item item = null;
-        String dtype = itemForm.getDtype();
-
-        if(&quot;A&quot;.equals(itemForm.getDtype())){
-            item = new Album().createItem(itemForm); 
-        }else if(&quot;B&quot;.equals(itemForm.getDtype())){
-            item = new Book().createItem(itemForm); // 새로운 책 객체 생성 
-        }else if(&quot;M&quot;.equals(itemForm.getDtype())){
-            item = new Movie().createItem(itemForm);  
-        }else{
-            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
-        }
-
-        return item;
-    }
-</code></pre>
-<blockquote>
-<p>Book.java</p>
-</blockquote>
-<pre><code>    @Override
-    public Item createItem(ItemForm itemForm) {
-        this.setId(itemForm.getId()); // 새로운 객체에 식별자 세팅
-        this.setName(itemForm.getName());
-        this.setPrice(itemForm.getPrice());
-        this.setStockQuantity(itemForm.getStockQuantity());
-        this.isbn = itemForm.getIsbn();
-        this.author = itemForm.getAuthor();
-        return this;
-    }
-</code></pre>
-<blockquote>
-<p>준영속 엔티티의 문제는 JPA가 관리하지 않기 때문에 생성된 객체를 변경하여도 변경 감지(Dirty Checking)가 일어나지 않습니다.</p>
-</blockquote>
-<h5 id="준영속-엔티티를-수정하는-2가지-방법">준영속 엔티티를 수정하는 2가지 방법<a class="anchor" href="#준영속-엔티티를-수정하는-2가지-방법">#</a></h5>
-<blockquote>
-<ol>
-<li>변경 감지(Dirty Checking) 기능 사용</li>
-<li>병합 기능 사용</li>
-</ol>
-</blockquote>
-<h5 id="1-변경-감지dirty-checking-기능-사용">1. 변경 감지(Dirty Checking) 기능 사용<a class="anchor" href="#1-변경-감지dirty-checking-기능-사용">#</a></h5>
-<blockquote>
-<p>ItemService.java</p>
-</blockquote>
-<pre><code>	@Transactional
-    public Item updateItem(Long itemId, Item item){
-
-        if(&quot;A&quot;.equals(item.getDtype())){
-            Album findItem = (Album) itemRepository.findOne(itemId);
-            Album param = (Album) item;
-            findItem.setDtype(param.getDtype());
-            findItem.setPrice(param.getPrice());
-            findItem.setName(param.getName());
-            findItem.setStockQuantity(param.getStockQuantity());
-            findItem.setArtist(param.getArtist());
-            findItem.setEtc(param.getEtc());
-
-            return findItem;
-
-        }else if(&quot;B&quot;.equals(item.getDtype())){
-            Book findItem = (Book) itemRepository.findOne(itemId);
-            Book param = (Book) item;
-            findItem.setDtype(param.getDtype());
-            findItem.setPrice(param.getPrice());
-            findItem.setName(param.getName());
-            findItem.setStockQuantity(param.getStockQuantity());
-            findItem.setAuthor(param.getAuthor());
-            findItem.setIsbn(param.getIsbn());
-
-            return findItem;
-
-        }else if(&quot;M&quot;.equals(item.getDtype())){
-            Movie findItem = (Movie) itemRepository.findOne(itemId);
-            Movie param = (Movie) item;
-            findItem.setDtype(param.getDtype());
-            findItem.setPrice(param.getPrice());
-            findItem.setName(param.getName());
-            findItem.setStockQuantity(param.getStockQuantity());
-            findItem.setDirector(param.getDirector());
-            findItem.setActor(param.getActor());
-
-            return findItem;
-
-        }else{
-            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
-        }
-    }
-
-</code></pre>
-<blockquote>
-<p>itemRepository.findOne()로 불러와 영속성 컨텍스트에 퍼올리고 세팅을 하기 때문에 따로 저장이나 업데이트를 처리하지 않아도 트랜잭션이 커밋되는 시점에 플러시가 일어나며 변경감지를 통해 업데이트 됩니다.</p>
-</blockquote>
-<h4 id="변경-감지dirty-checking">변경 감지(Dirty Checking)<a class="anchor" href="#변경-감지dirty-checking">#</a></h4>
-<blockquote>
-<p>병합은 준영속 상태의 엔티티를 영속 상태로 변경할 때 사용하는 기능입니다.</p>
-</blockquote>
-<blockquote>
-<p>ItemService.java</p>
-</blockquote>
-<pre><code>    @Transactional
-    public Item saveItem(Item item){
-        itemRepository.save(item);
-        return item;
-    }
-
-</code></pre>
-<blockquote>
-<p>ItemRepository.java</p>
-</blockquote>
-<pre><code> public void save(Item item){
-        if (item.getId() == null){
-            em.persist(item);
-        }else{
-            em.merge(item);
-        }
-    }
-</code></pre>
-<blockquote>
-<p>머지(Merge)는 단순하게 설명하면 위에서 작성한 아래의 코드를 em.merge(item);로 변환해줍니다.</p>
-</blockquote>
-<blockquote>
-<p>ItemService.java</p>
-</blockquote>
-<pre><code>	@Transactional
-    public Item updateItem(Long itemId, Item item){
-
-        if(&quot;A&quot;.equals(item.getDtype())){
-            Album findItem = (Album) itemRepository.findOne(itemId);
-            Album param = (Album) item;
-            findItem.setDtype(param.getDtype());
-            findItem.setPrice(param.getPrice());
-            findItem.setName(param.getName());
-            findItem.setStockQuantity(param.getStockQuantity());
-            findItem.setArtist(param.getArtist());
-            findItem.setEtc(param.getEtc());
-
-            return findItem;
-
-        }else if(&quot;B&quot;.equals(item.getDtype())){
-            Book findItem = (Book) itemRepository.findOne(itemId);
-            Book param = (Book) item;
-            findItem.setDtype(param.getDtype());
-            findItem.setPrice(param.getPrice());
-            findItem.setName(param.getName());
-            findItem.setStockQuantity(param.getStockQuantity());
-            findItem.setAuthor(param.getAuthor());
-            findItem.setIsbn(param.getIsbn());
-
-            return findItem;
-
-        }else if(&quot;M&quot;.equals(item.getDtype())){
-            Movie findItem = (Movie) itemRepository.findOne(itemId);
-            Movie param = (Movie) item;
-            findItem.setDtype(param.getDtype());
-            findItem.setPrice(param.getPrice());
-            findItem.setName(param.getName());
-            findItem.setStockQuantity(param.getStockQuantity());
-            findItem.setDirector(param.getDirector());
-            findItem.setActor(param.getActor());
-
-            return findItem;
-
-        }else{
-            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
-        }
-    }
-
-</code></pre>
-<blockquote>
-<p>영속성 컨텍스트 또는 DB를 뒤져가지고 같은 식별자로 찾고 파라미터로 넘어온 엔티티로 바꿔치합니다.</p>
-</blockquote>
-<blockquote>
-<p>ItemRepository.java</p>
-</blockquote>
-<pre><code>    public void save(Item item){
-        if (item.getId() == null){
-            em.persist(item);
-        }else{
-            em.merge(item); // item 파라미터로 변경됨
-        }
-    }
-</code></pre>
-<blockquote>
-<p>그런데 두개의 방법에 매커니즘의 차이가 있습니다.</p>
-</blockquote>
-<p><img src="/images/develop/backend/using-springboot-jpa/jpa-dirty-checking-and-merge/img-001.png" alt="contact"></p>
-<h5 id="병합-동작-방식">병합 동작 방식<a class="anchor" href="#병합-동작-방식">#</a></h5>
-<blockquote>
-<ol>
-<li>merge()를 실행한다.</li>
-<li>파라미터로 넘어온 준영속 엔티티의 식별자 값으로 1차 캐이세어 엔테테 조회.</li>
-</ol>
-<ul>
-<li>우선 1차 캐시에서 찾고 없으면 DB에서 조회하여 1차 캐시에 저장</li>
-</ul>
-<ol start="3">
-<li>조회한 영속 엔티티(mergeMember)에 member 엔티티의 값을 채워 넣는다.</li>
-</ol>
-<ul>
-<li>이때 mergeMember의 &ldquo;회원1&rdquo; 이라는 이름이 &ldquo;회원명변경&rdquo; 으로 변경됨.</li>
-</ul>
-<ol start="4">
-<li>영속 상태인 mergeMember를 반환한다.</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>ItemRepository.java</p>
-</blockquote>
-<pre><code>	public void save(Item item){
-        if (item.getId() == null){
-            em.persist(item);
-        }else{
-            //merge는 영속성 컨텍스트가 관리 !!
-            Item merge = em.merge(item); //item은 영속컨텍스트가 관리 X
-            
-        }
-    }
-</code></pre>
-<h5 id="병합시-동작방식을-간단히-정리">병합시 동작방식을 간단히 정리<a class="anchor" href="#병합시-동작방식을-간단히-정리">#</a></h5>
-<blockquote>
-<ol>
-<li>준영속 엔티티의 식별자 값으로 영속 엔티티를 조회한다.</li>
-<li>영속 엔티티의 값을 준영속 엔티티의 값으로 모두 교체한다.(병합한다.)</li>
-<li>트랜잭션 커밋 시점에 변경 감지 기능이 동작해서 데이터베이스에 UPDATE SQL이 실행</li>
-</ol>
-</blockquote>
-<h3 id="병합-사용시-주의사항">병합 사용시 주의사항<a class="anchor" href="#병합-사용시-주의사항">#</a></h3>
-<blockquote>
-<p>변경감지 기능을 사용하면 원하는 속성만 선택해서 변경할 수 있지만, <mark>병합을 사용하면 모든 속성이 변경 됩니다.</mark> <br>
-병합 시 값이 없으면 null로 업데이트 할 위험도 있다.(병합은 모든 필드 교체!!)</p>
-</blockquote>
-<blockquote>
-<p>예를 들어 Item은 가격이 한번 책정되면 변경할 수 없다는 요구사항이 있으면, 화면에서 Form에 price의 인풋박스가 없이 업데이트를 진행 하였다고 생각해봅시다.</p>
-</blockquote>
-<pre><code> 		   Book findItem = (Book) itemRepository.findOne(itemId);
-            Book param = (Book) item;
-            findItem.setDtype(param.getDtype());
-            findItem.setPrice(param.getPrice()); //인풋에서 컬럼이 제거되고 Submit 되어 null 값 전달됨
-            findItem.setName(param.getName());
-            findItem.setStockQuantity(param.getStockQuantity());
-            findItem.setAuthor(param.getAuthor());
-            findItem.setIsbn(param.getIsbn());
-
-            return findItem;
-
-</code></pre>
-<blockquote>
-<p>병합은 모든 컬럼을 업데이트 하기 때문에 null로 넘어온 값 마저도 업데이트 하게됩니다.</p>
-</blockquote>
-<h5 id="setter-보다-entity의-method로-사용">Setter 보다 Entity의 method로 사용<a class="anchor" href="#setter-보다-entity의-method로-사용">#</a></h5>
-<blockquote>
-<p>또한</p>
-</blockquote>
-<blockquote>
-<p>ItemService.java</p>
-</blockquote>
-<pre><code> 		   Book findItem = (Book) itemRepository.findOne(itemId);
-            Book param = (Book) item;
-            
-            /*
-	            findItem.setDtype(param.getDtype());
-	            findItem.setPrice(param.getPrice());
-	            findItem.setName(param.getName());
-	            findItem.setStockQuantity(param.getStockQuantity());
-	            findItem.setAuthor(param.getAuthor());
-	            findItem.setIsbn(param.getIsbn());
-            */
-            findItem.change( param.getDtype()
-                           , param.getPrice()
-                           , param.getName()
-                           , param.getStockQuantity()
-                           , param.getAuthor()
-                           ,param.getIsbn()
-                           )
-
-            return findItem;
-</code></pre>
-<blockquote>
-<p>위와 같이 모두 set()을 이용해 수정하는 것보다 수정이라는 의미를 가지는 메서드를 만들어 사용하면 변경을 엔티티에서 하고 변경지점을 통일 시켜 사방팔방 여러곳에서 수정이 발생되는 것을 막아 유지보수에 조금더 도움을 줄 수 있습니다.</p>
-</blockquote>
-<h5 id="컨트롤러에서-엔티티-생성-지양">컨트롤러에서 엔티티 생성 지양<a class="anchor" href="#컨트롤러에서-엔티티-생성-지양">#</a></h5>
-<pre><code>  @PostMapping(&quot;items/{itemId}/edit&quot;)
-    public String updateItem(@ModelAttribute(&quot;form&quot;) ItemForm itemForm){
-
-        Book book = new Book();
-        book.setId(itemForm.getId());
-        book.setName(itemForm.getName());
-        book.setPrice(itemForm.getPrice());
-        book.setStockQuantity(itemForm.getStockQuantity());
-
-        itemService.updateItem(itemForm.getId(), book);
-
-        return &quot;redirect:items&quot;;
-
-    }
-</code></pre>
-<blockquote>
-<p>이런식으로 컨트롤러에서 새로 엔티티 객체를 새로만들어서 처리 하는 것보다 <br>
-서비스 계층에 식별자와 <mark>변경할 데이터를 명확하게 전달하는게 좋습니다.</mark> (파라미터 or dto)<br><br>
-또 트랜잭션이 있는 서비스 계층에서 영속 상태의 엔티티를 조회하고, 엔티티를 직접 변경합니다.</p>
-</blockquote>
-<pre><code>  @PostMapping(&quot;items/{itemId}/edit&quot;)
-    public String updateItem(@ModelAttribute(&quot;form&quot;) ItemForm itemForm){
-
-        itemService.updateItem(itemForm.getId(), itemForm.getName(), itemForm.getPrice(), itemForm.getStockQuantity());
-
-        return &quot;redirect:items&quot;;
-
-    }
-</code></pre>
-<pre><code>    @Transactional
-    public Item updateItem(Long itemId, String name, int price, int quantity){
-
-	    Book findItem = (Book) itemRepository.findOne(itemId);
-         findItem.change(  price
-                           , name
-                           , quantity
-                         );
-        
-        return findItem;
-     }
-            
-</code></pre>
-<blockquote>
-<p>이런식으로 수정할 파라미터만 받아 수정을 하는 것이 바람직합니다. <br>
-수정할 파라미터가 한눈에 보이기 때문에 유지보수성이 좋아집니다.</p>
-</blockquote>
-<blockquote>
-<p>만약 수정할 파라미터가 많다다면 DTO를 만들어 전달 하여도 됩니다.</p>
-</blockquote>
-<pre><code>    @Transactional
-    public Item updateItem(Long itemId, UpdateItemDto itemDto){
-
-	    Book findItem = (Book) itemRepository.findOne(itemId);
-         findItem.change(itemDto);
-        
-        return findItem;
-     }
-            
-</code></pre>
-<blockquote>
-<p>ItemController.java</p>
-</blockquote>
-<pre><code>@PostMapping(&quot;items/{itemId}/edit&quot;)
-    public String updateItem(@ModelAttribute(&quot;form&quot;) ItemForm itemForm){
-
-        Item item = itemService.transItemEntity(itemForm);
-        //itemService.saveItem(item);
-        itemService.updateItem(itemForm.getId(), itemForm);
-
-        return &quot;redirect:items&quot;;
-
-    }
-</code></pre>
-<blockquote>
-<p>ItemService.java</p>
-</blockquote>
-<pre><code>@Transactional
-    public Item updateItem(Long itemId, ItemForm itemForm){
-
-        if(&quot;A&quot;.equals(itemForm.getDtype())){
-            Album findItem = (Album) itemRepository.findOne(itemId);
-
-            return findItem.changeItem(itemForm);
-
-        }else if(&quot;B&quot;.equals(itemForm.getDtype())){
-            Book findItem = (Book) itemRepository.findOne(itemId);
-
-            return findItem.changeItem(itemForm);
-
-        }else if(&quot;M&quot;.equals(itemForm.getDtype())){
-            Movie findItem = (Movie) itemRepository.findOne(itemId);
-
-
-            return findItem.changeItem(itemForm);
-
-        }else{
-            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
-        }
-    }
-
-</code></pre>
-<blockquote>
-<p>Item.java</p>
-</blockquote>
-<pre><code>  public abstract Item changeItem(ItemForm itemForm);
-</code></pre>
-<blockquote>
-<p>Album.java</p>
-</blockquote>
-<pre><code>    @Override
-    public Item changeItem(ItemForm itemForm) {
-        this.name = itemForm.getName();
-        this.price = itemForm.getPrice();
-        this.stockQuantity = itemForm.getStockQuantity();
-        this.artist= itemForm.getArtist();
-        this.etc = itemForm.getEtc();
-        return this;
-    }
-</code></pre>
-<blockquote>
-<p>Book.java</p>
-</blockquote>
-<pre><code>    @Override
-    public Item changeItem(ItemForm itemForm) {
-        this.name = itemForm.getName();
-        this.price = itemForm.getPrice();
-        this.stockQuantity = itemForm.getStockQuantity();
-        this.author= itemForm.getAuthor();
-        this.isbn = itemForm.getIsbn();
-        return this;
-    }
-</code></pre>
-<blockquote>
-<p>Movie.java</p>
-</blockquote>
-<pre><code>    @Override
-    public Item changeItem(ItemForm itemForm) {
-        this.name = itemForm.getName();
-        this.price = itemForm.getPrice();
-        this.stockQuantity = itemForm.getStockQuantity();
-        this.director = itemForm.getDirector();
-        this.actor = itemForm.getActor();
-        return this;
-    }
-</code></pre>
-<h4 id="결론">결론<a class="anchor" href="#결론">#</a></h4>
-<blockquote>
-<p>merge는 이러한 위험성을 가지고 있기 때문에 <mark>변경감지를 사용하시길 바랍니다.</mark> <br>
-setter보다 엔티티의 메서드를 통해 파라미터를 받아서 <mark>엔티티에서 수정(변경 감지).</mark> <br></p>
-</blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
 <h4 id="설정">설정<a class="anchor" href="#설정">#</a></h4>
@@ -872,7 +565,9 @@ public class Address {
 <pre><code>package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -886,7 +581,7 @@ import java.util.List;
 @Table(name = &quot;orders&quot;)
 public class Order {
 
-    //protected Order() {} //생성자를 사용 불가로 하고 CteateOrder 사용 유도 // @NoArgsConstructor로 대체
+    //protected Order() {}
 
     @Id @GeneratedValue
     @Column(name=&quot;order_id&quot;)
@@ -936,6 +631,11 @@ public class Order {
         order.setMember(member);
         order.setDelivery(delivery);
         for (OrderItem orderItem : orderItems){
+
+
+            System.out.println(
+                    orderItem
+            );
             order.addOrderItem(orderItem);
         }
         order.setStatus(OrderStatus.ORDER);
@@ -1174,6 +874,10 @@ import java.util.List;
 @Getter @Setter
 public abstract class Item {
 
+    protected final static String ALBUM = &quot;음반&quot;;
+    protected final static String BOOK = &quot;책&quot;;
+    protected final static String MOVIE = &quot;영화&quot;;
+
     @Id @GeneratedValue
     @Column(name = &quot;item_id&quot;)
     private Long id;
@@ -1189,6 +893,18 @@ public abstract class Item {
         return dtype;
     }
 
+    public String getDtypeNm() {
+        String dtypeNm = null;
+
+        if(dtype.equals(&quot;A&quot;)){
+            dtypeNm = Item.ALBUM;
+        }else if(dtype.equals(&quot;B&quot;)){
+            dtypeNm = Item.BOOK;
+        }else if(dtype.equals(&quot;M&quot;)){
+            dtypeNm = Item.MOVIE;
+        }
+        return dtypeNm;
+    }
 
     @ManyToMany(mappedBy = &quot;items&quot;)
     private List&lt;Category&gt; categories = new ArrayList&lt;&gt;();
@@ -1219,6 +935,10 @@ public abstract class Item {
     public abstract Item createItem(ItemForm itemForm);
 
     public abstract ItemForm transItemForm();
+
+    public abstract Item changeItem(ItemForm itemForm);
+
+
 
 
     @Override
@@ -1251,7 +971,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue(&quot;A&quot;) //구분값 A
-@Getter @Setter
+@Getter //@Setter setter 지양
 public class Album extends Item{
     private String artist;
     private String etc;
@@ -1283,6 +1003,16 @@ public class Album extends Item{
 
         return itemForm;
     }
+
+    @Override
+    public Item changeItem(ItemForm itemForm) {
+        this.name = itemForm.getName();
+        this.price = itemForm.getPrice();
+        this.stockQuantity = itemForm.getStockQuantity();
+        this.artist= itemForm.getArtist();
+        this.etc = itemForm.getEtc();
+        return this;
+    }
 }
 </code></pre>
 </details> 
@@ -1302,7 +1032,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue(&quot;B&quot;) //구분값 B
-@Getter
+@Getter //@Setter setter 지양
 public class Book extends Item{
     private String author;
     private String isbn;
@@ -1334,6 +1064,16 @@ public class Book extends Item{
 
         return itemForm;
     }
+
+    @Override
+    public Item changeItem(ItemForm itemForm) {
+        this.name = itemForm.getName();
+        this.price = itemForm.getPrice();
+        this.stockQuantity = itemForm.getStockQuantity();
+        this.author= itemForm.getAuthor();
+        this.isbn = itemForm.getIsbn();
+        return this;
+    }
 }
 </code></pre>
 </details> 
@@ -1346,13 +1086,14 @@ public class Book extends Item{
 
 import jpabook.jpashop.dto.ItemForm;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue(&quot;M&quot;) //구분값 M
-@Getter
+@Getter //@Setter setter 지양
 public class Movie extends Item{
     private String director;
     private String actor;
@@ -1382,6 +1123,16 @@ public class Movie extends Item{
         itemForm.setActor(movie.getActor());
 
         return itemForm;
+    }
+
+    @Override
+    public Item changeItem(ItemForm itemForm) {
+        this.name = itemForm.getName();
+        this.price = itemForm.getPrice();
+        this.stockQuantity = itemForm.getStockQuantity();
+        this.director = itemForm.getDirector();
+        this.actor = itemForm.getActor();
+        return this;
     }
 }
 </code></pre>
@@ -1584,7 +1335,7 @@ public class MemberService {
 <details title="펼치기/숨기기">
  	<summary> ItemRepository.java </summary>
 <pre><code>package jpabook.jpashop.repository;
-
+ 	
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.dto.ItemDto;
 import lombok.RequiredArgsConstructor;
@@ -1603,12 +1354,10 @@ public class ItemRepository {
     private final EntityManager em;
 
     public void save(Item item){
-        System.out.println(item.getId());
-        System.out.println(item.getId() == null);
         if (item.getId() == null){
             em.persist(item);
         }else{
-            em.merge(item);
+            Item merge = em.merge(item); //머지는 null도 모두 변경하기 때문에 변경감지로 사용 권장
         }
     }
 
@@ -1655,6 +1404,30 @@ public class ItemService {
     public Item saveItem(Item item){
         itemRepository.save(item);
         return item;
+    }
+
+    @Transactional
+    public Item updateItem(Long itemId, ItemForm itemForm){
+
+        if(&quot;A&quot;.equals(itemForm.getDtype())){
+            Album findItem = (Album) itemRepository.findOne(itemId);
+
+            return findItem.changeItem(itemForm);
+
+        }else if(&quot;B&quot;.equals(itemForm.getDtype())){
+            Book findItem = (Book) itemRepository.findOne(itemId);
+
+            return findItem.changeItem(itemForm);
+
+        }else if(&quot;M&quot;.equals(itemForm.getDtype())){
+            Movie findItem = (Movie) itemRepository.findOne(itemId);
+
+
+            return findItem.changeItem(itemForm);
+
+        }else{
+            throw new NotHasDiscriminator(&quot;Not Has Discriminator&quot;);
+        }
     }
 
     public List&lt;Item&gt; findItems(){
@@ -1726,10 +1499,10 @@ public class OrderRepository {
         //주문 상태 검색
         if(orderSearch.getOrderStatus() != null){
             if(isFirstCondition){
-                jpql += &quot; where&quot;;
+                jpql += &quot; where &quot;;
                 isFirstCondition = false;
             }else{
-                jpql += &quot; and&quot;;
+                jpql += &quot; and &quot;;
             }
             jpql += &quot;o.status = :status&quot;;
         }
@@ -1737,12 +1510,12 @@ public class OrderRepository {
         //회원 이름 검색
         if(StringUtils.hasText(orderSearch.getMemberName())){
             if(isFirstCondition){
-                jpql += &quot; where&quot;;
+                jpql += &quot; where &quot;;
                 isFirstCondition = false;
             }else{
-                jpql += &quot; and&quot;;
+                jpql += &quot; and &quot;;
             }
-            jpql += &quot;m.name like :name&quot;;
+            jpql += &quot;m.name like concat('%',:name ,'%')&quot;;
         }
 
 
@@ -1812,6 +1585,8 @@ public class OrderRepository {
 
 import jpabook.jpashop.domain.*;
 import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.dto.OrderDto;
+import jpabook.jpashop.dto.OrderSearch;
 import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.OrderRepository;
@@ -1819,6 +1594,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -1857,85 +1633,66 @@ public class OrderService {
         return order.getId();
     }
 
+    @Transactional
+    public Long orderByList(List&lt;OrderDto&gt; orderDtoList) {
+        Member member = null;
+        Item item = null;
+        Delivery delivery = new Delivery();
+        OrderItem [] orderItems = new OrderItem[orderDtoList.size()];
+
+        int idx=0;
+        for (OrderDto orderDto : orderDtoList) {
+
+            // 엔티티 조회
+            member = memberRepository.findOne(orderDto.getMemberId());
+            item = itemRepository.findOne(orderDto.getItemId());
+
+            // 배송정보 생성
+            if(idx == 0){
+                delivery.setAddress(member.getAddress());
+                delivery.setStatus(DeliveryStatus.READY);
+            }
+
+            // 주문상품 생성
+            OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), orderDto.getCount());
+
+            orderItems[idx] = orderItem;
+
+            idx++;
+        }
+
+        // 주문생성
+        Order order = Order.createOrder(member, delivery, orderItems);
+
+        // 주문 저장
+        orderRepository.save(order);
+
+        return order.getId();
+
+    }
+
     /**
      * 취소
      */
+     
      @Transactional
     public void cancelOrder(Long orderId){
         // 주문 엔티티 조회
         Order order = orderRepository.findOne(orderId);
         // 주문 취소
         order.cancel();
+
     }
+
 
     /**
      * 검색
      */
-    /*public List&lt;Order&gt; findOrders(OrderSearch orderSearch){
-        return orderRepository.notifyAll(orderSearch);
-    }*/
-
-}
-</code></pre>
-</details> 
-<blockquote>
-<p>java/jpabook/jpashop/dto/OrderSearch.java</p>
-</blockquote>
-<details title="펼치기/숨기기">
- 	<summary> OrderSearch.java </summary>
-<pre><code>package jpabook.jpashop.dto;
-
-import jpabook.jpashop.domain.OrderStatus;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter @Setter
-public class OrderSearch {
-
-    private String memberName; // 회원 이름
-    private OrderStatus orderStatus; //주문 상태 [ORDER, CANCEL]
-
-}
-</code></pre>
-</details> 
-<blockquote>
-<p>java/jpabook/jpashop/dto/MemberForm.java</p>
-</blockquote>
-<details title="펼치기/숨기기">
- 	<summary> MemberForm.java </summary>
-<pre><code>package jpabook.jpashop.dto;
-
-
-import jpabook.jpashop.domain.Address;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.validation.constraints.NotEmpty;
-
-
-@Getter @Setter
-public class MemberForm {
-
-    @NotEmpty(message = &quot;회원 이름은 필수 입니다.&quot;)
-    private String name;
-
-    private String city;
-    private String street;
-    private String zipcode;
-
-    public Address getAddress(){
-        return new Address(this.city, this.street, this.getZipcode());
+    public List&lt;Order&gt; findOrders(OrderSearch orderSearch){
+        return orderRepository.findAllByString(orderSearch);
     }
 
-    @Override
-    public String toString() {
-        return &quot;MemberForm{&quot; +
-                &quot;name='&quot; + name + '\'' +
-                &quot;, city='&quot; + city + '\'' +
-                &quot;, street='&quot; + street + '\'' +
-                &quot;, zipcode='&quot; + zipcode + '\'' +
-                '}';
-    }
+
 }
 </code></pre>
 </details> 
@@ -2153,12 +1910,10 @@ public class ItemController {
     public String updateItem(@ModelAttribute(&quot;form&quot;) ItemForm itemForm){
 
         Item item = itemService.transItemEntity(itemForm);
-
-        itemService.saveItem(item);
-
+        //itemService.saveItem(item);
+        itemService.updateItem(itemForm.getId(), itemForm);
 
         return &quot;redirect:items&quot;;
-
 
     }
 
@@ -2167,6 +1922,373 @@ public class ItemController {
 }
 </code></pre>
 </details> 
+<blockquote>
+<p>java/jpabook/jpashop/controller/OrderController.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> ItemController.java </summary>
+<pre><code>package jpabook.jpashop.controller;
+
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.domain.Order;
+import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.dto.ItemDto;
+import jpabook.jpashop.dto.ItemForm;
+import jpabook.jpashop.dto.OrderDto;
+import jpabook.jpashop.dto.OrderSearch;
+import jpabook.jpashop.service.ItemService;
+import jpabook.jpashop.service.MemberService;
+import jpabook.jpashop.service.OrderService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+@Controller
+@RequiredArgsConstructor
+@Slf4j
+public class OrderController {
+
+    private final OrderService orderService;
+    private final MemberService memberService;
+    private final ItemService itemService;
+
+    @GetMapping(&quot;/order&quot;)
+    public String orderForm(Model modal){
+        log.info(&quot;call get /order&quot;);
+
+        List&lt;Member&gt; members = memberService.findMembers();
+        //List&lt;Item&gt; items = itemService.findItems();
+
+        List&lt;ItemDto&gt; items = itemService.findItemDtoList();
+
+        System.out.println(items);
+
+        modal.addAttribute(&quot;members&quot;, members);
+        modal.addAttribute(&quot;items&quot;, items);
+        modal.addAttribute(&quot;orderFrom&quot;, new ItemForm());
+        return &quot;order/orderForm&quot;;
+    }
+
+    @PostMapping(&quot;/order&quot;)
+    public String order( OrderDto orderDto
+                        , Model modal){
+        log.info(&quot;call post /order&quot;);
+
+        System.out.println(orderDto);
+
+        //단건 상품 주문
+        //Long order = orderService.order(memberid, itemId, count);
+
+        //여러 상품 주문
+        Long order = orderService.orderByList(orderDto.getOrderDtoList());
+
+        return  &quot;redirect:/orders&quot;;
+
+    }
+
+    @GetMapping(&quot;/orders&quot;)
+    public String orderList(OrderSearch orderSearch, Model modal){
+        log.info(&quot;call get /orderList&quot;);
+
+        List&lt;Order&gt; orders = orderService.findOrders(orderSearch);
+
+        modal.addAttribute(&quot;orders&quot;, orders);
+
+        return &quot;order/orderList&quot;;
+    }
+}
+</code></pre>
+</details> 
+<h4 id="dto">DTO<a class="anchor" href="#dto">#</a></h4>
+<blockquote>
+<p>java/jpabook/jpashop/dto/OrderSearch.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> OrderSearch.java </summary>
+<pre><code>package jpabook.jpashop.dto;
+
+import jpabook.jpashop.domain.OrderStatus;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
+public class OrderSearch {
+
+    private String memberName; // 회원 이름
+    private OrderStatus orderStatus; //주문 상태 [ORDER, CANCEL]
+
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/dto/MemberForm.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> MemberForm.java </summary>
+<pre><code>package jpabook.jpashop.dto;
+
+
+import jpabook.jpashop.domain.Address;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotEmpty;
+
+
+@Getter @Setter
+public class MemberForm {
+
+    @NotEmpty(message = &quot;회원 이름은 필수 입니다.&quot;)
+    private String name;
+
+    private String city;
+    private String street;
+    private String zipcode;
+
+    public Address getAddress(){
+        return new Address(this.city, this.street, this.getZipcode());
+    }
+
+    @Override
+    public String toString() {
+        return &quot;MemberForm{&quot; +
+                &quot;name='&quot; + name + '\'' +
+                &quot;, city='&quot; + city + '\'' +
+                &quot;, street='&quot; + street + '\'' +
+                &quot;, zipcode='&quot; + zipcode + '\'' +
+                '}';
+    }
+}
+</code></pre>
+</details> 
+<blockquote>
+<p>java/jpabook/jpashop/dto/OrderDto.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> OrderDto.java </summary>
+<pre><code>package jpabook.jpashop.dto;
+
+import jpabook.jpashop.domain.item.Item;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter @Setter
+public class OrderDto {
+
+    private long id;
+    private long memberId;
+    private long itemId;
+    private int count;
+
+    private List&lt;OrderDto&gt; orderDtoList;
+
+    @Override
+    public String toString() {
+        return &quot;OrderDto{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, memberId=&quot; + memberId +
+                &quot;, itemId=&quot; + itemId +
+                &quot;, count=&quot; + count +
+                &quot;, orderDtoList=&quot; + orderDtoList +
+                '}';
+    }
+}
+</code></pre>
+<pre><code>
+&gt; java/jpabook/jpashop/dto/ItemDto.java
+
+&lt;details title=&quot;펼치기/숨기기&quot;&gt;
+ 	&lt;summary&gt; OrderDto.java &lt;/summary&gt;
+	 	
+	package jpabook.jpashop.dto;
+	
+	import jpabook.jpashop.domain.item.Item;
+	import lombok.Getter;
+	import lombok.Setter;
+	
+	import javax.validation.constraints.NotEmpty;
+	
+	@Getter @Setter
+	public class ItemDto {
+	    public ItemDto(long id, String name, int price, int stockQuantity, String dtype, String artist, String etc, String author, String isbn, String director, String actor) {
+	        this.id = id;
+	        this.name = name;
+	        this.price = price;
+	        this.stockQuantity = stockQuantity;
+	        this.dtype = dtype;
+	        this.artist = artist;
+	        this.etc = etc;
+	        this.author = author;
+	        this.isbn = isbn;
+	        this.director = director;
+	        this.actor = actor;
+	    }
+	
+	    private long id;
+	
+	    private String name;
+	
+	    private int price;
+	
+	    private int stockQuantity;
+	
+	    private String dtype;
+	
+	    private String dtypeNm;
+	
+	    public String getDtypeNm() {
+	        String dtypeNm = null;
+	
+	        if(dtype.equals(&quot;A&quot;)){
+	            dtypeNm = Item.ALBUM;
+	        }else if(dtype.equals(&quot;B&quot;)){
+	            dtypeNm = Item.BOOK;
+	        }else if(dtype.equals(&quot;M&quot;)){
+	            dtypeNm = Item.MOVIE;
+	        }
+	        return dtypeNm;
+	    }
+	
+	    private String artist;
+	    private String etc;
+	    private String author;
+	    private String isbn;
+	    private String director;
+	    private String actor;
+	
+	    @Override
+	    public String toString() {
+	        return &quot;ItemDto{&quot; +
+	                &quot;id=&quot; + id +
+	                &quot;, name='&quot; + name + '\'' +
+	                &quot;, price=&quot; + price +
+	                &quot;, stockQuantity=&quot; + stockQuantity +
+	                &quot;, dtype='&quot; + dtype + '\'' +
+	                &quot;, dtypeNm='&quot; + dtypeNm + '\'' +
+	                &quot;, artist='&quot; + artist + '\'' +
+	                &quot;, etc='&quot; + etc + '\'' +
+	                &quot;, author='&quot; + author + '\'' +
+	                &quot;, isbn='&quot; + isbn + '\'' +
+	                &quot;, director='&quot; + director + '\'' +
+	                &quot;, actor='&quot; + actor + '\'' +
+	                '}';
+	    }
+	}
+
+</code></pre>
+<blockquote>
+<p>java/jpabook/jpashop/dto/ItemForm.java</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> ItemForm.java </summary>
+<pre><code>package jpabook.jpashop.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.validation.constraints.NotEmpty;
+
+@Getter @Setter
+public class ItemForm {
+    private long id;
+
+    @NotEmpty(message = &quot;상품명은 필수 입니다.&quot;)
+    private String name;
+
+    private int price;
+
+    private int stockQuantity;
+
+    @NotEmpty(message = &quot;상품 구분을 선택해 주세요.&quot;)
+    private String dtype;
+
+    private String artist;
+    private String etc;
+    private String author;
+    private String isbn;
+    private String director;
+    private String actor;
+
+    @Override
+    public String toString() {
+        return &quot;ItemForm{&quot; +
+                &quot;id=&quot; + id +
+                &quot;, name='&quot; + name + '\'' +
+                &quot;, price=&quot; + price +
+                &quot;, stockQuantity=&quot; + stockQuantity +
+                &quot;, dtype='&quot; + dtype + '\'' +
+                &quot;, artist='&quot; + artist + '\'' +
+                &quot;, etc='&quot; + etc + '\'' +
+                &quot;, author='&quot; + author + '\'' +
+                &quot;, isbn='&quot; + isbn + '\'' +
+                &quot;, director='&quot; + director + '\'' +
+                &quot;, actor='&quot; + actor + '\'' +
+                '}';
+    }
+}
+</code></pre>
+<pre><code>
+&gt; java/jpabook/jpashop/dto/ItemForm.java
+
+&lt;details title=&quot;펼치기/숨기기&quot;&gt;
+ 	&lt;summary&gt; ItemForm.java &lt;/summary&gt;
+	 	
+	package jpabook.jpashop.dto;
+	
+	import lombok.Getter;
+	import lombok.Setter;
+	
+	import javax.validation.constraints.NotEmpty;
+	
+	@Getter @Setter
+	public class ItemForm {
+	    private long id;
+	
+	    @NotEmpty(message = &quot;상품명은 필수 입니다.&quot;)
+	    private String name;
+	
+	    private int price;
+	
+	    private int stockQuantity;
+	
+	    @NotEmpty(message = &quot;상품 구분을 선택해 주세요.&quot;)
+	    private String dtype;
+	
+	    private String artist;
+	    private String etc;
+	    private String author;
+	    private String isbn;
+	    private String director;
+	    private String actor;
+	
+	    @Override
+	    public String toString() {
+	        return &quot;ItemForm{&quot; +
+	                &quot;id=&quot; + id +
+	                &quot;, name='&quot; + name + '\'' +
+	                &quot;, price=&quot; + price +
+	                &quot;, stockQuantity=&quot; + stockQuantity +
+	                &quot;, dtype='&quot; + dtype + '\'' +
+	                &quot;, artist='&quot; + artist + '\'' +
+	                &quot;, etc='&quot; + etc + '\'' +
+	                &quot;, author='&quot; + author + '\'' +
+	                &quot;, isbn='&quot; + isbn + '\'' +
+	                &quot;, director='&quot; + director + '\'' +
+	                &quot;, actor='&quot; + actor + '\'' +
+	                '}';
+	    }
+	}
+
+</code></pre>
 <h4 id="뷰">뷰<a class="anchor" href="#뷰">#</a></h4>
 <blockquote>
 <p>resources/templates/fragments/bodyHeader.html</p>
@@ -2563,6 +2685,7 @@ public class ItemController {
             &lt;thead&gt;
             &lt;tr&gt;
                 &lt;th&gt;#&lt;/th&gt;
+                &lt;th&gt;상품구분&lt;/th&gt;
                 &lt;th&gt;상품명&lt;/th&gt;
                 &lt;th&gt;가격&lt;/th&gt;
                 &lt;th&gt;재고수량&lt;/th&gt;
@@ -2572,6 +2695,7 @@ public class ItemController {
             &lt;tbody&gt;
             &lt;tr th:each=&quot;item : ${items}&quot;&gt;
                 &lt;td th:text=&quot;${item.id}&quot;&gt;&lt;/td&gt;
+                &lt;td th:text=&quot;${item.dtypeNm}&quot;&gt;&lt;/td&gt;
                 &lt;td th:text=&quot;${item.name}&quot;&gt;&lt;/td&gt;
                 &lt;td th:text=&quot;${item.price}&quot;&gt;&lt;/td&gt;
                 &lt;td th:text=&quot;${item.stockQuantity}&quot;&gt;&lt;/td&gt;
@@ -2790,6 +2914,205 @@ public class ItemController {
 
 &lt;/div&gt; &lt;!-- /container --&gt;
 
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</details> 
+<blockquote>
+<p>resources/templates/order/orderForm.html</p>
+</blockquote>
+<details title="펼치기/숨기기">
+ 	<summary> orderForm.html </summary>
+<pre><code>&lt;!DOCTYPE HTML&gt;
+&lt;html xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head th:replace=&quot;fragments/header :: header&quot; /&gt;
+&lt;style&gt;
+    .form-orders &gt; li{
+        list-style-type: none;
+        width:inherit;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        padding-top:25px;
+        padding-left:10px;
+        padding-bottom:20px;
+        padding-righr:10px;
+    }
+
+&lt;/style&gt;
+&lt;script&gt;
+
+    let fn_choose_item = (obj) =&gt; {
+
+        let memberId = $(&quot;#member&quot;).val();
+
+        if(memberId == &quot;&quot;){
+            alert(&quot;회원을 먼저 선택해 주세요.&quot;);
+            $(&quot;#item&quot;).val(&quot;&quot;);
+            return false;
+        }
+
+        let item = $(obj).find(&quot;option:selected&quot;);
+
+        let itemId = $(item).val();
+        let itemNm = $(item).text();
+        let dtype = $(item).attr(&quot;data-dtype&quot;);
+        let dtypeNm = $(item).attr(&quot;data-dtype-nm&quot;);
+        let value1 = null;
+        let value2 = null;
+        let labelValue1 = null;
+        let labelValue2 = null;
+
+        if(dtype == 'A'){
+            value1 = $(item).attr(&quot;data-artist&quot;);
+            value2 = $(item).attr(&quot;data-etc&quot;);
+            labelValue1 = &quot;아티스트&quot;;
+            labelValue2 = &quot;기타&quot;;
+        }else if(dtype = 'B'){
+            value1 = $(item).attr(&quot;data-author&quot;);
+            value2 = $(item).attr(&quot;data-isbn&quot;);
+            labelValue1 = &quot;저자&quot;;
+            labelValue2 = &quot;ISBN&quot;;
+        }else{
+            value1 = $(item).attr(&quot;data-director&quot;);
+            value2 = $(item).attr(&quot;data-actor&quot;);
+            labelValue1 = &quot;감독&quot;;
+            labelValue2 = &quot;배우&quot;;
+        }
+
+        let idx = $(&quot;.form-orders&quot;).find(&quot;li&quot;).length;
+
+        $(&quot;.form-disabled&quot;).find(&quot;.form-order&quot;).clone().appendTo(&quot;.form-orders&quot;);
+
+
+        let chose = $(&quot;.form-orders&quot;).find(&quot;li&quot;).eq(idx);
+
+        $(chose).find(&quot;input[name=memberId]&quot;)
+            .attr(&quot;name&quot;, &quot;orderDtoList[&quot;+idx+&quot;].memberId&quot;)
+            .val(memberId);
+
+        $(chose).find(&quot;input[name=itemId]&quot;)
+            .attr(&quot;name&quot;, &quot;orderDtoList[&quot;+idx+&quot;].itemId&quot;)
+            .val( itemId );
+        $(chose).find(&quot;input[name=count]&quot;)
+            .attr(&quot;name&quot;, &quot;orderDtoList[&quot;+idx+&quot;].count&quot;);
+        $(chose).find(&quot;.item-dtype-nm&quot;).text(dtypeNm );
+        $(chose).find(&quot;.item-name&quot;).text(itemNm );
+        $(chose).find(&quot;.item-value1&quot;).text(value1 );
+        $(chose).find(&quot;.label-value1&quot;).text(labelValue1 );
+        $(chose).find(&quot;.item-value2&quot;).text(value2 );
+        $(chose).find(&quot;.label-value2&quot;).text(labelValue2 );
+
+        $(&quot;.form-orders&quot;).find(&quot;.form-order&quot;).css(&quot;display&quot;,&quot;&quot;);
+
+        $(&quot;.memberWrap&quot;).hide();
+        $(&quot;.textMemberWrap&quot;).show();
+        $(&quot;#textMember&quot;).val($(item).text());
+
+
+        $(&quot;#item&quot;).val(&quot;&quot;);
+
+    }
+
+    let fn_minus_count = (obj) =&gt; {
+        let cnt = parseInt($(obj).parent().find(&quot;input&quot;).val(), 0);
+
+        if( (cnt-1) &gt; 0 ){
+            $(obj).parent().find(&quot;input&quot;).val(cnt-1);
+        }else{
+            if(confirm(&quot;선택된 상품을 제거하시겠습니까?&quot;)){
+                $(obj).parent().parent().remove();
+            }
+
+            if($(&quot;.form-orders&quot;).find(&quot;li&quot;).length == 0){
+                $(&quot;.memberWrap&quot;).show();
+                $(&quot;#member&quot;).val(&quot;&quot;);
+                $(&quot;#textMember&quot;).val(&quot;&quot;);
+                $(&quot;.textMemberWrap&quot;).hide();
+            }
+        }
+    }
+
+    let fn_plus_count = (obj) =&gt; {
+        let cnt = parseInt($(obj).parent().find(&quot;input&quot;).val(), 0);
+
+        console.log(cnt)
+
+        $(obj).parent().find(&quot;input&quot;).val(cnt+1);
+    }
+
+&lt;/script&gt;
+&lt;body&gt;
+
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div th:replace=&quot;fragments/bodyHeader :: bodyHeader&quot;/&gt;
+
+    &lt;form role=&quot;form&quot; action=&quot;/order&quot; method=&quot;post&quot;&gt;
+
+        &lt;div class=&quot;form-group memberWrap&quot;&gt;
+            &lt;label for=&quot;member&quot;&gt;주문회원&lt;/label&gt;
+            &lt;select id=&quot;member&quot; class=&quot;form-control&quot;&gt;
+                &lt;option value=&quot;&quot;&gt;회원선택&lt;/option&gt;
+                &lt;option th:each=&quot;member : ${members}&quot;
+                        th:value=&quot;${member.id}&quot;
+                        th:text=&quot;${member.name}&quot; /&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group textMemberWrap&quot;  style=&quot;display: none;&quot;&gt;
+            &lt;label for=&quot;textMember&quot;&gt;주문회원&lt;/label&gt;
+            &lt;input id=&quot;textMember&quot; class=&quot;form-control&quot;  style=&quot;background-color: #dddddd&quot;  readonly=&quot;readonly&quot;/&gt;
+        &lt;/div&gt;
+
+
+        &lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;item&quot;&gt;상품명&lt;/label&gt;
+            &lt;select id=&quot;item&quot; class=&quot;form-control&quot; onchange=&quot;fn_choose_item(this)&quot;&gt;
+                &lt;option value=&quot;&quot;&gt;상품선택&lt;/option&gt;
+                &lt;option th:each=&quot;item : ${items}&quot;
+                        th:value=&quot;${item.getId()}&quot;
+                        th:text=&quot;${item.getName()}&quot;
+                        th:data-dtype=&quot;${item.getDtype()}&quot;
+                        th:data-dtype-nm=&quot;${item.getDtypeNm()}&quot;
+                        th:data-price=&quot;${item.getPrice()}&quot;
+                        th:data-artist=&quot;${item.getArtist()}&quot;
+                        th:data-etc=&quot;${item.getEtc()}&quot;
+                        th:data-author=&quot;${item.getAuthor()}&quot;
+                        th:data-isbn=&quot;${item.getIsbn()}&quot;
+                        th:data-director=&quot;${item.getDirector()}&quot;
+                        th:data-actor=&quot;${item.getActor()}&quot;
+                /&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;ul class=&quot;form-orders&quot; style=&quot;list-style-type: none;&quot;&gt;
+        &lt;/ul&gt;
+
+        &lt;!--&lt;div class=&quot;form-group&quot;&gt;
+            &lt;label for=&quot;count&quot;&gt;주문수량&lt;/label&gt;
+            &lt;input type=&quot;number&quot; name=&quot;count&quot; class=&quot;form-control&quot; id=&quot;count&quot; placeholder=&quot;주문 수량을 입력하세요&quot;&gt;
+        &lt;/div&gt;--&gt;
+
+        &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;ul class=&quot;form-disabled&quot;&gt;
+        &lt;li class=&quot;form-order&quot; style=&quot;display: none;&quot;&gt;
+            &lt;h5&gt;&lt;span class=&quot;item-dtype-nm&quot;&gt;&lt;/span&gt; &gt; &lt;span class=&quot;item-name&quot;&gt;&lt;/span&gt;&lt;/h5&gt;
+            &lt;h6&gt;
+                &lt;span class=&quot;label-value1&quot;&gt;&lt;/span&gt; : &lt;span class=&quot;item-value1&quot;&gt;&lt;/span&gt;&lt;/br&gt;
+                &lt;span class=&quot;label-value2&quot;&gt;&lt;/span&gt; : &lt;span class=&quot;item-value2&quot;&gt;&lt;/span&gt;
+            &lt;/h6&gt;
+
+            &lt;input type=&quot;hidden&quot; name=&quot;memberId&quot;&gt;
+            &lt;input type=&quot;hidden&quot; name=&quot;itemId&quot;&gt;
+            &lt;div&gt;
+                &lt;button type=&quot;button&quot; onclick=&quot;fn_minus_count(this)&quot;&gt;-&lt;/button&gt;&lt;input name = &quot;count&quot; value=&quot;1&quot;&gt;&lt;button type=&quot;button&quot; onclick=&quot;fn_plus_count(this)&quot;&gt;+&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;br/&gt;
+    &lt;div th:replace=&quot;fragments/footer :: footer&quot; /&gt;
+
+&lt;/div&gt; &lt;!-- /container --&gt;
 
 &lt;/body&gt;
 &lt;/html&gt;
@@ -3171,17 +3494,12 @@ class OrderServiceTest {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-list-development/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-development/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 상품 목록 화면 개발</span>
+        <span class="pagination__title">[스프링부트 JPA 활용] 상품 주문 화면 개발</span>
     </a>
   
 
-  
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-development/">
-      <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA 활용] 상품 주문 화면 개발</span>
-    </a>
   
 </div>
 
@@ -3251,14 +3569,13 @@ class OrderServiceTest {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)</div> 
+          <div class="toc-post-title">[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
     <li><a href="#홈-화면과-레이아웃">홈 화면과 레이아웃</a>
       <ul>
-        <li><a href="#변경-감지dirty-checking-와-병합merge">변경 감지(Dirty Checking) 와 병합(merge)</a></li>
-        <li><a href="#병합-사용시-주의사항">병합 사용시 주의사항</a></li>
+        <li><a href="#주문-목록-검색-및-취소-개발">주문 목록 검색 및 취소 개발</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
