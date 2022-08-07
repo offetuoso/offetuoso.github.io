@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 02 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[스프링부트 JPA API개발 성능최적화] 회원 등록 API</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/</link>
+      <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/</guid>
+      <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 기본   회원 등록 API, 회원 수정 API, 회원 조회 API를 만들어 보겠습니다.</description>
+    </item>
+    
+    <item>
+      <title>[스프링부트 JPA API개발 성능최적화] 회원 수정 API</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</link>
+      <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</guid>
+      <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 기본  회원 수정 API   회원 수정 API는 저장 API와 크게 다를 것이 없습니다.</description>
+    </item>
+    
     <item>
       <title>[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발</title>
       <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-list-search-and-cancel/</link>

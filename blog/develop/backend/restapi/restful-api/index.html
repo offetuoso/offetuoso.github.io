@@ -88,7 +88,7 @@
       "datePublished": "2021-05-29 00:00:00 \u002b0000 UTC",
       "dateModified" : "2021-05-29 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/restapi\/restful-api\/",
-      "wordCount" : "587",
+      "wordCount" : "829",
       "keywords" : ["Restful", "Blog"]
     }
   
@@ -251,6 +251,88 @@ REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개
 RESTful API란 REST라는 아키텍처 스타일과 원칙을 모두 만족하는 모두 만족하는 API라는 뜻이다.</p>
 </blockquote>
 <p><img src="/images/develop/backend/restapi/rest-api-002.png" alt="contact"></p>
+<h3 id="rest-api-메소드">REST API 메소드<a class="anchor" href="#rest-api-메소드">#</a></h3>
+<blockquote>
+<p>HTTP Method는 크게 GET, POST, PUT, PATCH DELETE가 있으며, <br>
+CRUD에 빗대면 GET은 조회, POST는 저장, PUT과 PATCH는 수정, DELETE는 삭제로 이해하면 된다.</p>
+</blockquote>
+<h4 id="post와-put의-모호함">POST와 PUT의 모호함<a class="anchor" href="#post와-put의-모호함">#</a></h4>
+<blockquote>
+<p>GET과 DELETE와 다르게 POST와 PUT은 큰 차이가 없어 보이지만 Idempotence(멱등성)이란 개념을 이해하면 도움이 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>멱등성이란 여러번 수행해도 결과가 같음을 의미합니다.</p>
+</blockquote>
+<blockquote>
+<p>POST를 제외한 나머지들은 Idempotence하다. 특정 데이터를 수정하는 PUT을 몇번이나 수정해도 같은 결과가 나오며, 한번 처리 한것과 10번 처리한 것이 같지만,</p>
+</blockquote>
+<blockquote>
+<p>POST는 수행한 만큼 새로운 데이터가 Insert 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>POST는 입력 받은 값을 새로운 Row로 인서트하는 행위이며,</p>
+</blockquote>
+<blockquote>
+<p>PUT은 입력받은 모든 값들로 기존의 값을 대체 합니다.</p>
+</blockquote>
+<h4 id="put과-patch">PUT과 PATCH<a class="anchor" href="#put과-patch">#</a></h4>
+<blockquote>
+<p>PUT과 PATCH 모두 수정을 위한 메서드 입니다. 하지만 어떨때 PUT을 쓰고 어떠한 경우에 PATCH를 쓰는지 이름만으로 알수 없습니다.</p>
+</blockquote>
+<blockquote>
+<p>두 PUT과 PATCH의 차이를 확인해 보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>PUT method requests that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload</p>
+</blockquote>
+<h5 id="put">PUT<a class="anchor" href="#put">#</a></h5>
+<blockquote>
+<p>PUT 메서드는 대상 리소스의 상태가 요청 메시지 페이로드에 포함된 표현에 의해 정의된 상태로 생성되거나 대체되도록 요청합니다.</p>
+</blockquote>
+<blockquote>
+<p>PUT은 파라미터로 일부만 보냈을 경우 나머지 값은 Defult 값으로 수정하는 게 원칙 이므로</p>
+</blockquote>
+<blockquote>
+<p>request</p>
+</blockquote>
+<pre><code>PUT    /api/v2/members/110
+{
+&quot;name&quot;: &quot;홍길동&quot;
+}
+</code></pre>
+<blockquote>
+<p>response</p>
+</blockquote>
+<pre><code>HTTP/1.1 200 OK
+{
+    &quot;name&quot;: &quot;홍길동&quot;,
+    &quot;age&quot;: null
+}
+</code></pre>
+<blockquote>
+<p>전달할때 수정할 파라미터 및 나머지 모든 파라미터를 채워 보내줘야합니다.</p>
+</blockquote>
+<h5 id="patch">PATCH<a class="anchor" href="#patch">#</a></h5>
+<blockquote>
+<p>그러나 PATCH를 통하여 특정 수정할 파라미터만 보내면 새로 바뀐 데이터만 적용되고 기존의 값은 유지됩니다.</p>
+</blockquote>
+<pre><code>PUT    /api/v2/members/110
+{
+&quot;name&quot;: &quot;홍길동&quot;
+}
+</code></pre>
+<blockquote>
+<p>response</p>
+</blockquote>
+<pre><code>HTTP/1.1 200 OK
+{
+    &quot;name&quot;: &quot;홍길동&quot;,
+    &quot;age&quot;: 28
+}
+</code></pre>
+<blockquote>
+<p>전체적인 데이터를 수정할때는 PUT, 특정 값만 수정할 경우에는 PATCH를 사용하면 됩니다.</p>
+</blockquote>
 <h3 id="rest-api-디자인">REST API 디자인<a class="anchor" href="#rest-api-디자인">#</a></h3>
 <blockquote>
 <ol>
@@ -359,8 +441,8 @@ http://restapi.example.com/users/seller
 <tr>
 <th>Resource</th>
 <th>GET(read)</th>
-<th>PUT(create)</th>
-<th>POST(update)</th>
+<th>POST(create)</th>
+<th>PUT/PACTH(update)</th>
 <th>DELETE(delete)</th>
 </tr>
 </thead>
@@ -570,6 +652,7 @@ HTTP/1.1 Host: restapi.example.com Accept: image/jpg
     </li>
     <li><a href="#restful-api-">RESTful API ?</a>
       <ul>
+        <li><a href="#rest-api-메소드">REST API 메소드</a></li>
         <li><a href="#rest-api-디자인">REST API 디자인</a></li>
       </ul>
     </li>

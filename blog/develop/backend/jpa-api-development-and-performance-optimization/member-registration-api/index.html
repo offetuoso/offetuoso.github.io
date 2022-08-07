@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+  <title>[스프링부트 JPA API개발 성능최적화] 회원 등록 API | offetuoso&#39;s Blog</title>
+
+
+  <meta charset="UTF-8">
+  
+  <meta name="language" content="en">
+  <meta name="description" content="[스프링부트 JPA API개발 성능최적화] 회원 등록 API">
+  <meta name="keywords" content="ORM">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="google-site-verification" content="eiictgcSx2RHATKZuDBO51sg4TWwfugKXhNbcHglc9s" />
+  <meta name="naver-site-verification" content="43f1272370146d6542d0e06375925b4eff0cd2c7" />
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+
+  
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="[스프링부트 JPA API개발 성능최적화] 회원 등록 API">
+  <meta property="og:description" content="[스프링부트 JPA API개발 성능최적화] 회원 등록 API">
+     
+  
+  
+
+  <script src="/js/lib/jquery-3.6.0.js"></script>
+  <script src="/js/lib/jquery-ui.js"></script>
+  <script src="/js/lib/jquery.mark.min.js"></script>
+  <script src="/js/lib/jquery.tmpl.min.js"></script>
+  <script src="/js/lib/fuse.js"></script>
+  <script src="/js/lib/hangul.js"></script>
+  <script src="https://offetuoso.github.io/js/lib/search.js"></script>
+  <script src="https://offetuoso.github.io/js/common.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/jquery-ui.css"/>
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/lib/font-awesome/css/font-awesome.css"/>
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link type="text/css" rel="stylesheet" href="https://offetuoso.github.io/css/common.css"/>
+	
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
+
+
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/post.min.15ebf1946e251b09a344b466aef7ce435fd25b42f0d9b081e65d4f06e01b0df3.css" integrity="sha256-FevxlG4lGwmjRLRmrvfOQ1/SW0Lw2bCB5l1PBuAbDfM="/>
+  
+    
+    <link type="text/css" rel="stylesheet" href="/css/custom.min.39af44cd0c1b68d7767f6b88a63dd3a7f20261a6fb5690bf47f7a7bb199fc392.css" integrity="sha256-Oa9EzQwbaNd2f2uIpj3Tp/ICYab7VpC/R/enuxmfw5I="/>
+  
+  
+   
+   
+    
+
+<script type="application/ld+json">
+  
+    {
+      "@context" : "http://schema.org",
+      "@type" : "BlogPosting",
+      "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/offetuoso.github.io\/"
+      },
+      "articleSection" : "blog",
+      "name" : "[스프링부트 JPA API개발 성능최적화] 회원 등록 API",
+      "headline" : "[스프링부트 JPA API개발 성능최적화] 회원 등록 API",
+      "description" : "[스프링부트 JPA API개발 성능최적화] 회원 등록 API",
+      "inLanguage" : "en-US",
+      "author" : "",
+      "creator" : "",
+      "publisher": "",
+      "accountablePerson" : "",
+      "copyrightHolder" : "",
+      "copyrightYear" : "2022",
+      "datePublished": "2022-08-03 00:00:00 \u002b0000 UTC",
+      "dateModified" : "2022-08-03 00:00:00 \u002b0000 UTC",
+      "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/jpa-api-development-and-performance-optimization\/member-registration-api\/",
+      "wordCount" : "836",
+      "keywords" : ["ORM", "Blog"]
+    }
+  
+  </script>
+</head>
+
+<body>
+  <div class="popup search-popup local-search-popup" style="display: none;">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  <div class="burger__container">
+  <div class="burger" aria-controls="navigation" aria-label="Menu">
+    <div class="burger__meat burger__meat--1"></div>
+    <div class="burger__meat burger__meat--2"></div>
+    <div class="burger__meat burger__meat--3"></div>
+  </div>
+</div>
+ 
+  <nav class="nav" id="navigation">
+  <ul class="nav__list">
+    
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="/"
+    				
+	        >welcome !</a>
+      </li>
+    
+      <li>
+	        <a  class="active"
+	         
+	        
+	        
+	        href="/blog"
+    				
+	        >blog</a>
+      </li>
+    
+      <li>
+	        <a  
+	        
+	        
+	        href="javascript:proceedsearch();"
+	       	
+	        >search</a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+  <main>
+    
+    
+
+    <div class="flex-wrapper">
+      <div class="post__container">
+        <div class="post">
+          <header class="post__header">
+             
+            	<div class="header-inner" style="background-image: url('/images/title/bg-using-springboot-jpa.png');">
+            
+			      <div class="overlay" style="opacity:   0.4 ;"></div>
+				<div class="page-heading">
+		             <h1 class="post__title" style="color:white;font-size: 28px;">
+		            	[스프링부트 JPA API개발 성능최적화] 회원 등록 API
+		              </h1>
+		        </div>	
+	        </div>
+	        <h1 class="post__title" id="post__title" style="  display:none; ">
+		       	[스프링부트 JPA API개발 성능최적화] 회원 등록 API
+            </h1>		
+            <time datetime="2022-08-03 00:00:00 &#43;0000 UTC" class="post__date">2022-08-03</time> 
+          </header>
+          <article class="post__content">
+              
+<h1 id="스프링부트-jpa-api개발-성능최적화">스프링부트 JPA API개발 성능최적화</h1>
+<hr>
+<h2 id="목차">목차<a class="anchor" href="#목차">#</a></h2>
+<hr>
+<blockquote>
+<ol start="5">
+<li>API 개발 기본</li>
+</ol>
+<ul>
+<li>회원 등록 API</li>
+<li>회원 수정 API</li>
+<li>회원 조회 API</li>
+</ul>
+<ol start="6">
+<li>API 개발 고급</li>
+</ol>
+<ul>
+<li>조회용 샘플 데이터 입력</li>
+<li>지연 로딩과 조회 성능 최적화</li>
+<li>페이징과 한계 돌파</li>
+<li>OSIV와 성능 최적화</li>
+</ul>
+<ol start="7">
+<li>다음으로</li>
+</ol>
+<ul>
+<li>스프링 데이터 JPA 소개</li>
+<li>QueryDSL 소개</li>
+<li>마무리</li>
+</ul>
+</blockquote>
+<h2 id="api-개발-기본">API 개발 기본<a class="anchor" href="#api-개발-기본">#</a></h2>
+<hr>
+<blockquote>
+<p>회원 등록 API, 회원 수정 API, 회원 조회 API를 만들어 보겠습니다.</p>
+</blockquote>
+<blockquote>
+<p>요즘에는 화면을 템플릿 엔진을 통해 만드는 것보다 싱글페이지 어플리케이션 React, VueJs, NativeApp 등을 사용하기 때문에 
+서버 개발자는 서버에서 쿼리를 조회하고 페이지를 랜더링 하여 내리는 방식을 많이 사용 하지 않습니다.</p>
+</blockquote>
+<blockquote>
+<p>서버 개발자는 데이터를 넘겨 주고 프론트엔드 개발자가 화면을 랜더링합니다.</p>
+</blockquote>
+<blockquote>
+<p>또한 추세가 MSA로 바뀌어 가며 서버간 통신도 필수가 되어가고 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>그렇기 때문에 API를 설계하고 구성하는게 중요합니다.</p>
+</blockquote>
+<blockquote>
+<p>과거 SQL을 날려 API로 끌어오는 방식과 JPA를 사용하면 엔티티라는 개념이 있기 때문에 개발 방식이 전혀 다릅니다.</p>
+</blockquote>
+<h3 id="회원-등록-api">회원 등록 API<a class="anchor" href="#회원-등록-api">#</a></h3>
+<hr>
+<blockquote>
+<p>이전 강의에서 아래와 같은 구조의 어플리케이션을 만들었는데 controller와 api의 controller를 나누려 합니다.</p>
+</blockquote>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/img-001.png" alt="contact"></p>
+<blockquote>
+<p>공통으로 처리할 내용을 패키지 단위로 나누게 되면 좀더 바람직하게 관리할 수 있습니다. <br>
+예를 들어 탬플릿엔진에서 사용하는 controller는 로그인 및 세션 체크를 하거나 <br>
+api에서는 토큰 체크 및 호출을 실패 했을때 json으로 spec을 반환하는 등 나누어 관리하는게 좋습니다.</p>
+</blockquote>
+<h4 id="memberapicontrollerjava">MemberApiController.java<a class="anchor" href="#memberapicontrollerjava">#</a></h4>
+<blockquote>
+<p>java/jpabook/jpashop/api/MemberApiController.java</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.api;
+
+import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.service.MemberService;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+
+//@Controller @RequestBody // 두개 합친 것이 @RestController
+@RestController
+@RequiredArgsConstructor
+public class MemberApiController {
+
+    private final MemberService memberService;
+
+    /*
+    *  첫번째 버전의 회원등록
+    * */
+    @PostMapping(&quot;/api/v1/members&quot;)
+    public CreateMemberResopnse saveMemberV1(@RequestBody @Valid Member member){
+        Long id = memberService.join(member);
+        return new CreateMemberResopnse(id);
+    }
+
+    @Data
+    static class CreateMemberResopnse {
+        private long id;
+
+        public CreateMemberResopnse(long id) {
+            this.id = id;
+        }
+    }
+}
+
+</code></pre>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/img-002.png" alt="contact"></p>
+<blockquote>
+<p>postman(api 호출 어플리케이션)에서 작성했던대로, post 방식으로 <br>
+localhost:8080/api/v1/members <br></p>
+</blockquote>
+<blockquote>
+<p>request</p>
+</blockquote>
+<pre><code>&quot;body&quot; : {
+	{
+	    &quot;name&quot; : &quot;hello&quot;
+	}
+}
+</code></pre>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/img-003.png" alt="contact"></p>
+<blockquote>
+<p>response</p>
+</blockquote>
+<pre><code>{
+    &quot;id&quot;: 97
+}
+</code></pre>
+<blockquote>
+<p>파라미터를 아무것도 넣지 않는다면</p>
+</blockquote>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/img-004.png" alt="contact"></p>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/img-005.png" alt="contact"></p>
+<blockquote>
+<p>null로 모두 들어가게 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>이것을 엔티티에 제약조건을 추가하여 @Valid를 사용해 처리해 보겠습니다.</p>
+</blockquote>
+<pre><code>package jpabook.jpashop.domain;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter @Setter
+public class Member {
+
+    public Member() {
+    }
+
+    @Id @GeneratedValue
+    @Column(name = &quot;member_id&quot;)
+    private Long id;
+
+    @NotEmpty
+    private String name;
+
+    @Embedded
+    private Address address;
+
+
+    @OneToMany(mappedBy = &quot;member&quot;)
+    private List&lt;Order&gt; orders = new ArrayList&lt;&gt;();
+
+}
+
+</code></pre>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/img-004.png" alt="contact"></p>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/img-006.png" alt="contact"></p>
+<blockquote>
+<p>console - 스프링에서 자동으로 설정해둔 오류 스타일</p>
+</blockquote>
+<pre><code>{
+    &quot;timestamp&quot;: &quot;2022-08-04T13:50:41.681+00:00&quot;,
+    &quot;status&quot;: 400,
+    &quot;error&quot;: &quot;Bad Request&quot;,
+    &quot;trace&quot;: &quot;org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public jpabook.jpashop.api.MemberApiController$CreateMemberResopnse jpabook.jpashop.api.MemberApiController.saveMemberV1(jpabook.jpashop.domain.Member): [Field error in object 'member' on field 'name': rejected value [null]; codes [NotEmpty.member.name,NotEmpty.name,NotEmpty.java.lang.String,NotEmpty]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [member.name,name]; arguments []; default message [name]]; default message [비어 있을 수 없습니다]] \r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:141)\r\n\tat org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)\r\n\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)\r\n\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)\r\n\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)\r\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:681)\r\n\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)\r\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:764)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\r\n\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\r\n\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\r\n\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\r\n\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\r\n\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)\r\n\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)\r\n\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)\r\n\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)\r\n\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)\r\n\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)\r\n\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)\r\n\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)\r\n\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)\r\n\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:889)\r\n\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743)\r\n\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\r\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\r\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\r\n\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\r\n\tat java.base/java.lang.Thread.run(Thread.java:834)\r\n&quot;,
+    &quot;message&quot;: &quot;Validation failed for object='member'. Error count: 1&quot;,
+    &quot;errors&quot;: [
+        {
+            &quot;codes&quot;: [
+                &quot;NotEmpty.member.name&quot;,
+                &quot;NotEmpty.name&quot;,
+                &quot;NotEmpty.java.lang.String&quot;,
+                &quot;NotEmpty&quot;
+            ],
+            &quot;arguments&quot;: [
+                {
+                    &quot;codes&quot;: [
+                        &quot;member.name&quot;,
+                        &quot;name&quot;
+                    ],
+                    &quot;arguments&quot;: null,
+                    &quot;defaultMessage&quot;: &quot;name&quot;,
+                    &quot;code&quot;: &quot;name&quot;
+                }
+            ],
+            &quot;defaultMessage&quot;: &quot;비어 있을 수 없습니다&quot;,
+            &quot;objectName&quot;: &quot;member&quot;,
+            &quot;field&quot;: &quot;name&quot;,
+            &quot;rejectedValue&quot;: null,
+            &quot;bindingFailure&quot;: false,
+            &quot;code&quot;: &quot;NotEmpty&quot;
+        }
+    ],
+    &quot;path&quot;: &quot;/api/v1/members&quot;
+}
+</code></pre>
+<h5 id="valid">@Valid<a class="anchor" href="#valid">#</a></h5>
+<blockquote>
+<p>javax.validation의 기능으로 필수값 체크</p>
+</blockquote>
+<pre><code>	javax.validation @Target({ElementType.METHOD,ElementType.FIELD,ElementType.CONSTRUCTOR,ElementType.PARAMETER,ElementType.TYPE_USE}) 
+@Retention(RetentionPolicy.RUNTIME) 
+@Documented 
+public interface Valid
+extends annotation.Annotation
+</code></pre>
+<blockquote>
+<p>중복된 이름의 회원을 입력했을때</p>
+</blockquote>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/img-007.png" alt="contact"></p>
+<blockquote>
+<p>현 프로젝트에서는 간단하게 회원명을 식별자로 두어 회원명만 중복체크합니다.</p>
+</blockquote>
+<h3 id="엔티티에서의-벨리데이션-체크-문제">엔티티에서의 벨리데이션 체크 문제<a class="anchor" href="#엔티티에서의-벨리데이션-체크-문제">#</a></h3>
+<blockquote>
+<p>프리젠테이션 계층을 위해 API의 엔티티에서 벨리데이션 체크를 하는 것은 바람직하지 않습니다. <br>
+어떠한 API에서는 벨리데이션을 해야하고, 어떤 API에서는 하지 않아야 할 필요성이 있어 나누어야 할 필요도 있기 때문입니다.</p>
+</blockquote>
+<blockquote>
+<p>또한</p>
+</blockquote>
+<pre><code>    @NotEmpty
+    //private String name;
+    private String username;
+</code></pre>
+<blockquote>
+<p>위의 엔티티의 컬럼이 변경되었을때, API의 스팩이 변경되어 해당 스팩 변경을 인식하기 전까지 호출자 또는 타시스템 등 장애가 발생할 수 있는 요소가 됩니다.</p>
+</blockquote>
+<blockquote>
+<p>정리하면 엔티티를 손대서 API 스팩 자체가 변하는게 문제입니다. 엔티티라는 것은 여러군데에서 사용하기 때문에 수정될 수 있는 확률이 높기때문에</p>
+</blockquote>
+<blockquote>
+<p><mark>API 스팩을 위한 별도의 DTO가 필요</mark>합니다.</p>
+</blockquote>
+<blockquote>
+<p>API를 만들때 엔티티를 파라미터로 받으면 안되고 엔티티를 외부로 노출 시키면 안됩니</p>
+</blockquote>
+<h4 id="회원등록-api-v2">회원등록 API V2<a class="anchor" href="#회원등록-api-v2">#</a></h4>
+<blockquote>
+<p>MemberApiController.java</p>
+</blockquote>
+<pre><code>	/*
+     *  두번째 버전의 회원등록
+     * */
+    @PostMapping(&quot;/api/v2/members&quot;)
+    public CreateMemberResopnse saveMemberV2(@RequestBody @Valid CreateMemberRequest request){
+
+        Member member = new Member();
+        member.setName(request.getName());
+        member.setAddress(new Address(request.getCity(),request.getStreet(),request.getZipcode()));
+
+        Long id = memberService.join(member);
+        return new CreateMemberResopnse(id);
+    }
+
+    
+     @Data
+    static class CreateMemberRequest {
+        @NotEmpty
+        private String name;
+        @NotEmpty
+        private String city;
+        @NotEmpty
+        private String street;
+        @NotEmpty
+        private String zipcode;
+    }
+</code></pre>
+<blockquote>
+<p>DTO를 사용하면 좋은점중 하나는 개발자는 엔티티만 보고 API를 통해 어떤 파라미터가 넘어오는지 알수 없습니다. 하지만 API에 1:1로 매핑된 DTO를 보고 해당 API의 구조를 대강 이해할 수 있습니다.</p>
+</blockquote>
+<h5 id="requestbody">@RequestBody<a class="anchor" href="#requestbody">#</a></h5>
+<blockquote>
+<p>Json으로 넘어온 파라미터를 변수(Member member)에 할당</p>
+</blockquote>
+<pre><code>	public CreateMemberResopnse saveMemberV1(@RequestBody @Valid Member member){
+</code></pre>
+<h5 id="restcontroller">@RestController<a class="anchor" href="#restcontroller">#</a></h5>
+<pre><code>@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Controller
+@ResponseBody
+public @interface RestController {
+
+	/**
+	 * The value may indicate a suggestion for a logical component name,
+	 * to be turned into a Spring bean in case of an autodetected component.
+	 * @return the suggested component name, if any (or empty String otherwise)
+	 * @since 4.0.1
+	 */
+	@AliasFor(annotation = Controller.class)
+	String value() default &quot;&quot;;
+
+}
+
+</code></pre>
+<h4 id="data">@Data<a class="anchor" href="#data">#</a></h4>
+<blockquote>
+<p>@Data 어노테이션은 @Getter, @Setter, @ToString, @EqualsAndHashCode와 @RequiredArgsConstructor를 합쳐놓은 종합 선물세트와 같다</p>
+</blockquote>
+<blockquote>
+<p>POJO와 관련된 모든 보일러플레이트를 생성한다.</p>
+</blockquote>
+<h3 id="정리">정리<a class="anchor" href="#정리">#</a></h3>
+<blockquote>
+<p>엔티티와 프리젠테이션 계층간 로직을 분리를 할 수 있습니다. <br> 
+엔티티와 API 스팩을 분리할 수 있어 엔티티를 변환해도 API 스팩에 변화가 없습니다.</p>
+</blockquote>
+<h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
+<hr>
+<blockquote>
+<ul>
+<li><a href="https://github.com/offetuoso/jpa-practice.git"><a href="https://github.com/offetuoso/jpa-practice.git">https://github.com/offetuoso/jpa-practice.git</a><a></li>
+</ul>
+</blockquote>
+<h4 id="참고">참고<a class="anchor" href="#참고">#</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-JPA-API%EA%B0%9C%EB%B0%9C-%EC%84%B1%EB%8A%A5%EC%B5%9C%EC%A0%81%ED%99%94">실전! 스프링 부트와 JPA 활용2 - API 개발과 성능 최적화 - 김영한</a></li>
+</ul>
+</blockquote>
+
+
+              
+          </article>
+          
+          
+            
+            	 
+
+<ul class="tags__list">
+    
+    
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EA%B9%80%EC%98%81%ED%95%9C/">김영한</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/jpa/">JPA</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/orm/">ORM</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/java/">Java</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/spring/">Spring</a>
+    </li>
+    <li class="tag__item">
+        <a class="tag__link" href="https://offetuoso.github.io/tags/%EC%9D%B8%ED%94%84%EB%9F%B0/">인프런</a>
+    </li></ul>
+
+ 
+		          <div class="pagination">
+  
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/">
+        <span class="pagination__label">Previous Post</span>
+        <span class="pagination__title">[스프링부트 JPA API개발 성능최적화] 회원 수정 API</span>
+    </a>
+  
+
+  
+</div>
+
+		          <script src="https://utteranc.es/client.js"
+        repo="offetuoso/offetuoso.github.io"
+        issue-term="pathname"
+        label="✨💬✨"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+		
+		          <footer class="post__footer">
+		            
+
+
+<div class="social-icons">
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="GitHub"
+         href="https://github.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_github" style="background-image: url('https://offetuoso.github.io/svg/github.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Email"
+         href="mailto:kihun.oh.developer@gmail.com,offetuoso@gmail.com,offetuoso@naver.com"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_email" style="background-image: url('https://offetuoso.github.io/svg/email.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="Instagram"
+         href="https://instagram.com/offetuoso"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_instagram" style="background-image: url('https://offetuoso.github.io/svg/instagram.svg')"></div>
+      </a>
+    
+  
+     
+    
+      <a class="social-icons__link" rel="me" title="search"
+         href="#"
+         target="_blank" rel="noopener">
+        <div class="social-icons__icon icon_search" style="background-image: url('https://offetuoso.github.io/svg/search.svg')"></div>
+      </a>
+    
+     
+</div>
+
+		            <p>© 2021</p>
+		          </footer>
+            
+            
+            
+          
+         
+          
+          
+          </div>
+      </div>
+      
+      <div class="toc-container">
+          <div class="toc-post-title">[스프링부트 JPA API개발 성능최적화] 회원 등록 API</div> 
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#목차">목차</a></li>
+    <li><a href="#api-개발-기본">API 개발 기본</a>
+      <ul>
+        <li><a href="#회원-등록-api">회원 등록 API</a></li>
+        <li><a href="#엔티티에서의-벨리데이션-체크-문제">엔티티에서의 벨리데이션 체크 문제</a></li>
+        <li><a href="#정리">정리</a></li>
+        <li><a href="#이전-소스">이전 소스</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+      
+    </div>
+    
+
+  </main>
+
+   
+
+  
+  <script src="/js/index.min.f22abd4553ae420dba1bb2319da56f1d71ca94b6ce33b89dd67c0021e792b21c.js" integrity="sha256-8iq9RVOuQg26G7IxnaVvHXHKlLbOM7id1nwAIeeSshw=" crossorigin="anonymous"></script>
+  
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/components/prism-core.min.js"></script>
+
+  
+  <script src="https://unpkg.com/prismjs@1.20.0/plugins/autoloader/prism-autoloader.min.js"
+    data-autoloader-path="https://unpkg.com/prismjs@1.20.0/components/"></script>
+
+  
+    <script src="/js/table-of-contents.js"></script>
+  
+
+
+  
+  
+<script id="search-result-template" type="text/x-js-template">
+    <article class="list__item post search-result-list" id="summary-${key}">
+      <header class="list__header">
+        <h3 class="list__title post__title ">
+          <a href="${link}" rel="bookmark">
+            ${title} 
+          </a>         
+        </h3>
+        <div class="list__meta meta">
+          <div class="meta__item-categories meta__item">
+            <svg class="meta__icon icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+            <span class="meta__text">
+              ${ isset tags } ${tags} ${ end }
+            </span>
+          </div>
+        </div>
+      </header>
+      <div class="content list__excerpt post__content clearfix">
+        ${snippet}
+      </div>
+    </article>
+</script>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9349865689631647"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9349865689631647"
+     data-ad-slot="1516247131"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+</body>
+
+</html>

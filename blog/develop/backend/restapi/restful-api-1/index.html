@@ -367,8 +367,8 @@ public class UserProfileController {
 <tr>
 <th>Resource</th>
 <th>GET(read)</th>
-<th>PUT(create)</th>
-<th>POST(update)</th>
+<th>POST(create)</th>
+<th>PUT/PACTH(update)</th>
 <th>DELETE(delete)</th>
 </tr>
 </thead>
@@ -420,6 +420,31 @@ GET : http://localhost:8080/users/1
 GET : http://localhost:8080/users/all
 <img src="/images/develop/backend/restapi/demo-rest-api-1/demo-restapi-1-028.png" alt="contact"></p>
 </blockquote>
+<h3 id="post">POST<a class="anchor" href="#post">#</a></h3>
+<blockquote>
+<p>POST : /users/1?name=&amp;phone=&amp;address=</p>
+</blockquote>
+<p><img src="/images/develop/backend/restapi/demo-rest-api-1/demo-restapi-1-031.png" alt="contact"></p>
+<pre><code>    @PostMapping(&quot;/users/{id}&quot;)
+	public void postUserProfile(@PathVariable(&quot;id&quot;) String id
+								, @RequestParam(&quot;name&quot;) String name
+								, @RequestParam(&quot;phone&quot;) String phone
+								, @RequestParam(&quot;address&quot;) String address) {
+		
+		UserProfile userProfile = new UserProfile(id,name,phone,address);
+		userMap.put(id,userProfile);
+
+	}
+
+</code></pre>
+<blockquote>
+<p>POST : http://localhost:8080/users/1?name=첫번째&amp;phone=010-1111&amp;address=서울시 영등포구 영등포1동
+<img src="/images/develop/backend/restapi/demo-rest-api-1/demo-restapi-1-033.png" alt="contact"></p>
+</blockquote>
+<blockquote>
+<p>GET : http://localhost:8080/users/1
+<img src="/images/develop/backend/restapi/demo-rest-api-1/demo-restapi-1-034.png" alt="contact"></p>
+</blockquote>
 <h3 id="put">PUT<a class="anchor" href="#put">#</a></h3>
 <blockquote>
 <p>PUT : /users/1?name=&amp;phone=&amp;address=</p>
@@ -437,8 +462,10 @@ GET : http://localhost:8080/users/all
                                  , @RequestParam(&quot;phone&quot;) String phone
                                  , @RequestParam(&quot;address&quot;) String address) {
 		
-		UserProfile userProfile = new UserProfile(id,name,phone,address);
-		userMap.put(id,userProfile);
+		UserProfile userProfile = userMap.get(id);
+		userProfile.setName(name);
+		userProfile.setPhone(phone);
+		userProfile.setAddress(address);
 		
 	}
 
@@ -450,32 +477,6 @@ GET : http://localhost:8080/users/all
 <blockquote>
 <p>GET : http://localhost:8080/users/4
 <img src="/images/develop/backend/restapi/demo-rest-api-1/demo-restapi-1-030.png" alt="contact"></p>
-</blockquote>
-<h3 id="post">POST<a class="anchor" href="#post">#</a></h3>
-<blockquote>
-<p>POST : /users/1?name=&amp;phone=&amp;address=</p>
-</blockquote>
-<p><img src="/images/develop/backend/restapi/demo-rest-api-1/demo-restapi-1-031.png" alt="contact"></p>
-<pre><code>    @PostMapping(&quot;/users/{id}&quot;)
-	public void postUserProfile(@PathVariable(&quot;id&quot;) String id
-								, @RequestParam(&quot;name&quot;) String name
-								, @RequestParam(&quot;phone&quot;) String phone
-								, @RequestParam(&quot;address&quot;) String address) {
-		
-		UserProfile userProfile = userMap.get(id);
-		userProfile.setName(name);
-		userProfile.setPhone(phone);
-		userProfile.setAddress(address);
-	}
-
-</code></pre>
-<blockquote>
-<p>POST : http://localhost:8080/users/1?name=첫번째&amp;phone=010-1111&amp;address=서울시 영등포구 영등포1동
-<img src="/images/develop/backend/restapi/demo-rest-api-1/demo-restapi-1-033.png" alt="contact"></p>
-</blockquote>
-<blockquote>
-<p>GET : http://localhost:8080/users/1
-<img src="/images/develop/backend/restapi/demo-rest-api-1/demo-restapi-1-034.png" alt="contact"></p>
 </blockquote>
 <h3 id="delete">DELETE<a class="anchor" href="#delete">#</a></h3>
 <blockquote>
@@ -618,8 +619,8 @@ GET : http://localhost:8080/users/all
         <li><a href="#spring-starter-project로-프로젝트-생성">Spring Starter Project로 프로젝트 생성</a></li>
         <li><a href="#restful-api-작성">RESTful API 작성</a></li>
         <li><a href="#get">GET</a></li>
-        <li><a href="#put">PUT</a></li>
         <li><a href="#post">POST</a></li>
+        <li><a href="#put">PUT</a></li>
         <li><a href="#delete">DELETE</a></li>
       </ul>
     </li>
