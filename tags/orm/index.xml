@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Wed, 03 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/orm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA 양방향 무한 루프 java.lang.IllegalStateException: Cannot call sendError() after the response has been committed</title>
+      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/</link>
+      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/</guid>
+      <description>java.lang.IllegalStateException: Cannot call sendError() after the response has been committed   API에서 양방향관계 엔티티를 반환하는 예제를 작성하던 도중 발생하였다.
+ 오류 java.lang.IllegalStateException: Cannot call sendError() after the response has been committedat org.apache.catalina.connector.ResponseFacade.sendError(ResponseFacade.java:472) ~[tomcat-embed-core-9.0.60.jar:9.0.60]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.sendServerError(DefaultHandlerExceptionResolver.java:552) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.handleHttpMessageNotWritable(DefaultHandlerExceptionResolver.java:442) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.doResolveException(DefaultHandlerExceptionResolver.java:209) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:142) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-5.3.18.jar:5.3.18]... 원인   Member 엔티티와 Order는 1:N의 관계이며 양방향 관계로 되어있다. API에서 Members를 호출할때 Orders를 가지고 있는 데이터가 문제가 되었다.</description>
+    </item>
+    
     <item>
       <title>[스프링부트 JPA API개발 성능최적화] 회원 등록 API</title>
       <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/</link>
@@ -24,6 +34,15 @@
       
       <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</guid>
       <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 기본  회원 수정 API   회원 수정 API는 저장 API와 크게 다를 것이 없습니다.</description>
+    </item>
+    
+    <item>
+      <title>[스프링부트 JPA API개발 성능최적화] 회원 조회 API</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</link>
+      <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</guid>
+      <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 기본  회원 조회 API   조회는 단순 검색 및 반환이기 때문에 어렵지는 않습니다.</description>
     </item>
     
     <item>
