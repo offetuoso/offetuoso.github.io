@@ -2,13 +2,13 @@
 <html lang="ko-KR">
 
 <head>
-  <title>[스프링부트 JPA API개발 성능최적화] 회원 조회 API | offetuoso&#39;s Blog</title>
+  <title>[스프링부트 JPA API개발 성능최적화] 회원 수정 API | offetuoso&#39;s Blog</title>
 
 
   <meta charset="UTF-8">
   
   <meta name="language" content="en">
-  <meta name="description" content="[스프링부트 JPA API개발 성능최적화] 회원 조회 API">
+  <meta name="description" content="[스프링부트 JPA API개발 성능최적화] 회원 수정 API">
   <meta name="keywords" content="ORM">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -21,8 +21,8 @@
 
   
   <meta property="og:type" content="website"> 
-  <meta property="og:title" content="[스프링부트 JPA API개발 성능최적화] 회원 조회 API">
-  <meta property="og:description" content="[스프링부트 JPA API개발 성능최적화] 회원 조회 API">
+  <meta property="og:title" content="[스프링부트 JPA API개발 성능최적화] 회원 수정 API">
+  <meta property="og:description" content="[스프링부트 JPA API개발 성능최적화] 회원 수정 API">
      
   
   
@@ -75,9 +75,9 @@
             "@id": "https:\/\/offetuoso.github.io\/"
       },
       "articleSection" : "blog",
-      "name" : "[스프링부트 JPA API개발 성능최적화] 회원 조회 API",
-      "headline" : "[스프링부트 JPA API개발 성능최적화] 회원 조회 API",
-      "description" : "[스프링부트 JPA API개발 성능최적화] 회원 조회 API",
+      "name" : "[스프링부트 JPA API개발 성능최적화] 회원 수정 API",
+      "headline" : "[스프링부트 JPA API개발 성능최적화] 회원 수정 API",
+      "description" : "[스프링부트 JPA API개발 성능최적화] 회원 수정 API",
       "inLanguage" : "en-US",
       "author" : "",
       "creator" : "",
@@ -88,7 +88,7 @@
       "datePublished": "2022-08-03 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-08-03 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/jpa-api-development-and-performance-optimization\/member-update-api\/",
-      "wordCount" : "250",
+      "wordCount" : "302",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -170,12 +170,12 @@
 			      <div class="overlay" style="opacity:   0.4 ;"></div>
 				<div class="page-heading">
 		             <h1 class="post__title" style="color:white;font-size: 28px;">
-		            	[스프링부트 JPA API개발 성능최적화] 회원 조회 API
+		            	[스프링부트 JPA API개발 성능최적화] 회원 수정 API
 		              </h1>
 		        </div>	
 	        </div>
 	        <h1 class="post__title" id="post__title" style="  display:none; ">
-		       	[스프링부트 JPA API개발 성능최적화] 회원 조회 API
+		       	[스프링부트 JPA API개발 성능최적화] 회원 수정 API
             </h1>		
             <time datetime="2022-08-03 00:00:00 &#43;0000 UTC" class="post__date">2022-08-03</time> 
           </header>
@@ -214,87 +214,112 @@
 </blockquote>
 <h2 id="api-개발-기본">API 개발 기본<a class="anchor" href="#api-개발-기본">#</a></h2>
 <hr>
-<h3 id="회원-조회-api">회원 조회 API<a class="anchor" href="#회원-조회-api">#</a></h3>
+<h3 id="회원-수정-api">회원 수정 API<a class="anchor" href="#회원-수정-api">#</a></h3>
 <hr>
 <blockquote>
-<p>조회는 단순 검색 및 반환이기 때문에 어렵지는 않습니다. 하지만 V1, V2 개선사항을 순서대로 작성해 보겠습니다.</p>
+<p>회원 수정 API는 저장 API와 크게 다를 것이 없습니다. <br>
+이전 API에서 수정하여 수정 API를 작성해 보겠습니다.</p>
 </blockquote>
-<h4 id="회원-조회-v1">회원 조회 V1<a class="anchor" href="#회원-조회-v1">#</a></h4>
 <blockquote>
-<p>이전에 엔티티를 바로 반환하면 안된다 하였지만, V1은 엔티티를 이용해 바로 반환하여 간단하게 작성하였습니다.</p>
+<p>id와 name을 입력받아, 해당 id로 조회한 member의 이름을 name으로 변경합니다.</p>
 </blockquote>
-<pre><code>    @GetMapping(&quot;/api/v1/members&quot;)
-    public List&lt;Member&gt; getMembersV1(@RequestBody @Valid CreateMemberRequest request){
+<blockquote>
+<p>MemberApiController.java</p>
+</blockquote>
+<pre><code>	@PutMapping(&quot;/api/v2/members/{id}&quot;)
+    public UpdateMemberResopnse updateMemberV2(
+            @PathVariable(&quot;id&quot;) Long id
+            , @RequestBody @Valid UpdateMemberRequest request
+    ){
 
-        return memberService.findMembers();
+        // 수정 커맨드
+        memberService.update(id, request.getName());
+        // 조회 쿼리
+        Member findMember = memberService.findOne(id);
+        
+        // 커맨드와 쿼리를 분리
+
+        return new UpdateMemberResopnse(findMember.getId(), findMember.getName());
+    }
+
+
+    @Data
+    @AllArgsConstructor 
+    static class UpdateMemberResopnse {
+        private long id;
+        private String name;
+    }
+
+    @Data
+    static class UpdateMemberRequest {
+        @NotEmpty
+        private String name;
+        private String city;
+        private String street;
+        private String zipcode;
+    }
+</code></pre>
+<h4 id="allargsconstructor">@AllArgsConstructor<a class="anchor" href="#allargsconstructor">#</a></h4>
+<blockquote>
+<p>AllArgsConstructor 어노테이션은 모든 필드 값을 파라미터로 받는 생성자를 만들어줍니다.</p>
+</blockquote>
+<blockquote>
+<p>MemberService.java</p>
+</blockquote>
+<pre><code>   /**
+     * 회원 수정
+     */
+    @Transactional // 변경 감지를 위한 트랜잭션 필수 !!!
+    public void update(Long id, String name) {
+        Member member = this.findOne(id); 
+        member.setName(name);
     }
 </code></pre>
 <blockquote>
-<p>강의를 따라 하다 문제가 발생하였다.</p>
-</blockquote>
-<h4 id="javalangillegalstateexception-cannot-call-senderror-after-the-response-has-been-committed">java.lang.IllegalStateException: Cannot call sendError() after the response has been committed<a class="anchor" href="#javalangillegalstateexception-cannot-call-senderror-after-the-response-has-been-committed">#</a></h4>
-<blockquote>
-<p>양방향 관계에서 엔티티를 바로 사용해 Json 직렬화를 할때 각각의 엔티티가 서로를 계속 데이터로 만드는 무한 루프 문제입니다.</p>
-</blockquote>
-<pre><code>
-java.lang.IllegalStateException: Cannot call sendError() after the response has been committed
-	at org.apache.catalina.connector.ResponseFacade.sendError(ResponseFacade.java:472) ~[tomcat-embed-core-9.0.60.jar:9.0.60]
-	at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.sendServerError(DefaultHandlerExceptionResolver.java:552) ~[spring-webmvc-5.3.18.jar:5.3.18]
-	at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.handleHttpMessageNotWritable(DefaultHandlerExceptionResolver.java:442) ~[spring-webmvc-5.3.18.jar:5.3.18]
-	at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.doResolveException(DefaultHandlerExceptionResolver.java:209) ~[spring-webmvc-5.3.18.jar:5.3.18]
-	at
-...
-</code></pre>
-<blockquote>
-<a href="https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/">
-</blockquote>
-<p>JPA 양방향 무한 루프 java.lang.IllegalStateException: &hellip;&lt;/&gt;</p>
-<blockquote>
-<p>위의 정리한 내용을 보시면 더 자세한 내용이 있습니다.</p>
+<p>하나의 트랜잭션에서 조회한 엔티티는 변경감지 대상이기 때문에 조회 후 Set을 통해 name을 Update할 수 있습니다. <br></p>
 </blockquote>
 <blockquote>
-<ol>
-<li>DTO로 바꾸어 사용</li>
-<li>@JsonIdentityInfo 어노테이션을 추가해서 중복 생성 막음</li>
-<li>@JsonIgnore 어노테이션 사용 Json 직렬화 제외</li>
-</ol>
+<p>update 메소드의 리턴값으로 Member를 넘기지 않는 이유는 수정에 대한 커맨드와, 조회 쿼리를 분리함과 <br>
+Member를 리턴하게 되면 id를 통해 새로 변경된 member를 조회하여 <mark>영속상태가 끊어진 member를 전달</mark>하게 됩니다.</p>
 </blockquote>
-<pre><code>package jpabook.jpashop.domain;
-
-import com.fasterxml.jackson.annotation.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
-import java.util.List;
-
-@Entity
-@Getter @Setter
-//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = &quot;id&quot;)
-public class Member {
-
-
-    public Member() {
-    }
-
-    @Id @GeneratedValue
-    @Column(name = &quot;member_id&quot;)
-    private Long id;
-
-    private String name;
-
-    @Embedded
-    private Address address;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = &quot;member&quot;)
-    private List&lt;Order&gt; orders = new ArrayList&lt;&gt;();
-
-}
-
-</code></pre>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/img-001.png" alt="contact"></p>
+<p><img src="/images/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/img-002.png" alt="contact"></p>
+<h4 id="restfulapi">RESTfulApi<a class="anchor" href="#restfulapi">#</a></h4>
+<blockquote>
+<p>RESTfulApi의 get, post, put, patch, delete를 처음 듣는다면, 한번 REST API의 개념을 먼저 공부하시는게 도움이 되실것같습니다.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>GET(read)</th>
+<th>POST(create)</th>
+<th>PUT/PACTH(update)</th>
+<th>DELETE(delete)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/members</td>
+<td>사용자 전체 조회</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>/members/{id}</td>
+<td>{id}사용자 조회</td>
+<td>{id} 신규 사용자 추가</td>
+<td>{id} 사용자 수정</td>
+<td>{id} 사용자 삭제</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://offetuoso.github.io/blog/develop/backend/restapi/restful-api/">레스트풀 API(Restful Api)</a></p>
+<blockquote>
+<p>엔티티와 프리젠테이션 계층간 로직을 분리를 할 수 있습니다. <br> 
+엔티티와 API 스팩을 분리할 수 있어 엔티티를 변환해도 API 스팩에 변화가 없습니다.</p>
+</blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
 <blockquote>
@@ -342,16 +367,16 @@ public class Member {
  
 		          <div class="pagination">
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-list-search-and-cancel/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/">
         <span class="pagination__label">Previous Post</span>
-        <span class="pagination__title">[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발</span>
+        <span class="pagination__title">[스프링부트 JPA API개발 성능최적화] 회원 조회 API</span>
     </a>
   
 
   
-    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/">
+    <a class="pagination__item" href="https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/">
       <span class="pagination__label">Next Post</span>
-      <span class="pagination__title" >[스프링부트 JPA API개발 성능최적화] 회원 수정 API</span>
+      <span class="pagination__title" >[스프링부트 JPA API개발 성능최적화] 회원 등록 API</span>
     </a>
   
 </div>
@@ -422,13 +447,13 @@ public class Member {
       </div>
       
       <div class="toc-container">
-          <div class="toc-post-title">[스프링부트 JPA API개발 성능최적화] 회원 조회 API</div> 
+          <div class="toc-post-title">[스프링부트 JPA API개발 성능최적화] 회원 수정 API</div> 
         <nav id="TableOfContents">
   <ul>
     <li><a href="#목차">목차</a></li>
     <li><a href="#api-개발-기본">API 개발 기본</a>
       <ul>
-        <li><a href="#회원-조회-api">회원 조회 API</a></li>
+        <li><a href="#회원-수정-api">회원 수정 API</a></li>
         <li><a href="#이전-소스">이전 소스</a></li>
       </ul>
     </li>
@@ -489,20 +514,6 @@ public class Member {
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
      data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9349865689631647"
-     data-ad-slot="1516247131"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-
-</body>
-
-</html>
-ut="in-article"
      data-ad-format="fluid"
      data-ad-client="ca-pub-9349865689631647"
      data-ad-slot="1516247131"></ins>
