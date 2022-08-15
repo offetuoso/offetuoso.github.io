@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-KR</language>
     <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 09 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/jpa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JPA Lazy 로딩 Jackson Serialize 에러 - org.springframework.http.converter.HttpMessageConversionException-Type-definition error-ByteBuddyInterceptor</title>
+      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/org.springframework.http.converter.httpmessageconversionexception-type-definition-error-bytebuddyinterceptor/</link>
+      <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/org.springframework.http.converter.httpmessageconversionexception-type-definition-error-bytebuddyinterceptor/</guid>
+      <description>JPA Lazy 로딩 Jackson Serialize 에러 - org.springframework.http.converter.HttpMessageConversionException-Type-definition error-ByteBuddyInterceptor   API에서 Jackson을 사용해 Lazy 로딩으로 설정된 다른 엔티티를 Serialize하는 부분에서 오류가 발생
+ 오류 {&amp;quot;timestamp&amp;quot;: &amp;quot;2022-08-15T08:24:46.374+00:00&amp;quot;,&amp;quot;status&amp;quot;: 500,&amp;quot;error&amp;quot;: &amp;quot;Internal Server Error&amp;quot;,&amp;quot;trace&amp;quot;: &amp;quot;org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: java.util.ArrayList[0]-&amp;gt;jpabook.jpashop.domain.Order[\&amp;quot;member\&amp;quot;]-&amp;gt;jpabook.jpashop.domain.Member$HibernateProxy$w28vcvob[\&amp;quot;hibernateLazyInitializer\&amp;quot;])\r\n\tat org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:462)\r\n\tat org.</description>
+    </item>
+    
     <item>
       <title>JPA 양방향 무한 루프 java.lang.IllegalStateException: Cannot call sendError() after the response has been committed</title>
       <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/</link>
@@ -16,6 +26,15 @@
       <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/</guid>
       <description>java.lang.IllegalStateException: Cannot call sendError() after the response has been committed   API에서 양방향관계 엔티티를 반환하는 예제를 작성하던 도중 발생하였다.
  오류 java.lang.IllegalStateException: Cannot call sendError() after the response has been committedat org.apache.catalina.connector.ResponseFacade.sendError(ResponseFacade.java:472) ~[tomcat-embed-core-9.0.60.jar:9.0.60]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.sendServerError(DefaultHandlerExceptionResolver.java:552) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.handleHttpMessageNotWritable(DefaultHandlerExceptionResolver.java:442) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.doResolveException(DefaultHandlerExceptionResolver.java:209) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:142) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-5.3.18.jar:5.3.18]... 원인   Member 엔티티와 Order는 1:N의 관계이며 양방향 관계로 되어있다. API에서 Members를 호출할때 Orders를 가지고 있는 데이터가 문제가 되었다.</description>
+    </item>
+    
+    <item>
+      <title>[스프링부트 JPA API개발 성능최적화] 지연 로딩과 조회 성능 최적화</title>
+      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/lazy-loading-and-query-performance-optimization/</link>
+      <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/lazy-loading-and-query-performance-optimization/</guid>
+      <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 컬렉션 조회 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 고급   대부분 조회에서 성능 이슈가 많이 나오는데 어떻게 조회 API를 성능 최적화 할지 심도 깊게 공부해 보도록 하겠습니다.</description>
     </item>
     
     <item>
@@ -38,10 +57,10 @@
     
     <item>
       <title>[스프링부트 JPA API개발 성능최적화] 회원 조회 API</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</link>
+      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-list-api/</link>
       <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</guid>
+      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-list-api/</guid>
       <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 기본  회원 조회 API   조회는 단순 검색 및 반환이기 때문에 어렵지는 않습니다.</description>
     </item>
     
