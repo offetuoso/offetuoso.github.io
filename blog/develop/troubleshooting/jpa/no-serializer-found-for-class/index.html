@@ -88,7 +88,7 @@
       "datePublished": "2022-08-15 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-08-15 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/troubleshooting\/jpa\/no-serializer-found-for-class\/",
-      "wordCount" : "768",
+      "wordCount" : "871",
       "keywords" : ["자바 ORM 표준 JPA", "김영한", "JPA", "ORM", "Java", "인프런", "Blog"]
     }
   
@@ -350,10 +350,12 @@ Jackson 라이브러리 제공자 FasterXML에서 위 문제를 해결하기 위
 ObjectMapper 객체에서 사용할 수 있는 Hibernate용 특정 모듈 jackson-datatype-hibernate 를 제공합니다.</p>
 </blockquote>
 <blockquote>
+<p>해당 hibernate5를 빈으로 생성하면 Jackson Serialize 시 LAZY 로딩이 설정된 엔티티를 스킵하여 Null로 생성합니다.</p>
+</blockquote>
+<blockquote>
 <p>build.gradle</p>
 </blockquote>
 <pre><code>	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-hibernate5'
-
 </code></pre>
 <blockquote>
 <p>JpashopApplication - 빈생성</p>
@@ -379,7 +381,52 @@ public class JpashopApplication {
 		return new Hibernate5Module();
 	}
 }
+</code></pre>
+<h4 id="hibernate5module-lazy-loding-강제-데이터-로딩">Hibernate5Module LAZY Loding 강제 데이터 로딩<a class="anchor" href="#hibernate5module-lazy-loding-강제-데이터-로딩">#</a></h4>
+<blockquote>
+<p>Hibernate5Module의 설정을 Hibernate5Module.Feature.FORCE_LAZY_LOADING 을 True로 변경해 강제 LAZY 로딩 설정된 데이터를 가져옵니다.</p>
+</blockquote>
+<blockquote>
+<p>JpashopApplication</p>
+</blockquote>
+<pre><code>	@Bean
+		Hibernate5Module hibernate5Module(){
+		Hibernate5Module hibernate5Module = new Hibernate5Module();
+		hibernate5Module.configure(Hibernate5Module.Feature.FORCE_LAZY_LOADING, true);
+		return hibernate5Module;
+	}
+</code></pre>
+<blockquote>
+<p>하지만 성능 문제가 있고, 엔티티를 노출 시키는 것은 문제가 있기 떄문에 추천드리지는 않습니다.</p>
+</blockquote>
+<h4 id="force_lazy_loading-없이-원하는-엔티티-조회">FORCE_LAZY_LOADING 없이 원하는 엔티티 조회<a class="anchor" href="#force_lazy_loading-없이-원하는-엔티티-조회">#</a></h4>
+<blockquote>
+<p>JpashopApplication</p>
+</blockquote>
+<pre><code>@Bean
+		Hibernate5Module hibernate5Module(){
+		Hibernate5Module hibernate5Module = new Hibernate5Module();
+		//hibernate5Module.configure(Hibernate5Module.Feature.FORCE_LAZY_LOADING, true);
+		return hibernate5Module;
+	}
 
+</code></pre>
+<blockquote>
+<p>OrderSimpleApiController.java</p>
+</blockquote>
+<pre><code> @GetMapping(&quot;/api/v1/simple-orders&quot;)
+    public List&lt;Order&gt; getOrdersV1(){
+
+
+        List&lt;Order&gt; orders = orderRepository.findAllByString(new OrderSearch());
+
+        for (Order order : orders){
+            order.getMember().getName(); // LAZY 강제 초기화
+            order.getDelivery();
+        }
+
+        return orders;
+    }
 </code></pre>
 <h3 id="3-yml-springjacksonserializationfail-on-empty-beans-값-false">3. yml spring.jackson.serialization.fail-on-empty-beans 값 false<a class="anchor" href="#3-yml-springjacksonserializationfail-on-empty-beans-값-false">#</a></h3>
 <blockquote>

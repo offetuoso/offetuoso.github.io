@@ -88,7 +88,7 @@
       "datePublished": "2022-08-03 00:00:00 \u002b0000 UTC",
       "dateModified" : "2022-08-03 00:00:00 \u002b0000 UTC",
       "url" : "https:\/\/offetuoso.github.io\/blog\/develop\/backend\/jpa-api-development-and-performance-optimization\/lazy-loading-and-query-performance-optimization\/",
-      "wordCount" : "877",
+      "wordCount" : "1491",
       "keywords" : ["ORM", "Blog"]
     }
   
@@ -458,14 +458,19 @@ public class Delivery {
     &quot;path&quot;: &quot;/api/v1/simple-orders&quot;
 }
 </code></pre>
-<h4 id="jackson-datatype-hibernate5-module">Jackson-DataType-Hibernate5 Module<a class="anchor" href="#jackson-datatype-hibernate5-module">#</a></h4>
 <blockquote>
-<p>지연로딩으로 설정된 엔티티를 API에서 내려줄 때, Jackson이 데이터를 변환하다가 알 수 없는 타입이라는 에러가 발생한다. 
-Gradle</p>
+<p>지연로딩으로 설정된 엔티티를 API에서 내려줄 때, Jackson이 데이터를 변환하다가 알 수 없는 타입이라는 에러가 발생합니다.</p>
+</blockquote>
+<h4 id="jackson으로-order-엔티티를-serialize를-할때-lazylazy-옵션은-필요할-때-조회-설정으로-비어있는-객체를-serialize-하려고-해서-발생되는-문제-해결방법">Jackson으로 Order 엔티티를 Serialize를 할때, LAZY(LAZY 옵션은 필요할 때 조회) 설정으로 비어있는 객체를 Serialize 하려고 해서 발생되는 문제 해결방법<a class="anchor" href="#jackson으로-order-엔티티를-serialize를-할때-lazylazy-옵션은-필요할-때-조회-설정으로-비어있는-객체를-serialize-하려고-해서-발생되는-문제-해결방법">#</a></h4>
+<p><a href="https://offetuoso.github.io/blog/develop/troubleshooting/jpa/no-serializer-found-for-class/">JPA Lazy 로딩 Jackson Serialize 에러 - No serializer found for class&hellip;</a></p>
+<h4 id="1-dto로-바꾸어-사용할-데이터만-반환하여-사용">1. DTO로 바꾸어 사용할 데이터만 반환하여 사용<a class="anchor" href="#1-dto로-바꾸어-사용할-데이터만-반환하여-사용">#</a></h4>
+<h5 id="2-hibernate5---jackson을-위한-새로운-hibernate-모듈을-위한-빈을-생성">2. hibernate5 :  Jackson을 위한 새로운 Hibernate 모듈을 위한 빈을 생성<a class="anchor" href="#2-hibernate5---jackson을-위한-새로운-hibernate-모듈을-위한-빈을-생성">#</a></h5>
+<blockquote>
+<p>Gradle</p>
 </blockquote>
 <pre><code>	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
 </code></pre>
-<h4 id="hibernate5module-bean-등록">Hibernate5Module Bean 등록<a class="anchor" href="#hibernate5module-bean-등록">#</a></h4>
+<h5 id="hibernate5module-bean-등록">Hibernate5Module Bean 등록<a class="anchor" href="#hibernate5module-bean-등록">#</a></h5>
 <blockquote>
 <p>JpashopApplication.java</p>
 </blockquote>
@@ -478,11 +483,275 @@ Hibernate5Module hibernate5Module() {
 }
 </code></pre>
 <blockquote>
-<p>jackson-datatype-hibernate5 모듈을 추가하고 Bean 등록을 하게 되면, 지연로딩으로 설정된 프록시 엔티티를 null 값으로 설정합니다. 
- 
-또한 이외에 4개의 해결책이 더 있습니다.</p>
+<p>jackson-datatype-hibernate5 모듈을 추가하고 Bean 등록을 하게 되면, 지연로딩으로 설정된 프록시 엔티티를 무시하고 null 값으로 설정합니다.</p>
 </blockquote>
-<p><a href="">JPA Lazy 로딩 Jackson Serialize 에러 - No serializer found for class&hellip;</a></p>
+<h5 id="hibernate5module-lazy-loding-강제-데이터-로딩">Hibernate5Module LAZY Loding 강제 데이터 로딩<a class="anchor" href="#hibernate5module-lazy-loding-강제-데이터-로딩">#</a></h5>
+<blockquote>
+<p>Hibernate5Module의 설정을 Hibernate5Module.Feature.FORCE_LAZY_LOADING 을 True로 변경해 강제 LAZY 로딩 설정된 데이터를 가져옵니다.</p>
+</blockquote>
+<pre><code>	@Bean
+		Hibernate5Module hibernate5Module(){
+		Hibernate5Module hibernate5Module = new Hibernate5Module();
+		hibernate5Module.configure(Hibernate5Module.Feature.FORCE_LAZY_LOADING, true);
+		return hibernate5Module;
+	}
+</code></pre>
+<h5 id="force_lazy_loading-없이-원하는-엔티티-조회">FORCE_LAZY_LOADING 없이 원하는 엔티티 조회<a class="anchor" href="#force_lazy_loading-없이-원하는-엔티티-조회">#</a></h5>
+<blockquote>
+<p>JpashopApplication</p>
+</blockquote>
+<pre><code>@Bean
+		Hibernate5Module hibernate5Module(){
+		Hibernate5Module hibernate5Module = new Hibernate5Module();
+		//hibernate5Module.configure(Hibernate5Module.Feature.FORCE_LAZY_LOADING, true);
+		return hibernate5Module;
+	}
+
+</code></pre>
+<blockquote>
+<p>OrderSimpleApiController.java</p>
+</blockquote>
+<pre><code> @GetMapping(&quot;/api/v1/simple-orders&quot;)
+    public List&lt;Order&gt; getOrdersV1(){
+
+
+        List&lt;Order&gt; orders = orderRepository.findAllByString(new OrderSearch());
+
+        for (Order order : orders){
+            order.getMember().getName(); // LAZY 강제 초기화
+            order.getDelivery();
+        }
+
+        return orders;
+    }
+</code></pre>
+<h4 id="3-yml-springjacksonserializationfail-on-empty-beans-값-false">3. yml spring.jackson.serialization.fail-on-empty-beans 값 false<a class="anchor" href="#3-yml-springjacksonserializationfail-on-empty-beans-값-false">#</a></h4>
+<pre><code>  jackson:
+    serialization:
+      fail-on-empty-beans: false
+</code></pre>
+<h4 id="4-오류가-나는-컬럼에-jsonignore를-설정해주기">4. 오류가 나는 컬럼에 @JsonIgnore를 설정해주기<a class="anchor" href="#4-오류가-나는-컬럼에-jsonignore를-설정해주기">#</a></h4>
+<h4 id="5-lazy를-eager로-변경">5. LAZY를 EAGER로 변경<a class="anchor" href="#5-lazy를-eager로-변경">#</a></h4>
+<blockquote>
+<p>해당 방법을 사용하면 안되는 이유는</p>
+</blockquote>
+<blockquote>
+<p>요구사항이 Order와 Member, Delivery의 정보를 가져 오고 싶은데, 해당 모든 데이터들을 가져오다 보니</p>
+</blockquote>
+<pre><code>[
+    {
+        &quot;id&quot;: 35,
+        &quot;member&quot;: {
+            &quot;id&quot;: 33,
+            &quot;name&quot;: &quot;회원1&quot;,
+            &quot;address&quot;: {
+                &quot;city&quot;: &quot;도시1&quot;,
+                &quot;street&quot;: &quot;거리1&quot;,
+                &quot;zipcode&quot;: &quot;11111&quot;
+            }
+        },
+        &quot;orderItems&quot;: [
+            {
+                &quot;id&quot;: 37,
+                &quot;item&quot;: {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;앨범1&quot;,
+                    &quot;price&quot;: 10000,
+                    &quot;stockQuantity&quot;: 18,
+                    &quot;dtype&quot;: &quot;A&quot;,
+                    &quot;categories&quot;: [],
+                    &quot;artist&quot;: &quot;아티스트1&quot;,
+                    &quot;etc&quot;: &quot;기타1&quot;,
+                    &quot;dtypeNm&quot;: &quot;음반&quot;
+                },
+                &quot;orderPrice&quot;: 10000,
+                &quot;count&quot;: 2,
+                &quot;totalPrice&quot;: 20000
+            }
+        ],
+        &quot;delivery&quot;: {
+            &quot;id&quot;: 36,
+            &quot;address&quot;: {
+                &quot;city&quot;: &quot;도시1&quot;,
+                &quot;street&quot;: &quot;거리1&quot;,
+                &quot;zipcode&quot;: &quot;11111&quot;
+            },
+            &quot;status&quot;: &quot;READY&quot;
+        },
+        &quot;orderDate&quot;: &quot;2022-07-30T15:23:25.537696&quot;,
+        &quot;status&quot;: &quot;CANCEL&quot;,
+        &quot;totalPrice&quot;: 20000
+    },
+    {
+        &quot;id&quot;: 88,
+        &quot;member&quot;: {
+            &quot;id&quot;: 33,
+            &quot;name&quot;: &quot;회원1&quot;,
+            &quot;address&quot;: {
+                &quot;city&quot;: &quot;도시1&quot;,
+                &quot;street&quot;: &quot;거리1&quot;,
+                &quot;zipcode&quot;: &quot;11111&quot;
+            }
+        },
+        &quot;orderItems&quot;: [
+            {
+                &quot;id&quot;: 90,
+                &quot;item&quot;: {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;앨범1&quot;,
+                    &quot;price&quot;: 10000,
+                    &quot;stockQuantity&quot;: 18,
+                    &quot;dtype&quot;: &quot;A&quot;,
+                    &quot;categories&quot;: [],
+                    &quot;artist&quot;: &quot;아티스트1&quot;,
+                    &quot;etc&quot;: &quot;기타1&quot;,
+                    &quot;dtypeNm&quot;: &quot;음반&quot;
+                },
+                &quot;orderPrice&quot;: 10000,
+                &quot;count&quot;: 2,
+                &quot;totalPrice&quot;: 20000
+            },
+            {
+                &quot;id&quot;: 91,
+                &quot;item&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;책1&quot;,
+                    &quot;price&quot;: 211,
+                    &quot;stockQuantity&quot;: 2108,
+                    &quot;dtype&quot;: &quot;B&quot;,
+                    &quot;categories&quot;: [],
+                    &quot;author&quot;: &quot;저자1&quot;,
+                    &quot;isbn&quot;: &quot;ISBN1&quot;,
+                    &quot;dtypeNm&quot;: &quot;책&quot;
+                },
+                &quot;orderPrice&quot;: 211,
+                &quot;count&quot;: 3,
+                &quot;totalPrice&quot;: 633
+            }
+        ],
+        &quot;delivery&quot;: {
+            &quot;id&quot;: 89,
+            &quot;address&quot;: {
+                &quot;city&quot;: &quot;도시1&quot;,
+                &quot;street&quot;: &quot;거리1&quot;,
+                &quot;zipcode&quot;: &quot;11111&quot;
+            },
+            &quot;status&quot;: &quot;READY&quot;
+        },
+        &quot;orderDate&quot;: &quot;2022-08-01T23:19:02.252476&quot;,
+        &quot;status&quot;: &quot;ORDER&quot;,
+        &quot;totalPrice&quot;: 20633
+    },
+    {
+        &quot;id&quot;: 92,
+        &quot;member&quot;: {
+            &quot;id&quot;: 33,
+            &quot;name&quot;: &quot;회원1&quot;,
+            &quot;address&quot;: {
+                &quot;city&quot;: &quot;도시1&quot;,
+                &quot;street&quot;: &quot;거리1&quot;,
+                &quot;zipcode&quot;: &quot;11111&quot;
+            }
+        },
+        &quot;orderItems&quot;: [
+            {
+                &quot;id&quot;: 94,
+                &quot;item&quot;: {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;앨범1&quot;,
+                    &quot;price&quot;: 10000,
+                    &quot;stockQuantity&quot;: 18,
+                    &quot;dtype&quot;: &quot;A&quot;,
+                    &quot;categories&quot;: [],
+                    &quot;artist&quot;: &quot;아티스트1&quot;,
+                    &quot;etc&quot;: &quot;기타1&quot;,
+                    &quot;dtypeNm&quot;: &quot;음반&quot;
+                },
+                &quot;orderPrice&quot;: 10000,
+                &quot;count&quot;: 2,
+                &quot;totalPrice&quot;: 20000
+            },
+            {
+                &quot;id&quot;: 95,
+                &quot;item&quot;: {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;앨범1&quot;,
+                    &quot;price&quot;: 10000,
+                    &quot;stockQuantity&quot;: 18,
+                    &quot;dtype&quot;: &quot;A&quot;,
+                    &quot;categories&quot;: [],
+                    &quot;artist&quot;: &quot;아티스트1&quot;,
+                    &quot;etc&quot;: &quot;기타1&quot;,
+                    &quot;dtypeNm&quot;: &quot;음반&quot;
+                },
+                &quot;orderPrice&quot;: 10000,
+                &quot;count&quot;: 1,
+                &quot;totalPrice&quot;: 10000
+            },
+            {
+                &quot;id&quot;: 96,
+                &quot;item&quot;: {
+                    &quot;id&quot;: 2,
+                    &quot;name&quot;: &quot;책1&quot;,
+                    &quot;price&quot;: 211,
+                    &quot;stockQuantity&quot;: 2108,
+                    &quot;dtype&quot;: &quot;B&quot;,
+                    &quot;categories&quot;: [],
+                    &quot;author&quot;: &quot;저자1&quot;,
+                    &quot;isbn&quot;: &quot;ISBN1&quot;,
+                    &quot;dtypeNm&quot;: &quot;책&quot;
+                },
+                &quot;orderPrice&quot;: 211,
+                &quot;count&quot;: 1,
+                &quot;totalPrice&quot;: 211
+            }
+        ],
+        &quot;delivery&quot;: {
+            &quot;id&quot;: 93,
+            &quot;address&quot;: {
+                &quot;city&quot;: &quot;도시1&quot;,
+                &quot;street&quot;: &quot;거리1&quot;,
+                &quot;zipcode&quot;: &quot;11111&quot;
+            },
+            &quot;status&quot;: &quot;READY&quot;
+        },
+        &quot;orderDate&quot;: &quot;2022-08-02T00:58:44.937685&quot;,
+        &quot;status&quot;: &quot;CANCEL&quot;,
+        &quot;totalPrice&quot;: 30211
+    }
+]
+</code></pre>
+<blockquote>
+<p>OrderItem까지 모두 조회해 온것을 알 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>이로인해 로우만큼 또 OrderItem을 조회하여 성능에도 문제가 있으며,</p>
+</blockquote>
+<blockquote>
+<p>엔티티가 변경 되었을때 API스팩이 모두 변경될 수 있습니다.</p>
+</blockquote>
+<blockquote>
+<p>그렇기 때문에 엔티티를 그대로 반환하는 것은 안좋습니다.</p>
+</blockquote>
+<blockquote>
+<p>또 API SPEC에서 필요한 것만 노출해야 하는 것이 모든 데이터 들을 제공해줄 경우 제공받은 팀에서 다른 컬럼들을 사용하고 있다면, API를 수정할때 사용하는 모든 팀들과 소스를 같이 수정해야하는 문제도 가지고 있습니다.</p>
+</blockquote>
+<h4 id="주의">주의<a class="anchor" href="#주의">#</a></h4>
+<blockquote>
+<ul>
+<li>엔티티를 직접 노출할 때는 양방향 연관관계가 걸린 곳은 꼭 한쪽을 @JsonIgnore 처리 해야 한다. 안그러면 양쪽을 서로 호출하면서 무한 루프에 걸린다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>앞에서 계속 강조했듯이 정말 간단한 애플리케이션이 아니라면 엔티티를 API 응답으로 외부로 노출하는 것은 좋지 않다. 따라서 <code>Hibernate5Module</code>를 사용하는 것보다 DTO로 반환하는 것이 더 좋은 방법이다.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>지연(LAZY) 로딩을 피하기 위해 즉시(EAGER) 로딩으로 설정하면 안된다. 즉시 로딩 때문에  연관관계가 필요 없는 경우에도 데이터를 항상 조회해소 성능 이슈를 발생시킬수 있다. 즉시 로딩으로 실행하면 성능 튜닝이 매우 어려워 진다. 항상 지연 로딩을 기본으로 하고, 성능 최적화가 필요한 경우에는 페치 조인을 사용해라(V3)</li>
+</ul>
+</blockquote>
 <h3 id="이전-소스">이전 소스<a class="anchor" href="#이전-소스">#</a></h3>
 <hr>
 <blockquote>
