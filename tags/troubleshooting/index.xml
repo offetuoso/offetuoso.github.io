@@ -1,93 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Troubleshooting on offetuoso&#39;s Blog</title>
-    <link>https://offetuoso.github.io/tags/troubleshooting/</link>
-    <description>Recent content in Troubleshooting on offetuoso&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>ko-KR</language>
-    <copyright>© 2021</copyright>
-    <lastBuildDate>Mon, 15 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>JPA Lazy 로딩 Jackson Serialize 에러 - No serializer found for class / org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/no-serializer-found-for-class/</link>
-      <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/no-serializer-found-for-class/</guid>
-      <description>JPA Lazy 로딩 Jackson Serialize 에러 - No serializer found for class -org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer   API에서 Jackson을 사용해 Lazy 로딩으로 설정된 다른 엔티티를 Serialize하는 부분에서 오류가 발생
- 오류 {&amp;quot;timestamp&amp;quot;: &amp;quot;2022-08-15T08:24:46.374+00:00&amp;quot;,&amp;quot;status&amp;quot;: 500,&amp;quot;error&amp;quot;: &amp;quot;Internal Server Error&amp;quot;,&amp;quot;trace&amp;quot;: &amp;quot;org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.</description>
-    </item>
-    
-    <item>
-      <title>JPA 양방향 무한 루프 java.lang.IllegalStateException: Cannot call sendError() after the response has been committed</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/</link>
-      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/</guid>
-      <description>java.lang.IllegalStateException: Cannot call sendError() after the response has been committed   API에서 양방향관계 엔티티를 반환하는 예제를 작성하던 도중 발생하였다.
- 오류 java.lang.IllegalStateException: Cannot call sendError() after the response has been committedat org.apache.catalina.connector.ResponseFacade.sendError(ResponseFacade.java:472) ~[tomcat-embed-core-9.0.60.jar:9.0.60]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.sendServerError(DefaultHandlerExceptionResolver.java:552) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.handleHttpMessageNotWritable(DefaultHandlerExceptionResolver.java:442) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.doResolveException(DefaultHandlerExceptionResolver.java:209) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:142) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-5.3.18.jar:5.3.18]... 원인   Member 엔티티와 Order는 1:N의 관계이며 양방향 관계로 되어있다. API에서 Members를 호출할때 Orders를 가지고 있는 데이터가 문제가 되었다.</description>
-    </item>
-    
-    <item>
-      <title>object references an unsaved transient instance - save the transient instance before flushing 에러</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/</link>
-      <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/</guid>
-      <description>object references an unsaved transient instance - save the transient instance before flushing 에러 오류 org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing 원인   @ManyToOne 또는 @OneToMany 매핑을 사용 할때 부모 엔티티에 포함된 FK가 아직 영속되지 않아 생긴 영속성 전이(CASCADE)에 대한 오류 발생    N:1 관계시 양방향 설정시, 연결된 엔티티 객체를 생성 시 FK가 필수로 필요   @ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)private Team team = new Team(); // &amp;lt;&amp;lt;   Member를 생성할 때, Team이 필수 값이 아니라면, new Team() 으로 미리 생성해 둘 필요가 없다.</description>
-    </item>
-    
-    <item>
-      <title>Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/</link>
-      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/</guid>
-      <description>Database C:/Users/user/dbname not found, either pre-create it or allow remote database creation 오류 발생 문제  H2 데이터베이스 신규 생성 및 연결시 아래 오류가 나오며 생성이 안되는 경우
- Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation 해결방법   C:/Users/user/ 경로에 dbname.mv.db 파일을 생성 jdbc:h2:~/dbname을 입력후 연결을 해본다.(처음 생성시에만)
-- 이후 jdbc:h2:tcp://localhost/~/dbname 으로 접속   </description>
-    </item>
-    
-    <item>
-      <title>Vue v-for Elements in iteration expect to have &#39;v-bind:key&#39; directives 문제</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/vue/vue-v-for/</link>
-      <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/vue/vue-v-for/</guid>
-      <description>Elements in iteration expect to have &amp;lsquo;v-bind:key&amp;rsquo; directives 문제  이전 버전의 강좌를 보고 따라 하던 도중 vue template에서 li 에 v-for 를 이용해서 v-for=&amp;ldquo;t in tries&amp;rdquo; 루프를 생성하고 싶었으니 오류를 만나게 되었습니다.
- &amp;lt;!-- 문제가 발생한 코드 --&amp;gt;&amp;lt;li v-for=&amp;quot;item in tries&amp;quot;&amp;gt; {{item}}&amp;lt;/li&amp;gt; 2.2.0 이상에서 v-for는 key 가 필수 입니다.   &amp;lt;my-componentv-for=&amp;quot;(item, index) in items&amp;quot;v-bind:item=&amp;quot;item&amp;quot;v-bind:index=&amp;quot;index&amp;quot;v-bind:key=&amp;quot;item.id&amp;quot;&amp;gt;&amp;lt;/my-component&amp;gt; 수정사항적용 &amp;lt;li v-for=&amp;quot;(item, index) in tries&amp;quot; :key=&amp;quot;index&amp;quot;&amp;gt;{{ item }}&amp;lt;/li&amp;gt; 참조 [Vue.</description>
-    </item>
-    
-    <item>
-      <title>NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/vue/npm-init/</link>
-      <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/vue/npm-init/</guid>
-      <description>NPM init 패키지명 입력시 오류 발생 문제  npm init 명령어를 사용할때, node를 처음 접하게 되어 발생하였던 문제에 대해 정리
- Sorry, name can no longer contain capital letters. &amp;gt; npm init&amp;gt; package name: (3_끝말잇기) WordRelay&amp;gt; Sorry, name can no longer contain capital letters. package name : UpperCamelCase로 입력 시 오류 발생 Sorry, name can no longer contain capital letters. &amp;gt; npm init&amp;gt; package name: (3_끝말잇기) wordRelay&amp;gt; Sorry, name can no longer contain capital letters.</description>
-    </item>
-    
-    <item>
-      <title>Lombok @Data 어노테이션 getter setter 인식 안될때</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/lombok-error/</link>
-      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/spring/lombok-error/</guid>
-      <description>Lombok @Data 어노테이션 &amp;ldquo;getter&amp;rdquo; &amp;ldquo;setter&amp;rdquo; 인식 안될때 문제  Spring Boot에서 프로젝트 생성시 아래와 같이 lombok을 추가하고 데이터 오브젝트 클래스에서 lombok 선언을 하였음에도, 컨트롤러에서 @RequestBody를 통해 Company company 객체를 전달받았을때, 데이터가 세팅이 안되고 Null로 데이터가 있는 경우가 있었다.
-  찾아보니, 사용하는 lombok-xxx.jar를 실행하여 IDE(eclipse, sts)에 설치 해줘야 한다는 것이다.
- 해결책   Jar가 설치된 위치로 가서 Terminal을 연다.    Jar를 실행시킨다.   	java -jar [jar 파일.</description>
-    </item>
-    
-    <item>
-      <title>Maven Error - Failure to transfer..</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</guid>
-      <description>Maven error “Failure to transfer…” 문제 Failure to transfer com.google.guava:guava:jar:10.0.1 from https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempte from/to central (https://repo.maven.apache.org/maven2): The operation was cancelled.  https://repo.maven.apache.org/maven2에서 디펜던시를 전송하지 못하는 오류가 발생하였고, 로컬 저장소에 캐시되었습니다.
- 해결책 1   프로젝트 우클릭 -&amp;gt; Run as -&amp;gt; Maven Install 프로젝트 우클릭 -&amp;gt; Refresh 프로젝트 우클릭 -&amp;gt; Update Project (옵션 클릭 force update of snapshots/releases)   해결책 2   실행중인 IDE(이클립스, Sts) 종료 로컬 레퍼지토리 삭제</description>
-    </item>
-    
-  </channel>
-</rss>

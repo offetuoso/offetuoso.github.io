@@ -1,57 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Spring on offetuoso&#39;s Blog</title>
-    <link>https://offetuoso.github.io/subcategories/spring/</link>
-    <description>Recent content in Spring on offetuoso&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>ko-KR</language>
-    <copyright>© 2021</copyright>
-    <lastBuildDate>Fri, 20 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/subcategories/spring/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[Spring] @Controller, @Service, @Repository 어노테이션</title>
-      <link>https://offetuoso.github.io/blog/develop/framework/spring/contoller-service-repository-annotation/</link>
-      <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/framework/spring/contoller-service-repository-annotation/</guid>
-      <description>[Spring] context:component-scan과 @Component  Component-scan   기존에 오래된 버전의 스프링으로 프로젝트를 진행했을때, 가장 어려운 점이 XML을 이용한 설정이였고, 그중에 생성한 Java 파일들이 Bean으로 사용할 수 있도록 각각 추가하여 설정하는 부분이 있었습니다.
-  application.xml
- &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;&amp;lt;bean id=&amp;quot;testService&amp;quot; class=&amp;quot;com.spring.test.TestService&amp;quot; /&amp;gt;&amp;lt;bean id=&amp;quot;testRepository&amp;quot; class=&amp;quot;com.spring.test.TestRepository&amp;quot;/&amp;gt;&amp;lt;/beans&amp;gt;  component-scan은 이러한 일련의 작업을 드라마틱하게 줄여주는 기능입니다.
-  component-scan의 대상으로는
-  @Component를 포함하여 @Component를 상속 받는 @Controller, @Service, @Repository가 대상이 됩니다.</description>
-    </item>
-    
-    <item>
-      <title>[Spring] @Bean과 @Component</title>
-      <link>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</link>
-      <pubDate>Sun, 17 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</guid>
-      <description>[Spring] @Bean 과 @Component  @Bean 과 @Component 어노테이션이란 ?   IoC Container는 특정 어노테이션이 달려있는 클래스를 빈으로 만들기 위해 빈 스캐닝을 합니다.
-   @Configuration @Bean @Component @Repository @Service @Controller    대표적으로 빈으로 사용 할 수 있게 해주는 어노테이션은 대표적으로 빈으로 사용 할 수 있도록 해주는 어노테이션은 @Bean과 @Component이 있습니다.
- @Bean VS @Component  @Bean   개발자가 작성한 메소드를 통해 반환되는 객체를 Bean으로 만듬.</description>
-    </item>
-    
-    <item>
-      <title>Lombok @Data 어노테이션 getter setter 인식 안될때</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/lombok-error/</link>
-      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/spring/lombok-error/</guid>
-      <description>Lombok @Data 어노테이션 &amp;ldquo;getter&amp;rdquo; &amp;ldquo;setter&amp;rdquo; 인식 안될때 문제  Spring Boot에서 프로젝트 생성시 아래와 같이 lombok을 추가하고 데이터 오브젝트 클래스에서 lombok 선언을 하였음에도, 컨트롤러에서 @RequestBody를 통해 Company company 객체를 전달받았을때, 데이터가 세팅이 안되고 Null로 데이터가 있는 경우가 있었다.
-  찾아보니, 사용하는 lombok-xxx.jar를 실행하여 IDE(eclipse, sts)에 설치 해줘야 한다는 것이다.
- 해결책   Jar가 설치된 위치로 가서 Terminal을 연다.    Jar를 실행시킨다.   	java -jar [jar 파일.</description>
-    </item>
-    
-    <item>
-      <title>Maven Error - Failure to transfer..</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</guid>
-      <description>Maven error “Failure to transfer…” 문제 Failure to transfer com.google.guava:guava:jar:10.0.1 from https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempte from/to central (https://repo.maven.apache.org/maven2): The operation was cancelled.  https://repo.maven.apache.org/maven2에서 디펜던시를 전송하지 못하는 오류가 발생하였고, 로컬 저장소에 캐시되었습니다.
- 해결책 1   프로젝트 우클릭 -&amp;gt; Run as -&amp;gt; Maven Install 프로젝트 우클릭 -&amp;gt; Refresh 프로젝트 우클릭 -&amp;gt; Update Project (옵션 클릭 force update of snapshots/releases)   해결책 2   실행중인 IDE(이클립스, Sts) 종료 로컬 레퍼지토리 삭제</description>
-    </item>
-    
-  </channel>
-</rss>

@@ -1,1887 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Blogs on offetuoso&#39;s Blog</title>
-    <link>https://offetuoso.github.io/blog/</link>
-    <description>Recent content in Blogs on offetuoso&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>ko-KR</language>
-    <copyright>© 2021</copyright>
-    <lastBuildDate>Sun, 04 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>[스프링부트 JPA API개발 성능최적화] 지연 로딩과 조회 성능 최적화</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/lazy-loading-and-query-performance-optimization/</link>
-      <pubDate>Sun, 04 Sep 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/lazy-loading-and-query-performance-optimization/</guid>
-      <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 컬렉션 조회 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 고급   대부분 조회에서 성능 이슈가 많이 나오는데 어떻게 조회 API를 성능 최적화 할지 심도 깊게 공부해 보도록 하겠습니다.</description>
-    </item>
-    
-    <item>
-      <title>JPA Lazy 로딩 Jackson Serialize 에러 - No serializer found for class / org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/no-serializer-found-for-class/</link>
-      <pubDate>Mon, 15 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/no-serializer-found-for-class/</guid>
-      <description>JPA Lazy 로딩 Jackson Serialize 에러 - No serializer found for class -org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer   API에서 Jackson을 사용해 Lazy 로딩으로 설정된 다른 엔티티를 Serialize하는 부분에서 오류가 발생
- 오류 {&amp;quot;timestamp&amp;quot;: &amp;quot;2022-08-15T08:24:46.374+00:00&amp;quot;,&amp;quot;status&amp;quot;: 500,&amp;quot;error&amp;quot;: &amp;quot;Internal Server Error&amp;quot;,&amp;quot;trace&amp;quot;: &amp;quot;org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.</description>
-    </item>
-    
-    <item>
-      <title>JPA 양방향 무한 루프 java.lang.IllegalStateException: Cannot call sendError() after the response has been committed</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/</link>
-      <pubDate>Tue, 09 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/java.lang.illegalstateexception-cannot-call-senderror-after-the-response-has-been-committed/</guid>
-      <description>java.lang.IllegalStateException: Cannot call sendError() after the response has been committed   API에서 양방향관계 엔티티를 반환하는 예제를 작성하던 도중 발생하였다.
- 오류 java.lang.IllegalStateException: Cannot call sendError() after the response has been committedat org.apache.catalina.connector.ResponseFacade.sendError(ResponseFacade.java:472) ~[tomcat-embed-core-9.0.60.jar:9.0.60]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.sendServerError(DefaultHandlerExceptionResolver.java:552) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.handleHttpMessageNotWritable(DefaultHandlerExceptionResolver.java:442) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver.doResolveException(DefaultHandlerExceptionResolver.java:209) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:142) ~[spring-webmvc-5.3.18.jar:5.3.18]at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-5.3.18.jar:5.3.18]... 원인   Member 엔티티와 Order는 1:N의 관계이며 양방향 관계로 되어있다. API에서 Members를 호출할때 Orders를 가지고 있는 데이터가 문제가 되었다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA API개발 성능최적화] 회원 등록 API</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/</link>
-      <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-registration-api/</guid>
-      <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 기본   회원 등록 API, 회원 수정 API, 회원 조회 API를 만들어 보겠습니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA API개발 성능최적화] 회원 수정 API</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</link>
-      <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-update-api/</guid>
-      <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 기본  회원 수정 API   회원 수정 API는 저장 API와 크게 다를 것이 없습니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA API개발 성능최적화] 회원 조회 API</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-list-api/</link>
-      <pubDate>Wed, 03 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/jpa-api-development-and-performance-optimization/member-list-api/</guid>
-      <description>스프링부트 JPA API개발 성능최적화  목차   API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   API 개발 기본  회원 조회 API   조회는 단순 검색 및 반환이기 때문에 어렵지는 않습니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 주문 목록 검색 및 취소 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-list-search-and-cancel/</link>
-      <pubDate>Tue, 02 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-list-search-and-cancel/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   홈 화면과 레이아웃 주문 목록 검색 및 취소 개발  상품리스트와 상품 검색  OrderController.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 상품 주문 화면 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-development/</link>
-      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   홈 화면과 레이아웃 상품 주문 화면 개발   컨트롤러를 만들고 orderForm을 호출할 매핑 메소드와 주문 양식을 submit 할때 처리할 메서드를 생성합니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 변경 감지(Dirty Checking) 와 병합(merge)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-dirty-checking-and-merge/</link>
-      <pubDate>Sun, 24 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-dirty-checking-and-merge/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   홈 화면과 레이아웃 변경 감지(Dirty Checking) 와 병합(merge)   JPA를 사용하며 변경감지와 병합의 차이를 모르게 되면 많은 시간을 허비하게 되며, 정말 중요한 내용이니 꼭 이해 하고 넘어가야합니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 상품 목록 화면 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-list-development/</link>
-      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-list-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   홈 화면과 레이아웃 상품 목록 화면 개발   컨트롤러에서 /items 리퀘스트를 받을 수 있는 itemList()를 생성하고, 서비스를 통해 상품목록을 받아 리턴해 줍니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 상품 수정 화면 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-product-edit-development/</link>
-      <pubDate>Sat, 16 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-product-edit-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   홈 화면과 레이아웃 상품 수정 화면 개발  ItemController.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 상품 등록 화면 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-register-development/</link>
-      <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-register-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   홈 화면과 레이아웃 상품 등록 화면 개발   강좌와 다르게 Item의 상속관계에 맞게 아이템들을 등록해 보려 합니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 회원 목록 화면 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-list-development/</link>
-      <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-list-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   홈 화면과 레이아웃 회원 리스트   MemberController.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 회원 등록 화면 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-join-view-development/</link>
-      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-join-view-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   홈 화면과 레이아웃 회원 등록  Member Controller 회원가입 페이지 이동(get) 매핑 추가  java/jpabook/jpashop/controller/MemberController.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 웹 계층 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/web-layer-development/</link>
-      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/web-layer-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   웹 계층 개발  홈 화면과 레이아웃   java/jpabook/jpashop/controller/HomeController.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 주문 검색 기능 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-search-development/</link>
-      <pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-search-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   주문 검색 기능 개발  JPA에서 동적 쿼리를 어떻게 해결해야 하는가   화면을 보시면 회원명과 주문상태를 검색조건으로 필터링 할 수 있는 기능인 것을 확인 할 수 있습니다.</description>
-    </item>
-    
-    <item>
-      <title>IntelliJ IDEA 단축키 정리</title>
-      <link>https://offetuoso.github.io/blog/intellij/intellij-shotcut/</link>
-      <pubDate>Tue, 21 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/intellij/intellij-shotcut/</guid>
-      <description>IntelliJ IDEA 단축키 정리  Ctrl + Alt + N - 인라인화  인라인화는 return의 변수와 속성 변수의 이름이 같은경우 return에 속성 변수에 세팅한 코드를 세팅해 간결하게 변경합니다.
- Ctrl + Alt + V - 변수 추출하기 (Extract -&amp;gt; Variable)  블록된 리턴 값 있는 메서드를 변수로 추출
- Ctrl + Alt + p - 파라미터 추출하기 (Extract -&amp;gt; Parameter)  메서드의 변수를 파라미터로 받아오게 변경
- Ctrl + Alt + m - 메서드 추출하기 (Extract -&amp;gt; Method)  해당 블록으로 선택된 로직을 메서드로 생성</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 주문 기능 테스트</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-logic-test-code/</link>
-      <pubDate>Mon, 13 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-logic-test-code/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   주문 기능 테스트   테스트 할때는 스프링 기능 없이 메소드 하나 하나 단위 테스트 하는 것이 바람직하나 스프링과 JPA가 잘 엮여서 동작하는 것을 테스트 하기 때문에 통합테스트로 작성합니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 주문 서비스 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-order-service-development/</link>
-      <pubDate>Sat, 04 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/2-order-service-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   주문 서비스 개발   java/jpabook/jpashop/service/OrderService.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 주문 도메인 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-domain-development/</link>
-      <pubDate>Fri, 03 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/order-domain-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   주문 도메인 개발   지금까지 설명했던것 중에 가장 중요한 부분입니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 상품 서비스 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-logic-test-code/</link>
-      <pubDate>Thu, 02 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-logic-test-code/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   상품 기능 테스트  테스트 요구사항    상품등록을 성공해야한다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 상품 리포지토리 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-repository-development/</link>
-      <pubDate>Wed, 01 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/1-product-repository-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   상품 리포지토리 개발  상품 리포지토리   java/jpabook/jpashop/repository/ItemRepository.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 상품 도메인 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-domain-development/</link>
-      <pubDate>Tue, 31 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/product-domain-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   상품 도메인 개발  구현 기능   상품등록 상품 목록 조회 상품 수정   구현 순서   상품 엔티티 개발(비즈니스 로직 추가) 상품 리포지토리 개발 상품 서비스 개발 상품 기능 테스트   상품 엔티티 개발(비즈니스 로직 추가)   Item.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 회원 기능 테스트</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-logic-test-code/</link>
-      <pubDate>Fri, 27 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-logic-test-code/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   회원 기능 테스트  테스트 요구사항    회원가입을 성공해야한다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 회원 서비스 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-service-development/</link>
-      <pubDate>Thu, 26 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-service-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   회원 서비스 개발  서비스 디렉토리 생성  java/jpabook/jpashop/service 위치에 리포지토리 경로 생성</description>
-    </item>
-    
-    <item>
-      <title>[Spring] @Controller, @Service, @Repository 어노테이션</title>
-      <link>https://offetuoso.github.io/blog/develop/framework/spring/contoller-service-repository-annotation/</link>
-      <pubDate>Fri, 20 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/framework/spring/contoller-service-repository-annotation/</guid>
-      <description>[Spring] context:component-scan과 @Component  Component-scan   기존에 오래된 버전의 스프링으로 프로젝트를 진행했을때, 가장 어려운 점이 XML을 이용한 설정이였고, 그중에 생성한 Java 파일들이 Bean으로 사용할 수 있도록 각각 추가하여 설정하는 부분이 있었습니다.
-  application.xml
- &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;beans xmlns=&amp;quot;http://www.springframework.org/schema/beans&amp;quot;xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;xsi:schemaLocation=&amp;quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&amp;quot;&amp;gt;&amp;lt;bean id=&amp;quot;testService&amp;quot; class=&amp;quot;com.spring.test.TestService&amp;quot; /&amp;gt;&amp;lt;bean id=&amp;quot;testRepository&amp;quot; class=&amp;quot;com.spring.test.TestRepository&amp;quot;/&amp;gt;&amp;lt;/beans&amp;gt;  component-scan은 이러한 일련의 작업을 드라마틱하게 줄여주는 기능입니다.
-  component-scan의 대상으로는
-  @Component를 포함하여 @Component를 상속 받는 @Controller, @Service, @Repository가 대상이 됩니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 회원 도메인 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-domain-development/</link>
-      <pubDate>Thu, 19 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/member-domain-development/</guid>
-      <description>애플리케이션 구현  목차    회원 도메인 개발   회원 리포지토리 개발 회원 서비스 개발 기능 테스트  상품 도메인 개발   상품 엔티티개발(비즈니스 로직추가) 상품 리포지토리 개발 상품 서비스 개발  주문 도메인 개발   주문, 주문상품 엔티티 개발 주문 리포지토리 개발 주문 서비스 개발  웹 계층 개발   홈 화면과 레이아웃 회원 등록 회원 목록 조회 상품 등록 상품 목록 상품 수정 변경 감지와 병함(merge) 상품 주문 주문 목록 검색, 취소  API 개발 기본   회원 등록 API 회원 수정 API 회원 조회 API  API 개발 고급   조회용 샘플 데이터 입력 지연 로딩과 조회 성능 최적화 페이징과 한계 돌파 OSIV와 성능 최적화  다음으로   스프링 데이터 JPA 소개 QueryDSL 소개 마무리   회원 도메인 개발  구현 기능    회원 등록 회원 목록 조회   구현순서    회원 엔티티 코드 다시 보기 회원 리포지토리 개발 회원 서비스 개발 회원 기능 테스트   회원 엔티티 코드 다시 보기   java/jpabook/jpashop/domain/Member.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 애플리케이션 구현 준비</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/preparing-for-application-implementation/</link>
-      <pubDate>Tue, 17 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/preparing-for-application-implementation/</guid>
-      <description>애플리케이션 구현 준비  목차    구현 요구사항 애플리케이션 아키텍쳐   구현 요구사항   이번에는 애플리케이션을 어떻게 구현할지에 대한 구현 요구사항이랑 애플리케이션 아키텍처에 대하여 정리하겠습니다.
-  도메인 설계가 다 끝났는데, 그것은 데이터 적인 설계였고 이번에는 어디까지 구현할지 범위에 대한 요구사항을 정리해 보도록 하겠습니다.
-   회원 기능  회원 등록 회원 조회   상품 기능  상품 등록 상품 수정 상품 조회   주문 기능  상품 주문 주문 내역 조회 주문 취소     회원 기능  회원 등록   회원 등록하는 페이지이며, 비지니스 메서드를 통해 회원등록 구현 되어야 합니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 엔티티 클래스 개발</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/entity-class-development/</link>
-      <pubDate>Sun, 08 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/entity-class-development/</guid>
-      <description>도메인 분석 설계  목차    요구사항 분석 도메인 모델과 테이블 설계 엔티티 클래스 개발 엔티티 설계시 주의점   엔티티 클래스 개발    예제에서는 설명을 쉽게하기 위해 엔타타 클래스에 Getter, Setter를 모두 열고, 최대한 단순하게 설계 실무에서는 가급적 Getter, Setter는 꼭 필요한 경우에만 사용하는 것을 추천   도메인 패키지 생성   jpabook/jpashop/domain 패키지를 생성하여 추가할 엔티티 클래스들을 모아두도록 하겠습니다.
-  기존의 jpabook/jpashop/entity의 패키지는 지우도록 하겠습니다.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 도메인 모델과 테이블 설계</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/domain-model-and-db-architecture/</link>
-      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/domain-model-and-db-architecture/</guid>
-      <description>도메인 분석 설계  목차    요구사항 분석 도메인 모델과 테이블 설계 엔티티 클래스 개발 엔티티 설계시 주의점   도메인 모델과 테이블 설계  도메인 모델 설계   회원은 주문 여러개를 주문 할 수 있습니다. 회원과 주문은 1:N의 관계 입니다.
-  회원은 주문을 할때 한번에 여러 상품을 주문할 수 있습니다. 상품은 또한 여러개의 각각의 주문에 담길 수 있습니다. 주문에 여러개의 상품이 담길 수 있기 때문에</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 요구사항 분석</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/requirement-analysis/</link>
-      <pubDate>Wed, 27 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/requirement-analysis/</guid>
-      <description>도메인 분석 설계  목차    요구사항 분석 도메인 모델과 테이블 설계 엔티티 클래스 개발 엔티티 설계시 주의점   요구사항 분석   회원기능
- 회원가입 - 이름, 도시, 거리, 우편번호 입력 받아 회원을 등록 회원 목록 - 가입자 seq, 이름, 도시, 주소, 우편번호 조회가능    상품기능
- 상품등록 - 상품명, 가격, 수량, 저자, ISBN 입력받아 상품등록 상품목록 - 등록된 상품 seq, 상품명, 가격 재고수량, 수정버튼 상품수정 - 상품명, 가격, 수량, 저자, ISBN 저장한 값 로드 후 상품수정    상품 주문</description>
-    </item>
-    
-    <item>
-      <title>[Spring] @Bean과 @Component</title>
-      <link>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</link>
-      <pubDate>Sun, 17 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/framework/spring/spring-bean-component/</guid>
-      <description>[Spring] @Bean 과 @Component  @Bean 과 @Component 어노테이션이란 ?   IoC Container는 특정 어노테이션이 달려있는 클래스를 빈으로 만들기 위해 빈 스캐닝을 합니다.
-   @Configuration @Bean @Component @Repository @Service @Controller    대표적으로 빈으로 사용 할 수 있게 해주는 어노테이션은 대표적으로 빈으로 사용 할 수 있도록 해주는 어노테이션은 @Bean과 @Component이 있습니다.
- @Bean VS @Component  @Bean   개발자가 작성한 메소드를 통해 반환되는 객체를 Bean으로 만듬.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] JPA 동작확인</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/</link>
-      <pubDate>Sun, 17 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/jpa-start/</guid>
-      <description>JPA 동작확인  JPA와 DB설정   여태까지 application.properties 를 이용해왔는데, 간혹 yml을 사용하는 것을 봐왔는데 이번에 사용하게 되었습니다.
-  resources/application.properties를 확장자를 변경하여 백업(또는 제거) 하고 같은 resources/ 위치에 application.yml 생성
-  resources/application.yml
- spring:datasource:url: jdbc:h2:tcp://localhost/~/jpashop; # MVCC=true H2 1.4.200 버전부터 MVCC 옵션이 제거되었습니다. username: sapassword:driver-class-name: org.h2.Driverjpa:hibernate:ddl-auto: create # 애플리케이션 동작 시점에 엔티티 재생성properties:# show_sql: true #sysout을 통해 남기는 sqlformat_sql: truedatabase: h2devtools:livereload:enabled: true # livereload 사용시 활성화restart:enabled: false #운영 에서는 제거.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] H2 데이터베이스 설치 및 세팅</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/h2-preferences/</link>
-      <pubDate>Sat, 16 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/h2-preferences/</guid>
-      <description>H2 데이터베이스 설치 및 세팅  H2 데이터베이스   개발이나 테스트 용도로 가볍고 편리한 DB, 웹 화면 제공
- 다운로드 및 설치    사용 환경에 따라 받으시면 되며, 저는 1.4.200 버전을 받아 설치 하였습니다.
- H2 Database 설치   JPA 시작 과거 포스팅 참조
-  H2 Database 설치  H2 홈페이지에서 OS에 맞는 설치 파일을 다운로드한다.
-  C:\Program Files (x86)\H2\bin\h2.bat 실행
-  jdbc:h2:~/jpashop (최초 1회, 세션키 유지한 상태로 실행)</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] View 환경 설정</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/view-preferences/</link>
-      <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/view-preferences/</guid>
-      <description>View 환경 설정 Thymeleaf  Thymeleaf
-  Spring에서도 밀고 있고, 스프링과 많은 기능을 제공하고 있어, Jsp 보다 Thymeleaf를 사용하는 추세입니다.
-  장점은
-  자연 템플릿 (Natural Templates) 마크업을 깨트리지 않고 html 마커 안에 프로그래밍 문법을 넣어 기능을 개발 할 수 있습니다. WAS 없이도 브라우저만으로도 템플릿의 결과물을 볼 수 있습니다.
- &amp;lt;table&amp;gt;&amp;lt;thead&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;th th:text=&amp;quot;#{msgs.headers.name}&amp;quot;&amp;gt;Name&amp;lt;/th&amp;gt;&amp;lt;th th:text=&amp;quot;#{msgs.headers.price}&amp;quot;&amp;gt;Price&amp;lt;/th&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/thead&amp;gt;&amp;lt;tbody&amp;gt;&amp;lt;tr th:each=&amp;quot;prod: ${allProducts}&amp;quot;&amp;gt;&amp;lt;td th:text=&amp;quot;${prod.name}&amp;quot;&amp;gt;Oranges&amp;lt;/td&amp;gt;&amp;lt;td th:text=&amp;quot;${#numbers.formatDecimal(prod.price, 1, 2)}&amp;quot;&amp;gt;0.</description>
-    </item>
-    
-    <item>
-      <title>[스프링부트 JPA 활용] 프로젝트 생성</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/new-project-setting/</link>
-      <pubDate>Wed, 06 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/using-springboot-jpa/new-project-setting/</guid>
-      <description>스프링부트 JPA 활용(Using SpringBoot JPA)  목차    프로젝트 생성 라이브러리 살펴보기 H2 데이터베이스 설치 JPA와 DB 설정, 동작확인   프로젝트 생성    스프링 부트 스타터(https://start.spring.io/) 사용기능 : Web, Thymeleaf, JPA, H2, Lombok  groupId : jpabook artifactId : jpashop      프로젝트 타입은 Gradle Project 최근에는 Maven이 아니라 Gradle이 많이 사용된다고 합니다.
-  언어는 당연히 자바 !
-  스프링부트는 안정화 버전을 추천하며, 전 2.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 에필로그(Epilogue)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-epilogue/</link>
-      <pubDate>Tue, 05 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpa-epilogue/</guid>
-      <description>JPA 에필로그(Epilogue)   장장 4개월의 기간동안 강의를 보며, 강의 PPT를 읽고 넘기는 것이 아니라 하나 하나 블로그로 정리를 한다는 목적으로 타자연습을 하였습니다.
-  조금이라도 머리에 남기 바라는 심정과 고질적인 독수리 타법을 개선하고자 노력하였습니다.
-  일이 바쁘다, 몸이 아프다 라는 핑계로 매우 늦게 완강을 하였지만, 결국 해냈습니다.
-  사실 SI에서 JPA를 만져볼 일이 없지만, 저와 같이 새로운 것에 도전하고 배우려는 사람이 늘어나고 지금보다 JPA가 더 많은 기업에서 사용하고 많은 개발자들이 사용하는 날이 온다면 SI에서도 당연히 JPA를 사용하는 날이 오리라 믿습니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 벌크 연산(Bulk Operation)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/bulk-operation/</link>
-      <pubDate>Mon, 04 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/bulk-operation/</guid>
-      <description>JPQL 벌크 연산(Bulk Operation)   여러 건(대량의 데이터)을 한 번에 수정하거나 삭제하는 방법
- 벌크 연산    재고가 10개 미만인 모든 상품의 가격을 10% 상승하려면? JPA 변경 감지(Duty Checking) 기능으로 실행하려면 너무 많은 SQL 실행  재고가 10개 미만인 상품을 리스트로 조회한다. 상품 엔티티의 가격을 10% 증가한다. 트랜잭션 커밋 시점에 변경감지가 동작한다.   변경된 데이터가 100건이라면 100번의 UPDATE SQL실행   벌크 연산 예제    쿼리 한 번으로 여러 테이블 로우 변경(엔티티) excuteUpdate()의 결과는 영향받은 엔티티 수 반환 UPDATE, DELETE 지원 INSERT(insert into .</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 네임드 쿼리(Named Query)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-named-query/</link>
-      <pubDate>Mon, 28 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-named-query/</guid>
-      <description>JPQL 네임드 쿼리(Named Query)  Named 쿼리  @NamedQuery   쿼리를 엔티티 같은 곳에 미리 선언을 해둘 수 있는 기능. 쿼리를 재활용 해서 사용할 수 있습니다.
- @Entity@NamedQuery(name = &amp;quot;member.findByUsername&amp;quot;,query = &amp;quot;SELECT m FROM Member WHERE n.username :username&amp;quot;)public class Member {...}List&amp;lt;Member&amp;gt; resultList = em.createQuery(&amp;quot;Member.findByUsername&amp;quot;, Member.class).setParameter(&amp;quot;username&amp;quot;, &amp;quot;회원1&amp;quot;).getResultList(); 정적 쿼리    미리 정의해서 이름을 부여해두고 사용하는 JPQL 정적 쿼리 어노테이션, XML에 정의 애플리케이션 로딩 시점에 초기화 후 재사용  애플리케이션 로딩 시점에 정적인 쿼리를 JPA 또는 하이버네이트가 SQL로 파싱을 하고, 캐싱을 합니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 엔티티 직접 사용(Direct Use Of Entity)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-direct-use-of-entity/</link>
-      <pubDate>Sun, 27 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-direct-use-of-entity/</guid>
-      <description>JPQL 엔티티 직접 사용(Direct Use Of Entity)  엔티티 직접 사용  기본 키 값   JPQL에서 엔티티를 직접 사용하면 SQL로 어떠한 쿼리가 실행되는 지에 대한 정리 입니다.
-  COUNT(m) 같은 SQL 함수에서 엔티티를 직접 사용했을때, SQL에서 해당 엔티티의 식별자인 기본 키 값을 사용하게됩니다.
-  [JPQL]
- SELECT COUNT(m.id) FROM Member M // 엔티티의 아이디를 사용SELECT COUNT(m) FROM Member M // 엔티티를 직접 사용  [SQL] (둘다 같은 다음 SQL 실행)</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 다형성 쿼리(Polymorphic Query)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-polymorphic-query/</link>
-      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-polymorphic-query/</guid>
-      <description>JPQL 다형성 쿼리(Polymorphic Query)   이번 시간에는 다형성 쿼리에 대해 정리를해 보겠습니다.
- 다형성 쿼리   JPA가 이러한 다형성을 위해 제공하는 특수한 기능들이 있습니다.
- TYPE   조회 대상을 특정 자식으로 한정
-  예) Item 중에 Book, Movie를 조회해라
-  [JPQL]
- SELECT i FROM Item iWHERE TYPE(i) IN (Book, Movie)  [SQL]
- SELECT i.* from Item iWHERE i.DTYPE IN (&#39;B&#39;, &#39;M&#39;) TREAT (JPA2.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 페치 조인(Fetch Join)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-fetch-join/</link>
-      <pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-fetch-join/</guid>
-      <description>JPQL 페치 조인(Fetch Join)   실무에서 정말 정말 중요함 쿼리가 여러번 나갈거 같은 쿼리를 한방 쿼리로 변환
- 페치 조인    SQL 조인 종류가 아니다. JPQL에서 성능 최적화를 위해 제공하는 기능 연관된 엔티티나 컬렉션을 SQL 한 번에 함께 조회하는 기능 join fetch 명령어 사용 [LEFT [OUTER] | INNER] JOIN FETCH 조인경로   엔티티 페치 조인    회원을 조회하면서 연관된 팀도 함께 조회(SQL 한 번에) SQL을 보면 회원 뿐만 아니라 팀(T.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 경로 표현식(PATH EXPRESSION)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-path-expression/</link>
-      <pubDate>Sat, 19 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-path-expression/</guid>
-      <description>JPQL 경로 표현식(PATH EXPRESSION)  경로 표현식   .(점|dot)을 찍어 객체를 탐색 하는 것
- SELECT m.username -&amp;gt; 상태 필드FROM mJOIN m.team t	-&amp;gt; 단일 값 연관 필드JOIN m.order o -&amp;gt; 컬렉션 값 연관 필드WHERE t.name = &#39;team1&#39;   .을 통해 상태 필드, 단일 값 연관 필드, 컬렉션 값 연관 필드를 탐색하느냐에 따라서 상태 필드 표현식, 단일 값 연관 필드 표현식, 콜렉션 값 연관 필드 표현식 3가지 표현식이 있으며 내부적으로 각각 다른 동작을 하게 됩니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 기본 함수(BASIC FUNCTION)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-basic-function/</link>
-      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-basic-function/</guid>
-      <description>JPQL 기본 함수(BASIC FUNCTION)  JPQL 기본 함수   JPQL에서 제공하는 표준함수로 DB에 상관없이 사용가능
-   CONCAT SUBSTRING TRIM LOWER, UPPER LENGTH LOCATE ABS, SQRT, MOD SIZE, INDEX(JPA 용도)   이전 소스   src/main/java/jpql/domain/Member.java
-  Member.java package jpql.domain;import javax.persistence.*;@Entitypublic class Member {public Member(){}@Id @GeneratedValueprivate Long id;private String username;private int age;@ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)private Team team = new Team();public Long getId() {return id;}public void setId(Long id) {this.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 조건문(CONDITIONAL STATEMENT)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-conditional-statement/</link>
-      <pubDate>Tue, 15 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-conditional-statement/</guid>
-      <description>JPQL 조건문(CONDITIONAL STATEMENT)  조건문    기본 CASE 문   SELECT CASE WHEN m.age &amp;lt;= 10 THEN &#39;학생요금&#39;WHEN m.age &amp;gt;= 60 THEN &#39;경로요금&#39;ELSE &#39;일반요금&#39;ENDFROM Member m    단순 CASE 문   SELECT CASE t.nameWHEN &#39;팀A&#39; THEN &#39;인센티브110%&#39;WHEN &#39;팀B&#39; THEN &#39;인센티브120%&#39;ELSE &#39;인센티브105%&#39;ENDFROM Team t	   COALESCE : 하나씩 조회해서 NULL이 아니면 반환 사용자 이름이 없으면 &amp;lsquo;이름 없는 회원&amp;rsquo;을 반환   SELECT COALESCE(m.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 서브 쿼리(Sub Query)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/</link>
-      <pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/sub-query/</guid>
-      <description>JPA 서브 쿼리(Sub Query)  서브 쿼리    나이가 평균보다 많은 회원   SELECT m FROM Member m WHERE m.age &amp;gt; (SELECT AVG(m2.age) FROM Member m2)   한 건이라도 주문한 고객   SELECT m FROM Member m WHERE (SELECT COUNT(o) FROM Order o WHERE m = o.member) &amp;gt; 0  일반적인 SQL과 같이 서브 쿼리를 사용할 수 있습니다.
- 서브 쿼리 지원 함수    [NOT] EXISTS (subquery) : 서브쿼리에 결과가 존재하면 참  {ALL|ANY|SOME} (subquery) ALL 모두 만족하면 참 ANY, SOME: 같은 의미, 조건을 하나라도 만족하면 참   [NOT] IN (subquery) : 서브쿼리의 결과 중 하나라도 같은 것이 있으면 참   서브 쿼리 지원 함수 - 예제   팀A 소속인 회원   SELECT m FROM Member mWHERE EXISTS (SELECT t FROM m.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL 타입 표현(Type Expression)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-type-expression/</link>
-      <pubDate>Mon, 14 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql-type-expression/</guid>
-      <description>JPQL 타입 표현(Type Expression)  JPQL 타입 표현    문자 : &amp;lsquo;HELLO&amp;rsquo;, &amp;lsquo;She&#39;&amp;rsquo;s&amp;rsquo;  따옴표(single quotation) 표현시 single quotation 2개 &#39;&#39;   숫자 : 10L(Long), 10D(Double), 10F(Float) Boolean : TRUE, FALSE ENUM : jpabook.MemberType.Admin (전체 패키지명 포함) 엔티티 타입 : TYPE(m) = Member (상속 관계에서 사용)   이전 소스   src/main/java/jpql/domain/Member.java
-  Member.java package jpql.domain;import javax.persistence.*;@Entitypublic class Member {public Member(){}@Id @GeneratedValueprivate Long id;private String username;private int age;@ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)private Team team = new Team();public Long getId() {return id;}public void setId(Long id) {this.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 조인(JOIN)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/join/</link>
-      <pubDate>Sun, 13 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/join/</guid>
-      <description>JPA 조인(JOIN)  조인    내부 조인   SELECT m from Member m JOIN m.team tSELECT m from Member m INNER JOIN m.team t  SQL과 비슷하지만 엔티티 중심으로 JPQL이 작성되며, Member의 Team 엔티티에 Alias를 t로 주어 조인 쿼리를 작성합니다.
-   외부 조인   SELECT m from Member m LEFT JOIN m.team tSELECT m from Member m LEFT OUTER JOIN m.team t   세타 조인 연관관계가 없는 조인, 관계 없는 컬럼끼리의 조인   SELECT count(m) from Member m, Team t WHERE m.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA Paging API</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/paging-api/</link>
-      <pubDate>Thu, 10 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/paging-api/</guid>
-      <description>JPA Paging API  페이징 API   JPA는 페이징을 다음 두 API로 추상화
-   setFirstResult(int startPosition) : 조회 시작 위치 (0 부터 시작) setMaxResults(int maxResult) : 조회할 데이터 수    Oracle 또는 MySql에서 페이징을 구현하기 위해서는 rownum을 사용하고 정렬을 위해 order by를 적용하려면 또 한번 더 감싸서 페이징을 쿼리를 작성하게 되어 3뎁스 까지도 나오게 되어 지저분한 쿼리가 됩니다.
-  그런데 JPA는 2가지 API만 사용하면됩니다. 페이징은 단지 몇번째 부터 몇개 가져와야 하는지 밖에 없습니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA Projection(SELECT)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/projection/</link>
-      <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/projection/</guid>
-      <description>JPA Projection(SELECT)  셀렉션과 프로젝션 셀렉션  데이터베이스에서 행단위로 데이터를 조회하는 방식 예) SELECT m.* FROM MEMBER m
- 프로젝션  데이터베이스에서 열단위로 데이터를 조회하는 방식 예) SELECT m.username, m.age FROM MEMBER m
-   프로젝션과 셀렉션 동시 사용 가능   이전 소스   src/main/java/jpql/domain/Member.java
-  Member.java package jpql.domain;import javax.persistence.*;@Entitypublic class Member {public Member(){}@Id @GeneratedValueprivate Long id;private String username;private int age;@ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)//private Team team = new Team();private Team team;public Long getId() {return id;}public void setId(Long id) {this.</description>
-    </item>
-    
-    <item>
-      <title>object references an unsaved transient instance - save the transient instance before flushing 에러</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/</link>
-      <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/jpa/object-references-an-unsaved-transient-instance-save-the-transient-instance-before-flushing/</guid>
-      <description>object references an unsaved transient instance - save the transient instance before flushing 에러 오류 org.hibernate.TransientPropertyValueException: object references an unsaved transient instance - save the transient instance before flushing 원인   @ManyToOne 또는 @OneToMany 매핑을 사용 할때 부모 엔티티에 포함된 FK가 아직 영속되지 않아 생긴 영속성 전이(CASCADE)에 대한 오류 발생    N:1 관계시 양방향 설정시, 연결된 엔티티 객체를 생성 시 FK가 필수로 필요   @ManyToOne@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)private Team team = new Team(); // &amp;lt;&amp;lt;   Member를 생성할 때, Team이 필수 값이 아니라면, new Team() 으로 미리 생성해 둘 필요가 없다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPQL(Java persistence Query Language)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql/</link>
-      <pubDate>Fri, 04 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/jpql/</guid>
-      <description>JPQL(Java persistence Query Language)  JPQL - 기본 문법과 기능  JPA에서 제공되는 다양한 쿼리 방법    JPQL은 객체지향 쿼리 언어다. 따라서 테이블을 대상으로 쿼리 하는 것이 아니라 엔티티를 대상으로 쿼리 한다. JPQL은 SQL을 추상화해서 특정 데이터베이스 SQL에 의존하지 않는다. JPQL은 결국 SQL로 변환된다.    객체모델
-  DB모델
-  JPQL을 예제 작성을 위한 Maven 프로젝트를 생성 하겠습니다.
-  jpa-basic\jpql
-  pom.xml
-  pom.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 객체지향 쿼리 언어 소개</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/object-oriented-query-language/</link>
-      <pubDate>Tue, 01 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/object-oriented-query-language/</guid>
-      <description>객체지향 쿼리 언어 (JPQL)  목차    객체지향 커리 언어 소개 JPQL 기본 문법과 기능 패치 조인 경로 표현식 다형성 쿼리 엔티티 직접 사용 Named 쿼리 벌크 연산   객체지향 쿼리 언어 소개  JPA에서 제공되는 다양한 쿼리 방법   JPA에서는 실무에서 사용하기 위한 다양한 검색 조건과 Join을 사용하여 조회 등 복잡한 쿼리를 구현할 수 있도록 기능 다양한 쿼리 방법을 제공합니다.
-   JPQL 엔티티 객체를 조회하는 객체지향 쿼리다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 실전 예제 6 - 값 타입 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-6/</link>
-      <pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-6/</guid>
-      <description>실전 예제 6 - 값 타입 매핑  값 타입 추가    city, street, zipcode 는 Address 값 타입으로 변경   값 타입 추가 순서    값 타입 클래스 추가 - Address.java    @Embeddable 어노테이션 추가    불변 객체로 생성 3.1. 필드(맴버 변수) 추가 3.2. getter 추가 3.3. setter private로 생성 또는 생성 X   값 타입은 공유해서 사용시 변경이 되면 같이 사용하는 값 모두 변경되므로 주의 값 타입은 변경하지 말고 객체를 새로 생성해서 갈아껴야함.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 값 타입 컬렉션</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type-collection/</link>
-      <pubDate>Sat, 19 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type-collection/</guid>
-      <description>값 타입 컬렉션 (Value Type Collection)  값 타입 컬렉션   값 타입 컬렉션이란 값타입을 컬렉션에 담아서 사용하는 것을 의미 합니다.
-  Member가 faviriteFoods와 addressHistory 라는 두가지 컬렉션을 가지고 있습니다.
-  DB 테이블로 구현할때 문제가 됩니다. 값 타입이 하나 일때는 필드 속성으로 해서 Member 테이블에 넣으면 되었는데
-  관계형 DB에는 컬렉션을 담을 수 있는 구조가 없습니다. 요즘에서야 JSON 타입을 지원하는 데이터베이스도 있긴합니다.
-  관계형 DB에서 이런 구조를 사용하기 위해 1:N 관계의 각 테이블을 생성하여야 합니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 값 타입과 불변 객체</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/immutable-object/</link>
-      <pubDate>Sat, 12 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/immutable-object/</guid>
-      <description>값 타입과 불변 객체  값 타입   값 타입은 복잡한 객체 세상을 조금이라도 단순화하려고 만든 개념이다. 따라서 값 타입은 단순하고 안전하게 다룰 수 있어야 한다.
-  값 타입 공유 참조     임베디드 타입 같은 값 타입을 여러 엔티티에서 공유하면 위험함 부작용(side effect) 발생    회원 1과 회원 2가 같은 값 타입인 주소를 바라보고 있는데 NewCity로 값을 바꾸면, 회원1과 회원2의 주소가 모두 NewCity로 변경됩니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 임베디드 타입</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/embedded-type/</link>
-      <pubDate>Tue, 08 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/embedded-type/</guid>
-      <description>임베디드 타입  임베디드(복합 값) 타입    새로운 값 타입을 정의할 수 있음 JPA는 임베디드 타입(embedded type)이라 함 주로 기본 값 타임을 모아 만들어서 복합 값 타입이라고도 함 int, String과 같은 값 타입 (엔티티 아님)   임베디드 타입   회원 엔티티는 이름, 근무 시작일, 근무 종료일, 주소 도시, 주소 번지, 주소 우편번호를 가진다.
-  회원 엔티티는 이름, 근무 기간, 집 주소를 가진다.
-   Period는 startDate와 endDate를 가지게 클래스로 만들어 값 타입을 만듭니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 값 타입</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type/</link>
-      <pubDate>Mon, 07 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/value-type/</guid>
-      <description>값 타입  목차    기본값 타입 임베디드 타입(복합 값 타입) 값 타입과 불변 객체 값 타입의 비교 값 타입 컬렉션   기본값 타입  JPA의 데이터 타입 분류   엔티티 타입  @Entity로 정의하는 객체 데이터가 변해도 식별자로 지속해서 추적 가능 예) 회원의 엔티티의 키나 나이 값을 변경해도 식별자로 인식 가능       값 타입  int, Integer, String처럼 단순히 값으로 사용하는 자바 기본 타입이나 객체 식별자가 없고 값만 있으므로 변경시 추적불가 예)숫자 100을 200으로 변경하면 완전히 다른 값으로 대체     값 타입 분류   기본값 타입  자바 기본 타입(int, double) 래퍼 클래스(Integer, Long) String   임베디드 타입(embedded type, 복합 값 타입) 예) 좌표 X,Y 묶어서 Position 객체 하나로 사용     컬렉션 값 타입(collection value type) 자바 컬렉션 객체안에 기본값 타입 혹은 임베디드 타입 등을 추가해 사용   기본값 타입    예) String name, int age 생명주기를 엔티티에 의존  예) 회원을 삭제하면 이름, 나이 필드도 함께 삭제   값 티입은 공유하면 안됨(사이드 이팩트, 부수효과 조심)  예) 회원 이름 변경시 다른 회원의 이름도 함께 변경되면 안됨     참고 : 자바의 기본 타입은 절대 공유 X   int, double 같은 기본 타입(primitive type)은 절대 공유 되면 안됨 기본 타입은 항상 값을 복사함 Integer같은 래퍼 클래스나 String 같은 특수한 클래스는 공유 가능한 객체이지만 변경X    ValueMain.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 실전 예제 5 - 연관관계 관리</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-5/</link>
-      <pubDate>Sun, 06 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-5/</guid>
-      <description>실전 예제 5 - 연관관계 관리  글로벌 페치 전략 설정    모든 연관관계를 지연로딩으로 @ManyToOne, @OneToOne은 기본이 즉시 로딩이므로 지연로딩으로 변경하길 권장   글로벌 페치 전략 예제소스에 적용   기존 작성했던 엔티티중 @ManyToOne, @OneToOne에는 (fetch = FetchType.LAZY)를 추가한다.
-  Album.java
- package jpabasic.jpashop.domain;import javax.persistence.DiscriminatorValue;import javax.persistence.Entity;@Entity@DiscriminatorValue(&amp;quot;A&amp;quot;)public class Album extends Item{private String artist;private String etc;public String getArtist() {return artist;}public void setArtist(String artist) {this.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 영속성 전이(CASCADE)와 고아 객체</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/cascade/</link>
-      <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/cascade/</guid>
-      <description>영속성 전이(CASCADE)와 고아 객체  목록    영속성 전이 고아 객체   영속성 전이  앞에서 나온 즉시 로딩, 지연 로딩, 연관관계 세팅 이 세가지와 완전 별개의 개념
-   특정 엔티티를 영속 상태로 만들 때 연관된 엔티티도 함께 영속 상태로 만들고 싶을때 예 : 부모 엔티티를 저장할 때 자식 엔티티도 함께 저장.   영속성 전이: 저장  @OneToMany(mappedBy=&amp;quot;parent&amp;quot;, cascade=CasecadeType.PERSIST)  Parent.java
- package relativemapping;import javax.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 즉시 로딩과 지연로딩</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/</link>
-      <pubDate>Thu, 27 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/</guid>
-      <description>프록시와 연관관계 관리  즉시 로딩과 지연로딩  지연 로딩  Member를 조회할때 Team도 함께 조회해야 할까?  단순히 Member 정보만 사용하는 비지니스 로직 println(member.getName()); 연관관계가 등록되어 있어도 지금처럼 member만 사용하면 손해일 수 있습니다.
- ![contact](/images/develop/backend/orm-jpa-basic/eager-loading-and-lazy-loading/im g-001.png)
-지연 로딩 LAZY을 사용해서 프록시로 조회 	@Entitypublic class Member {@Id @generatedValueprivate Long id;@Column(name = &amp;quot;USERNAME&amp;quot;)private String name;@ManyToOne(fetch = FetchType.LAZY)@JoinColumn(name = &amp;quot;TEAM_ID&amp;quot;)private Team team;}  Member.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 프록시와 연관관계</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/proxy-and-relation/</link>
-      <pubDate>Wed, 19 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/proxy-and-relation/</guid>
-      <description>프록시와 상속관계  목차    프록시 즉시 로딩과 지연 로딩 지연 로딩 활용 영속성 전이 : CASCADE 고아 객체 영속성 전이 + 고아객체, 생명주기   프록시  Member를 조회할때 Team도 함께 조회해야 할까?  JpaMain.java
-  private static void printMember(Member member){System.out.println(&amp;quot;username = &amp;quot;+member.getUsername());}private static void printMemberAndTeam(Member member){String username = member.getUsername();System.out.println(&amp;quot;username = &amp;quot;+username);Team team = member.getTeam();System.out.println(&amp;quot;team = &amp;quot;+team.getName());}  Member객체를 출력하는 메서드와 Member객체와 Member가 가지는 Team 객체를 출력하는 메서드가 있을때, Member만 조회하는 쿼리를 수행할때 Team까지 Join을 통하여 조회 쿼리를 수행한다면 자원낭비이다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 실전 예제 4 - 상속관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-4/</link>
-      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-4/</guid>
-      <description>실전 예제 4 - 상속관계 매핑  요구사항 추가    상품의 종류는 음반, 도서, 영화가 있고 이후 더 확장될 수 있다. 모든 데이터는 등록일과 수정일이 필수다.   도메인 모델  도메인 모델 상세  테이블 설계 상속관계 매핑 추가  Item.java
-   Item.java를 abstract로 바꾼다. 단일 테이블 전략이기 때문에 Item.java에 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) 를 추가한다. @DiscriminatorColumn를 추가하여 DTYPE를 추가한다.   package jpabasic.jpashop.domain;import javax.persistence.*;import java.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA @MappedSuperclass</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapped-superclass/</link>
-      <pubDate>Sun, 16 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapped-superclass/</guid>
-      <description>상속관계 매핑  목차    상속관계 매핑 @MappedSuperclass   MappedSuperclass  @MappedSuperclass  예를 들어 이전의 상속관계 매핑을 사용하지 않고 단순하게 객체의 입장에서 id와 name이 계속 나오게 되는데 매번 만들기 귀찮아서 부모 클래스에 두고 속성만 상속받아서 사용하고 싶을때 사용.   DB에서는 각각 테이블에 id, name을 포함하며 DB와 구조가 다르지만, 매번 추가 해야하는 속성을 엔티티마다 추가해야 하는 불편함을 줄여보자 해서 나오게 된 기능입니다.
- @MappedSuperclass 예제  DBA의 요청으로 엔티티 마다 생성한 사람의 ID, 생성한 시간, 마지막 수정한 사람 ID, 마지막 수정한 시간을 각각 추가하려 합니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 상속관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/inheritance-mapping/</link>
-      <pubDate>Thu, 13 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/inheritance-mapping/</guid>
-      <description>상속관계 매핑  목차    상속관계 매핑 @MappedSuperclass   상속관계 매핑    객체는 상속관계가 있지만, 관계형 데이터베이스에는 상속 관계 없음 슈퍼타입 서브타입 관계라는 모델링 기법이 객체 상속과 유사 상속관계 매핑 : 객체의 상속과 구조와 DB의 슈퍼타입 관계를 매핑    음반, 영화, 책의 공통 속성은 물품에 두고, 각각의 속성들을 밑의 서브 타입에 지정하여 논리 모델을 구성합니다.
-  객체는 Item이라는 추상 클래스를 만들고 Item을 상속받는 Album, Movie, Book 객체를 구성할 수 있습니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 실전 예제 3 - 다양한 연관관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-3/</link>
-      <pubDate>Mon, 10 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-3/</guid>
-      <description>실전 예제 3 - 다양한 연관관계 매핑  요구사항 분석  배송, 카테고리 추가 - 엔티티    주문과 뱌송은 1:1(@OneToOne) 상품과 카테고리는 N:M(@ManyToMany)   배송, 카테고리 추가 - ERD   Delivery.java 와 Category.java를 생성합니다.
- 일대일 양방향 관계 Order.java - Delivery.java   주 객체은 외래키를 가지고 있는 Order.java  @OneToOne @JoinColumn(name = &amp;ldquo;DELIVERY_ID&amp;rdquo;) private Delivery delivery;       대상 객체는 상대 객체인 Delivery.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 다양한 연관관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/</link>
-      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/mapping-various-associations/</guid>
-      <description>다양한 연관관계 매핑  목차    연관관계 매핑시 고려사항 3가지 다대일 [N:1] 일대다 [1:N] 일대일 [1:1] 다대다 [N:M]   연관관계 매핑시 고려사항 3가지    다중성 단방향, 양방향 연관관계의 주인   다중성    다대일 : @ManyToOne 일대다 : @OneToMany 일대일 : @OneToOne 다대다 : @ManyToMany (실무에서 사용X)    애매한 경우 반대의 경우를 생각해 보면 된다. 다대일의 반대는 일대다, 일대일의 반대는 일대일, 다대다의 반대는 다대다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 실전 예제 2 - 연관관계 매핑 시작</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-2/</link>
-      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-2/</guid>
-      <description>실전 예제 2 - 연관관계 매핑 시작 요구사항 분석   실전 예제 1 요구사항 분석과 기본 매핑에서 테이블에 맞춘 설계를 했던 것에 연관 관계 매핑을 적용 시켜 보도록 하겠습니다.
- 테이블 구조   테이블 구조는 이전과 같다.
- 객체 구조   참조를 사용하도록 변경
-  OrderItem과 Item에서 N:1이면서 화살표가 OrderItem에서 Item으로 단방향인 것을 알 수 있는데, 이는 주문된 아이템(OrderItem) 입장에서는 어떠한 아이템(Item)인지 알아야하지만, 아이템 입장에서는 통계 같은 프로그램을 하지 않는 이상 이 아이템이 어떠한 아이템 주문이 되었는지 알 필요가 없습니다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 연관관계 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</link>
-      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/relation-mapping/</guid>
-      <description>연관관계 매핑   테이블에 맞춰서 외래키를 가져오면서 설계하는 방식이 아닌 order.getMember()이런식으로 연관관계를 맺어서 좀더 객체지향 식으로 설계할 수 있는지 알아보겠습니다. 여태 까지는 어려움이 없었겠지만, 관계형 DB와 객체지향 사이에서 오는 간극이 크고 각각의 패러다임이 다르기 때문에 어려움이 있습니다.
- 목표    객체와 테이블 연관관계 차이를 이해 객체의 참조와 테이블의 외래 키를 매핑 용어 이해  방향(Direction) : 단방향, 양방향 다중성(Multiplicity) : 다대일(N:1), 일대다(1:N), 일대일(1:1), 다대다(N:M)의 이해 연관관계의 주인(Owner) : 객체의 양방향 관계는 괸리 주인이 필요     목차    연관관계가 필요한 이유 단방향 연관관계 양방향 연관관계와 연관관계의 주인 실전예제 - 2.</description>
-    </item>
-    
-    <item>
-      <title>Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/</link>
-      <pubDate>Wed, 29 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/database/h2/h2-create-db/</guid>
-      <description>Database C:/Users/user/dbname not found, either pre-create it or allow remote database creation 오류 발생 문제  H2 데이터베이스 신규 생성 및 연결시 아래 오류가 나오며 생성이 안되는 경우
- Database `C:/Users/user/dbname` not found, either pre-create it or allow remote database creation 해결방법   C:/Users/user/ 경로에 dbname.mv.db 파일을 생성 jdbc:h2:~/dbname을 입력후 연결을 해본다.(처음 생성시에만)
-- 이후 jdbc:h2:tcp://localhost/~/dbname 으로 접속   </description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 기본키 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</link>
-      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/primary-key-mapping/</guid>
-      <description>기본키 매핑  기본 키 매핑 어노테이션    @Id @GeneratedValue   @Id @GeneratedValue(strategy = GenerationTpye.AUTO)private Long id; 기본 키 매핑 방법    직접 할당 : @Id 만 사용 자동 생성(@GeneratedValue)  IDENTITY : 데이터베이스에 위임, MySLQ) SEQUENCE : 데이터베이스 시퀀스 오브젝트 사용, ORACLE  @SequenceGenerator 필요     TABLE: 키 생성용 테이블 사용, 모든 DB에서 사용  @TableGenerator 필요   AUTO: 방언에 따라 자동 지정, 기본값   Id 직접할당 - @Id 사용   Member.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 실전 예제 1 - 요구사항 분석과 기본 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</link>
-      <pubDate>Sun, 26 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/practical-example-1/</guid>
-      <description>실전 예제 1 - 요구사항 분석과 기본 매핑  요구사항 분석    회원은 상품을 주문할 수 있다. 주문 시 여러 종류의 상품을 선택할 수 있다.   기능 목록    회원 기능  회원등록 회원조회       상품 기능  상품등록 상품수정 상품조회       주문 기능  상품주문 주문내역조회 주문취소     도메인 모델 분석    회원과 주문의 관계 : 회원은 여러 번 주문할 수 있다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 객체와 매핑</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/entity-mapping/</link>
-      <pubDate>Fri, 24 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/entity-mapping/</guid>
-      <description>객체와 매핑  객체와 테이블 매핑  목차    객체와 테이블 매핑 필드와 컬럼 매핑 기본 키 매핑 실전 예제 - 1. 요구사항 분석과 기본 매핑   엔티티 매핑 소개    객체와 테이블 매핑 : @Entity, @Table 필드와 컬럼 매핑 : @Column 기본키 매핑 : @Id 연관관계 매핑 : @ManyToOne, @JoinColumn   객체와 테이블 매핑  @Entity    @Entity가 붙은 클래스는 JPA가 관리, 엔티티라 부른다.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 영속성 관리</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/persistence-manage/</link>
-      <pubDate>Tue, 21 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/persistence-manage/</guid>
-      <description>JPA 영속성 관리 - 내부 동작 방식  영속성 컨텍스트  JPA에서 가장 중요한 2가지    객체와 관계형 데이터베이트 매핑하기 (Object Relational Mapping) 영속성 컨텍스트   엔티티 매니저 팩토리와 앤티티 매니저   요청이 오면 앤티티 매니저 팩토리를 통해 엔티티 매니저를 생성하고, 앤티티 매니저는 커넥션풀을 이용해 DB에 접근 합니다.
- 영속성 컨텍스트    JPA를 이해하는데 가장 중요한 용어 &amp;ldquo;엔티티를 영구 저장하는 환경&amp;quot;이라는 뜻 EntitiyManager.persist(entity); // persist 메소드는 DB에 저장하는게 아니라 entity를 영속성 컨텍스트에 저장한다는 것   엔티티 매니저?</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 시작</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/start-jpa/</link>
-      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/start-jpa/</guid>
-      <description>JPA 시작하기  Hello JPA - 프로젝트 생성  H2 Database 설치   H2 홈페이지에서 OS에 맞는 설치 파일을 다운로드한다.
-  C:\Program Files (x86)\H2\bin\h2.bat 실행
-  jdbc:h2:~/jpashop (최초 1회, 세션키 유지한 상태로 실행)
-  이후 부터는 jdbc:h2:tcp://localhost/~/jpashop 으로 접속
-  http://localhost:8082/login.jsp 에서 연결버튼 클릭
- SpringBoot 프로젝트 생성  pom.xml  hibernate와 h2database dependency 추가
- &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;project xmlns=&amp;quot;http://maven.apache.org/POM/4.0.0&amp;quot;xmlns:xsi=&amp;quot;http://www.w3.org/2001/XMLSchema-instance&amp;quot;xsi:schemaLocation=&amp;quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&amp;quot;&amp;gt;&amp;lt;modelVersion&amp;gt;4.0.0&amp;lt;/modelVersion&amp;gt;&amp;lt;groupId&amp;gt;jpa-basic&amp;lt;/groupId&amp;gt;&amp;lt;artifactId&amp;gt;ex1-hello-jpa&amp;lt;/artifactId&amp;gt;&amp;lt;version&amp;gt;1.</description>
-    </item>
-    
-    <item>
-      <title>[자바 ORM 표준 JPA] JPA 소개</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/about-jpa/</link>
-      <pubDate>Tue, 14 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/orm-jpa-basic/about-jpa/</guid>
-      <description>JPA 애플리케이션   지금 시대는 객체를 관계형 DB에 관리 객체 지향 언어를 사용한 프로젝트라고 하여도 결국엔 SQL이 제일 중요할 수 밖에 없다. 관계형 DB가 알아 들을 수 있는 것은 SQL이니까
- SQL 중심적인 개발의 문제점    무한 반복, 지루한 코드   CRUD    INSERT UPDATE SELECT DELETE 자바 객체를 SQL로 .. SQL을 자바 객체로 ..   객체 CRUD   간단히 Member라는 객체를 생성하고, sql로 CRUD를 개발하였다고 생각하자.</description>
-    </item>
-    
-    <item>
-      <title>Vue v-for Elements in iteration expect to have &#39;v-bind:key&#39; directives 문제</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/vue/vue-v-for/</link>
-      <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/vue/vue-v-for/</guid>
-      <description>Elements in iteration expect to have &amp;lsquo;v-bind:key&amp;rsquo; directives 문제  이전 버전의 강좌를 보고 따라 하던 도중 vue template에서 li 에 v-for 를 이용해서 v-for=&amp;ldquo;t in tries&amp;rdquo; 루프를 생성하고 싶었으니 오류를 만나게 되었습니다.
- &amp;lt;!-- 문제가 발생한 코드 --&amp;gt;&amp;lt;li v-for=&amp;quot;item in tries&amp;quot;&amp;gt; {{item}}&amp;lt;/li&amp;gt; 2.2.0 이상에서 v-for는 key 가 필수 입니다.   &amp;lt;my-componentv-for=&amp;quot;(item, index) in items&amp;quot;v-bind:item=&amp;quot;item&amp;quot;v-bind:index=&amp;quot;index&amp;quot;v-bind:key=&amp;quot;item.id&amp;quot;&amp;gt;&amp;lt;/my-component&amp;gt; 수정사항적용 &amp;lt;li v-for=&amp;quot;(item, index) in tries&amp;quot; :key=&amp;quot;index&amp;quot;&amp;gt;{{ item }}&amp;lt;/li&amp;gt; 참조 [Vue.</description>
-    </item>
-    
-    <item>
-      <title>NPM init 패키지명 입력시 오류, `Sorry, name can no longer contain capital letters.` and `Sorry, name can no longer contain capital letters.`</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/vue/npm-init/</link>
-      <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/vue/npm-init/</guid>
-      <description>NPM init 패키지명 입력시 오류 발생 문제  npm init 명령어를 사용할때, node를 처음 접하게 되어 발생하였던 문제에 대해 정리
- Sorry, name can no longer contain capital letters. &amp;gt; npm init&amp;gt; package name: (3_끝말잇기) WordRelay&amp;gt; Sorry, name can no longer contain capital letters. package name : UpperCamelCase로 입력 시 오류 발생 Sorry, name can no longer contain capital letters. &amp;gt; npm init&amp;gt; package name: (3_끝말잇기) wordRelay&amp;gt; Sorry, name can no longer contain capital letters.</description>
-    </item>
-    
-    <item>
-      <title>Vue.js WebPack 설정하기</title>
-      <link>https://offetuoso.github.io/blog/develop/frontend/vue/vue-webpack/</link>
-      <pubDate>Fri, 12 Nov 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/frontend/vue/vue-webpack/</guid>
-      <description>Vue.js WebPack 설정하기 Node.js 설치   node 설치 최신의 LTS 버전 설치 최신버전 보다 안정화가 되어 검증된 LTS 버전 설치 권장   Vue 프로젝트에 WebPack 적용 순서 1. npm init  1.1. webpack을 적용할 vue project의 경로에서 터미널을 열음.
-  1.2. npm init 명령을 실행해서 node_modules을 설치하고, package.json 생성됨 npm init을 실행하고 package 명을 입력하고 그 뒤로는 엔터, 엔터로 끝까지 진행 주의할점은 package name은 kebab-case로 작성 ex) word-relay, camelCase나 UpperCamelCase 시 오류 하단 참조</description>
-    </item>
-    
-    <item>
-      <title>Programmers 12915 문자열 내 마음대로 정렬하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12915-sort-string-at-will/</link>
-      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12915-sort-string-at-will/</guid>
-      <description>Programmers - 12915 문자열 내 마음대로 정렬하기 Task description 원문 : Programmers 12915 링크
-문제 설명  문자열로 구성된 리스트 strings와, 정수 n이 주어졌을 때, 각 문자열의 인덱스 n번째 글자를 기준으로 오름차순 정렬하려 합니다. 예를 들어 strings가 [&amp;ldquo;sun&amp;rdquo;, &amp;ldquo;bed&amp;rdquo;, &amp;ldquo;car&amp;rdquo;]이고 n이 1이면 각 단어의 인덱스 1의 문자 &amp;ldquo;u&amp;rdquo;, &amp;ldquo;e&amp;rdquo;, &amp;ldquo;a&amp;quot;로 strings를 정렬합니다.
- Condition   strings는 길이 1 이상, 50이하인 배열입니다. strings의 원소는 소문자 알파벳으로 이루어져 있습니다. strings의 원소는 길이 1 이상, 100이하인 문자열입니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 12917 문자열 내림차순으로 배치하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12917-descending-order/</link>
-      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12917-descending-order/</guid>
-      <description>Programmers - 12917 문자열 내림차순으로 배치하기 Task description 원문 : Programmers 12917 링크
-문제 설명  문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요. s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
- Condition   str은 길이 1 이상인 문자열입니다.   ###입력 형식
- 입출력 예
-    s return     &amp;ldquo;Zbcdefg&amp;rdquo; &amp;ldquo;gfedcbZ&amp;rdquo;    Solution import java.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 12951 JadenCase 문자열 만들기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12951-jaden-case/</link>
-      <pubDate>Tue, 12 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12951-jaden-case/</guid>
-      <description>Programmers - 12951 JadenCase 문자열 만들기 Task description 원문 : Programmers 12951 링크
-문제 설명  JadenCase란 모든 단어의 첫 문자가 대문자이고, 그 외의 알파벳은 소문자인 문자열입니다. 문자열 s가 주어졌을 때, s를 JadenCase로 바꾼 문자열을 리턴하는 함수, solution을 완성해주세요.
- Condition   s는 길이 1 이상인 문자열입니다. s는 알파벳과 공백문자(&amp;quot; &amp;ldquo;)로 이루어져 있습니다. 첫 문자가 영문이 아닐때에는 이어지는 영문은 소문자로 씁니다. ( 첫번째 입출력 예 참고 )   ###입력 형식</description>
-    </item>
-    
-    <item>
-      <title>Programmers 12981 영어 끝말잇기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12981-end-talk/</link>
-      <pubDate>Mon, 11 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-12981-end-talk/</guid>
-      <description>Programmers - 12981 영어 끝말잇기 Task description 원문 : Programmers 12981 링크
-문제 설명  1부터 n까지 번호가 붙어있는 n명의 사람이 영어 끝말잇기를 하고 있습니다. 영어 끝말잇기는 다음과 같은 규칙으로 진행됩니다.
-  1번부터 번호 순서대로 한 사람씩 차례대로 단어를 말합니다. 마지막 사람이 단어를 말한 다음에는 다시 1번부터 시작합니다. 앞사람이 말한 단어의 마지막 문자로 시작하는 단어를 말해야 합니다. 이전에 등장했던 단어는 사용할 수 없습니다. 한 글자인 단어는 인정되지 않습니다. 다음은 3명이 끝말잇기를 하는 상황을 나타냅니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42586 기능개발</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-42586-function-development/</link>
-      <pubDate>Sun, 10 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-42586-function-development/</guid>
-      <description>Programmers - 42586 기능개발 Task description 원문 : Programmers 42586 링크
-문제 설명  프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다. 또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다.
-  먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 20426 복서 정렬하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-20426-boxer-sorting/</link>
-      <pubDate>Sat, 09 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-20426-boxer-sorting/</guid>
-      <description>Programmers - 20426 복서 정렬하기 Task description 원문 : Programmers 20426 링크
-문제 설명  복서 선수들의 몸무게 weights와, 복서 선수들의 전적을 나타내는 head2head가 매개변수로 주어집니다. 복서 선수들의 번호를 다음과 같은 순서로 정렬한 후 return 하도록 solution 함수를 완성해주세요.
-   전체 승률이 높은 복서의 번호가 앞쪽으로 갑니다. 아직 다른 복서랑 붙어본 적이 없는 복서의 승률은 0%로 취급합니다. 승률이 동일한 복서의 번호들 중에서는 자신보다 몸무게가 무거운 복서를 이긴 횟수가 많은 복서의 번호가 앞쪽으로 갑니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 129343 콜라츠 추측</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-129343-collatz/</link>
-      <pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202110/programmers-129343-collatz/</guid>
-      <description>Programmers - 129343 콜라츠 추측 Task description 원문 : Programmers 129343 링크
-문제 설명 1937년 Collatz란 사람에 의해 제기된 이 추측은, 주어진 수가 1이 될때까지 다음 작업을 반복하면, 모든 수를 1로 만들 수 있다는 추측입니다. 작업은 다음과 같습니다.
- 1-1. 입력된 수가 짝수라면 2로 나눕니다. 1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다. 2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다.
-  예를 들어, 입력된 수가 6이라면 6→3→10→5→16→8→4→2→1 이 되어 총 8번 만에 1이 됩니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 83201 상호평가</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-83201-mutual-evaluation/</link>
-      <pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-83201-mutual-evaluation/</guid>
-      <description>Programmers - 83201 상호평가 Task description 원문 : Programmers 83201 링크
- 대학 교수인 당신은, 상호평가를 통하여 학생들이 제출한 과제물에 학점을 부여하려고 합니다. 아래는 0번부터 4번까지 번호가 매겨진 5명의 학생들이 자신과 다른 학생의 과제를 평가한 점수표입니다.
-    No. 0 1 2 3 4     0 100 90 98 88 65   1 50 45 99 85 77   2 47 88 95 80 67   3 61 57 100 80 65   4 24 90 94 75 65   평균 45.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 12910 나누어 떨어지는 숫자 배열</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-12910-divisible-array-of-numbers/</link>
-      <pubDate>Sun, 08 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-12910-divisible-array-of-numbers/</guid>
-      <description>Programmers - 12910 나누어 떨어지는 숫자 배열 Task description 원문 : Programmers 12910 링크
- array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순으로 정렬한 배열을 반환하는 함수, solution을 작성해주세요.
-divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을 담아 반환하세요.
- Condition   arr은 자연수를 담은 배열입니다. 정수 i, j에 대해 i ≠ j 이면 arr[i] ≠ arr[j] 입니다. divisor는 자연수입니다. array는 길이 1 이상인 배열입니다.   ###입력 형식</description>
-    </item>
-    
-    <item>
-      <title>Programmers 72412 순위 검색</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-72412-rank-search/</link>
-      <pubDate>Sat, 07 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-72412-rank-search/</guid>
-      <description>Programmers - 72412 순위 검색 Task description 원문 : Programmers 72412 링크
- 카카오는 하반기 경력 개발자 공개채용을 진행 중에 있으며 현재 지원서 접수와 코딩테스트가 종료되었습니다. 이번 채용에서 지원자는 지원서 작성 시 아래와 같이 4가지 항목을 반드시 선택하도록 하였습니다.
-  코딩테스트 참여 개발언어 항목에 cpp, java, python 중 하나를 선택해야 합니다. 지원 직군 항목에 backend와 frontend 중 하나를 선택해야 합니다. 지원 경력구분 항목에 junior와 senior 중 하나를 선택해야 합니다. 선호하는 소울푸드로 chicken과 pizza 중 하나를 선택해야 합니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 67257 수식 최대화</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-67257-maximize-formula/</link>
-      <pubDate>Thu, 05 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-67257-maximize-formula/</guid>
-      <description>Programmers - 67257 수식 최대화 Task description 원문 : Programmers 67257 링크
- IT 벤처 회사를 운영하고 있는 라이언은 매년 사내 해커톤 대회를 개최하여 우승자에게 상금을 지급하고 있습니다.
-이번 대회에서는 우승자에게 지급되는 상금을 이전 대회와는 다르게 다음과 같은 방식으로 결정하려고 합니다.
-해커톤 대회에 참가하는 모든 참가자들에게는 숫자들과 3가지의 연산문자(+, -, ) 만으로 이루어진 연산 수식이 전달되며,
-참가자의 미션은 전달받은 수식에 포함된 연산자의 우선순위를 자유롭게 재정의하여 만들 수 있는 가장 큰 숫자를 제출하는 것입니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42840 모의고사</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42840-mock-exam/</link>
-      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42840-mock-exam/</guid>
-      <description>Programmers - 42840 모의고사 Task description 원문 : Programmers 42840 링크
- 수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다.
- 1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, ...3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, .</description>
-    </item>
-    
-    <item>
-      <title>Programmers 82612 부족한 금액 계산하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-82612-calculate-the-shortfall/</link>
-      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-82612-calculate-the-shortfall/</guid>
-      <description>Programmers - 82612 부족한 금액 계산하기 Task description 원문 : Programmers 82612 링크
- 새로 생긴 놀이기구는 인기가 매우 많아 줄이 끊이질 않습니다. 이 놀이기구의 원래 이용료는 price원 인데, 놀이기구를 N 번 째 이용한다면 원래 이용료의 N배를 받기로 하였습니다. 즉, 처음 이용료가 100이었다면 2번째에는 200, 3번째에는 300으로 요금이 인상됩니다.
-  놀이기구를 count번 타게 되면 현재 자신이 가지고 있는 금액에서 얼마가 모자라는지를
-return 하도록 solution 함수를 완성하세요. 단, 금액이 부족하지 않으면 0을 return 하세요.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42883 큰 수 만들기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42883-make-big-numbers/</link>
-      <pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-42883-make-big-numbers/</guid>
-      <description>Programmers - 42883 큰 수 만들기 Task description 원문 : Programmers 42883 링크
- 어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.
-  예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들 수 있습니다. 이 중 가장 큰 숫자는 94 입니다.
-  문자열 형식으로 숫자 number와 제거할 수의 개수 k가 solution 함수의 매개변수로 주어집니다. number에서 k 개의 수를 제거했을 때 만들 수 있는 수 중 가장 큰 숫자를 문자열 형태로 return 하도록 solution 함수를 완성하세요.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 43162 네트워크</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-43162-network/</link>
-      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202108/programmers-43162-network/</guid>
-      <description>Programmers - 43162 네트워크 Task description 원문 : Programmers 43162 링크
- 네트워크란 컴퓨터 상호 간에 정보를 교환할 수 있도록 연결된 형태를 의미합니다. 예를 들어, 컴퓨터 A와 컴퓨터 B가 직접적으로 연결되어있고, 컴퓨터 B와 컴퓨터 C가 직접적으로 연결되어 있을 때 컴퓨터 A와 컴퓨터 C도 간접적으로 연결되어 정보를 교환할 수 있습니다. 따라서 컴퓨터 A, B, C는 모두 같은 네트워크 상에 있다고 할 수 있습니다.
-  컴퓨터의 개수 n, 연결에 대한 정보가 담긴 2차원 배열 computers가 매개변수로 주어질 때, 네트워크의 개수를 return 하도록 solution 함수를 작성하시오.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 43165 타겟 넘버</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-43165-target-number/</link>
-      <pubDate>Sat, 31 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-43165-target-number/</guid>
-      <description>Programmers - 43165 타겟 넘버 Task description 원문 : Programmers 43165 링크
- n개의 음이 아닌 정수가 있습니다. 이 수를 적절히 더하거나 빼서 타겟 넘버를 만들려고 합니다. 예를 들어 [1, 1, 1, 1, 1]로 숫자 3을 만들려면 다음 다섯 방법을 쓸 수 있습니다.
- -1+1+1+1+1 = 3+1-1+1+1+1 = 3+1+1-1+1+1 = 3+1+1+1-1+1 = 3+1+1+1+1-1 = 3  사용할 수 있는 숫자가 담긴 배열 numbers, 타겟 넘버 target이 매개변수로 주어질 때 숫자를 적절히 더하고 빼서 타겟 넘버를 만드는 방법의 수를 return 하도록 solution 함수를 작성해주세요.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 12906 같은 숫자는 싫어</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12906-i-hate-the-same-number/</link>
-      <pubDate>Fri, 30 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12906-i-hate-the-same-number/</guid>
-      <description>Programmers - 12906 같은 숫자는 싫어 Task description 원문 : Programmers 12906 링크
- 배열 arr가 주어집니다. 배열 arr의 각 원소는 숫자 0부터 9까지로 이루어져 있습니다. 이때, 배열 arr에서 연속적으로 나타나는 숫자는 하나만 남기고 전부 제거하려고 합니다. 단, 제거된 후 남은 수들을 반환할 때는 배열 arr의 원소들의 순서를 유지해야 합니다. 예를 들면,
- arr = [1, 1, 3, 3, 0, 1, 1] 이면 [1, 3, 0, 1] 을 return 합니다.arr = [4, 4, 4, 3, 3] 이면 [4, 3] 을 return 합니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 60057 문자열 압축</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-60057-string-compression/</link>
-      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-60057-string-compression/</guid>
-      <description>Programmers - 60057 문자열 압축 Task description 원문 : Programmers 60057 링크
- 데이터 처리 전문가가 되고 싶은 &amp;ldquo;어피치&amp;quot;는 문자열을 압축하는 방법에 대해 공부를 하고 있습니다. 최근에 대량의 데이터 처리를 위한 간단한 비손실 압축 방법에 대해 공부를 하고 있는데, 문자열에서 같은 값이 연속해서 나타나는 것을 그 문자의 개수와 반복되는 값으로 표현하여 더 짧은 문자열로 줄여서 표현하는 알고리즘을 공부하고 있습니다.
-간단한 예로 &amp;ldquo;aabbaccc&amp;quot;의 경우 &amp;ldquo;2a2ba3c&amp;rdquo;(문자가 반복되지 않아 한번만 나타난 경우 1은 생략함)와 같이 표현할 수 있는데, 이러한 방식은 반복되는 문자가 적은 경우 압축률이 낮다는 단점이 있습니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42888 오픈 채팅방</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42888-open-chat-room/</link>
-      <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42888-open-chat-room/</guid>
-      <description>Programmers - 42888 오픈 채팅방 Task description 원문 : Programmers 42888 링크
- 카카오톡 오픈채팅방에서는 친구가 아닌 사람들과 대화를 할 수 있는데, 본래 닉네임이 아닌 가상의 닉네임을 사용하여 채팅방에 들어갈 수 있다.
-  신입사원인 김크루는 카카오톡 오픈 채팅방을 개설한 사람을 위해, 다양한 사람들이 들어오고, 나가는 것을 지켜볼 수 있는 관리자창을 만들기로 했다. 채팅방에 누군가 들어오면 다음 메시지가 출력된다.
- &amp;quot;[닉네임]님이 들어왔습니다.&amp;quot;  채팅방에서 누군가 나가면 다음 메시지가 출력된다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42626 더 맵게</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42626-more-spicy/</link>
-      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42626-more-spicy/</guid>
-      <description>Programmers - 42626 더 맵게 Task description 원문 : Programmers 42626 링크
- 매운 것을 좋아하는 Leo는 모든 음식의 스코빌 지수를 K 이상으로 만들고 싶습니다. 모든 음식의 스코빌 지수를 K 이상으로 만들기 위해 Leo는 스코빌 지수가 가장 낮은 두 개의 음식을 아래와 같이 특별한 방법으로 섞어 새로운 음식을 만듭니다.
-  섞은 음식의 스코빌 지수 = 가장 맵지 않은 음식의 스코빌 지수 + (두 번째로 맵지 않은 음식의 스코빌 지수 * 2) Leo는 모든 음식의 스코빌 지수가 K 이상이 될 때까지 반복하여 섞습니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 17677 뉴스 클러스터링</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17677-news-clustering/</link>
-      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17677-news-clustering/</guid>
-      <description>Programmers - 17677 뉴스 클러스터링 Task description 원문 : Programmers 17677 링크
- 뉴스 클러스터링
-여러 언론사에서 쏟아지는 뉴스, 특히 속보성 뉴스를 보면 비슷비슷한 제목의 기사가 많아 정작 필요한 기사를 찾기가 어렵다.
-Daum 뉴스의 개발 업무를 맡게 된 신입사원 튜브는 사용자들이 편리하게 다양한 뉴스를 찾아볼 수 있도록 문제점을 개선하는 업무를 맡게 되었다.
-  개발의 방향을 잡기 위해 튜브는 우선 최근 화제가 되고 있는 &amp;ldquo;카카오 신입 개발자 공채&amp;rdquo; 관련 기사를 검색해보았다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 12948 핸드폰 번호 가리기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12948-phone-number-masking/</link>
-      <pubDate>Sun, 25 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12948-phone-number-masking/</guid>
-      <description>Programmers - 12948 핸드폰 번호 가리기 Task description 원문 : Programmers 12948 링크
- 프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다. 전화번호가 문자열 phone_number로 주어졌을 때, 전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, solution을 완성해주세요.
- Condition   s는 길이 4 이상, 20이하인 문자열입니다.   input output  입출력 예
-    입출력 예     phone_number return   &amp;ldquo;01033334444&amp;rdquo; &amp;ldquo;*******4444&amp;rdquo;   &amp;ldquo;027778888&amp;rdquo; &amp;ldquo;*****8888&amp;rdquo;    Solution   받아온 숫자를 뒤 4번째 부터 자른다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 68644 두 개 뽑아서 더하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-68644-take-two-and-add/</link>
-      <pubDate>Sat, 24 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-68644-take-two-and-add/</guid>
-      <description>Programmers - 68644 두 개 뽑아서 더하기 Task description 원문 : Programmers 68644 링크
- 정수 배열 numbers가 주어집니다. numbers에서 서로 다른 인덱스에 있는 두 개의 수를 뽑아 더해서 만들 수 있는 모든 수를 배열에 오름차순으로 담아 return 하도록 solution 함수를 완성해주세요.
- Condition   numbers의 길이는 2 이상 100 이하입니다. numbers의 모든 수는 0 이상 100 이하입니다.   input output  입출력 예
-    numbers result     [2,1,3,4,1] [2,3,4,5,6,7]   [5,0,2,7] [2,5,7,9,12]     입출력 예 설명</description>
-    </item>
-    
-    <item>
-      <title>Programmers 12973 짝지어 제거하기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12973-remove-by-pair/</link>
-      <pubDate>Fri, 23 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-12973-remove-by-pair/</guid>
-      <description>Programmers - 12973 짝지어 제거하기 Task description 원문 : Programmers 12973 링크
- 짝지어 제거하기는, 알파벳 소문자로 이루어진 문자열을 가지고 시작합니다. 먼저 문자열에서 같은 알파벳이 2개 붙어 있는 짝을 찾습니다. 그다음, 그 둘을 제거한 뒤, 앞뒤로 문자열을 이어 붙입니다. 이 과정을 반복해서 문자열을 모두 제거한다면 짝지어 제거하기가 종료됩니다. 문자열 S가 주어졌을 때, 짝지어 제거하기를 성공적으로 수행할 수 있는지 반환하는 함수를 완성해 주세요. 성공적으로 수행할 수 있으면 1을, 아닐 경우 0을 리턴해주면 됩니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 17681 비밀지도</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17681-secret-map/</link>
-      <pubDate>Thu, 22 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17681-secret-map/</guid>
-      <description>Programmers - 17681 비밀지도 Task description 원문 : Programmers 17681 링크
- 네오는 평소 프로도가 비상금을 숨겨놓는 장소를 알려줄 비밀지도를 손에 넣었다. 그런데 이 비밀지도는 숫자로 암호화되어 있어 위치를 확인하기 위해서는 암호를 해독해야 한다. 다행히 지도 암호를 해독할 방법을 적어놓은 메모도 함께 발견했다.
-   지도는 한 변의 길이가 n인 정사각형 배열 형태로, 각 칸은 &amp;ldquo;공백&amp;rdquo;(&amp;quot; &amp;ldquo;) 또는 &amp;ldquo;벽&amp;rdquo;(&amp;quot;#&amp;quot;) 두 종류로 이루어져 있다.  전체 지도는 두 장의 지도를 겹쳐서 얻을 수 있다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42889 실패율</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42889-failure-rate/</link>
-      <pubDate>Wed, 21 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42889-failure-rate/</guid>
-      <description>Programmers - 42889 실패율 Task description 원문 : Programmers 42889 링크
- 슈퍼 게임 개발자 오렐리는 큰 고민에 빠졌다. 그녀가 만든 프랜즈 오천성이 대성공을 거뒀지만, 요즘 신규 사용자의 수가 급감한 것이다. 원인은 신규 사용자와 기존 사용자 사이에 스테이지 차이가 너무 큰 것이 문제였다.
-  이 문제를 어떻게 할까 고민 한 그녀는 동적으로 게임 시간을 늘려서 난이도를 조절하기로 했다. 역시 슈퍼 개발자라 대부분의 로직은 쉽게 구현했지만, 실패율을 구하는 부분에서 위기에 빠지고 말았다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 17682 다트 게임</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17682-dart-game/</link>
-      <pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-17682-dart-game/</guid>
-      <description>Programmers - 17682 다트 게임 Task description 원문 : Programmers 17682 링크
- 카카오톡 게임별의 하반기 신규 서비스로 다트 게임을 출시하기로 했다. 다트 게임은 다트판에 다트를 세 차례 던져 그 점수의 합계로 실력을 겨루는 게임으로, 모두가 간단히 즐길 수 있다. 갓 입사한 무지는 코딩 실력을 인정받아 게임의 핵심 부분인 점수 계산 로직을 맡게 되었다. 다트 게임의 점수 계산 로직은 아래와 같다.
-  다트 게임은 총 3번의 기회로 구성된다. 각 기회마다 얻을 수 있는 점수는 0점에서 10점까지이다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 67256 키패드 누르기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-67256-keypad-press/</link>
-      <pubDate>Mon, 19 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-67256-keypad-press/</guid>
-      <description>Programmers - 67256 키패드 누르기 Task description 원문 : Programmers 67256 링크
- 스마트폰 전화 키패드의 각 칸에 다음과 같이 숫자들이 적혀 있습니다.
-  이 전화 키패드에서 왼손과 오른손의 엄지손가락만을 이용해서 숫자만을 입력하려고 합니다.
-맨 처음 왼손 엄지손가락은 * 키패드에 오른손 엄지손가락은 # 키패드 위치에서 시작하며, 엄지손가락을 사용하는 규칙은 다음과 같습니다.
-  엄지손가락은 상하좌우 4가지 방향으로만 이동할 수 있으며 키패드 이동 한 칸은 거리로 1에 해당합니다. 왼쪽 열의 3개의 숫자 1, 4, 7을 입력할 때는 왼손 엄지손가락을 사용합니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42862 체육복</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42862-gym-suit/</link>
-      <pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42862-gym-suit/</guid>
-      <description>Programmers - 42862 체육복 Task description 원문 : Programmers 42862 링크
- 점심시간에 도둑이 들어, 일부 학생이 체육복을 도난당했습니다. 다행히 여벌 체육복이 있는 학생이 이들에게 체육복을 빌려주려 합니다. 학생들의 번호는 체격 순으로 매겨져 있어, 바로 앞번호의 학생이나 바로 뒷번호의 학생에게만 체육복을 빌려줄 수 있습니다. 예를 들어, 4번 학생은 3번 학생이나 5번 학생에게만 체육복을 빌려줄 수 있습니다. 체육복이 없으면 수업을 들을 수 없기 때문에 체육복을 적절히 빌려 최대한 많은 학생이 체육수업을 들어야 합니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 81301 숫자 문자열과 영단어</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-81301-numeric-strings-and-english-words/</link>
-      <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-81301-numeric-strings-and-english-words/</guid>
-      <description>Programmers - 81301 숫자 문자열과 영단어 Task description 원문 : Programmers 81301 링크
- 네오와 프로도가 숫자놀이를 하고 있습니다. 네오가 프로도에게 숫자를 건넬 때 일부 자릿수를 영단어로 바꾼 카드를 건네주면 프로도는 원래 숫자를 찾는 게임입니다.
-  다음은 숫자의 일부 자릿수를 영단어로 바꾸는 예시입니다.
- 1478 → &amp;quot;one4seveneight&amp;quot;234567 → &amp;quot;23four5six7&amp;quot;10203 → &amp;quot;1zerotwozero3&amp;quot;  이렇게 숫자의 일부 자릿수가 영단어로 바뀌어졌거나, 혹은 바뀌지 않고 그대로인 문자열 s가 매개변수로 주어집니다. s가 의미하는 원래 숫자를 return 하도록 solution 함수를 완성해주세요.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 64061 크레인 인형 뽑기</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-64061-crane-puppet-game/</link>
-      <pubDate>Fri, 16 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-64061-crane-puppet-game/</guid>
-      <description>Programmers - 64061 크레인 인형 뽑기 Task description 원문 : Programmers 64061 링크
- 게임개발자인 &amp;ldquo;죠르디&amp;quot;는 크레인 인형뽑기 기계를 모바일 게임으로 만들려고 합니다. &amp;ldquo;죠르디&amp;quot;는 게임의 재미를 높이기 위해 화면 구성과 규칙을 다음과 같이 게임 로직에 반영하려고 합니다.
-  게임 화면은 &amp;ldquo;1 x 1&amp;rdquo; 크기의 칸들로 이루어진 &amp;ldquo;N x N&amp;rdquo; 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 &amp;ldquo;5 x 5&amp;rdquo; 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 70128 내적</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-70128-inner-product/</link>
-      <pubDate>Thu, 15 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-70128-inner-product/</guid>
-      <description>Programmers - 70128 내적 Task description 원문 : Programmers 70128 링크
- 길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다. a와 b의 내적을 return 하도록 solution 함수를 완성해주세요.
-  이때, a와 b의 내적은 a[0]*b[0] + a[1]*b[1] + &amp;hellip; + a[n-1]*b[n-1] 입니다. (n은 a, b의 길이)
- Condition   a, b의 길이는 1 이상 1,000 이하입니다. a, b의 모든 수는 -1,000 이상 1,000 이하입니다.   input output    a b result     [1,2,3,4] [-3,-1,0,2] 3   [-1,0,1] [1,0,-1] -2     입출력 예 설명</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42748 K번째 수</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42748-kth-number/</link>
-      <pubDate>Wed, 14 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42748-kth-number/</guid>
-      <description>Programmers - 42748 K번째 수 Task description 원문 : Programmers 42748 링크
- 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.
-  예를 들어 array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3이라면
-  array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다. 1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다. 2에서 나온 배열의 3번째 숫자는 5입니다.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 72410 신규 아이디 추천</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-72410-new-id-recommendation/</link>
-      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-72410-new-id-recommendation/</guid>
-      <description>Programmers - 72410 신규 아이디 추천 Task description 원문 : Programmers 72410 링크
- 카카오에 입사한 신입 개발자 네오는 &amp;ldquo;카카오계정개발팀&amp;quot;에 배치되어, 카카오 서비스에 가입하는 유저들의 아이디를 생성하는 업무를 담당하게 되었습니다. &amp;ldquo;네오&amp;quot;에게 주어진 첫 업무는 새로 가입하는 유저들이 카카오 아이디 규칙에 맞지 않는 아이디를 입력했을 때, 입력된 아이디와 유사하면서 규칙에 맞는 아이디를 추천해주는 프로그램을 개발하는 것입니다. 다음은 카카오 아이디의 규칙입니다.
-  아이디의 길이는 3자 이상 15자 이하여야 합니다. 아이디는 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.</description>
-    </item>
-    
-    <item>
-      <title>Programmers 42576 완주하지 못한 선수</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42576-players-who-did-not-finish/</link>
-      <pubDate>Mon, 12 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/programmers/202107/programmers-42576-players-who-did-not-finish/</guid>
-      <description>Programmers - 42576 완주하지 못한 선수 Task description 원문 : Programmers 42576 링크
- 수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다. 마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
- Condition   마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다. completion의 길이는 participant의 길이보다 1 작습니다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 4949 균형잡힌 세상</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-4949-a-balanced-world/</link>
-      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-4949-a-balanced-world/</guid>
-      <description>BAEKJOON - 4949 균형잡힌 세상 Task description 원문 : 백준 4949 링크
-메시지를 입력받아 괄호를 열고 닫아야 한다.
- 열고 닫는 괄호가 균형 맞게 되어있으면 yes 아니면 no 출력
- ex) asd(b)dd(d[ddd]) yes ex) (asdasd] no 메시지의 끝은 .으로 끝나고 메시지가 &amp;ldquo;.&amp;rdquo; 이면 종료   Condition   모든 왼쪽 소괄호(&amp;quot;(&amp;quot;)는 오른쪽 소괄호(&amp;quot;)&amp;quot;)와만 짝을 이뤄야 한다. 모든 왼쪽 대괄호(&amp;quot;[&amp;quot;)는 오른쪽 대괄호(&amp;quot;]&amp;quot;)와만 짝을 이뤄야 한다. 모든 오른쪽 괄호들은 자신과 짝을 이룰 수 있는 왼쪽 괄호가 존재한다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 1541 잃어버린 괄호 </title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1541-lost-parenthesis/</link>
-      <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1541-lost-parenthesis/</guid>
-      <description>BAEKJOON - 1541 잃어버린 괄호 Task description 원문 : 백준 1541 링크
- +와 -그리고 괄호를 가진 식에서 괄호를 모두 지웠다. 그리고 나서 괄호를 적절히 쳐서 이 식의 값을 최소로 만들려고 한다. 괄호를 적절히 쳐서 이 식의 값을 최소로 만드는 프로그램을 작성하시오.
- Condition   첫째 줄에 식이 주어진다. 식은 ‘0’~‘9’, ‘+’, 그리고 ‘-’만으로 이루어져 있고, 가장 처음과 마지막 문자는 숫자이다. 그리고 연속해서 두 개 이상의 연산자가 나타나지 않고, 5자리보다 많이 연속되는 숫자는 없다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 10828 스택</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-stack/</link>
-      <pubDate>Fri, 09 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-stack/</guid>
-      <description>BAEKJOON - 10828 스택 Task description 원문 : 백준 10828 링크
- 정수를 저장하는 스택을 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
-  명령은 총 다섯 가지이다.
-  push X: 정수 X를 스택에 넣는 연산이다. pop: 스택에서 가장 위에 있는 정수를 빼고, 그 수를 출력한다. 만약 스택에 들어있는 정수가 없는 경우에는 -1을 출력한다. size: 스택에 들어있는 정수의 개수를 출력한다. empty: 스택이 비어있으면 1, 아니면 0을 출력한다. top: 스택의 가장 위에 있는 정수를 출력한다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 10872 팩토리얼</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-factorial/</link>
-      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-10872-factorial/</guid>
-      <description>BAEKJOON - 10872 팩토리얼(Factorial) Task description 원문 : 백준 10872 링크
- 0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.
- Condition   첫째 줄에 정수 N(0 ≤ N ≤ 12)가 주어진다.   input output 예제 입력 1 복사10예제 출력 1 복사3628800예제 입력 2 복사0예제 출력 2 복사1 Solution  0이면 1리턴 0이 아니면 N * factorial(N-1) 리턴 # N * (N-1)!</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.07.08</title>
-      <link>https://offetuoso.github.io/blog/english/202107/20210708-english-speak/</link>
-      <pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202107/20210708-english-speak/</guid>
-      <description>dimsom / dumplings (&amp;lsquo;딤섬 / 만두&amp;rsquo;) ingredient (&amp;lsquo;재료, 성분&amp;rsquo;)  a. What ingredients do you need to make a 김치찌개?
- grocery (&amp;lsquo;식료품, 식자재 / 식료품점&amp;rsquo;)  I need to go to the grocery (store). / I need to buy some groceries.
- ingredient 와 grocery   ingredient는 요리 뿐만 아니라 만드는 모든 것의 재료 grocery는 음식을 만들때의 재료   I had A on B . (&amp;lsquo;B에 A가 있었습니다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 11729 하노이 탑 이동 순서</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-11729-hanoi-tower-travel-order/</link>
-      <pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-11729-hanoi-tower-travel-order/</guid>
-      <description>BAEKJOON - 11729 하노이 탑 이동 순서(Hanoi Tower Travel Order) Task description 원문 : 백준 11729 링크
- 세 개의 장대가 있고 첫 번째 장대에는 반경이 서로 다른 n개의 원판이 쌓여 있다. 각 원판은 반경이 아래서 부터 큰 순서대로 쌓여있다. 이제 수도승들이 다음 규칙에 따라 첫 번째 장대에서 세 번째 장대로 옮기려 한다.
-이 작업을 수행하는데 필요한 이동 순서를 출력하는 프로그램을 작성하라.
-  아래 그림은 원판이 5개인 경우의 예시이다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 2941 크로아티아 알파벳</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2941-croatian-alphabet/</link>
-      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2941-croatian-alphabet/</guid>
-      <description>BAEKJOON - 2941 크로아티아 알파벳(Croatian Alphabet) Task description 원문 : 백준 2941 링크
- 예전에는 운영체제에서 크로아티아 알파벳을 입력할 수가 없었다. 따라서, 다음과 같이 크로아티아 알파벳을 변경해서 입력했다.
-    크로아티아 알파벳 변경     č c=   ć c-   dž dz=   đ d-   lj lj   nj nj   š s=   ž z=      예를 들어, ljes=njak은 크로아티아 알파벳 6개(lj, e, š, nj, a, k)로 이루어져 있다.</description>
-    </item>
-    
-    <item>
-      <title>Lombok @Data 어노테이션 getter setter 인식 안될때</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/lombok-error/</link>
-      <pubDate>Tue, 06 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/spring/lombok-error/</guid>
-      <description>Lombok @Data 어노테이션 &amp;ldquo;getter&amp;rdquo; &amp;ldquo;setter&amp;rdquo; 인식 안될때 문제  Spring Boot에서 프로젝트 생성시 아래와 같이 lombok을 추가하고 데이터 오브젝트 클래스에서 lombok 선언을 하였음에도, 컨트롤러에서 @RequestBody를 통해 Company company 객체를 전달받았을때, 데이터가 세팅이 안되고 Null로 데이터가 있는 경우가 있었다.
-  찾아보니, 사용하는 lombok-xxx.jar를 실행하여 IDE(eclipse, sts)에 설치 해줘야 한다는 것이다.
- 해결책   Jar가 설치된 위치로 가서 Terminal을 연다.    Jar를 실행시킨다.   	java -jar [jar 파일.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 2798 블랙잭</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2798-black-jack/</link>
-      <pubDate>Mon, 05 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2798-black-jack/</guid>
-      <description>BAEKJOON - 2798 블랙잭(black jack) Task description 원문 : 백준 2798 링크
-  첫번째 줄은 카드의 (장)수 N과 블랙잭 넘버(목표 값) M을 입력받는다. 두번째 줄은 공백으로 구분된 N장의 카드 입력받는다. M이 넘지 않는 3장의 합중 가장 큰 경우 출력.   Condition   첫째 줄에 카드의 개수 N(3 ≤ N ≤ 100)과 M(10 ≤ M ≤ 300,000)이 주어진다. 둘째 줄에는 카드에 쓰여 있는 수가 주어지며, 이 값은 100,000을 넘지 않는 양의 정수이다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 1712 손익분기점</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1712-break-even-point/</link>
-      <pubDate>Sun, 04 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-1712-break-even-point/</guid>
-      <description>BAEKJOON - 1712 손익분기점(break even point) Task description 원문 : 백준 1712 링크
- 노트북 제조하는데 노트북 판매 대수에 상관없이 A만원의 고정 비용이 든다.
-한 대의 노트북을 생산하는 데에는 B만원의 가변 비용이 든다
-A=1,000, B=70이라고 하자. 이 경우 노트북을 한 대 생산하는 데는 총 1,070만원이 들며,
-열 대 생산하는 데는 총 1,700만원이 든다.
-노트북 가격이 C만원으로 책정되었다고 한다.
-생산 대수를 늘려 가다 보면 어느 순간 총 수입(판매비용)이 총 비용(=고정비용+가변비용)보다 많아지게 된다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 7578 토마토</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-7578-tomato/</link>
-      <pubDate>Sat, 03 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-7578-tomato/</guid>
-      <description>BAEKJOON - 7576 토마토(tomato) Task description  철수의 토마토 농장에서는 토마토를 보관하는 큰 창고를 가지고 있다. 토마토는 아래의 그림과 같이 격자 모양 상자의 칸에 하나씩 넣어서 창고에 보관한다.
-  창고에 보관되는 토마토들 중에는 잘 익은 것도 있지만, 아직 익지 않은 토마토들도 있을 수 있다. 보관 후 하루가 지나면, 익은 토마토들의 인접한 곳에 있는 익지 않은 토마토들은 익은 토마토의 영향을 받아 익게 된다. 하나의 토마토의 인접한 곳은 왼쪽, 오른쪽, 앞, 뒤 네 방향에 있는 토마토를 의미한다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 2178 미로</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2178-maze/</link>
-      <pubDate>Fri, 02 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2178-maze/</guid>
-      <description>BAEKJOON - 2606 미로(maze) Task description  N×M크기의 배열로 표현되는 미로가 있다.
-1	0	1	1	1	1
-1	0	1	0	1	0
-1	0	1	0	1	1
-1	1	1	0	1	1
-  미로에서 1은 이동할 수 있는 칸을 나타내고, 0은 이동할 수 없는 칸을 나타낸다. 이러한 미로가 주어졌을 때, (1, 1)에서 출발하여 (N, M)의 위치로 이동할 때 지나야 하는 최소의 칸 수를 구하는 프로그램을 작성하시오.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 2606 바이러스</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2606-virus/</link>
-      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/baekjoon-2606-virus/</guid>
-      <description>BAEKJOON - 2606 바이러스(virus) Task description  신종 바이러스인 웜 바이러스는 네트워크를 통해 전파된다. 한 컴퓨터가 웜 바이러스에 걸리면 그 컴퓨터와 네트워크 상에서 연결되어 있는 모든 컴퓨터는 웜 바이러스에 걸리게 된다.
-  예를 들어 7대의 컴퓨터가 &amp;lt;그림 1&amp;gt;과 같이 네트워크 상에서 연결되어 있다고 하자. 1번 컴퓨터가 웜 바이러스에 걸리면 웜 바이러스는 2번과 5번 컴퓨터를 거쳐 3번과 6번 컴퓨터까지 전파되어 2, 3, 5, 6 네 대의 컴퓨터는 웜 바이러스에 걸리게 된다.</description>
-    </item>
-    
-    <item>
-      <title>너비 우선 탐색 알고리즘</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/search/bfs/bfs-algorithm/</link>
-      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/search/bfs/bfs-algorithm/</guid>
-      <description>너비 우선 탐색 알고리즘 BFS (Breadth-First Search)  BFS는 너비 우선 탐색이라고 부르며, 시작 위치에서 가까운 노드부터 우선적으로 탐색하는 알고리즘이다.
-  BFS는 큐 자료구조를 이용하며, 구체적인 동작 과정은 아래와 같다.
-   탐색 시작 노드를 큐에 삽입하고 방문 처리를 합니다. 큐에서 노드를 꺼낸 뒤에 해당 노드의 인접 노드 중에서 방문하지 않은 노드를 모두 큐에 삽입하고 방문 처리. 더 이상 2번의 과정을 수행할 수 없을 때까지 반복함.     그래프를 준비하고, 시작 노드는 1로 BFS를 시작한다.</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.07.01</title>
-      <link>https://offetuoso.github.io/blog/english/202107/20210701-english-speak/</link>
-      <pubDate>Thu, 01 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202107/20210701-english-speak/</guid>
-      <description>I have worked A (&amp;lsquo;나는 A에서 일했었습니다&amp;rsquo;)  Eight years ago, I have worked in a buffet. I served foods and cleaned the rooms. (나는 8년전에 뷔페에서 일했습니다. 나는 음식을 제공하고 방을 청소했습니다.)
- really/quite tough (&amp;lsquo;정말/꽤 힘들다&amp;rsquo;)  it was really/quite tough but fun at the same time. (매우/꽤 힘들었지만, 동시에 재미있었습니다.)
- I worked with A (&amp;lsquo;나는 A와 함께 일했다&amp;rsquo;)  because I worked with my friends. (왜냐하면, 나의 친구들과 같이 일했기 때문이다)</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 4673 셀프 넘버</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/self-number/</link>
-      <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/self-number/</guid>
-      <description>백준 4673 Self Number Task description  문제 셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다.
-  양의 정수 n이 주어졌을 때, 이 수를 시작해서 n, d(n), d(d(n)), d(d(d(n))), &amp;hellip;과 같은 무한 수열을 만들 수 있다.
-  예를 들어, 33으로 시작한다면 다음 수는 33 + 3 + 3 = 39이고, 그 다음 수는 39 + 3 + 9 = 51, 다음 수는 51 + 5 + 1 = 57이다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 8958 OX 퀴즈</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/ox-quiz/</link>
-      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/ox-quiz/</guid>
-      <description>백준 8958 ox quiz Task description  &amp;ldquo;OOXXOXXOOO&amp;quot;와 같은 OX퀴즈의 결과가 있다. O는 문제를 맞은 것이고, X는 문제를 틀린 것이다. 문제를 맞은 경우 그 문제의 점수는 그 문제까지 연속된 O의 개수가 된다. 예를 들어, 10번 문제의 점수는 3이 된다.
-  &amp;ldquo;OOXXOXXOOO&amp;quot;의 점수는 1+2+0+0+1+0+0+1+2+3 = 10점이다.
-  OX퀴즈의 결과가 주어졌을 때, 점수를 구하는 프로그램을 작성하시오.
- Condition   첫째 줄에 테스트 케이스의 개수가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있다.</description>
-    </item>
-    
-    <item>
-      <title>Codility - PermCheck</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/perm-check/</link>
-      <pubDate>Mon, 28 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/perm-check/</guid>
-      <description>PermCheck  Codility - Lesson4 - Counting Elements - PermCheck
- Task description  N 개의 정수로 구성된 비어 있지 않은 배열 A가 제공됩니다.
-순열은 1부터 N까지의 각 요소를 한 번만 포함하는 시퀀스입니다. 예를 들어 배열 A는 다음과 같습니다.
-  A [0] = 4A [1] = 1A [2] = 3A [3] = 2  순열이지만 배열 A는 다음과 같습니다.
-  A [0] = 4A [1] = 1A [2] = 3  값 2가 없기 때문에 순열이 아닙니다.</description>
-    </item>
-    
-    <item>
-      <title>BAEKJOON - 2839 설탕배달</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/sugar-delivery/</link>
-      <pubDate>Sun, 27 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/braekjoon/sugar-delivery/</guid>
-      <description>백준 2839 설탕배달 Task description  상근이는 요즘 설탕공장에서 설탕을 배달하고 있다. 상근이는 지금 사탕가게에 설탕을 정확하게 N킬로그램을 배달해야 한다. 설탕공장에서 만드는 설탕은 봉지에 담겨져 있다. 봉지는 3킬로그램 봉지와 5킬로그램 봉지가 있다.
-  상근이는 귀찮기 때문에, 최대한 적은 봉지를 들고 가려고 한다. 예를 들어, 18킬로그램 설탕을 배달해야 할 때, 3킬로그램 봉지 6개를 가져가도 되지만, 5킬로그램 3개와 3킬로그램 1개를 배달하면, 더 적은 개수의 봉지를 배달할 수 있다.
-  상근이가 설탕을 정확하게 N킬로그램 배달해야 할 때, 봉지 몇 개를 가져가면 되는지 그 수를 구하는 프로그램을 작성하시오.</description>
-    </item>
-    
-    <item>
-      <title>Codility - MaxCounter</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/max-counter/</link>
-      <pubDate>Sat, 26 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/max-counter/</guid>
-      <description>MaxCounter  Codility - Lesson4 - Counting Elements - MaxCounter
- Task description  처음에는 0으로 설정된 N 개의 카운터가 제공되며 두 가지 가능한 작업이 있습니다.
-  증가 (X) -카운터 X가 1 증가합니다. 최대 카운터 -모든 카운터는 모든 카운터의 최대 값으로 설정됩니다. M 개의 정수로 구성된 비어 있지 않은 배열 A가 제공됩니다. 이 배열은 연속 작업을 나타냅니다.
-  A [K] = X, 즉 1 ≤ X ≤ N이면 연산 K는 증가 (X), A [K] = N + 1이면 작업 K는 최대 카운터입니다.</description>
-    </item>
-    
-    <item>
-      <title>샤딩(Sharding)</title>
-      <link>https://offetuoso.github.io/blog/develop/database/tech/sharding/</link>
-      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/database/tech/sharding/</guid>
-      <description>샤딩(Sharding) Database의 샤딩(Sharding)이란?  같은 테이블 스키마를 가진 데이터를 다수의 데이터베이스에 분산하여 저장하는 방법을 의미.
- 샤딩은 수평 분할(Horizontal Partitioning)과 동일. 테이블의 인덱스의 크기를 줄이고, 작업 동시성을 늘리기 위함. application level에서도 가능하지만 database level에서도 가능.   수평 분할 (horizotal partitioning, Range Based Partitioning)  샤딩과 동일한 의미를 가지며 스키마를 다수의 복제본을 구성하고 각각의 샤드에 샤드키를 기준으로 데이터를 분리하는 것을 말한다. DBA가 데이터의 패턴과 저장공간을 잘 알고 샤드키를 선정하여 분할한다.</description>
-    </item>
-    
-    <item>
-      <title>AWS RDS에 MySQL 인스턴스 생성 후 연결</title>
-      <link>https://offetuoso.github.io/blog/develop/database/mysql/aws-rds-mysql/</link>
-      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/database/mysql/aws-rds-mysql/</guid>
-      <description>AWS RDS RDS 서비스 생성  AWS Management Console에서 RDS 접속
- RDS 데이터베이스 인스턴스 생성  RDS에 MySQL 인스턴스를 생성한다.
-  데이터베이스 생성 클릭
-  데이터베이스 생성
- 표준 생성 원하는 데이터베이스 선택    Mysql 버전 선택과 템플릿 설정
- Mysql Community Mysql 버전 선택 - MySQL 5.7.22 템플릿 선택 -    DB 인스턴스 설정
- 인스턴스명 추가 DB에 접근할 계정 정보 입력    DB 인스턴스 크기</description>
-    </item>
-    
-    <item>
-      <title>Codility - FrogRiverOne</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/frog-river-one/</link>
-      <pubDate>Sat, 12 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/frog-river-one/</guid>
-      <description>FrogRiverOne  Codility - Lesson4 - Counting Elements - FrogRiverOne
- Task description  은 개구리가 강 건너편으로 가고 싶어합니다. 개구리는 처음에 강의 한 둑 (위치 0)에 있으며 반대쪽 둑 (위치 X + 1)에 도달하려고합니다. 잎은 나무에서 강 표면으로 떨어집니다.
-  엽을 나타내는 N 개의 정수로 구성된 배열 A가 제공됩니다. A[K]는 초 단위로 측정 된 시간 K에서 한 잎이 떨어지는 위치를 나타냅니다.
-  는 개구리가 강 반대편으로 점프 할 수있는 가장 빠른 시간을 찾는 것입니다.</description>
-    </item>
-    
-    <item>
-      <title>Codility - TapeEquilibrium</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/tape-equilibrium/</link>
-      <pubDate>Thu, 10 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/tape-equilibrium/</guid>
-      <description>Tape Equilibrium  Codility - Lesson3 - Time Complexity - TapeEquilibrium
- Task description  N 개의 정수로 구성된 비어 있지 않은 배열 A가 제공됩니다. 0 &amp;lt;P &amp;lt;N 인 정수 P는이 배열 A를 두 부분으로 분할합니다 (A [0], A [1], &amp;hellip;, A [P − 1] 및 A [P], A [ P + 1], &amp;hellip;, A [N-1]) 분할 된 두 부분의 차이는 다음의 값입니다. | (A [0] + A [1] + &amp;hellip; + A [P − 1]) − (A [P] + A [P + 1] + .</description>
-    </item>
-    
-    <item>
-      <title>Codility - PermMissingElem</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/perm-missing-elem/</link>
-      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/perm-missing-elem/</guid>
-      <description>Perm Missing Elem  Codility - Lesson3 - Time Complexity - PermMissingElem
- Task description  배열 A는 1 ~ N+1의 범위의 정수를 담고 있는 배열이며 1 ~ N+1의 정수중 1개의 숫자(요소)가 빠져있다.
-  예를 들면 다음과 같습니다.
-  A[0] = 2A[1] = 3A[2] = 1A[3] = 5  1~5까지의 숫자중 4가 빠져 있기 때문에 4를 반환
- Condition   다음 가정에 대한 효율적인 알고리즘을 작성하십시오.</description>
-    </item>
-    
-    <item>
-      <title>Codility - Frog Jmp</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/codility-frog-jmp/</link>
-      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/codility-frog-jmp/</guid>
-      <description>Frog Jmp  Codility - Lesson3 - Time Complexity - Frog Jmp
- Task description  세 개의 정수 X, Y, D를 입력받는 함수를 작성합니다.
- X는 개구리의 위치 Y는 개구리의 목표 위치 Y는 개구리의 이동거리 위치 X에서 D씩 최소의 이동을 하여 목표를 Y에 도달하거나 넘어가기 위하여 이동하는 최소 횟수 반환    예를 들면 다음과 같습니다.
-  X = 10Y = 85D = 30  개구리는 다음과 같이 위치하므로 함수는 3을 반환해야합니다.</description>
-    </item>
-    
-    <item>
-      <title>RESTful API에 Docker Mysql 컨테이너와 Mybatis 연동</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</link>
-      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</guid>
-      <description>RESTful API - Docker의 Mysql과 Mybatis 연동 Docker  Docker에 Mysql을 올리는 것은 저번 포스팅에서 진행하였기 때문에 도커에 Mysql 올리기 링크를 남기고 다음부터 진행합니다.
-  지난 포스트에서 생성한 Docker의 Mysql 컨테이너를 실행
-   docker ps -a (&amp;ldquo;컨테이너 조회&amp;rdquo;)    docker start (&amp;ldquo;컨테이너 시작&amp;rdquo;)  docker restart (&amp;ldquo;컨테이너에 재시작하기&amp;rdquo;) docker stop (&amp;ldquo;컨테이너에 종료하기&amp;rdquo;) docker attach (&amp;ldquo;현재 실행중인 컨테이너에 접속하기&amp;rdquo;)      sudo docker exec -it /bin/bash (&amp;ldquo;컨테이너의 CLI 접속&amp;rdquo;)   PS C:\WINDOWS\system32&amp;gt; docker ps -aCONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES4b6fb99160bf mysql:5.</description>
-    </item>
-    
-    <item>
-      <title>Codility - Odd Occurrences In Array</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/codility-odd-occurrences-in-array/</link>
-      <pubDate>Sun, 06 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/codility-odd-occurrences-in-array/</guid>
-      <description>Odd Occurrences In Array  Codility - Lesson2 - Array - Odd Occurrences In Array
- Task description  N개의 정수가 담긴 배열 A를 입력받습니다 배열에는 홀수 개의 요소가 포함됩니다. 배열의 각 요소는 짝을 이루지 않는 한 요소를 제외하고 동일한 값을 가진 다른 요소와 짝을 가지고 있습니다. 짝이 없는 요소를 찾으면 해결됩니다
-  예를 들어, 주어진 A 배열은 이렇습니다.
-  A [0] = 9 A [1] = 3 A [2] = 9A [3] = 3 A [4] = 9 A [5] = 7A [6] = 9   인덱스 0과 2에있는 요소의 값은 9입니다.</description>
-    </item>
-    
-    <item>
-      <title>Codility - Cyclic Rotation</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/codility/codility-cyclic-rotation/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/codility/codility-cyclic-rotation/</guid>
-      <description>CyclicRotation  Codility - Lesson2 - Array - CyclicRotation
- Task description  N 개의 정수로 구성된 배열 A와 오른쪽으로 회전할 횟수 K가 제공됩니다. A의 각 요소가 오른쪽으로 K 번 이동합니다. N 개의 정수와 K로 구성된 배열 A가 주어지면 배열 A가 K 번 회전 된 배열을 반환합니다.
-  예를 들어, 주어진
-   A = [3, 8, 9, 7, 6] K = 3    함수는 [9, 7, 6, 3, 8]을 반환해야합니다.</description>
-    </item>
-    
-    <item>
-      <title>Mysql DBeaver 설치</title>
-      <link>https://offetuoso.github.io/blog/develop/database/mysql/mysql-dbeaver-install/</link>
-      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/database/mysql/mysql-dbeaver-install/</guid>
-      <description>Mysql DBeaver 설치 DBeaver 다운로드  DBeaverinstall file 다운로드 운영체제에 맞는 DBeavr 인스톨파일을 다운받아 실행시킨다.   Mysql을 선택한다.   자신의 서버정보에 맞게 입력하면 Mysql을 사용할 수 있다.  </description>
-    </item>
-    
-    <item>
-      <title>Mysql Developer 설치</title>
-      <link>https://offetuoso.github.io/blog/develop/database/mysql/mysql-developer-install/</link>
-      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/database/mysql/mysql-developer-install/</guid>
-      <description>Mysql Developer 설치 SQL Developer 다운로드  SQL Developer 다운로드 운영체제에 맞는 SQL Developer를 다운받아 압축을 풀어 실행시킨다.  mysql-connector-java 설치  mysql connector j 다운로드 링크
-  Archives   Platform Independent를 선택하고 zip으로 받습니다.  Oracle Developer 설정  도구 &amp;gt; 환경설정 데이터베이스 &amp;gt; 타사JDBC드라이버 &amp;gt; 항목추가  신규 접속 생성  Mysql이 추가된것을 확인할 수 있다.   자신의 서버정보에 맞게 입력하면 Mysql Developer를 사용할 수 있다.</description>
-    </item>
-    
-    <item>
-      <title>Maven Error - Failure to transfer..</title>
-      <link>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/troubleshooting/spring/maven-error-repository/</guid>
-      <description>Maven error “Failure to transfer…” 문제 Failure to transfer com.google.guava:guava:jar:10.0.1 from https://repo.maven.apache.org/maven2 was cached in the local repository, resolution will not be reattempte from/to central (https://repo.maven.apache.org/maven2): The operation was cancelled.  https://repo.maven.apache.org/maven2에서 디펜던시를 전송하지 못하는 오류가 발생하였고, 로컬 저장소에 캐시되었습니다.
- 해결책 1   프로젝트 우클릭 -&amp;gt; Run as -&amp;gt; Maven Install 프로젝트 우클릭 -&amp;gt; Refresh 프로젝트 우클릭 -&amp;gt; Update Project (옵션 클릭 force update of snapshots/releases)   해결책 2   실행중인 IDE(이클립스, Sts) 종료 로컬 레퍼지토리 삭제</description>
-    </item>
-    
-    <item>
-      <title>SpringBoot를 이용한 RESTful API</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</guid>
-      <description>SpringBoot를 이용한 RESTful API SpringBoot  스프링 프레임워크 기반 프로젝트를 복잡한 설정없이 쉽고 빠르게 만들어주는 라이브러리입니다. 사용자가 일일이 모든 설정을 하지 않아도 자주 사용되는 기본설정을 알아서 해줍니다.
-  Spring Boot 장점
-   라이브러리 관리의 자동화 라이브러리 버전 자동 관리 설정의 자동화 내장 Tomcat 독립적으로 실행 가능한 JAR   간단한 RESTful API 생성 Spring Starter Project로 프로젝트 생성  스프링STS4를 실행 하고, file &amp;gt; new &amp;gt; Spring Starter Project를 선택</description>
-    </item>
-    
-    <item>
-      <title>RESTFULL API (RESTful API)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api/</link>
-      <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api/</guid>
-      <description>레스트풀 API(Restful Api) REST (Representational state transfer)  REST(Representational State Transfer)는 월드 와이드 웹과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다. REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개 엄격한 의미로 REST는 네트워크 아키텍처 원리의 모음이다. 여기서 &amp;lsquo;네트워크 아키텍처 원리&amp;rsquo;란 자원을 정의하고 자원에 대한 주소를 지정하는 방법 전반을 일컫는다. 간단한 의미로는, 웹 상의 자료를 HTTP위에서 SOAP이나 쿠키를 통한 세션 트랙킹 같은 별도의 전송 계층 없이 전송하기 위한 아주 간단한 인터페이스를 말한다.</description>
-    </item>
-    
-    <item>
-      <title>도커에 Mysql 올리기-1 (Docker Mysql)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/</link>
-      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/</guid>
-      <description>도커에 Mysql 올리기 도커 버전 체크  cmd창 또는 Windows PowerShell을 싱행한다.  도커 초기화  일단 도커의 이미지/컨테이너들을 모두 지워주는 것 부터 시작하겠습니다.
- PS C:\&amp;gt; sudo docker rm -f `sudo docker ps -a -q`PS C:\&amp;gt; sudo docker rmi -f `sudo docker images` 도커 이미지 가져오기 (get Mysql Image for Docker)  Mysql의 경우 DockerHub에 있기 때문에, 쉽게 이미지를 받아 올 수 있습니다.
- DockerHub에서 mysql 이미지 받아오기   PS C:\&amp;gt; docker pull mysqlUsing default tag: latestlatest: Pulling from library/mysqlDigest: sha256:d50098d7fcb25b1fcb24e2d3247cae3fc55815d64fec640dc395840f8fa80969Status: Image is up to date for mysql:latestdocker.</description>
-    </item>
-    
-    <item>
-      <title>도커 설치 (Docker Install) </title>
-      <link>https://offetuoso.github.io/blog/develop/backend/docker/docker-install/</link>
-      <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/docker/docker-install/</guid>
-      <description>도커 (Docker) 도커란 ?  도커란 리눅스의 응용 프로그램들을 프로세스 격리 기술을 사용해 컨테이너로 실행하고 관리하는 오픈 소스 프로젝트. 도커 웹 페이지의 기능을 인용하면 다음과 같다:
- 도커 컨테이너는 일종의 소프트웨어를 소프트웨어의 실행에 필요한 모든 것을 포함하는 완전한 파일 시스템 안에 감싼다. 여기에는 코드, 런타임, 시스템 도구, 시스템 라이브러리 등 서버에 설치되는무엇이든 아우른다. 이는 실행 중인 환경에 관계 없이 언제나 동일하게 실행될 것을 보증한다. 도커의 특징   도커의 컨테이너는 각각 독립적이다.</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.05.14</title>
-      <link>https://offetuoso.github.io/blog/english/202105/20210514-english-speak/</link>
-      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202105/20210514-english-speak/</guid>
-      <description>The A is about the B (&amp;lsquo;A는 B에 관한것&amp;rsquo;)  The video is about the effect of exercising regularly on our body. (규칙적인 운동이 우리의 몸에 미치는 영향)
- the effect of A on B (&amp;lsquo;A가 B에 미치는 영향&amp;rsquo;) = the influence of A on B  the effect of exercising regularly on our body. (규칙적인 운동이 우리의 몸에 미치는 영향.)
- the influence of A on B (&amp;lsquo;A가 B에 미치는 영향&amp;rsquo;)  the influence of exercising regularly on our body.</description>
-    </item>
-    
-    <item>
-      <title>탐색 알고리즘</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/search/search-algorithm/</link>
-      <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/search/search-algorithm/</guid>
-      <description>탐색 알고리즘 탐색(search)  탐색이란 많은 양의 데이터 중에서 원하는 데이터를 찾는과정. 그래프 또는 트리의 자료구조에서 데이터를 찾는 문제가 주로 나온다. 대표적으로 DPS, BPS가 있으며, 원리를 제대로 이해해야 코딩테스트 문제를 풀 수 있다. 그런데 DPS와 BPS를 이해하기 위해서 기본 자료구조인 스택, 큐, 재귀 함수 등을 이해가 전제로 되어야한다.
- 자료구조  자료구조란 데이터를 표현하고 관리하고 처리하기 위한 구조 스택과 큐는 삽입(Push)과 출력(Pop)이라는 두 핵심적인 함수로 구성 실제 구현할땐 오버플로우와 언더플로우를 고민해야한다.</description>
-    </item>
-    
-    <item>
-      <title>왕실의 기사 (구현 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/implements/202105/royal_knight/</link>
-      <pubDate>Wed, 05 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/implements/202105/royal_knight/</guid>
-      <description>[문제1] 왕실의 기사 [문제] 왕실의 기사 : 문제 설명  행복 왕국의 왕실 정원은 체스판과 같은 8 × 8 좌표 평면이다. 왕실 정원의 특정한 한 칸에 나이트가 서있다. 나이트는 매우 충성스러운 신하로서 매일 무술을 연마한다 나이트는 말을 타고 있기 때문에 이동을 할 때는 L자 형태로만 이동할 수 있으며 정원 밖으로는 나갈 수 없다 나이트는 특정 위치에서 다음과 같은 2가지 경우로 이동할 수 있다
-   수평으로 두 칸 이동한 뒤에 수직으로 한 칸 이동하기   수직으로 두 칸 이동한 뒤에 수평으로 한 칸 이동하기   이처럼 8 × 8 좌표 평면상에서 나이트의 위치가 주어졌을 때 나이트가 이동할 수 있는 경우의 수를 출력하는 프로그램을 작성하라.</description>
-    </item>
-    
-    <item>
-      <title>Git 캐시 삭제</title>
-      <link>https://offetuoso.github.io/blog/develop/git/202105/time/</link>
-      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/git/202105/time/</guid>
-      <description>Git 캐시(cache) 삭제 // 원격 저장소와 로컬 저장소 파일을 삭제$ git rm 파일명// 원격 저장소에 있는 파일만 삭제하고, //로컬 저장소에 있는 파일은 삭제하지 않음$ git rm --cached 파일명 rm -r 옵션// 파일 삭제$ git rm --cached 파일명// 폴더 하위의 모든 파일을 삭제$ git rm -r --cached 폴더명 </description>
-    </item>
-    
-    <item>
-      <title>시각 (구현 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/implements/202105/time/</link>
-      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/implements/202105/time/</guid>
-      <description>[문제1] 시각 [문제] 시각 : 문제 설명  정수 N이 입력되면 00시 00분 00초부터 N시 59분 59초까지의 모든 시각 중에서 3이 하나라도 포함되는 모든 경우의 수를 구하는 프로그램을 작성하라. 예를 들어 1을 입력했을 때
-  다음은 3이 하나라도 포함되어 있으므로 세어야 하는 시각이다 00시 00분 03초 00시 13분 30초
-  반면에 다음은 3이 하나도 포함되어 있지 않으므로 세면 안 되는 시각이다 00시 02분 55초 01시 27분 45초
- [문제] 조건  조건 풀이시간 15분 시간제한 2초, 메모리 128mb</description>
-    </item>
-    
-    <item>
-      <title>상하좌우 (구현 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/implements/202104/up-down-left-right/</link>
-      <pubDate>Wed, 28 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/implements/202104/up-down-left-right/</guid>
-      <description>[문제1] 상하좌우 [문제] 상하좌우 : 문제 설명  여행가 A는 N × N 크기의 정사각형 공간 위에 서 있다. 이 공간은 1 × 1 크기의 정사각형으로 나누어져 있다. 가장 왼쪽 위 좌표는 (1, 1)이며, 가장 오른쪽 아래 좌표는 (N, N)에 해당한다. 여행가 A는 상, 하, 좌, 우 방향으로 이동할 수 있으며, 시작 좌표는 항상 (1, 1)이다. 우리 앞에는 여행가 A가 이동할 계획이 적힌 계획서가 놓여 있다
-  계획서에는 하나의 줄에 띄어쓰기를 기준으로 L, R, U, D 중 하나의 문자가 반복적으로 적혀있다.</description>
-    </item>
-    
-    <item>
-      <title>숫자 카드 게임 (그리디 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202104/games-of-number-card/</link>
-      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202104/games-of-number-card/</guid>
-      <description>[문제1] 숫자 카드 게임 [문제] 숫자 카드 게임 : 문제 설명  숫자 카드 게임은 여러 개의 숫자 카드 중에서 가장 높은 숫자가 쓰인 카드 한 장을 뽑는 게임이다. 단, 게임의 룰을 지키며 카드를 뽑아야 하고 룰은 다음과 같다.
-  숫자가 쓰인 카드들이 N x M 형태로 놓여 있다. 이때 N은 행의 개수를 의미하며, M은 열의 개수를 의미한다. 먼저 뽑고자 하는 카드가 포함되어 있는 행을 선택한다. 그다음 선택된 행에 포함된 카드들 중 가장 숫자가 낮은 카드를 뽑아야 한다.</description>
-    </item>
-    
-    <item>
-      <title>큰수의 법칙 (그리디 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202104/law-of-large-number/</link>
-      <pubDate>Tue, 20 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202104/law-of-large-number/</guid>
-      <description>[문제1] 큰 수의 법칙 [문제] 큰 수의 법칙 : 문제 설명  출제자는 큰 수의 법칙을 본인만의 방식으로 다르게 사용하고 있다. 이 큰 수의 법칙은 다양한 수로 이루어진 배열이 있을 때 주어진 수들을 M번 더하여 가장 큰수를 만드는 법칙이다. 단 배열의 특정한 인덱스(번호)에 해당하는 수가 연속해서 K번을 초과하여 더해질 수 없는 것이 이 법칙의 특징이다.
-  예를 들어 순서대로 2, 4, 5, 4, 6으로 이루어진 배열이 있을 때 M이 8이고, K가 3이라고 가정하자.</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.04.08</title>
-      <link>https://offetuoso.github.io/blog/english/202104/20210408-english-speak/</link>
-      <pubDate>Thu, 08 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202104/20210408-english-speak/</guid>
-      <description>a. touching (&amp;lsquo;감동시키는&amp;rsquo;) a. entertaining (&amp;lsquo;재미있는&amp;rsquo;)  It was really entertaining and the storyline was also a bit touching(sad). (정말 재미 있었고 스토리 라인도 약간 감동적이었습니다.)
- These days (&amp;lsquo;요즘&amp;rsquo;) = Nowadays  These day , I go to bed in 1 am and (get up) 7 am (요즘은 새벽 1시에 자고 아침 7시에 일어나)
- On weekends (&amp;lsquo;주말에&amp;rsquo;) get up at (~ time) (&#39;-시에 일어나&#39;) still (&amp;lsquo;여전히&amp;rsquo;)  On weekends, I get up at 1 pm and still go to bed the same (주말에는 오후 1시에 일어나도 똑같이 잠자리에 든다)</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.04.07</title>
-      <link>https://offetuoso.github.io/blog/english/202104/20210407-english-speak/</link>
-      <pubDate>Wed, 07 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202104/20210407-english-speak/</guid>
-      <description>go to ~ (&#39;-에 간다&#39;)  I go to company. (나는 회사에 간다.)
- be going to ~ (&#39;-에 갈꺼다&#39;)  I&amp;rsquo;m going to market. (나는 마트에 간다. 갈예정이 있음 )
- be going to go to ~ (&#39;-에 갈꺼야&#39;)  I&amp;rsquo;m going to go to korea. (나는 한국에 갈꺼야. 아직 계획은 세우지 않았음 )
- went to ~ (&#39;- 갔었다 &amp;lsquo;)  I went to starfield. (나는 스타필드에 갔었다.)</description>
-    </item>
-    
-    <item>
-      <title>모험가 길드 (그리디 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202104/adventurer-guild/</link>
-      <pubDate>Sat, 03 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202104/adventurer-guild/</guid>
-      <description>[문제1] 1이 될때까지 [문제] 1이 될때까지 : 문제 설명  어떠한 수 N이 1이 될때까지 다음의 두 과정 중 하나를 반복적으로 선택하여 수행하려고 합니다. 단, 두번째 연산은 N이 K로 나누어 떨어질 때만 선택할 수 있습니다.
-   N에서 1을 뺍니다. N에서 K로 나눕니다.    예를 들어 N이 17, K가 4라고 가정하자. 이때 1번의 과정을 한 번 수행하면 N은 16이 된다. 이후에 2번의 과정을 두 번 수행하면 N은 1이 된다.</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.04.02</title>
-      <link>https://offetuoso.github.io/blog/english/202104/20210402-english-speak/</link>
-      <pubDate>Fri, 02 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202104/20210402-english-speak/</guid>
-      <description>prepare (&amp;lsquo;준비하다&amp;rsquo;)  Pick/Choose two questions and prepare your answers. (두 가지 질문을 고르고 답을 준비하십시오.)
- the meaning of the ~ (&#39;-의 의미&#39;)  the meaning of the name. (이름의 의미) The meaning of one’s name may have an influence on their life. (이름의 의미가 그들의 삶에 영향을 미칠 수 있습니다.)
- to have influence on ~ (&#39;-에 영향을 미치다&#39;)  to have influence on life (삶에 영향을 미치다)</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.04.01</title>
-      <link>https://offetuoso.github.io/blog/english/202104/20210401-english-speak/</link>
-      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202104/20210401-english-speak/</guid>
-      <description>##have influence on ~ (&#39;-에 영향을 미치다&#39;)
- 동학개미 had some influence on the national stock market. (&amp;lsquo;동학 개미는 전국 주식 시장에 영향을 미쳤습니다.&#39;) I think, he has achievement that influence on some developer (&amp;lsquo;그는 일부 개발자에게 영향을 미치는 업적을 가지고 있다고 생각합니다.&#39;) I think, his achievement has some influence on [software developers/engineers.] (&amp;lsquo;그는 일부 개발자에게 영향을 미치는 업적을 가지고 있다고 생각합니다.&#39;) Netflix now has a huge influence on the media industry.</description>
-    </item>
-    
-    <item>
-      <title>더하기 혹은 곱하기 (그리디 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202103/sum-and-multiply/</link>
-      <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202103/sum-and-multiply/</guid>
-      <description>[문제1] 곱하기 혹은 더하기 [문제] 곱하기 혹은 더하기 : 문제 설명  각 자리가 숫자(0부터 9)로만 이루어진 문자열 S가 주어졌을 때, 왼쪽부터 오른쪽으로 하나씩 모든 숫자를 확인하며 숫자 사이에 &amp;lsquo;x&amp;rsquo; 혹은 &amp;lsquo;+&amp;rsquo; 연산자를 넣어 결과적으로 만들어질 수 있는 가장 큰 수를 구하는 프로그램을 작성. 단, + 보다 x를 먼저 계산하는 일반적인 방식과는 달리, 모든 연산은 왼쪽에서부터 순서대로 이루어진다고 가정.
-   예를 들어, 02984라는 문자열로 만들 수 있는 가장 큰 수는 ((((0 + 2)x 9)x 8)x 4) = 576이다.</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.03.26</title>
-      <link>https://offetuoso.github.io/blog/english/202103/20210326-english-speak/</link>
-      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202103/20210326-english-speak/</guid>
-      <description>prefers a to b (&amp;lsquo;b 보다 a를 더 선호&amp;rsquo;)  we are prefers apple to banana (&amp;lsquo;우리는 바나나보다 사과를 선호합니다.&#39;)
- giving birth (&amp;lsquo;출산&amp;rsquo;) = when the baby was born  when the mother was giving birth (&amp;lsquo;어머니가 출산 할때&amp;rsquo;)
- n. name (&amp;lsquo;이름을 지어주다&amp;rsquo;)  How do American Indian women name their babies? (&amp;lsquo;아메리칸 인디언 여성들은 아기의 이름을 어떻게 지어주나요?&#39;)
- compound words (&amp;lsquo;합성어&amp;rsquo;)  handphone is compound word that Consists of two word?</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.03.25</title>
-      <link>https://offetuoso.github.io/blog/english/202103/20210325-english-speak/</link>
-      <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202103/20210325-english-speak/</guid>
-      <description>Introduction (&amp;lsquo;소개, 서론&amp;rsquo;) Introduction → Body → Conclusion  This pagraph is book of Introduction (&amp;lsquo;이 단락은 서론입니다.&#39;)
- topic sentence (&amp;lsquo;주제 문장&amp;rsquo;)  this is topic sentence in paragraph (&amp;lsquo;이것은 단락의 주제 문장입니다&amp;rsquo;)
- Q. What is a must-included item when you summarize a text? (&amp;lsquo;글을 요약할때 꼭 포함되어야 하는것?&#39;)  main points, paraphrase the topic sentence
- plagiarism (&amp;lsquo;표절&amp;rsquo;)  this book has relate to rumor of plagiarism (&amp;lsquo;이 책은 표절 소문과 연루되어 있습니다&amp;rsquo;)</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.03.24</title>
-      <link>https://offetuoso.github.io/blog/english/202103/20210324-english-speak/</link>
-      <pubDate>Wed, 24 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202103/20210324-english-speak/</guid>
-      <description>Read the sentences (&amp;lsquo;문장 읽기&amp;rsquo;)  you must to read the sentences in book (&amp;lsquo;책에있는 문장을 읽어야합니다&amp;rsquo;)
- Read the sentences (&amp;lsquo;문장 읽기&amp;rsquo;)  you must to read the sentences in book (&amp;lsquo;책에있는 문장을 읽어야합니다&amp;rsquo;)
- some (&amp;lsquo;약간, 전체는 아니고, 아예 아닌것도 아님&amp;rsquo;)  some people who attempt to change (&amp;lsquo;변화를 시도하는 사람들&amp;rsquo;)
- 새로운 단어 passage 문구 / 통로silently 잠자코, 조용히repeat 반복intonation 말의 높낮이some not all but not none 문법오류 I was weekends also studying English and.</description>
-    </item>
-    
-    <item>
-      <title>1이 될때까지 (그리디 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202103/make-one/</link>
-      <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202103/make-one/</guid>
-      <description>[문제1] 1이 될때까지 [문제] 1이 될때까지 : 문제 설명  어떠한 수 N이 1이 될때까지 다음의 두 과정 중 하나를 반복적으로 선택하여 수행하려고 합니다. 단, 두번째 연산은 N이 K로 나누어 떨어질 때만 선택할 수 있습니다.
-   N에서 1을 뺍니다. N에서 K로 나눕니다.    예를 들어 N이 17, K가 4라고 가정하자. 이때 1번의 과정을 한 번 수행하면 N은 16이 된다. 이후에 2번의 과정을 두 번 수행하면 N은 1이 된다.</description>
-    </item>
-    
-    <item>
-      <title>거스름돈 (그리디 알고리즘)</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202103/reverse-charge/</link>
-      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/202103/reverse-charge/</guid>
-      <description>[문제1] 거스름돈 [문제] 거스름돈 : 문제 설명  당신은 음식점의 계산을 도와주는 점원입니다. 카운트에서는 거스름돈으로 사용할 500원, 100원, 50원, 10원짜리 동전이 무한히 존재한다고 가정합니다. 손님에게 거슬러 주어야 할 돈이 N원일 때, 거슬러 주어야 할 동전의 최소 개수를 구하세요. 단, 거슬로 줘야 할 돈은 N은 항상 10의 배수입니다.
- [문제] 거스름돈 : 문제 해결 아이디어   최적의 해를 빠르게 구하기 위해서는 가장 큰 화폐의 단위부터 돈을 거슬러 주면 됩니다. N원을 거슬러 줘야 할 때, 가장먼저 500원으로 거슬러 줄 수 있을 만큼 거슬러줍니다.</description>
-    </item>
-    
-    <item>
-      <title>그리디 알고리즘</title>
-      <link>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/greedy-algorithm/</link>
-      <pubDate>Sat, 20 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/codingtest/algorithm/greedy/greedy-algorithm/</guid>
-      <description>그리디 알고리즘(탐욕법) 그리디 알고리즘이란 ?  그리디 알고리즘이란
- 그리디 알고리즘(탐욕법)은 현재상황에서 가장 좋은 것만 고르는 방법을 의미. 일반적인 그리디 알고리즘은 문제를 풀기 위한 최소한의 아이디어를 떠올릴 있는 능력을 요구. 그리디 해법은 그 정당성 분석이 중요. 단순히 가장 좋아 보이는 것을 반복적으로 선택해도 최적의 해를 구할 수 있는지 검토 필요.   [문제 상황] 루트 노드로 부터 시작하여 가는 노드의 합을 최대로 만들고 싶습니다.  Q. 최적의 해는 무엇인가요 ?</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.03.19</title>
-      <link>https://offetuoso.github.io/blog/english/202103/20210319-english-speak/</link>
-      <pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202103/20210319-english-speak/</guid>
-      <description>do you mind?  (1) Are you okay/fine with it? (&amp;lsquo;괜찮나요?&#39;) Do you mind if I change the schedule? 괜찮다면, 스케쥴을 변경해도 될까요? (2) Mind your own business. (&amp;lsquo;니 일이나 신경써.&#39;) Do you mind? 니 일이나 신경써.
- attempt to ~ (&#39;-를 시도하다.&#39;)  they are attempt to find something 그들은 무언갈 찾으려 한다. i attempt to speaking english 나는 영어로 말하길 시도한다.
- I had a meeting ~ (&#39;-를 만났다.</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.03.17</title>
-      <link>https://offetuoso.github.io/blog/english/202103/20210317-english-speak/</link>
-      <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202103/20210317-english-speak/</guid>
-      <description>Did you take a look at ~? (&#39;-보셨나요?&#39;)  Did you take a look at the Book 책 보셨나요? Did you take a look at sky? 하늘을 보셨나요?
- I took a look at ~ (&amp;lsquo;나는 -를 보았다.&#39;)  I took a look at the book, 1 hour ago 1 시간 전에 책을 봤어요. I was took a look at sky last day 나는 어제 하늘을 봤어요
- a. impressed (&amp;lsquo;깊은 인상&amp;rsquo;) n.</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.03.16</title>
-      <link>https://offetuoso.github.io/blog/english/202103/20210316-english-speak/</link>
-      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202103/20210316-english-speak/</guid>
-      <description>I use ~ (&amp;lsquo;난 -를 사용한다.&#39;)  I use Java 난 자바를 사용한다. I use Korean 난 한국어를 사용한다.
- I’m preparing ~ (&#39;-를 준비중입니다&amp;rsquo;)  ** I’m preparing to change job ** 나는 이직을 준비중입니다. ** I’m preparing to party in my house ** 우리 집에서 파티를 준비하고 있어요.
- ~ is intense (&#39;-이 ~빡세다~힘들다.&#39;)
- Work is not intense 일은 힘들지 않다. Always Study is intense 공부는 힘들다.</description>
-    </item>
-    
-    <item>
-      <title>잉그올 영어 회화 21.03.15</title>
-      <link>https://offetuoso.github.io/blog/english/202103/20210315-english-speak/</link>
-      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/english/202103/20210315-english-speak/</guid>
-      <description>I’m used to ~ (&amp;lsquo;난 -에 익숙해&amp;rsquo;)  I&amp;rsquo;m used to you 난 너에게 익숙해 I&amp;rsquo;m used to working overtime 난 야근에 익숙해
- I&amp;rsquo;m afraid ~ (&amp;lsquo;유감스럽지만,&#39;)  I&amp;rsquo;m afraid Rainy outside 유감이지만, 밖에 비가 오는 것 같아 **I&amp;rsquo;m afraid ** 유감이지만, 밖에 비가 오는 것 같아
- I’m working on ~ (&amp;lsquo;지금 -를 하고있어&amp;rsquo;)  I’m working on my English speaking 난 영어 말하기를 공부하고 있어 i&amp;rsquo;m working on study Algorithm 난 알고리즘을 공부하고 있어</description>
-    </item>
-    
-  </channel>
-</rss>

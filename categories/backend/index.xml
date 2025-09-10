@@ -1,98 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Backend on offetuoso&#39;s Blog</title>
-    <link>https://offetuoso.github.io/categories/backend/</link>
-    <description>Recent content in Backend on offetuoso&#39;s Blog</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>ko-KR</language>
-    <copyright>© 2021</copyright>
-    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://offetuoso.github.io/categories/backend/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>샤딩(Sharding)</title>
-      <link>https://offetuoso.github.io/blog/develop/database/tech/sharding/</link>
-      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/database/tech/sharding/</guid>
-      <description>샤딩(Sharding) Database의 샤딩(Sharding)이란?  같은 테이블 스키마를 가진 데이터를 다수의 데이터베이스에 분산하여 저장하는 방법을 의미.
- 샤딩은 수평 분할(Horizontal Partitioning)과 동일. 테이블의 인덱스의 크기를 줄이고, 작업 동시성을 늘리기 위함. application level에서도 가능하지만 database level에서도 가능.   수평 분할 (horizotal partitioning, Range Based Partitioning)  샤딩과 동일한 의미를 가지며 스키마를 다수의 복제본을 구성하고 각각의 샤드에 샤드키를 기준으로 데이터를 분리하는 것을 말한다. DBA가 데이터의 패턴과 저장공간을 잘 알고 샤드키를 선정하여 분할한다.</description>
-    </item>
-    
-    <item>
-      <title>AWS RDS에 MySQL 인스턴스 생성 후 연결</title>
-      <link>https://offetuoso.github.io/blog/develop/database/mysql/aws-rds-mysql/</link>
-      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/database/mysql/aws-rds-mysql/</guid>
-      <description>AWS RDS RDS 서비스 생성  AWS Management Console에서 RDS 접속
- RDS 데이터베이스 인스턴스 생성  RDS에 MySQL 인스턴스를 생성한다.
-  데이터베이스 생성 클릭
-  데이터베이스 생성
- 표준 생성 원하는 데이터베이스 선택    Mysql 버전 선택과 템플릿 설정
- Mysql Community Mysql 버전 선택 - MySQL 5.7.22 템플릿 선택 -    DB 인스턴스 설정
- 인스턴스명 추가 DB에 접근할 계정 정보 입력    DB 인스턴스 크기</description>
-    </item>
-    
-    <item>
-      <title>RESTful API에 Docker Mysql 컨테이너와 Mybatis 연동</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</link>
-      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-2/</guid>
-      <description>RESTful API - Docker의 Mysql과 Mybatis 연동 Docker  Docker에 Mysql을 올리는 것은 저번 포스팅에서 진행하였기 때문에 도커에 Mysql 올리기 링크를 남기고 다음부터 진행합니다.
-  지난 포스트에서 생성한 Docker의 Mysql 컨테이너를 실행
-   docker ps -a (&amp;ldquo;컨테이너 조회&amp;rdquo;)    docker start (&amp;ldquo;컨테이너 시작&amp;rdquo;)  docker restart (&amp;ldquo;컨테이너에 재시작하기&amp;rdquo;) docker stop (&amp;ldquo;컨테이너에 종료하기&amp;rdquo;) docker attach (&amp;ldquo;현재 실행중인 컨테이너에 접속하기&amp;rdquo;)      sudo docker exec -it /bin/bash (&amp;ldquo;컨테이너의 CLI 접속&amp;rdquo;)   PS C:\WINDOWS\system32&amp;gt; docker ps -aCONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES4b6fb99160bf mysql:5.</description>
-    </item>
-    
-    <item>
-      <title>SpringBoot를 이용한 RESTful API</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api-1/</guid>
-      <description>SpringBoot를 이용한 RESTful API SpringBoot  스프링 프레임워크 기반 프로젝트를 복잡한 설정없이 쉽고 빠르게 만들어주는 라이브러리입니다. 사용자가 일일이 모든 설정을 하지 않아도 자주 사용되는 기본설정을 알아서 해줍니다.
-  Spring Boot 장점
-   라이브러리 관리의 자동화 라이브러리 버전 자동 관리 설정의 자동화 내장 Tomcat 독립적으로 실행 가능한 JAR   간단한 RESTful API 생성 Spring Starter Project로 프로젝트 생성  스프링STS4를 실행 하고, file &amp;gt; new &amp;gt; Spring Starter Project를 선택</description>
-    </item>
-    
-    <item>
-      <title>RESTFULL API (RESTful API)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api/</link>
-      <pubDate>Sat, 29 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/restapi/restful-api/</guid>
-      <description>레스트풀 API(Restful Api) REST (Representational state transfer)  REST(Representational State Transfer)는 월드 와이드 웹과 같은 분산 하이퍼미디어 시스템을 위한 소프트웨어 아키텍처의 한 형식이다. REST는 로이 필딩(Roy Fielding)의 2000년 박사학위 논문에서 소개 엄격한 의미로 REST는 네트워크 아키텍처 원리의 모음이다. 여기서 &amp;lsquo;네트워크 아키텍처 원리&amp;rsquo;란 자원을 정의하고 자원에 대한 주소를 지정하는 방법 전반을 일컫는다. 간단한 의미로는, 웹 상의 자료를 HTTP위에서 SOAP이나 쿠키를 통한 세션 트랙킹 같은 별도의 전송 계층 없이 전송하기 위한 아주 간단한 인터페이스를 말한다.</description>
-    </item>
-    
-    <item>
-      <title>도커에 Mysql 올리기-1 (Docker Mysql)</title>
-      <link>https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/</link>
-      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/docker/docker-mysql/</guid>
-      <description>도커에 Mysql 올리기 도커 버전 체크  cmd창 또는 Windows PowerShell을 싱행한다.  도커 초기화  일단 도커의 이미지/컨테이너들을 모두 지워주는 것 부터 시작하겠습니다.
- PS C:\&amp;gt; sudo docker rm -f `sudo docker ps -a -q`PS C:\&amp;gt; sudo docker rmi -f `sudo docker images` 도커 이미지 가져오기 (get Mysql Image for Docker)  Mysql의 경우 DockerHub에 있기 때문에, 쉽게 이미지를 받아 올 수 있습니다.
- DockerHub에서 mysql 이미지 받아오기   PS C:\&amp;gt; docker pull mysqlUsing default tag: latestlatest: Pulling from library/mysqlDigest: sha256:d50098d7fcb25b1fcb24e2d3247cae3fc55815d64fec640dc395840f8fa80969Status: Image is up to date for mysql:latestdocker.</description>
-    </item>
-    
-    <item>
-      <title>도커 설치 (Docker Install) </title>
-      <link>https://offetuoso.github.io/blog/develop/backend/docker/docker-install/</link>
-      <pubDate>Sat, 22 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/backend/docker/docker-install/</guid>
-      <description>도커 (Docker) 도커란 ?  도커란 리눅스의 응용 프로그램들을 프로세스 격리 기술을 사용해 컨테이너로 실행하고 관리하는 오픈 소스 프로젝트. 도커 웹 페이지의 기능을 인용하면 다음과 같다:
- 도커 컨테이너는 일종의 소프트웨어를 소프트웨어의 실행에 필요한 모든 것을 포함하는 완전한 파일 시스템 안에 감싼다. 여기에는 코드, 런타임, 시스템 도구, 시스템 라이브러리 등 서버에 설치되는무엇이든 아우른다. 이는 실행 중인 환경에 관계 없이 언제나 동일하게 실행될 것을 보증한다. 도커의 특징   도커의 컨테이너는 각각 독립적이다.</description>
-    </item>
-    
-    <item>
-      <title>Git 캐시 삭제</title>
-      <link>https://offetuoso.github.io/blog/develop/git/202105/time/</link>
-      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://offetuoso.github.io/blog/develop/git/202105/time/</guid>
-      <description>Git 캐시(cache) 삭제 // 원격 저장소와 로컬 저장소 파일을 삭제$ git rm 파일명// 원격 저장소에 있는 파일만 삭제하고, //로컬 저장소에 있는 파일은 삭제하지 않음$ git rm --cached 파일명 rm -r 옵션// 파일 삭제$ git rm --cached 파일명// 폴더 하위의 모든 파일을 삭제$ git rm -r --cached 폴더명 </description>
-    </item>
-    
-  </channel>
-</rss>
